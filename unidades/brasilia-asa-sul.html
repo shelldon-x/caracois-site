@@ -5,16 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
     <!-- SEO Local -->
-    <title>Studio Caracóis Brasília | Especialistas em Cabelos Cacheados | Asa Sul</title>
-    <meta name="description" content="Studio Caracóis na Asa Sul: salão especialista em cabelos cacheados. Corte 3D, Acidificação, Caracóis Care e avaliação gratuita. Agende seu horário.">
+    <title>Studio Caracóis Asa Sul | Salão de Cachos Brasília</title>
+    <meta name="description" content="Salão de cachos na Asa Sul, Brasília. Corte 3D, acidificação capilar e tratamentos para cacheados. Agende sua avaliação gratuita.">
     <meta name="keywords" content="salão cabelo cacheado Asa Sul, especialista cachos Plano Piloto, corte cacheado Brasília Asa Sul, Studio Caracóis Asa Sul">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://caracois.com.br/unidades/brasilia-asa-sul">
     <meta name="theme-color" content="#9B4442">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Studio Caracóis Brasília Asa Sul | Especialistas em Cabelos Cacheados">
-    <meta property="og:description" content="Corte 3D, Acidificação, Caracóis Care e avaliação gratuita na Asa Sul. Agende seu horário.">
+    <meta property="og:title" content="Studio Caracóis Asa Sul | Salão de Cachos Brasília">
+    <meta property="og:description" content="Salão de cachos na Asa Sul, Brasília. Corte 3D, acidificação capilar e tratamentos para cacheados. Agende sua avaliação gratuita.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://caracois.com.br/unidades/brasilia-asa-sul">
     <meta property="og:locale" content="pt_BR">
@@ -143,8 +143,10 @@
         }
         nav .container { display: flex; justify-content: space-between; align-items: center; }
         .nav-logo { height: auto; }
-        .nav-logo img { width: 220px; height: auto; display: block; transition: width 0.3s; }
+        .nav-logo img { width: 220px; height: auto; max-height: 48px; object-fit: contain; object-position: left center; display: block; transition: all 0.3s; }
         .nav-right { display: flex; align-items: center; gap: 32px; }
+        .nav-links ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 28px; align-items: center; }
+        .nav-links li { margin: 0; padding: 0; }
         .nav-links { display: flex; gap: 28px; align-items: center; }
         .nav-links a {
             font-size: 0.8rem; font-weight: 400; color: rgba(255,255,255,0.8);
@@ -159,7 +161,7 @@
         }
         .nav-links a:hover::after { width: 100%; }
         nav.scrolled .nav-links a { color: var(--text); }
-        nav.scrolled .nav-logo img { width: 180px; }
+        nav.scrolled .nav-logo img { width: 180px; max-height: 40px; }
         .nav-social { display: flex; gap: 12px; align-items: center; }
         .nav-social a {
             color: rgba(255,255,255,0.55);
@@ -808,7 +810,7 @@
             .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
         }
         @media (max-width: 768px) {
-            .nav-logo img { width: 170px; }
+            .nav-logo img { width: 170px; max-height: 42px; }
             section { padding: 60px 0; }
             .container { padding: 0 20px; }
             .hero-local { padding: 100px 0 60px; }
@@ -859,16 +861,18 @@
 <nav id="navbar" role="navigation" aria-label="Navegação principal">
     <div class="container">
         <a href="/index.html" class="nav-logo" aria-label="Studio Caracóis - Página inicial">
-            <img src="/images/logos/logo-nude.png" alt="Logo Studio Caracóis" id="navLogoImg" width="180" height="34" decoding="async">
+            <img src="/images/logos/logo-nude.png" alt="Logo Studio Caracóis" id="navLogoImg" width="220" height="48" decoding="async">
         </a>
         <div class="nav-right">
             <div class="nav-links">
-                <a href="#experiencia">Sua experiência</a>
-                <a href="#servicos">Serviços</a>
-                <a href="#transicao">Transição Capilar</a>
-                <a href="#como-chegar">Como chegar</a>
-                <a href="#faq">FAQ</a>
-            </div>
+                <ul role="list">
+                    <li><a href="#experiencia">Sua experiência</a></li>
+                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#transicao">Transição Capilar</a></li>
+                    <li><a href="#como-chegar">Como chegar</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+                </div>
             <div class="nav-social">
                 <a href="https://instagram.com/studiocaracois" target="_blank" rel="noopener" aria-label="Instagram"><svg width="24" height="24"><use href="#i-ig"/></svg></a>
                 <a href="https://tiktok.com/@studiocaracois" target="_blank" rel="noopener" aria-label="TikTok"><svg width="24" height="24"><use href="#i-tt"/></svg></a>
