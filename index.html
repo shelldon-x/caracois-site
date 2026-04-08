@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
-    <title>Studio Caracóis | Salão Especialista em Cabelos Cacheados | Corte 3D e Tratamentos</title>
-    <meta name="description" content="Studio Caracóis: salão especialista em cabelos cacheados. Corte 3D, Acidificação, Caracóis Care e avaliação gratuita. Produtos low poo. Unidades em SP, DF, GO e PE.">
+    <title>Studio Caracóis | Salão Especialista em Cachos</title>
+    <meta name="description" content="Salão especialista em cabelos cacheados. Corte 3D, acidificação e tratamentos para cachos. 8 unidades no Brasil. Agende sua avaliação gratuita.">
     <meta name="keywords" content="salão cabelo cacheado, especialista em cachos, corte para cachos, cabelo cacheado, corte 3D, acidificação capilar, caracóis care, low poo">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://caracois.com.br">
     <meta name="theme-color" content="#9B4442">
 
-    <meta property="og:title" content="Studio Caracóis | Salão Especialista em Cabelos Cacheados">
-    <meta property="og:description" content="Corte 3D, Acidificação, Caracóis Care e avaliação gratuita. Transforme seus cachos com quem realmente entende.">
+    <meta property="og:title" content="Studio Caracóis | Salão Especialista em Cachos">
+    <meta property="og:description" content="Salão especialista em cabelos cacheados. Corte 3D, acidificação e tratamentos para cachos. 8 unidades no Brasil. Agende sua avaliação gratuita.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://caracois.com.br">
     <meta property="og:locale" content="pt_BR">
@@ -21,8 +21,8 @@
     <meta property="og:image:alt" content="Studio Caracóis, salão especialista em cabelos cacheados">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Studio Caracóis | Especialistas em Cabelos Cacheados">
-    <meta name="twitter:description" content="Corte 3D, Acidificação, Caracóis Care e avaliação gratuita.">
+    <meta name="twitter:title" content="Studio Caracóis | Salão Especialista em Cachos">
+    <meta name="twitter:description" content="Salão especialista em cabelos cacheados. Corte 3D, acidificação e tratamentos para cachos. 8 unidades no Brasil. Agende sua avaliação gratuita.">
     <meta name="twitter:image" content="https://caracois.com.br/images/og/og-home.png">
 
     <link rel="icon" href="/favicon.ico" sizes="any">
@@ -149,8 +149,10 @@
         }
         nav .container { display: flex; justify-content: space-between; align-items: center; }
         .nav-logo { height: auto; }
-        .nav-logo img { width: 220px; height: auto; display: block; transition: width 0.3s; }
+        .nav-logo img { width: 220px; height: auto; max-height: 48px; object-fit: contain; object-position: left center; display: block; transition: all 0.3s; }
         .nav-right { display: flex; align-items: center; gap: 32px; }
+        .nav-links ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 28px; align-items: center; }
+        .nav-links li { margin: 0; padding: 0; }
         .nav-links { display: flex; gap: 28px; align-items: center; }
         .nav-links a {
             font-size: 0.8rem; font-weight: 400; color: rgba(255,255,255,0.8);
@@ -165,7 +167,7 @@
         }
         .nav-links a:hover::after { width: 100%; }
         nav.scrolled .nav-links a { color: var(--text); }
-        nav.scrolled .nav-logo img { width: 180px; }
+        nav.scrolled .nav-logo img { width: 180px; max-height: 40px; }
         .nav-social { display: flex; gap: 12px; align-items: center; }
         .nav-social a {
             color: rgba(255,255,255,0.55);
@@ -1602,7 +1604,7 @@
         @media (max-width: 768px) {
             section { padding: 72px 0; }
             .container { padding: 0 20px; }
-            .nav-logo img { width: 170px; }
+            .nav-logo img { width: 170px; max-height: 42px; }
             .hero { padding: 110px 0 64px; }
             .hero h1 { font-size: clamp(1.8rem, 7vw, 2.8rem); line-height: 1.12; }
             .hero-sub { font-size: 0.92rem; max-width: 100%; margin-bottom: 36px; }
@@ -1672,7 +1674,7 @@
         @media (max-width: 480px) {
             section { padding: 56px 0; }
             .container { padding: 0 16px; }
-            .hero { padding: 96px 0 48px; }
+            .hero { padding: 108px 0 48px; }
             .hero h1 { font-size: 1.6rem; margin-bottom: 18px; }
             .hero-sub { font-size: 0.85rem; margin-bottom: 28px; }
             .hero-badge { font-size: 0.58rem; padding: 6px 12px; margin-bottom: 20px; }
@@ -1721,18 +1723,20 @@
 <nav id="navbar" role="navigation" aria-label="Navegação principal">
     <div class="container">
         <a href="/" class="nav-logo" aria-label="Studio Caracóis - Página inicial">
-            <img src="/images/logos/logo-nude.png" alt="Logo Studio Caracóis - Especialistas em cabelos cacheados" id="navLogoImg" width="180" height="34" decoding="async" fetchpriority="high">
+            <img src="/images/logos/logo-nude.png" alt="Logo Studio Caracóis - Especialistas em cabelos cacheados" id="navLogoImg" width="220" height="48" decoding="async" fetchpriority="high">
         </a>
         <div class="nav-right">
             <div class="nav-links">
-                <a href="#experiencia">Sua experiência</a>
-                <a href="#servicos">Serviços</a>
-                <a href="#transicao">Transição Capilar</a>
-                <a href="#resultados">Resultados</a>
-                <a href="#bee">Produtos</a>
-                <a href="#unidades">Unidades</a>
-                <a href="#faq">FAQ</a>
-            </div>
+                <ul role="list">
+                    <li><a href="#experiencia">Sua experiência</a></li>
+                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#transicao">Transição Capilar</a></li>
+                    <li><a href="#resultados">Resultados</a></li>
+                    <li><a href="#bee">Produtos</a></li>
+                    <li><a href="#unidades">Unidades</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+                </div>
             <div class="nav-social">
                 <a href="https://instagram.com/studiocaracois" target="_blank" rel="noopener" aria-label="Instagram"><svg width="24" height="24"><use href="#i-ig"/></svg></a>
                 <a href="https://tiktok.com/@studiocaracois" target="_blank" rel="noopener" aria-label="TikTok"><svg width="24" height="24"><use href="#i-tt"/></svg></a>
