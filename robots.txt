@@ -1,12 +1,16 @@
-# Studio Caracóis — caracois.com.br
-# https://caracois.com.br/robots.txt
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: meta-externalagent
+Disallow: /
 
 User-agent: *
 Allow: /
 
-# Bloquear assets internos que não precisam de indexação
 Disallow: /images/icons/
 Disallow: /images/og/
 
-# Sitemap
 Sitemap: https://caracois.com.br/sitemap.xml
