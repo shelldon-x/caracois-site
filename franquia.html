@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+    <title>Franquia Studio Caracóis — Invista no mercado de cabelos cacheados</title>
+    <meta name="description" content="Abra sua unidade Studio Caracóis. Franquia de salão especializado em cabelos cacheados com modelo testado, suporte completo e mercado em crescimento acelerado. Saiba mais.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://caracois.com.br/franquia.html">
+    <meta name="theme-color" content="#9B4442">
+    <meta property="og:title" content="Franquia Studio Caracóis — Seja parte da maior rede de cachos do Brasil">
+    <meta property="og:description" content="Modelo de negócio validado, mercado em expansão e suporte completo. Invista em uma franquia Studio Caracóis.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://caracois.com.br/franquia.html">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:site_name" content="Studio Caracóis">
+    <meta property="og:image" content="https://caracois.com.br/images/og/og-home.png">
+
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --terracota: #9B4442; --terracota-dark: #7C3331; --terracota-light: #B96A68;
+            --nude: #EFD9D7; --nude-light: #F2EBE6; --nude-ultra: #FBF6F5;
+            --white: #FFFFFF; --black: #141414; --black-soft: #1F1F1F;
+            --gold: #C4A265; --gold-light: #D4B97A;
+            --text: #2A2A2A; --text-light: #444; --text-muted: #6c6c6c;
+            --border: #E8E8E8; --bg-soft: #F6F6F6;
+            --serif: 'Cormorant Garamond', Georgia, serif;
+            --sans: 'Outfit', system-ui, sans-serif;
+            --ease: cubic-bezier(.25,.46,.45,.94);
+            --ease-out: cubic-bezier(.22,1,.36,1);
+        }
+        svg { display: block; overflow: visible; }
+        button { font-family: inherit; cursor: pointer; }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body { font-family: var(--sans); color: var(--text); background: var(--white); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+        img { max-width: 100%; height: auto; display: block; }
+        .skip-link { position: absolute; top: -100%; left: 16px; background: var(--terracota); color: var(--white); padding: 12px 24px; border-radius: 0 0 8px 8px; z-index: 10000; font-size: 0.85rem; text-decoration: none; transition: top 0.3s; }
+        .skip-link:focus { top: 0; }
+        :focus-visible { outline: 2px solid var(--terracota); outline-offset: 4px; border-radius: 4px; }
+        @keyframes fadeUp { from { opacity:0; transform:translateY(40px) } to { opacity:1; transform:translateY(0) } }
+        @keyframes float { 0%,100% { transform:translateY(0) } 50% { transform:translateY(-8px) } }
+        .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out); }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+        .rd1 { transition-delay:.1s } .rd2 { transition-delay:.2s } .rd3 { transition-delay:.3s }
+
+        /* NAV */
+        nav { position: fixed; top: 0; width: 100%; z-index: 1000; padding: 20px 0; transition: all 0.5s var(--ease); background: rgba(20,20,20,0.95); backdrop-filter: blur(24px); box-shadow: 0 1px 40px rgba(0,0,0,0.15); }
+        nav.scrolled { background: rgba(255,255,255,0.97); backdrop-filter: blur(24px); box-shadow: 0 1px 40px rgba(0,0,0,0.05); padding: 14px 0; }
+        nav .container { display: flex; justify-content: space-between; align-items: center; }
+        .nav-logo img { width: 180px; height: auto; display: block; transition: width 0.3s; }
+        .nav-right { display: flex; align-items: center; gap: 32px; }
+        .nav-links { display: flex; gap: 28px; align-items: center; }
+        .nav-links a { font-size: 0.8rem; font-weight: 400; color: rgba(255,255,255,0.8); text-decoration: none; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.3s; position: relative; }
+        nav.scrolled .nav-links a { color: var(--text-muted); }
+        .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1.5px; background: var(--gold); transition: width 0.3s var(--ease); }
+        .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+        .nav-links a:hover { color: var(--white); }
+        nav.scrolled .nav-links a:hover { color: var(--terracota); }
+        .nav-cta-btn { background: var(--terracota); color: var(--white); border: none; padding: 11px 22px; border-radius: 100px; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.04em; transition: all 0.3s; white-space: nowrap; }
+        .nav-cta-btn:hover { background: var(--terracota-dark); transform: translateY(-1px); }
+        .mobile-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; padding: 4px; cursor: pointer; }
+        .mobile-toggle span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; transition: background 0.3s; }
+        nav.scrolled .mobile-toggle span { background: var(--text); }
+
+        /* BUTTONS */
+        .btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; border-radius: 100px; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.04em; text-decoration: none; border: none; transition: all 0.3s var(--ease); cursor: pointer; white-space: nowrap; }
+        .btn-primary { background: var(--terracota); color: var(--white); }
+        .btn-primary:hover { background: var(--terracota-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(155,68,66,0.35); }
+        .btn-gold { background: var(--gold); color: var(--white); }
+        .btn-gold:hover { background: #B08E52; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(196,162,101,0.4); }
+        .btn-wa { background: #25D366; color: var(--white); }
+        .btn-wa:hover { background: #1EB55A; transform: translateY(-2px); }
+        .btn-outline-white { background: transparent; color: var(--white); border: 1.5px solid rgba(255,255,255,0.5); }
+        .btn-outline-white:hover { background: rgba(255,255,255,0.1); border-color: var(--white); }
+        .btn-lg { padding: 18px 40px; font-size: 0.95rem; }
+
+        /* HERO */
+        .franquia-hero { min-height: 100vh; background: linear-gradient(135deg, var(--black) 0%, #2C1A1A 50%, #1A0F0F 100%); display: flex; align-items: center; padding: 120px 0 80px; position: relative; overflow: hidden; }
+        .franquia-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 65% 40%, rgba(155,68,66,0.3) 0%, transparent 60%); }
+        .franquia-hero::after { content: ''; position: absolute; top: -20%; right: -10%; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(ellipse, rgba(196,162,101,0.06) 0%, transparent 70%); }
+        .hero-content { position: relative; z-index: 1; max-width: 700px; }
+        .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(196,162,101,0.15); color: var(--gold); border: 1px solid rgba(196,162,101,0.3); padding: 8px 18px; border-radius: 100px; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 28px; font-weight: 500; }
+        .franquia-hero h1 { font-family: var(--serif); font-size: clamp(2.4rem, 5.5vw, 4rem); font-weight: 400; color: var(--white); line-height: 1.15; margin-bottom: 24px; }
+        .franquia-hero h1 em { font-style: italic; color: var(--gold-light); display: block; }
+        .hero-sub { font-size: 1.1rem; color: rgba(255,255,255,0.7); line-height: 1.75; margin-bottom: 40px; max-width: 580px; }
+        .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 56px; }
+        .hero-stats { display: flex; gap: 40px; flex-wrap: wrap; }
+        .hero-stat { }
+        .hero-stat-num { font-family: var(--serif); font-size: 2.4rem; font-weight: 600; color: var(--white); line-height: 1; }
+        .hero-stat-num span { color: var(--gold); }
+        .hero-stat-label { font-size: 0.78rem; color: rgba(255,255,255,0.5); margin-top: 4px; letter-spacing: 0.04em; }
+
+        /* SECTIONS COMMON */
+        .section { padding: 96px 0; }
+        .section-alt { background: var(--nude-ultra); }
+        .section-dark { background: var(--black); }
+        .section-label { display: inline-block; font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.14em; color: var(--terracota); margin-bottom: 12px; }
+        .section-label.light { color: var(--gold); }
+        .section-title { font-family: var(--serif); font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 400; color: var(--black); line-height: 1.25; margin-bottom: 16px; }
+        .section-title.light { color: var(--white); }
+        .section-desc { font-size: 1rem; color: var(--text-muted); line-height: 1.75; max-width: 620px; }
+        .section-desc.light { color: rgba(255,255,255,0.65); }
+        .section-header { margin-bottom: 56px; }
+        .section-header.center { text-align: center; }
+        .section-header.center .section-desc { margin: 0 auto; }
+
+        /* MARKET SECTION */
+        .market-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .market-card { background: var(--white); border: 1px solid var(--border); border-radius: 20px; padding: 32px; text-align: center; transition: all 0.3s var(--ease); }
+        .market-card:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.08); border-color: var(--nude); }
+        .market-card-icon { width: 56px; height: 56px; border-radius: 16px; background: linear-gradient(135deg, var(--nude-ultra) 0%, var(--nude-light) 100%); display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 1.8rem; }
+        .market-card-num { font-family: var(--serif); font-size: 2.8rem; font-weight: 600; color: var(--terracota); line-height: 1; margin-bottom: 6px; }
+        .market-card-title { font-weight: 600; font-size: 0.9rem; color: var(--black); margin-bottom: 8px; }
+        .market-card-desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
+
+        /* DIFERENCIAIS */
+        .diferenciais-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+        .diferencial-card { display: flex; gap: 20px; align-items: flex-start; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 28px; transition: all 0.3s; }
+        .diferencial-card:hover { background: rgba(255,255,255,0.08); border-color: rgba(196,162,101,0.25); }
+        .diferencial-icon { width: 48px; height: 48px; border-radius: 12px; background: rgba(196,162,101,0.12); border: 1px solid rgba(196,162,101,0.2); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink: 0; }
+        .diferencial-content h3 { font-weight: 600; font-size: 0.95rem; color: var(--white); margin-bottom: 6px; }
+        .diferencial-content p { font-size: 0.85rem; color: rgba(255,255,255,0.6); line-height: 1.6; }
+
+        /* PERFIL */
+        .perfil-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+        .perfil-text .section-desc { margin-bottom: 24px; }
+        .perfil-list { list-style: none; padding: 0; margin: 0; }
+        .perfil-list li { display: flex; align-items: flex-start; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--border); font-size: 0.95rem; line-height: 1.6; }
+        .perfil-list li:last-child { border-bottom: none; }
+        .perfil-list-icon { width: 28px; height: 28px; border-radius: 50%; background: rgba(155,68,66,0.1); display: flex; align-items: center; justify-content: center; font-size: 0.8rem; color: var(--terracota); flex-shrink: 0; margin-top: 2px; }
+        .perfil-highlight { background: linear-gradient(135deg, var(--terracota) 0%, var(--terracota-dark) 100%); border-radius: 20px; padding: 40px; color: var(--white); }
+        .perfil-highlight h3 { font-family: var(--serif); font-size: 1.6rem; font-weight: 400; margin-bottom: 12px; }
+        .perfil-highlight p { font-size: 0.9rem; opacity: 0.85; line-height: 1.7; margin-bottom: 24px; }
+
+        /* FORM SECTION */
+        .form-section { padding: 96px 0; background: var(--nude-ultra); }
+        .form-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+        .form-info { }
+        .form-info .section-title { margin-bottom: 20px; }
+        .form-info .section-desc { margin-bottom: 32px; }
+        .form-points { list-style: none; padding: 0; margin: 0; }
+        .form-points li { display: flex; align-items: center; gap: 12px; padding: 10px 0; font-size: 0.92rem; color: var(--text); }
+        .form-points li::before { content: '✓'; width: 24px; height: 24px; background: rgba(155,68,66,0.1); color: var(--terracota); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; flex-shrink: 0; }
+        .franquia-form { background: var(--white); border-radius: 24px; padding: 40px; box-shadow: 0 8px 48px rgba(0,0,0,0.07); border: 1px solid var(--border); }
+        .form-title { font-family: var(--serif); font-size: 1.6rem; font-weight: 500; color: var(--black); margin-bottom: 6px; }
+        .form-subtitle { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 28px; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; font-size: 0.82rem; font-weight: 600; color: var(--text); margin-bottom: 8px; letter-spacing: 0.02em; }
+        .form-group label span { color: var(--terracota); }
+        .form-control { width: 100%; padding: 13px 16px; border: 1.5px solid var(--border); border-radius: 10px; font-family: var(--sans); font-size: 0.9rem; color: var(--text); background: var(--white); transition: border-color 0.2s; }
+        .form-control:focus { outline: none; border-color: var(--terracota); box-shadow: 0 0 0 3px rgba(155,68,66,0.08); }
+        .form-control::placeholder { color: var(--text-muted); }
+        textarea.form-control { resize: vertical; min-height: 96px; }
+        .form-submit { width: 100%; padding: 16px; background: var(--terracota); color: var(--white); border: none; border-radius: 100px; font-family: var(--sans); font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: all 0.3s var(--ease); display: flex; align-items: center; justify-content: center; gap: 10px; letter-spacing: 0.02em; }
+        .form-submit:hover { background: var(--terracota-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(155,68,66,0.3); }
+        .form-disclaimer { font-size: 0.75rem; color: var(--text-muted); text-align: center; margin-top: 14px; line-height: 1.5; }
+
+        /* FOOTER */
+        footer { background: var(--black); color: rgba(255,255,255,0.7); padding: 64px 0 0; }
+        .footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 48px; padding-bottom: 48px; }
+        .footer-logo { margin-bottom: 16px; }
+        .footer-desc { font-size: 0.88rem; line-height: 1.7; max-width: 300px; opacity: 0.6; }
+        .footer-social-links { display: flex; gap: 16px; margin-top: 20px; }
+        .footer-social-links a { color: rgba(255,255,255,0.5); transition: color 0.3s; }
+        .footer-social-links a:hover { color: var(--gold); }
+        .footer-col h4 { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.4); margin-bottom: 20px; }
+        .footer-col a { display: block; font-size: 0.88rem; color: rgba(255,255,255,0.6); text-decoration: none; margin-bottom: 10px; transition: color 0.3s; }
+        .footer-col a:hover { color: var(--gold); }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding: 20px 0; display: flex; justify-content: space-between; align-items: center; font-size: 0.78rem; opacity: 0.4; }
+
+        /* MODALS */
+        .wa-modal-overlay, .booking-overlay { display: flex; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 2000; align-items: center; justify-content: center; padding: 20px; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+        .wa-modal-overlay.open, .booking-overlay.open { opacity: 1; pointer-events: all; }
+        .wa-modal { background: var(--white); border-radius: 20px; padding: 32px; width: 100%; max-width: 480px; max-height: 80vh; overflow-y: auto; transform: translateY(20px); transition: transform 0.3s var(--ease-out); }
+        .wa-modal-overlay.open .wa-modal { transform: translateY(0); }
+        .wa-modal-header { margin-bottom: 20px; }
+        .wa-modal-title { font-family: var(--serif); font-size: 1.5rem; font-weight: 500; color: var(--black); margin-bottom: 4px; }
+        .wa-modal-header p { font-size: 0.88rem; color: var(--text-muted); }
+        .wa-modal-close { position: absolute; top: 16px; right: 16px; background: var(--bg-soft); border: none; width: 32px; height: 32px; border-radius: 50%; font-size: 1.1rem; color: var(--text-muted); cursor: pointer; display: flex; align-items: center; justify-content: center; }
+        .wa-unit-list { display: flex; flex-direction: column; gap: 8px; }
+        .wa-geo-btn { display: flex; align-items: center; gap: 10px; background: var(--nude-ultra); border: 1px solid var(--border); border-radius: 10px; padding: 12px 16px; font-size: 0.88rem; color: var(--terracota); font-weight: 500; cursor: pointer; width: 100%; margin-bottom: 4px; transition: all 0.2s; }
+        .wa-geo-btn:hover { background: var(--nude-light); }
+        .wa-geo-btn svg { width: 16px; height: 16px; stroke: var(--terracota); flex-shrink: 0; }
+        .wa-unit-item { display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; border: 1px solid var(--border); border-radius: 10px; text-decoration: none; color: var(--text); transition: all 0.2s; gap: 8px; }
+        .wa-unit-item:hover { border-color: var(--terracota); background: var(--nude-ultra); }
+        .wa-unit-item svg { color: var(--terracota); flex-shrink: 0; }
+        .wa-unit-name { font-weight: 500; font-size: 0.9rem; }
+        .wa-unit-region { font-size: 0.75rem; color: var(--text-muted); }
+        .booking-modal { background: var(--white); border-radius: 20px; padding: 32px; width: 100%; max-width: 720px; max-height: 85vh; overflow-y: auto; transform: translateY(20px); transition: transform 0.3s var(--ease-out); }
+        .booking-overlay.open .booking-modal { transform: translateY(0); }
+        .booking-header { margin-bottom: 20px; }
+        .booking-modal-title { font-family: var(--serif); font-size: 1.5rem; font-weight: 500; color: var(--black); margin-bottom: 4px; }
+        .booking-header p { font-size: 0.88rem; color: var(--text-muted); }
+        .booking-close { position: absolute; top: 16px; right: 16px; background: var(--bg-soft); border: none; width: 32px; height: 32px; border-radius: 50%; font-size: 1.1rem; color: var(--text-muted); cursor: pointer; }
+        .booking-geo-btn { display: flex; align-items: center; gap: 8px; background: var(--nude-ultra); border: 1.5px solid var(--nude); border-radius: 10px; padding: 10px 16px; font-size: 0.85rem; color: var(--terracota); font-weight: 500; cursor: pointer; margin-bottom: 16px; transition: all 0.2s; }
+        .booking-geo-btn:hover { background: var(--nude-light); }
+        .booking-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .booking-card { display: block; padding: 16px 18px; border: 1.5px solid var(--border); border-radius: 12px; text-decoration: none; color: var(--text); transition: all 0.25s; }
+        .booking-card:hover { border-color: var(--terracota); background: var(--nude-ultra); transform: translateY(-2px); }
+        .booking-card-name { font-weight: 600; font-size: 0.9rem; color: var(--black); margin-bottom: 4px; }
+        .booking-card-addr { font-size: 0.78rem; color: var(--text-muted); line-height: 1.4; }
+        .booking-card-city { font-size: 0.75rem; color: var(--terracota); margin-top: 4px; font-weight: 500; }
+        .booking-nearest-wrap { display: none; }
+        .booking-footer { margin-top: 16px; text-align: center; font-size: 0.85rem; color: var(--text-muted); }
+        .booking-footer a { color: var(--terracota); }
+        body.ui-locked { overflow: hidden; }
+
+        /* MOBILE MENU */
+        .mobile-menu { position: fixed; top: 0; right: -100%; width: min(320px, 85vw); height: 100vh; background: var(--white); z-index: 1100; padding: 72px 32px 40px; transition: right 0.4s var(--ease-out); display: flex; flex-direction: column; gap: 4px; overflow-y: auto; }
+        .mobile-menu.open { right: 0; }
+        .mobile-menu a { font-size: 1rem; color: var(--text); text-decoration: none; padding: 14px 0; border-bottom: 1px solid var(--border); display: block; }
+        .mobile-menu .btn { margin-top: 20px; justify-content: center; }
+        .mobile-menu a:hover { color: var(--terracota); }
+        .mobile-close { position: absolute; top: 20px; right: 20px; background: none; border: none; font-size: 1.5rem; color: var(--text-muted); cursor: pointer; }
+        .mobile-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 1050; }
+        .mobile-overlay.open { display: block; }
+
+        .whatsapp-float { position: fixed; bottom: 28px; right: 28px; z-index: 999; width: 56px; height: 56px; border-radius: 50%; background: #25D366; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 24px rgba(37,211,102,0.35); transition: all 0.3s; animation: float 3s ease-in-out infinite; cursor: pointer; border: none; }
+        .whatsapp-float:hover { transform: scale(1.1); animation: none; }
+        .whatsapp-float svg { width: 28px; height: 28px; fill: white; display: block; }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .form-wrapper { grid-template-columns: 1fr; gap: 48px; }
+            .perfil-grid { grid-template-columns: 1fr; }
+            .market-grid { grid-template-columns: 1fr 1fr; }
+            .diferenciais-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .mobile-toggle { display: flex; }
+            .hero-stats { gap: 24px; }
+            .hero-ctas { flex-direction: column; align-items: flex-start; }
+            .market-grid { grid-template-columns: 1fr; }
+            .footer-top { grid-template-columns: 1fr; gap: 32px; }
+            .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+            .booking-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+    <script>
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;
+            t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";
+            y=l.getElementsByTagName(r)[0];
+            y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "wb0w1oc0ou");
+    </script>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Pular para o conteúdo principal</a>
+
+<svg style="display:none" aria-hidden="true">
+    <symbol id="i-ig" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-tt" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.79a4.85 4.85 0 01-1.01-.1z"/></symbol>
+    <symbol id="i-yt" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.19a3.02 3.02 0 00-2.12-2.14C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.38.55A3.02 3.02 0 00.5 6.19 31.6 31.6 0 000 12a31.6 31.6 0 00.5 5.81 3.02 3.02 0 002.12 2.14c1.88.55 9.38.55 9.38.55s7.5 0 9.38-.55a3.02 3.02 0 002.12-2.14A31.6 31.6 0 0024 12a31.6 31.6 0 00-.5-5.81zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"/></symbol>
+    <symbol id="i-wa" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.121.553 4.108 1.519 5.838L0 24l6.335-1.652A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-1.97 0-3.837-.528-5.445-1.5l-.39-.234-3.757.98.998-3.648-.256-.407A9.72 9.72 0 012.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75z"/></symbol>
+    <symbol id="i-cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></symbol>
+</svg>
+
+<nav id="navbar" role="navigation" aria-label="Navegação principal">
+    <div class="container">
+        <a href="/" class="nav-logo" aria-label="Studio Caracóis - Página inicial">
+            <img src="/images/logos/logo-nude.png" alt="Logo Studio Caracóis" id="navLogoImg" width="180" height="34" decoding="async">
+        </a>
+        <div class="nav-right">
+            <div class="nav-links">
+                <a href="/">Início</a>
+                <a href="/central-de-conhecimento.html">Conhecimento</a>
+                <a href="/franquia.html" class="active">Franquia</a>
+                <a href="/#unidades">Unidades</a>
+            </div>
+            <button class="nav-cta-btn" onclick="document.getElementById('formulario').scrollIntoView({behavior:'smooth'})" aria-label="Quero ser franqueado">Quero ser franqueado</button>
+        </div>
+        <button class="mobile-toggle" onclick="openMobileMenu()" aria-label="Abrir menu" aria-expanded="false" aria-controls="mm">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
+<div class="mobile-menu" id="mm" role="dialog" aria-label="Menu mobile" aria-modal="true" aria-hidden="true">
+    <button class="mobile-close" onclick="closeMobileMenu()" aria-label="Fechar menu">&times;</button>
+    <a href="/" onclick="closeMobileMenu()">Início</a>
+    <a href="/central-de-conhecimento.html" onclick="closeMobileMenu()">Conhecimento</a>
+    <a href="/franquia.html" onclick="closeMobileMenu()">Franquia</a>
+    <a href="/#unidades" onclick="closeMobileMenu()">Unidades</a>
+    <button class="btn btn-primary" onclick="closeMobileMenu();document.getElementById('formulario').scrollIntoView({behavior:'smooth'})">
+        Quero ser franqueado
+    </button>
+</div>
+
+<!-- WA Modal -->
+<div class="wa-modal-overlay" id="waModal" role="dialog" aria-modal="true" aria-hidden="true" onclick="closeModalOnOverlay(event,'waModal')">
+    <div class="wa-modal" style="position:relative">
+        <button class="wa-modal-close" onclick="closeModal('waModal')" aria-label="Fechar">&times;</button>
+        <div class="wa-modal-header"><div class="wa-modal-title">Escolha sua unidade</div><p>Fale diretamente com o Studio mais perto de você</p></div>
+        <div class="wa-unit-list">
+            <button class="wa-geo-btn" onclick="findNearest()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 0 0-8 8c0 5.4 7 12 8 12s8-6.6 8-12a8 8 0 0 0-8-8z"/></svg><span>Usar minha localização</span></button>
+            <a href="https://wa.me/5511998980874" target="_blank" rel="noopener" class="wa-unit-item"><div><div class="wa-unit-name">São Paulo — Tatuapé</div><div class="wa-unit-region">SP</div></div><svg width="18" height="18"><use href="#i-arrow"/></svg></a>
+            <a href="https://wa.me/5512988636566" target="_blank" rel="noopener" class="wa-unit-item"><div><div class="wa-unit-name">São José dos Campos</div><div class="wa-unit-region">SP</div></div><svg width="18" height="18"><use href="#i-arrow"/></svg></a>
+            <a href="https://wa.me/5561993837705" target="_blank" rel="noopener" class="wa-unit-item"><div><div class="wa-unit-name">Brasília — Águas Claras</div><div class="wa-unit-region">DF</div></div><svg width="18" height="18"><use href="#i-arrow"/></svg></a>
+            <a href="https://wa.me/5561995251477" target="_blank" rel="noopener" class="wa-unit-item"><div><div class="wa-unit-name">Brasília — Asa Norte</div><div class="wa-unit-region">DF</div></div><svg width="18" height="18"><use href="#i-arrow"/></svg></a>
+            <a href="https://wa.me/5561996942312" target="_blank" rel="noopener" class="wa-unit-item"><div><div class="wa-unit-name">Brasília — Asa Sul</div><div class="wa-unit-region">DF</div></div><svg width="18" height="18"><use href="#i-arrow"/></svg></a>
+            <a href="https://wa.me/5561991446678" target="_blank" rel="noopener" class="wa-unit-item"><div><div class="wa-unit-name">Brasília — Taguatinga</div><div class="wa-unit-region">DF</div></div><svg width="18" height="18"><use href="#i-arrow"/></svg></a>
+            <a href="https://wa.me/5562993411230" target="_blank" rel="noopener" class="wa-unit-item"><div><div class="wa-unit-name">Goiânia</div><div class="wa-unit-region">GO</div></div><svg width="18" height="18"><use href="#i-arrow"/></svg></a>
+            <a href="https://wa.me/5581973056302" target="_blank" rel="noopener" class="wa-unit-item"><div><div class="wa-unit-name">Recife</div><div class="wa-unit-region">PE</div></div><svg width="18" height="18"><use href="#i-arrow"/></svg></a>
+        </div>
+    </div>
+</div>
+
+<!-- Booking Modal -->
+<div class="booking-overlay" id="bookingModal" role="dialog" aria-modal="true" aria-hidden="true" onclick="closeModalOnOverlay(event,'bookingModal')">
+    <div class="booking-modal">
+        <button class="booking-close" onclick="closeModal('bookingModal')" aria-label="Fechar">&times;</button>
+        <div class="booking-header"><div class="booking-modal-title">Escolha a unidade mais próxima de você</div><p>Atendimento especializado em cabelos cacheados com avaliação personalizada</p></div>
+        <button class="booking-geo-btn" onclick="findNearestBooking()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 0 0-8 8c0 5.4 7 12 8 12s8-6.6 8-12a8 8 0 0 0-8-8z"/></svg><span>Encontrar unidade mais próxima</span></button>
+        <div class="booking-nearest-wrap" id="bookingNearestWrap"></div>
+        <div class="booking-grid">
+            <a href="https://www.salao99.com.br/studio-caracois-especialistas-em-cachos-tatuape" target="_blank" rel="noopener noreferrer" class="booking-card"><div class="booking-card-name">São Paulo — Tatuapé</div><div class="booking-card-addr">R. Manoel dos Santos, 70</div><div class="booking-card-city">São Paulo - SP</div></a>
+            <a href="https://www.salao99.com.br/studio-caracois-especialistas-em-cachos-sjc" target="_blank" rel="noopener noreferrer" class="booking-card"><div class="booking-card-name">São José dos Campos</div><div class="booking-card-addr">Av. Paulo Becker, 310</div><div class="booking-card-city">São José dos Campos - SP</div></a>
+            <a href="https://www.salao99.com.br/studio-caracois-especialistas-em-cachos-aguas-claras" target="_blank" rel="noopener noreferrer" class="booking-card"><div class="booking-card-name">Brasília — Águas Claras</div><div class="booking-card-addr">Av. Pau Brasil, 10</div><div class="booking-card-city">Brasília - DF</div></a>
+            <a href="https://www.salao99.com.br/studio-caracois-especialistas-em-cachos-asa-sul" target="_blank" rel="noopener noreferrer" class="booking-card"><div class="booking-card-name">Brasília — Asa Sul</div><div class="booking-card-addr">CLS 411 Bloco B Loja 20</div><div class="booking-card-city">Brasília - DF</div></a>
+            <a href="https://www.salao99.com.br/studio-caracois-especialistas-em-cachos-asa-norte" target="_blank" rel="noopener noreferrer" class="booking-card"><div class="booking-card-name">Brasília — Asa Norte</div><div class="booking-card-addr">SCLN 715 Loja 59</div><div class="booking-card-city">Brasília - DF</div></a>
+            <a href="https://linktr.ee/studiocaracois" target="_blank" rel="noopener noreferrer" class="booking-card"><div class="booking-card-name">Brasília — Taguatinga</div><div class="booking-card-addr">QND 2 Lote 11 Loja 01</div><div class="booking-card-city">Brasília - DF</div></a>
+            <a href="https://www.salao99.com.br/studio-caracois-especialistas-em-cachos-goiania" target="_blank" rel="noopener noreferrer" class="booking-card"><div class="booking-card-name">Goiânia — Setor Bueno</div><div class="booking-card-addr">Av. Mutirão, 1932</div><div class="booking-card-city">Goiânia - GO</div></a>
+            <a href="https://www.salao99.com.br/studio-caracois-especialistas-em-cachos-recife" target="_blank" rel="noopener noreferrer" class="booking-card"><div class="booking-card-name">Recife — Boa Viagem</div><div class="booking-card-addr">Av. Conselheiro Aguiar, 1472</div><div class="booking-card-city">Recife - PE</div></a>
+        </div>
+        <div class="booking-footer"><p>Não tem certeza? <a href="#" onclick="event.preventDefault();closeModal('bookingModal');openWaModal();">Fale no WhatsApp</a></p></div>
+    </div>
+</div>
+
+<main id="main">
+
+    <!-- HERO -->
+    <section class="franquia-hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                    Oportunidade de Franquia
+                </div>
+                <h1>
+                    Um mercado em crescimento.
+                    <em>Um modelo comprovado.</em>
+                </h1>
+                <p class="hero-sub">O Studio Caracóis está abrindo portas para franqueados que querem construir um negócio sólido no segmento de maior crescimento da beleza brasileira — os cabelos cacheados e crespos.</p>
+                <div class="hero-ctas">
+                    <button class="btn btn-gold btn-lg" onclick="document.getElementById('formulario').scrollIntoView({behavior:'smooth'})">
+                        Quero ser franqueado
+                        <svg width="18" height="18"><use href="#i-arrow"/></svg>
+                    </button>
+                    <button class="btn btn-outline-white" onclick="openWaModal()">
+                        <svg width="18" height="18"><use href="#i-wa"/></svg>
+                        Falar no WhatsApp
+                    </button>
+                </div>
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <div class="hero-stat-num">8<span>+</span></div>
+                        <div class="hero-stat-label">Unidades em operação</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-num">10<span>+</span></div>
+                        <div class="hero-stat-label">Anos de experiência</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-num">60<span>%</span></div>
+                        <div class="hero-stat-label">Da população brasileira</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MARKET -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-header center reveal">
+                <div class="section-label">Contexto de mercado</div>
+                <h2 class="section-title">Por que investir no mercado de cachos</h2>
+                <p class="section-desc">O segmento de beleza para cabelos cacheados e crespos é um dos mais dinâmicos e resilientes da economia brasileira — e ainda está longe da saturação.</p>
+            </div>
+            <div class="market-grid">
+                <div class="market-card reveal rd1">
+                    <div class="market-card-icon">🇧🇷</div>
+                    <div class="market-card-num">60%</div>
+                    <div class="market-card-title">Da população brasileira</div>
+                    <div class="market-card-desc">Mais de 120 milhões de brasileiros têm cabelo cacheado ou crespo — o maior mercado consumidor do mundo nesse segmento.</div>
+                </div>
+                <div class="market-card reveal rd2">
+                    <div class="market-card-icon">📈</div>
+                    <div class="market-card-num">2x</div>
+                    <div class="market-card-title">Crescimento acima da média</div>
+                    <div class="market-card-desc">O segmento de produtos e serviços para cachos cresce consistentemente acima da média do mercado de beleza, impulsionado pelo movimento de aceitação natural.</div>
+                </div>
+                <div class="market-card reveal rd3">
+                    <div class="market-card-icon">🏪</div>
+                    <div class="market-card-num">Alta</div>
+                    <div class="market-card-title">Demanda reprimida</div>
+                    <div class="market-card-desc">Ainda existem cidades inteiras sem um salão especializado em cabelos cacheados — a demanda existe, os profissionais capacitados ainda são raros.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DIFERENCIAIS -->
+    <section class="section section-dark">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-label light">Diferenciais da franquia</div>
+                <h2 class="section-title light">O que você recebe ao abrir um Studio Caracóis</h2>
+                <p class="section-desc light">Não vendemos apenas uma marca. Entregamos um sistema completo para operar com consistência, qualidade e resultado.</p>
+            </div>
+            <div class="diferenciais-grid">
+                <div class="diferencial-card reveal rd1">
+                    <div class="diferencial-icon">🎓</div>
+                    <div class="diferencial-content">
+                        <h3>Treinamento técnico completo</h3>
+                        <p>Capacitação da equipe em técnicas proprietárias de corte, tratamento e finalização para cabelos cacheados. Do onboarding à atualização contínua.</p>
+                    </div>
+                </div>
+                <div class="diferencial-card reveal rd2">
+                    <div class="diferencial-icon">🏷️</div>
+                    <div class="diferencial-content">
+                        <h3>Marca consolidada</h3>
+                        <p>10 anos de história, presença em 4 estados, comunidade ativa nas redes sociais e reconhecimento espontâneo no segmento de cachos.</p>
+                    </div>
+                </div>
+                <div class="diferencial-card reveal rd1">
+                    <div class="diferencial-icon">📦</div>
+                    <div class="diferencial-content">
+                        <h3>Linha exclusiva de produtos</h3>
+                        <p>Acesso preferencial à Bee Cosmetics — marca própria de cosméticos capilares desenvolvida especialmente para cabelos cacheados e crespos.</p>
+                    </div>
+                </div>
+                <div class="diferencial-card reveal rd2">
+                    <div class="diferencial-icon">📊</div>
+                    <div class="diferencial-content">
+                        <h3>Modelo de negócio testado</h3>
+                        <p>Processos, precificação, mix de serviços e operação validados em 8 unidades em cidades diferentes. Menos incerteza, mais resultado.</p>
+                    </div>
+                </div>
+                <div class="diferencial-card reveal rd1">
+                    <div class="diferencial-icon">📣</div>
+                    <div class="diferencial-content">
+                        <h3>Suporte de marketing</h3>
+                        <p>Material de divulgação, templates para redes sociais, campanhas de lançamento e orientação contínua de comunicação para sua unidade.</p>
+                    </div>
+                </div>
+                <div class="diferencial-card reveal rd2">
+                    <div class="diferencial-icon">🤝</div>
+                    <div class="diferencial-content">
+                        <h3>Suporte operacional ativo</h3>
+                        <p>Canal direto com a franqueadora, reuniões periódicas, avaliação de desempenho e orientação para tomada de decisão do dia a dia.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PERFIL DO FRANQUEADO -->
+    <section class="section">
+        <div class="container">
+            <div class="perfil-grid">
+                <div class="perfil-text reveal">
+                    <div class="section-label">Perfil do franqueado ideal</div>
+                    <h2 class="section-title">Para quem é essa oportunidade?</h2>
+                    <p class="section-desc">Você não precisa ser especialista em beleza para abrir um Studio Caracóis — mas precisa ter algumas características essenciais para ter sucesso como franqueado.</p>
+                    <ul class="perfil-list">
+                        <li>
+                            <div class="perfil-list-icon">✓</div>
+                            <span>Afinidade com o mercado de beleza ou serviços presenciais de qualidade</span>
+                        </li>
+                        <li>
+                            <div class="perfil-list-icon">✓</div>
+                            <span>Capacidade de liderança e gestão de equipe pequena a média</span>
+                        </li>
+                        <li>
+                            <div class="perfil-list-icon">✓</div>
+                            <span>Comprometimento com padrão de atendimento e experiência do cliente</span>
+                        </li>
+                        <li>
+                            <div class="perfil-list-icon">✓</div>
+                            <span>Capital disponível para investimento inicial e capital de giro</span>
+                        </li>
+                        <li>
+                            <div class="perfil-list-icon">✓</div>
+                            <span>Identificação com a missão de valorizar a beleza natural e a diversidade</span>
+                        </li>
+                        <li>
+                            <div class="perfil-list-icon">✓</div>
+                            <span>Disponibilidade para dedicação ao negócio, especialmente nos primeiros meses</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="reveal rd1">
+                    <div class="perfil-highlight">
+                        <h3>Mais do que um negócio</h3>
+                        <p>Abrir um Studio Caracóis é se tornar parte de um movimento que resgata a autoestima, a identidade e a confiança de pessoas que por muito tempo foram ignoradas pela beleza convencional. É construir algo com impacto real.</p>
+                        <button class="btn btn-outline-white" onclick="document.getElementById('formulario').scrollIntoView({behavior:'smooth'})">
+                            Quero saber mais
+                            <svg width="16" height="16"><use href="#i-arrow"/></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FORMULÁRIO -->
+    <section class="form-section" id="formulario">
+        <div class="container">
+            <div class="form-wrapper">
+                <div class="form-info reveal">
+                    <div class="section-label">Próximo passo</div>
+                    <h2 class="section-title">Fale com a nossa equipe de expansão</h2>
+                    <p class="section-desc">Preencha o formulário ao lado e nossa equipe entrará em contato pelo WhatsApp para apresentar todos os detalhes da franquia, responder suas dúvidas e entender o seu momento.</p>
+                    <ul class="form-points" style="margin-top:28px;">
+                        <li>Sem compromisso, sem pressão</li>
+                        <li>Apresentação completa do modelo de negócio</li>
+                        <li>Informações sobre investimento e retorno</li>
+                        <li>Processo de seleção transparente e criterioso</li>
+                        <li>Resposta em até 24 horas úteis</li>
+                    </ul>
+                </div>
+                <div class="franquia-form reveal rd1">
+                    <div class="form-title">Quero ser franqueado</div>
+                    <div class="form-subtitle">Preencha os dados abaixo e entraremos em contato</div>
+
+                    <div class="form-group">
+                        <label>Nome completo <span>*</span></label>
+                        <input type="text" id="fname" class="form-control" placeholder="Seu nome completo" autocomplete="name">
+                    </div>
+                    <div class="form-group">
+                        <label>WhatsApp <span>*</span></label>
+                        <input type="tel" id="fphone" class="form-control" placeholder="(00) 00000-0000" autocomplete="tel">
+                    </div>
+                    <div class="form-group">
+                        <label>Cidade onde deseja abrir a unidade <span>*</span></label>
+                        <input type="text" id="fcity" class="form-control" placeholder="Ex: Belo Horizonte - MG" autocomplete="address-level2">
+                    </div>
+                    <div class="form-group">
+                        <label>Mensagem (opcional)</label>
+                        <textarea id="fmsg" class="form-control" placeholder="Conte um pouco sobre você e seu interesse na franquia..."></textarea>
+                    </div>
+                    <button class="form-submit" id="formBtn" onclick="submitFranquia()">
+                        <svg width="18" height="18"><use href="#i-wa"/></svg>
+                        Enviar pelo WhatsApp
+                    </button>
+                    <p class="form-disclaimer">Ao enviar, você será redirecionado para o WhatsApp da nossa equipe de expansão. Seus dados não são compartilhados com terceiros.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <div class="container">
+        <div class="footer-top">
+            <div>
+                <div class="footer-logo"><img src="/images/logos/logo-nude.png" alt="Studio Caracóis" width="140" height="26" loading="lazy" decoding="async"></div>
+                <p class="footer-desc">Especialistas em cabelos cacheados. Técnica, tratamento e produto para transformar o cabelo de verdade.</p>
+                <div class="footer-social-links">
+                    <a href="https://instagram.com/studiocaracois" target="_blank" rel="noopener" aria-label="Instagram"><svg width="24" height="24"><use href="#i-ig"/></svg></a>
+                    <a href="https://tiktok.com/@studiocaracois" target="_blank" rel="noopener" aria-label="TikTok"><svg width="24" height="24"><use href="#i-tt"/></svg></a>
+                    <a href="https://youtube.com/@studiocaracois" target="_blank" rel="noopener" aria-label="YouTube"><svg width="24" height="24"><use href="#i-yt"/></svg></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Conhecimento</h4>
+                <a href="/central-de-conhecimento.html">Central de Conhecimento</a>
+                <a href="/transicao-capilar.html">Transição Capilar</a>
+                <a href="/cronograma-capilar-cacheado.html">Cronograma Capilar</a>
+                <a href="/corte-para-cabelo-cacheado.html">Corte para Cachos</a>
+                <a href="/como-cuidar-de-cabelos-cacheados.html">Como Cuidar dos Cachos</a>
+            </div>
+            <div class="footer-col">
+                <h4>Studio Caracóis</h4>
+                <a href="/">Início</a>
+                <a href="/#servicos">Serviços</a>
+                <a href="/#unidades">Unidades</a>
+                <a href="/franquia.html">Franquia</a>
+                <a href="/#faq">FAQ</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; 2026 Studio Caracóis. Todos os direitos reservados.</span>
+            <span>Cabelo saudável é cabelo bonito.</span>
+        </div>
+    </div>
+</footer>
+
+<button class="whatsapp-float" onclick="openWaModal()" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24"><use href="#i-wa"/></svg>
+</button>
+
+<script>
+var lastScrollY=0,lastFocusedElement=null;
+function lockScroll(){if(document.body.classList.contains('ui-locked'))return;lastScrollY=window.scrollY||0;document.body.classList.add('ui-locked');document.body.style.top='-'+lastScrollY+'px';document.body.style.width='100%';document.body.style.position='fixed';}
+function unlockScroll(){var anyOpen=document.querySelector('.wa-modal-overlay.open,.booking-overlay.open,.mobile-menu.open');if(anyOpen)return;document.body.classList.remove('ui-locked');document.body.style.top='';document.body.style.width='';document.body.style.position='';window.scrollTo(0,lastScrollY);}
+function openModal(id){var modal=document.getElementById(id);if(!modal)return;lastFocusedElement=document.activeElement;modal.classList.add('open');modal.setAttribute('aria-hidden','false');lockScroll();}
+function closeModal(id){var modal=document.getElementById(id);if(!modal)return;modal.classList.remove('open');modal.setAttribute('aria-hidden','true');unlockScroll();if(lastFocusedElement)setTimeout(function(){lastFocusedElement.focus();},30);}
+function closeModalOnOverlay(e,id){if(e.target.id===id)closeModal(id);}
+function openWaModal(){openModal('waModal');}
+function openBooking(){openModal('bookingModal');}
+function openMobileMenu(){var m=document.getElementById('mm'),o=document.getElementById('mobileOverlay');if(!m||!o)return;lastFocusedElement=document.activeElement;m.classList.add('open');o.classList.add('open');m.setAttribute('aria-hidden','false');lockScroll();}
+function closeMobileMenu(){var m=document.getElementById('mm'),o=document.getElementById('mobileOverlay');if(!m)return;m.classList.remove('open');if(o)o.classList.remove('open');m.setAttribute('aria-hidden','true');unlockScroll();}
+document.addEventListener('keydown',function(e){if(e.key!=='Escape')return;if(document.getElementById('bookingModal').classList.contains('open')){closeModal('bookingModal');return;}if(document.getElementById('waModal').classList.contains('open')){closeModal('waModal');return;}if(document.getElementById('mm').classList.contains('open'))closeMobileMenu();});
+(function(){var nav=document.getElementById('navbar'),logo=document.getElementById('navLogoImg');window.addEventListener('scroll',function(){var s=window.scrollY>60;nav.classList.toggle('scrolled',s);if(logo)logo.src=s?'/images/logos/logo-terracota.png':'/images/logos/logo-nude.png';});})();
+var obs=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){entry.target.classList.add('visible');obs.unobserve(entry.target);}});},{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
+function findNearest(){}
+function findNearestBooking(){}
+
+function submitFranquia() {
+    var nome = (document.getElementById('fname').value || '').trim();
+    var tel = (document.getElementById('fphone').value || '').trim();
+    var cidade = (document.getElementById('fcity').value || '').trim();
+    var msg = (document.getElementById('fmsg').value || '').trim();
+
+    if (!nome) { alert('Por favor, informe seu nome completo.'); document.getElementById('fname').focus(); return; }
+    if (!tel) { alert('Por favor, informe seu WhatsApp.'); document.getElementById('fphone').focus(); return; }
+    if (!cidade) { alert('Por favor, informe a cidade onde deseja abrir a unidade.'); document.getElementById('fcity').focus(); return; }
+
+    var texto = 'Olá! Tenho interesse em saber mais sobre a franquia Studio Caracóis.'
+        + ' Nome: ' + nome
+        + ' | WhatsApp: ' + tel
+        + ' | Cidade: ' + cidade
+        + (msg ? ' | Mensagem: ' + msg : '');
+
+    var btn = document.getElementById('formBtn');
+    btn.textContent = 'Abrindo WhatsApp...';
+    btn.disabled = true;
+
+    window.open('https://wa.me/5511998980874?text=' + encodeURIComponent(texto), '_blank');
+
+    setTimeout(function() {
+        btn.innerHTML = '<svg width="18" height="18"><use href="#i-check"/></svg> Mensagem enviada!';
+        btn.style.background = '#25D366';
+    }, 1000);
+}
+</script>
+</body>
+</html>
