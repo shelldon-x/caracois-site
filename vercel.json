@@ -1,3 +1,34 @@
 {
-  "cleanUrls": true
+  "redirects": [
+    {
+      "source": "/franquia.html",
+      "destination": "/franquia",
+      "permanent": true
+    },
+    {
+      "source": "/central-de-conhecimento.html",
+      "destination": "/central-de-conhecimento",
+      "permanent": true
+    },
+    {
+      "source": "/como-cuidar-de-cabelos-cacheados.html",
+      "destination": "/como-cuidar-de-cabelos-cacheados",
+      "permanent": true
+    },
+    {
+      "source": "/corte-para-cabelo-cacheado.html",
+      "destination": "/corte-para-cabelo-cacheado",
+      "permanent": true
+    },
+    {
+      "source": "/cronograma-capilar-cacheado.html",
+      "destination": "/cronograma-capilar-cacheado",
+      "permanent": true
+    },
+    {
+      "source": "/transicao-capilar.html",
+      "destination": "/transicao-capilar",
+      "permanent": true
+    }
+  ]
 }
