@@ -497,6 +497,23 @@
         @media (max-width: 480px) {
             .page-hero h1 { font-size: clamp(2rem, 8vw, 2.8rem); }
         }
+    
+        /* === MOBILE HEADER FIX === */
+        @media (max-width: 768px) {
+            nav { min-height: 64px; padding: 14px 0; }
+            nav .container { min-height: 36px; }
+            .nav-logo img { width: 150px; }
+            .mobile-toggle { display: flex; flex-direction: column; justify-content: center; }
+            .page-hero { padding-top: 88px; }
+            .breadcrumb { scroll-margin-top: 64px; }
+            .franquia-hero { padding-top: 88px; }
+        }
+        @media (max-width: 480px) {
+            nav { min-height: 60px; padding: 12px 0; }
+            .nav-logo img { width: 136px; }
+            .page-hero { padding-top: 80px; }
+            .franquia-hero { padding-top: 80px; }
+        }
     </style>
     <script>
         (function(c,l,a,r,i,t,y){
@@ -844,8 +861,91 @@ var obs = new IntersectionObserver(function(entries){
 document.querySelectorAll('.reveal').forEach(function(el){ obs.observe(el); });
 
 // Geo helpers (stub — keeps parity with home)
-function findNearest() {}
-function findNearestBooking() {}
+function _haversine(lat1,lon1,lat2,lon2){
+  var R=6371,dLat=(lat2-lat1)*Math.PI/180,dLon=(lon2-lon1)*Math.PI/180;
+  var a=Math.sin(dLat/2)*Math.sin(dLat/2)+Math.cos(lat1*Math.PI/180)*Math.cos(lat2*Math.PI/180)*Math.sin(dLon/2)*Math.sin(dLon/2);
+  return R*2*Math.atan2(Math.sqrt(a),Math.sqrt(1-a));
+}
+function _getNearestUnit(lat,lon){
+  var items=document.querySelectorAll('.wa-unit-item[data-lat]');
+  var best=null,bestDist=Infinity;
+  items.forEach(function(el){
+    var d=_haversine(lat,lon,parseFloat(el.dataset.lat),parseFloat(el.dataset.lng));
+    if(d<bestDist){bestDist=d;best=el;}
+  });
+  return {el:best,dist:bestDist};
+}
+function _getNearestBookingUnit(lat,lon){
+  var items=document.querySelectorAll('.booking-card[data-lat]');
+  var best=null,bestDist=Infinity;
+  items.forEach(function(el){
+    var d=_haversine(lat,lon,parseFloat(el.dataset.lat),parseFloat(el.dataset.lng));
+    if(d<bestDist){bestDist=d;best=el;}
+  });
+  return {el:best,dist:bestDist};
+}
+function _fmtDist(km){return km<1?(Math.round(km*1000)+'m'):(km.toFixed(1)+'km');}
+function findNearest(){
+  var btn=document.getElementById('waGeoBtn');
+  var txt=document.getElementById('geoBtnText');
+  if(!navigator.geolocation){if(txt)txt.textContent='Geolocalização não disponível';return;}
+  if(txt)txt.textContent='Localizando...';
+  if(btn)btn.disabled=true;
+  navigator.geolocation.getCurrentPosition(function(pos){
+    var lat=pos.coords.latitude,lon=pos.coords.longitude;
+    var r=_getNearestUnit(lat,lon);
+    if(!r.el){if(txt)txt.textContent='Usar minha localização';if(btn)btn.disabled=false;return;}
+    // reset all
+    document.querySelectorAll('.wa-unit-item').forEach(function(el){
+      var badge=el.querySelector('.wa-nearest-badge');
+      var dist=el.querySelector('.wa-unit-distance');
+      if(badge)badge.style.display='none';
+      if(dist)dist.textContent='';
+      el.style.order='';
+    });
+    // highlight nearest
+    var badge=r.el.querySelector('.wa-nearest-badge');
+    var dist=r.el.querySelector('.wa-unit-distance');
+    if(badge)badge.style.display='block';
+    if(dist)dist.textContent=_fmtDist(r.dist)+' de você';
+    r.el.style.order='-1';
+    if(txt)txt.textContent='✓ Localização encontrada';
+    if(btn)btn.disabled=false;
+  },function(){
+    if(txt)txt.textContent='Não foi possível obter localização';
+    if(btn)btn.disabled=false;
+  },{timeout:8000,maximumAge:60000});
+}
+function findNearestBooking(){
+  var btn=document.getElementById('bookingGeoBtn');
+  var txt=document.getElementById('bookingGeoBtnText');
+  if(!navigator.geolocation){if(txt)txt.textContent='Geolocalização não disponível';return;}
+  if(txt)txt.textContent='Localizando...';
+  if(btn)btn.disabled=true;
+  navigator.geolocation.getCurrentPosition(function(pos){
+    var lat=pos.coords.latitude,lon=pos.coords.longitude;
+    var r=_getNearestBookingUnit(lat,lon);
+    if(!r.el){if(txt)txt.textContent='Encontrar unidade mais próxima';if(btn)btn.disabled=false;return;}
+    // populate nearest card
+    var wrap=document.getElementById('bookingNearestWrap');
+    var card=document.getElementById('bookingNearestCard');
+    var nameEl=document.getElementById('bookingNearestName');
+    var addrEl=document.getElementById('bookingNearestAddr');
+    var distEl=document.getElementById('bookingNearestDist');
+    var otherLabel=document.getElementById('bookingOtherLabel');
+    if(nameEl)nameEl.textContent=r.el.querySelector('.booking-card-name')?r.el.querySelector('.booking-card-name').textContent:'';
+    if(addrEl)addrEl.textContent=r.el.querySelector('.booking-card-addr')?r.el.querySelector('.booking-card-addr').textContent:'';
+    if(distEl)distEl.textContent='📍 '+_fmtDist(r.dist)+' de você';
+    if(card)card.href=r.el.href;
+    if(wrap)wrap.style.display='block';
+    if(otherLabel)otherLabel.style.display='block';
+    if(txt)txt.textContent='✓ Unidade mais próxima encontrada';
+    if(btn)btn.disabled=false;
+  },function(){
+    if(txt)txt.textContent='Não foi possível obter localização';
+    if(btn)btn.disabled=false;
+  },{timeout:8000,maximumAge:60000});
+}
 </script>
 </body>
 </html>

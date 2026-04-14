@@ -73,6 +73,23 @@
         .whatsapp-float{position:fixed;bottom:28px;right:28px;z-index:999;width:56px;height:56px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 24px rgba(37,211,102,0.35);transition:all 0.3s;animation:float 3s ease-in-out infinite;cursor:pointer;border:none;}.whatsapp-float:hover{transform:scale(1.1);animation:none;}.whatsapp-float svg{width:28px;height:28px;fill:white;display:block;}
         @media(max-width:1024px){.article-grid{grid-template-columns:1fr;}.article-sidebar{position:static;display:grid;grid-template-columns:1fr 1fr;gap:20px;}.trio-grid{grid-template-columns:1fr 1fr;}.footer-top{grid-template-columns:1fr 1fr;}}
         @media(max-width:768px){.nav-links,.nav-social{display:none;}.mobile-toggle{display:block;}.footer-top{grid-template-columns:1fr;gap:32px;}.footer-bottom{flex-direction:column;gap:8px;text-align:center;}.page-hero{padding:120px 0 56px;}.cta-strip-btns{flex-direction:column;align-items:center;}.booking-grid{grid-template-columns:1fr;}.article-sidebar{grid-template-columns:1fr;}.trio-grid{grid-template-columns:1fr;}}
+    
+        /* === MOBILE HEADER FIX === */
+        @media (max-width: 768px) {
+            nav { min-height: 64px; padding: 14px 0; }
+            nav .container { min-height: 36px; }
+            .nav-logo img { width: 150px; }
+            .mobile-toggle { display: flex; flex-direction: column; justify-content: center; }
+            .page-hero { padding-top: 88px; }
+            .breadcrumb { scroll-margin-top: 64px; }
+            .franquia-hero { padding-top: 88px; }
+        }
+        @media (max-width: 480px) {
+            nav { min-height: 60px; padding: 12px 0; }
+            .nav-logo img { width: 136px; }
+            .page-hero { padding-top: 80px; }
+            .franquia-hero { padding-top: 80px; }
+        }
     </style>
     <script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i+"?ref=bwt";y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","wb0w1oc0ou");</script>
 </head>
@@ -122,14 +139,14 @@
         <div class="wa-modal-header"><div class="wa-modal-title">Escolha sua unidade</div><p>Fale diretamente com o Studio mais perto de você</p></div>
         <div class="wa-unit-list">
             <button class="wa-geo-btn" id="waGeoBtn" onclick="findNearest()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 0 0-8 8c0 5.4 7 12 8 12s8-6.6 8-12a8 8 0 0 0-8-8z"/></svg><span id="geoBtnText">Usar minha localização</span></button>
-            <a href="https://wa.me/5511998980874?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20minha%20avalia%C3%A7%C3%A3o%20gratuita." target="_blank" rel="noopener" class="wa-unit-item" data-lat="-23.5389" data-lng="-46.5766"><div><div class="wa-unit-name">São Paulo — Tatuapé</div><div class="wa-unit-region">SP</div><div class="wa-nearest-badge">✦ Mais próxima</div></div><svg width="18" height="18"><use href="#i-arrow"/></svg></a>
-            <a href="https://wa.me/5512988636566" target="_blank" rel="noopener" class="wa-unit-item" data-lat="-23.1896" data-lng="-45.8841"><div><div class="wa-unit-name">São José dos Campos</div><div class="wa-unit-region">SP</div><div class="wa-nearest-badge">✦ Mais próxima</div></div><svg width="18" height="18"><use href="#i-arrow"/></svg></a>
-            <a href="https://wa.me/5561993837705" target="_blank" rel="noopener" class="wa-unit-item" data-lat="-15.8394" data-lng="-48.0266"><div><div class="wa-unit-name">Brasília — Águas Claras</div><div class="wa-unit-region">DF</div><div class="wa-nearest-badge">✦ Mais próxima</div></div><svg width="18" height="18"><use href="#i-arrow"/></svg></a>
-            <a href="https://wa.me/5561995251477" target="_blank" rel="noopener" class="wa-unit-item" data-lat="-15.7467" data-lng="-47.8826"><div><div class="wa-unit-name">Brasília — Asa Norte</div><div class="wa-unit-region">DF</div><div class="wa-nearest-badge">✦ Mais próxima</div></div><svg width="18" height="18"><use href="#i-arrow"/></svg></a>
-            <a href="https://wa.me/5561996942312" target="_blank" rel="noopener" class="wa-unit-item" data-lat="-15.8267" data-lng="-47.9218"><div><div class="wa-unit-name">Brasília — Asa Sul</div><div class="wa-unit-region">DF</div><div class="wa-nearest-badge">✦ Mais próxima</div></div><svg width="18" height="18"><use href="#i-arrow"/></svg></a>
-            <a href="https://wa.me/5561991446678" target="_blank" rel="noopener" class="wa-unit-item" data-lat="-15.8362" data-lng="-48.0558"><div><div class="wa-unit-name">Brasília — Taguatinga</div><div class="wa-unit-region">DF</div><div class="wa-nearest-badge">✦ Mais próxima</div></div><svg width="18" height="18"><use href="#i-arrow"/></svg></a>
-            <a href="https://wa.me/5562993411230" target="_blank" rel="noopener" class="wa-unit-item" data-lat="-16.7139" data-lng="-49.2537"><div><div class="wa-unit-name">Goiânia</div><div class="wa-unit-region">GO</div><div class="wa-nearest-badge">✦ Mais próxima</div></div><svg width="18" height="18"><use href="#i-arrow"/></svg></a>
-            <a href="https://wa.me/5581973056302" target="_blank" rel="noopener" class="wa-unit-item" data-lat="-8.1204" data-lng="-34.9013"><div><div class="wa-unit-name">Recife</div><div class="wa-unit-region">PE</div><div class="wa-nearest-badge">✦ Mais próxima</div></div><svg width="18" height="18"><use href="#i-arrow"/></svg></a>
+            <a href="https://wa.me/5511998980874?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20minha%20avalia%C3%A7%C3%A3o%20gratuita." target="_blank" rel="noopener" class="wa-unit-item" data-lat="-23.5389" data-lng="-46.5766"><div><div class="wa-unit-name">São Paulo — Tatuapé</div><div class="wa-unit-region">SP</div><div class="wa-nearest-badge">✦ Mais próxima</div><div class="wa-unit-distance"></div></div><svg width="18" height="18"><use href="#i-arrow"/></svg></a>
+            <a href="https://wa.me/5512988636566" target="_blank" rel="noopener" class="wa-unit-item" data-lat="-23.1896" data-lng="-45.8841"><div><div class="wa-unit-name">São José dos Campos</div><div class="wa-unit-region">SP</div><div class="wa-nearest-badge">✦ Mais próxima</div><div class="wa-unit-distance"></div></div><svg width="18" height="18"><use href="#i-arrow"/></svg></a>
+            <a href="https://wa.me/5561993837705" target="_blank" rel="noopener" class="wa-unit-item" data-lat="-15.8394" data-lng="-48.0266"><div><div class="wa-unit-name">Brasília — Águas Claras</div><div class="wa-unit-region">DF</div><div class="wa-nearest-badge">✦ Mais próxima</div><div class="wa-unit-distance"></div></div><svg width="18" height="18"><use href="#i-arrow"/></svg></a>
+            <a href="https://wa.me/5561995251477" target="_blank" rel="noopener" class="wa-unit-item" data-lat="-15.7467" data-lng="-47.8826"><div><div class="wa-unit-name">Brasília — Asa Norte</div><div class="wa-unit-region">DF</div><div class="wa-nearest-badge">✦ Mais próxima</div><div class="wa-unit-distance"></div></div><svg width="18" height="18"><use href="#i-arrow"/></svg></a>
+            <a href="https://wa.me/5561996942312" target="_blank" rel="noopener" class="wa-unit-item" data-lat="-15.8267" data-lng="-47.9218"><div><div class="wa-unit-name">Brasília — Asa Sul</div><div class="wa-unit-region">DF</div><div class="wa-nearest-badge">✦ Mais próxima</div><div class="wa-unit-distance"></div></div><svg width="18" height="18"><use href="#i-arrow"/></svg></a>
+            <a href="https://wa.me/5561991446678" target="_blank" rel="noopener" class="wa-unit-item" data-lat="-15.8362" data-lng="-48.0558"><div><div class="wa-unit-name">Brasília — Taguatinga</div><div class="wa-unit-region">DF</div><div class="wa-nearest-badge">✦ Mais próxima</div><div class="wa-unit-distance"></div></div><svg width="18" height="18"><use href="#i-arrow"/></svg></a>
+            <a href="https://wa.me/5562993411230" target="_blank" rel="noopener" class="wa-unit-item" data-lat="-16.7139" data-lng="-49.2537"><div><div class="wa-unit-name">Goiânia</div><div class="wa-unit-region">GO</div><div class="wa-nearest-badge">✦ Mais próxima</div><div class="wa-unit-distance"></div></div><svg width="18" height="18"><use href="#i-arrow"/></svg></a>
+            <a href="https://wa.me/5581973056302" target="_blank" rel="noopener" class="wa-unit-item" data-lat="-8.1204" data-lng="-34.9013"><div><div class="wa-unit-name">Recife</div><div class="wa-unit-region">PE</div><div class="wa-nearest-badge">✦ Mais próxima</div><div class="wa-unit-distance"></div></div><svg width="18" height="18"><use href="#i-arrow"/></svg></a>
         </div>
     </div>
 </div>
@@ -357,7 +374,91 @@ document.addEventListener('keydown',function(e){if(e.key!=='Escape')return;if(do
 (function(){var nav=document.getElementById('navbar'),logo=document.getElementById('navLogoImg');window.addEventListener('scroll',function(){var s=window.scrollY>60;nav.classList.toggle('scrolled',s);if(logo)logo.src=s?'/images/logos/logo-terracota.png':'/images/logos/logo-nude.png';});})();
 var obs=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){entry.target.classList.add('visible');obs.unobserve(entry.target);}});},{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
 document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
-function findNearest(){}function findNearestBooking(){}
+function _haversine(lat1,lon1,lat2,lon2){
+  var R=6371,dLat=(lat2-lat1)*Math.PI/180,dLon=(lon2-lon1)*Math.PI/180;
+  var a=Math.sin(dLat/2)*Math.sin(dLat/2)+Math.cos(lat1*Math.PI/180)*Math.cos(lat2*Math.PI/180)*Math.sin(dLon/2)*Math.sin(dLon/2);
+  return R*2*Math.atan2(Math.sqrt(a),Math.sqrt(1-a));
+}
+function _getNearestUnit(lat,lon){
+  var items=document.querySelectorAll('.wa-unit-item[data-lat]');
+  var best=null,bestDist=Infinity;
+  items.forEach(function(el){
+    var d=_haversine(lat,lon,parseFloat(el.dataset.lat),parseFloat(el.dataset.lng));
+    if(d<bestDist){bestDist=d;best=el;}
+  });
+  return {el:best,dist:bestDist};
+}
+function _getNearestBookingUnit(lat,lon){
+  var items=document.querySelectorAll('.booking-card[data-lat]');
+  var best=null,bestDist=Infinity;
+  items.forEach(function(el){
+    var d=_haversine(lat,lon,parseFloat(el.dataset.lat),parseFloat(el.dataset.lng));
+    if(d<bestDist){bestDist=d;best=el;}
+  });
+  return {el:best,dist:bestDist};
+}
+function _fmtDist(km){return km<1?(Math.round(km*1000)+'m'):(km.toFixed(1)+'km');}
+function findNearest(){
+  var btn=document.getElementById('waGeoBtn');
+  var txt=document.getElementById('geoBtnText');
+  if(!navigator.geolocation){if(txt)txt.textContent='Geolocalização não disponível';return;}
+  if(txt)txt.textContent='Localizando...';
+  if(btn)btn.disabled=true;
+  navigator.geolocation.getCurrentPosition(function(pos){
+    var lat=pos.coords.latitude,lon=pos.coords.longitude;
+    var r=_getNearestUnit(lat,lon);
+    if(!r.el){if(txt)txt.textContent='Usar minha localização';if(btn)btn.disabled=false;return;}
+    // reset all
+    document.querySelectorAll('.wa-unit-item').forEach(function(el){
+      var badge=el.querySelector('.wa-nearest-badge');
+      var dist=el.querySelector('.wa-unit-distance');
+      if(badge)badge.style.display='none';
+      if(dist)dist.textContent='';
+      el.style.order='';
+    });
+    // highlight nearest
+    var badge=r.el.querySelector('.wa-nearest-badge');
+    var dist=r.el.querySelector('.wa-unit-distance');
+    if(badge)badge.style.display='block';
+    if(dist)dist.textContent=_fmtDist(r.dist)+' de você';
+    r.el.style.order='-1';
+    if(txt)txt.textContent='✓ Localização encontrada';
+    if(btn)btn.disabled=false;
+  },function(){
+    if(txt)txt.textContent='Não foi possível obter localização';
+    if(btn)btn.disabled=false;
+  },{timeout:8000,maximumAge:60000});
+}
+function findNearestBooking(){
+  var btn=document.getElementById('bookingGeoBtn');
+  var txt=document.getElementById('bookingGeoBtnText');
+  if(!navigator.geolocation){if(txt)txt.textContent='Geolocalização não disponível';return;}
+  if(txt)txt.textContent='Localizando...';
+  if(btn)btn.disabled=true;
+  navigator.geolocation.getCurrentPosition(function(pos){
+    var lat=pos.coords.latitude,lon=pos.coords.longitude;
+    var r=_getNearestBookingUnit(lat,lon);
+    if(!r.el){if(txt)txt.textContent='Encontrar unidade mais próxima';if(btn)btn.disabled=false;return;}
+    // populate nearest card
+    var wrap=document.getElementById('bookingNearestWrap');
+    var card=document.getElementById('bookingNearestCard');
+    var nameEl=document.getElementById('bookingNearestName');
+    var addrEl=document.getElementById('bookingNearestAddr');
+    var distEl=document.getElementById('bookingNearestDist');
+    var otherLabel=document.getElementById('bookingOtherLabel');
+    if(nameEl)nameEl.textContent=r.el.querySelector('.booking-card-name')?r.el.querySelector('.booking-card-name').textContent:'';
+    if(addrEl)addrEl.textContent=r.el.querySelector('.booking-card-addr')?r.el.querySelector('.booking-card-addr').textContent:'';
+    if(distEl)distEl.textContent='📍 '+_fmtDist(r.dist)+' de você';
+    if(card)card.href=r.el.href;
+    if(wrap)wrap.style.display='block';
+    if(otherLabel)otherLabel.style.display='block';
+    if(txt)txt.textContent='✓ Unidade mais próxima encontrada';
+    if(btn)btn.disabled=false;
+  },function(){
+    if(txt)txt.textContent='Não foi possível obter localização';
+    if(btn)btn.disabled=false;
+  },{timeout:8000,maximumAge:60000});
+}
 </script>
 </body>
 </html>
