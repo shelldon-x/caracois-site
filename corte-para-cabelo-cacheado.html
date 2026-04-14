@@ -56,7 +56,7 @@
         button { font-family: inherit; cursor: pointer; }
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; font-size: 16px; }
-        body { font-family: var(--sans); color: var(--text); background: var(--white); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+        body { font-family: var(--sans); color: var(--text); background: var(--white); overflow-x: hidden; -webkit-font-smoothing: antialiased; padding-top: 90px; }
         .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
         img { max-width: 100%; height: auto; display: block; }
         .skip-link { position: absolute; top: -100%; left: 16px; background: var(--terracota); color: var(--white); padding: 12px 24px; border-radius: 0 0 8px 8px; z-index: 10000; font-size: 0.85rem; text-decoration: none; transition: top 0.3s; }
@@ -98,7 +98,7 @@
         .cta-btns { display: flex; gap: 12px; flex-wrap: wrap; }
 
         /* PAGE HERO */
-        .page-hero { background: linear-gradient(135deg, var(--black) 0%, #2C1A1A 60%, #3D2020 100%); padding: 140px 0 80px; position: relative; overflow: hidden; }
+        .page-hero { background: linear-gradient(135deg, var(--black) 0%, #2C1A1A 60%, #3D2020 100%); padding: 120px 0 80px; position: relative; overflow: hidden; }
         .page-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 70% 50%, rgba(155,68,66,0.25) 0%, transparent 65%); }
         .page-hero-content { max-width: 760px; position: relative; z-index: 1; }
         .page-hero-badge { display: inline-block; background: rgba(196,162,101,0.15); color: var(--gold); border: 1px solid rgba(196,162,101,0.3); padding: 6px 16px; border-radius: 100px; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 20px; font-weight: 500; }
@@ -107,7 +107,7 @@
         .page-hero-sub { font-size: 1.05rem; color: rgba(255,255,255,0.7); line-height: 1.7; max-width: 600px; }
 
         /* BREADCRUMB */
-        .breadcrumb { background: var(--nude-ultra); border-bottom: 1px solid var(--border); padding: 12px 0; }
+        .breadcrumb { background: transparent; border-bottom: none; padding: 12px 0; margin-top: -20px; position: relative; z-index: 1; }
         .breadcrumb-list { display: flex; gap: 0; list-style: none; align-items: center; flex-wrap: wrap; }
         .breadcrumb-list li { font-size: 0.78rem; color: var(--text-muted); }
         .breadcrumb-list li + li::before { content: '/'; margin: 0 8px; color: var(--border); }
