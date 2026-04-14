@@ -151,9 +151,9 @@
         .nav-logo { height: auto; }
         .nav-logo img { width: 220px; height: auto; display: block; transition: width 0.3s; }
         .nav-right { display: flex; align-items: center; gap: 32px; }
-        .nav-links { display: flex; gap: 24px; align-items: center; }
+        .nav-links { display: flex; gap: 22px; align-items: center; }
         .nav-links a {
-            font-size: 0.76rem; font-weight: 400; color: rgba(255,255,255,0.8);
+            font-size: 0.74rem; font-weight: 400; color: rgba(255,255,255,0.8);
             text-decoration: none; letter-spacing: 0.08em; text-transform: uppercase;
             transition: color 0.3s; position: relative;
         }
@@ -293,6 +293,140 @@
             font-weight: 300;
         }
         .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+        .hero-proof {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 22px;
+        }
+        .hero-proof-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.12);
+            color: rgba(255,255,255,0.88);
+            font-size: 0.76rem;
+            line-height: 1;
+            font-weight: 400;
+        }
+        .hero-proof-pill strong { color: var(--white); font-weight: 600; }
+        .hero-microcopy {
+            margin-top: 16px;
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.55);
+            letter-spacing: 0.01em;
+            font-weight: 300;
+        }
+
+        .offer-strip {
+            padding: 26px 0;
+            background: linear-gradient(135deg, var(--nude-ultra), var(--nude-light));
+            border-top: 1px solid rgba(155,68,66,0.08);
+            border-bottom: 1px solid rgba(155,68,66,0.08);
+        }
+        .offer-strip-grid {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 16px;
+        }
+        .offer-strip-card {
+            background: var(--white);
+            border: 1px solid rgba(155,68,66,0.08);
+            border-radius: 20px;
+            padding: 18px 20px;
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.03);
+        }
+        .offer-strip-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 12px;
+            background: rgba(155,68,66,0.08);
+            color: var(--terracota);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+        .offer-strip-card h3 {
+            font-family: var(--serif);
+            font-size: 1.02rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+            color: var(--black);
+        }
+        .offer-strip-card p {
+            font-size: 0.82rem;
+            color: var(--text-light);
+            line-height: 1.55;
+            font-weight: 300;
+        }
+        .service-offer {
+            margin-top: 28px;
+            border: 1px solid rgba(196,162,101,0.2);
+            background: linear-gradient(135deg, rgba(196,162,101,0.08), rgba(255,255,255,0.02));
+            border-radius: 22px;
+            padding: 24px;
+        }
+        .service-offer-label {
+            font-size: 0.68rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--gold-light);
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .service-offer-title {
+            font-family: var(--serif);
+            font-size: 1.45rem;
+            color: var(--white);
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+        .service-offer p {
+            color: rgba(255,255,255,0.62);
+            font-size: 0.9rem;
+            line-height: 1.65;
+            margin-bottom: 16px;
+        }
+        .service-offer-points {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .service-offer-points span {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 9px 14px;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.06);
+            color: rgba(255,255,255,0.9);
+            font-size: 0.76rem;
+        }
+        .units-helper {
+            margin-top: 18px;
+            text-align: center;
+            font-size: 0.82rem;
+            color: rgba(255,255,255,0.58);
+        }
+        .units-cta-wrap {
+            text-align: center;
+            margin-top: 36px;
+        }
+        .proof-helper {
+            margin-top: 18px;
+            text-align: center;
+            font-size: 0.84rem;
+            color: var(--text-muted);
+            font-weight: 300;
+        }
 
         .btn {
             display: inline-flex;
@@ -1878,9 +2012,12 @@
             .bee-market-item { padding: 14px 14px; gap: 12px; }
         }
 
-        @media (max-width: 1024px) {
+        @media (max-width: 1180px) {
             .nav-links, .nav-social, .nav-cta-btn { display: none !important; }
             .mobile-toggle { display: block; }
+        }
+
+        @media (max-width: 1024px) {
             .pain-grid, .about-grid, .assessment-grid, .transition-grid { grid-template-columns: 1fr; gap: 40px; }
             .method-steps { grid-template-columns: repeat(2, 1fr); gap: 16px; }
             .services-grid { grid-template-columns: 1fr; }
@@ -1904,6 +2041,9 @@
             .hero-ctas { flex-direction: column; width: 100%; }
             .hero-ctas .btn { width: 100%; justify-content: center; }
             .hero-badge { font-size: 0.62rem; padding: 7px 14px; margin-bottom: 24px; }
+            .hero-proof { gap: 8px; }
+            .hero-proof-pill { width: 100%; justify-content: center; font-size: 0.72rem; }
+            .offer-strip-grid { grid-template-columns: 1fr; }
             .section-title { font-size: clamp(1.5rem, 5vw, 2.2rem); }
             .method-step { padding: 32px 20px; }
             .method-steps { grid-template-columns: 1fr !important; }
@@ -1967,6 +2107,13 @@
             .wa-modal-header h3 { font-size: 1.2rem; }
             .wa-unit-item { padding: 12px 12px; }
             body { padding-bottom: 62px; }
+        }
+
+        @media (max-width: 1280px) {
+            .nav-right { gap: 24px; }
+            .nav-links { gap: 18px; }
+            .nav-links a { font-size: 0.71rem; letter-spacing: 0.07em; }
+            .nav-cta-btn { padding: 10px 20px; font-size: 0.76rem; }
         }
 
         @media (max-width: 480px) {
@@ -2050,7 +2197,7 @@
                 <a href="https://tiktok.com/@studiocaracois" target="_blank" rel="noopener" aria-label="TikTok"><svg width="24" height="24"><use href="#i-tt"/></svg></a>
                 <a href="https://youtube.com/@studiocaracois" target="_blank" rel="noopener" aria-label="YouTube"><svg width="24" height="24"><use href="#i-yt"/></svg></a>
             </div>
-            <button class="nav-cta-btn" onclick="openBooking()" aria-label="Agendar avaliação">Agendar avaliação</button>
+            <button class="nav-cta-btn" onclick="openBooking()" aria-label="Agendar avaliação">Agendar agora</button>
         </div>
         <button class="mobile-toggle" onclick="openMobileMenu()" aria-label="Abrir menu" aria-expanded="false" aria-controls="mm">
             <span></span><span></span><span></span>
@@ -2074,7 +2221,7 @@
     <a href="/central-de-conhecimento" onclick="closeMobileMenu()">Central de conhecimento</a>
     <button class="btn btn-primary" style="margin-top:20px; width: 100%; justify-content: center;" onclick="closeMobileMenu(false); openBooking()" aria-label="Agendar avaliação">
         <svg width="18" height="18"><use href="#i-cal"/></svg>
-        Agendar avaliação
+        Agendar agora
     </button>
 </div>
 
@@ -2249,19 +2396,44 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-badge">Especialistas em cabelos cacheados desde 2016</div>
-                <h1>Seu cabelo cacheado merece quem <em>realmente entende de cachos.</em></h1>
-                <p class="hero-sub">O Studio Caracóis é uma rede de salões especializada no cuidado de cabelos com curvatura. Aqui, cada cacho é tratado com técnica, respeito e produtos livres de ingredientes agressivos. Agende sua avaliação gratuita e descubra uma nova relação com seus fios.</p>
+                <h1>Seu cabelo cacheado pode ter <em>mais definição, menos frizz e um plano certo</em> desde a primeira visita.</h1>
+                <p class="hero-sub">Corte 3D, Caracóis Care, acidificação e avaliação gratuita em uma experiência consultiva que respeita sua curvatura, orienta sua rotina e valoriza o que seu cabelo tem de melhor.</p>
                 <div class="hero-ctas">
                     <button class="btn btn-primary" onclick="openBooking()" aria-label="Agendar avaliação"><svg width="18" height="18"><use href="#i-cal"/></svg>
-                        Agendar minha avaliação gratuita</button>
+                        Quero agendar agora</button>
                     <button class="btn btn-outline" onclick="openWaModal()" aria-label="Abrir WhatsApp">
                         <svg width="18" height="18"><use href="#i-wa"/></svg>
-                        Falar no WhatsApp
+                        Falar com uma especialista
                     </button>
                 </div>
+                <div class="hero-proof" aria-label="Destaques do Studio Caracóis">
+                    <span class="hero-proof-pill">✓ <strong>Avaliação gratuita</strong> para entender seu fio antes de indicar</span>
+                    <span class="hero-proof-pill">✓ <strong>Atendimento individualizado</strong> com método consultivo</span>
+                    <span class="hero-proof-pill">✓ <strong>Especialistas em curvatura</strong> com orientação para casa</span>
+                </div>
+                <p class="hero-microcopy">Horários variam por unidade ao longo da semana. Quando encontrar sua janela ideal, vale aproveitar.</p>
             </div>
         </div>
     </header>
+
+    <section class="offer-strip" aria-label="Motivos para agendar agora">
+        <div class="container">
+            <div class="offer-strip-grid">
+                <div class="offer-strip-card reveal">
+                    <span class="offer-strip-icon" aria-hidden="true">🎁</span>
+                    <div><h3>Avaliação gratuita</h3><p>Entre sem pressão, entenda seu fio com clareza e descubra o melhor caminho antes de decidir.</p></div>
+                </div>
+                <div class="offer-strip-card reveal rd1">
+                    <span class="offer-strip-icon" aria-hidden="true">🧠</span>
+                    <div><h3>Direção personalizada</h3><p>Cada curvatura pede leitura técnica, protocolo correto e uma rotina que faça sentido no dia a dia.</p></div>
+                </div>
+                <div class="offer-strip-card reveal rd2">
+                    <span class="offer-strip-icon" aria-hidden="true">✨</span>
+                    <div><h3>Resultado que continua</h3><p>Você não sai só com um resultado bonito: sai entendendo como sustentar definição, brilho e saúde em casa.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <section class="pain" aria-labelledby="pain-title">
         <div class="container">
@@ -2344,8 +2516,8 @@
         <div class="container">
             <div class="reveal">
                 <div class="section-label">Serviços exclusivos</div>
-                <h2 class="section-title" id="services-title" style="color:var(--white)">Técnica que respeita cada cacho.</h2>
-                <p class="section-desc">Cada serviço foi criado exclusivamente para cabelos cacheados. Sem improviso, sem generalismo.</p>
+                <h2 class="section-title" id="services-title" style="color:var(--white)">Protocolos que tratam, definem e devolvem confiança no espelho.</h2>
+                <p class="section-desc">Aqui, serviço não é tentativa. É leitura técnica, execução cuidadosa e indicação clara do que realmente faz sentido para sua curvatura.</p>
             </div>
             <div class="services-grid">
                 <div class="service-card reveal"><div class="service-icon" aria-hidden="true">✂️</div><h3>Corte 3D</h3><p>Técnica a seco que respeita o caimento natural de cada cacho. Formato, volume e movimento que duram.</p><span class="service-tag">Exclusivo Studio</span></div>
@@ -2353,8 +2525,20 @@
                 <div class="service-card highlight reveal"><div class="service-icon" aria-hidden="true">🌿</div><h3>Caracóis Care</h3><p>Nosso protocolo mais completo: limpeza, nutrição, reconstrução e hidratação. Tudo personalizado para o que seus fios realmente precisam.</p><span class="service-tag">Protocolo exclusivo</span></div>
                 <div class="service-card reveal"><div class="service-icon" aria-hidden="true">✨</div><h3>Finalização Profissional</h3><p>Potencializa sua curvatura natural com produtos livres de ingredientes agressivos. Definição que dura dias.</p><span class="service-tag">Resultado imediato</span></div>
             </div>
+            <div class="service-offer reveal">
+                <div class="service-offer-label">Experiência Caracóis</div>
+                <div class="service-offer-title">Um atendimento pensado para quem quer parar de gastar tempo e energia no improviso.</div>
+                <p>Você entra com dúvidas e sai com direção: avaliação, leitura do fio, protocolo personalizado, finalização profissional e orientação prática para manter o resultado fora do salão.</p>
+                <div class="service-offer-points">
+                    <span>✓ Avaliação gratuita</span>
+                    <span>✓ Protocolo personalizado</span>
+                    <span>✓ Finalização profissional</span>
+                    <span>✓ Orientação para manutenção em casa</span>
+                    <span>✓ Atendimento individualizado</span>
+                </div>
+            </div>
             <div class="reveal" style="text-align:center; margin-top: 48px;">
-                <button class="btn btn-white" onclick="openBooking()" aria-label="Agendar avaliação">Agendar minha avaliação gratuita</button>
+                <button class="btn btn-white" onclick="openBooking()" aria-label="Agendar avaliação">Quero passar pela avaliação gratuita</button>
             </div>
         </div>
     </section>
@@ -2413,16 +2597,16 @@
             <div class="assessment-grid">
                 <div class="assessment-content reveal">
                     <div class="section-label">Sem compromisso. Com propósito.</div>
-                    <h2 class="section-title" id="assessment-title">Avaliação gratuita. Um momento de conexão.</h2>
+                    <h2 class="section-title" id="assessment-title">Avaliação gratuita. Clareza antes de qualquer decisão.</h2>
                     <p class="section-desc" style="max-width:100%">Mais do que uma análise de fios, um bate-papo consultivo. Nossas especialistas vão entender a história do seu cabelo, sua rotina e suas expectativas.</p>
                     <div class="assessment-features">
                         <div class="assessment-feature"><span>🔍</span><span>Análise completa da curvatura</span></div>
                         <div class="assessment-feature"><span>📋</span><span>Indicação personalizada</span></div>
                         <div class="assessment-feature"><span>🏠</span><span>Orientação para rotina em casa</span></div>
-                        <div class="assessment-feature"><span>💚</span><span>Experiência sem compromisso</span></div>
+                        <div class="assessment-feature"><span>💚</span><span>Sem compromisso e sem pressão</span></div>
                     </div>
                     <div class="assessment-cta">
-                        <button class="btn btn-primary" onclick="openBooking()" aria-label="Agendar avaliação">Agendar minha avaliação gratuita</button>
+                        <button class="btn btn-primary" onclick="openBooking()" aria-label="Agendar avaliação">Quero minha avaliação gratuita</button>
                     </div>
                 </div>
                 <div class="about-image reveal rd1">
@@ -2549,7 +2733,9 @@
         <div class="container">
             <div class="reveal section-intro">
                 <div class="section-label">Quem vive, recomenda</div>
-                <h2 class="section-title" id="proof-title">Histórias reais de transformação</h2>
+                <h2 class="section-title" id="proof-title">Resultados que aparecem no espelho e se sustentam melhor na rotina</h2>
+                <p class="section-desc" style="margin:0 auto">Quando técnica, tratamento e orientação andam juntos, o cabelo responde melhor e a cliente entende por que o resultado acontece.</p>
+                <p class="proof-helper">Desde 2016, o Studio Caracóis constrói confiança unindo atendimento consultivo, produtos liberados e especialistas em curvatura.</p>
             </div>
             <div class="proof-grid">
                 <div class="proof-card reveal"><div class="proof-quote">"</div><div class="proof-stars">★★★★★</div><p class="proof-text">Pela primeira vez na vida, eu olhei no espelho e amei meu cabelo. O Corte 3D mudou completamente meus cachos.</p><p class="proof-author">Camila R.</p><p class="proof-location">Águas Claras</p></div>
@@ -2578,8 +2764,9 @@
         <div class="container">
             <div class="reveal section-intro">
                 <div class="section-label">Nossas unidades</div>
-                <h2 class="section-title" id="units-title" style="color:var(--white)">Encontre o Studio Caracóis mais perto de você</h2>
-                <p class="section-desc" style="margin:0 auto">Escolha sua unidade e agende sua avaliação gratuita. Especialistas em cabelos cacheados perto de você.</p>
+                <h2 class="section-title" id="units-title" style="color:var(--white)">Escolha sua unidade e dê o próximo passo com mais segurança</h2>
+                <p class="section-desc" style="margin:0 auto">Cada unidade segue a essência do Studio Caracóis: avaliação gratuita, atendimento consultivo e especialistas preparadas para cuidar de cabelos com curvatura com técnica e acolhimento.</p>
+                <p class="units-helper">Prefere mais praticidade? Abra o agendamento inteligente e encontre a opção mais conveniente para você em poucos cliques.</p>
             </div>
             <div class="units-grid">
                 <a href="/unidades/sao-paulo-tatuape" class="unit-card reveal">
@@ -2631,18 +2818,21 @@
                     <span class="unit-link-text">Conhecer esta unidade →</span>
                 </a>
             </div>
+            <div class="units-cta-wrap reveal">
+                <button class="btn btn-gold" onclick="openBooking()" aria-label="Abrir agendamento inteligente">Encontrar minha melhor unidade</button>
+            </div>
         </div>
     </section>
 
     <section class="cta-final" aria-labelledby="cta-title">
         <div class="container">
             <div class="reveal">
-                <div class="section-label">Sua transformação começa agora</div>
-                <h2 class="section-title" id="cta-title">Seus cachos merecem quem realmente entende deles.</h2>
-                <p class="section-desc">Agende sua avaliação gratuita e descubra o que a especialização pode fazer pelos seus fios.</p>
+                <div class="section-label">Seu próximo passo pode ser hoje</div>
+                <h2 class="section-title" id="cta-title">Dê ao seu cabelo a chance de receber a leitura certa, o tratamento certo e a finalização certa — com quem realmente entende de curvatura.</h2>
+                <p class="section-desc">Avaliação gratuita, especialistas em curvatura e uma experiência pensada para quem quer resultado bonito, saudável e mais coerente com a própria rotina.</p>
                 <div class="cta-final-btns">
                     <button class="btn btn-white" onclick="openBooking()" aria-label="Agendar avaliação"><svg width="18" height="18"><use href="#i-cal"/></svg>
-                        Começar minha transformação</button>
+                        Quero começar agora</button>
                     <button class="btn btn-outline" style="border-color:rgba(255,255,255,.35)" onclick="openWaModal()" aria-label="Falar no WhatsApp">
                         <svg width="18" height="18"><use href="#i-wa"/></svg>
                         Falar no WhatsApp
@@ -2772,7 +2962,7 @@
 </main>
 
 <button class="sticky-cta" onclick="openBooking()" aria-label="Agendar avaliação"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-    Agendar avaliação gratuita</button>
+    Agendar agora</button>
 
 <!-- Bee Modal Hub -->
 <div class="bee-modal-overlay" id="beeModal" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Escolha onde comprar Bee Cosmetics" onclick="closeBeeModalOnOverlay(event)">
