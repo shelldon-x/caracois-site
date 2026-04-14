@@ -151,9 +151,9 @@
         .nav-logo { height: auto; }
         .nav-logo img { width: 220px; height: auto; display: block; transition: width 0.3s; }
         .nav-right { display: flex; align-items: center; gap: 32px; }
-        .nav-links { display: flex; gap: 28px; align-items: center; }
+        .nav-links { display: flex; gap: 24px; align-items: center; }
         .nav-links a {
-            font-size: 0.8rem; font-weight: 400; color: rgba(255,255,255,0.8);
+            font-size: 0.76rem; font-weight: 400; color: rgba(255,255,255,0.8);
             text-decoration: none; letter-spacing: 0.08em; text-transform: uppercase;
             transition: color 0.3s; position: relative;
         }
@@ -510,57 +510,134 @@
         .assessment-feature span:last-child { font-size: 0.85rem; color: var(--text-light); font-weight: 300; }
         .assessment-cta { margin-top: 32px; }
 
-        .lead-capture {
+        .franchise-section {
             background: var(--nude-ultra);
             padding: 90px 0;
         }
-        .lead-form-container {
-            max-width: 720px;
+        .franchise-shell {
+            max-width: 1100px;
             margin: 0 auto;
-            text-align: center;
+            background: linear-gradient(135deg, var(--white), #fff8f7);
+            border: 1px solid rgba(155,68,66,0.10);
+            border-radius: 32px;
+            padding: 56px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.04);
         }
-        .lead-form {
+        .franchise-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+            gap: 40px;
+            align-items: center;
+        }
+        .franchise-content .section-desc {
+            max-width: 640px;
+            margin-bottom: 28px;
+        }
+        .franchise-points {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+            margin-bottom: 32px;
+        }
+        .franchise-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 16px 18px;
+            border-radius: 18px;
+            background: var(--nude-ultra);
+            border: 1px solid rgba(155,68,66,0.08);
+        }
+        .franchise-point-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(155,68,66,0.10);
+            color: var(--terracota);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        .franchise-point span:last-child {
+            font-size: 0.9rem;
+            line-height: 1.55;
+            color: var(--text-light);
+            font-weight: 300;
+        }
+        .franchise-actions {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+        .franchise-aside {
+            background: linear-gradient(135deg, var(--terracota), var(--terracota-dark));
+            color: var(--white);
+            border-radius: 28px;
+            padding: 34px 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        .franchise-aside::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at top right, rgba(255,255,255,0.12), transparent 42%);
+            pointer-events: none;
+        }
+        .franchise-aside > * { position: relative; z-index: 1; }
+        .franchise-aside-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.68rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.72);
+            margin-bottom: 18px;
+            font-weight: 500;
+        }
+        .franchise-aside-label::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--gold);
+        }
+        .franchise-aside h3 {
+            font-family: var(--serif);
+            font-size: 2rem;
+            font-weight: 400;
+            line-height: 1.15;
+            margin-bottom: 14px;
+        }
+        .franchise-aside p {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: rgba(255,255,255,0.72);
+            font-weight: 300;
+            margin-bottom: 24px;
+        }
+        .franchise-mini-list {
             display: flex;
             flex-direction: column;
-            gap: 16px;
-            margin-top: 32px;
+            gap: 12px;
         }
-        .lead-form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
+        .franchise-mini-list span {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.84rem;
+            color: rgba(255,255,255,0.92);
+            font-weight: 400;
         }
-        .lead-form input, .lead-form select {
-            width: 100%;
-            height: 54px;
-            border-radius: 999px;
-            border: 1px solid var(--border);
-            padding: 0 20px;
-            font-family: var(--sans);
-            font-size: 0.95rem;
-            color: var(--text);
-            background: var(--white);
-            transition: all 0.3s;
-        }
-        .lead-form select {
-            cursor: pointer;
-            appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236c6c6c' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 20px center;
-        }
-        .lead-form input::placeholder {
-            color: var(--text-muted);
-        }
-        .lead-form input:focus, .lead-form select:focus {
-            outline: none;
-            border-color: var(--terracota);
-            box-shadow: 0 0 0 3px rgba(155,68,66,0.08);
-        }
-        .lead-form button {
-            width: 100%;
-            justify-content: center;
-            margin-top: 8px;
+        .franchise-mini-list span::before {
+            content: '•';
+            color: var(--gold-light);
+            font-size: 1rem;
+            line-height: 1;
         }
 
         .about-grid {
@@ -1842,8 +1919,13 @@
             .bee-pill { padding: 14px 10px; }
             .bee-pill h4 { font-size: 0.68rem; }
             .gallery-grid { grid-template-columns: 1fr; }
-            .lead-form-row { grid-template-columns: 1fr; }
-            .lead-form input, .lead-form select { height: 48px; font-size: 0.88rem; }
+            .franchise-shell { padding: 28px 22px; }
+            .franchise-grid { grid-template-columns: 1fr; gap: 24px; }
+            .franchise-points { grid-template-columns: 1fr; gap: 12px; }
+            .franchise-actions { flex-direction: column; }
+            .franchise-actions .btn { width: 100%; }
+            .franchise-aside { padding: 28px 22px; }
+            .franchise-aside h3 { font-size: 1.6rem; }
             .about-highlight { font-size: 1.1rem; padding-left: 16px; }
             .about-stats { flex-wrap: wrap; gap: 20px; justify-content: center; text-align: center; }
             .stat-number { font-size: 2rem; }
@@ -1961,6 +2043,7 @@
                 <a href="#bee">Produtos</a>
                 <a href="#unidades">Unidades</a>
                 <a href="#faq">FAQ</a>
+                <a href="/franquia">Franquia</a>
             </div>
             <div class="nav-social">
                 <a href="https://instagram.com/studiocaracois" target="_blank" rel="noopener" aria-label="Instagram"><svg width="24" height="24"><use href="#i-ig"/></svg></a>
@@ -1987,6 +2070,8 @@
     <a href="#bee" onclick="closeMobileMenu()">Produtos</a>
     <a href="#unidades" onclick="closeMobileMenu()">Unidades</a>
     <a href="#faq" onclick="closeMobileMenu()">FAQ</a>
+    <a href="/franquia" onclick="closeMobileMenu()">Franquia</a>
+    <a href="/central-de-conhecimento" onclick="closeMobileMenu()">Central de conhecimento</a>
     <button class="btn btn-primary" style="margin-top:20px; width: 100%; justify-content: center;" onclick="closeMobileMenu(false); openBooking()" aria-label="Agendar avaliação">
         <svg width="18" height="18"><use href="#i-cal"/></svg>
         Agendar avaliação
@@ -2614,32 +2699,40 @@
         </div>
     </section>
 
-    <section class="lead-capture" aria-labelledby="lead-title">
+    <section class="franchise-section" aria-labelledby="franchise-title">
         <div class="container">
-            <div class="lead-form-container reveal">
-                <div class="section-label">Conteúdo para seus cachos</div>
-                <h2 class="section-title" id="lead-title">Receba dicas práticas para cuidar melhor dos seus cachos</h2>
-                <p class="section-desc" style="margin:0 auto 28px;">
-                    Quer receber dicas de cuidados com cachos e novidades do Studio Caracóis? Deixe seu nome e WhatsApp — entraremos em contato pela unidade mais próxima de você.
-                </p>
-                <form class="lead-form" id="leadForm">
-                    <div class="lead-form-row">
-                        <input type="text" name="name" id="leadName" placeholder="Seu nome" aria-label="Seu nome" required>
-                        <input type="tel" name="whatsapp" id="leadWhatsapp" placeholder="Seu WhatsApp" aria-label="Seu WhatsApp" required>
+            <div class="franchise-shell reveal">
+                <div class="franchise-grid">
+                    <div class="franchise-content">
+                        <div class="section-label">Expansão</div>
+                        <h2 class="section-title" id="franchise-title">Leve o Studio Caracóis para sua cidade</h2>
+                        <p class="section-desc">
+                            Faça parte de uma rede especializada em cabelos cacheados com método validado, marca consolidada e suporte completo para crescimento.
+                        </p>
+                        <div class="franchise-points" aria-label="Diferenciais da franquia">
+                            <div class="franchise-point"><span class="franchise-point-icon">01</span><span>Método validado desde 2016</span></div>
+                            <div class="franchise-point"><span class="franchise-point-icon">02</span><span>Marca em expansão nacional</span></div>
+                            <div class="franchise-point"><span class="franchise-point-icon">03</span><span>Suporte estratégico e operacional</span></div>
+                            <div class="franchise-point"><span class="franchise-point-icon">04</span><span>Modelo otimizado para escala</span></div>
+                        </div>
+                        <div class="franchise-actions">
+                            <a href="/franquia" class="btn btn-primary">Conhecer a franquia</a>
+                            <a href="#unidades" class="btn btn-outline-terracota">Ver unidades atuais</a>
+                        </div>
                     </div>
-                    <select name="unidade" id="leadUnidade" required>
-                        <option value="" disabled selected>Selecione sua unidade de preferência</option>
-                        <option value="5511998980874|Tatuapé">São Paulo — Tatuapé</option>
-                        <option value="5512988636566|São José dos Campos">São José dos Campos — Vila Adyana</option>
-                        <option value="5561993837705|Águas Claras">Brasília — Águas Claras</option>
-                        <option value="5561996942312|Asa Sul">Brasília — Asa Sul</option>
-                        <option value="5561995251477|Asa Norte">Brasília — Asa Norte</option>
-                        <option value="5561991446678|Taguatinga">Brasília — Taguatinga</option>
-                        <option value="5562993411230|Goiânia">Goiânia — Setor Bueno</option>
-                        <option value="5581973056302|Recife">Recife — Boa Viagem</option>
-                    </select>
-                    <button type="submit" class="btn btn-primary" aria-label="Enviar formulário">Quero receber dicas para meus cachos</button>
-                </form>
+                    <aside class="franchise-aside" aria-label="Resumo da oportunidade de franquia">
+                        <div class="franchise-aside-label">Studio Caracóis</div>
+                        <h3>Uma marca construída para crescer com consistência</h3>
+                        <p>
+                            Posicione-se com uma proposta premium acessível, atendimento consultivo e uma operação pensada para gerar autoridade local no mercado de cachos.
+                        </p>
+                        <div class="franchise-mini-list">
+                            <span>Posicionamento forte e especializado</span>
+                            <span>Modelo com apelo comercial e recorrência</span>
+                            <span>Base ideal para expansão sustentável</span>
+                        </div>
+                    </aside>
+                </div>
             </div>
         </div>
     </section>
@@ -2751,8 +2844,8 @@
                     <a href="https://youtube.com/@studiocaracois" target="_blank" rel="noopener" aria-label="YouTube"><svg width="24" height="24"><use href="#i-yt"/></svg></a>
                 </div>
             </div>
-            <div class="footer-col"><h4>Navegação</h4><a href="#experiencia">Sua experiência</a><a href="#servicos">Serviços</a><a href="#transicao">Transição Capilar</a><a href="#resultados">Resultados</a><a href="#unidades">Unidades</a><a href="#faq">FAQ</a></div>
-            <div class="footer-col"><h4>Serviços</h4><a href="#servicos">Corte 3D</a><a href="#servicos">Acidificação</a><a href="#servicos">Caracóis Care</a><a href="#servicos">Finalização</a></div>
+            <div class="footer-col"><h4>Navegação</h4><a href="#experiencia">Sua experiência</a><a href="#servicos">Serviços</a><a href="#transicao">Transição Capilar</a><a href="#resultados">Resultados</a><a href="#unidades">Unidades</a><a href="#faq">FAQ</a><a href="/franquia">Seja um franqueado</a></div>
+            <div class="footer-col"><h4>Conhecimento</h4><a href="/central-de-conhecimento">Central de conhecimento</a><a href="/transicao-capilar">Transição capilar</a><a href="/como-cuidar-de-cabelos-cacheados">Como cuidar dos cachos</a><a href="/corte-para-cabelo-cacheado">Corte para cacheado</a><a href="/cronograma-capilar-cacheado">Cronograma capilar</a></div>
         </div>
         <div class="footer-bottom">
             <span>&copy; 2026 Studio Caracóis. Todos os direitos reservados.</span>
@@ -3278,27 +3371,6 @@ document.querySelectorAll('.before-after-images').forEach(function(container) {
 /* =========================
    LEAD FORM (WA)
 ========================= */
-(function() {
-    var leadForm = document.getElementById('leadForm');
-    if (!leadForm) return;
-
-    leadForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        var name = document.getElementById('leadName').value.trim();
-        var whatsapp = document.getElementById('leadWhatsapp').value.trim();
-        var unidadeSelect = document.getElementById('leadUnidade');
-        var unidadeValue = unidadeSelect ? unidadeSelect.value : '';
-
-        if (!name) { alert('Por favor, digite seu nome.'); document.getElementById('leadName').focus(); return; }
-        if (!whatsapp) { alert('Por favor, digite seu WhatsApp.'); document.getElementById('leadWhatsapp').focus(); return; }
-        if (!unidadeValue) { alert('Por favor, selecione sua unidade.'); if (unidadeSelect) unidadeSelect.focus(); return; }
-
-        var parts = unidadeValue.split('|');
-        var msg = 'Ol\u00e1! Meu nome \u00e9 ' + name + '. Gostaria de receber dicas para meus cachos. Minha unidade de prefer\u00eancia \u00e9 ' + parts[1] + '.';
-        window.open('https://wa.me/' + parts[0] + '?text=' + encodeURIComponent(msg), '_blank');
-        leadForm.reset();
-    });
-})();
 
 /* =========================
    FAQ ACCORDION
