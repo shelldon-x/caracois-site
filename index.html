@@ -145,7 +145,7 @@
             background: rgba(255,255,255,0.97);
             backdrop-filter: blur(24px);
             box-shadow: 0 1px 40px rgba(0,0,0,0.05);
-            padding: 14px 0;
+            padding: 12px 0;
         }
         nav .container { display: flex; justify-content: space-between; align-items: center; }
         .nav-logo { height: auto; }
@@ -234,9 +234,10 @@
 
         .hero {
             min-height: 100vh;
+            padding: 156px 0 96px;
             background: linear-gradient(170deg, var(--black) 0%, #221514 35%, var(--terracota-dark) 100%);
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             position: relative;
             overflow: hidden;
         }
@@ -254,7 +255,10 @@
         }
         .hero-watermark img { width: 100%; height: 100%; object-fit: contain; }
         .hero-content {
-            position: relative; z-index: 2; max-width: 760px;
+            position: relative;
+            z-index: 2;
+            max-width: 760px;
+            padding-top: 12px;
             animation: fadeUp 1.2s var(--ease-out) both;
         }
         .hero-badge {
@@ -458,6 +462,16 @@
         .btn-white { background: var(--white); color: var(--terracota); font-weight: 600; }
         .btn-white:hover { transform: translateY(-2px); box-shadow: 0 12px 36px rgba(0,0,0,0.1); }
 
+        .section-number,
+        .knowledge-card-number,
+        .article-number,
+        .step-number {
+            font-size: 3rem;
+            color: var(--terracota-light);
+            opacity: 0.45;
+            margin-bottom: 20px;
+        }
+
         section { padding: 100px 0; }
         .section-label {
             font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase;
@@ -512,14 +526,10 @@
         }
         .method-step:hover { transform: translateY(-8px); box-shadow: 0 24px 64px rgba(0,0,0,0.05); }
         .step-number {
-            font-family: var(--sans);
             font-size: 3rem;
-            font-weight: 700;
             color: var(--terracota-light);
             opacity: 0.45;
-            line-height: 1;
             margin-bottom: 20px;
-            letter-spacing: -0.02em;
         }
         .method-step h3 {
             font-family: var(--serif);
@@ -683,16 +693,20 @@
             border: 1px solid rgba(155,68,66,0.08);
         }
         .franchise-point-icon {
-            width: 32px;
-            height: 32px;
+            width: 56px;
+            height: 56px;
             border-radius: 50%;
             background: rgba(155,68,66,0.10);
             color: var(--terracota);
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.9rem;
+            font-family: var(--sans);
+            font-size: 1.85rem;
             font-weight: 700;
+            letter-spacing: -0.04em;
+            line-height: 1;
+            font-variant-numeric: tabular-nums lining-nums;
             flex-shrink: 0;
         }
         .franchise-point span:last-child {
@@ -1951,13 +1965,14 @@
         }
         .knowledge-card:hover::before { opacity: 1; }
         .knowledge-card-num {
-            font-family: var(--serif);
-            font-size: 2.5rem;
-            font-weight: 300;
-            color: rgba(155,68,66,0.1);
+            font-family: var(--sans);
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: -0.04em;
             line-height: 1;
-            margin-bottom: 20px;
-            letter-spacing: -0.03em;
+            font-variant-numeric: tabular-nums lining-nums;
+            color: rgba(155,68,66,0.34);
+            margin-bottom: 22px;
         }
         .knowledge-card h3 {
             font-family: var(--serif);
@@ -2006,10 +2021,27 @@
             .knowledge-center { padding: 60px 0; }
             .knowledge-grid { grid-template-columns: 1fr; gap: 16px; }
             .knowledge-card { padding: 24px 20px; }
-            .knowledge-card-num { font-size: 1.8rem; margin-bottom: 14px; }
-            .bee-modal { padding: 28px 16px 20px; border-radius: 20px; }
-            .bee-modal-header h3 { font-size: 1.2rem; }
-            .bee-market-item { padding: 14px 14px; gap: 12px; }
+            .knowledge-card-num {
+            font-family: var(--sans);
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            line-height: 1;
+            font-variant-numeric: tabular-nums lining-nums;
+            color: rgba(155,68,66,0.34);
+            margin-bottom: 22px;
+            position: relative;
+        }
+
+        @media (min-width: 769px) {
+            .hero-badge { margin-top: 4px; }
+            .hero-sub { max-width: 660px; }
+        }
+
+        @media (max-width: 1360px) {
+            .nav-right { gap: 24px; }
+            .nav-links { gap: 18px; }
+            .nav-links a { font-size: 0.72rem; }
         }
 
         @media (max-width: 1180px) {
@@ -2035,7 +2067,7 @@
             section { padding: 72px 0; }
             .container { padding: 0 20px; }
             .nav-logo img { width: 200px; }
-            .hero { min-height: auto; padding: 120px 0 80px; }
+            .hero { min-height: auto; padding: 132px 0 84px; }
             .hero h1 { font-size: clamp(1.8rem, 7vw, 2.8rem); line-height: 1.12; }
             .hero-sub { font-size: 0.92rem; max-width: 100%; margin-bottom: 36px; }
             .hero-ctas { flex-direction: column; width: 100%; }
@@ -2047,66 +2079,11 @@
             .section-title { font-size: clamp(1.5rem, 5vw, 2.2rem); }
             .method-step { padding: 32px 20px; }
             .method-steps { grid-template-columns: 1fr !important; }
-            .step-number { font-size: 2.2rem; }
-            .service-card { padding: 32px 20px; }
-            .bee { padding: 72px 0; }
-            .bee-product-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-            .bee-product-info { padding: 10px 10px 14px; }
-            .bee-product-info h4 { font-size: 0.85rem; }
-            .bee-product-info p { font-size: 0.7rem; }
-            .bee-product-img { padding: 10px; }
-            .bee-philosophy { gap: 10px; }
-            .bee-pill { padding: 14px 10px; }
-            .bee-pill h4 { font-size: 0.68rem; }
-            .gallery-grid { grid-template-columns: 1fr; }
-            .franchise-shell { padding: 28px 22px; }
-            .franchise-grid { grid-template-columns: 1fr; gap: 24px; }
-            .franchise-points { grid-template-columns: 1fr; gap: 12px; }
-            .franchise-actions { flex-direction: column; }
-            .franchise-actions .btn { width: 100%; }
-            .franchise-aside { padding: 28px 22px; }
-            .franchise-aside h3 { font-size: 1.6rem; }
-            .about-highlight { font-size: 1.1rem; padding-left: 16px; }
-            .about-stats { flex-wrap: wrap; gap: 20px; justify-content: center; text-align: center; }
-            .stat-number { font-size: 2rem; }
-            .about-stats .stat { padding: 0 16px; }
-            .about-stats .stat + .stat::before { height: 28px; }
-            .proof-card { padding: 28px 20px; }
-            .proof-text { font-size: 0.92rem; }
-            .proof-quote { font-size: 2.5rem; top: 14px; right: 20px; }
-            .units-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-            .unit-card { padding: 24px 14px; }
-            .unit-card h3 { font-size: 0.95rem; }
-            .unit-link-text { font-size: 0.68rem; padding: 8px 12px; }
-            .cta-final { padding: 72px 0; }
-            .cta-final-btns { flex-direction: column; width: 100%; }
-            .cta-final-btns .btn { width: 100%; justify-content: center; }
-            .cta-final .section-title { font-size: 1.4rem; }
-            .booking-grid { grid-template-columns: 1fr; }
-            .booking-nearest-card { flex-direction: column; align-items: flex-start !important; gap: 12px; }
-            .booking-nearest-cta { align-self: flex-end; }
-            .booking-modal { padding: 28px 16px 20px; border-radius: 20px; }
-            .booking-header h3 { font-size: 1.2rem; }
-            .faq-question { font-size: 1rem; padding: 16px 20px; }
-            .faq-answer { padding: 0 20px 16px; font-size: 0.85rem; }
-            .transition-points { grid-template-columns: 1fr; }
-            .transition-grid { grid-template-columns: 1fr; gap: 32px; }
-            .transition-cta { flex-direction: column; width: 100%; }
-            .transition-cta .btn { width: 100%; justify-content: center; }
-            .transition-quote { padding: 20px 20px; }
-            .transition-quote p { font-size: 1.02rem; }
-            .footer-top { grid-template-columns: 1fr; gap: 28px; }
-            .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
-            .diff-card { padding: 28px 18px; }
-            .assessment-features { grid-template-columns: 1fr; }
-            .social-icon-link { width: 50px; height: 50px; }
-            .sticky-cta { display: flex; }
-            .whatsapp-float { bottom: 90px; right: 16px; width: 48px; height: 48px; }
-            .whatsapp-float svg { width: 24px; height: 24px; }
-            .wa-modal { padding: 28px 16px 20px; border-radius: 20px; }
-            .wa-modal-header h3 { font-size: 1.2rem; }
-            .wa-unit-item { padding: 12px 12px; }
-            body { padding-bottom: 62px; }
+            .step-number {
+            font-size: 3rem;
+            color: var(--terracota-light);
+            opacity: 0.45;
+            margin-bottom: 20px;
         }
 
         @media (max-width: 1280px) {
@@ -2119,7 +2096,7 @@
         @media (max-width: 480px) {
             section { padding: 56px 0; }
             .container { padding: 0 16px; }
-            .hero { padding: 100px 0 60px; }
+            .hero { padding: 112px 0 64px; }
             .hero h1 { font-size: 1.6rem; margin-bottom: 18px; }
             .hero-sub { font-size: 0.85rem; margin-bottom: 28px; }
             .hero-badge { font-size: 0.58rem; padding: 6px 12px; margin-bottom: 20px; }
@@ -2138,17 +2115,11 @@
             .pain-item p { font-size: 0.8rem; }
             .pain-icon { width: 36px; height: 36px; font-size: 0.95rem; border-radius: 10px; }
             .method-step { padding: 24px 16px; border-radius: 14px; }
-            .step-number { font-size: 1.8rem; margin-bottom: 12px; }
-            .method-step h3 { font-size: 1.1rem; }
-            .service-card { padding: 24px 16px; border-radius: 14px; }
-            .service-card h3 { font-size: 1.15rem; }
-            .service-icon { width: 40px; height: 40px; font-size: 1.1rem; margin-bottom: 16px; border-radius: 10px; }
-            .footer-desc { font-size: 0.76rem; }
-            .footer-col a { font-size: 0.76rem; }
-            .sticky-cta { font-size: 0.8rem; padding: 14px 16px; }
-            .whatsapp-float { bottom: 80px; right: 14px; width: 44px; height: 44px; }
-            .whatsapp-float svg { width: 20px; height: 20px; }
-            body { padding-bottom: 56px; }
+            .step-number {
+            font-size: 3rem;
+            color: var(--terracota-light);
+            opacity: 0.45;
+            margin-bottom: 20px;
         }
     </style>
 
@@ -2627,8 +2598,8 @@
                     <p class="section-desc" style="max-width:100%; margin-top: 16px;">Trabalhamos exclusivamente com produtos low poo e no poo, livres de sulfatos agressivos, petrolatos e silicones insolúveis. E, acima de tudo, ensinamos você a manter o resultado em casa, com autonomia e confiança.</p>
                     <div class="about-highlight">“Cabelo saudável é cabelo bonito. Aqui, a gente prova.”</div>
                     <div class="about-stats">
-                        <div class="stat"><div class="stat-number">8</div><div class="stat-label">Unidades no Brasil</div></div>
-                        <div class="stat"><div class="stat-number">4</div><div class="stat-label">Estados</div></div>
+                        <div class="stat"><div class="stat-number">08</div><div class="stat-label">Unidades no Brasil</div></div>
+                        <div class="stat"><div class="stat-number">04</div><div class="stat-label">Estados</div></div>
                         <div class="stat"><div class="stat-number">100%</div><div class="stat-label">Foco em cachos</div></div>
                     </div>
                 </div>
