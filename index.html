@@ -31,7 +31,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="manifest" href="/site.webmanifest">
 
-    <link rel="preload" as="image" href="/images/logos/logo-nude.png">
+    <link rel="preload" as="image" href="/images/logos/logo-nude.svg">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -44,7 +44,7 @@
       "name": "Studio Caracóis",
       "description": "Rede de salões especialistas em cabelos cacheados. Corte 3D, Acidificação, Caracóis Care e avaliação gratuita com atendimento consultivo.",
       "url": "https://caracois.com.br",
-      "image": "https://caracois.com.br/images/logos/logo-terracota.png",
+      "image": "https://caracois.com.br/images/logos/logo-terracota.svg",
       "priceRange": "$$",
       "sameAs": [
         "https://instagram.com/studiocaracois",
@@ -2051,6 +2051,13 @@
             .knowledge-grid { grid-template-columns: 1fr 1fr; }
         }
         @media (max-width: 768px) {
+
+            .hero-watermark {
+                width: min(78vw, 360px);
+                right: -22%;
+                bottom: -10%;
+                opacity: 0.045;
+            }
             .knowledge-center { padding: 60px 0; }
             .knowledge-grid { grid-template-columns: 1fr; gap: 16px; }
             .knowledge-card { padding: 24px 20px; }
@@ -2176,7 +2183,7 @@
 <nav id="navbar" role="navigation" aria-label="Navegação principal">
     <div class="container">
         <a href="/" class="nav-logo" aria-label="Studio Caracóis - Página inicial">
-            <img src="/images/logos/logo-nude.png" alt="Logo Studio Caracóis - Especialistas em cabelos cacheados" id="navLogoImg" width="180" height="34" decoding="async" fetchpriority="high">
+            <img src="/images/logos/logo-nude.svg" alt="Logo Studio Caracóis - Especialistas em cabelos cacheados" id="navLogoImg" width="180" height="34" decoding="async" fetchpriority="high">
         </a>
         <div class="nav-right">
             <div class="nav-links">
@@ -3020,7 +3027,7 @@
         <div class="footer-top">
             <div>
                 <div class="footer-logo">
-                    <img src="/images/logos/logo-nude.png" alt="Studio Caracóis" width="140" height="26" loading="lazy" decoding="async">
+                    <img src="/images/logos/logo-nude.svg" alt="Studio Caracóis" width="140" height="26" loading="lazy" decoding="async">
                 </div>
                 <p class="footer-desc">Especialistas em cabelos cacheados. Técnica, tratamento e produto para transformar o cabelo de verdade.</p>
                 <div class="footer-social-links">
@@ -3464,7 +3471,7 @@ document.addEventListener('keydown', function(e) {
     window.addEventListener('scroll', function() {
         var s = window.scrollY > 60;
         nav.classList.toggle('scrolled', s);
-        var nextLogo = s ? '/images/logos/logo-terracota.png' : '/images/logos/logo-nude.png';
+        var nextLogo = s ? '/images/logos/logo-terracota.svg' : '/images/logos/logo-nude.svg';
         if (logo && !logo.src.endsWith(nextLogo)) logo.src = nextLogo;
     });
 })();
