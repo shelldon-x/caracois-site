@@ -1,60 +1,144 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
-  <!-- Homepage -->
+  <!-- ==========================================
+       SITEMAP — Studio Caracóis
+       Domínio: https://caracois.com.br
+       Gerado: 2026-04-13
+       Total de URLs: 15
+  =========================================== -->
+
+  <!-- ==============================
+       PÁGINA PRINCIPAL
+  =============================== -->
   <url>
     <loc>https://caracois.com.br</loc>
+    <lastmod>2026-04-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
-  <!-- Unidades -->
+  <!-- ==============================
+       PÁGINAS INSTITUCIONAIS
+  =============================== -->
+  <url>
+    <loc>https://caracois.com.br/franquia.html</loc>
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- ==============================
+       UNIDADES — 8 SALÕES
+  =============================== -->
+
+  <!-- São Paulo -->
   <url>
     <loc>https://caracois.com.br/unidades/sao-paulo-tatuape</loc>
+    <lastmod>2026-04-13</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
 
+  <!-- São José dos Campos -->
   <url>
     <loc>https://caracois.com.br/unidades/sao-jose-dos-campos</loc>
+    <lastmod>2026-04-13</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
 
+  <!-- Brasília — Águas Claras -->
   <url>
     <loc>https://caracois.com.br/unidades/brasilia-aguas-claras</loc>
+    <lastmod>2026-04-13</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
 
-  <url>
-    <loc>https://caracois.com.br/unidades/brasilia-asa-sul</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
+  <!-- Brasília — Asa Norte -->
   <url>
     <loc>https://caracois.com.br/unidades/brasilia-asa-norte</loc>
+    <lastmod>2026-04-13</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
 
+  <!-- Brasília — Asa Sul -->
+  <url>
+    <loc>https://caracois.com.br/unidades/brasilia-asa-sul</loc>
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Brasília — Taguatinga -->
   <url>
     <loc>https://caracois.com.br/unidades/brasilia-taguatinga</loc>
+    <lastmod>2026-04-13</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
 
+  <!-- Goiânia — Setor Bueno -->
   <url>
     <loc>https://caracois.com.br/unidades/goiania-setor-bueno</loc>
+    <lastmod>2026-04-13</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Recife — Boa Viagem -->
+  <url>
+    <loc>https://caracois.com.br/unidades/recife-boa-viagem</loc>
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- ==============================
+       CENTRAL DE CONHECIMENTO (HUB)
+  =============================== -->
+  <url>
+    <loc>https://caracois.com.br/central-de-conhecimento.html</loc>
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- ==============================
+       CONTEÚDO EDITORIAL / SEO
+  =============================== -->
+  <url>
+    <loc>https://caracois.com.br/como-cuidar-de-cabelos-cacheados.html</loc>
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
   </url>
 
   <url>
-    <loc>https://caracois.com.br/unidades/recife-boa-viagem</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://caracois.com.br/corte-para-cabelo-cacheado.html</loc>
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://caracois.com.br/cronograma-capilar-cacheado.html</loc>
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://caracois.com.br/transicao-capilar.html</loc>
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
   </url>
 
 </urlset>
