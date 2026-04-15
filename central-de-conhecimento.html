@@ -584,7 +584,10 @@
         .booking-footer p { font-size: 0.78rem; color: var(--text-muted); font-weight: 300; }
         .booking-footer a { color: var(--terracota); text-decoration: none; font-weight: 500; }
         .booking-footer a:hover { text-decoration: underline; }
-        body.ui-locked { overflow: hidden !important; position: fixed; width: 100%; }
+        body.ui-locked {
+            overflow: hidden !important;
+            touch-action: none;
+        }
         @media (max-width: 768px) {
             .booking-grid { grid-template-columns: 1fr; }
             .booking-nearest-card { flex-direction: column; align-items: flex-start !important; gap: 12px; }

@@ -383,7 +383,10 @@
         .booking-footer p { font-size: 0.78rem; color: var(--text-muted); font-weight: 300; }
         .booking-footer a { color: var(--terracota); text-decoration: none; font-weight: 500; }
         .booking-footer a:hover { text-decoration: underline; }
-        body.ui-locked { overflow: hidden !important; position: fixed; width: 100%; }
+        body.ui-locked {
+            overflow: hidden !important;
+            touch-action: none;
+        }
         @media (max-width: 768px) {
             .booking-grid { grid-template-columns: 1fr; }
             .booking-nearest-card { flex-direction: column; align-items: flex-start !important; gap: 12px; }
@@ -1124,15 +1127,46 @@
 
 <script>
 var lastScrollY=0,lastFocusedElement=null;
-function lockScroll(){if(document.body.classList.contains('ui-locked'))return;lastScrollY=window.scrollY||0;document.body.classList.add('ui-locked');document.body.style.top='-'+lastScrollY+'px';document.body.style.width='100%';document.body.style.position='fixed';}
-function unlockScroll(){var anyOpen=document.querySelector('.wa-modal-overlay.open,.booking-overlay.open,.mobile-menu.open');if(anyOpen)return;document.body.classList.remove('ui-locked');document.body.style.top='';document.body.style.width='';document.body.style.position='';window.scrollTo(0,lastScrollY);}
-function openModal(id){var modal=document.getElementById(id);if(!modal)return;lastFocusedElement=document.activeElement;modal.classList.add('open');modal.setAttribute('aria-hidden','false');lockScroll();}
-function closeModal(id){var modal=document.getElementById(id);if(!modal)return;modal.classList.remove('open');modal.setAttribute('aria-hidden','true');unlockScroll();if(lastFocusedElement)setTimeout(function(){lastFocusedElement.focus();},30);}
-function closeModalOnOverlay(e,id){if(e.target.id===id)closeModal(id);}
-function openWaModal(){openModal('waModal');}
-function openBooking(){openModal('bookingModal');}
-function openMobileMenu(){var m=document.getElementById('mm'),o=document.getElementById('mobileOverlay');if(!m||!o)return;lastFocusedElement=document.activeElement;m.classList.add('open');o.classList.add('open');m.setAttribute('aria-hidden','false');lockScroll();}
-function closeMobileMenu(){var m=document.getElementById('mm'),o=document.getElementById('mobileOverlay');if(!m)return;m.classList.remove('open');if(o)o.classList.remove('open');m.setAttribute('aria-hidden','true');unlockScroll();}
+function lockScroll() {
+    if (document.body.classList.contains('ui-locked')) return;
+    lastScrollY = window.scrollY || window.pageYOffset || 0;
+    document.body.classList.add('ui-locked');
+    document.documentElement.style.scrollBehavior = 'auto';
+}
+function unlockScroll() {
+    var anyOpen = document.querySelector('.wa-modal-overlay.open, .booking-overlay.open, .mobile-menu.open, .mobile-overlay.open');
+    if (anyOpen) return;
+    document.body.classList.remove('ui-locked');
+    document.documentElement.style.scrollBehavior = '';
+}
+function openModal(id) {
+    var modal = document.getElementById(id); if (!modal) return;
+    lastFocusedElement = document.activeElement;
+    modal.classList.add('open'); modal.setAttribute('aria-hidden','false');
+    lockScroll();
+}
+function closeModal(id) {
+    var modal = document.getElementById(id); if (!modal) return;
+    modal.classList.remove('open'); modal.setAttribute('aria-hidden','true');
+    unlockScroll();
+    if (lastFocusedElement) setTimeout(function(){ lastFocusedElement.focus(); }, 30);
+}
+function closeModalOnOverlay(e, id) { if (e.target.id === id) closeModal(id); }
+function openWaModal() { openModal('waModal'); }
+function openBooking() { openModal('bookingModal'); }
+function openMobileMenu() {
+    var m = document.getElementById('mm'), o = document.getElementById('mobileOverlay');
+    if (!m || !o) return;
+    lastFocusedElement = document.activeElement;
+    m.classList.add('open'); o.classList.add('open');
+    m.setAttribute('aria-hidden','false'); lockScroll();
+}
+function closeMobileMenu() {
+    var m = document.getElementById('mm'), o = document.getElementById('mobileOverlay');
+    if (!m) return;
+    m.classList.remove('open'); if (o) o.classList.remove('open');
+    m.setAttribute('aria-hidden','true'); unlockScroll();
+}
 document.addEventListener('keydown',function(e){if(e.key!=='Escape')return;if(document.getElementById('bookingModal').classList.contains('open')){closeModal('bookingModal');return;}if(document.getElementById('waModal').classList.contains('open')){closeModal('waModal');return;}if(document.getElementById('mm').classList.contains('open'))closeMobileMenu();});
 (function(){var nav=document.getElementById('navbar'),logo=document.getElementById('navLogoImg');window.addEventListener('scroll',function(){var s=window.scrollY>60;nav.classList.toggle('scrolled',s);if(logo)logo.src=s?'/images/logos/logo-terracota.svg':'/images/logos/logo-nude.svg';});})();
 var obs=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){entry.target.classList.add('visible');obs.unobserve(entry.target);}});},{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
