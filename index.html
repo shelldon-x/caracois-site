@@ -1063,14 +1063,14 @@
             position: absolute;
             top: 50%; left: 50%;
             transform: translate(-50%, -50%);
-            width: 36px; height: 36px;
-            background: rgba(255,255,255,0.9);
+            width: 42px; height: 42px;
+            background: var(--white);
             border-radius: 50%;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            box-shadow: 0 2px 16px rgba(0,0,0,0.28), 0 0 0 2px var(--gold);
             display: flex; align-items: center; justify-content: center;
             pointer-events: none;
             z-index: 5;
-            font-size: 0.5rem;
+            font-size: 0.9rem;
             color: var(--terracota);
             font-weight: 700;
         }
@@ -1078,8 +1078,8 @@
             position: absolute;
             top: 0; bottom: 0; left: 50%;
             width: 2px;
-            background: rgba(255,255,255,0.9);
-            box-shadow: 0 0 6px rgba(0,0,0,0.3);
+            background: rgba(255,255,255,0.95);
+            box-shadow: 0 0 10px rgba(0,0,0,0.25);
             z-index: 4;
             pointer-events: none;
         }
@@ -1599,7 +1599,10 @@
         .mobile-close:hover { background: var(--terracota); color: var(--white); }
 
         /* Unified scroll lock */
-        body.ui-locked { overflow: hidden !important; position: fixed; width: 100%; }
+        body.ui-locked {
+            overflow: hidden !important;
+            touch-action: none;
+        }
 
         .transition {
             background: linear-gradient(135deg, var(--nude-ultra), var(--nude-light));
@@ -2432,7 +2435,24 @@
             }
         }
 
-    </style>
+    
+        .before-after-images {
+            cursor: ew-resize;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .mini-handle::before {
+            content: '⇆';
+            line-height: 1;
+        }
+        @media (max-width: 768px) {
+            .mini-handle {
+                width: 40px;
+                height: 40px;
+                font-size: 0.85rem;
+            }
+        }
+
+</style>
 
     <!-- Microsoft Clarity — analytics de comportamento -->
     <script>
@@ -3356,7 +3376,7 @@ function lockScroll() {
     if (document.body.classList.contains('ui-locked')) return;
     lastScrollY = window.scrollY || window.pageYOffset || 0;
     document.body.classList.add('ui-locked');
-    document.body.style.top = '-' + lastScrollY + 'px';
+    document.documentElement.style.scrollBehavior = 'auto';
 }
 
 function unlockScroll() {
@@ -3366,8 +3386,7 @@ function unlockScroll() {
     if (anyOpen) return;
 
     document.body.classList.remove('ui-locked');
-    document.body.style.top = '';
-    window.scrollTo(0, lastScrollY);
+    document.documentElement.style.scrollBehavior = '';
 }
 
 /* =========================
@@ -3830,25 +3849,66 @@ document.querySelectorAll('.before-after-images').forEach(function(container) {
 
     var dragging = false;
 
-    function updateClip(x) {
-        var rect = container.getBoundingClientRect();
-        var pct = Math.max(0, Math.min(100, ((x - rect.left) / rect.width) * 100));
+    function updateClipFromPct(pct) {
+        pct = Math.max(0, Math.min(100, pct));
         afterImg.style.clipPath = 'inset(0 ' + (100 - pct) + '% 0 0)';
         handle.style.left = pct + '%';
         if (divider) divider.style.left = pct + '%';
     }
 
-    container.addEventListener('pointerdown', function(e) {
+    function updateClip(x) {
+        var rect = container.getBoundingClientRect();
+        var pct = ((x - rect.left) / rect.width) * 100;
+        updateClipFromPct(pct);
+    }
+
+    function startDrag(clientX) {
         dragging = true;
-        if (container.setPointerCapture) try { container.setPointerCapture(e.pointerId); } catch(ex) {}
+        updateClip(clientX);
+    }
+
+    function stopDrag() {
+        dragging = false;
+    }
+
+    container.addEventListener('pointerdown', function(e) {
+        startDrag(e.clientX);
+        if (container.setPointerCapture) {
+            try { container.setPointerCapture(e.pointerId); } catch(ex) {}
+        }
+    });
+
+    container.addEventListener('pointermove', function(e) {
+        if (dragging) updateClip(e.clientX);
+    });
+
+    container.addEventListener('pointerup', function(e) {
+        stopDrag();
+        if (container.releasePointerCapture) {
+            try { container.releasePointerCapture(e.pointerId); } catch(ex) {}
+        }
+    });
+
+    container.addEventListener('pointercancel', stopDrag);
+    container.addEventListener('pointerleave', stopDrag);
+
+    container.addEventListener('touchstart', function(e) {
+        if (!e.touches || !e.touches.length) return;
+        startDrag(e.touches[0].clientX);
+    }, { passive: true });
+
+    container.addEventListener('touchmove', function(e) {
+        if (!dragging || !e.touches || !e.touches.length) return;
+        updateClip(e.touches[0].clientX);
+    }, { passive: true });
+
+    container.addEventListener('touchend', stopDrag, { passive: true });
+
+    container.addEventListener('click', function(e) {
         updateClip(e.clientX);
     });
-    container.addEventListener('pointermove', function(e) { if (dragging) updateClip(e.clientX); });
-    container.addEventListener('pointerup', function(e) {
-        dragging = false;
-        if (container.releasePointerCapture) try { container.releasePointerCapture(e.pointerId); } catch(ex) {}
-    });
-    container.addEventListener('pointercancel', function() { dragging = false; });
+
+    updateClipFromPct(50);
 });
 
 /* =========================
