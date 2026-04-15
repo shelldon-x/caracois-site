@@ -426,12 +426,16 @@
             .page-hero { padding-top: 88px; }
             .breadcrumb { scroll-margin-top: 64px; }
             .franquia-hero { padding-top: 88px; }
+            position: relative;
+            overflow: hidden;
         }
         @media (max-width: 480px) {
             nav { min-height: 60px; padding: 12px 0; }
             .nav-logo img { width: 136px; }
             .page-hero { padding-top: 80px; }
             .franquia-hero { padding-top: 80px; }
+            position: relative;
+            overflow: hidden;
         }
     
 /* REMOVE ANIMAÇÕES / DELAY */
@@ -464,6 +468,38 @@ nav + header, header.hero, header.page-hero {
 }
 .hero-watermark img { width:100%; height:100%; object-fit:contain; }
 
+
+        .franquia-hero {
+            position: relative;
+            overflow: hidden;
+        }
+        .franquia-hero .hero-watermark {
+            position: absolute;
+            right: -72px;
+            bottom: -56px;
+            opacity: 0.055;
+            width: 520px;
+            height: 520px;
+            display: block;
+            pointer-events: none;
+            z-index: 1;
+            filter: blur(0.2px);
+        }
+        .franquia-hero .hero-watermark img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+        @media (max-width: 768px) {
+            .franquia-hero .hero-watermark {
+                width: min(78vw, 360px);
+                right: -20%;
+                bottom: -8%;
+                opacity: 0.045;
+            }
+        }
+
 </style>
     <script>
         (function(c,l,a,r,i,t,y){
@@ -474,6 +510,7 @@ nav + header, header.hero, header.page-hero {
             y.parentNode.insertBefore(t,y);
         })(window, document, "clarity", "script", "wb0w1oc0ou");
     </script>
+    <link rel="preload" as="image" href="/images/logos/logo-nude.svg">
 </head>
 <body>
 
@@ -492,7 +529,7 @@ nav + header, header.hero, header.page-hero {
 <nav id="navbar" role="navigation" aria-label="Navegação principal">
     <div class="container">
         <a href="/" class="nav-logo" aria-label="Studio Caracóis - Página inicial">
-            <img src="/images/logos/logo-nude.png" alt="Logo Studio Caracóis" id="navLogoImg" width="180" height="34" decoding="async">
+            <img src="/images/logos/logo-nude.svg" alt="Logo Studio Caracóis" id="navLogoImg" width="180" height="34" decoding="async">
         </a>
         <div class="nav-right">
             <div class="nav-links">
@@ -590,7 +627,8 @@ nav + header, header.hero, header.page-hero {
 
     <!-- HERO -->
     <section class="franquia-hero">
-        <div class="container">
+        <div class="hero-watermark" aria-hidden="true"><img src="/images/logos/hero-watermark.svg" alt="" decoding="async" width="500" height="500"></div>
+<div class="container">
             <div class="hero-content">
                 <div class="hero-badge">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
@@ -600,7 +638,7 @@ nav + header, header.hero, header.page-hero {
                     Um mercado em crescimento.
                     <em>Um modelo comprovado.</em>
                 </h1>
-                <p class="hero-sub">O Studio Caracóis está abrindo portas para franqueados que querem construir um negócio sólido no segmento de maior crescimento da beleza brasileira — os cabelos cacheados e crespos.</p>
+                <p class="hero-sub">O Studio Caracóis está abrindo portas para franqueados que querem construir um negócio sólido no segmento de maior crescimento da beleza brasileira — os cabelos com curvatura.</p>
                 <div class="hero-ctas">
                     <button class="btn btn-gold btn-lg" onclick="document.getElementById('formulario').scrollIntoView({behavior:'smooth'})">
                         Quero ser franqueado
@@ -635,7 +673,7 @@ nav + header, header.hero, header.page-hero {
             <div class="section-header center reveal">
                 <div class="section-label">Contexto de mercado</div>
                 <h2 class="section-title">Por que investir no mercado de cachos</h2>
-                <p class="section-desc">O segmento de beleza para cabelos cacheados e crespos é um dos mais dinâmicos e resilientes da economia brasileira — e ainda está longe da saturação.</p>
+                <p class="section-desc">O segmento de beleza para cabelos com curvatura é um dos mais dinâmicos e resilientes da economia brasileira — e ainda está longe da saturação.</p>
             </div>
             <div class="market-grid">
                 <div class="market-card reveal rd1">
@@ -687,7 +725,7 @@ nav + header, header.hero, header.page-hero {
                     <div class="diferencial-icon">📦</div>
                     <div class="diferencial-content">
                         <h3>Linha exclusiva de produtos</h3>
-                        <p>Acesso preferencial à Bee Cosmetics (produtos veganos, ricos em ingredientes naturais e ideais para cabelos com curvatura) — marca parceira de cosméticos capilares desenvolvida especialmente para cabelos cacheados e crespos.</p>
+                        <p>Acesso preferencial à Bee Cosmetics — marca parceira com produtos veganos, ricos em ingredientes naturais, livres de ingredientes proibidos e ideais para cabelos com curvatura.</p>
                     </div>
                 </div>
                 <div class="diferencial-card reveal rd2">
@@ -816,7 +854,7 @@ nav + header, header.hero, header.page-hero {
     <div class="container">
         <div class="footer-top">
             <div>
-                <div class="footer-logo"><img src="/images/logos/logo-nude.png" alt="Studio Caracóis" width="140" height="26" loading="lazy" decoding="async"></div>
+                <div class="footer-logo"><img src="/images/logos/logo-nude.svg" alt="Studio Caracóis" width="140" height="26" loading="lazy" decoding="async"></div>
                 <p class="footer-desc">Especialistas em cabelos cacheados. Técnica, tratamento e produto para transformar o cabelo de verdade.</p>
                 <div class="footer-social-links">
                     <a href="https://instagram.com/studiocaracois" target="_blank" rel="noopener" aria-label="Instagram"><svg width="24" height="24"><use href="#i-ig"/></svg></a>
@@ -864,7 +902,7 @@ function openBooking(){openModal('bookingModal');}
 function openMobileMenu(){var m=document.getElementById('mm'),o=document.getElementById('mobileOverlay');if(!m||!o)return;lastFocusedElement=document.activeElement;m.classList.add('open');o.classList.add('open');m.setAttribute('aria-hidden','false');lockScroll();}
 function closeMobileMenu(){var m=document.getElementById('mm'),o=document.getElementById('mobileOverlay');if(!m)return;m.classList.remove('open');if(o)o.classList.remove('open');m.setAttribute('aria-hidden','true');unlockScroll();}
 document.addEventListener('keydown',function(e){if(e.key!=='Escape')return;if(document.getElementById('bookingModal').classList.contains('open')){closeModal('bookingModal');return;}if(document.getElementById('waModal').classList.contains('open')){closeModal('waModal');return;}if(document.getElementById('mm').classList.contains('open'))closeMobileMenu();});
-(function(){var nav=document.getElementById('navbar'),logo=document.getElementById('navLogoImg');window.addEventListener('scroll',function(){var s=window.scrollY>60;nav.classList.toggle('scrolled',s);if(logo)logo.src=s?'/images/logos/logo-terracota.png':'/images/logos/logo-nude.png';});})();
+(function(){var nav=document.getElementById('navbar'),logo=document.getElementById('navLogoImg');window.addEventListener('scroll',function(){var s=window.scrollY>60;nav.classList.toggle('scrolled',s);if(logo)logo.src=s?'/images/logos/logo-terracota.svg':'/images/logos/logo-nude.svg';});})();
 var obs=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){entry.target.classList.add('visible');obs.unobserve(entry.target);}});},{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
 document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
 function _haversine(lat1,lon1,lat2,lon2){
