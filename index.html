@@ -2036,6 +2036,7 @@
             .hero-sub { max-width: 660px; }
         }
 
+        
         @media (max-width: 1360px) {
             .nav-right { gap: 24px; }
             .nav-links { gap: 18px; }
@@ -2048,33 +2049,14 @@
         }
 
         @media (max-width: 1024px) {
-            .knowledge-grid { grid-template-columns: 1fr 1fr; }
-        }
-        @media (max-width: 768px) {
-
-            .hero-watermark {
-                width: min(78vw, 360px);
-                right: -22%;
-                bottom: -10%;
-                opacity: 0.045;
+            .pain-grid,
+            .about-grid,
+            .assessment-grid,
+            .transition-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
             }
-            .knowledge-center { padding: 60px 0; }
-            .knowledge-grid { grid-template-columns: 1fr; gap: 16px; }
-            .knowledge-card { padding: 24px 20px; }
-            .knowledge-card-num {
-            font-family: var(--sans);
-            font-size: 2.15rem;
-            font-weight: 700;
-            letter-spacing: -0.04em;
-            line-height: 1;
-            font-variant-numeric: tabular-nums lining-nums;
-            color: var(--terracota);
-            opacity: 0.92;
-            margin-bottom: 18px;
-        }
 
-        @media (max-width: 1024px) {
-            .pain-grid, .about-grid, .assessment-grid, .transition-grid { grid-template-columns: 1fr; gap: 40px; }
             .method-steps { grid-template-columns: repeat(2, 1fr); gap: 16px; }
             .services-grid { grid-template-columns: 1fr; }
             .diff-grid { grid-template-columns: repeat(2, 1fr); }
@@ -2085,75 +2067,187 @@
             .gallery-grid { grid-template-columns: repeat(2, 1fr); }
             .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
             .comparison-slider { max-width: 100%; }
+            .knowledge-grid { grid-template-columns: 1fr 1fr; }
         }
 
         @media (max-width: 768px) {
             section { padding: 72px 0; }
             .container { padding: 0 20px; }
             .nav-logo img { width: 200px; }
-            .hero { min-height: auto; padding: 132px 0 84px; }
-            .hero h1 { font-size: clamp(1.8rem, 7vw, 2.8rem); line-height: 1.12; }
-            .hero-sub { font-size: 0.92rem; max-width: 100%; margin-bottom: 36px; }
-            .hero-ctas { flex-direction: column; width: 100%; }
+
+            .hero {
+                min-height: auto;
+                padding: 132px 0 84px;
+            }
+
+            .hero-watermark {
+                width: min(78vw, 360px);
+                height: auto;
+                right: -22%;
+                bottom: -10%;
+                opacity: 0.045;
+            }
+
+            .hero h1 {
+                font-size: clamp(1.8rem, 7vw, 2.8rem);
+                line-height: 1.12;
+            }
+
+            .hero-sub {
+                font-size: 0.92rem;
+                max-width: 100%;
+                margin-bottom: 36px;
+            }
+
+            .hero-ctas {
+                flex-direction: column;
+                width: 100%;
+            }
+
             .hero-ctas .btn { width: 100%; justify-content: center; }
             .hero-badge { font-size: 0.62rem; padding: 7px 14px; margin-bottom: 24px; }
             .hero-proof { gap: 8px; }
             .hero-proof-pill { width: 100%; justify-content: center; font-size: 0.72rem; }
+
             .offer-strip-grid { grid-template-columns: 1fr; }
             .section-title { font-size: clamp(1.5rem, 5vw, 2.2rem); }
+
+            .knowledge-center { padding: 60px 0; }
+            .knowledge-grid { grid-template-columns: 1fr; gap: 16px; }
+            .knowledge-card { padding: 24px 20px; }
+
             .method-step { padding: 32px 20px; }
             .method-steps { grid-template-columns: 1fr !important; }
-            .step-number {
-            font-family: var(--sans);
-            font-size: 3rem;
-            font-weight: 700;
-            letter-spacing: -0.04em;
-            line-height: 1;
-            font-variant-numeric: tabular-nums lining-nums;
-            color: var(--terracota-light);
-            opacity: 0.7;
-            margin-bottom: 20px;
+
+            .franchise-shell {
+                padding: 24px 18px;
+                border-radius: 28px;
+                overflow: hidden;
+            }
+
+            .franchise-grid {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+
+            .franchise-content {
+                width: 100%;
+                min-width: 0;
+            }
+
+            .franchise-points {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .franchise-point {
+                padding: 14px 14px;
+                align-items: center;
+            }
+
+            .franchise-point-icon {
+                width: 46px;
+                height: 46px;
+                font-size: 1.15rem;
+                line-height: 1;
+            }
+
+            .franchise-actions {
+                flex-direction: column;
+            }
+
+            .franchise-actions .btn {
+                width: 100%;
+            }
+
+            .franchise-aside {
+                width: 100%;
+                max-width: 100%;
+                min-width: 0;
+                margin-top: 4px;
+                padding: 24px 20px;
+                border-radius: 24px;
+            }
+
+            .franchise-aside h3 {
+                font-size: 1.45rem;
+                line-height: 1.2;
+                margin-bottom: 12px;
+            }
+
+            .franchise-aside p {
+                font-size: 0.88rem;
+                line-height: 1.65;
+            }
+
+            .franchise-mini-list {
+                gap: 10px;
+            }
+
+            .franchise-mini-list span {
+                font-size: 0.82rem;
+                line-height: 1.45;
+                align-items: flex-start;
+            }
+
+            .about-highlight { font-size: 1.1rem; padding-left: 16px; }
+            .about-image { max-width: 88%; margin: 8px auto 0; }
+            .about-image img { border-radius: 22px; aspect-ratio: 4 / 5; object-fit: cover; }
+
+            .gallery-grid { grid-template-columns: 1fr; }
+            .comparison-slider { display: none; }
         }
 
         @media (max-width: 480px) {
             section { padding: 56px 0; }
             .container { padding: 0 16px; }
+
             .hero { padding: 112px 0 64px; }
             .hero h1 { font-size: 1.6rem; margin-bottom: 18px; }
             .hero-sub { font-size: 0.85rem; margin-bottom: 28px; }
             .hero-badge { font-size: 0.58rem; padding: 6px 12px; margin-bottom: 20px; }
+
             .section-label { font-size: 0.62rem; margin-bottom: 10px; }
             .section-title { font-size: 1.35rem; margin-bottom: 12px; }
             .section-desc { font-size: 0.85rem; }
+
             .btn { padding: 13px 24px; font-size: 0.8rem; }
+
             .diff-grid { grid-template-columns: 1fr; gap: 10px; }
             .for-who-grid { grid-template-columns: 1fr; }
             .diff-card { padding: 24px 16px; }
+
             .bee-philosophy { grid-template-columns: 1fr 1fr; gap: 8px; }
             .bee-product-grid { gap: 8px; }
+
             .units-grid { grid-template-columns: 1fr; gap: 8px; }
+            .unit-card { padding: 20px 14px; border-radius: 14px; }
+
             .franchise-shell { padding: 20px 14px; }
             .franchise-content .section-title,
             .franchise-aside h3 { font-size: 1.28rem; }
-            .franchise-point { align-items: center; }
             .franchise-point span:last-child { font-size: 0.84rem; }
+
             .about-image { max-width: 92%; }
-            .unit-card { padding: 20px 14px; border-radius: 14px; }
+
             .pain-item h3 { font-size: 0.95rem; }
             .pain-item p { font-size: 0.8rem; }
             .pain-icon { width: 36px; height: 36px; font-size: 0.95rem; border-radius: 10px; }
+
             .method-step { padding: 24px 16px; border-radius: 14px; }
-            .step-number {
-            font-family: var(--sans);
-            font-size: 3rem;
-            font-weight: 700;
-            letter-spacing: -0.04em;
-            line-height: 1;
-            font-variant-numeric: tabular-nums lining-nums;
-            color: var(--terracota-light);
-            opacity: 0.7;
-            margin-bottom: 20px;
+
+            .footer-top { grid-template-columns: 1fr; }
+            .footer-bottom {
+                flex-direction: column;
+                gap: 8px;
+                text-align: center;
+            }
+
+            .sticky-cta {
+                display: inline-flex;
+            }
         }
+
     </style>
 
     <!-- Microsoft Clarity — analytics de comportamento -->
@@ -2395,7 +2489,7 @@
 <main id="main">
     <header class="hero">
         <div class="hero-watermark" aria-hidden="true">
-            <img src="/images/icons/icon-caracol.webp" alt="" decoding="async" width="500" height="500">
+            <img src="/images/logos/hero-watermark.svg" alt="" decoding="async" width="500" height="500">
         </div>
         <div class="container">
             <div class="hero-content">
