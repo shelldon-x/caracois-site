@@ -376,6 +376,55 @@
         .booking-footer a { color: var(--terracota); text-decoration: none; font-weight: 500; }
         .booking-footer a:hover { text-decoration: underline; }
         body.ui-locked { overflow: hidden !important; position: fixed; width: 100%; }
+        @media (max-width: 768px) {
+            .booking-grid { grid-template-columns: 1fr; }
+            .booking-nearest-card { flex-direction: column; align-items: flex-start !important; gap: 12px; }
+            .booking-nearest-cta { align-self: flex-end; }
+            .booking-modal { padding: 28px 16px 20px; border-radius: 20px; }
+            .booking-modal-title, .booking-header h3 { font-size: 1.2rem; }
+            .wa-modal { padding: 28px 16px 20px; border-radius: 20px; }
+            .wa-modal-title, .wa-modal-header h3 { font-size: 1.2rem; }
+            .wa-unit-item { padding: 12px 12px; }
+        }
+                /* MOBILE MENU */
+        .mobile-menu { position: fixed; top: 0; right: -100%; width: min(340px, 88vw); height: 100%; background: var(--white); z-index: 1100; padding: 72px 32px 40px; display: flex; flex-direction: column; gap: 4px; transition: right 0.4s var(--ease-out); overflow-y: auto; }
+        .mobile-menu.open { right: 0; box-shadow: -20px 0 60px rgba(0,0,0,0.18); }
+        .mobile-menu a { display: block; padding: 14px 0; font-size: 1rem; color: var(--text); text-decoration: none; border-bottom: 1px solid var(--border); font-weight: 300; }
+        .mobile-menu a:hover { color: var(--terracota); }
+        .mobile-close { position: absolute; top: 20px; right: 20px; background: none; border: none; font-size: 1.5rem; color: var(--text-muted); cursor: pointer; }
+        .mobile-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 1050; }
+        .mobile-overlay.open { display: block; }
+
+        .whatsapp-float { position: fixed; bottom: 28px; right: 28px; z-index: 999; width: 56px; height: 56px; border-radius: 50%; background: #25D366; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 24px rgba(37,211,102,0.35); transition: all 0.3s; animation: float 3s ease-in-out infinite; cursor: pointer; border: none; }
+        .whatsapp-float:hover { transform: scale(1.1); animation: none; }
+        .whatsapp-float svg { width: 28px; height: 28px; fill: white; display: block; }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .article-grid { grid-template-columns: 1fr; }
+            .article-sidebar { position: static; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        }
+        @media (max-width: 768px) {
+            .nav-links, .nav-social { display: none; }
+            .mobile-toggle { display: block; }
+            .footer-top { grid-template-columns: 1fr; gap: 32px; }
+            .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+            .page-hero { padding: 120px 0 56px; }
+            .cta-strip-btns { flex-direction: column; align-items: center; }
+            .booking-grid { grid-template-columns: 1fr; }
+            .article-sidebar { grid-template-columns: 1fr; }
+        }
+    
+        /* === MOBILE HEADER FIX === */
+        @media (max-width: 768px) {
+            nav { min-height: 64px; padding: 14px 0; }
+            nav .container { min-height: 36px; }
+            .nav-logo img { width: 150px; }
+            .mobile-toggle { display: flex; flex-direction: column; justify-content: center; }
+            .page-hero { padding-top: 88px; }
+            .breadcrumb { scroll-margin-top: 64px; }
+            .franquia-hero { padding-top: 88px; }
+        }
         @media (max-width: 480px) {
             nav { min-height: 60px; padding: 12px 0; }
             .nav-logo img { width: 136px; }
@@ -383,6 +432,108 @@
             .franquia-hero { padding-top: 80px; }
         }
     
+        /* FINAL GLOBAL FIX */
+
+        html, body { overflow-x: hidden !important; }
+        .container, .hero-content, .section-intro, .nav-right, .mobile-menu,
+        .knowledge-grid, .knowledge-card, .franchise-grid, .franchise-shell,
+        .market-grid, .differentials-grid, .support-grid, .steps-grid, .faq-grid,
+        .form-grid, .cta-grid, .article-grid, .content-grid, .units-grid, .gallery-grid {
+            min-width: 0;
+        }
+
+        .nav-social a,
+        .footer-social-links a,
+        .social-icon-link { overflow: visible !important; }
+
+        .nav-social svg,
+        .footer-social-links svg,
+        .social-icon-link svg {
+            width: 22px;
+            height: 22px;
+            display: block;
+            flex-shrink: 0;
+            overflow: visible;
+        }
+
+        .mobile-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(20,20,20,0.6);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            z-index: 9998;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+        .mobile-overlay.open { opacity: 1; visibility: visible; }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 86vw;
+            max-width: 360px;
+            height: 100vh;
+            background: var(--white);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            padding: 80px 28px 40px;
+            gap: 0;
+            transition: right 0.35s var(--ease-out);
+            box-shadow: -8px 0 40px rgba(0,0,0,0.15);
+            overflow-y: auto;
+        }
+        .mobile-menu.open { right: 0; }
+
+        .mobile-menu a {
+            font-family: var(--sans);
+            font-size: 0.95rem;
+            font-weight: 400;
+            color: var(--text);
+            text-decoration: none;
+            padding: 14px 0;
+            border-bottom: 1px solid var(--border);
+            transition: color 0.2s;
+        }
+        .mobile-menu a:last-of-type { border-bottom: none; }
+        .mobile-menu a:hover { color: var(--terracota); }
+
+        .mobile-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--bg-soft);
+            border: none;
+            color: var(--text);
+            font-size: 1.4rem;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.2s;
+        }
+        .mobile-close:hover { background: var(--terracota); color: var(--white); }
+
+        body.ui-locked { overflow: hidden !important; position: fixed; width: 100%; }
+
+        .mobile-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+        .mobile-toggle span {
+            display: block;
+            width: 24px;
+            height: 2.5px;
+            background: var(--white);
+            margin: 5px 0;
+            border-radius: 3px;
+            transition: all 0.3s;
+        }
+        nav.scrolled .mobile-toggle span { background: var(--black); }
+
         .hero-watermark {
             position: absolute;
             right: -70px;
@@ -401,39 +552,46 @@
             display: block;
         }
 
+        .section-title { text-wrap: balance; letter-spacing: -0.01em; }
+        .section-desc, .hero-sub, .page-hero-sub, .hero-local .hero-sub { text-wrap: pretty; }
 
-        @media (max-width: 1360px) {
-            .nav-right { gap: 24px; }
-            .nav-links { gap: 18px; }
-            .nav-links a { font-size: 0.72rem; }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--terracota), var(--terracota-dark));
+            box-shadow: 0 10px 28px rgba(155,68,66,0.22);
         }
 
         @media (max-width: 1180px) {
             .nav-links, .nav-social, .nav-cta-btn { display: none !important; }
-            .mobile-toggle { display: block; }
+            .mobile-toggle { display: block !important; }
         }
 
-        @media (max-width: 1024px) {
-            .pain-grid, .about-grid, .assessment-grid, .transition-grid, .hero-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
+        @media (max-width: 900px) {
+            .knowledge-grid,
+            .market-grid, .differentials-grid, .support-grid, .steps-grid, .faq-grid,
+            .form-grid, .cta-grid, .units-grid, .gallery-grid, .proof-grid, .services-grid,
+            .bee-product-grid, .bee-philosophy, .method-steps, .diff-grid, .article-grid, .content-grid {
+                grid-template-columns: 1fr !important;
             }
-            .method-steps { grid-template-columns: repeat(2, 1fr); gap: 16px; }
-            .services-grid, .proof-grid { grid-template-columns: 1fr; }
-            .diff-grid { grid-template-columns: repeat(2, 1fr); }
-            .units-grid, .gallery-grid, .knowledge-grid { grid-template-columns: repeat(2, 1fr); }
-            .bee-product-grid { grid-template-columns: repeat(3, 1fr); gap: 14px; }
-            .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
         }
 
         @media (max-width: 768px) {
-            section { padding: 72px 0; }
-            .container { padding: 0 20px; }
-            .nav-logo img { width: 200px; }
+            nav .container {
+                display: flex !important;
+                align-items: center !important;
+                justify-content: space-between !important;
+            }
+
+            .nav-right {
+                display: flex !important;
+                align-items: center !important;
+                gap: 0 !important;
+            }
+
             .hero, .hero-local, .page-hero {
                 min-height: auto;
-                padding: 132px 0 84px;
+                padding: 124px 0 72px !important;
             }
+
             .hero-watermark {
                 width: min(78vw, 360px) !important;
                 height: auto !important;
@@ -441,52 +599,101 @@
                 bottom: -8% !important;
                 opacity: 0.045 !important;
             }
-            .hero h1, .hero-local h1, .page-hero h1 {
-                font-size: clamp(1.8rem, 7vw, 2.8rem);
-                line-height: 1.12;
+
+            .section-intro {
+                text-align: left !important;
+                max-width: 100% !important;
             }
-            .hero-sub, .page-hero-sub {
-                font-size: 0.92rem;
-                max-width: 100%;
-                margin-bottom: 36px;
+
+            .section-intro .section-desc {
+                margin-left: 0 !important;
+                margin-right: 0 !important;
             }
-            .hero-ctas, .transition-cta, .franchise-actions { flex-direction: column; width: 100%; }
-            .hero-ctas .btn, .transition-cta .btn, .franchise-actions .btn { width: 100%; justify-content: center; }
-            .hero-badge { font-size: 0.62rem; padding: 7px 14px; margin-bottom: 24px; }
-            .method-steps, .diff-grid, .units-grid, .gallery-grid, .knowledge-grid, .bee-product-grid, .bee-philosophy { grid-template-columns: 1fr !important; }
-            .comparison-slider { display: none !important; }
-            .franchise-shell { padding: 24px 18px; border-radius: 28px; overflow: hidden; }
-            .franchise-grid { grid-template-columns: 1fr !important; gap: 18px; }
-            .franchise-content, .franchise-aside { width: 100%; max-width: 100%; min-width: 0; }
-            .franchise-points { grid-template-columns: 1fr !important; gap: 12px; }
-            .franchise-point { padding: 14px 14px; align-items: center; border-radius: 16px; }
-            .franchise-point-icon { width: 46px; height: 46px; font-size: 1.15rem; line-height: 1; }
-            .franchise-aside { margin-top: 4px; padding: 24px 20px; border-radius: 24px; }
-            .franchise-aside h3 { font-size: 1.45rem; line-height: 1.2; margin-bottom: 12px; }
-            .franchise-aside p { font-size: 0.88rem; line-height: 1.65; }
-            .franchise-mini-list span { font-size: 0.82rem; line-height: 1.45; align-items: flex-start; }
-            .about-image { max-width: 88%; margin: 8px auto 0; }
-            .about-image img { border-radius: 22px; aspect-ratio: 4/5; object-fit: cover; }
-            .footer-top { grid-template-columns: 1fr; }
-            .sticky-cta { display: inline-flex; }
+
+            .knowledge-grid {
+                display: grid !important;
+                grid-template-columns: 1fr !important;
+                gap: 16px !important;
+            }
+
+            .knowledge-card {
+                display: block !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                min-height: 0 !important;
+                padding: 24px 20px !important;
+                border-radius: 24px !important;
+            }
+
+            .knowledge-card-num {
+                font-size: 2rem !important;
+                margin-bottom: 12px !important;
+                opacity: 0.26 !important;
+            }
+
+            .knowledge-card h3 {
+                font-size: 1.6rem !important;
+                line-height: 1.15 !important;
+                letter-spacing: -0.01em !important;
+                margin-bottom: 12px !important;
+                word-break: normal !important;
+            }
+
+            .knowledge-card p {
+                font-size: 0.95rem !important;
+                line-height: 1.72 !important;
+                word-break: normal !important;
+            }
+
+            .franchise-grid,
+            .market-grid, .differentials-grid, .support-grid, .steps-grid, .faq-grid,
+            .form-grid, .cta-grid {
+                display: grid !important;
+                grid-template-columns: 1fr !important;
+                gap: 16px !important;
+            }
+
+            .franchise-shell { padding: 24px 18px !important; border-radius: 28px !important; overflow: hidden !important; }
+
+            .market-card, .diff-card, .support-card, .step-card, .faq-card,
+            .form-card, .franchise-card, .franchise-point {
+                width: 100% !important;
+                max-width: 100% !important;
+                padding: 24px 20px !important;
+                border-radius: 24px !important;
+            }
+
+            .franchise-point-icon {
+                width: 46px !important;
+                height: 46px !important;
+                font-size: 1.15rem !important;
+                line-height: 1 !important;
+            }
+
+            .form-card input, .form-card textarea, .form-card select,
+            .franchise-form-wrap input, .franchise-form-wrap textarea, .franchise-form-wrap select {
+                width: 100% !important;
+                max-width: 100% !important;
+                min-width: 0 !important;
+                font-size: 16px !important;
+            }
+
+            .form-card .btn, .franchise-form-wrap .btn, .franchise-form-wrap button, .form-card button,
+            .hero-ctas .btn, .transition-cta .btn, .franchise-actions .btn {
+                width: 100% !important;
+                justify-content: center !important;
+            }
         }
 
         @media (max-width: 480px) {
-            section { padding: 56px 0; }
-            .container { padding: 0 16px; }
-            .hero, .hero-local, .page-hero { padding: 112px 0 64px; }
-            .hero h1, .hero-local h1, .page-hero h1 { font-size: 1.6rem; margin-bottom: 18px; }
-            .hero-sub, .page-hero-sub { font-size: 0.85rem; margin-bottom: 28px; }
-            .section-label { font-size: 0.62rem; margin-bottom: 10px; }
-            .section-title { font-size: 1.35rem; margin-bottom: 12px; }
-            .section-desc { font-size: 0.85rem; }
-            .btn { padding: 13px 24px; font-size: 0.8rem; }
-            .franchise-shell { padding: 20px 14px; }
-            .franchise-content .section-title, .franchise-aside h3 { font-size: 1.28rem; }
-            .franchise-point span:last-child { font-size: 0.84rem; }
-            .units-grid { grid-template-columns: 1fr !important; gap: 8px; }
-            .unit-card { padding: 20px 14px; border-radius: 14px; }
-            .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+            .hero, .hero-local, .page-hero { padding: 112px 0 64px !important; }
+            .knowledge-card { padding: 22px 18px !important; }
+            .knowledge-card h3 { font-size: 1.42rem !important; }
+            .knowledge-card p { font-size: 0.9rem !important; }
+            .market-card h3, .diff-card h3, .support-card h3, .step-card h3,
+            .form-card h3, .franchise-card h3 { font-size: 1.45rem !important; }
+            .market-card p, .diff-card p, .support-card p, .step-card p,
+            .faq-card p, .form-card p, .franchise-card p { font-size: 0.95rem !important; line-height: 1.7 !important; }
         }
 
 </style>
@@ -499,7 +706,6 @@
             y.parentNode.insertBefore(t,y);
         })(window, document, "clarity", "script", "wb0w1oc0ou");
     </script>
-
     <link rel="preload" as="image" href="/images/logos/logo-nude.svg">
 </head>
 <body>
@@ -518,7 +724,7 @@
 <nav id="navbar" role="navigation" aria-label="Navegação principal">
     <div class="container">
         <a href="/" class="nav-logo" aria-label="Studio Caracóis - Página inicial">
-            <img src="/images/logos/logo-nude.svg" alt="Logo Studio Caracóis" id="navLogoImg" width="180" height="34" decoding="async">
+            <img src="/images/logos/logo-nude.svg" data-terracota-svg="/images/logos/logo-terracota.svg" data-nude-svg="/images/logos/logo-nude.svg" alt="Logo Studio Caracóis" id="navLogoImg" width="180" height="34" decoding="async">
         </a>
         <div class="nav-right">
             <div class="nav-links">
@@ -596,8 +802,7 @@
 
     <!-- PAGE HERO -->
     <section class="page-hero">
-        <div class="hero-watermark" aria-hidden="true"><img src="/images/logos/hero-watermark.svg" alt="" decoding="async" width="500" height="500"></div>
-<div class="container">
+        <div class="container">
             <div class="page-hero-content">
                 <div class="page-hero-badge">Studio Caracóis — Educação Capilar</div>
                 <h1>Transição capilar: como passar por essa fase com <em>segurança e clareza</em></h1>
@@ -783,7 +988,7 @@
     <div class="container">
         <div class="footer-top">
             <div>
-                <div class="footer-logo"><img src="/images/logos/logo-nude.svg" alt="Studio Caracóis" width="140" height="26" loading="lazy" decoding="async"></div>
+                <div class="footer-logo"><img src="/images/logos/logo-nude.svg" data-terracota-svg="/images/logos/logo-terracota.svg" data-nude-svg="/images/logos/logo-nude.svg" alt="Studio Caracóis" width="140" height="26" loading="lazy" decoding="async"></div>
                 <p class="footer-desc">Especialistas em cabelos cacheados. Técnica, tratamento e produto para transformar o cabelo de verdade.</p>
                 <div class="footer-social-links">
                     <a href="https://instagram.com/studiocaracois" target="_blank" rel="noopener" aria-label="Instagram"><svg width="24" height="24"><use href="#i-ig"/></svg></a>
@@ -920,5 +1125,50 @@ function findNearestBooking(){
   },{timeout:8000,maximumAge:60000});
 }
 </script>
+
+<script>
+(function() {
+  const body = document.body;
+  const nav = document.querySelector('nav');
+  const toggle = document.querySelector('.mobile-toggle');
+  const menu = document.querySelector('.mobile-menu');
+  const overlay = document.querySelector('.mobile-overlay');
+  const closeBtn = document.querySelector('.mobile-close');
+  const logo = document.querySelector('.nav-logo img');
+
+  function onScroll() {
+    if (!nav) return;
+    if (window.scrollY > 20) {
+      nav.classList.add('scrolled');
+      if (logo) logo.src = "/images/logos/logo-nude.svg";
+    } else {
+      nav.classList.remove('scrolled');
+      if (logo) logo.src = "/images/logos/logo-terracota.svg";
+    }
+  }
+
+  function openMenu() {
+    if (!menu || !overlay) return;
+    menu.classList.add('open');
+    overlay.classList.add('open');
+    body.classList.add('ui-locked');
+  }
+
+  function closeMenu() {
+    if (!menu || !overlay) return;
+    menu.classList.remove('open');
+    overlay.classList.remove('open');
+    body.classList.remove('ui-locked');
+  }
+
+  if (toggle) toggle.addEventListener('click', openMenu);
+  if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+  if (overlay) overlay.addEventListener('click', closeMenu);
+  if (menu) menu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+</script>
+
 </body>
 </html>
