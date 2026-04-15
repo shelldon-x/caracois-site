@@ -434,64 +434,35 @@
             .franquia-hero { padding-top: 80px; }
         }
     
-        /* FINAL HERO + BEE REFINEMENT — franquia */
-        html, body { overflow-x: hidden !important; }
+/* REMOVE ANIMAÇÕES / DELAY */
+[data-aos], .aos-init, .aos-animate,
+.fade-in, .reveal, .appear, .animate {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+}
+.hidden, .is-hidden {
+    display: block !important;
+    opacity: 1 !important;
+}
 
-        .hero-watermark {
-            position: absolute;
-            right: -72px;
-            bottom: -56px;
-            opacity: 0.055 !important;
-            width: 520px !important;
-            height: 520px !important;
-            display: block !important;
-            pointer-events: none;
-            z-index: 1;
-            filter: blur(0.2px);
-        }
-        .hero-watermark img { width: 100%; height: 100%; object-fit: contain; display: block; }
 
-        @media (max-width: 900px) {
-            .market-grid, .differentials-grid, .support-grid, .steps-grid, .faq-grid, .form-grid, .cta-grid {
-                grid-template-columns: 1fr !important;
-            }
-        }
+/* REMOVE GAP HEADER */
+body { padding-top: 0 !important; }
+nav + header, header.hero, header.page-hero {
+    margin-top: 0 !important;
+}
+.hero, .page-hero {
+    padding-top: 120px !important;
+}
 
-        @media (max-width: 768px) {
-            .hero, .page-hero, .hero-local { padding-top: 124px !important; }
 
-            .hero-watermark {
-                width: min(78vw, 360px) !important;
-                right: -20% !important;
-                bottom: -8% !important;
-                opacity: 0.045 !important;
-            }
-
-            .market-grid, .differentials-grid, .support-grid, .steps-grid, .faq-grid, .form-grid, .cta-grid, .franchise-grid {
-                display: grid !important;
-                grid-template-columns: 1fr !important;
-                gap: 16px !important;
-            }
-
-            .market-card, .diff-card, .support-card, .step-card, .faq-card, .form-card, .franchise-card {
-                width: 100% !important;
-                max-width: 100% !important;
-                padding: 24px 20px !important;
-                border-radius: 24px !important;
-            }
-
-            .form-card input, .form-card textarea, .form-card select {
-                width: 100% !important;
-                max-width: 100% !important;
-                min-width: 0 !important;
-                font-size: 16px !important;
-            }
-
-            .form-card .btn, .form-card button {
-                width: 100% !important;
-                justify-content: center !important;
-            }
-        }
+.hero-watermark {
+ position:absolute; right:-60px; bottom:-40px;
+ width:480px; opacity:0.05; pointer-events:none;
+}
+.hero-watermark img { width:100%; height:100%; object-fit:contain; }
 
 </style>
     <script>
@@ -503,7 +474,6 @@
             y.parentNode.insertBefore(t,y);
         })(window, document, "clarity", "script", "wb0w1oc0ou");
     </script>
-    <link rel="preload" as="image" href="/images/logos/logo-nude.svg">
 </head>
 <body>
 
@@ -522,7 +492,7 @@
 <nav id="navbar" role="navigation" aria-label="Navegação principal">
     <div class="container">
         <a href="/" class="nav-logo" aria-label="Studio Caracóis - Página inicial">
-            <img src="/images/logos/logo-nude.svg" alt="Logo Studio Caracóis" id="navLogoImg" width="180" height="34" decoding="async">
+            <img src="/images/logos/logo-nude.png" alt="Logo Studio Caracóis" id="navLogoImg" width="180" height="34" decoding="async">
         </a>
         <div class="nav-right">
             <div class="nav-links">
@@ -717,7 +687,7 @@
                     <div class="diferencial-icon">📦</div>
                     <div class="diferencial-content">
                         <h3>Linha exclusiva de produtos</h3>
-                        <p>Acesso preferencial à Bee Cosmetics — marca parceira com condições especiais de negociação de cosméticos capilares desenvolvida especialmente para cabelos cacheados e crespos.</p>
+                        <p>Acesso preferencial à Bee Cosmetics (produtos veganos, ricos em ingredientes naturais e ideais para cabelos com curvatura) — marca parceira de cosméticos capilares desenvolvida especialmente para cabelos cacheados e crespos.</p>
                     </div>
                 </div>
                 <div class="diferencial-card reveal rd2">
@@ -846,7 +816,7 @@
     <div class="container">
         <div class="footer-top">
             <div>
-                <div class="footer-logo"><img src="/images/logos/logo-nude.svg" alt="Studio Caracóis" width="140" height="26" loading="lazy" decoding="async"></div>
+                <div class="footer-logo"><img src="/images/logos/logo-nude.png" alt="Studio Caracóis" width="140" height="26" loading="lazy" decoding="async"></div>
                 <p class="footer-desc">Especialistas em cabelos cacheados. Técnica, tratamento e produto para transformar o cabelo de verdade.</p>
                 <div class="footer-social-links">
                     <a href="https://instagram.com/studiocaracois" target="_blank" rel="noopener" aria-label="Instagram"><svg width="24" height="24"><use href="#i-ig"/></svg></a>
@@ -894,7 +864,7 @@ function openBooking(){openModal('bookingModal');}
 function openMobileMenu(){var m=document.getElementById('mm'),o=document.getElementById('mobileOverlay');if(!m||!o)return;lastFocusedElement=document.activeElement;m.classList.add('open');o.classList.add('open');m.setAttribute('aria-hidden','false');lockScroll();}
 function closeMobileMenu(){var m=document.getElementById('mm'),o=document.getElementById('mobileOverlay');if(!m)return;m.classList.remove('open');if(o)o.classList.remove('open');m.setAttribute('aria-hidden','true');unlockScroll();}
 document.addEventListener('keydown',function(e){if(e.key!=='Escape')return;if(document.getElementById('bookingModal').classList.contains('open')){closeModal('bookingModal');return;}if(document.getElementById('waModal').classList.contains('open')){closeModal('waModal');return;}if(document.getElementById('mm').classList.contains('open'))closeMobileMenu();});
-(function(){var nav=document.getElementById('navbar'),logo=document.getElementById('navLogoImg');window.addEventListener('scroll',function(){var s=window.scrollY>60;nav.classList.toggle('scrolled',s);if(logo)logo.src=s?'/images/logos/logo-terracota.svg':'/images/logos/logo-nude.svg';});})();
+(function(){var nav=document.getElementById('navbar'),logo=document.getElementById('navLogoImg');window.addEventListener('scroll',function(){var s=window.scrollY>60;nav.classList.toggle('scrolled',s);if(logo)logo.src=s?'/images/logos/logo-terracota.png':'/images/logos/logo-nude.png';});})();
 var obs=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){entry.target.classList.add('visible');obs.unobserve(entry.target);}});},{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
 document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
 function _haversine(lat1,lon1,lat2,lon2){
