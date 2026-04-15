@@ -443,182 +443,24 @@
             .franquia-hero { padding-top: 80px; }
         }
     
-        /* FINAL GLOBAL FIX */
-
-        html, body { overflow-x: hidden !important; }
-        .container, .hero-content, .section-intro, .nav-right, .mobile-menu,
-        .knowledge-grid, .knowledge-card, .franchise-grid, .franchise-shell,
-        .market-grid, .differentials-grid, .support-grid, .steps-grid, .faq-grid,
-        .form-grid, .cta-grid, .article-grid, .content-grid, .units-grid, .gallery-grid {
-            min-width: 0;
+        /* FINAL HERO GAP FIX — conteúdo */
+        body { padding-top: 0 !important; }
+        nav + header,
+        nav + .sticky-cta + header,
+        .sticky-cta + header,
+        header.hero,
+        header.page-hero,
+        header.hero-local {
+            margin-top: 0 !important;
         }
 
-        .nav-social a,
-        .footer-social-links a,
-        .social-icon-link { overflow: visible !important; }
-
-        .nav-social svg,
-        .footer-social-links svg,
-        .social-icon-link svg {
-            width: 22px;
-            height: 22px;
-            display: block;
-            flex-shrink: 0;
-            overflow: visible;
-        }
-
-        .mobile-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(20,20,20,0.6);
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
-            z-index: 9998;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s, visibility 0.3s;
-        }
-        .mobile-overlay.open { opacity: 1; visibility: visible; }
-
-        .mobile-menu {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 86vw;
-            max-width: 360px;
-            height: 100vh;
-            background: var(--white);
-            z-index: 9999;
-            display: flex;
-            flex-direction: column;
-            padding: 80px 28px 40px;
-            gap: 0;
-            transition: right 0.35s var(--ease-out);
-            box-shadow: -8px 0 40px rgba(0,0,0,0.15);
-            overflow-y: auto;
-        }
-        .mobile-menu.open { right: 0; }
-
-        .mobile-menu a {
-            font-family: var(--sans);
-            font-size: 0.95rem;
-            font-weight: 400;
-            color: var(--text);
-            text-decoration: none;
-            padding: 14px 0;
-            border-bottom: 1px solid var(--border);
-            transition: color 0.2s;
-        }
-        .mobile-menu a:last-of-type { border-bottom: none; }
-        .mobile-menu a:hover { color: var(--terracota); }
-
-        .mobile-close {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: var(--bg-soft);
-            border: none;
-            color: var(--text);
-            font-size: 1.4rem;
-            cursor: pointer;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            transition: all 0.2s;
-        }
-        .mobile-close:hover { background: var(--terracota); color: var(--white); }
-
-        body.ui-locked { overflow: hidden !important; position: fixed; width: 100%; }
-
-        .mobile-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
-        .mobile-toggle span {
-            display: block;
-            width: 24px;
-            height: 2.5px;
-            background: var(--white);
-            margin: 5px 0;
-            border-radius: 3px;
-            transition: all 0.3s;
-        }
-        nav.scrolled .mobile-toggle span { background: var(--black); }
-
-        .hero-watermark {
-            position: absolute;
-            right: -70px;
-            bottom: -48px;
-            opacity: 0.05;
-            width: 520px;
-            height: 520px;
-            pointer-events: none;
-            z-index: 1;
-            filter: blur(0.2px);
-        }
-        .hero-watermark img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            display: block;
-        }
-
-        .section-title { text-wrap: balance; letter-spacing: -0.01em; }
-        .section-desc, .hero-sub, .page-hero-sub, .hero-local .hero-sub { text-wrap: pretty; }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--terracota), var(--terracota-dark));
-            box-shadow: 0 10px 28px rgba(155,68,66,0.22);
-        }
-
-        @media (max-width: 1180px) {
-            .nav-links, .nav-social, .nav-cta-btn { display: none !important; }
-            .mobile-toggle { display: block !important; }
-        }
-
-        @media (max-width: 900px) {
-            .knowledge-grid,
-            .market-grid, .differentials-grid, .support-grid, .steps-grid, .faq-grid,
-            .form-grid, .cta-grid, .units-grid, .gallery-grid, .proof-grid, .services-grid,
-            .bee-product-grid, .bee-philosophy, .method-steps, .diff-grid, .article-grid, .content-grid {
-                grid-template-columns: 1fr !important;
-            }
+        .hero, .page-hero, .hero-local {
+            padding-top: 124px !important;
         }
 
         @media (max-width: 768px) {
-            nav .container {
-                display: flex !important;
-                align-items: center !important;
-                justify-content: space-between !important;
-            }
-
-            .nav-right {
-                display: flex !important;
-                align-items: center !important;
-                gap: 0 !important;
-            }
-
-            .hero, .hero-local, .page-hero {
-                min-height: auto;
-                padding: 124px 0 72px !important;
-            }
-
-            .hero-watermark {
-                width: min(78vw, 360px) !important;
-                height: auto !important;
-                right: -20% !important;
-                bottom: -8% !important;
-                opacity: 0.045 !important;
-            }
-
-            .section-intro {
-                text-align: left !important;
-                max-width: 100% !important;
-            }
-
-            .section-intro .section-desc {
-                margin-left: 0 !important;
-                margin-right: 0 !important;
+            .hero, .page-hero, .hero-local {
+                padding-top: 118px !important;
             }
 
             .knowledge-grid {
@@ -655,56 +497,12 @@
                 line-height: 1.72 !important;
                 word-break: normal !important;
             }
-
-            .franchise-grid,
-            .market-grid, .differentials-grid, .support-grid, .steps-grid, .faq-grid,
-            .form-grid, .cta-grid {
-                display: grid !important;
-                grid-template-columns: 1fr !important;
-                gap: 16px !important;
-            }
-
-            .franchise-shell { padding: 24px 18px !important; border-radius: 28px !important; overflow: hidden !important; }
-
-            .market-card, .diff-card, .support-card, .step-card, .faq-card,
-            .form-card, .franchise-card, .franchise-point {
-                width: 100% !important;
-                max-width: 100% !important;
-                padding: 24px 20px !important;
-                border-radius: 24px !important;
-            }
-
-            .franchise-point-icon {
-                width: 46px !important;
-                height: 46px !important;
-                font-size: 1.15rem !important;
-                line-height: 1 !important;
-            }
-
-            .form-card input, .form-card textarea, .form-card select,
-            .franchise-form-wrap input, .franchise-form-wrap textarea, .franchise-form-wrap select {
-                width: 100% !important;
-                max-width: 100% !important;
-                min-width: 0 !important;
-                font-size: 16px !important;
-            }
-
-            .form-card .btn, .franchise-form-wrap .btn, .franchise-form-wrap button, .form-card button,
-            .hero-ctas .btn, .transition-cta .btn, .franchise-actions .btn {
-                width: 100% !important;
-                justify-content: center !important;
-            }
         }
 
         @media (max-width: 480px) {
-            .hero, .hero-local, .page-hero { padding: 112px 0 64px !important; }
             .knowledge-card { padding: 22px 18px !important; }
             .knowledge-card h3 { font-size: 1.42rem !important; }
             .knowledge-card p { font-size: 0.9rem !important; }
-            .market-card h3, .diff-card h3, .support-card h3, .step-card h3,
-            .form-card h3, .franchise-card h3 { font-size: 1.45rem !important; }
-            .market-card p, .diff-card p, .support-card p, .step-card p,
-            .faq-card p, .form-card p, .franchise-card p { font-size: 0.95rem !important; line-height: 1.7 !important; }
         }
 
 </style>
@@ -735,7 +533,7 @@
 <nav id="navbar" role="navigation" aria-label="Navegação principal">
     <div class="container">
         <a href="/" class="nav-logo" aria-label="Studio Caracóis - Página inicial">
-            <img src="/images/logos/logo-nude.svg" data-terracota-svg="/images/logos/logo-terracota.svg" data-nude-svg="/images/logos/logo-nude.svg" alt="Logo Studio Caracóis" id="navLogoImg" width="180" height="34" decoding="async">
+            <img src="/images/logos/logo-nude.svg" alt="Logo Studio Caracóis" id="navLogoImg" width="180" height="34" decoding="async">
         </a>
         <div class="nav-right">
             <div class="nav-links">
@@ -1014,7 +812,7 @@
     <div class="container">
         <div class="footer-top">
             <div>
-                <div class="footer-logo"><img src="/images/logos/logo-nude.svg" data-terracota-svg="/images/logos/logo-terracota.svg" data-nude-svg="/images/logos/logo-nude.svg" alt="Studio Caracóis" width="140" height="26" loading="lazy" decoding="async"></div>
+                <div class="footer-logo"><img src="/images/logos/logo-nude.svg" alt="Studio Caracóis" width="140" height="26" loading="lazy" decoding="async"></div>
                 <p class="footer-desc">Especialistas em cabelos cacheados. Técnica, tratamento e produto para transformar o cabelo de verdade.</p>
                 <div class="footer-social-links">
                     <a href="https://instagram.com/studiocaracois" target="_blank" rel="noopener" aria-label="Instagram"><svg width="24" height="24"><use href="#i-ig"/></svg></a>
@@ -1151,50 +949,5 @@ function findNearestBooking(){
   },{timeout:8000,maximumAge:60000});
 }
 </script>
-
-<script>
-(function() {
-  const body = document.body;
-  const nav = document.querySelector('nav');
-  const toggle = document.querySelector('.mobile-toggle');
-  const menu = document.querySelector('.mobile-menu');
-  const overlay = document.querySelector('.mobile-overlay');
-  const closeBtn = document.querySelector('.mobile-close');
-  const logo = document.querySelector('.nav-logo img');
-
-  function onScroll() {
-    if (!nav) return;
-    if (window.scrollY > 20) {
-      nav.classList.add('scrolled');
-      if (logo) logo.src = "/images/logos/logo-nude.svg";
-    } else {
-      nav.classList.remove('scrolled');
-      if (logo) logo.src = "/images/logos/logo-terracota.svg";
-    }
-  }
-
-  function openMenu() {
-    if (!menu || !overlay) return;
-    menu.classList.add('open');
-    overlay.classList.add('open');
-    body.classList.add('ui-locked');
-  }
-
-  function closeMenu() {
-    if (!menu || !overlay) return;
-    menu.classList.remove('open');
-    overlay.classList.remove('open');
-    body.classList.remove('ui-locked');
-  }
-
-  if (toggle) toggle.addEventListener('click', openMenu);
-  if (closeBtn) closeBtn.addEventListener('click', closeMenu);
-  if (overlay) overlay.addEventListener('click', closeMenu);
-  if (menu) menu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
-})();
-</script>
-
 </body>
 </html>
