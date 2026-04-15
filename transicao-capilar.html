@@ -688,6 +688,88 @@
             transition: none !important;
         }
 
+
+        /* POLIMENTO FINAL */
+        .breadcrumb,
+        .breadcrumb-wrap,
+        .breadcrumbs,
+        .page-breadcrumb,
+        nav + .breadcrumb,
+        .hero + .breadcrumb,
+        .page-hero + .breadcrumb {
+            display: none !important;
+            height: 0 !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            border: 0 !important;
+            overflow: hidden !important;
+        }
+
+        .knowledge-card-num,
+        .kc-num,
+        .rotina-step-num,
+        .related-link-num,
+        .hero-stat-num,
+        .market-card-num {
+            font-family: var(--sans) !important;
+            font-weight: 700 !important;
+            letter-spacing: -0.04em !important;
+            line-height: 1 !important;
+            font-variant-numeric: lining-nums tabular-nums !important;
+        }
+
+        .knowledge-card-num,
+        .kc-num {
+            color: var(--terracota) !important;
+            opacity: 0.22 !important;
+        }
+
+        .rotina-step-num,
+        .related-link-num {
+            font-size: 1rem !important;
+        }
+
+        .hero-stat-num,
+        .market-card-num {
+            color: var(--terracota) !important;
+        }
+
+        .hero-watermark,
+        .franquia-hero .hero-watermark,
+        .page-hero .hero-watermark,
+        .hero .hero-watermark {
+            position: absolute !important;
+            right: -72px !important;
+            bottom: -56px !important;
+            width: 520px !important;
+            height: 520px !important;
+            opacity: 0.055 !important;
+            display: block !important;
+            pointer-events: none !important;
+            z-index: 1 !important;
+            filter: blur(0.2px) !important;
+        }
+        .hero-watermark img { width: 100%; height: 100%; object-fit: contain; display: block; }
+
+        .franquia-hero,
+        .hero,
+        .page-hero {
+            position: relative !important;
+            overflow: hidden !important;
+        }
+
+        @media (max-width: 768px) {
+            .hero-watermark,
+            .franquia-hero .hero-watermark,
+            .page-hero .hero-watermark,
+            .hero .hero-watermark {
+                width: min(78vw, 360px) !important;
+                right: -20% !important;
+                bottom: -8% !important;
+                opacity: 0.045 !important;
+            }
+        }
+
 </style>
     <script>
         (function(c,l,a,r,i,t,y){
@@ -804,15 +886,7 @@
     </section>
 
     <!-- BREADCRUMB -->
-    <nav class="breadcrumb" aria-label="Localização na página">
-        <div class="container">
-            <ol class="breadcrumb-list">
-                <li><a href="/">Home</a></li>
-                <li><a href="/central-de-conhecimento.html">Central de Conhecimento</a></li>
-                <li>Transição Capilar</li>
-            </ol>
-        </div>
-    </nav>
+
 
     <!-- ARTICLE CONTENT -->
     <section class="article-layout">

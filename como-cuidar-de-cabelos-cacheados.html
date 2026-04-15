@@ -701,6 +701,88 @@
             transition: none !important;
         }
 
+
+        /* POLIMENTO FINAL */
+        .breadcrumb,
+        .breadcrumb-wrap,
+        .breadcrumbs,
+        .page-breadcrumb,
+        nav + .breadcrumb,
+        .hero + .breadcrumb,
+        .page-hero + .breadcrumb {
+            display: none !important;
+            height: 0 !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            border: 0 !important;
+            overflow: hidden !important;
+        }
+
+        .knowledge-card-num,
+        .kc-num,
+        .rotina-step-num,
+        .related-link-num,
+        .hero-stat-num,
+        .market-card-num {
+            font-family: var(--sans) !important;
+            font-weight: 700 !important;
+            letter-spacing: -0.04em !important;
+            line-height: 1 !important;
+            font-variant-numeric: lining-nums tabular-nums !important;
+        }
+
+        .knowledge-card-num,
+        .kc-num {
+            color: var(--terracota) !important;
+            opacity: 0.22 !important;
+        }
+
+        .rotina-step-num,
+        .related-link-num {
+            font-size: 1rem !important;
+        }
+
+        .hero-stat-num,
+        .market-card-num {
+            color: var(--terracota) !important;
+        }
+
+        .hero-watermark,
+        .franquia-hero .hero-watermark,
+        .page-hero .hero-watermark,
+        .hero .hero-watermark {
+            position: absolute !important;
+            right: -72px !important;
+            bottom: -56px !important;
+            width: 520px !important;
+            height: 520px !important;
+            opacity: 0.055 !important;
+            display: block !important;
+            pointer-events: none !important;
+            z-index: 1 !important;
+            filter: blur(0.2px) !important;
+        }
+        .hero-watermark img { width: 100%; height: 100%; object-fit: contain; display: block; }
+
+        .franquia-hero,
+        .hero,
+        .page-hero {
+            position: relative !important;
+            overflow: hidden !important;
+        }
+
+        @media (max-width: 768px) {
+            .hero-watermark,
+            .franquia-hero .hero-watermark,
+            .page-hero .hero-watermark,
+            .hero .hero-watermark {
+                width: min(78vw, 360px) !important;
+                right: -20% !important;
+                bottom: -8% !important;
+                opacity: 0.045 !important;
+            }
+        }
+
 </style>
     <script>
         (function(c,l,a,r,i,t,y){
@@ -734,9 +816,10 @@
         <div class="nav-right">
             <div class="nav-links">
                 <a href="/">Início</a>
-                <a href="/central-de-conhecimento.html">Conhecimento</a>
+                <a href="/central-de-conhecimento.html" aria-current="page">Conhecimento</a>
                 <a href="/franquia.html">Franquia</a>
                 <a href="/#unidades">Unidades</a>
+                <a href="/#faq">FAQ</a>
             </div>
             <button class="nav-cta-btn" onclick="openBooking()" aria-label="Agendar avaliação">Agendar avaliação</button>
         </div>
@@ -750,14 +833,17 @@
 <div class="mobile-menu" id="mm" role="dialog" aria-label="Menu mobile" aria-modal="true" aria-hidden="true">
     <button class="mobile-close" onclick="closeMobileMenu()" aria-label="Fechar menu">&times;</button>
     <a href="/" onclick="closeMobileMenu()">Início</a>
-    <a href="/central-de-conhecimento.html" onclick="closeMobileMenu()">Conhecimento</a>
+    <a href="/central-de-conhecimento.html" onclick="closeMobileMenu()">Central de Conhecimento</a>
+    <a href="/transicao-capilar.html" onclick="closeMobileMenu()">Transição Capilar</a>
+    <a href="/cronograma-capilar-cacheado.html" onclick="closeMobileMenu()">Cronograma Capilar</a>
+    <a href="/corte-para-cabelo-cacheado.html" onclick="closeMobileMenu()">Corte para Cachos</a>
+    <a href="/como-cuidar-de-cabelos-cacheados.html" onclick="closeMobileMenu()">Como Cuidar dos Cachos</a>
     <a href="/franquia.html" onclick="closeMobileMenu()">Franquia</a>
     <a href="/#unidades" onclick="closeMobileMenu()">Unidades</a>
-    <button class="btn btn-primary" onclick="closeMobileMenu();openBooking()">
+    <button class="btn btn-primary" style="margin-top:20px; width:100%; justify-content:center;" onclick="closeMobileMenu();openBooking()">
         <svg width="18" height="18"><use href="#i-cal"/></svg> Agendar avaliação
     </button>
 </div>
-
 
 
 <!-- WA Modal -->
@@ -837,15 +923,7 @@
     </section>
 
     <!-- BREADCRUMB -->
-    <nav class="breadcrumb" aria-label="Localização na página">
-        <div class="container">
-            <ol class="breadcrumb-list">
-                <li><a href="/">Home</a></li>
-                <li><a href="/central-de-conhecimento.html">Central de Conhecimento</a></li>
-                <li>Como Cuidar de Cabelos Cacheados</li>
-            </ol>
-        </div>
-    </nav>
+
 
     <!-- ARTICLE CONTENT -->
     <section class="article-layout">
