@@ -5,16 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
     <!-- SEO Local -->
-    <title>Studio Caracóis Goiânia | Salão de Cachos Setor Bueno</title>
-    <meta name="description" content="Salão de cachos no Setor Bueno, Goiânia. Corte 3D, acidificação e tratamentos para cacheados. Agende sua avaliação gratuita.">
+    <title>Studio Caracóis Goiânia | Especialistas em Cabelos Cacheados | Setor Bueno</title>
+    <meta name="description" content="Studio Caracóis no Setor Bueno: salão especialista em cabelos cacheados. Corte 3D, Acidificação, Caracóis Care e avaliação gratuita. Agende seu horário.">
     <meta name="keywords" content="salão cabelo cacheado Goiânia, especialista cachos Setor Bueno, corte cacheado Goiânia, Studio Caracóis Setor Bueno">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://caracois.com.br/unidades/goiania-setor-bueno">
     <meta name="theme-color" content="#9B4442">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Studio Caracóis Goiânia | Salão de Cachos Setor Bueno">
-    <meta property="og:description" content="Salão de cachos no Setor Bueno, Goiânia. Corte 3D, acidificação e tratamentos para cacheados. Agende sua avaliação gratuita.">
+    <meta property="og:title" content="Studio Caracóis Goiânia | Especialistas em Cabelos Cacheados">
+    <meta property="og:description" content="Corte 3D, Acidificação, Caracóis Care e avaliação gratuita no Setor Bueno, Goiânia. Agende seu horário.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://caracois.com.br/unidades/goiania-setor-bueno">
     <meta property="og:locale" content="pt_BR">
@@ -55,7 +55,7 @@
         "longitude": -49.2537
       },
       "priceRange": "$$",
-      "image": "https://caracois.com.br/images/logos/logo-terracota.png",
+      "image": "https://caracois.com.br/images/logos/logo-terracota.svg",
       "openingHoursSpecification": [
         {
           "@type": "OpeningHoursSpecification",
@@ -132,7 +132,7 @@
         /* NAVIGATION */
         nav {
             position: fixed; top: 0; width: 100%; z-index: 1000;
-            padding: 14px 0; transition: all 0.5s var(--ease);
+            padding: 20px 0; transition: all 0.5s var(--ease);
             background: transparent;
         }
         nav.scrolled {
@@ -143,10 +143,8 @@
         }
         nav .container { display: flex; justify-content: space-between; align-items: center; }
         .nav-logo { height: auto; }
-        .nav-logo img { width: 220px; height: auto; max-height: 48px; object-fit: contain; object-position: left center; display: block; transition: all 0.3s; }
+        .nav-logo img { width: 220px; height: auto; display: block; transition: width 0.3s; }
         .nav-right { display: flex; align-items: center; gap: 32px; }
-        .nav-links ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 28px; align-items: center; }
-        .nav-links li { margin: 0; padding: 0; }
         .nav-links { display: flex; gap: 28px; align-items: center; }
         .nav-links a {
             font-size: 0.8rem; font-weight: 400; color: rgba(255,255,255,0.8);
@@ -161,7 +159,7 @@
         }
         .nav-links a:hover::after { width: 100%; }
         nav.scrolled .nav-links a { color: var(--text); }
-        nav.scrolled .nav-logo img { width: 180px; max-height: 40px; }
+        nav.scrolled .nav-logo img { width: 180px; }
         .nav-social { display: flex; gap: 12px; align-items: center; }
         .nav-social a {
             color: rgba(255,255,255,0.55);
@@ -801,36 +799,6 @@
         .exp-card-text { font-size: 0.82rem; color: var(--text-light); line-height: 1.6; font-weight: 300; }
         .exp-grid { grid-template-columns: repeat(4, 1fr); }
         /* RESPONSIVIDADE */
-        @media (max-width: 1024px) {
-            .nav-links, .nav-social, .nav-cta-btn { display: none !important; }
-            .mobile-toggle { display: block; }
-            .assessment-grid { grid-template-columns: 1fr; gap: 40px; }
-            .diff-grid { grid-template-columns: repeat(2, 1fr); }
-            .services-grid { grid-template-columns: 1fr; }
-            .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
-        }
-        @media (max-width: 768px) {
-            .nav-logo img { width: 170px; max-height: 42px; }
-            section { padding: 60px 0; }
-            .container { padding: 0 20px; }
-            .hero-local { padding: 100px 0 60px; }
-            .hero-local h1 { font-size: 1.8rem; }
-            .hero-sub { font-size: 0.9rem; }
-            .hero-ctas { flex-direction: column; width: 100%; }
-            .hero-ctas .btn { width: 100%; justify-content: center; }
-            .diff-grid { grid-template-columns: 1fr; }
-            .assessment-features { grid-template-columns: 1fr; }
-            .address-block { flex-direction: column; text-align: center; }
-            .address-actions { justify-content: center; }
-            .footer-top { grid-template-columns: 1fr; gap: 28px; }
-            .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
-            [style*="grid-template-columns: repeat(4"] { grid-template-columns: repeat(2, 1fr) !important; }
-            .exp-grid { grid-template-columns: repeat(2, 1fr) !important; }
-            .sticky-cta { display: flex; }
-            .whatsapp-float { bottom: 90px; right: 16px; width: 48px; height: 48px; }
-            body { padding-bottom: 62px; }
-            .map-container iframe { height: 200px; }
-        }
         @media (max-width: 480px) {
             section { padding: 48px 0; }
             .hero-local h1 { font-size: 1.5rem; }
@@ -841,7 +809,106 @@
             .address-block { padding: 20px; }
             .whatsapp-float { bottom: 80px; right: 14px; width: 44px; height: 44px; }
         }
-    </style>
+    
+
+        @media (max-width: 1360px) {
+            .nav-right { gap: 24px; }
+            .nav-links { gap: 18px; }
+            .nav-links a { font-size: 0.72rem; }
+        }
+
+        @media (max-width: 1180px) {
+            .nav-links, .nav-social, .nav-cta-btn { display: none !important; }
+            .mobile-toggle { display: block; }
+        }
+
+        @media (max-width: 1024px) {
+            .pain-grid, .about-grid, .assessment-grid, .transition-grid, .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .method-steps { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+            .services-grid, .proof-grid { grid-template-columns: 1fr; }
+            .diff-grid { grid-template-columns: repeat(2, 1fr); }
+            .units-grid, .gallery-grid, .knowledge-grid { grid-template-columns: repeat(2, 1fr); }
+            .bee-product-grid { grid-template-columns: repeat(3, 1fr); gap: 14px; }
+            .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+        }
+
+        @media (max-width: 768px) {
+            section { padding: 72px 0; }
+            .container { padding: 0 20px; }
+            .nav-logo img { width: 200px; }
+            .hero, .hero-local, .page-hero {
+                min-height: auto;
+                padding: 132px 0 84px;
+            }
+            .hero-watermark {
+                width: min(78vw, 360px) !important;
+                height: auto !important;
+                right: -20% !important;
+                bottom: -8% !important;
+                opacity: 0.045 !important;
+            }
+            .hero h1, .hero-local h1, .page-hero h1 {
+                font-size: clamp(1.8rem, 7vw, 2.8rem);
+                line-height: 1.12;
+            }
+            .hero-sub, .page-hero-sub {
+                font-size: 0.92rem;
+                max-width: 100%;
+                margin-bottom: 36px;
+            }
+            .hero-ctas, .transition-cta, .franchise-actions { flex-direction: column; width: 100%; }
+            .hero-ctas .btn, .transition-cta .btn, .franchise-actions .btn { width: 100%; justify-content: center; }
+            .hero-badge { font-size: 0.62rem; padding: 7px 14px; margin-bottom: 24px; }
+            .method-steps, .diff-grid, .units-grid, .gallery-grid, .knowledge-grid, .bee-product-grid, .bee-philosophy { grid-template-columns: 1fr !important; }
+            .comparison-slider { display: none !important; }
+            .franchise-shell { padding: 24px 18px; border-radius: 28px; overflow: hidden; }
+            .franchise-grid { grid-template-columns: 1fr !important; gap: 18px; }
+            .franchise-content, .franchise-aside { width: 100%; max-width: 100%; min-width: 0; }
+            .franchise-points { grid-template-columns: 1fr !important; gap: 12px; }
+            .franchise-point { padding: 14px 14px; align-items: center; border-radius: 16px; }
+            .franchise-point-icon { width: 46px; height: 46px; font-size: 1.15rem; line-height: 1; }
+            .franchise-aside { margin-top: 4px; padding: 24px 20px; border-radius: 24px; }
+            .franchise-aside h3 { font-size: 1.45rem; line-height: 1.2; margin-bottom: 12px; }
+            .franchise-aside p { font-size: 0.88rem; line-height: 1.65; }
+            .franchise-mini-list span { font-size: 0.82rem; line-height: 1.45; align-items: flex-start; }
+            .about-image { max-width: 88%; margin: 8px auto 0; }
+            .about-image img { border-radius: 22px; aspect-ratio: 4/5; object-fit: cover; }
+            .footer-top { grid-template-columns: 1fr; }
+            .sticky-cta { display: inline-flex; }
+        }
+
+        @media (max-width: 480px) {
+            section { padding: 56px 0; }
+            .container { padding: 0 16px; }
+            .hero, .hero-local, .page-hero { padding: 112px 0 64px; }
+            .hero h1, .hero-local h1, .page-hero h1 { font-size: 1.6rem; margin-bottom: 18px; }
+            .hero-sub, .page-hero-sub { font-size: 0.85rem; margin-bottom: 28px; }
+            .section-label { font-size: 0.62rem; margin-bottom: 10px; }
+            .section-title { font-size: 1.35rem; margin-bottom: 12px; }
+            .section-desc { font-size: 0.85rem; }
+            .btn { padding: 13px 24px; font-size: 0.8rem; }
+            .franchise-shell { padding: 20px 14px; }
+            .franchise-content .section-title, .franchise-aside h3 { font-size: 1.28rem; }
+            .franchise-point span:last-child { font-size: 0.84rem; }
+            .units-grid { grid-template-columns: 1fr !important; gap: 8px; }
+            .unit-card { padding: 20px 14px; border-radius: 14px; }
+            .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+        }
+
+</style>
+    <script type="text/javascript">
+      (function(c,l,a,r,i,t,y){
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window, document, "clarity", "script", "wb0w1oc0ou");
+    </script>
+
+
+    <link rel="preload" as="image" href="/images/logos/logo-nude.svg">
 </head>
 <body>
 
@@ -861,18 +928,16 @@
 <nav id="navbar" role="navigation" aria-label="Navegação principal">
     <div class="container">
         <a href="/index.html" class="nav-logo" aria-label="Studio Caracóis - Página inicial">
-            <img src="/images/logos/logo-nude.png" alt="Logo Studio Caracóis" id="navLogoImg" width="220" height="48" decoding="async">
+            <img src="/images/logos/logo-nude.svg" alt="Logo Studio Caracóis" id="navLogoImg" width="180" height="34" decoding="async">
         </a>
         <div class="nav-right">
             <div class="nav-links">
-                <ul role="list">
-                    <li><a href="#experiencia">Sua experiência</a></li>
-                    <li><a href="#servicos">Serviços</a></li>
-                    <li><a href="#transicao">Transição Capilar</a></li>
-                    <li><a href="#como-chegar">Como chegar</a></li>
-                    <li><a href="#faq">FAQ</a></li>
-                </ul>
-                </div>
+                <a href="#experiencia">Sua experiência</a>
+                <a href="#servicos">Serviços</a>
+                <a href="#transicao">Transição Capilar</a>
+                <a href="#como-chegar">Como chegar</a>
+                <a href="#faq">FAQ</a>
+            </div>
             <div class="nav-social">
                 <a href="https://instagram.com/studiocaracois" target="_blank" rel="noopener" aria-label="Instagram"><svg width="24" height="24"><use href="#i-ig"/></svg></a>
                 <a href="https://tiktok.com/@studiocaracois" target="_blank" rel="noopener" aria-label="TikTok"><svg width="24" height="24"><use href="#i-tt"/></svg></a>
@@ -908,7 +973,7 @@
     <!-- HERO LOCAL SETOR BUENO -->
     <header class="hero-local">
         <div class="hero-watermark" aria-hidden="true">
-            <img src="/images/icons/icon-caracol.webp" alt="" decoding="async" width="500" height="500">
+            <img src="/images/logos/hero-watermark.svg" alt="" decoding="async" width="500" height="500">
         </div>
         <div class="container">
             <div class="hero-content">
@@ -1215,7 +1280,7 @@
         <div class="footer-top">
             <div>
                 <div class="footer-logo">
-                    <img src="/images/logos/logo-nude.png" alt="Studio Caracóis" width="140" height="26" loading="lazy" decoding="async">
+                    <img src="/images/logos/logo-nude.svg" alt="Studio Caracóis" width="140" height="26" loading="lazy" decoding="async">
                 </div>
                 <p class="footer-desc">Especialistas em cabelos cacheados. Técnica, tratamento e produto para transformar o cabelo de verdade.</p>
                 <div class="footer-social-links">
@@ -1318,7 +1383,7 @@ document.addEventListener('keydown', function(e) {
     window.addEventListener('scroll', function() {
         var s = window.scrollY > 60;
         nav.classList.toggle('scrolled', s);
-        var next = s ? '/images/logos/logo-terracota.png' : '/images/logos/logo-nude.png';
+        var next = s ? '/images/logos/logo-terracota.svg' : '/images/logos/logo-nude.svg';
         if (logo && !logo.src.endsWith(next)) logo.src = next;
     });
 })();
