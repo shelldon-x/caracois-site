@@ -936,6 +936,7 @@
             width: 100%;
             aspect-ratio: 4/3;
             overflow: hidden;
+            touch-action: pan-y;
         }
         .comparison-img {
             position: absolute;
@@ -960,6 +961,7 @@
             margin: 0;
             -webkit-appearance: none;
             background: transparent;
+            cursor: ew-resize;
         }
         .comparison-slider-input::-webkit-slider-thumb {
             -webkit-appearance: none;
@@ -976,32 +978,47 @@
             border: none;
             cursor: ew-resize;
         }
-        .comparison-slider-input { cursor: ew-resize; }
+        .comparison-slider-input {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+            margin: 0;
+            -webkit-appearance: none;
+            background: transparent;
+            cursor: ew-resize;
+        }
         .comparison-handle {
             position: absolute;
-            top: 50%; left: 50%;
+            top: 50%;
+            left: 50%;
             transform: translate(-50%, -50%);
-            width: 48px; height: 48px;
+            width: 42px;
+            height: 42px;
             background: var(--white);
             border-radius: 50%;
-            box-shadow: 0 2px 16px rgba(0,0,0,0.35), 0 0 0 3px var(--gold);
-            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.28), 0 0 0 2px var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             pointer-events: none;
             z-index: 15;
-            transition: transform 0.2s;
         }
         .comparison-handle::before {
             content: '⇆';
-            font-size: 1rem;
+            line-height: 1;
+            font-size: 0.9rem;
             font-weight: 700;
             color: var(--terracota);
         }
         .comparison-divider {
             position: absolute;
-            top: 0; bottom: 0;
-            width: 3px;
-            background: var(--white);
-            box-shadow: 0 0 10px rgba(0,0,0,0.4);
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: rgba(255,255,255,0.95);
+            box-shadow: 0 0 10px rgba(0,0,0,0.25);
             pointer-events: none;
             z-index: 14;
         }
@@ -1036,8 +1053,9 @@
             width: 100%;
         }
         .before-after-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        
         .before-after-images {
-            touch-action: none;
+            touch-action: pan-y;
             -webkit-user-select: none;
             user-select: none;
             position: relative;
@@ -1045,7 +1063,124 @@
             overflow: hidden;
             cursor: ew-resize;
             width: 100%;
+            -webkit-tap-highlight-color: transparent;
         }
+        .before-after-images .before-img,
+        .before-after-images .after-img {
+            position: absolute;
+            inset: 0;
+        }
+        .before-after-images .before-img img,
+        .before-after-images .after-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transform: none !important;
+            transition: none !important;
+        }
+        .before-after-images .after-img {
+            z-index: 2;
+            clip-path: inset(0 50% 0 0);
+        }
+        .mini-range {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 6;
+            margin: 0;
+            -webkit-appearance: none;
+            background: transparent;
+            cursor: ew-resize;
+        }
+        .mini-range::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 44px;
+            height: 44px;
+            background: transparent;
+            border: none;
+            cursor: ew-resize;
+        }
+        .mini-range::-moz-range-thumb {
+            width: 44px;
+            height: 44px;
+            background: transparent;
+            border: none;
+            cursor: ew-resize;
+        }
+        .mini-handle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 48px;
+            height: 48px;
+            background: var(--white);
+            border-radius: 50%;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.35), 0 0 0 3px var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+            z-index: 15;
+        }
+        .mini-handle::before {
+            content: '⇆';
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--terracota);
+            line-height: 1;
+        }
+        .mini-divider {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 3px;
+            background: var(--white);
+            box-shadow: 0 0 10px rgba(0,0,0,0.4);
+            pointer-events: none;
+            z-index: 14;
+        }
+        .before-after-card:hover .before-img img,
+        .before-after-card:hover .after-img img {
+            transform: none !important;
+        }
+        @media (max-width: 768px) {
+            .mini-handle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 48px;
+            height: 48px;
+            background: var(--white);
+            border-radius: 50%;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.35), 0 0 0 3px var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+            z-index: 15;
+        }
+            .mini-range::-webkit-slider-thumb {
+                width: 40px;
+                height: 40px;
+            }
+            .mini-range::-moz-range-thumb {
+                width: 40px;
+                height: 40px;
+            }
+            .comparison-handle {
+                width: 40px;
+                height: 40px;
+            }
+            .comparison-handle::before {
+                font-size: 0.85rem;
+            }
+        }
+
         .before-after-images .before-img,
         .before-after-images .after-img {
             position: absolute;
@@ -1061,27 +1196,30 @@
         .before-after-images .after-img { z-index: 2; clip-path: inset(0 50% 0 0); }
         .mini-handle {
             position: absolute;
-            top: 50%; left: 50%;
+            top: 50%;
+            left: 50%;
             transform: translate(-50%, -50%);
-            width: 42px; height: 42px;
+            width: 48px;
+            height: 48px;
             background: var(--white);
             border-radius: 50%;
-            box-shadow: 0 2px 16px rgba(0,0,0,0.28), 0 0 0 2px var(--gold);
-            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.35), 0 0 0 3px var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             pointer-events: none;
-            z-index: 5;
-            font-size: 0.9rem;
-            color: var(--terracota);
-            font-weight: 700;
+            z-index: 15;
         }
         .mini-divider {
             position: absolute;
-            top: 0; bottom: 0; left: 50%;
-            width: 2px;
-            background: rgba(255,255,255,0.95);
-            box-shadow: 0 0 10px rgba(0,0,0,0.25);
-            z-index: 4;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 3px;
+            background: var(--white);
+            box-shadow: 0 0 10px rgba(0,0,0,0.4);
             pointer-events: none;
+            z-index: 14;
         }
         .before-after-card:hover .before-img img,
         .before-after-card:hover .after-img img { transform: scale(1.05); }
@@ -2442,14 +2580,28 @@
         }
         .mini-handle::before {
             content: '⇆';
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--terracota);
             line-height: 1;
         }
         @media (max-width: 768px) {
             .mini-handle {
-                width: 40px;
-                height: 40px;
-                font-size: 0.85rem;
-            }
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 48px;
+            height: 48px;
+            background: var(--white);
+            border-radius: 50%;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.35), 0 0 0 3px var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+            z-index: 15;
+        }
         }
 
 </style>
@@ -2967,7 +3119,8 @@
                         <div class="before-img"><img src="/images/gallery/before1.webp" alt="Antes do protocolo Corte 3D + Caracóis Care + Acidificação" loading="lazy" decoding="async" width="600" height="600"></div>
                         <div class="after-img"><img src="/images/gallery/after1.webp" alt="Depois do protocolo Corte 3D + Caracóis Care + Acidificação" loading="lazy" decoding="async" width="600" height="600"></div>
                         <div class="mini-divider"></div>
-                        <div class="mini-handle">◀▶</div>
+                        <div class="mini-handle"></div>
+                        <input type="range" min="0" max="100" value="50" class="mini-range" aria-label="Comparar antes e depois">
                     </div>
                     <div class="before-after-info"><h4>Corte 3D + Caracóis Care + Acidificação</h4><p>Definição intensa, brilho alinhado e curvatura com acabamento premium</p></div>
                 </div>
@@ -2977,7 +3130,8 @@
                         <div class="before-img"><img src="/images/gallery/before2.webp" alt="Antes do protocolo Corte 3D + Caracóis Care" loading="lazy" decoding="async" width="600" height="600"></div>
                         <div class="after-img"><img src="/images/gallery/after2.webp" alt="Depois do protocolo Corte 3D + Caracóis Care" loading="lazy" decoding="async" width="600" height="600"></div>
                         <div class="mini-divider"></div>
-                        <div class="mini-handle">◀▶</div>
+                        <div class="mini-handle"></div>
+                        <input type="range" min="0" max="100" value="50" class="mini-range" aria-label="Comparar antes e depois">
                     </div>
                     <div class="before-after-info"><h4>Corte 3D + Caracóis Care</h4><p>Movimento tridimensional, tratamento profundo e cachos com presença</p></div>
                 </div>
@@ -2987,7 +3141,8 @@
                         <div class="before-img"><img src="/images/gallery/before3.webp" alt="Antes do protocolo Corte 3D + Acidificação" loading="lazy" decoding="async" width="600" height="600"></div>
                         <div class="after-img"><img src="/images/gallery/after3.webp" alt="Depois do protocolo Corte 3D + Acidificação" loading="lazy" decoding="async" width="600" height="600"></div>
                         <div class="mini-divider"></div>
-                        <div class="mini-handle">◀▶</div>
+                        <div class="mini-handle"></div>
+                        <input type="range" min="0" max="100" value="50" class="mini-range" aria-label="Comparar antes e depois">
                     </div>
                     <div class="before-after-info"><h4>Corte 3D + Acidificação</h4><p>Forma mais limpa, porosidade controlada e frizz visivelmente reduzido</p></div>
                 </div>
@@ -2997,7 +3152,8 @@
                         <div class="before-img"><img src="/images/gallery/before4.webp" alt="Antes do protocolo Caracóis Care + Acidificação" loading="lazy" decoding="async" width="600" height="600"></div>
                         <div class="after-img"><img src="/images/gallery/after4.webp" alt="Depois do protocolo Caracóis Care + Acidificação" loading="lazy" decoding="async" width="600" height="600"></div>
                         <div class="mini-divider"></div>
-                        <div class="mini-handle">◀▶</div>
+                        <div class="mini-handle"></div>
+                        <input type="range" min="0" max="100" value="50" class="mini-range" aria-label="Comparar antes e depois">
                     </div>
                     <div class="before-after-info"><h4>Caracóis Care + Acidificação</h4><p>Recuperação perceptível, toque mais sedoso e definição com controle elegante</p></div>
                 </div>
@@ -3845,70 +4001,25 @@ document.querySelectorAll('.before-after-images').forEach(function(container) {
     var afterImg = container.querySelector('.after-img');
     var handle = container.querySelector('.mini-handle');
     var divider = container.querySelector('.mini-divider');
-    if (!afterImg || !handle) return;
+    var range = container.querySelector('.mini-range');
+    if (!afterImg || !handle || !range) return;
 
-    var dragging = false;
-
-    function updateClipFromPct(pct) {
-        pct = Math.max(0, Math.min(100, pct));
+    function updateMiniSlider(value) {
+        var pct = Math.max(0, Math.min(100, Number(value)));
         afterImg.style.clipPath = 'inset(0 ' + (100 - pct) + '% 0 0)';
         handle.style.left = pct + '%';
         if (divider) divider.style.left = pct + '%';
     }
 
-    function updateClip(x) {
-        var rect = container.getBoundingClientRect();
-        var pct = ((x - rect.left) / rect.width) * 100;
-        updateClipFromPct(pct);
-    }
-
-    function startDrag(clientX) {
-        dragging = true;
-        updateClip(clientX);
-    }
-
-    function stopDrag() {
-        dragging = false;
-    }
-
-    container.addEventListener('pointerdown', function(e) {
-        startDrag(e.clientX);
-        if (container.setPointerCapture) {
-            try { container.setPointerCapture(e.pointerId); } catch(ex) {}
-        }
+    range.addEventListener('input', function() {
+        updateMiniSlider(this.value);
     });
 
-    container.addEventListener('pointermove', function(e) {
-        if (dragging) updateClip(e.clientX);
+    range.addEventListener('change', function() {
+        updateMiniSlider(this.value);
     });
 
-    container.addEventListener('pointerup', function(e) {
-        stopDrag();
-        if (container.releasePointerCapture) {
-            try { container.releasePointerCapture(e.pointerId); } catch(ex) {}
-        }
-    });
-
-    container.addEventListener('pointercancel', stopDrag);
-    container.addEventListener('pointerleave', stopDrag);
-
-    container.addEventListener('touchstart', function(e) {
-        if (!e.touches || !e.touches.length) return;
-        startDrag(e.touches[0].clientX);
-    }, { passive: true });
-
-    container.addEventListener('touchmove', function(e) {
-        if (!dragging || !e.touches || !e.touches.length) return;
-        updateClip(e.touches[0].clientX);
-    }, { passive: true });
-
-    container.addEventListener('touchend', stopDrag, { passive: true });
-
-    container.addEventListener('click', function(e) {
-        updateClip(e.clientX);
-    });
-
-    updateClipFromPct(50);
+    updateMiniSlider(range.value || 50);
 });
 
 /* =========================
