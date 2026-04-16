@@ -20,6 +20,8 @@
     <meta property="og:locale" content="pt_BR">
     <meta property="og:site_name" content="Studio Caracóis">
     <meta property="og:image" content="https://caracois.com.br/images/og/og-asa-norte.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
 
     <!-- Favicon -->
     <link rel="icon" href="/favicon.ico" sizes="any">
@@ -30,13 +32,14 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
 
     <!-- Schema LocalBusiness para Asa Norte -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "HairSalon",
+      "parentOrganization": {"@type": "Organization", "@id": "https://caracois.com.br/#organization"},
       "name": "Studio Caracóis — Asa Norte",
       "description": "Salão especializado em cabelos cacheados na Asa Norte, Brasília. Corte 3D, Acidificação, Caracóis Care e avaliação gratuita.",
       "url": "https://caracois.com.br/unidades/brasilia-asa-norte",
@@ -78,12 +81,12 @@
             --nude-ultra: #FBF6F5;
             --white: #FFFFFF;
             --black: #141414;
-            --black-soft: #1F1F1F;
+           
             --gold: #C4A265;
             --gold-light: #D4B97A;
             --text: #2A2A2A;
             --text-light: #444;
-            --text-muted: #6c6c6c;
+            --text-muted: #5C5C5C;
             --border: #E8E8E8;
             --bg-soft: #F6F6F6;
             --serif: 'Cormorant Garamond', Georgia, serif;
@@ -655,7 +658,7 @@
         .cta-final-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
 
         /* FOOTER */
-        footer { background: var(--black); color: rgba(255,255,255,0.42); padding: 60px 0 32px; }
+        footer { background: var(--black); color: rgba(255,255,255,0.58); padding: 60px 0 32px; }
         .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
         .footer-logo { height: auto; margin-bottom: 16px; opacity: 0.9; }
         .footer-logo img { width: 220px; height: auto; display: block; }
@@ -681,7 +684,7 @@
         .footer-col a {
             display: block;
             font-size: 0.8rem;
-            color: rgba(255,255,255,0.42);
+            color: rgba(255,255,255,0.58);
             text-decoration: none;
             margin-bottom: 10px;
             font-weight: 300;
@@ -1085,7 +1088,27 @@
             .bee-product-info p { font-size: 0.72rem; }
         }
 
-</style>
+
+        /* Scroll lock para modais */
+        body.ui-locked {
+            overflow: hidden !important;
+            touch-action: none;
+        }
+
+    
+        /* ACESSIBILIDADE: respeita preferência de movimento reduzido (WCAG 2.3.3) */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+            .reveal { opacity: 1 !important; transform: none !important; }
+            html { scroll-behavior: auto !important; }
+        }
+
+    </style>
 
     <script type="text/javascript">
       (function(c,l,a,r,i,t,y){
@@ -1098,6 +1121,10 @@
     <link rel="preload" as="image" href="/images/logos/logo-nude.svg">
 </head>
 <body>
+<noscript>
+<style>.noscript-banner{background:#9B4442;color:#fff;padding:16px 24px;text-align:center;font-family:system-ui,sans-serif;font-size:.9rem;position:relative;z-index:9999}.noscript-banner a{color:#fff;text-decoration:underline;font-weight:600;margin:0 8px}</style>
+<div class="noscript-banner">Para melhor experiência, habilite o JavaScript. Ou agende pelo WhatsApp:<a href="https://wa.me/5561995251477">WhatsApp Asa Norte</a></div>
+</noscript>
 
 <a href="#main" class="skip-link">Pular para o conteúdo principal</a>
 
@@ -1114,7 +1141,7 @@
 <!-- NAVIGATION -->
 <nav id="navbar" role="navigation" aria-label="Navegação principal">
     <div class="container">
-        <a href="/index.html" class="nav-logo" aria-label="Studio Caracóis - Página inicial">
+        <a href="/" class="nav-logo" aria-label="Studio Caracóis - Página inicial">
             <img src="/images/logos/logo-nude.svg" alt="Logo Studio Caracóis" id="navLogoImg" width="180" height="34" decoding="async">
         </a>
         <div class="nav-right">
@@ -1555,8 +1582,8 @@
                     <a href="https://youtube.com/@studiocaracois" target="_blank" rel="noopener" aria-label="YouTube"><svg width="24" height="24"><use href="#i-yt"/></svg></a>
                 </div>
             </div>
-            <div class="footer-col"><h4>Navegação</h4><a href="/index.html">Home</a><a href="/index.html#experiencia">Sua experiência</a><a href="/index.html#servicos">Serviços</a><a href="/index.html#transicao">Transição Capilar</a><a href="/index.html#unidades">Unidades</a></div>
-            <div class="footer-col"><h4>Serviços</h4><a href="/index.html#servicos">Corte 3D</a><a href="/index.html#servicos">Acidificação</a><a href="/index.html#servicos">Caracóis Care</a><a href="/index.html#servicos">Finalização</a></div>
+            <div class="footer-col"><h4>Navegação</h4><a href="/">Home</a><a href="/#experiencia">Sua experiência</a><a href="/#servicos">Serviços</a><a href="/#transicao">Transição Capilar</a><a href="/#unidades">Unidades</a></div>
+            <div class="footer-col"><h4>Serviços</h4><a href="/#servicos">Corte 3D</a><a href="/#servicos">Acidificação</a><a href="/#servicos">Caracóis Care</a><a href="/#servicos">Finalização</a></div>
         </div>
         <div class="footer-bottom">
             <span>&copy; 2026 Studio Caracóis. Todos os direitos reservados.</span>
@@ -1581,14 +1608,13 @@ function lockScroll() {
     if (document.body.classList.contains('ui-locked')) return;
     lastScrollY = window.scrollY || window.pageYOffset || 0;
     document.body.classList.add('ui-locked');
-    document.body.style.top = '-' + lastScrollY + 'px';
+    document.documentElement.style.scrollBehavior = 'auto';
 }
 function unlockScroll() {
     var anyOpen = document.querySelector('.mobile-menu.open, .mobile-overlay.open');
     if (anyOpen) return;
     document.body.classList.remove('ui-locked');
-    document.body.style.top = '';
-    window.scrollTo(0, lastScrollY);
+    document.documentElement.style.scrollBehavior = '';
 }
 
 /* === FOCUS TRAP === */
