@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
     <title>Studio Caracóis | Salão Especialista em Cabelos Cacheados | Corte 3D e Tratamentos</title>
-    <meta name="description" content="Studio Caracóis: salão especialista em cabelos cacheados. Corte 3D, Acidificação, Caracóis Care e avaliação gratuita. Produtos low poo. Unidades em SP, DF, GO e PE.">
+    <meta name="description" content="Especialistas em cabelos cacheados desde 2016. Corte 3D, Acidificação e avaliação gratuita em 8 unidades (SP, DF, GO, PE). Agende sua transformação.">
     <meta name="keywords" content="salão cabelo cacheado, especialista em cachos, corte para cachos, cabelo cacheado, corte 3D, acidificação capilar, caracóis care, low poo">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://caracois.com.br">
@@ -18,6 +18,8 @@
     <meta property="og:locale" content="pt_BR">
     <meta property="og:site_name" content="Studio Caracóis">
     <meta property="og:image" content="https://caracois.com.br/images/og/og-home.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="Studio Caracóis, salão especialista em cabelos cacheados">
 
     <meta name="twitter:card" content="summary_large_image">
@@ -32,10 +34,12 @@
     <link rel="manifest" href="/site.webmanifest">
 
     <link rel="preload" as="image" href="/images/logos/logo-nude.svg">
+    <link rel="preload" as="image" href="/images/logos/hero-watermark.svg">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- OTIMIZAÇÃO: reduzido de 12 para 7 pesos; ~90KB economizados -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
 
     <script type="application/ld+json">
     {
@@ -73,6 +77,142 @@
     }
     </script>
 
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://caracois.com.br/#organization",
+          "name": "Studio Caracóis",
+          "url": "https://caracois.com.br",
+          "logo": "https://caracois.com.br/images/logos/logo-terracota.svg",
+          "foundingDate": "2016",
+          "description": "Rede de salões especialistas em cabelos cacheados com 8 unidades no Brasil.",
+          "sameAs": [
+            "https://instagram.com/studiocaracois",
+            "https://tiktok.com/@studiocaracois",
+            "https://youtube.com/@studiocaracois"
+          ]
+        },
+        {
+          "@type": "HairSalon",
+          "@id": "https://caracois.com.br/#unidade-tatuape",
+          "name": "Studio Caracóis — Tatuapé",
+          "parentOrganization": { "@id": "https://caracois.com.br/#organization" },
+          "url": "https://caracois.com.br/unidades/sao-paulo-tatuape",
+          "telephone": "+5511998980874",
+          "priceRange": "R$$",
+          "address": { "@type": "PostalAddress", "streetAddress": "R. Manoel dos Santos, 70", "addressLocality": "São Paulo", "addressRegion": "SP", "addressCountry": "BR" },
+          "geo": { "@type": "GeoCoordinates", "latitude": -23.5389, "longitude": -46.5766 },
+          "areaServed": "São Paulo e região metropolitana"
+        },
+        {
+          "@type": "HairSalon",
+          "@id": "https://caracois.com.br/#unidade-sao-jose",
+          "name": "Studio Caracóis — São José dos Campos",
+          "parentOrganization": { "@id": "https://caracois.com.br/#organization" },
+          "url": "https://caracois.com.br/unidades/sao-jose-dos-campos",
+          "telephone": "+5512988636566",
+          "priceRange": "R$$",
+          "address": { "@type": "PostalAddress", "addressLocality": "São José dos Campos", "addressRegion": "SP", "addressCountry": "BR" },
+          "geo": { "@type": "GeoCoordinates", "latitude": -23.1896, "longitude": -45.8841 }
+        },
+        {
+          "@type": "HairSalon",
+          "@id": "https://caracois.com.br/#unidade-aguas-claras",
+          "name": "Studio Caracóis — Águas Claras",
+          "parentOrganization": { "@id": "https://caracois.com.br/#organization" },
+          "url": "https://caracois.com.br/unidades/brasilia-aguas-claras",
+          "telephone": "+5561993837705",
+          "priceRange": "R$$",
+          "address": { "@type": "PostalAddress", "addressLocality": "Brasília", "addressRegion": "DF", "addressCountry": "BR" },
+          "geo": { "@type": "GeoCoordinates", "latitude": -15.8394, "longitude": -48.0266 }
+        },
+        {
+          "@type": "HairSalon",
+          "@id": "https://caracois.com.br/#unidade-asa-norte",
+          "name": "Studio Caracóis — Asa Norte",
+          "parentOrganization": { "@id": "https://caracois.com.br/#organization" },
+          "url": "https://caracois.com.br/unidades/brasilia-asa-norte",
+          "telephone": "+5561995251477",
+          "priceRange": "R$$",
+          "address": { "@type": "PostalAddress", "addressLocality": "Brasília", "addressRegion": "DF", "addressCountry": "BR" },
+          "geo": { "@type": "GeoCoordinates", "latitude": -15.7467, "longitude": -47.8826 }
+        },
+        {
+          "@type": "HairSalon",
+          "@id": "https://caracois.com.br/#unidade-asa-sul",
+          "name": "Studio Caracóis — Asa Sul",
+          "parentOrganization": { "@id": "https://caracois.com.br/#organization" },
+          "url": "https://caracois.com.br/unidades/brasilia-asa-sul",
+          "telephone": "+5561996942312",
+          "priceRange": "R$$",
+          "address": { "@type": "PostalAddress", "addressLocality": "Brasília", "addressRegion": "DF", "addressCountry": "BR" },
+          "geo": { "@type": "GeoCoordinates", "latitude": -15.8267, "longitude": -47.9218 }
+        },
+        {
+          "@type": "HairSalon",
+          "@id": "https://caracois.com.br/#unidade-taguatinga",
+          "name": "Studio Caracóis — Taguatinga",
+          "parentOrganization": { "@id": "https://caracois.com.br/#organization" },
+          "url": "https://caracois.com.br/unidades/brasilia-taguatinga",
+          "telephone": "+5561991446678",
+          "priceRange": "R$$",
+          "address": { "@type": "PostalAddress", "addressLocality": "Brasília", "addressRegion": "DF", "addressCountry": "BR" },
+          "geo": { "@type": "GeoCoordinates", "latitude": -15.8362, "longitude": -48.0558 }
+        },
+        {
+          "@type": "HairSalon",
+          "@id": "https://caracois.com.br/#unidade-goiania",
+          "name": "Studio Caracóis — Goiânia",
+          "parentOrganization": { "@id": "https://caracois.com.br/#organization" },
+          "url": "https://caracois.com.br/unidades/goiania-setor-bueno",
+          "telephone": "+5562993411230",
+          "priceRange": "R$$",
+          "address": { "@type": "PostalAddress", "streetAddress": "Av. Mutirão, 1932", "addressLocality": "Goiânia", "addressRegion": "GO", "addressCountry": "BR" },
+          "geo": { "@type": "GeoCoordinates", "latitude": -16.7139, "longitude": -49.2537 }
+        },
+        {
+          "@type": "HairSalon",
+          "@id": "https://caracois.com.br/#unidade-recife",
+          "name": "Studio Caracóis — Recife",
+          "parentOrganization": { "@id": "https://caracois.com.br/#organization" },
+          "url": "https://caracois.com.br/unidades/recife-boa-viagem",
+          "telephone": "+5581973056302",
+          "priceRange": "R$$",
+          "address": { "@type": "PostalAddress", "streetAddress": "Av. Conselheiro Aguiar, 1472", "addressLocality": "Recife", "addressRegion": "PE", "addressCountry": "BR" },
+          "geo": { "@type": "GeoCoordinates", "latitude": -8.1204, "longitude": -34.9013 }
+        },
+        {
+          "@type": "Service",
+          "@id": "https://caracois.com.br/#servico-corte-3d",
+          "name": "Corte 3D",
+          "provider": { "@id": "https://caracois.com.br/#organization" },
+          "description": "Técnica exclusiva de corte a seco que respeita o caimento natural de cada cacho, trabalhando mecha a mecha para garantir formato, volume equilibrado e movimento real.",
+          "serviceType": "Corte especializado em cabelos cacheados",
+          "areaServed": { "@type": "Country", "name": "Brasil" }
+        },
+        {
+          "@type": "Service",
+          "@id": "https://caracois.com.br/#servico-acidificacao",
+          "name": "Acidificação Capilar",
+          "provider": { "@id": "https://caracois.com.br/#organization" },
+          "description": "Tratamento que equilibra o pH dos fios, sela as cutículas e reduz o frizz na origem.",
+          "serviceType": "Tratamento capilar"
+        },
+        {
+          "@type": "Service",
+          "@id": "https://caracois.com.br/#servico-caracois-care",
+          "name": "Caracóis Care",
+          "provider": { "@id": "https://caracois.com.br/#organization" },
+          "description": "Protocolo completo de limpeza, nutrição, reconstrução e hidratação personalizado para cada tipo de curvatura.",
+          "serviceType": "Protocolo capilar completo"
+        }
+      ]
+    }
+    </script>
+
     <style>
         :root {
             --terracota: #9B4442;
@@ -83,12 +223,11 @@
             --nude-ultra: #FBF6F5;
             --white: #FFFFFF;
             --black: #141414;
-            --black-soft: #1F1F1F;
             --gold: #C4A265;
             --gold-light: #D4B97A;
             --text: #2A2A2A;
             --text-light: #444;
-            --text-muted: #6c6c6c;
+            --text-muted: #5C5C5C;
             --border: #E8E8E8;
             --bg-soft: #F6F6F6;
             --serif: 'Cormorant Garamond', Georgia, serif;
@@ -130,6 +269,21 @@
             outline: 2px solid var(--terracota);
             outline-offset: 4px;
             border-radius: 4px;
+        }
+
+        /* ACESSIBILIDADE: respeita preferência de movimento reduzido (WCAG 2.3.3) */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+            .whatsapp-float { animation: none !important; }
+            .reveal { opacity: 1 !important; transform: none !important; }
+            html { scroll-behavior: auto !important; }
         }
 
         @keyframes fadeUp { from { opacity:0; transform:translateY(40px) } to { opacity:1; transform:translateY(0) } }
@@ -174,7 +328,7 @@
         nav.scrolled .nav-logo img { width: 180px; }
         .nav-social { display: flex; gap: 12px; align-items: center; }
         .nav-social a {
-            color: rgba(255,255,255,0.55);
+            color: rgba(255,255,255,0.70);
             transition: all 0.3s;
             display: flex; align-items: center;
             overflow: visible;
@@ -525,7 +679,7 @@
         }
 
         section[id], header[id] {
-            scroll-margin-top: 100px;
+            scroll-margin-top: 90px;
         }
 
         section { padding: 100px 0; }
@@ -978,17 +1132,6 @@
             border: none;
             cursor: ew-resize;
         }
-        .comparison-slider-input {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 10;
-            margin: 0;
-            -webkit-appearance: none;
-            background: transparent;
-            cursor: ew-resize;
-        }
         .comparison-handle {
             position: absolute;
             top: 50%;
@@ -1181,46 +1324,7 @@
             }
         }
 
-        .before-after-images .before-img,
-        .before-after-images .after-img {
-            position: absolute;
-            inset: 0;
-        }
-        .before-after-images .before-img img,
-        .before-after-images .after-img img {
-            width: 100%; height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-        .before-after-images .before-img { z-index: 1; }
-        .before-after-images .after-img { z-index: 2; clip-path: inset(0 50% 0 0); }
-        .mini-handle {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 48px;
-            height: 48px;
-            background: var(--white);
-            border-radius: 50%;
-            box-shadow: 0 2px 16px rgba(0,0,0,0.35), 0 0 0 3px var(--gold);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            pointer-events: none;
-            z-index: 15;
-        }
-        .mini-divider {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            width: 3px;
-            background: var(--white);
-            box-shadow: 0 0 10px rgba(0,0,0,0.4);
-            pointer-events: none;
-            z-index: 14;
-        }
+
         .before-after-card:hover .before-img img,
         .before-after-card:hover .after-img img { transform: scale(1.05); }
         .before-after-info {
@@ -1497,7 +1601,7 @@
             display: block;
         }
 
-        footer { background: var(--black); color: rgba(255,255,255,0.42); padding: 72px 0 32px; }
+        footer { background: var(--black); color: rgba(255,255,255,0.58); padding: 72px 0 32px; }
         .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; margin-bottom: 52px; }
         .footer-logo { height: auto; margin-bottom: 16px; opacity: 0.9; }
         .footer-logo img { width: 220px; height: auto; display: block; }
@@ -1524,7 +1628,7 @@
         .footer-col a {
             display: block;
             font-size: 0.82rem;
-            color: rgba(255,255,255,0.42);
+            color: rgba(255,255,255,0.58);
             text-decoration: none;
             margin-bottom: 10px;
             font-weight: 300;
@@ -2044,7 +2148,6 @@
             flex-shrink: 0;
         }
 
-        section[id], header[id] { scroll-margin-top: 80px; }
 
         @supports (height: 100dvh) {
             .wa-modal, .booking-modal { max-height: calc(100dvh - 32px); }
@@ -2332,7 +2435,8 @@
             .nav-logo img { width: 200px; }
 
             .hero {
-                min-height: auto;
+                min-height: 85vh;
+                min-height: 85dvh;
                 padding: 132px 0 84px;
             }
 
@@ -2506,6 +2610,11 @@
             .comparison-slider { display: none; }
         }
 
+            .sticky-cta {
+                display: inline-flex;
+            }
+        }
+
         @media (max-width: 480px) {
             section { padding: 56px 0; }
             .container { padding: 0 16px; }
@@ -2567,42 +2676,8 @@
                 gap: 8px;
                 text-align: center;
             }
-
-            .sticky-cta {
-                display: inline-flex;
-            }
         }
 
-    
-        .before-after-images {
-            cursor: ew-resize;
-            -webkit-tap-highlight-color: transparent;
-        }
-        .mini-handle::before {
-            content: '⇆';
-            font-size: 1rem;
-            font-weight: 700;
-            color: var(--terracota);
-            line-height: 1;
-        }
-        @media (max-width: 768px) {
-            .mini-handle {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 48px;
-            height: 48px;
-            background: var(--white);
-            border-radius: 50%;
-            box-shadow: 0 2px 16px rgba(0,0,0,0.35), 0 0 0 3px var(--gold);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            pointer-events: none;
-            z-index: 15;
-        }
-        }
 
 </style>
 
@@ -2618,6 +2693,11 @@
     </script>
 </head>
 <body>
+
+<noscript>
+<style>.noscript-banner{background:#9B4442;color:#fff;padding:16px 24px;text-align:center;font-family:system-ui,sans-serif;font-size:.9rem;position:relative;z-index:9999}.noscript-banner a{color:#fff;text-decoration:underline;font-weight:600;margin:0 8px}</style>
+<div class="noscript-banner">Para melhor experiência, habilite o JavaScript. Ou fale direto conosco:<a href="https://wa.me/5511998980874">WhatsApp SP</a> · <a href="https://wa.me/5561993837705">WhatsApp DF</a> · <a href="tel:+5511998980874">Ligar</a></div>
+</noscript>
 
 <a href="#main" class="skip-link">Pular para o conteúdo principal</a>
 
@@ -3319,41 +3399,49 @@
             </div>
             <div class="faq-list">
                 <details class="faq-item reveal">
-                    <summary class="faq-question">O que é o Corte 3D?</summary>
+                    <summary class="faq-question" aria-expanded="false">O que é o Corte 3D?</summary>
                     <div class="faq-answer">É uma técnica exclusiva de corte a seco, desenvolvida para respeitar o caimento natural de cada cacho. Diferente do corte convencional (feito no cabelo molhado), o Corte 3D trabalha mecha a mecha com o cabelo seco, garantindo formato, volume equilibrado e movimento real. O resultado é um corte que faz sentido quando você sai do salão — e nos dias seguintes também.</div>
                 </details>
                 <details class="faq-item reveal">
-                    <summary class="faq-question">O que é Acidificação Capilar?</summary>
+                    <summary class="faq-question" aria-expanded="false">O que é Acidificação Capilar?</summary>
                     <div class="faq-answer">A Acidificação é um tratamento que equilibra o pH dos fios, sela as cutículas e reduz o frizz na origem. É indicada para cabelos com porosidade alta, que absorvem e perdem hidratação facilmente. O resultado é brilho intenso, maciez no toque e definição que dura muito mais tempo.</div>
                 </details>
                 <details class="faq-item reveal">
-                    <summary class="faq-question">Vocês atendem cabelos ondulados também?</summary>
+                    <summary class="faq-question" aria-expanded="false">Vocês atendem cabelos ondulados também?</summary>
                     <div class="faq-answer">Sim! Atendemos todos os tipos de curvatura: ondulados (tipo 2), cacheados (tipo 3) e crespos (tipo 4). Nossos protocolos são personalizados para cada padrão de curvatura. Muitas pessoas com cabelo ondulado não sabem que seus fios têm potencial de curvatura — a avaliação gratuita é justamente para descobrir isso.</div>
                 </details>
                 <details class="faq-item reveal">
-                    <summary class="faq-question">Quais produtos vocês usam?</summary>
+                    <summary class="faq-question" aria-expanded="false">Quais produtos vocês usam?</summary>
                     <div class="faq-answer">Utilizamos a Bee Cosmetics, nossa marca parceira oficial. Toda a linha é livre de sulfatos agressivos, petrolatos e silicones insolúveis — compatível com rotinas low poo e no poo. Os mesmos produtos usados nos protocolos do salão estão disponíveis para você manter o resultado em casa.</div>
                 </details>
                 <details class="faq-item reveal">
-                    <summary class="faq-question">Vocês têm unidades em quais cidades?</summary>
+                    <summary class="faq-question" aria-expanded="false">Vocês têm unidades em quais cidades?</summary>
                     <div class="faq-answer">Estamos presentes em 8 unidades: São Paulo (Tatuapé), São José dos Campos, Brasília (Águas Claras, Asa Norte, Asa Sul e Taguatinga), Goiânia e Recife. Todas com o mesmo padrão de atendimento e especialização em curvatura.</div>
                 </details>
                 <details class="faq-item reveal">
-                    <summary class="faq-question">Preciso agendar ou posso ir sem hora?</summary>
+                    <summary class="faq-question" aria-expanded="false">Preciso agendar ou posso ir sem hora?</summary>
                     <div class="faq-answer">Recomendamos sempre o agendamento prévio para garantir o melhor atendimento. Nossa abordagem é consultiva — cada cliente recebe atenção individualizada. Você pode agendar diretamente pelo nosso site — basta clicar em "Agendar", escolher sua unidade e confirmar pelo Salão99. Também é possível falar com a unidade pelo WhatsApp.</div>
                 </details>
                 <details class="faq-item reveal">
-                    <summary class="faq-question">A avaliação é realmente gratuita?</summary>
+                    <summary class="faq-question" aria-expanded="false">A avaliação é realmente gratuita?</summary>
                     <div class="faq-answer">Sim, totalmente gratuita e sem compromisso. A avaliação é um bate-papo consultivo onde nossas especialistas analisam a curvatura, porosidade e necessidades dos seus fios. A partir daí, indicamos o melhor protocolo para o seu caso. Você decide se quer seguir — sem pressão.</div>
                 </details>
                 <details class="faq-item reveal">
-                    <summary class="faq-question">Vocês atendem quem está em transição capilar?</summary>
+                    <summary class="faq-question" aria-expanded="false">Vocês atendem quem está em transição capilar?</summary>
                     <div class="faq-answer">Sim! A transição capilar é uma das nossas principais áreas de atuação. Acompanhamos cada fase — desde como lidar com duas texturas até a decisão de cortar ou manter o comprimento. A avaliação gratuita é o melhor ponto de partida para entender o seu momento e traçar um caminho com segurança.</div>
                 </details>
                 <details class="faq-item reveal">
-                    <summary class="faq-question">Preciso fazer o big chop para iniciar a transição?</summary>
+                    <summary class="faq-question" aria-expanded="false">Preciso fazer o big chop para iniciar a transição?</summary>
                     <div class="faq-answer">Não necessariamente. O big chop é uma opção, mas não é obrigatório. Muitas clientes passam pela transição de forma gradual, com cortes progressivos e tratamentos que ajudam a integrar as duas texturas. Na avaliação, indicamos a melhor estratégia para o seu caso.</div>
                 </details>
+
+                <div class="faq-cta reveal" style="max-width:640px;margin:48px auto 0;padding:36px 28px;background:linear-gradient(135deg,var(--nude-ultra),var(--nude-light));border:1px solid rgba(155,68,66,0.08);border-radius:24px;text-align:center">
+                    <p style="font-family:var(--serif);font-size:1.2rem;color:var(--black);margin-bottom:24px;font-weight:500;line-height:1.4">Ficou com alguma dúvida ou quer conversar com uma especialista?</p>
+                    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+                        <button class="btn btn-primary" onclick="openBooking()" aria-label="Agendar avaliação"><svg width="18" height="18"><use href="#i-cal"/></svg> Agendar avaliação gratuita</button>
+                        <button class="btn btn-outline" style="border-color:var(--terracota);color:var(--terracota)" onclick="openWaModal()" aria-label="Falar no WhatsApp"><svg width="18" height="18"><use href="#i-wa"/></svg> Falar no WhatsApp</button>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -3443,7 +3531,7 @@
             <p>Encontre nossos produtos nos principais marketplaces e escolha a opção mais conveniente para você.</p>
         </div>
         <div class="bee-market-list">
-            <a href="https://www.amazon.com.br" target="_blank" rel="noopener noreferrer" class="bee-market-item">
+            <a href="https://www.amazon.com.br/s?k=bee+cosmetics+cabelo+cacheado" target="_blank" rel="noopener noreferrer" class="bee-market-item">
                 <div class="bee-market-icon">
                     <!-- /images/icons/amazon.svg — substituir por <img> quando o arquivo existir -->
                     <img src="/images/icons/amazon.svg" alt="Amazon" width="28" height="28"
@@ -3456,7 +3544,7 @@
                 </div>
                 <span class="bee-market-arrow">→</span>
             </a>
-            <a href="https://www.shopee.com.br" target="_blank" rel="noopener noreferrer" class="bee-market-item">
+            <a href="https://shopee.com.br/search?keyword=bee%20cosmetics%20cabelo%20cacheado" target="_blank" rel="noopener noreferrer" class="bee-market-item">
                 <div class="bee-market-icon">
                     <!-- /images/icons/shopee.svg — substituir por <img> quando o arquivo existir -->
                     <img src="/images/icons/shopee.svg" alt="Shopee" width="28" height="28"
@@ -3469,7 +3557,7 @@
                 </div>
                 <span class="bee-market-arrow">→</span>
             </a>
-            <a href="https://www.mercadolivre.com.br" target="_blank" rel="noopener noreferrer" class="bee-market-item">
+            <a href="https://lista.mercadolivre.com.br/bee-cosmetics" target="_blank" rel="noopener noreferrer" class="bee-market-item">
                 <div class="bee-market-icon">
                     <!-- /images/icons/mercadolivre.svg — substituir por <img> quando o arquivo existir -->
                     <img src="/images/icons/mercadolivre.svg" alt="Mercado Livre" width="28" height="28"
@@ -4030,10 +4118,16 @@ document.querySelectorAll('.before-after-images').forEach(function(container) {
    FAQ ACCORDION
 ========================= */
 document.querySelectorAll('.faq-item').forEach(function(item) {
+    var summary = item.querySelector('summary');
     item.addEventListener('toggle', function() {
+        if (summary) summary.setAttribute('aria-expanded', item.open ? 'true' : 'false');
         if (!item.open) return;
         document.querySelectorAll('.faq-item').forEach(function(other) {
-            if (other !== item) other.open = false;
+            if (other !== item) {
+                other.open = false;
+                var otherSummary = other.querySelector('summary');
+                if (otherSummary) otherSummary.setAttribute('aria-expanded', 'false');
+            }
         });
     });
 });

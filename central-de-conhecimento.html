@@ -26,7 +26,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
 
     <style>
         :root {
@@ -38,12 +38,11 @@
             --nude-ultra: #FBF6F5;
             --white: #FFFFFF;
             --black: #141414;
-            --black-soft: #1F1F1F;
             --gold: #C4A265;
             --gold-light: #D4B97A;
             --text: #2A2A2A;
             --text-light: #444;
-            --text-muted: #6c6c6c;
+            --text-muted: #5C5C5C;
             --border: #E8E8E8;
             --bg-soft: #F6F6F6;
             --serif: 'Cormorant Garamond', Georgia, serif;
@@ -80,6 +79,18 @@
         @keyframes fadeUp { from { opacity:0; transform:translateY(40px) } to { opacity:1; transform:translateY(0) } }
         @keyframes fadeIn { from { opacity:0 } to { opacity:1 } }
         @keyframes float { 0%,100% { transform:translateY(0) } 50% { transform:translateY(-8px) } }
+
+        /* ACESSIBILIDADE: respeita preferência de movimento reduzido (WCAG 2.3.3) */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+            .reveal { opacity: 1 !important; transform: none !important; }
+            html { scroll-behavior: auto !important; }
+        }
 
         .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out); }
         .reveal.visible { opacity: 1; transform: translateY(0); }
@@ -363,7 +374,7 @@
         .breadcrumb-list li:not(:last-child)::after { content: '/'; margin-left: 8px; opacity: 0.4; }
 
         /* FOOTER */
-        footer { background: var(--black); color: rgba(255,255,255,0.42); padding: 72px 0 32px; }
+        footer { background: var(--black); color: rgba(255,255,255,0.58); padding: 72px 0 32px; }
         .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; margin-bottom: 52px; }
         .footer-logo { margin-bottom: 16px; opacity: 0.9; }
         .footer-logo img { width: 180px; height: auto; display: block; }
@@ -759,7 +770,6 @@
         }
         .mobile-close:hover { background: var(--terracota); color: var(--white); }
 
-        body.ui-locked { overflow: hidden !important; position: fixed; width: 100%; }
 
         .mobile-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
         .mobile-toggle span {
@@ -1020,6 +1030,11 @@
     <link rel="preload" as="image" href="/images/logos/logo-nude.svg">
 </head>
 <body>
+
+<noscript>
+<style>.noscript-banner{background:#9B4442;color:#fff;padding:16px 24px;text-align:center;font-family:system-ui,sans-serif;font-size:.9rem;position:relative;z-index:9999}.noscript-banner a{color:#fff;text-decoration:underline;font-weight:600;margin:0 8px}</style>
+<div class="noscript-banner">Para melhor experiência, habilite o JavaScript. Ou fale direto conosco:<a href="https://wa.me/5511998980874">WhatsApp SP</a> · <a href="https://wa.me/5561993837705">WhatsApp DF</a></div>
+</noscript>
 
 <a href="#main" class="skip-link">Pular para o conteúdo principal</a>
 
@@ -1287,18 +1302,15 @@ var activeTrapCleanup = null;
 
 function lockScroll() {
     if (document.body.classList.contains('ui-locked')) return;
-    lastScrollY = window.scrollY || 0;
+    lastScrollY = window.scrollY || window.pageYOffset || 0;
     document.body.classList.add('ui-locked');
-    document.body.style.top = '-' + lastScrollY + 'px';
-    document.body.style.width = '100%'; document.body.style.position = 'fixed';
+    document.documentElement.style.scrollBehavior = 'auto';
 }
 function unlockScroll() {
-    var anyOpen = document.querySelector('.wa-modal-overlay.open, .booking-overlay.open, .mobile-menu.open');
+    var anyOpen = document.querySelector('.wa-modal-overlay.open, .booking-overlay.open, .mobile-menu.open, .mobile-overlay.open');
     if (anyOpen) return;
     document.body.classList.remove('ui-locked');
-    document.body.style.top = '';
-    document.body.style.width = ''; document.body.style.position = '';
-    window.scrollTo(0, lastScrollY);
+    document.documentElement.style.scrollBehavior = '';
 }
 function openModal(id) {
     var modal = document.getElementById(id); if (!modal) return;
