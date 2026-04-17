@@ -1,6 +1,20 @@
 User-agent: *
 Allow: /
+Disallow: /admin/
+Disallow: /*.json$
 
-Disallow: /images/icons/
+# Sitemaps
+Sitemap: https://caracois.com.br/sitemap.xml
 
+# Crawl-delay (opcional, respeita bots educados)
+Crawl-delay: 1
+
+# Bing
+User-agent: bingbot
+Allow: /
+Sitemap: https://caracois.com.br/sitemap.xml
+
+# Google
+User-agent: Googlebot
+Allow: /
 Sitemap: https://caracois.com.br/sitemap.xml
