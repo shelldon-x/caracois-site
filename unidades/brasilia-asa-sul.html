@@ -321,7 +321,7 @@
         }
         .hero-local h1 em {
             font-style: italic;
-            color: var(--gold-light);
+            color: var(--gold);
         }
         .hero-sub {
             font-size: 1rem;
@@ -601,6 +601,8 @@
             border-bottom: 1px solid var(--border);
             padding: 20px 0;
         }
+        .faq-item summary { list-style: none; }
+        .faq-item summary::-webkit-details-marker { display: none; }
         .faq-question {
             font-family: var(--serif);
             font-size: 1.1rem;
@@ -610,25 +612,24 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 16px;
         }
         .faq-question::after {
             content: '+';
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             color: var(--terracota);
             transition: transform 0.3s;
+            line-height: 1;
+            flex-shrink: 0;
         }
-        .faq-item.open .faq-question::after {
+        .faq-item[open] .faq-question::after {
             content: '−';
         }
         .faq-answer {
-            display: none;
             padding-top: 12px;
             font-size: 0.9rem;
             color: var(--text-light);
             line-height: 1.6;
-        }
-        .faq-item.open .faq-answer {
-            display: block;
         }
 
         /* CTA FINAL */
@@ -753,20 +754,6 @@
         }
 
         /* BEE COMPACT */
-        .bee-compact { background: var(--nude-ultra); }
-        .bee-compact-inner { max-width: 760px; margin: 0 auto; text-align: center; }
-        .bee-compact-grid {
-            display: grid; grid-template-columns: repeat(4, 1fr);
-            gap: 16px; margin-top: 32px;
-        }
-        .bee-compact-card {
-            background: var(--white); border-radius: 16px; overflow: hidden;
-            border: 1px solid rgba(0,0,0,0.04); transition: all 0.3s var(--ease);
-            text-align: center;
-        }
-        .bee-compact-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.06); border-color: var(--terracota); }
-        .bee-compact-card h4 { font-family: var(--serif); font-size: 0.9rem; font-weight: 500; padding: 12px 10px 4px; color: var(--black); }
-        .bee-compact-card p { font-size: 0.7rem; color: var(--text-muted); padding: 0 10px 14px; font-weight: 300; }
 
         /* LOCAL TESTIMONIALS */
         .local-proof { background: var(--bg-soft); }
@@ -935,13 +922,32 @@
         .bee-pill:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.04); transform: translateY(-2px); }
         .bee-pill-icon { font-size: 1.3rem; margin-bottom: 8px; display: block; }
         .bee-pill h4 { font-size: 0.76rem; font-weight: 500; color: var(--text); }
-        .bee-product-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 20px; margin-bottom: 20px; }
+
+        /* Filtros do catálogo */
+        .bee-filter-bar {
+            display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;
+            margin: 0 0 28px;
+        }
+        .bee-filter-btn {
+            padding: 10px 20px; border-radius: 100px; border: 1px solid var(--border);
+            background: var(--white); font-family: var(--sans);
+            font-size: 0.74rem; font-weight: 500; text-transform: uppercase;
+            letter-spacing: 0.06em; cursor: pointer; color: var(--text);
+            transition: all 0.3s var(--ease);
+        }
+        .bee-filter-btn:hover { border-color: var(--terracota); color: var(--terracota); }
+        .bee-filter-btn.active { background: var(--terracota); color: var(--white); border-color: var(--terracota); }
+
+        /* Grid e cards detalhados */
+        .bee-product-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; margin-bottom: 20px; }
         .bee-product-card {
             background: var(--white);
-            border-radius: 20px;
+            border-radius: 22px;
             overflow: hidden;
             border: 1px solid rgba(0,0,0,0.04);
             transition: all 0.4s var(--ease);
+            cursor: pointer;
+            display: flex; flex-direction: column;
         }
         .bee-product-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(0,0,0,0.07); border-color: var(--terracota); }
         .bee-product-img {
@@ -950,6 +956,7 @@
             background: var(--bg-soft);
             display: flex; align-items: center; justify-content: center;
             padding: 20px;
+            position: relative;
         }
         .bee-product-img img {
             width: 100%; height: 100%;
@@ -957,7 +964,13 @@
             transition: transform 0.5s var(--ease);
         }
         .bee-product-card:hover .bee-product-img img { transform: scale(1.06); }
-        .bee-product-info { padding: 16px 16px 20px; }
+        .bee-product-tag-float {
+            position: absolute; top: 12px; left: 12px;
+            padding: 5px 11px; border-radius: 100px;
+            background: var(--terracota); color: var(--white);
+            font-size: 0.6rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+        }
+        .bee-product-info { padding: 18px 18px 20px; display: flex; flex-direction: column; flex: 1; }
         .bee-product-info .product-type {
             font-size: 0.65rem;
             letter-spacing: 0.1em;
@@ -968,17 +981,98 @@
         }
         .bee-product-info h4 {
             font-family: var(--serif);
-            font-size: 1rem;
+            font-size: 1.15rem;
             font-weight: 500;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
             color: var(--black);
+            line-height: 1.15;
         }
         .bee-product-info p {
-            font-size: 0.76rem;
+            font-size: 0.78rem;
             color: var(--text-light);
-            line-height: 1.5;
+            line-height: 1.55;
+            font-weight: 300;
+            margin-bottom: 14px;
+        }
+        .bee-product-meta-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
+        .bee-product-pill { padding: 4px 10px; border-radius: 100px; font-size: 0.62rem; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; }
+        .bee-product-pill--tag { background: rgba(155,68,66,0.08); color: var(--terracota); }
+        .bee-product-pill--ph { background: var(--bg-soft); color: var(--text-muted); }
+        .bee-product-actions { margin-top: auto; }
+        .bee-product-actions .btn-mini {
+            display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+            width: 100%;
+            background: var(--nude-ultra); color: var(--terracota);
+            border: 1px solid rgba(155,68,66,0.12);
+            padding: 10px 14px; border-radius: 100px;
+            font-family: var(--sans); font-size: 0.74rem; font-weight: 600;
+            letter-spacing: 0.04em;
+            cursor: pointer; transition: all 0.3s var(--ease);
+        }
+        .bee-product-actions .btn-mini:hover {
+            background: var(--terracota); color: var(--white);
+            border-color: var(--terracota);
+            transform: translateY(-1px);
+        }
+        .bee-cta-wrap { text-align: center; margin-top: 44px; }
+        .bee-catalog-helper {
+            font-size: 0.85rem; color: var(--text-muted);
+            text-align: center; max-width: 580px; margin: 0 auto 24px;
             font-weight: 300;
         }
+
+        /* Modal de Ficha de Produto */
+        .product-modal-overlay {
+            display: none; position: fixed; inset: 0;
+            background: rgba(20,20,20,0.72); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            z-index: 9998; align-items: center; justify-content: center;
+            padding: max(16px, env(safe-area-inset-top)) 16px max(16px, env(safe-area-inset-bottom));
+        }
+        .product-modal-overlay.open { display: flex; }
+        .product-modal {
+            background: var(--white); border-radius: 28px; padding: 0;
+            max-width: 920px; width: 100%;
+            max-height: calc(100dvh - 32px); overflow-y: auto;
+            overscroll-behavior: contain; -webkit-overflow-scrolling: touch;
+            animation: fadeUp 0.3s ease-out;
+            box-shadow: 0 28px 80px rgba(0,0,0,0.22); position: relative;
+        }
+        .pm-close {
+            position: absolute; top: 14px; right: 16px; z-index: 5;
+            background: var(--bg-soft); border: none; cursor: pointer;
+            color: var(--text-muted); width: 40px; height: 40px;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 50%; font-size: 1.3rem; transition: all 0.3s;
+        }
+        .pm-close:hover { background: var(--terracota); color: var(--white); }
+        .pm-grid { display: grid; grid-template-columns: 1fr 1fr; }
+        .pm-image {
+            background: var(--bg-soft); display: flex; align-items: center; justify-content: center;
+            padding: 40px; min-height: 380px; border-radius: 28px 0 0 0;
+        }
+        .pm-image img { width: 100%; max-width: 320px; height: auto; object-fit: contain; }
+        .pm-content { padding: 36px 32px 32px; }
+        .pm-eyebrow { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--terracota); font-weight: 600; margin-bottom: 8px; }
+        .pm-content h2 { font-family: var(--serif); font-size: 2rem; font-weight: 500; color: var(--black); margin-bottom: 14px; line-height: 1.05; }
+        .pm-desc { font-size: 0.92rem; color: var(--text-light); line-height: 1.7; font-weight: 300; margin-bottom: 20px; }
+        .pm-specs { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px; }
+        .pm-spec { padding: 12px 14px; background: var(--nude-ultra); border-radius: 12px; border: 1px solid rgba(155,68,66,0.06); }
+        .pm-spec span:first-child { display: block; font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); font-weight: 500; margin-bottom: 4px; }
+        .pm-spec strong { font-size: 0.82rem; color: var(--black); font-weight: 500; line-height: 1.4; }
+        .pm-section { margin-top: 20px; }
+        .pm-section h3 { font-family: var(--serif); font-size: 1.1rem; font-weight: 600; color: var(--black); margin-bottom: 8px; }
+        .pm-section p { font-size: 0.85rem; color: var(--text-light); line-height: 1.65; font-weight: 300; }
+        .pm-markets { display: flex; gap: 10px; margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border); flex-wrap: wrap; }
+        .pm-market-link {
+            display: flex; align-items: center; gap: 10px;
+            padding: 12px 16px; border-radius: 14px;
+            background: var(--nude-ultra); border: 1px solid transparent;
+            text-decoration: none; color: var(--text); transition: all 0.3s var(--ease); flex: 1; min-width: 140px;
+        }
+        .pm-market-link:hover { border-color: var(--terracota); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(155,68,66,0.1); }
+        .pm-market-link img { width: 24px; height: 24px; object-fit: contain; }
+        .pm-market-link strong { font-size: 0.82rem; }
+        .pm-market-link small { font-size: 0.68rem; color: var(--text-muted); }
         .bee-cta-wrap { text-align: center; margin-top: 44px; }
 
         .bee-modal-overlay {
@@ -1394,31 +1488,25 @@
                 <div class="bee-partner">Marca parceira oficial</div>
                 <div class="section-label">Bee Cosmetics</div>
                 <h2 class="section-title" id="bee-title">O cuidado profissional<br><em>continua em casa</em></h2>
-                <p class="section-desc" style="margin:0 auto">A Bee Cosmetics é a marca parceira utilizada nos nossos protocolos. Sua linha completa ajuda a prolongar em casa o cuidado que você vive no salão. Produtos veganos, ricos em ativos naturais e livres de ingredientes agressivos.</p>
+                <p class="section-desc" style="margin:0 auto 18px">A Bee Cosmetics é a marca parceira utilizada em todos os nossos protocolos. Sua linha completa, desenvolvida para cabelos cacheados, garante que o resultado do salão dure por muito mais tempo. Livres de ingredientes agressivos, ricos em ativos naturais.</p>
+                <p class="bee-catalog-helper">Toque em qualquer produto para ver a ficha completa com ativos, modo de uso, registro ANVISA e onde comprar.</p>
             </div>
 
             <div class="bee-philosophy reveal">
                 <div class="bee-pill"><span class="bee-pill-icon">🧪</span><h4>Usados no salão</h4></div>
                 <div class="bee-pill"><span class="bee-pill-icon">🌱</span><h4>Low Poo & No Poo</h4></div>
-                <div class="bee-pill"><span class="bee-pill-icon">🔬</span><h4>Ideais para curvatura</h4></div>
+                <div class="bee-pill"><span class="bee-pill-icon">🔬</span><h4>Feitos para cachos</h4></div>
                 <div class="bee-pill"><span class="bee-pill-icon">⏳</span><h4>Resultado prolongado</h4></div>
             </div>
 
-            <div class="bee-product-grid reveal">
-                <div class="bee-product-card"><div class="bee-product-img"><img src="/images/products/born-to-bee.webp" alt="Shampoo sem sulfato Born to BEE — Bee Cosmetics, 300ml" loading="lazy" decoding="async" width="500" height="500"></div><div class="bee-product-info"><div class="product-type">Shampoo sem sulfato</div><h4>Born to BEE</h4><p>Limpeza eficaz sem ressecar, com ingredientes naturais hidratantes e condicionantes. pH 4,5.</p></div></div>
-                <div class="bee-product-card"><div class="bee-product-img"><img src="/images/products/cowash-linha1.webp" alt="Co-Wash Feel the BEEat — Bee Cosmetics" loading="lazy" decoding="async" width="500" height="500"></div><div class="bee-product-info"><div class="product-type">Co-Wash</div><h4>Feel the BEEat</h4><p>Limpeza, condicionamento e hidratação com aloe vera, manteiga de oliva e queratina. pH 4,5.</p></div></div>
-                <div class="bee-product-card"><div class="bee-product-img"><img src="/images/products/beetween-gardens.webp" alt="Máscara de nutrição BEEtween Gardens — Bee Cosmetics, 300ml" loading="lazy" decoding="async" width="500" height="500"></div><div class="bee-product-info"><div class="product-type">Máscara nutrição</div><h4>BEEtween Gardens</h4><p>Hidratação e nutrição com D-pantenol, manteiga de abacate e óleo de coco.</p></div></div>
-                <div class="bee-product-card"><div class="bee-product-img"><img src="/images/products/hairmask-reconstrucao.webp" alt="Máscara de reconstrução After BEEach — Bee Cosmetics, 300ml" loading="lazy" decoding="async" width="500" height="500"></div><div class="bee-product-info"><div class="product-type">Máscara reconstrução</div><h4>After BEEach</h4><p>Reparo intensivo com manteiga de oliva e proteína do trigo.</p></div></div>
-                <div class="bee-product-card"><div class="bee-product-img"><img src="/images/products/beloved-oil.webp" alt="Máscara de umectação BEEloved Oil — Bee Cosmetics, 300ml" loading="lazy" decoding="async" width="500" height="500"></div><div class="bee-product-info"><div class="product-type">Máscara umectação</div><h4>BEEloved Oil</h4><p>Umectação profunda com óleo de coco, linhaça, manteiga de oliva e cera de arroz.</p></div></div>
+            <div class="bee-filter-bar reveal" role="tablist" aria-label="Filtrar produtos por categoria">
+                <button class="bee-filter-btn active" type="button" data-filter="all">Toda a linha</button>
+                <button class="bee-filter-btn" type="button" data-filter="limpeza">Limpeza</button>
+                <button class="bee-filter-btn" type="button" data-filter="tratamento">Tratamento</button>
+                <button class="bee-filter-btn" type="button" data-filter="finalizacao">Finalização</button>
             </div>
 
-            <div class="bee-product-grid reveal">
-                <div class="bee-product-card"><div class="bee-product-img"><img src="/images/products/bee-yourself.webp" alt="Leave-in super definição BEE Yourself — Bee Cosmetics, 300ml" loading="lazy" decoding="async" width="500" height="500"></div><div class="bee-product-info"><div class="product-type">Leave-in definição</div><h4>BEE Yourself</h4><p>Definição com hidratação, brilho, redução de porosidade e acabamento impecável.</p></div></div>
-                <div class="bee-product-card"><div class="bee-product-img"><img src="/images/products/leave-in-antiencolhimento.webp" alt="Leave-in antiencolhimento BEE Proud — Bee Cosmetics" loading="lazy" decoding="async" width="500" height="500"></div><div class="bee-product-info"><div class="product-type">Antiencolhimento</div><h4>BEE Proud</h4><p>Reduz fator encolhimento com manteiga de oliva e óleo de algodão.</p></div></div>
-                <div class="bee-product-card"><div class="bee-product-img"><img src="/images/products/let-it-bee.webp" alt="Leave-in leveza Let it BEE — Bee Cosmetics, 300ml" loading="lazy" decoding="async" width="500" height="500"></div><div class="bee-product-info"><div class="product-type">Leave-in leveza</div><h4>Let it BEE</h4><p>Proteção térmica, controle de frizz e leveza para todos os tipos de curvatura.</p></div></div>
-                <div class="bee-product-card"><div class="bee-product-img"><img src="/images/products/jelly-fixacao.webp" alt="Gelatina capilar Be my BEE — Bee Cosmetics, 300ml" loading="lazy" decoding="async" width="500" height="500"></div><div class="bee-product-info"><div class="product-type">Gelatina capilar</div><h4>Be my BEE</h4><p>Definição com fixação e hidratação com aloe vera e extrato de cana-de-açúcar.</p></div></div>
-                <div class="bee-product-card"><div class="bee-product-img"><img src="/images/products/beelieve-in-acid.webp" alt="Elixir acidificante BEElieve in Acid — Bee Cosmetics, 140ml" loading="lazy" decoding="async" width="500" height="500"></div><div class="bee-product-info"><div class="product-type">Acidificante</div><h4>BEElieve in Acid</h4><p>Sela cutículas, equilibra o pH e intensifica o brilho dos fios. 140ml, pH 3,5.</p></div></div>
-            </div>
+            <div class="bee-product-grid reveal" id="beeProductsGrid"></div>
 
             <div class="bee-cta-wrap reveal">
                 <button class="btn btn-gold" onclick="openBeeModal()" aria-label="Conhecer onde comprar Bee Cosmetics">Conhecer a linha completa</button>
@@ -1460,34 +1548,34 @@
                 <h2 class="section-title">Perguntas sobre o Studio Caracóis Asa Sul</h2>
             </div>
             <div class="faq-list reveal">
-                <div class="faq-item">
-                    <div class="faq-question">Vocês atendem apenas cabelos cacheados?</div>
+                                <details class="faq-item">
+                    <summary class="faq-question" aria-expanded="false">Vocês atendem apenas cabelos cacheados?</summary>
                     <div class="faq-answer">Sim! Somos 100% especializados em cabelos cacheados, ondulados e crespos. Não atendemos cabelos lisos — essa é a nossa especialidade.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">Como funciona a avaliação gratuita?</div>
+                </details>
+                                <details class="faq-item">
+                    <summary class="faq-question" aria-expanded="false">Como funciona a avaliação gratuita?</summary>
                     <div class="faq-answer">É um bate-papo consultivo sem compromisso. Nossa especialista analisa seu histórico, curvatura e porosidade, e sugere corte e tratamento, se necessário.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">Quais tratamentos são indicados para frizz e ressecamento?</div>
+                </details>
+                                <details class="faq-item">
+                    <summary class="faq-question" aria-expanded="false">Quais tratamentos são indicados para frizz e ressecamento?</summary>
                     <div class="faq-answer">A Acidificação Capilar e o Caracóis Care são os protocolos mais indicados. Mas cada caso é único — por isso a avaliação gratuita é tão importante.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">Vocês usam produtos low poo?</div>
+                </details>
+                                <details class="faq-item">
+                    <summary class="faq-question" aria-expanded="false">Vocês usam produtos low poo?</summary>
                     <div class="faq-answer">Sim! Trabalhamos com produtos liberados (low poo e no poo), livres de sulfatos agressivos, petrolatos e silicones insolúveis.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">Onde fica a unidade da Asa Sul?</div>
+                </details>
+                                <details class="faq-item">
+                    <summary class="faq-question" aria-expanded="false">Onde fica a unidade da Asa Sul?</summary>
                     <div class="faq-answer">Ficamos em CLS 411 Bloco B Loja 20 - Asa Sul, na Asa Sul. Veja o mapa acima para mais detalhes.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">Como falo pelo WhatsApp com a unidade Asa Sul?</div>
+                </details>
+                                <details class="faq-item">
+                    <summary class="faq-question" aria-expanded="false">Como falo pelo WhatsApp com a unidade Asa Sul?</summary>
                     <div class="faq-answer">Basta clicar no botão "Falar com esta unidade" ou enviar uma mensagem para <strong>+55 61 99694-2312</strong>.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">Vocês ensinam a cuidar do cabelo em casa?</div>
+                </details>
+                                <details class="faq-item">
+                    <summary class="faq-question" aria-expanded="false">Vocês ensinam a cuidar do cabelo em casa?</summary>
                     <div class="faq-answer">Sim! Educação é parte do nosso método. Você sai do salão orientada sobre os cuidados práticos do dia a dia.</div>
-                </div>
+                </details>
             </div>
         </div>
     </section>
@@ -1524,7 +1612,7 @@
             <p>Encontre nossos produtos nos principais marketplaces e escolha a opção mais conveniente para você.</p>
         </div>
         <div class="bee-market-list">
-            <a href="https://www.amazon.com.br" target="_blank" rel="noopener noreferrer" class="bee-market-item">
+            <a href="https://www.amazon.com.br/s?k=bee+cosmetics+cabelo+cacheado" target="_blank" rel="noopener noreferrer" class="bee-market-item">
                 <div class="bee-market-icon">
                     <!-- /images/icons/amazon.svg — substituir por <img> quando o arquivo existir -->
                     <img src="/images/icons/amazon.svg" alt="Amazon" width="28" height="28"
@@ -1537,7 +1625,7 @@
                 </div>
                 <span class="bee-market-arrow">→</span>
             </a>
-            <a href="https://www.shopee.com.br" target="_blank" rel="noopener noreferrer" class="bee-market-item">
+            <a href="https://shopee.com.br/search?keyword=bee%20cosmetics%20cabelo%20cacheado" target="_blank" rel="noopener noreferrer" class="bee-market-item">
                 <div class="bee-market-icon">
                     <!-- /images/icons/shopee.svg — substituir por <img> quando o arquivo existir -->
                     <img src="/images/icons/shopee.svg" alt="Shopee" width="28" height="28"
@@ -1550,7 +1638,7 @@
                 </div>
                 <span class="bee-market-arrow">→</span>
             </a>
-            <a href="https://www.mercadolivre.com.br" target="_blank" rel="noopener noreferrer" class="bee-market-item">
+            <a href="https://lista.mercadolivre.com.br/bee-cosmetics" target="_blank" rel="noopener noreferrer" class="bee-market-item">
                 <div class="bee-market-icon">
                     <!-- /images/icons/mercadolivre.svg — substituir por <img> quando o arquivo existir -->
                     <img src="/images/icons/mercadolivre.svg" alt="Mercado Livre" width="28" height="28"
@@ -1567,6 +1655,15 @@
         <div class="bee-modal-footer">
             <a href="https://instagram.com/beecosmetics.store" target="_blank" rel="noopener">Conheça o perfil oficial @beecosmetics.store ↗</a>
         </div>
+    </div>
+</div>
+
+
+<!-- Product Detail Modal -->
+<div class="product-modal-overlay" id="productModal" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Ficha do produto" onclick="if(event.target===this)closeProductModal()">
+    <div class="product-modal">
+        <button class="pm-close" onclick="closeProductModal()" aria-label="Fechar">&times;</button>
+        <div id="productModalContent"></div>
     </div>
 </div>
 
@@ -1675,7 +1772,19 @@ function closeMobileMenu(restoreFocus) {
 
 /* === ESC === */
 document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && document.getElementById('mm').classList.contains('open')) closeMobileMenu(true);
+    if (e.key !== 'Escape') return;
+
+    var productModalEl = document.getElementById('productModal');
+    if (productModalEl && productModalEl.classList.contains('open')) {
+        closeProductModal(); return;
+    }
+    var beeModalEl = document.getElementById('beeModal');
+    if (beeModalEl && beeModalEl.classList.contains('open')) {
+        closeBeeModal(); return;
+    }
+    if (document.getElementById('mm').classList.contains('open')) {
+        closeMobileMenu(true);
+    }
 });
 
 /* === NAV SCROLL + LOGO === */
@@ -1707,11 +1816,19 @@ document.querySelectorAll('a[href^="#"]').forEach(function(a) {
     });
 });
 
-/* === FAQ ACCORDION === */
+/* === FAQ ACCORDION (details/summary) === */
 document.querySelectorAll('.faq-item').forEach(function(item) {
     item.addEventListener('toggle', function() {
+        var summary = item.querySelector('summary');
+        if (summary) summary.setAttribute('aria-expanded', item.open ? 'true' : 'false');
         if (!item.open) return;
-        document.querySelectorAll('.faq-item').forEach(function(other) { if (other !== item) other.open = false; });
+        document.querySelectorAll('.faq-item').forEach(function(other) {
+            if (other !== item) {
+                other.open = false;
+                var otherSummary = other.querySelector('summary');
+                if (otherSummary) otherSummary.setAttribute('aria-expanded', 'false');
+            }
+        });
     });
 });
 
@@ -1740,6 +1857,171 @@ function closeBeeModalOnOverlay(e) {
     if (e.target === document.getElementById('beeModal')) closeBeeModal();
 }
 
+</script>
+
+<script>
+/* =========================
+   BEE COSMETICS — CATÁLOGO INTERATIVO
+   Array de produtos, render dinâmico, modal de ficha completa
+   com trap de foco e retorno de foco ao elemento de origem.
+========================= */
+var BEE_PRODUCTS = [
+  {id:'born-to-bee', name:'Born to BEE', category:'Shampoo Sem Sulfato', size:'300 ml', ph:'pH 4,5', anvisa:'25351.459676/2022-71', barcode:'7899085798567', actives:'Extrato de Aloe Vera, Vitamina B12, Hydra Repair', desc:'Limpeza eficaz sem ressecar ou agredir os fios. Com limpante natural, deixa o cabelo limpo e hidratado.', full:'Tenha uma limpeza eficaz sem ressecar ou agredir os fios. Nosso Shampoo Sem Sulfato Born to BEE, com limpante natural, deixa seu cabelo limpo e hidratado, perfeito para rotinas low poo.', usage:'Aplique no cabelo molhado, massageando suavemente o couro cabeludo em movimentos circulares. Enxágue bem. Repita se necessário.', comp:'Água Deionizada, Lauril Sulfosucinato de Sódio, Cocoamidopropil Betaína, Dietanolamida de Ácidos Graxos de Côco, Fragrância, Poliquatérnio-39, Hidroxietil Uréia, Extrato de Babosa, Cloreto de Guar Hidroxipropiltrimônio, Distearato do PEG-150, Poliquatérnio-22, Poliquatérnio-55, Poliquatérnio-47, Metilglucose Eter do PPG-20, Glicerina, Álcool Benzílico, Clorfenesina, EDTA Dissódico.', kind:'limpeza', tag:'low poo', img:'/images/products/born-to-bee.webp'},
+  {id:'feel-the-beeat', name:'Feel the BEEat', category:'Co-Wash', size:'300 ml', ph:'pH 4,5', anvisa:'25351.459590/2022-48', barcode:'7899085798611', actives:'Aloe Vera, Manteiga de Oliva, Queratina', desc:'Limpa, condiciona, hidrata e repara em um só passo. Ideal para rotinas no poo.', full:'Um produto completo que limpa, condiciona, hidrata e repara seus fios. Com aloe vera, manteiga de oliva e queratina, é ideal para quem segue a rotina sem shampoos tradicionais.', usage:'Aplique nos cabelos molhados, massageando o couro cabeludo e distribuindo pelo comprimento. Enxágue bem.', comp:'Água Deionizada, Cocoamidopropil Betaina, Álcool Cetoestarílico, Álcool Cetílico, Cloreto de Cetrimônio, Cloreto de Berrentrimômio, Fragrância, Poliquatérnio-39, Queratina Hidrolizada, Manteiga de Oliva, Extrato de Babosa.', kind:'limpeza', tag:'no poo', img:'/images/products/cowash-linha1.webp'},
+  {id:'beetween-gardens', name:'BEEtween Gardens', category:'Máscara de Nutrição', size:'300 g', ph:'pH 4,0', anvisa:'25351.459556/2022-73', barcode:'7899085798598', actives:'Manteiga de Abacate, Óleo de Coco, D-Pantenol', desc:'Hidratação e nutrição em um único produto. Proporciona umectação, emoliência e maciez.', full:'Hidratação e nutrição em um único produto. Com D-pantenol, manteiga de abacate e óleo de coco, proporciona umectação, emoliência e maciez, ajudando a evitar o frizz.', usage:'Aplique após a limpeza, enluvando as mechas. Deixe agir por 10 minutos e enxágue.', comp:'Água Deionizada, Cloreto de Berrentrimônio, Álcool Cetoestarílico, Álcool Cetílico, Cloreto de Cetrimônio, Metosulfato de Berrentrimônio, Fragrância, Glicerina, Poliquatérnio-39, Vitamina B5, Óleo de Coco, Manteiga de Abacate.', kind:'tratamento', tag:'nutrição', img:'/images/products/beetween-gardens.webp'},
+  {id:'after-beeach', name:'After BEEach', category:'Máscara de Reconstrução', size:'300 g', ph:'pH 4,0', anvisa:'25351.459709/2022-82', barcode:'7899085798574', actives:'Manteiga de Oliva, Proteína do Trigo, Vitamina E', desc:'Reparo intensivo para cabelos danificados por coloração, química ou exposição ao sol.', full:'Proteção e reparo intensivo para cabelos danificados por coloração, tratamentos químicos ou exposição ao sol e ao mar.', usage:'Após a limpeza, tire o excesso de água, aplique enluvando as mechas. Deixe agir por 10 minutos e enxágue.', comp:'Água Deionizada, Cloreto de Berrentrimônio, Álcool Cetoestarílico, Proteína Hidrolisada de Arroz, Carbocisteína, Serina, Manteiga de Oliva, Vitamina E.', kind:'tratamento', tag:'reconstrução', img:'/images/products/hairmask-reconstrucao.webp'},
+  {id:'beeloved-oil', name:'BEEloved Oil', category:'Máscara de Umectação', size:'300 g', ph:'pH 4,0', anvisa:'25351.459606/2022-12', barcode:'7899085798581', actives:'Óleo de Coco, Óleo de Linhaça, Manteiga de Oliva, Cera de Arroz', desc:'Umectação profunda com maciez, fortalecimento e hidratação para todos os tipos de curvatura.', full:'A combinação perfeita de óleo de coco, óleo de linhaça, manteiga de oliva e cera de arroz. Envolve os fios com uma leve camada de óleo, trazendo maciez e fortalecimento.', usage:'Após a limpeza, retire o excesso de água e aplique enluvando as mechas. Deixe agir por 10 minutos, enxágue.', comp:'Água Deionizada, Cloreto de Berrentrimônio, Álcool Cetoestarílico, Cera de Arroz, Óleo de Coco, Óleo de Linhaça, Manteiga de Oliva.', kind:'tratamento', tag:'umectação', img:'/images/products/beloved-oil.webp'},
+  {id:'bee-yourself', name:'BEE Yourself', category:'Leave-in Super Definição', size:'300 ml', ph:'pH 4,0', anvisa:'25351.459723/2022-86', barcode:'7899085798635', actives:'Manteiga de Abacate, Proteína do Trigo', desc:'Definição intensa com brilho, condicionamento e redução de porosidade.', full:'A definição dos sonhos com manteiga de abacate e proteína do trigo. Super hidratante, fornece brilho, condiciona, melhora a retenção de água e reduz a porosidade.', usage:'Aplique nos fios úmidos. Utilize a técnica de fitagem que preferir. Finalize com a gelatina Be my BEE.', comp:'Água Deionizada, Metosulfato de Berrentrimônio, Álcool Cetoestarílico, Manteiga de Abacate, Proteína Hidrolizada do Trigo.', kind:'finalizacao', tag:'super definição', img:'/images/products/bee-yourself.webp'},
+  {id:'let-it-bee', name:'Let it BEE', category:'Leave-in Leveza Natural', size:'300 ml', ph:'pH 4,0', anvisa:'25351.459688/2022-03', barcode:'7899085798628', actives:'Manteiga de Karité, Óleo de Amêndoas', desc:'Brilho e fixação suave para definição leve e day after favorecido.', full:'Day after garantido com manteiga de karité e óleo de amêndoas. Proporciona brilho e fixação suave para uma definição perfeita.', usage:'Aplique nos fios úmidos e modele com as mãos. Finalize com a gelatina Be my BEE.', comp:'Água Deionizada, Álcool Cetoestearílico, Manteiga de Karité, Óleo de Amêndoas Doce, Recovery Hair Pro.', kind:'finalizacao', tag:'leveza natural', img:'/images/products/let-it-bee.webp'},
+  {id:'bee-proud', name:'BEE Proud', category:'Leave-in Antiencolhimento', size:'300 ml', ph:'pH 4,0', anvisa:'25351.459582/2022-00', barcode:'7899085798642', actives:'Manteiga de Oliva, Óleo de Algodão', desc:'Previne o fator encolhimento mantendo fios saudáveis e sem frizz.', full:'Previne o fator encolhimento com manteiga de oliva e óleo de algodão. Mantém seus fios saudáveis, bonitos e sem frizz.', usage:'Aplique nos fios úmidos, distribua bem e finalize da forma desejada.', comp:'Água Deionizada, Álcool Cetoestarílico, Manteiga de Oliva, Óleo de Algodão, Liss Repair.', kind:'finalizacao', tag:'antiencolhimento', img:'/images/products/leave-in-antiencolhimento.webp'},
+  {id:'be-my-bee', name:'Be my BEE', category:'Gelatina Capilar', size:'300 g', ph:'pH 4,0', anvisa:'25351.459703/2022-13', barcode:'7899085798604', actives:'Aloe Vera, Extrato de Cana de Açúcar, Vitamina B12', desc:'Definição com fixação e hidratação. Fios macios e brilhosos.', full:'Definição com estilo e fixação. Com aloe vera e cana-de-açúcar, hidrata e ajuda a reter umidade, deixando os fios macios e brilhosos.', usage:'Após a fitagem com o leave-in, aplique a gelatina e amasse os fios.', comp:'Água Deionizada, Carbômero, Aminometil Propanol, Glicerina, Extrato de Aloe Vera, Extrato de Mel, PVP.', kind:'finalizacao', tag:'gelatina', img:'/images/products/jelly-fixacao.webp'},
+  {id:'beelieve-in-acid', name:'BEElieve in Acid', category:'Elixir Acidificante', size:'140 ml', ph:'pH 3,5', anvisa:'25351.438363/2024-41', barcode:'7899085798659', actives:'Bioacetum Maçã, Betacaroteno, Potássio', desc:'Equilibra o pH, sela cutículas e intensifica o brilho dos fios.', full:'Revitalize seus cabelos com o Elixir Acidificante BEElieve in Acid. Equilibra o pH dos fios, sela as cutículas e proporciona brilho intenso, além de preparar o cabelo para tratamentos profundos.', usage:'Após a limpeza, aplique nos fios molhados. Deixe agir por 5 minutos e enxágue. Continue com máscara de tratamento.', comp:'Água Purificada, Vinagre, Extrato de Maçã, Frutose, Glicose, Ácido Glucônico, Gliconolactona.', kind:'tratamento', tag:'acidificação', img:'/images/products/beelieve-in-acid.webp'}
+];
+
+var BEE_MARKET_LINKS = {
+  amazon: 'https://www.amazon.com.br/s?k=bee+cosmetics+cabelo+cacheado',
+  shopee: 'https://shopee.com.br/search?keyword=bee%20cosmetics%20cabelo%20cacheado',
+  mercadolivre: 'https://lista.mercadolivre.com.br/bee-cosmetics'
+};
+
+var beeProductsGrid = document.getElementById('beeProductsGrid');
+var productModalEl = document.getElementById('productModal');
+var productModalContent = document.getElementById('productModalContent');
+var lastFocusedBeforeProductModal = null;
+
+function _escapeAttr(s) {
+    return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+function renderBeeProducts(filter) {
+    if (!beeProductsGrid) return;
+    filter = filter || 'all';
+    var list = BEE_PRODUCTS.filter(function(p) { return filter === 'all' || p.kind === filter; });
+    var html = '';
+    for (var i = 0; i < list.length; i++) {
+        var p = list[i];
+        html += '<article class="bee-product-card" tabindex="0" role="button" aria-label="Ver ficha completa de ' + _escapeAttr(p.name) + '" data-product-id="' + _escapeAttr(p.id) + '">'
+            + '<div class="bee-product-img">'
+            + '<img src="' + p.img + '" alt="' + _escapeAttr(p.category + ' ' + p.name) + ' — Bee Cosmetics" loading="lazy" decoding="async" width="500" height="500">'
+            + '<span class="bee-product-tag-float">' + _escapeAttr(p.tag) + '</span>'
+            + '</div>'
+            + '<div class="bee-product-info">'
+            + '<div class="product-type">' + _escapeAttr(p.category) + '</div>'
+            + '<h4>' + _escapeAttr(p.name) + '</h4>'
+            + '<p>' + _escapeAttr(p.desc) + '</p>'
+            + '<div class="bee-product-meta-row">'
+            + '<span class="bee-product-pill bee-product-pill--tag">' + _escapeAttr(p.tag) + '</span>'
+            + '<span class="bee-product-pill bee-product-pill--ph">' + _escapeAttr(p.ph) + '</span>'
+            + '<span class="bee-product-pill bee-product-pill--ph">' + _escapeAttr(p.size) + '</span>'
+            + '</div>'
+            + '<div class="bee-product-actions">'
+            + '<button type="button" class="btn-mini" data-product-id="' + _escapeAttr(p.id) + '">Ver ficha completa</button>'
+            + '</div>'
+            + '</div>'
+            + '</article>';
+    }
+    beeProductsGrid.innerHTML = html;
+}
+
+function openProductModal(id, originEl) {
+    var p = null;
+    for (var i = 0; i < BEE_PRODUCTS.length; i++) { if (BEE_PRODUCTS[i].id === id) { p = BEE_PRODUCTS[i]; break; } }
+    if (!p || !productModalEl) return;
+
+    lastFocusedBeforeProductModal = originEl || document.activeElement;
+
+    productModalContent.innerHTML =
+        '<div class="pm-grid">'
+        + '<div class="pm-image"><img src="' + p.img + '" alt="' + _escapeAttr(p.name) + '"></div>'
+        + '<div class="pm-content">'
+        + '<div class="pm-eyebrow">Ficha completa</div>'
+        + '<h2>' + _escapeAttr(p.name) + '</h2>'
+        + '<p class="pm-desc">' + _escapeAttr(p.full) + '</p>'
+        + '<div class="pm-specs">'
+        + '<div class="pm-spec"><span>Categoria</span><strong>' + _escapeAttr(p.category) + '</strong></div>'
+        + '<div class="pm-spec"><span>Tamanho</span><strong>' + _escapeAttr(p.size) + '</strong></div>'
+        + '<div class="pm-spec"><span>pH</span><strong>' + _escapeAttr(p.ph) + '</strong></div>'
+        + '<div class="pm-spec"><span>Ativos</span><strong>' + _escapeAttr(p.actives) + '</strong></div>'
+        + '<div class="pm-spec"><span>ANVISA</span><strong>' + _escapeAttr(p.anvisa) + '</strong></div>'
+        + '<div class="pm-spec"><span>Código de barras</span><strong>' + _escapeAttr(p.barcode) + '</strong></div>'
+        + '</div>'
+        + '<div class="pm-section"><h3>Como usar</h3><p>' + _escapeAttr(p.usage) + '</p></div>'
+        + '<div class="pm-section"><h3>Composição</h3><p style="font-size:0.78rem;color:var(--text-muted);">' + _escapeAttr(p.comp) + '</p></div>'
+        + '<div class="pm-markets">'
+        + '<a href="' + BEE_MARKET_LINKS.amazon + '" target="_blank" rel="noopener noreferrer" class="pm-market-link"><img src="/images/icons/amazon.svg" alt="Amazon" width="24" height="24" onerror="this.style.display=\'none\'"><div><strong>Amazon</strong><br><small>Checkout prático</small></div></a>'
+        + '<a href="' + BEE_MARKET_LINKS.shopee + '" target="_blank" rel="noopener noreferrer" class="pm-market-link"><img src="/images/icons/shopee.svg" alt="Shopee" width="24" height="24" onerror="this.style.display=\'none\'"><div><strong>Shopee</strong><br><small>Ofertas e cupons</small></div></a>'
+        + '<a href="' + BEE_MARKET_LINKS.mercadolivre + '" target="_blank" rel="noopener noreferrer" class="pm-market-link"><img src="/images/icons/mercadolivre.svg" alt="Mercado Livre" width="24" height="24" onerror="this.style.display=\'none\'"><div><strong>Mercado Livre</strong><br><small>Compra segura</small></div></a>'
+        + '</div>'
+        + '</div>'
+        + '</div>';
+
+    productModalEl.classList.add('open');
+    productModalEl.setAttribute('aria-hidden', 'false');
+    if (typeof lockScroll === 'function') lockScroll();
+
+    var closeBtn = productModalEl.querySelector('.pm-close');
+    if (closeBtn) setTimeout(function() { closeBtn.focus(); }, 50);
+}
+
+function closeProductModal() {
+    if (!productModalEl) return;
+    productModalEl.classList.remove('open');
+    productModalEl.setAttribute('aria-hidden', 'true');
+    if (typeof unlockScroll === 'function') unlockScroll();
+
+    if (lastFocusedBeforeProductModal && typeof lastFocusedBeforeProductModal.focus === 'function') {
+        try { lastFocusedBeforeProductModal.focus(); } catch (err) {}
+    }
+    lastFocusedBeforeProductModal = null;
+
+    setTimeout(function() {
+        if (!productModalEl.classList.contains('open')) productModalContent.innerHTML = '';
+    }, 300);
+}
+
+if (productModalEl) {
+    productModalEl.addEventListener('keydown', function(e) {
+        if (e.key !== 'Tab' || !productModalEl.classList.contains('open')) return;
+        var focusables = productModalEl.querySelectorAll(
+            'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        );
+        if (!focusables.length) return;
+        var first = focusables[0];
+        var last = focusables[focusables.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault(); last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault(); first.focus();
+        }
+    });
+}
+
+if (beeProductsGrid) {
+    beeProductsGrid.addEventListener('click', function(e) {
+        var btn = e.target.closest('[data-product-id]');
+        if (!btn) return;
+        var id = btn.getAttribute('data-product-id');
+        if (id) openProductModal(id, btn);
+    });
+    beeProductsGrid.addEventListener('keydown', function(e) {
+        if (e.key !== 'Enter' && e.key !== ' ') return;
+        var card = e.target.closest('.bee-product-card');
+        if (!card) return;
+        e.preventDefault();
+        var id = card.getAttribute('data-product-id');
+        if (id) openProductModal(id, card);
+    });
+}
+
+document.querySelectorAll('.bee-filter-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+        document.querySelectorAll('.bee-filter-btn').forEach(function(b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        renderBeeProducts(btn.getAttribute('data-filter'));
+    });
+});
+
+renderBeeProducts('all');
 </script>
 
 </body>
