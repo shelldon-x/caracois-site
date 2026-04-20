@@ -80,7 +80,7 @@
             --terracota: #9B4442;
             --terracota-dark: #7C3331;
             --terracota-light: #B96A68;
-            --terracota-mid: var(--terracota-mid);
+            --terracota-mid: #C35F5A;
             --nude: #EFD9D7;
             --nude-light: #F2EBE6;
             --nude-ultra: #FBF6F5;
@@ -849,6 +849,9 @@
             .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
         }
         @media (max-width: 768px) {
+            .pm-grid { grid-template-columns: 1fr; }
+            .pm-image { min-height: 260px; border-radius: 28px 28px 0 0; padding: 30px; }
+            .pm-content { padding: 28px 24px 28px; }
             .nav-logo img { width: 200px; }
             section { padding: 60px 0; }
             .container { padding: 0 20px; }
@@ -2013,6 +2016,7 @@ function openProductModal(id, originEl) {
         + '</div>';
 
     productModalEl.classList.add('open');
+var _modalBox = productModalEl.querySelector('.product-modal'); if (_modalBox) _modalBox.scrollTop = 0;
     productModalEl.setAttribute('aria-hidden', 'false');
     if (typeof lockScroll === 'function') lockScroll();
 
