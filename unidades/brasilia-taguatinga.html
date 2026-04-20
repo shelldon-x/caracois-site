@@ -5,10 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
     <!-- SEO Local -->
-    <title>Studio Caracóis Taguatinga | Salão de Cachos</title>
+    <title>Studio Caracóis Brasília | Especialistas em Cabelos Cacheados | Taguatinga</title>
     <meta name="description" content="Studio Caracóis em Taguatinga: salão especialista em cabelos cacheados. Corte 3D, Acidificação, Caracóis Care e avaliação gratuita. Agende seu horário.">
     <meta name="keywords" content="salão cabelo cacheado Taguatinga, especialista cachos Taguatinga, corte cacheado Brasília Taguatinga, Studio Caracóis Taguatinga">
-    <meta name="author" content="Studio Caracóis">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://caracois.com.br/unidades/brasilia-taguatinga">
     <meta name="theme-color" content="#9B4442">
@@ -73,14 +72,10 @@
     </script>
 
     <style>
-        /* ╔═══════════════════════════════════════════════════════════════════╗
-           ║  1. TOKENS — variáveis de design (cores, fontes, easings)         ║
-           ╚═══════════════════════════════════════════════════════════════════╝ */
         :root {
             --terracota: #9B4442;
             --terracota-dark: #7C3331;
             --terracota-light: #B96A68;
-            --terracota-mid: var(--terracota-mid);
             --nude: #EFD9D7;
             --nude-light: #F2EBE6;
             --nude-ultra: #FBF6F5;
@@ -100,10 +95,6 @@
             --ease-out: cubic-bezier(.22,1,.36,1);
         }
 
-        /* ╔═══════════════════════════════════════════════════════════════════╗
-           ║  2. RESET + BASE — html, body, tipografia, elementos globais      ║
-           ╚═══════════════════════════════════════════════════════════════════╝ */
-
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; font-size: 16px; }
         body {
@@ -116,27 +107,6 @@
         .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
         img { max-width: 100%; height: auto; display: block; }
 
-                /* ╔═══════════════════════════════════════════════════════════════════╗
-           ║  3. UTILITIES — .container, .reveal, .skip-link, animações        ║
-           ╚═══════════════════════════════════════════════════════════════════╝ */
-
-        /* Utility classes — substituem inline styles repetidos */
-        .u-mx-auto { margin: 0 auto; }
-        .u-mw-full { max-width: 100%; }
-        .u-text-white { color: var(--white); }
-        .u-mt-md { margin-top: 16px; }
-        .market-fallback { display: none; font-size: 1.1rem; line-height: 1; }
-
-        /* Focus visible reforçado para elementos interativos secundários */
-        .bee-product-card:focus-visible,
-        .unit-card:focus-visible,
-        .knowledge-card:focus-visible,
-        .footer-col a:focus-visible,
-        .nav-links a:focus-visible {
-            outline: 2px solid var(--gold);
-            outline-offset: 4px;
-            border-radius: 8px;
-        }
         .skip-link {
             position: absolute; top: -100%; left: 16px;
             background: var(--terracota); color: var(--white);
@@ -158,20 +128,11 @@
 
         .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out); }
         .reveal.visible { opacity: 1; transform: translateY(0); }
-        /* Delays escalonados manuais (compat: usar quando precisar de controle fino) */
         .rd1 { transition-delay: .1s }
         .rd2 { transition-delay: .2s }
         .rd3 { transition-delay: .3s }
-        /* Delays automáticos por posição em grid/flex de irmãos com .reveal */
-        .reveal:nth-child(2) { transition-delay: .08s }
-        .reveal:nth-child(3) { transition-delay: .16s }
-        .reveal:nth-child(4) { transition-delay: .24s }
-        .reveal:nth-child(5) { transition-delay: .32s }
 
         /* NAVIGATION */
-                /* ╔═══════════════════════════════════════════════════════════════════╗
-           ║  4. LAYOUT — nav, footer, mobile menu, sticky CTA                 ║
-           ╚═══════════════════════════════════════════════════════════════════╝ */
         nav {
             position: fixed; top: 0; width: 100%; z-index: 1000;
             padding: 20px 0; transition: all 0.5s var(--ease);
@@ -311,9 +272,6 @@
         .sticky-cta svg { width: 18px; height: 18px; flex-shrink: 0; }
 
         /* HERO LOCAL */
-                /* ╔═══════════════════════════════════════════════════════════════════╗
-           ║  6. SECTIONS — hero, about, services, bee, faq, etc.              ║
-           ╚═══════════════════════════════════════════════════════════════════╝ */
         .hero-local {
             min-height: 60vh;
             background: linear-gradient(170deg, var(--black) 0%, #221514 35%, var(--terracota-dark) 100%);
@@ -379,9 +337,6 @@
         }
 
         /* BUTTONS */
-                /* ╔═══════════════════════════════════════════════════════════════════╗
-           ║  5. COMPONENTS — botões, cards, modais, formulários, pills        ║
-           ╚═══════════════════════════════════════════════════════════════════╝ */
         .btn {
             display: inline-flex;
             align-items: center;
@@ -837,9 +792,6 @@
         .exp-card-text { font-size: 0.82rem; color: var(--text-light); line-height: 1.6; font-weight: 300; }
         .exp-grid { grid-template-columns: repeat(4, 1fr); }
         /* RESPONSIVIDADE */
-                /* ╔═══════════════════════════════════════════════════════════════════╗
-           ║  7. RESPONSIVE — media queries (mobile, tablet, desktop wide)     ║
-           ╚═══════════════════════════════════════════════════════════════════╝ */
         @media (max-width: 1024px) {
             .nav-links, .nav-social, .nav-cta-btn { display: none !important; }
             .mobile-toggle { display: block; }
@@ -849,6 +801,9 @@
             .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
         }
         @media (max-width: 768px) {
+            .pm-grid { grid-template-columns: 1fr; }
+            .pm-image { min-height: 260px; border-radius: 28px 28px 0 0; padding: 30px; }
+            .pm-content { padding: 28px 24px 28px; }
             .nav-logo img { width: 200px; }
             section { padding: 60px 0; }
             .container { padding: 0 20px; }
@@ -864,15 +819,11 @@
             .footer-top { grid-template-columns: 1fr; gap: 28px; }
             .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
             [style*="grid-template-columns: repeat(4"] { grid-template-columns: repeat(2, 1fr) !important; }
-            section .exp-grid { grid-template-columns: repeat(2, 1fr); }
+            .exp-grid { grid-template-columns: repeat(2, 1fr) !important; }
             .sticky-cta { display: flex; }
             .whatsapp-float { bottom: 90px; right: 16px; width: 48px; height: 48px; }
             body { padding-bottom: 62px; background: var(--black); }
             .map-container iframe { height: 200px; }
-            .bee-product-grid { grid-template-columns: repeat(2, 1fr); gap: 18px; }
-            .pm-grid { grid-template-columns: 1fr; }
-            .pm-image { min-height: 260px; border-radius: 28px 28px 0 0; padding: 30px; }
-            .pm-content { padding: 28px 24px 28px; }
         }
         @media (max-width: 480px) {
             section { padding: 48px 0; }
@@ -883,9 +834,6 @@
             .service-card h3 { font-size: 1.1rem; }
             .address-block { padding: 20px; }
             .whatsapp-float { bottom: 80px; right: 14px; width: 44px; height: 44px; }
-            .pm-content h2 { font-size: 1.55rem; }
-            .pm-specs { grid-template-columns: 1fr; }
-            .pm-markets { flex-direction: column; }
         }
     
         /* HOME PARITY FIX — unidades */
@@ -913,6 +861,7 @@
         .footer-social-links svg { width: 22px; height: 22px; display: block; flex-shrink: 0; overflow: visible; }
 
         .footer-social-links a {
+            overflow: visible !important;
             display: flex; align-items: center; justify-content: center;
         }
 
@@ -922,17 +871,17 @@
         .mobile-menu a.btn-primary,
         .mobile-menu button.btn,
         .mobile-menu button.btn-primary {
-            background: linear-gradient(135deg, var(--terracota), var(--terracota-dark));
-            color: var(--white);
-            border: none;
-            box-shadow: 0 10px 24px rgba(155,68,66,0.22);
-            margin-top: 20px;
-            text-align: center;
-            justify-content: center;
-            border-radius: 999px;
-            padding: 14px 20px;
-            font-weight: 600;
-            width: 100%;
+            background: linear-gradient(135deg, var(--terracota), var(--terracota-dark)) !important;
+            color: var(--white) !important;
+            border: none !important;
+            box-shadow: 0 10px 24px rgba(155,68,66,0.22) !important;
+            margin-top: 20px !important;
+            text-align: center !important;
+            justify-content: center !important;
+            border-radius: 999px !important;
+            padding: 14px 20px !important;
+            font-weight: 600 !important;
+            width: 100% !important;
         }
 
         .mobile-menu .btn:hover,
@@ -941,8 +890,8 @@
         .mobile-menu a.btn-primary:hover,
         .mobile-menu button.btn:hover,
         .mobile-menu button.btn-primary:hover {
-            color: var(--white);
-            background: linear-gradient(135deg, var(--terracota-dark), var(--terracota-dark));
+            color: var(--white) !important;
+            background: linear-gradient(135deg, var(--terracota-dark), var(--terracota-dark)) !important;
         }
 
 
@@ -1283,7 +1232,7 @@
 </head>
 <body>
 <noscript>
-<style>.noscript-banner{background:#9B4442;color:var(--white);padding:16px 24px;text-align:center;font-family:system-ui,sans-serif;font-size:.9rem;position:relative;z-index:9999}.noscript-banner a{color:var(--white);text-decoration:underline;font-weight:600;margin:0 8px}</style>
+<style>.noscript-banner{background:#9B4442;color:#fff;padding:16px 24px;text-align:center;font-family:system-ui,sans-serif;font-size:.9rem;position:relative;z-index:9999}.noscript-banner a{color:#fff;text-decoration:underline;font-weight:600;margin:0 8px}</style>
 <div class="noscript-banner">Para melhor experiência, habilite o JavaScript. Ou agende pelo WhatsApp:<a href="https://wa.me/5561991446678">WhatsApp Taguatinga</a></div>
 </noscript>
 
@@ -1320,7 +1269,7 @@
             </div>
             <a href="https://linktr.ee/studiocaracois" target="_blank" rel="noopener" class="nav-cta-btn">Agendar avaliação</a>
         </div>
-        <button type="button" class="mobile-toggle" onclick="openMobileMenu()" aria-label="Abrir menu" aria-expanded="false" aria-controls="mm">
+        <button class="mobile-toggle" onclick="openMobileMenu()" aria-label="Abrir menu" aria-expanded="false" aria-controls="mm">
             <span></span><span></span><span></span>
         </button>
     </div>
@@ -1331,7 +1280,7 @@
 
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mm" role="dialog" aria-label="Menu mobile" aria-modal="true" aria-hidden="true">
-    <button type="button" class="mobile-close" onclick="closeMobileMenu()" aria-label="Fechar menu">&times;</button>
+    <button class="mobile-close" onclick="closeMobileMenu()" aria-label="Fechar menu">&times;</button>
     <a href="#sobre" onclick="closeMobileMenu()">Sobre</a>
     <a href="#experiencia" onclick="closeMobileMenu()">Sua experiência</a>
     <a href="#servicos" onclick="closeMobileMenu()">Serviços</a>
@@ -1566,7 +1515,7 @@
             <div class="bee-product-grid reveal" id="beeProductsGrid"></div>
 
             <div class="bee-cta-wrap reveal">
-                <button type="button" class="btn btn-gold" onclick="openBeeModal()" aria-label="Conhecer onde comprar Bee Cosmetics">Conhecer a linha completa</button>
+                <button class="btn btn-gold" onclick="openBeeModal()" aria-label="Conhecer onde comprar Bee Cosmetics">Conhecer a linha completa</button>
             </div>
         </div>
     </section>
@@ -1662,7 +1611,7 @@
 <!-- Bee Modal Hub -->
 <div class="bee-modal-overlay" id="beeModal" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Escolha onde comprar Bee Cosmetics" onclick="closeBeeModalOnOverlay(event)">
     <div class="bee-modal">
-        <button type="button" class="bee-modal-close" onclick="closeBeeModal()" aria-label="Fechar">&times;</button>
+        <button class="bee-modal-close" onclick="closeBeeModal()" aria-label="Fechar">&times;</button>
         <div class="bee-modal-header">
             <!-- Badge Bee Cosmetics removido — modal neutro e elegante -->
             <h3>Escolha seu canal de compra</h3>
@@ -1674,7 +1623,7 @@
                     <!-- /images/icons/amazon.svg — substituir por <img> quando o arquivo existir -->
                     <img src="/images/icons/amazon.svg" alt="Amazon" width="28" height="28"
                          onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-                    <span class="market-fallback">📦</span>
+                    <span style="display:none;font-size:1.1rem;line-height:1;">📦</span>
                 </div>
                 <div class="bee-market-text">
                     <strong>Amazon</strong>
@@ -1687,7 +1636,7 @@
                     <!-- /images/icons/shopee.svg — substituir por <img> quando o arquivo existir -->
                     <img src="/images/icons/shopee.svg" alt="Shopee" width="28" height="28"
                          onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-                    <span class="market-fallback">🛍️</span>
+                    <span style="display:none;font-size:1.1rem;line-height:1;">🛍️</span>
                 </div>
                 <div class="bee-market-text">
                     <strong>Shopee</strong>
@@ -1700,7 +1649,7 @@
                     <!-- /images/icons/mercadolivre.svg — substituir por <img> quando o arquivo existir -->
                     <img src="/images/icons/mercadolivre.svg" alt="Mercado Livre" width="28" height="28"
                          onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-                    <span class="market-fallback">🏪</span>
+                    <span style="display:none;font-size:1.1rem;line-height:1;">🏪</span>
                 </div>
                 <div class="bee-market-text">
                     <strong>Mercado Livre</strong>
@@ -1719,7 +1668,7 @@
 <!-- Product Detail Modal -->
 <div class="product-modal-overlay" id="productModal" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Ficha do produto" onclick="if(event.target===this)closeProductModal()">
     <div class="product-modal">
-        <button type="button" class="pm-close" onclick="closeProductModal()" aria-label="Fechar">&times;</button>
+        <button class="pm-close" onclick="closeProductModal()" aria-label="Fechar">&times;</button>
         <div id="productModalContent"></div>
     </div>
 </div>
@@ -1757,15 +1706,15 @@
 </footer>
 
 <!-- WHATSAPP FLOAT -->
-<button type="button" class="whatsapp-float" onclick="window.open('https://wa.me/5561991446678?text=Ol%C3%A1%21%20Gostaria%20de%20agendar%20minha%20avalia%C3%A7%C3%A3o%20gratuita%20na%20unidade%20Taguatinga.', '_blank')" aria-label="WhatsApp">
+<button class="whatsapp-float" onclick="window.open('https://wa.me/5561991446678?text=Ol%C3%A1%21%20Gostaria%20de%20agendar%20minha%20avalia%C3%A7%C3%A3o%20gratuita%20na%20unidade%20Taguatinga.', '_blank')" aria-label="WhatsApp">
     <svg viewBox="0 0 24 24"><use href="#i-wa"/></svg>
 </button>
 
 <script>
 /* === STATE === */
-let lastScrollY = 0;
-let lastFocusedElement = null;
-let activeTrapCleanup = null;
+var lastScrollY = 0;
+var lastFocusedElement = null;
+var activeTrapCleanup = null;
 
 /* === SCROLL LOCK === */
 function lockScroll() {
@@ -1775,7 +1724,7 @@ function lockScroll() {
     document.documentElement.style.scrollBehavior = 'auto';
 }
 function unlockScroll() {
-    const anyOpen = document.querySelector('.mobile-menu.open, .mobile-overlay.open');
+    var anyOpen = document.querySelector('.mobile-menu.open, .mobile-overlay.open');
     if (anyOpen) return;
     document.body.classList.remove('ui-locked');
     document.documentElement.style.scrollBehavior = '';
@@ -1784,10 +1733,10 @@ function unlockScroll() {
 /* === FOCUS TRAP === */
 function trapFocus(container) {
     if (!container) return function() {};
-    const sel = 'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+    var sel = 'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
     function onKeyDown(e) {
         if (e.key !== 'Tab') return;
-        let f = Array.prototype.slice.call(container.querySelectorAll(sel)).filter(function(el) { return el.offsetParent !== null; });
+        var f = Array.prototype.slice.call(container.querySelectorAll(sel)).filter(function(el) { return el.offsetParent !== null; });
         if (!f.length) return;
         if (e.shiftKey) { if (document.activeElement === f[0]) { e.preventDefault(); f[f.length-1].focus(); } }
         else { if (document.activeElement === f[f.length-1]) { e.preventDefault(); f[0].focus(); } }
@@ -1800,9 +1749,9 @@ function clearFocusTrap() { if (typeof activeTrapCleanup === 'function') { activ
 
 /* === MOBILE MENU === */
 function openMobileMenu() {
-    let menu = document.getElementById('mm');
-    let overlay = document.getElementById('mobileOverlay');
-    let toggle = document.querySelector('.mobile-toggle');
+    var menu = document.getElementById('mm');
+    var overlay = document.getElementById('mobileOverlay');
+    var toggle = document.querySelector('.mobile-toggle');
     if (!menu || !overlay || !toggle) return;
     lastFocusedElement = document.activeElement;
     menu.classList.add('open');
@@ -1811,12 +1760,12 @@ function openMobileMenu() {
     toggle.setAttribute('aria-expanded', 'true');
     lockScroll();
     activateFocusTrap(menu);
-    setTimeout(function() { let f = menu.querySelector('a, button'); if (f) f.focus(); }, 50);
+    setTimeout(function() { var f = menu.querySelector('a, button'); if (f) f.focus(); }, 50);
 }
 function closeMobileMenu(restoreFocus) {
-    let menu = document.getElementById('mm');
-    let overlay = document.getElementById('mobileOverlay');
-    let toggle = document.querySelector('.mobile-toggle');
+    var menu = document.getElementById('mm');
+    var overlay = document.getElementById('mobileOverlay');
+    var toggle = document.querySelector('.mobile-toggle');
     if (!menu || !menu.classList.contains('open')) return;
     menu.classList.remove('open');
     overlay.classList.remove('open');
@@ -1831,11 +1780,11 @@ function closeMobileMenu(restoreFocus) {
 document.addEventListener('keydown', function(e) {
     if (e.key !== 'Escape') return;
 
-    const productModalEl = document.getElementById('productModal');
+    var productModalEl = document.getElementById('productModal');
     if (productModalEl && productModalEl.classList.contains('open')) {
         closeProductModal(); return;
     }
-    const beeModalEl = document.getElementById('beeModal');
+    var beeModalEl = document.getElementById('beeModal');
     if (beeModalEl && beeModalEl.classList.contains('open')) {
         closeBeeModal(); return;
     }
@@ -1846,18 +1795,18 @@ document.addEventListener('keydown', function(e) {
 
 /* === NAV SCROLL + LOGO === */
 (function() {
-    const nav = document.getElementById('navbar');
-    const logo = document.getElementById('navLogoImg');
+    var nav = document.getElementById('navbar');
+    var logo = document.getElementById('navLogoImg');
     window.addEventListener('scroll', function() {
-        const s = window.scrollY > 60;
+        var s = window.scrollY > 60;
         nav.classList.toggle('scrolled', s);
-        const next = s ? '/images/logos/logo-terracota.svg' : '/images/logos/logo-nude.svg';
+        var next = s ? '/images/logos/logo-terracota.svg' : '/images/logos/logo-nude.svg';
         if (logo && !logo.src.endsWith(next)) logo.src = next;
     });
 })();
 
 /* === SCROLL REVEAL === */
-const obs = new IntersectionObserver(function(entries) {
+var obs = new IntersectionObserver(function(entries) {
     entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
 }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
 document.querySelectorAll('.reveal').forEach(function(el) { obs.observe(el); });
@@ -1865,10 +1814,10 @@ document.querySelectorAll('.reveal').forEach(function(el) { obs.observe(el); });
 /* === SMOOTH SCROLL === */
 document.querySelectorAll('a[href^="#"]').forEach(function(a) {
     a.addEventListener('click', function(e) {
-        const href = a.getAttribute('href');
+        var href = a.getAttribute('href');
         if (href === '#') return;
         e.preventDefault();
-        const t = document.querySelector(href);
+        var t = document.querySelector(href);
         if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
 });
@@ -1876,13 +1825,13 @@ document.querySelectorAll('a[href^="#"]').forEach(function(a) {
 /* === FAQ ACCORDION (details/summary) === */
 document.querySelectorAll('.faq-item').forEach(function(item) {
     item.addEventListener('toggle', function() {
-        const summary = item.querySelector('summary');
+        var summary = item.querySelector('summary');
         if (summary) summary.setAttribute('aria-expanded', item.open ? 'true' : 'false');
         if (!item.open) return;
         document.querySelectorAll('.faq-item').forEach(function(other) {
             if (other !== item) {
                 other.open = false;
-                const otherSummary = other.querySelector('summary');
+                var otherSummary = other.querySelector('summary');
                 if (otherSummary) otherSummary.setAttribute('aria-expanded', 'false');
             }
         });
@@ -1893,17 +1842,17 @@ document.querySelectorAll('.faq-item').forEach(function(item) {
    BEE MODAL
 ========================= */
 function openBeeModal() {
-    let overlay = document.getElementById('beeModal');
+    var overlay = document.getElementById('beeModal');
     if (!overlay) return;
     overlay.classList.add('open');
     overlay.setAttribute('aria-hidden', 'false');
     if (typeof lockScroll === 'function') lockScroll();
-    const closeBtn = overlay.querySelector('.bee-modal-close');
+    var closeBtn = overlay.querySelector('.bee-modal-close');
     if (closeBtn) { setTimeout(function() { closeBtn.focus(); }, 50); }
 }
 
 function closeBeeModal() {
-    let overlay = document.getElementById('beeModal');
+    var overlay = document.getElementById('beeModal');
     if (!overlay) return;
     overlay.classList.remove('open');
     overlay.setAttribute('aria-hidden', 'true');
@@ -1922,7 +1871,7 @@ function closeBeeModalOnOverlay(e) {
    Array de produtos, render dinâmico, modal de ficha completa
    com trap de foco e retorno de foco ao elemento de origem.
 ========================= */
-const BEE_PRODUCTS = [
+var BEE_PRODUCTS = [
   {id:'born-to-bee', name:'Born to BEE', category:'Shampoo Sem Sulfato', size:'300 ml', ph:'pH 4,5', anvisa:'25351.459676/2022-71', barcode:'7899085798567', actives:'Extrato de Aloe Vera, Vitamina B12, Hydra Repair', desc:'Limpeza eficaz sem ressecar ou agredir os fios. Com limpante natural, deixa o cabelo limpo e hidratado.', full:'Tenha uma limpeza eficaz sem ressecar ou agredir os fios. Nosso Shampoo Sem Sulfato Born to BEE, com limpante natural, deixa seu cabelo limpo e hidratado, perfeito para rotinas low poo.', usage:'Aplique no cabelo molhado, massageando suavemente o couro cabeludo em movimentos circulares. Enxágue bem. Repita se necessário.', comp:'Água Deionizada, Lauril Sulfosucinato de Sódio, Cocoamidopropil Betaína, Dietanolamida de Ácidos Graxos de Côco, Fragrância, Poliquatérnio-39, Hidroxietil Uréia, Extrato de Babosa, Cloreto de Guar Hidroxipropiltrimônio, Distearato do PEG-150, Poliquatérnio-22, Poliquatérnio-55, Poliquatérnio-47, Metilglucose Eter do PPG-20, Glicerina, Álcool Benzílico, Clorfenesina, EDTA Dissódico.', kind:'limpeza', tag:'low poo', img:'/images/products/born-to-bee.webp'},
   {id:'feel-the-beeat', name:'Feel the BEEat', category:'Co-Wash', size:'300 ml', ph:'pH 4,5', anvisa:'25351.459590/2022-48', barcode:'7899085798611', actives:'Aloe Vera, Manteiga de Oliva, Queratina', desc:'Limpa, condiciona, hidrata e repara em um só passo. Ideal para rotinas no poo.', full:'Um produto completo que limpa, condiciona, hidrata e repara seus fios. Com aloe vera, manteiga de oliva e queratina, é ideal para quem segue a rotina sem shampoos tradicionais.', usage:'Aplique nos cabelos molhados, massageando o couro cabeludo e distribuindo pelo comprimento. Enxágue bem.', comp:'Água Deionizada, Cocoamidopropil Betaina, Álcool Cetoestarílico, Álcool Cetílico, Cloreto de Cetrimônio, Cloreto de Berrentrimômio, Fragrância, Poliquatérnio-39, Queratina Hidrolizada, Manteiga de Oliva, Extrato de Babosa.', kind:'limpeza', tag:'no poo', img:'/images/products/cowash-linha1.webp'},
   {id:'beetween-gardens', name:'BEEtween Gardens', category:'Máscara de Nutrição', size:'300 g', ph:'pH 4,0', anvisa:'25351.459556/2022-73', barcode:'7899085798598', actives:'Manteiga de Abacate, Óleo de Coco, D-Pantenol', desc:'Hidratação e nutrição em um único produto. Proporciona umectação, emoliência e maciez.', full:'Hidratação e nutrição em um único produto. Com D-pantenol, manteiga de abacate e óleo de coco, proporciona umectação, emoliência e maciez, ajudando a evitar o frizz.', usage:'Aplique após a limpeza, enluvando as mechas. Deixe agir por 10 minutos e enxágue.', comp:'Água Deionizada, Cloreto de Berrentrimônio, Álcool Cetoestarílico, Álcool Cetílico, Cloreto de Cetrimônio, Metosulfato de Berrentrimônio, Fragrância, Glicerina, Poliquatérnio-39, Vitamina B5, Óleo de Coco, Manteiga de Abacate.', kind:'tratamento', tag:'nutrição', img:'/images/products/beetween-gardens.webp'},
@@ -1935,16 +1884,16 @@ const BEE_PRODUCTS = [
   {id:'beelieve-in-acid', name:'BEElieve in Acid', category:'Elixir Acidificante', size:'140 ml', ph:'pH 3,5', anvisa:'25351.438363/2024-41', barcode:'7899085798659', actives:'Bioacetum Maçã, Betacaroteno, Potássio', desc:'Equilibra o pH, sela cutículas e intensifica o brilho dos fios.', full:'Revitalize seus cabelos com o Elixir Acidificante BEElieve in Acid. Equilibra o pH dos fios, sela as cutículas e proporciona brilho intenso, além de preparar o cabelo para tratamentos profundos.', usage:'Após a limpeza, aplique nos fios molhados. Deixe agir por 5 minutos e enxágue. Continue com máscara de tratamento.', comp:'Água Purificada, Vinagre, Extrato de Maçã, Frutose, Glicose, Ácido Glucônico, Gliconolactona.', kind:'tratamento', tag:'acidificação', img:'/images/products/beelieve-in-acid.webp'}
 ];
 
-const BEE_MARKET_LINKS = {
+var BEE_MARKET_LINKS = {
   amazon: 'https://www.amazon.com.br/s?k=bee+cosmetics+cabelo+cacheado',
   shopee: 'https://shopee.com.br/search?keyword=bee%20cosmetics%20cabelo%20cacheado',
   mercadolivre: 'https://lista.mercadolivre.com.br/bee-cosmetics'
 };
 
-const beeProductsGrid = document.getElementById('beeProductsGrid');
-const productModalEl = document.getElementById('productModal');
-const productModalContent = document.getElementById('productModalContent');
-let lastFocusedBeforeProductModal = null;
+var beeProductsGrid = document.getElementById('beeProductsGrid');
+var productModalEl = document.getElementById('productModal');
+var productModalContent = document.getElementById('productModalContent');
+var lastFocusedBeforeProductModal = null;
 
 function _escapeAttr(s) {
     return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
@@ -1953,10 +1902,10 @@ function _escapeAttr(s) {
 function renderBeeProducts(filter) {
     if (!beeProductsGrid) return;
     filter = filter || 'all';
-    const list = BEE_PRODUCTS.filter(function(p) { return filter === 'all' || p.kind === filter; });
-    let html = '';
-    for (let i = 0; i < list.length; i++) {
-        let p = list[i];
+    var list = BEE_PRODUCTS.filter(function(p) { return filter === 'all' || p.kind === filter; });
+    var html = '';
+    for (var i = 0; i < list.length; i++) {
+        var p = list[i];
         html += '<article class="bee-product-card" tabindex="0" role="button" aria-label="Ver ficha completa de ' + _escapeAttr(p.name) + '" data-product-id="' + _escapeAttr(p.id) + '">'
             + '<div class="bee-product-img">'
             + '<img src="' + p.img + '" alt="' + _escapeAttr(p.category + ' ' + p.name) + ' — Bee Cosmetics" loading="lazy" decoding="async" width="500" height="500">'
@@ -1981,15 +1930,15 @@ function renderBeeProducts(filter) {
 }
 
 function openProductModal(id, originEl) {
-    let p = null;
-    for (let i = 0; i < BEE_PRODUCTS.length; i++) { if (BEE_PRODUCTS[i].id === id) { p = BEE_PRODUCTS[i]; break; } }
+    var p = null;
+    for (var i = 0; i < BEE_PRODUCTS.length; i++) { if (BEE_PRODUCTS[i].id === id) { p = BEE_PRODUCTS[i]; break; } }
     if (!p || !productModalEl) return;
 
     lastFocusedBeforeProductModal = originEl || document.activeElement;
 
     productModalContent.innerHTML =
         '<div class="pm-grid">'
-        + '<div class="pm-image"><img src="' + p.img + '" alt="' + _escapeAttr(p.name) + '" loading="eager" decoding="async"></div>'
+        + '<div class="pm-image"><img src="' + p.img + '" alt="' + _escapeAttr(p.name) + '"></div>'
         + '<div class="pm-content">'
         + '<div class="pm-eyebrow">Ficha completa</div>'
         + '<h2>' + _escapeAttr(p.name) + '</h2>'
@@ -2013,13 +1962,11 @@ function openProductModal(id, originEl) {
         + '</div>';
 
     productModalEl.classList.add('open');
+var _modalBox = productModalEl.querySelector('.product-modal'); if (_modalBox) _modalBox.scrollTop = 0;
     productModalEl.setAttribute('aria-hidden', 'false');
     if (typeof lockScroll === 'function') lockScroll();
 
-    const modalScroller = productModalEl.querySelector('.product-modal');
-    if (modalScroller) modalScroller.scrollTop = 0;
-
-    const closeBtn = productModalEl.querySelector('.pm-close');
+    var closeBtn = productModalEl.querySelector('.pm-close');
     if (closeBtn) setTimeout(function() { closeBtn.focus(); }, 50);
 }
 
@@ -2042,12 +1989,12 @@ function closeProductModal() {
 if (productModalEl) {
     productModalEl.addEventListener('keydown', function(e) {
         if (e.key !== 'Tab' || !productModalEl.classList.contains('open')) return;
-        const focusables = productModalEl.querySelectorAll(
+        var focusables = productModalEl.querySelectorAll(
             'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
         );
         if (!focusables.length) return;
-        const first = focusables[0];
-        const last = focusables[focusables.length - 1];
+        var first = focusables[0];
+        var last = focusables[focusables.length - 1];
         if (e.shiftKey && document.activeElement === first) {
             e.preventDefault(); last.focus();
         } else if (!e.shiftKey && document.activeElement === last) {
@@ -2058,17 +2005,17 @@ if (productModalEl) {
 
 if (beeProductsGrid) {
     beeProductsGrid.addEventListener('click', function(e) {
-        const btn = e.target.closest('[data-product-id]');
+        var btn = e.target.closest('[data-product-id]');
         if (!btn) return;
-        let id = btn.getAttribute('data-product-id');
+        var id = btn.getAttribute('data-product-id');
         if (id) openProductModal(id, btn);
     });
     beeProductsGrid.addEventListener('keydown', function(e) {
         if (e.key !== 'Enter' && e.key !== ' ') return;
-        const card = e.target.closest('.bee-product-card');
+        var card = e.target.closest('.bee-product-card');
         if (!card) return;
         e.preventDefault();
-        let id = card.getAttribute('data-product-id');
+        var id = card.getAttribute('data-product-id');
         if (id) openProductModal(id, card);
     });
 }
