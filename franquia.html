@@ -1847,6 +1847,21 @@
         }
         .mobile-menu a:last-of-type { border-bottom: none; }
         .mobile-menu a:hover { color: var(--terracota); }
+        .mobile-menu .btn {
+            color: var(--white) !important;
+            border-bottom: none !important;
+            font-weight: 600;
+        }
+        .mobile-menu .btn-primary {
+            background: linear-gradient(135deg, var(--terracota), var(--terracota-dark));
+            color: var(--white) !important;
+            box-shadow: 0 10px 28px rgba(155,68,66,0.18);
+        }
+        .mobile-menu .btn-primary:hover,
+        .mobile-menu .btn-primary:focus-visible {
+            color: var(--white) !important;
+            background: var(--terracota-dark);
+        }
         .mobile-close {
             position: absolute; top: 20px; right: 20px;
             background: var(--bg-soft);
@@ -2781,22 +2796,26 @@
             display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 56px;
         }
         .hero-stats {
-            display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px;
+            display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px;
             padding-top: 36px; border-top: 1px solid rgba(255,255,255,0.1);
         }
+        .hero-stat {
+            min-width: 0;
+        }
         .hero-stat-num {
-            font-family: var(--sans); font-size: clamp(2rem, 4vw, 3rem);
+            font-family: var(--sans); font-size: clamp(2.2rem, 4.6vw, 3.2rem);
             color: var(--white); font-weight: 700; line-height: 1;
             letter-spacing: -0.04em; font-variant-numeric: tabular-nums lining-nums;
-            margin-bottom: 6px;
+            margin-bottom: 10px;
         }
         .hero-stat-num span {
             font-size: 0.58em; color: var(--gold-light); margin-left: 2px;
             font-weight: 600;
         }
         .hero-stat-label {
-            font-size: 0.78rem; color: rgba(255,255,255,0.6);
-            font-weight: 300; line-height: 1.3;
+            font-size: 0.86rem; color: rgba(255,255,255,0.72);
+            font-weight: 300; line-height: 1.35;
+            max-width: 16ch;
         }
 
         /* Section Market */
@@ -2816,9 +2835,10 @@
         }
         .market-card-icon { font-size: 2.4rem; margin-bottom: 16px; }
         .market-card-num {
-            font-family: var(--serif); font-size: 2.4rem;
-            color: var(--terracota); font-weight: 500;
+            font-family: var(--sans); font-size: clamp(2.3rem, 4.4vw, 3rem);
+            color: var(--terracota); font-weight: 700;
             line-height: 1; margin-bottom: 12px;
+            letter-spacing: -0.04em; font-variant-numeric: tabular-nums lining-nums;
         }
         .market-card-title {
             font-family: var(--serif); font-size: 1.05rem;
@@ -2984,7 +3004,9 @@
         @media (max-width: 768px) {
             .franquia-hero { padding: 120px 0 64px; min-height: auto; }
             .franquia-hero h1 { font-size: 2.1rem; }
-            .hero-stats { grid-template-columns: 1fr; gap: 22px; padding-top: 28px; }
+            .hero-stats { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; padding-top: 28px; }
+            .hero-stat-label { font-size: 0.72rem; max-width: 12ch; }
+            .hero-stat-num { font-size: clamp(2rem, 8vw, 2.5rem); }
             .hero-stat { display: flex; align-items: baseline; gap: 12px; }
             .hero-stat-num { margin-bottom: 0; }
             .market-grid, .diferenciais-grid { grid-template-columns: 1fr; }
@@ -3184,15 +3206,15 @@
                 <div class="hero-stats">
                     <div class="hero-stat">
                         <div class="hero-stat-num">8<span>+</span></div>
-                        <div class="hero-stat-label">Unidades em operação em 4 estados</div>
+                        <div class="hero-stat-label">Unidades em operação</div>
                     </div>
                     <div class="hero-stat">
                         <div class="hero-stat-num">10<span>+</span></div>
-                        <div class="hero-stat-label">Anos de experiência no segmento de cachos</div>
+                        <div class="hero-stat-label">Anos de experiência</div>
                     </div>
                     <div class="hero-stat">
                         <div class="hero-stat-num">60<span>%</span></div>
-                        <div class="hero-stat-label">Da população brasileira tem cabelo com curvatura</div>
+                        <div class="hero-stat-label">Da população brasileira</div>
                     </div>
                 </div>
             </div>
