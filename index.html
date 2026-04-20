@@ -10,6 +10,7 @@
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://caracois.com.br">
     <meta name="theme-color" content="#9B4442">
+    <meta name="format-detection" content="telephone=no">
 
     <meta property="og:title" content="Studio Caracóis | Salão Especialista em Cabelos Cacheados">
     <meta property="og:description" content="Corte 3D, Acidificação, Caracóis Care e avaliação gratuita. Transforme seus cachos com quem realmente entende.">
@@ -44,22 +45,14 @@
     <link rel="dns-prefetch" href="//instagram.com">
     <!-- OTIMIZAÇÃO: reduzido de 12 para 7 pesos; ~90KB economizados -->
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
-
-    <script type="application/ld+json">
+<script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "BeautySalon",
+      "@type": "WebSite",
       "name": "Studio Caracóis",
-      "description": "Rede de salões especialistas em cabelos cacheados. Corte 3D, Acidificação, Caracóis Care e avaliação gratuita com atendimento consultivo.",
       "url": "https://caracois.com.br",
-      "image": "https://caracois.com.br/images/logos/logo-terracota.svg",
-      "priceRange": "$$",
-      "sameAs": [
-        "https://instagram.com/studiocaracois",
-        "https://tiktok.com/@studiocaracois",
-        "https://youtube.com/@studiocaracois"
-      ],
-      "slogan": "Cabelo bonito é cabelo saudável."
+      "inLanguage": "pt-BR",
+      "publisher": { "@id": "https://caracois.com.br/#organization" }
     }
     </script>
 
@@ -93,11 +86,17 @@
           "logo": "https://caracois.com.br/images/logos/logo-terracota.svg",
           "foundingDate": "2016",
           "description": "Rede de salões especialistas em cabelos cacheados com 8 unidades no Brasil.",
+          "slogan": "Cabelo bonito é cabelo saudável.",
           "sameAs": [
             "https://instagram.com/studiocaracois",
             "https://tiktok.com/@studiocaracois",
             "https://youtube.com/@studiocaracois"
-          ]
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "customer support",
+            "availableLanguage": ["pt-BR"]
+          }
         },
         {
           "@type": "HairSalon",
@@ -107,7 +106,7 @@
           "url": "https://caracois.com.br/unidades/sao-paulo-tatuape",
           "telephone": "+5511998980874",
           "priceRange": "R$$",
-          "address": { "@type": "PostalAddress", "streetAddress": "R. Manoel dos Santos 70 - Casa - Vila Gomes Cardim", "postalCode": "03318-040", "addressLocality": "São Paulo", "addressRegion": "SP", "addressCountry": "BR" },
+          "address": { "@type": "PostalAddress", "streetAddress": "Rua Manoel dos Santos 70 - Casa - Vila Gomes Cardim", "postalCode": "03318-040", "addressLocality": "São Paulo", "addressRegion": "SP", "addressCountry": "BR" },
           "geo": { "@type": "GeoCoordinates", "latitude": -23.5389, "longitude": -46.5766 },
           "areaServed": "São Paulo e região metropolitana"
         },
@@ -141,7 +140,7 @@
           "url": "https://caracois.com.br/unidades/brasilia-asa-norte",
           "telephone": "+5561995251477",
           "priceRange": "R$$",
-          "address": { "@type": "PostalAddress", "streetAddress": "SCLN 715, Loja 59 - Asa Norte", "postalCode": "70770-511", "addressLocality": "Brasília", "addressRegion": "DF", "addressCountry": "BR" },
+          "address": { "@type": "PostalAddress", "streetAddress": "SCLN 715, Loja 59 - Asa Norte, Brasília - DF", "postalCode": "70770-511", "addressLocality": "Brasília", "addressRegion": "DF", "addressCountry": "BR" },
           "geo": { "@type": "GeoCoordinates", "latitude": -15.7467, "longitude": -47.8826 }
         },
         {
@@ -152,7 +151,7 @@
           "url": "https://caracois.com.br/unidades/brasilia-asa-sul",
           "telephone": "+5561996942312",
           "priceRange": "R$$",
-          "address": { "@type": "PostalAddress", "streetAddress": "CLS 411, Bloco B, Loja 20 - Asa Sul", "postalCode": "70277-520", "addressLocality": "Brasília", "addressRegion": "DF", "addressCountry": "BR" },
+          "address": { "@type": "PostalAddress", "streetAddress": "CLS 411, Bloco B, Loja 20 - Asa Sul, Brasília - DF", "postalCode": "70277-520", "addressLocality": "Brasília", "addressRegion": "DF", "addressCountry": "BR" },
           "geo": { "@type": "GeoCoordinates", "latitude": -15.8267, "longitude": -47.9218 }
         },
         {
@@ -163,7 +162,7 @@
           "url": "https://caracois.com.br/unidades/brasilia-taguatinga",
           "telephone": "+5561991446678",
           "priceRange": "R$$",
-          "address": { "@type": "PostalAddress", "streetAddress": "QND 2, Lote 11, Loja 01 - Taguatinga Norte", "postalCode": "72120-020", "addressLocality": "Brasília", "addressRegion": "DF", "addressCountry": "BR" },
+          "address": { "@type": "PostalAddress", "streetAddress": "QND 2, Lote 11, Loja 01 - Taguatinga Norte, Brasília - DF", "postalCode": "72120-020", "addressLocality": "Brasília", "addressRegion": "DF", "addressCountry": "BR" },
           "geo": { "@type": "GeoCoordinates", "latitude": -15.8362, "longitude": -48.0558 }
         },
         {
@@ -2896,9 +2895,9 @@
                 <a href="/franquia">Franquia</a>
             </div>
             <div class="nav-social">
-                <a href="https://instagram.com/studiocaracois" target="_blank" rel="noopener" aria-label="Instagram"><svg width="24" height="24"><use href="#i-ig"/></svg></a>
-                <a href="https://tiktok.com/@studiocaracois" target="_blank" rel="noopener" aria-label="TikTok"><svg width="24" height="24"><use href="#i-tt"/></svg></a>
-                <a href="https://youtube.com/@studiocaracois" target="_blank" rel="noopener" aria-label="YouTube"><svg width="24" height="24"><use href="#i-yt"/></svg></a>
+                <a href="https://instagram.com/studiocaracois" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg width="24" height="24"><use href="#i-ig"/></svg></a>
+                <a href="https://tiktok.com/@studiocaracois" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><svg width="24" height="24"><use href="#i-tt"/></svg></a>
+                <a href="https://youtube.com/@studiocaracois" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><svg width="24" height="24"><use href="#i-yt"/></svg></a>
             </div>
             <button type="button" class="nav-cta-btn" onclick="openBooking()" aria-label="Agendar avaliação">Agendar avaliação</button>
         </div>
@@ -2940,7 +2939,7 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 0 0-8 8c0 5.4 7 12 8 12s8-6.6 8-12a8 8 0 0 0-8-8z"/></svg>
                 <span id="geoBtnText">Usar minha localização</span>
             </button>
-            <a href="https://wa.me/5511998980874?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20minha%20avalia%C3%A7%C3%A3o%20gratuita%20na%20unidade%20Tatuap%C3%A9." target="_blank" rel="noopener" class="wa-unit-item" data-lat="-23.5389" data-lng="-46.5766">
+            <a href="https://wa.me/5511998980874?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20minha%20avalia%C3%A7%C3%A3o%20gratuita%20na%20unidade%20Tatuap%C3%A9." target="_blank" rel="noopener noreferrer" class="wa-unit-item" data-lat="-23.5389" data-lng="-46.5766">
                 <div>
                     <div class="wa-unit-name">São Paulo — Tatuapé</div>
                     <div class="wa-unit-region">SP</div>
@@ -2949,7 +2948,7 @@
                 </div>
                 <svg width="18" height="18"><use href="#i-arrow"/></svg>
             </a>
-            <a href="https://wa.me/5512988636566?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20minha%20avalia%C3%A7%C3%A3o%20gratuita%20em%20S%C3%A3o%20Jos%C3%A9%20dos%20Campos." target="_blank" rel="noopener" class="wa-unit-item" data-lat="-23.1896" data-lng="-45.8841">
+            <a href="https://wa.me/5512988636566?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20minha%20avalia%C3%A7%C3%A3o%20gratuita%20em%20S%C3%A3o%20Jos%C3%A9%20dos%20Campos." target="_blank" rel="noopener noreferrer" class="wa-unit-item" data-lat="-23.1896" data-lng="-45.8841">
                 <div>
                     <div class="wa-unit-name">São José dos Campos</div>
                     <div class="wa-unit-region">SP</div>
@@ -2958,7 +2957,7 @@
                 </div>
                 <svg width="18" height="18"><use href="#i-arrow"/></svg>
             </a>
-            <a href="https://wa.me/5561993837705?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20minha%20avalia%C3%A7%C3%A3o%20gratuita%20em%20%C3%81guas%20Claras." target="_blank" rel="noopener" class="wa-unit-item" data-lat="-15.8394" data-lng="-48.0266">
+            <a href="https://wa.me/5561993837705?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20minha%20avalia%C3%A7%C3%A3o%20gratuita%20em%20%C3%81guas%20Claras." target="_blank" rel="noopener noreferrer" class="wa-unit-item" data-lat="-15.8394" data-lng="-48.0266">
                 <div>
                     <div class="wa-unit-name">Brasília — Águas Claras</div>
                     <div class="wa-unit-region">DF</div>
@@ -2967,7 +2966,7 @@
                 </div>
                 <svg width="18" height="18"><use href="#i-arrow"/></svg>
             </a>
-            <a href="https://wa.me/5561995251477?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20minha%20avalia%C3%A7%C3%A3o%20gratuita%20na%20Asa%20Norte." target="_blank" rel="noopener" class="wa-unit-item" data-lat="-15.7467" data-lng="-47.8826">
+            <a href="https://wa.me/5561995251477?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20minha%20avalia%C3%A7%C3%A3o%20gratuita%20na%20Asa%20Norte." target="_blank" rel="noopener noreferrer" class="wa-unit-item" data-lat="-15.7467" data-lng="-47.8826">
                 <div>
                     <div class="wa-unit-name">Brasília — Asa Norte</div>
                     <div class="wa-unit-region">DF</div>
@@ -2976,7 +2975,7 @@
                 </div>
                 <svg width="18" height="18"><use href="#i-arrow"/></svg>
             </a>
-            <a href="https://wa.me/5561996942312?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20minha%20avalia%C3%A7%C3%A3o%20gratuita%20na%20Asa%20Sul." target="_blank" rel="noopener" class="wa-unit-item" data-lat="-15.8267" data-lng="-47.9218">
+            <a href="https://wa.me/5561996942312?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20minha%20avalia%C3%A7%C3%A3o%20gratuita%20na%20Asa%20Sul." target="_blank" rel="noopener noreferrer" class="wa-unit-item" data-lat="-15.8267" data-lng="-47.9218">
                 <div>
                     <div class="wa-unit-name">Brasília — Asa Sul</div>
                     <div class="wa-unit-region">DF</div>
@@ -2985,7 +2984,7 @@
                 </div>
                 <svg width="18" height="18"><use href="#i-arrow"/></svg>
             </a>
-            <a href="https://wa.me/5561991446678?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20minha%20avalia%C3%A7%C3%A3o%20gratuita%20em%20Taguatinga." target="_blank" rel="noopener" class="wa-unit-item" data-lat="-15.8362" data-lng="-48.0558">
+            <a href="https://wa.me/5561991446678?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20minha%20avalia%C3%A7%C3%A3o%20gratuita%20em%20Taguatinga." target="_blank" rel="noopener noreferrer" class="wa-unit-item" data-lat="-15.8362" data-lng="-48.0558">
                 <div>
                     <div class="wa-unit-name">Brasília — Taguatinga</div>
                     <div class="wa-unit-region">DF</div>
@@ -2994,7 +2993,7 @@
                 </div>
                 <svg width="18" height="18"><use href="#i-arrow"/></svg>
             </a>
-            <a href="https://wa.me/5562993411230?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20minha%20avalia%C3%A7%C3%A3o%20gratuita%20em%20Goi%C3%A2nia." target="_blank" rel="noopener" class="wa-unit-item" data-lat="-16.7139" data-lng="-49.2537">
+            <a href="https://wa.me/5562993411230?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20minha%20avalia%C3%A7%C3%A3o%20gratuita%20em%20Goi%C3%A2nia." target="_blank" rel="noopener noreferrer" class="wa-unit-item" data-lat="-16.7139" data-lng="-49.2537">
                 <div>
                     <div class="wa-unit-name">Goiânia</div>
                     <div class="wa-unit-region">GO</div>
@@ -3003,7 +3002,7 @@
                 </div>
                 <svg width="18" height="18"><use href="#i-arrow"/></svg>
             </a>
-            <a href="https://wa.me/5581973056302?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20minha%20avalia%C3%A7%C3%A3o%20gratuita%20em%20Recife." target="_blank" rel="noopener" class="wa-unit-item" data-lat="-8.1204" data-lng="-34.9013">
+            <a href="https://wa.me/5581973056302?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20minha%20avalia%C3%A7%C3%A3o%20gratuita%20em%20Recife." target="_blank" rel="noopener noreferrer" class="wa-unit-item" data-lat="-8.1204" data-lng="-34.9013">
                 <div>
                     <div class="wa-unit-name">Recife</div>
                     <div class="wa-unit-region">PE</div>
@@ -3046,42 +3045,42 @@
         <div class="booking-grid">
             <a href="https://www.salao99.com.br/studio-caracois-especialistas-em-cachos-tatuape" target="_blank" rel="noopener noreferrer" class="booking-card" data-lat="-23.5389" data-lng="-46.5766">
                 <div class="booking-card-name">São Paulo — Tatuapé</div>
-                <div class="booking-card-addr">R. Manoel dos Santos, 70 - Vila Gomes Cardim</div>
+                <div class="booking-card-addr">Rua Manoel dos Santos 70 - Casa - Vila Gomes Cardim, São Paulo - SP</div>
                 <div class="booking-card-city">São Paulo - SP</div>
             </a>
             <a href="https://www.salao99.com.br/studio-caracois-especialistas-em-cachos-sjc" target="_blank" rel="noopener noreferrer" class="booking-card" data-lat="-23.1896" data-lng="-45.8841">
                 <div class="booking-card-name">São José dos Campos</div>
-                <div class="booking-card-addr">Av. Paulo Becker, 310 - Vila Adyana</div>
+                <div class="booking-card-addr">Av. Paulo Becker 310 - Loja 07 - Vila Adyana, São José dos Campos - SP</div>
                 <div class="booking-card-city">São José dos Campos - SP</div>
             </a>
             <a href="https://www.salao99.com.br/studio-caracois-especialistas-em-cachos-aguas-claras" target="_blank" rel="noopener noreferrer" class="booking-card" data-lat="-15.8394" data-lng="-48.0266">
                 <div class="booking-card-name">Brasília — Águas Claras</div>
-                <div class="booking-card-addr">Av. Pau Brasil, 10 - Le Quartier</div>
+                <div class="booking-card-addr">Le Quartier Águas Claras - Av. Pau Brasil 10 - Sala 1510 - Águas Claras, Brasília - DF</div>
                 <div class="booking-card-city">Brasília - DF</div>
             </a>
             <a href="https://www.salao99.com.br/studio-caracois-especialistas-em-cachos-asa-sul" target="_blank" rel="noopener noreferrer" class="booking-card" data-lat="-15.8267" data-lng="-47.9218">
                 <div class="booking-card-name">Brasília — Asa Sul</div>
-                <div class="booking-card-addr">CLS 411 Bloco B Loja 20</div>
+                <div class="booking-card-addr">CLS 411, Bloco B, Loja 20 - Asa Sul, Brasília - DF</div>
                 <div class="booking-card-city">Brasília - DF</div>
             </a>
             <a href="https://www.salao99.com.br/studio-caracois-especialistas-em-cachos-asa-norte" target="_blank" rel="noopener noreferrer" class="booking-card" data-lat="-15.7467" data-lng="-47.8826">
                 <div class="booking-card-name">Brasília — Asa Norte</div>
-                <div class="booking-card-addr">SCLN 715 Loja 59</div>
+                <div class="booking-card-addr">SCLN 715, Loja 59 - Asa Norte, Brasília - DF</div>
                 <div class="booking-card-city">Brasília - DF</div>
             </a>
             <a href="https://linktr.ee/studiocaracois" target="_blank" rel="noopener noreferrer" class="booking-card" data-lat="-15.8362" data-lng="-48.0558">
                 <div class="booking-card-name">Brasília — Taguatinga</div>
-                <div class="booking-card-addr">QND 2 Lote 11 Loja 01</div>
+                <div class="booking-card-addr">QND 2, Lote 11, Loja 01 - Taguatinga Norte, Brasília - DF</div>
                 <div class="booking-card-city">Brasília - DF</div>
             </a>
             <a href="https://www.salao99.com.br/studio-caracois-especialistas-em-cachos-goiania" target="_blank" rel="noopener noreferrer" class="booking-card" data-lat="-16.7139" data-lng="-49.2537">
                 <div class="booking-card-name">Goiânia — Setor Bueno</div>
-                <div class="booking-card-addr">Av. Mutirão, 1932 - Casablanca Center</div>
+                <div class="booking-card-addr">Casablanca Center - Av. Mutirão 1932 - Sala 4 Bloco B - St. Bueno, Goiânia - GO</div>
                 <div class="booking-card-city">Goiânia - GO</div>
             </a>
             <a href="https://www.salao99.com.br/studio-caracois-especialistas-em-cachos-recife" target="_blank" rel="noopener noreferrer" class="booking-card" data-lat="-8.1204" data-lng="-34.9013">
                 <div class="booking-card-name">Recife — Boa Viagem</div>
-                <div class="booking-card-addr">Av. Conselheiro Aguiar, 1472 - Recife Trade Center</div>
+                <div class="booking-card-addr">Avenida Conselheiro Aguiar 1472 Recife Trade Center, Sala 42 - Boa Viagem, Recife - PE</div>
                 <div class="booking-card-city">Recife - PE</div>
             </a>
         </div>
@@ -3094,13 +3093,13 @@
 <main id="main">
     <header class="hero">
         <div class="hero-watermark" aria-hidden="true">
-            <img src="/images/logos/hero-watermark.svg" alt="" decoding="async" width="500" height="500" fetchpriority="high">
+            <img src="/images/logos/hero-watermark.svg" alt="" decoding="async" width="500" height="500">
         </div>
         <div class="container">
             <div class="hero-content">
                 <div class="hero-badge">Especialistas em cabelos cacheados desde 2016</div>
                 <h1>Especialistas em cachos para quem quer <em>forma, definição e saúde real nos fios.</em></h1>
-                <p class="hero-sub">Corte 3D, tratamentos profundos, finalização profissional e avaliação gratuita em uma experiência pensada para respeitar sua curvatura e devolver confiança no espelho.</p>
+                <p class="hero-sub">Corte 3D, tratamentos profundos, finalização profissional e avaliação gratuita em uma experiência pensada para respeitar sua curvatura, devolver confiança no espelho e te orientar com clareza em cada etapa do cuidado.</p>
                 <div class="hero-ctas">
                     <button type="button" class="btn btn-primary" onclick="openBooking()" aria-label="Agendar avaliação"><svg width="18" height="18"><use href="#i-cal"/></svg>
                         Agendar avaliação gratuita</button>
@@ -3464,9 +3463,9 @@
                 <h2 class="section-title" id="social-title">Dicas, bastidores e transformações todos os dias</h2>
             </div>
             <div class="social-icons reveal">
-                <a href="https://instagram.com/studiocaracois" target="_blank" rel="noopener" class="social-icon-link" aria-label="Instagram"><svg width="24" height="24"><use href="#i-ig"/></svg></a>
-                <a href="https://tiktok.com/@studiocaracois" target="_blank" rel="noopener" class="social-icon-link" aria-label="TikTok"><svg width="24" height="24"><use href="#i-tt"/></svg></a>
-                <a href="https://youtube.com/@studiocaracois" target="_blank" rel="noopener" class="social-icon-link" aria-label="YouTube"><svg width="24" height="24"><use href="#i-yt"/></svg></a>
+                <a href="https://instagram.com/studiocaracois" target="_blank" rel="noopener noreferrer" class="social-icon-link" aria-label="Instagram"><svg width="24" height="24"><use href="#i-ig"/></svg></a>
+                <a href="https://tiktok.com/@studiocaracois" target="_blank" rel="noopener noreferrer" class="social-icon-link" aria-label="TikTok"><svg width="24" height="24"><use href="#i-tt"/></svg></a>
+                <a href="https://youtube.com/@studiocaracois" target="_blank" rel="noopener noreferrer" class="social-icon-link" aria-label="YouTube"><svg width="24" height="24"><use href="#i-yt"/></svg></a>
             </div>
             <p class="social-handle reveal">@studiocaracois em todas as plataformas</p>
         </div>
@@ -3478,7 +3477,7 @@
                 <div class="section-label">Nossas unidades</div>
                 <h2 class="section-title" id="units-title" style="color:var(--white)">Encontre o Studio Caracóis mais perto de você</h2>
                 <p class="section-desc u-mx-auto">Escolha sua unidade e avance com mais segurança: avaliação gratuita, atendimento consultivo e especialistas em cabelos com curvatura.</p>
-                <p class="units-helper">Você também pode abrir o agendamento inteligente e deixar que a gente te ajude a encontrar a melhor unidade.</p>
+                <p class="units-helper">Você também pode abrir o agendamento inteligente e deixar que a gente te ajude a encontrar, entre as 8 unidades, a melhor opção para o seu atendimento.</p>
             </div>
             <div class="units-grid">
                 <a href="/unidades/sao-paulo-tatuape" class="unit-card reveal">
@@ -3541,7 +3540,7 @@
             <div class="reveal">
                 <div class="section-label">Seu próximo passo pode ser hoje</div>
                 <h2 class="section-title" id="cta-title">Saia do improviso e descubra o que um atendimento especializado pode fazer pelos seus cachos.</h2>
-                <p class="section-desc">Avaliação gratuita, orientação personalizada e um plano mais inteligente para tratar, cortar e finalizar seus fios.</p>
+                <p class="section-desc">Avaliação gratuita, orientação personalizada e um plano mais inteligente para tratar, cortar e finalizar seus fios com constância, técnica e resultado percebido.</p>
                 <div class="cta-final-btns">
                     <button type="button" class="btn btn-white" onclick="openBooking()" aria-label="Agendar avaliação"><svg width="18" height="18"><use href="#i-cal"/></svg>
                         Quero agendar agora</button>
@@ -3617,13 +3616,13 @@
                         <div class="section-label">Expansão</div>
                         <h2 class="section-title" id="franchise-title">Leve o Studio Caracóis para sua cidade</h2>
                         <p class="section-desc">
-                            Faça parte de uma rede especializada em cabelos cacheados com método validado, marca consolidada e suporte completo para crescimento.
+                            Faça parte de uma rede especializada em cabelos cacheados com método validado, marca consolidada e suporte completo para crescer com mais segurança, padrão e autoridade local.
                         </p>
                         <div class="franchise-points" aria-label="Diferenciais da franquia">
                             <div class="franchise-point"><span class="franchise-point-icon">01</span><span>Método validado desde 2016</span></div>
                             <div class="franchise-point"><span class="franchise-point-icon">02</span><span>Marca em expansão nacional</span></div>
                             <div class="franchise-point"><span class="franchise-point-icon">03</span><span>Suporte estratégico e operacional</span></div>
-                            <div class="franchise-point"><span class="franchise-point-icon">04</span><span>Modelo otimizado para escala</span></div>
+                            <div class="franchise-point"><span class="franchise-point-icon">04</span><span>Modelo compacto e otimizado para escala</span></div>
                         </div>
                         <div class="franchise-actions">
                             <a href="/franquia" class="btn btn-primary">Conhecer a franquia</a>
@@ -3634,7 +3633,7 @@
                         <div class="franchise-aside-label">Studio Caracóis</div>
                         <h3>Uma marca construída para crescer com consistência e desejo</h3>
                         <p>
-                            Posicione-se com uma proposta premium acessível, atendimento consultivo e uma operação desenhada para gerar autoridade local, recorrência e valor percebido no mercado de cachos.
+                            Posicione-se com uma proposta premium acessível, atendimento consultivo e uma operação desenhada para gerar autoridade local, recorrência e valor percebido no mercado de cachos — inclusive em formatos mais compactos e estratégicos.
                         </p>
                         <div class="franchise-mini-list">
                             <span>Posicionamento forte e especializado</span>
@@ -3652,7 +3651,7 @@
             <div class="reveal section-intro">
                 <div class="section-label">Aprenda com o Studio Caracóis</div>
                 <h2 class="section-title" id="knowledge-title">Dicas para cuidar dos seus cachos</h2>
-                <p class="section-desc" style="margin: 0 auto">Aprenda como cuidar, tratar e valorizar seus cachos no dia a dia.</p>
+                <p class="section-desc" style="margin: 0 auto">Aprenda como cuidar, tratar e valorizar seus cachos no dia a dia com conteúdos sobre transição capilar, finalização, cronograma e saúde dos fios.</p>
             </div>
             <div class="knowledge-grid">
                 <a href="/transicao-capilar" class="knowledge-card reveal">
@@ -3731,7 +3730,7 @@
             </a>
         </div>
         <div class="bee-modal-footer">
-            <a href="https://instagram.com/beecosmetics.store" target="_blank" rel="noopener">Conheça o perfil oficial @beecosmetics.store ↗</a>
+            <a href="https://instagram.com/beecosmetics.store" target="_blank" rel="noopener noreferrer">Conheça o perfil oficial @beecosmetics.store ↗</a>
         </div>
     </div>
 </div>
@@ -3753,9 +3752,9 @@
                 </div>
                 <p class="footer-desc">Especialistas em cabelos cacheados. Técnica, tratamento e produto para transformar o cabelo de verdade.</p>
                 <div class="footer-social-links">
-                    <a href="https://instagram.com/studiocaracois" target="_blank" rel="noopener" aria-label="Instagram"><svg width="24" height="24"><use href="#i-ig"/></svg></a>
-                    <a href="https://tiktok.com/@studiocaracois" target="_blank" rel="noopener" aria-label="TikTok"><svg width="24" height="24"><use href="#i-tt"/></svg></a>
-                    <a href="https://youtube.com/@studiocaracois" target="_blank" rel="noopener" aria-label="YouTube"><svg width="24" height="24"><use href="#i-yt"/></svg></a>
+                    <a href="https://instagram.com/studiocaracois" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg width="24" height="24"><use href="#i-ig"/></svg></a>
+                    <a href="https://tiktok.com/@studiocaracois" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><svg width="24" height="24"><use href="#i-tt"/></svg></a>
+                    <a href="https://youtube.com/@studiocaracois" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><svg width="24" height="24"><use href="#i-yt"/></svg></a>
                 </div>
             </div>
             <div class="footer-col"><h4>Navegação</h4><a href="#experiencia">Sua experiência</a><a href="#servicos">Serviços</a><a href="#transicao">Transição Capilar</a><a href="#resultados">Resultados</a><a href="#unidades">Unidades</a><a href="#faq">FAQ</a><a href="/franquia">Seja um franqueado</a></div>
