@@ -242,6 +242,17 @@
             --ease-out: cubic-bezier(.22,1,.36,1);
         }
 
+        /* Padronização tipográfica numérica */
+        .kc-num,
+        .step-number,
+        .stat-number,
+        .knowledge-card-num {
+            font-family: var(--serif);
+            font-variant-numeric: tabular-nums lining-nums;
+            letter-spacing: -0.03em;
+            font-feature-settings: "tnum" 1, "lnum" 1;
+        }
+
         /* ╔═══════════════════════════════════════════════════════════════════╗
            ║  2. RESET + BASE — html, body, tipografia, elementos globais      ║
            ╚═══════════════════════════════════════════════════════════════════╝ */
@@ -779,7 +790,7 @@
         }
         .method-step:hover { transform: translateY(-8px); box-shadow: 0 24px 64px rgba(0,0,0,0.05); }
         .step-number {
-            font-family: var(--sans);
+            font-family: var(--serif);
             font-size: 3rem;
             font-weight: 700;
             letter-spacing: -0.04em;
@@ -1075,7 +1086,7 @@
             flex-wrap: wrap;
         }
         .stat-number {
-            font-family: var(--sans);
+            font-family: var(--serif);
             font-size: 2.8rem;
             font-weight: 700;
             letter-spacing: -0.04em;
