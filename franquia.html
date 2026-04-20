@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Franquia Studio Caracóis | Invista no Mercado de Cabelos Cacheados</title>
+    <title>Franquia Studio Caracóis | Mercado de Cachos</title>
     <meta name="description" content="Abra sua unidade Studio Caracóis. Franquia de salão especializado em cabelos cacheados com modelo testado, suporte completo e mercado em crescimento acelerado.">
     <meta name="author" content="Studio Caracóis">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#9B4442">
-    <meta name="format-detection" content="telephone=no">
 
     <link rel="canonical" href="https://caracois.com.br/franquia">
 
@@ -32,8 +31,6 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="manifest" href="/site.webmanifest">
-
-    <link rel="preload" as="image" href="/images/logos/logo-nude.svg">
 
     <link rel="preload" as="image" href="/images/logos/hero-watermark.svg">
 
@@ -92,7 +89,6 @@
             --terracota: #9B4442;
             --terracota-dark: #7C3331;
             --terracota-light: #B96A68;
-            --terracota-mid: #C85F5C;
             --nude: #EFD9D7;
             --nude-light: #F2EBE6;
             --nude-ultra: #FBF6F5;
@@ -1847,21 +1843,6 @@
         }
         .mobile-menu a:last-of-type { border-bottom: none; }
         .mobile-menu a:hover { color: var(--terracota); }
-        .mobile-menu .btn {
-            color: var(--white) !important;
-            border-bottom: none !important;
-            font-weight: 600;
-        }
-        .mobile-menu .btn-primary {
-            background: linear-gradient(135deg, var(--terracota), var(--terracota-dark));
-            color: var(--white) !important;
-            box-shadow: 0 10px 28px rgba(155,68,66,0.18);
-        }
-        .mobile-menu .btn-primary:hover,
-        .mobile-menu .btn-primary:focus-visible {
-            color: var(--white) !important;
-            background: var(--terracota-dark);
-        }
         .mobile-close {
             position: absolute; top: 20px; right: 20px;
             background: var(--bg-soft);
@@ -2796,26 +2777,20 @@
             display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 56px;
         }
         .hero-stats {
-            display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px;
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px;
             padding-top: 36px; border-top: 1px solid rgba(255,255,255,0.1);
         }
-        .hero-stat {
-            min-width: 0;
-        }
         .hero-stat-num {
-            font-family: var(--sans); font-size: clamp(2.2rem, 4.6vw, 3.2rem);
-            color: var(--white); font-weight: 700; line-height: 1;
-            letter-spacing: -0.04em; font-variant-numeric: tabular-nums lining-nums;
-            margin-bottom: 10px;
+            font-family: var(--serif); font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--gold); font-weight: 500; line-height: 1;
+            margin-bottom: 6px;
         }
         .hero-stat-num span {
-            font-size: 0.58em; color: var(--gold-light); margin-left: 2px;
-            font-weight: 600;
+            font-size: 0.6em; color: var(--gold-light); margin-left: 2px;
         }
         .hero-stat-label {
-            font-size: 0.86rem; color: rgba(255,255,255,0.72);
-            font-weight: 300; line-height: 1.35;
-            max-width: 16ch;
+            font-size: 0.78rem; color: rgba(255,255,255,0.6);
+            font-weight: 300; line-height: 1.3;
         }
 
         /* Section Market */
@@ -2835,10 +2810,9 @@
         }
         .market-card-icon { font-size: 2.4rem; margin-bottom: 16px; }
         .market-card-num {
-            font-family: var(--sans); font-size: clamp(2.3rem, 4.4vw, 3rem);
-            color: var(--terracota); font-weight: 700;
+            font-family: var(--serif); font-size: 2.4rem;
+            color: var(--terracota); font-weight: 500;
             line-height: 1; margin-bottom: 12px;
-            letter-spacing: -0.04em; font-variant-numeric: tabular-nums lining-nums;
         }
         .market-card-title {
             font-family: var(--serif); font-size: 1.05rem;
@@ -2981,14 +2955,13 @@
         .form-submit {
             display: inline-flex; align-items: center; justify-content: center;
             gap: 10px; width: 100%;
-            background: var(--terracota); color: var(--white);
+            background: #25D366; color: var(--white);
             padding: 16px 24px; border-radius: 100px;
             font-family: var(--sans); font-size: 0.92rem; font-weight: 600;
             letter-spacing: 0.02em; cursor: pointer; border: none;
-            box-shadow: 0 10px 28px rgba(155,68,66,0.20);
             transition: all 0.3s var(--ease); margin-top: 8px;
         }
-        .form-submit:hover { background: var(--terracota-dark); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(155,68,66,0.28); }
+        .form-submit:hover { background: #1ebe5d; transform: translateY(-2px); }
         .form-submit:disabled { opacity: 0.7; cursor: wait; transform: none; }
         .form-disclaimer {
             font-size: 0.74rem; color: var(--text-muted);
@@ -3004,9 +2977,7 @@
         @media (max-width: 768px) {
             .franquia-hero { padding: 120px 0 64px; min-height: auto; }
             .franquia-hero h1 { font-size: 2.1rem; }
-            .hero-stats { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; padding-top: 28px; }
-            .hero-stat-label { font-size: 0.72rem; max-width: 12ch; }
-            .hero-stat-num { font-size: clamp(2rem, 8vw, 2.5rem); }
+            .hero-stats { grid-template-columns: 1fr; gap: 22px; padding-top: 28px; }
             .hero-stat { display: flex; align-items: baseline; gap: 12px; }
             .hero-stat-num { margin-bottom: 0; }
             .market-grid, .diferenciais-grid { grid-template-columns: 1fr; }
@@ -3024,15 +2995,6 @@
             y=l.getElementsByTagName(r)[0];
             y.parentNode.insertBefore(t,y);
         })(window, document, "clarity", "script", "wb0w1oc0ou");
-    </script>
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Studio Caracóis",
-      "url": "https://caracois.com.br"
-    }
     </script>
 </head>
 <body>
@@ -3067,9 +3029,9 @@
                 <a href="/central-de-conhecimento">Conhecimento</a>
             </div>
             <div class="nav-social">
-                <a href="https://instagram.com/studiocaracois" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg width="24" height="24"><use href="#i-ig"/></svg></a>
-                <a href="https://tiktok.com/@studiocaracois" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><svg width="24" height="24"><use href="#i-tt"/></svg></a>
-                <a href="https://youtube.com/@studiocaracois" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><svg width="24" height="24"><use href="#i-yt"/></svg></a>
+                <a href="https://instagram.com/studiocaracois" target="_blank" rel="noopener" aria-label="Instagram"><svg width="24" height="24"><use href="#i-ig"/></svg></a>
+                <a href="https://tiktok.com/@studiocaracois" target="_blank" rel="noopener" aria-label="TikTok"><svg width="24" height="24"><use href="#i-tt"/></svg></a>
+                <a href="https://youtube.com/@studiocaracois" target="_blank" rel="noopener" aria-label="YouTube"><svg width="24" height="24"><use href="#i-yt"/></svg></a>
             </div>
             <a href="#formulario" class="nav-cta-btn" aria-label="Ir ao formulário de interesse">Quero ser franqueado</a>
         </div>
@@ -3105,7 +3067,7 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 0 0-8 8c0 5.4 7 12 8 12s8-6.6 8-12a8 8 0 0 0-8-8z"/></svg>
                 <span id="geoBtnText">Usar minha localização</span>
             </button>
-            <a href="https://wa.me/5511998980874?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20minha%20avalia%C3%A7%C3%A3o%20gratuita%20na%20unidade%20Tatuap%C3%A9." target="_blank" rel="noopener noreferrer" class="wa-unit-item" data-lat="-23.5389" data-lng="-46.5766">
+            <a href="https://wa.me/5511998980874?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20minha%20avalia%C3%A7%C3%A3o%20gratuita%20na%20unidade%20Tatuap%C3%A9." target="_blank" rel="noopener" class="wa-unit-item" data-lat="-23.5389" data-lng="-46.5766">
                 <div>
                     <div class="wa-unit-name">São Paulo — Tatuapé</div>
                     <div class="wa-unit-region">SP</div>
@@ -3114,7 +3076,7 @@
                 </div>
                 <svg width="18" height="18"><use href="#i-arrow"/></svg>
             </a>
-            <a href="https://wa.me/5512988636566?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20minha%20avalia%C3%A7%C3%A3o%20gratuita%20em%20S%C3%A3o%20Jos%C3%A9%20dos%20Campos." target="_blank" rel="noopener noreferrer" class="wa-unit-item" data-lat="-23.1896" data-lng="-45.8841">
+            <a href="https://wa.me/5512988636566?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20minha%20avalia%C3%A7%C3%A3o%20gratuita%20em%20S%C3%A3o%20Jos%C3%A9%20dos%20Campos." target="_blank" rel="noopener" class="wa-unit-item" data-lat="-23.1896" data-lng="-45.8841">
                 <div>
                     <div class="wa-unit-name">São José dos Campos</div>
                     <div class="wa-unit-region">SP</div>
@@ -3123,7 +3085,7 @@
                 </div>
                 <svg width="18" height="18"><use href="#i-arrow"/></svg>
             </a>
-            <a href="https://wa.me/5561993837705?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20minha%20avalia%C3%A7%C3%A3o%20gratuita%20em%20%C3%81guas%20Claras." target="_blank" rel="noopener noreferrer" class="wa-unit-item" data-lat="-15.8394" data-lng="-48.0266">
+            <a href="https://wa.me/5561993837705?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20minha%20avalia%C3%A7%C3%A3o%20gratuita%20em%20%C3%81guas%20Claras." target="_blank" rel="noopener" class="wa-unit-item" data-lat="-15.8394" data-lng="-48.0266">
                 <div>
                     <div class="wa-unit-name">Brasília — Águas Claras</div>
                     <div class="wa-unit-region">DF</div>
@@ -3132,7 +3094,7 @@
                 </div>
                 <svg width="18" height="18"><use href="#i-arrow"/></svg>
             </a>
-            <a href="https://wa.me/5561995251477?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20minha%20avalia%C3%A7%C3%A3o%20gratuita%20na%20Asa%20Norte." target="_blank" rel="noopener noreferrer" class="wa-unit-item" data-lat="-15.7467" data-lng="-47.8826">
+            <a href="https://wa.me/5561995251477?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20minha%20avalia%C3%A7%C3%A3o%20gratuita%20na%20Asa%20Norte." target="_blank" rel="noopener" class="wa-unit-item" data-lat="-15.7467" data-lng="-47.8826">
                 <div>
                     <div class="wa-unit-name">Brasília — Asa Norte</div>
                     <div class="wa-unit-region">DF</div>
@@ -3141,7 +3103,7 @@
                 </div>
                 <svg width="18" height="18"><use href="#i-arrow"/></svg>
             </a>
-            <a href="https://wa.me/5561996942312?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20minha%20avalia%C3%A7%C3%A3o%20gratuita%20na%20Asa%20Sul." target="_blank" rel="noopener noreferrer" class="wa-unit-item" data-lat="-15.8267" data-lng="-47.9218">
+            <a href="https://wa.me/5561996942312?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20minha%20avalia%C3%A7%C3%A3o%20gratuita%20na%20Asa%20Sul." target="_blank" rel="noopener" class="wa-unit-item" data-lat="-15.8267" data-lng="-47.9218">
                 <div>
                     <div class="wa-unit-name">Brasília — Asa Sul</div>
                     <div class="wa-unit-region">DF</div>
@@ -3150,7 +3112,7 @@
                 </div>
                 <svg width="18" height="18"><use href="#i-arrow"/></svg>
             </a>
-            <a href="https://wa.me/5561991446678?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20minha%20avalia%C3%A7%C3%A3o%20gratuita%20em%20Taguatinga." target="_blank" rel="noopener noreferrer" class="wa-unit-item" data-lat="-15.8362" data-lng="-48.0558">
+            <a href="https://wa.me/5561991446678?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20minha%20avalia%C3%A7%C3%A3o%20gratuita%20em%20Taguatinga." target="_blank" rel="noopener" class="wa-unit-item" data-lat="-15.8362" data-lng="-48.0558">
                 <div>
                     <div class="wa-unit-name">Brasília — Taguatinga</div>
                     <div class="wa-unit-region">DF</div>
@@ -3159,7 +3121,7 @@
                 </div>
                 <svg width="18" height="18"><use href="#i-arrow"/></svg>
             </a>
-            <a href="https://wa.me/5562993411230?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20minha%20avalia%C3%A7%C3%A3o%20gratuita%20em%20Goi%C3%A2nia." target="_blank" rel="noopener noreferrer" class="wa-unit-item" data-lat="-16.7139" data-lng="-49.2537">
+            <a href="https://wa.me/5562993411230?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20minha%20avalia%C3%A7%C3%A3o%20gratuita%20em%20Goi%C3%A2nia." target="_blank" rel="noopener" class="wa-unit-item" data-lat="-16.7139" data-lng="-49.2537">
                 <div>
                     <div class="wa-unit-name">Goiânia</div>
                     <div class="wa-unit-region">GO</div>
@@ -3168,7 +3130,7 @@
                 </div>
                 <svg width="18" height="18"><use href="#i-arrow"/></svg>
             </a>
-            <a href="https://wa.me/5581973056302?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20minha%20avalia%C3%A7%C3%A3o%20gratuita%20em%20Recife." target="_blank" rel="noopener noreferrer" class="wa-unit-item" data-lat="-8.1204" data-lng="-34.9013">
+            <a href="https://wa.me/5581973056302?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20minha%20avalia%C3%A7%C3%A3o%20gratuita%20em%20Recife." target="_blank" rel="noopener" class="wa-unit-item" data-lat="-8.1204" data-lng="-34.9013">
                 <div>
                     <div class="wa-unit-name">Recife</div>
                     <div class="wa-unit-region">PE</div>
@@ -3206,15 +3168,15 @@
                 <div class="hero-stats">
                     <div class="hero-stat">
                         <div class="hero-stat-num">8<span>+</span></div>
-                        <div class="hero-stat-label">Unidades em operação</div>
+                        <div class="hero-stat-label">Unidades em operação em 4 estados</div>
                     </div>
                     <div class="hero-stat">
                         <div class="hero-stat-num">10<span>+</span></div>
-                        <div class="hero-stat-label">Anos de experiência</div>
+                        <div class="hero-stat-label">Anos de experiência no segmento de cachos</div>
                     </div>
                     <div class="hero-stat">
                         <div class="hero-stat-num">60<span>%</span></div>
-                        <div class="hero-stat-label">Da população brasileira</div>
+                        <div class="hero-stat-label">Da população brasileira tem cabelo com curvatura</div>
                     </div>
                 </div>
             </div>
@@ -3423,7 +3385,7 @@
     Quero ser franqueado
 </a>
 
-<footer>
+<footer><footer>
     <div class="container">
         <div class="footer-top">
             <div>
@@ -3432,12 +3394,12 @@
                 </div>
                 <p class="footer-desc">Especialistas em cabelos cacheados. Técnica, tratamento e produto para transformar o cabelo de verdade.</p>
                 <div class="footer-social-links">
-                    <a href="https://instagram.com/studiocaracois" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg width="24" height="24"><use href="#i-ig"/></svg></a>
-                    <a href="https://tiktok.com/@studiocaracois" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><svg width="24" height="24"><use href="#i-tt"/></svg></a>
-                    <a href="https://youtube.com/@studiocaracois" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><svg width="24" height="24"><use href="#i-yt"/></svg></a>
+                    <a href="https://instagram.com/studiocaracois" target="_blank" rel="noopener" aria-label="Instagram"><svg width="24" height="24"><use href="#i-ig"/></svg></a>
+                    <a href="https://tiktok.com/@studiocaracois" target="_blank" rel="noopener" aria-label="TikTok"><svg width="24" height="24"><use href="#i-tt"/></svg></a>
+                    <a href="https://youtube.com/@studiocaracois" target="_blank" rel="noopener" aria-label="YouTube"><svg width="24" height="24"><use href="#i-yt"/></svg></a>
                 </div>
             </div>
-            <div class="footer-col"><h4>Navegação</h4><a href="/">Início</a><a href="#market-title">Oportunidade</a><a href="#diferenciais-title">Diferenciais</a><a href="#perfil-title">Perfil do franqueado</a><a href="#faq">FAQ</a><a href="#formulario">Fale com a expansão</a></div>
+            <div class="footer-col"><h4>Navegação</h4><a href="#experiencia">Sua experiência</a><a href="#servicos">Serviços</a><a href="#transicao">Transição Capilar</a><a href="#resultados">Resultados</a><a href="#unidades">Unidades</a><a href="#faq">FAQ</a><a href="/franquia">Seja um franqueado</a></div>
             <div class="footer-col"><h4>Conhecimento</h4><a href="/central-de-conhecimento">Central de conhecimento</a><a href="/transicao-capilar">Transição capilar</a><a href="/como-cuidar-de-cabelos-cacheados">Como cuidar dos cachos</a><a href="/corte-para-cabelo-cacheado">Corte para cacheado</a><a href="/cronograma-capilar-cacheado">Cronograma capilar</a></div>
         </div>
         <div class="footer-bottom">
@@ -3445,7 +3407,7 @@
             <span>Cabelo bonito é cabelo saudável.</span>
         </div>
     </div>
-</footer>
+</footer></footer>
 
 <button type="button" class="whatsapp-float" onclick="openWaModal()" aria-label="WhatsApp">
     <svg viewBox="0 0 24 24"><use href="#i-wa"/></svg>
