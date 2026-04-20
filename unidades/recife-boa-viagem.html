@@ -578,6 +578,8 @@
         .btn-wa-local:hover {
             background: #1DA851;
         }
+        .btn-gold { background: linear-gradient(135deg, var(--gold), var(--gold-light)); color: var(--black); font-weight: 600; }
+        .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 12px 36px rgba(196,162,101,0.3); }
 
         /* MAP IFRAME */
         .map-container {
@@ -597,6 +599,7 @@
         .faq-list {
             margin-top: 40px;
         }
+        .faq { background: var(--white); }
         .faq-item {
             border-bottom: 1px solid var(--border);
             padding: 20px 0;
@@ -816,7 +819,7 @@
             .exp-grid { grid-template-columns: repeat(2, 1fr) !important; }
             .sticky-cta { display: flex; }
             .whatsapp-float { bottom: 90px; right: 16px; width: 48px; height: 48px; }
-            body { padding-bottom: 62px; }
+            body { padding-bottom: 62px; background: var(--black); }
             .map-container iframe { height: 200px; }
         }
         @media (max-width: 480px) {
