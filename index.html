@@ -55,7 +55,7 @@
         "https://tiktok.com/@studiocaracois",
         "https://youtube.com/@studiocaracois"
       ],
-      "slogan": "Cabelo saudável é cabelo bonito."
+      "slogan": "Cabelo bonito é cabelo saudável."
     }
     </script>
 
@@ -2548,6 +2548,15 @@
 
         @media (max-width: 768px) {
             body { padding-bottom: 62px; }
+            body::after {
+                content: '';
+                position: fixed;
+                left: 0; right: 0; bottom: 0;
+                height: 62px;
+                background: var(--black);
+                z-index: 996;
+                pointer-events: none;
+            }
             section { padding: 72px 0; }
             .container { padding: 0 20px; }
             .nav-logo img { width: 200px; }
@@ -3204,7 +3213,7 @@
             <div class="reveal section-intro">
                 <div class="section-label">Nossos diferenciais</div>
                 <h2 class="section-title" id="diff-title">Especialistas. Não generalistas.</h2>
-                <p class="section-desc" style="margin:0 auto">Cabelo saudável é cabelo bonito. E cabelo bonito começa com informação, respeito e os ingredientes certos.</p>
+                <p class="section-desc" style="margin:0 auto">Cabelo bonito é cabelo saudável. E cabelo saudável começa com informação, respeito e os ingredientes certos.</p>
             </div>
             <div class="diff-grid">
                 <div class="diff-card reveal"><span class="diff-emoji" aria-hidden="true">🌱</span><h3>Produtos Liberados</h3><p>Low poo e no poo. Livres de sulfatos, petrolatos e silicones insolúveis.</p></div>
@@ -3281,7 +3290,7 @@
                     <p class="section-desc" style="max-width:100%">O Studio Caracóis é uma rede de salões especializada no cuidado de cabelos com curvatura. Não somos um salão generalista. Somos especialistas.</p>
                     <p class="section-desc" style="max-width:100%; margin-top: 16px;">Nossa abordagem é consultiva. Cada cliente passa por uma análise detalhada da curvatura, porosidade e necessidades específicas dos fios. A partir daí, construímos um protocolo personalizado — que pode incluir Corte 3D, Acidificação, Caracóis Care ou Finalização Profissional.</p>
                     <p class="section-desc" style="max-width:100%; margin-top: 16px;">Trabalhamos exclusivamente com produtos low poo e no poo, livres de sulfatos agressivos, petrolatos e silicones insolúveis. E, acima de tudo, ensinamos você a manter o resultado em casa, com autonomia e confiança.</p>
-                    <div class="about-highlight">“Cabelo saudável é cabelo bonito. Aqui, a gente prova.”</div>
+                    <div class="about-highlight">“Cabelo bonito é cabelo saudável. Aqui, a gente prova.”</div>
                     <div class="about-stats">
                         <div class="stat"><div class="stat-number">08</div><div class="stat-label">Unidades no Brasil</div></div>
                         <div class="stat"><div class="stat-number">04</div><div class="stat-label">Estados</div></div>
@@ -3721,7 +3730,7 @@
         </div>
         <div class="footer-bottom">
             <span>&copy; 2026 Studio Caracóis. Todos os direitos reservados.</span>
-            <span>Cabelo saudável é cabelo bonito.</span>
+            <span>Cabelo bonito é cabelo saudável.</span>
         </div>
     </div>
 </footer>
