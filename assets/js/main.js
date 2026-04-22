@@ -5,6 +5,181 @@ let lastScrollY = 0;
 let lastFocusedElement = null;
 let activeTrapCleanup = null;
 
+const STUDIO_UNITS = [
+    {
+        slug: 'tatuape',
+        city: 'São Paulo',
+        state: 'SP',
+        label: 'São Paulo — Tatuapé',
+        neighborhood: 'Vila Gomes Cardim',
+        address: 'Rua Manoel dos Santos, 70 – Casa',
+        postal: '03318-040',
+        landmark: 'Próximo ao Metrô Shopping Tatuapé',
+        bookingUrl: 'https://www.salao99.com.br/studio-caracois-especialistas-em-cachos-tatuape',
+        whatsappUrl: 'https://wa.me/5511998980874?text=Olá!%20Gostaria%20de%20agendar%20minha%20avaliação%20gratuita%20na%20unidade%20Tatuapé.',
+        lat: -23.5389,
+        lng: -46.5766
+    },
+    {
+        slug: 'sjc',
+        city: 'São José dos Campos',
+        state: 'SP',
+        label: 'São José dos Campos — Vila Adyana',
+        neighborhood: 'Vila Adyana',
+        address: 'Avenida Paulo Becker, 310 – Boulevard 9 de Julho, Loja 07',
+        postal: '12243-610',
+        landmark: 'Em frente à Padaria 9 de Julho',
+        bookingUrl: 'https://www.salao99.com.br/studio-caracois-especialistas-em-cachos-sjc',
+        whatsappUrl: 'https://wa.me/5512988636566?text=Olá!%20Gostaria%20de%20agendar%20minha%20avaliação%20gratuita%20em%20São%20José%20dos%20Campos.',
+        lat: -23.1896,
+        lng: -45.8841
+    },
+    {
+        slug: 'aguas-claras',
+        city: 'Brasília',
+        state: 'DF',
+        label: 'Brasília — Águas Claras',
+        neighborhood: 'Águas Claras',
+        address: 'Avenida Pau Brasil, 10 – Le Quartier Águas Claras, Sala 1510',
+        postal: '71926-000',
+        landmark: 'Em frente ao Metrô Estação Águas Claras',
+        bookingUrl: 'https://www.salao99.com.br/studio-caracois-especialistas-em-cachos-aguas-claras',
+        whatsappUrl: 'https://wa.me/5561993837705?text=Olá!%20Gostaria%20de%20agendar%20minha%20avaliação%20gratuita%20em%20Águas%20Claras.',
+        lat: -15.8394,
+        lng: -48.0266
+    },
+    {
+        slug: 'asa-sul',
+        city: 'Brasília',
+        state: 'DF',
+        label: 'Brasília — Asa Sul',
+        neighborhood: 'Asa Sul',
+        address: 'CLS 411, Bloco B, Loja 20',
+        postal: '70277-520',
+        landmark: '',
+        bookingUrl: 'https://www.salao99.com.br/studio-caracois-especialistas-em-cachos-asa-sul',
+        whatsappUrl: 'https://wa.me/5561996942312?text=Olá!%20Gostaria%20de%20agendar%20minha%20avaliação%20gratuita%20na%20Asa%20Sul.',
+        lat: -15.8267,
+        lng: -47.9218
+    },
+    {
+        slug: 'asa-norte',
+        city: 'Brasília',
+        state: 'DF',
+        label: 'Brasília — Asa Norte',
+        neighborhood: 'Asa Norte',
+        address: 'SCLN 715, Bloco A, Loja 59',
+        postal: '70770-511',
+        landmark: '',
+        bookingUrl: 'https://www.salao99.com.br/studio-caracois-especialistas-em-cachos-asa-norte',
+        whatsappUrl: 'https://wa.me/5561995251477?text=Olá!%20Gostaria%20de%20agendar%20minha%20avaliação%20gratuita%20na%20Asa%20Norte.',
+        lat: -15.7467,
+        lng: -47.8826
+    },
+    {
+        slug: 'taguatinga',
+        city: 'Brasília',
+        state: 'DF',
+        label: 'Brasília — Taguatinga Norte',
+        neighborhood: 'Taguatinga Norte',
+        address: 'Avenida Comercial Norte, QND 2 Lote 11, Loja 01',
+        postal: '72120-020',
+        landmark: 'Atendimento com direcionamento pelo Linktree geral',
+        bookingUrl: 'https://linktr.ee/studiocaracois',
+        whatsappUrl: 'https://wa.me/5561991446678?text=Olá!%20Gostaria%20de%20agendar%20minha%20avaliação%20gratuita%20em%20Taguatinga.',
+        lat: -15.8362,
+        lng: -48.0558
+    },
+    {
+        slug: 'goiania',
+        city: 'Goiânia',
+        state: 'GO',
+        label: 'Goiânia — Setor Bueno',
+        neighborhood: 'Setor Bueno',
+        address: 'Avenida Mutirão, 1932 – Casablanca Center, Loja 4, Bloco B',
+        postal: '74215-240',
+        landmark: '',
+        bookingUrl: 'https://www.salao99.com.br/studio-caracois-especialistas-em-cachos-goiania',
+        whatsappUrl: 'https://wa.me/5562993411230?text=Olá!%20Gostaria%20de%20agendar%20minha%20avaliação%20gratuita%20em%20Goiânia.',
+        lat: -16.7139,
+        lng: -49.2537
+    },
+    {
+        slug: 'recife',
+        city: 'Recife',
+        state: 'PE',
+        label: 'Recife — Boa Viagem',
+        neighborhood: 'Boa Viagem',
+        address: 'Avenida Conselheiro Aguiar, 1472 – Recife Trade Center, Sala 42',
+        postal: '51111-903',
+        landmark: '',
+        bookingUrl: 'https://www.salao99.com.br/studio-caracois-especialistas-em-cachos-recife',
+        whatsappUrl: 'https://wa.me/5581973056302?text=Olá!%20Gostaria%20de%20agendar%20minha%20avaliação%20gratuita%20em%20Recife.',
+        lat: -8.1204,
+        lng: -34.9013
+    }
+];
+
+function escapeHtml(value) {
+    return String(value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+}
+
+function unitRegionText(unit) {
+    return unit.city + ' - ' + unit.state;
+}
+
+function unitEyebrowText(unit) {
+    return unit.neighborhood || unitRegionText(unit);
+}
+
+function createWaUnitMarkup(unit) {
+    return (
+        '<a href="' + escapeHtml(unit.whatsappUrl) + '" target="_blank" rel="noopener" class="wa-unit-item" data-lat="' + unit.lat + '" data-lng="' + unit.lng + '" data-unit-slug="' + escapeHtml(unit.slug) + '">' +
+            '<div class="wa-unit-copy">' +
+                '<div class="wa-unit-name">' + escapeHtml(unit.label) + '</div>' +
+                '<div class="wa-unit-region">' + escapeHtml(unitEyebrowText(unit)) + '</div>' +
+                '<div class="wa-unit-meta">' + escapeHtml(unit.address) + '</div>' +
+                '<div class="wa-unit-meta wa-unit-meta--muted">' + escapeHtml(unitRegionText(unit) + ' • CEP ' + unit.postal) + '</div>' +
+                (unit.landmark ? '<div class="wa-unit-meta wa-unit-meta--landmark">📍 ' + escapeHtml(unit.landmark) + '</div>' : '') +
+                '<div class="wa-nearest-badge">✦ Mais próxima</div>' +
+                '<div class="wa-unit-distance"></div>' +
+            '</div>' +
+            '<svg width="18" height="18" aria-hidden="true"><use href="#i-arrow"></use></svg>' +
+        '</a>'
+    );
+}
+
+function createBookingUnitMarkup(unit) {
+    return (
+        '<a href="' + escapeHtml(unit.bookingUrl) + '" target="_blank" rel="noopener noreferrer" class="booking-card" data-lat="' + unit.lat + '" data-lng="' + unit.lng + '" data-unit-slug="' + escapeHtml(unit.slug) + '">' +
+            '<div class="booking-card-name">' + escapeHtml(unit.label) + '</div>' +
+            '<div class="booking-card-eyebrow">' + escapeHtml(unitEyebrowText(unit)) + '</div>' +
+            '<div class="booking-card-addr">' + escapeHtml(unit.address) + '</div>' +
+            '<div class="booking-card-postal">CEP ' + escapeHtml(unit.postal) + '</div>' +
+            '<div class="booking-card-city">' + escapeHtml(unitRegionText(unit)) + '</div>' +
+            (unit.landmark ? '<div class="booking-card-ref">📍 ' + escapeHtml(unit.landmark) + '</div>' : '') +
+        '</a>'
+    );
+}
+
+function renderUnitModals() {
+    const waContainer = document.getElementById('waUnitItems');
+    if (waContainer) {
+        waContainer.innerHTML = STUDIO_UNITS.map(createWaUnitMarkup).join('');
+    }
+
+    const bookingGrid = document.getElementById('bookingGrid');
+    if (bookingGrid) {
+        bookingGrid.innerHTML = STUDIO_UNITS.map(createBookingUnitMarkup).join('');
+    }
+}
+
+
 /* =========================
    SCROLL LOCK
 ========================= */
@@ -223,7 +398,7 @@ function getNearestUnits(userLat, userLng, elements) {
 ========================= */
 function openWaModal() {
     resetGeoButton('waGeoBtn', 'geoBtnText', 'Usar minha localização');
-    document.querySelectorAll('#waUnitList .wa-unit-item').forEach(function(item) {
+    document.querySelectorAll('#waUnitItems .wa-unit-item').forEach(function(item) {
         item.classList.remove('nearest');
         const dist = item.querySelector('.wa-unit-distance');
         if (dist) dist.textContent = '';
@@ -237,13 +412,16 @@ function openBooking() {
     const label = document.getElementById('bookingOtherLabel');
     if (wrap) wrap.style.display = 'none';
     if (label) label.style.display = 'none';
-    const nName = document.getElementById('bookingNearestName');
-    const nAddr = document.getElementById('bookingNearestAddr');
-    const nDist = document.getElementById('bookingNearestDist');
-    if (nName) nName.textContent = '';
-    if (nAddr) nAddr.textContent = '';
-    if (nDist) nDist.textContent = '';
-    document.querySelectorAll('#bookingModal .booking-card-dist').forEach(function(el) { el.remove(); });
+    ['bookingNearestName', 'bookingNearestEyebrow', 'bookingNearestAddr', 'bookingNearestPostal', 'bookingNearestDist', 'bookingNearestRef'].forEach(function(id) {
+        const el = document.getElementById(id);
+        if (!el) return;
+        el.textContent = '';
+        if (id === 'bookingNearestRef') el.style.display = 'none';
+    });
+    document.querySelectorAll('#bookingModal .booking-card-dist').forEach(function(el) {
+        el.textContent = '';
+        el.style.display = 'none';
+    });
     openModal('bookingModal');
 }
 
@@ -265,7 +443,7 @@ function findNearest() {
     try {
     navigator.geolocation.getCurrentPosition(
         function(pos) {
-            const list = document.getElementById('waUnitList');
+            const list = document.getElementById('waUnitItems');
             const items = list.querySelectorAll('.wa-unit-item');
             let sorted = getNearestUnits(pos.coords.latitude, pos.coords.longitude, items);
 
@@ -319,16 +497,27 @@ function findNearestBooking() {
                 let n = sorted[0];
                 let wrap = document.getElementById('bookingNearestWrap');
                 const card = document.getElementById('bookingNearestCard');
+                const unit = STUDIO_UNITS.find(function(entry) {
+                    return entry.slug === n.el.getAttribute('data-unit-slug');
+                });
 
-                /* CORREÇÃO: usar getAttribute('href') para pegar o valor literal do
-                   atributo HTML — evita que o browser resolva o link relativo antes
-                   de copiar, o que fazia o card dinâmico apontar para '#' ou para a
-                   URL incorreta da página atual. */
                 const bookingUrl = n.el.getAttribute('href');
                 card.setAttribute('href', bookingUrl);
                 document.getElementById('bookingNearestName').textContent = n.el.querySelector('.booking-card-name').textContent;
+                document.getElementById('bookingNearestEyebrow').textContent = unit ? unitEyebrowText(unit) : '';
                 document.getElementById('bookingNearestAddr').textContent = n.el.querySelector('.booking-card-addr').textContent;
+                document.getElementById('bookingNearestPostal').textContent = unit ? ('CEP ' + unit.postal + ' • ' + unitRegionText(unit)) : '';
                 document.getElementById('bookingNearestDist').textContent = '\u2248 ' + formatDist(n.dist) + ' de voc\u00ea';
+                const nearestRef = document.getElementById('bookingNearestRef');
+                if (nearestRef) {
+                    if (unit && unit.landmark) {
+                        nearestRef.textContent = '📍 ' + unit.landmark;
+                        nearestRef.style.display = 'block';
+                    } else {
+                        nearestRef.textContent = '';
+                        nearestRef.style.display = 'none';
+                    }
+                }
 
                 wrap.style.display = 'block';
                 document.getElementById('bookingOtherLabel').style.display = 'block';
@@ -339,10 +528,10 @@ function findNearestBooking() {
                     const existing = entry.el.querySelector('.booking-card-dist');
                     if (existing) {
                         existing.textContent = '\u2248 ' + formatDist(entry.dist);
+                        existing.style.display = 'block';
                     } else {
                         let d = document.createElement('div');
                         d.className = 'booking-card-dist';
-                        d.style.cssText = 'font-size:0.65rem;color:var(--text-muted);margin-top:3px;';
                         d.textContent = '\u2248 ' + formatDist(entry.dist);
                         entry.el.appendChild(d);
                     }
@@ -397,18 +586,27 @@ document.addEventListener('keydown', function(e) {
     if (productModalEl && productModalEl.classList.contains('open')) {
         closeProductModal(); return;
     }
-    if (document.getElementById('beeModal').classList.contains('open')) {
+    const beeModal = document.getElementById('beeModal');
+    const bookingModal = document.getElementById('bookingModal');
+    const waModal = document.getElementById('waModal');
+    const mobileMenu = document.getElementById('mm');
+
+    if (beeModal && beeModal.classList.contains('open')) {
         closeBeeModal(); return;
     }
-    if (document.getElementById('bookingModal').classList.contains('open')) {
+    if (bookingModal && bookingModal.classList.contains('open')) {
         closeModal('bookingModal'); return;
     }
-    if (document.getElementById('waModal').classList.contains('open')) {
+    if (waModal && waModal.classList.contains('open')) {
         closeModal('waModal'); return;
     }
-    if (document.getElementById('mm').classList.contains('open')) {
+    if (mobileMenu && mobileMenu.classList.contains('open')) {
         closeMobileMenu(true);
     }
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    renderUnitModals();
 });
 
 /* =========================

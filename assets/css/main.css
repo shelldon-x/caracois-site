@@ -1656,6 +1656,7 @@
         }
         .wa-modal-close:hover { color: var(--white); background: var(--terracota); }
         .wa-unit-list { display: flex; flex-direction: column; gap: 6px; }
+        .wa-unit-items { display: flex; flex-direction: column; gap: 8px; }
         .wa-geo-btn {
             display: flex; align-items: center; justify-content: center; gap: 8px;
             width: 100%; padding: 14px 16px; border-radius: 14px;
@@ -1702,8 +1703,11 @@
             box-shadow: 0 12px 36px rgba(155,68,66,0.35);
         }
         .wa-unit-item.nearest .wa-unit-name { color: var(--white); }
-        .wa-unit-item.nearest .wa-unit-region { color: rgba(255,255,255,0.8); }
-        .wa-unit-item.nearest .wa-unit-distance { color: rgba(255,255,255,0.85); }
+        .wa-unit-item.nearest .wa-unit-region,
+        .wa-unit-item.nearest .wa-unit-meta,
+        .wa-unit-item.nearest .wa-unit-meta--muted,
+        .wa-unit-item.nearest .wa-unit-meta--landmark { color: rgba(255,255,255,0.82); }
+        .wa-unit-item.nearest .wa-unit-distance { color: rgba(255,255,255,0.88); }
         .wa-unit-item.nearest svg { opacity: 0.9; stroke: var(--white); }
         .wa-unit-item.nearest:hover .wa-unit-region { color: rgba(255,255,255,0.85); }
         .wa-unit-item.nearest:hover .wa-unit-distance { color: rgba(255,255,255,0.9); }
@@ -1715,14 +1719,43 @@
             letter-spacing: 0.12em; margin-top: 4px;
         }
         .wa-unit-item.nearest .wa-nearest-badge { display: block; }
+        .wa-unit-copy { min-width: 0; }
         .wa-unit-distance {
-            font-size: 0.65rem; color: var(--text-muted);
-            font-weight: 400; margin-top: 1px;
+            font-size: 0.68rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-top: 8px;
         }
-        .wa-unit-item:hover .wa-unit-distance { color: rgba(255,255,255,0.6); }
-        .wa-unit-item .wa-unit-name { font-weight: 500; font-size: 0.88rem; }
-        .wa-unit-item .wa-unit-region { font-size: 0.72rem; color: var(--text-muted); font-weight: 300; margin-top: 1px; }
-        .wa-unit-item:hover .wa-unit-region { color: rgba(255,255,255,0.7); }
+        .wa-unit-item:hover .wa-unit-distance { color: rgba(255,255,255,0.72); }
+        .wa-unit-item .wa-unit-name { font-weight: 600; font-size: 0.92rem; line-height: 1.25; }
+        .wa-unit-item .wa-unit-region {
+            font-size: 0.7rem;
+            color: var(--terracota);
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            margin-top: 4px;
+        }
+        .wa-unit-meta {
+            font-size: 0.76rem;
+            color: var(--text-light);
+            font-weight: 400;
+            line-height: 1.45;
+            margin-top: 6px;
+        }
+        .wa-unit-meta--muted {
+            font-size: 0.68rem;
+            color: var(--text-muted);
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+        .wa-unit-meta--landmark {
+            color: var(--text-muted);
+        }
+        .wa-unit-item:hover .wa-unit-region,
+        .wa-unit-item:hover .wa-unit-meta,
+        .wa-unit-item:hover .wa-unit-meta--muted,
+        .wa-unit-item:hover .wa-unit-meta--landmark { color: rgba(255,255,255,0.78); }
         .wa-unit-item svg { width: 18px; height: 18px; opacity: 0.3; transition: all 0.3s; flex-shrink: 0; }
         .wa-unit-item:hover svg { opacity: 1; stroke: var(--white); }
 
@@ -1862,8 +1895,14 @@
             color: var(--white);
             box-shadow: 0 8px 28px rgba(155,68,66,0.25);
         }
+        .booking-nearest-content { min-width: 0; }
         .booking-nearest-card .booking-card-name { color: var(--white); font-size: 1rem; }
-        .booking-card.booking-nearest-card .booking-card-addr { color: rgba(255,255,255,0.75); }
+        .booking-nearest-card .booking-card-eyebrow {
+            color: rgba(255,255,255,0.86);
+            margin-bottom: 6px;
+        }
+        .booking-card.booking-nearest-card .booking-card-addr,
+        .booking-card.booking-nearest-card .booking-card-postal { color: rgba(255,255,255,0.78); }
         .booking-card.booking-nearest-card:hover {
             background: linear-gradient(135deg, var(--terracota-dark), var(--terracota));
             transform: translateY(-3px);
@@ -1871,7 +1910,9 @@
         }
         .booking-nearest-card:hover .booking-card-name { color: var(--white); }
         .booking-card.booking-nearest-card:hover .booking-card-addr,
-        .booking-card.booking-nearest-card:hover .booking-nearest-dist { color: rgba(255,255,255,0.8); }
+        .booking-card.booking-nearest-card:hover .booking-card-postal,
+        .booking-card.booking-nearest-card:hover .booking-card-ref,
+        .booking-card.booking-nearest-card:hover .booking-nearest-dist { color: rgba(255,255,255,0.82); }
         .booking-nearest-card:hover .booking-nearest-cta { color: var(--black); }
         .booking-nearest-dist {
             font-size: 0.72rem;
@@ -1894,11 +1935,14 @@
             background: var(--white);
             color: var(--terracota);
         }
+        .booking-card-ref--light {
+            color: rgba(255,255,255,0.78);
+        }
         .booking-nearest-micro {
             font-size: 0.72rem;
             color: rgba(255,255,255,0.65);
             font-style: italic;
-            margin-top: 6px;
+            margin-top: 8px;
         }
         .booking-other-label {
             font-size: 0.72rem;
@@ -1985,25 +2029,58 @@
         }
         .booking-card-name {
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
+            line-height: 1.25;
             margin-bottom: 4px;
+            color: var(--black);
+        }
+        .booking-card-eyebrow {
+            font-size: 0.72rem;
+            color: var(--terracota);
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            margin-bottom: 8px;
         }
         .booking-card-addr {
-            font-size: 0.72rem;
-            color: var(--text-muted);
-            font-weight: 300;
-            line-height: 1.4;
+            font-size: 0.78rem;
+            color: var(--text-light);
+            font-weight: 400;
+            line-height: 1.5;
         }
-        .booking-card:hover .booking-card-addr { color: rgba(255,255,255,0.7); }
-        .booking-card-city {
-            font-size: 0.65rem;
+        .booking-card-postal {
+            font-size: 0.7rem;
             color: var(--text-muted);
             font-weight: 400;
+            margin-top: 8px;
+        }
+        .booking-card-city {
+            font-size: 0.68rem;
+            color: var(--text-muted);
+            font-weight: 500;
             margin-top: 4px;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.04em;
             text-transform: uppercase;
         }
-        .booking-card:hover .booking-card-city { color: rgba(255,255,255,0.6); }
+        .booking-card-ref {
+            font-size: 0.7rem;
+            color: var(--text-light);
+            margin-top: 8px;
+            line-height: 1.45;
+        }
+        .booking-card-dist {
+            font-size: 0.68rem;
+            color: var(--text-muted);
+            margin-top: 8px;
+            font-weight: 500;
+        }
+        .booking-card:hover .booking-card-name { color: var(--white); }
+        .booking-card:hover .booking-card-eyebrow { color: rgba(255,255,255,0.9); }
+        .booking-card:hover .booking-card-addr,
+        .booking-card:hover .booking-card-postal,
+        .booking-card:hover .booking-card-city,
+        .booking-card:hover .booking-card-ref,
+        .booking-card:hover .booking-card-dist { color: rgba(255,255,255,0.78); }
         .booking-footer {
             text-align: center;
             margin-top: 20px;
