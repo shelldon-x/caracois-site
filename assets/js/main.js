@@ -138,12 +138,15 @@ function unitRegionText(unit) {
 
 function createWaUnitMarkup(unit) {
     return (
-        '<a href="' + escapeHtml(unit.whatsappUrl) + '" target="_blank" rel="noopener" class="booking-card wa-unit-item" data-lat="' + unit.lat + '" data-lng="' + unit.lng + '" data-unit-slug="' + escapeHtml(unit.slug) + '">' +
-            '<div class="booking-card-name">' + escapeHtml(unit.label) + '</div>' +
-            '<div class="booking-card-addr">' + escapeHtml(unit.address) + '</div>' +
-            '<div class="booking-card-postal">' + escapeHtml(unitRegionText(unit) + ' • CEP ' + unit.postal) + '</div>' +
-            (unit.landmark ? '<div class="booking-card-ref">📍 ' + escapeHtml(unit.landmark) + '</div>' : '') +
-            '<div class="booking-card-dist wa-unit-distance"></div>' +
+        '<a href="' + escapeHtml(unit.whatsappUrl) + '" target="_blank" rel="noopener" class="wa-unit-item booking-card booking-card--wa" data-lat="' + unit.lat + '" data-lng="' + unit.lng + '" data-unit-slug="' + escapeHtml(unit.slug) + '">' +
+            '<div class="wa-unit-copy">' +
+                '<div class="wa-unit-name booking-card-name">' + escapeHtml(unit.label) + '</div>' +
+                '<div class="wa-unit-meta booking-card-addr">' + escapeHtml(unit.address) + '</div>' +
+                '<div class="wa-unit-meta wa-unit-meta--muted booking-card-postal">' + escapeHtml(unitRegionText(unit) + ' • CEP ' + unit.postal) + '</div>' +
+                (unit.landmark ? '<div class="wa-unit-meta wa-unit-meta--landmark booking-card-ref">📍 ' + escapeHtml(unit.landmark) + '</div>' : '') +
+                '<div class="wa-unit-distance booking-card-dist"></div>' +
+            '</div>' +
+            '<svg width="18" height="18" aria-hidden="true"><use href="#i-arrow"></use></svg>' +
         '</a>'
     );
 }
@@ -422,7 +425,7 @@ function openWaModal() {
     });
     document.querySelectorAll('#waUnitItems .wa-unit-item').forEach(item => {
         item.classList.remove('nearest');
-        const dist = item.querySelector('.booking-card-dist');
+        const dist = item.querySelector('.wa-unit-distance');
         if (dist) {
             dist.textContent = '';
             dist.style.display = 'none';
@@ -490,8 +493,8 @@ function findNearest() {
                     const unit = STUDIO_UNITS.find(u => u.slug === n.el.getAttribute('data-unit-slug'));
 
                     if (card) card.setAttribute('href', n.el.getAttribute('href'));
-                    document.getElementById('waNearestName').textContent = n.el.querySelector('.booking-card-name').textContent;
-                    document.getElementById('waNearestAddr').textContent = n.el.querySelector('.booking-card-addr').textContent;
+                    document.getElementById('waNearestName').textContent = n.el.querySelector('.wa-unit-name').textContent;
+                    document.getElementById('waNearestAddr').textContent = n.el.querySelector('.wa-unit-meta').textContent;
                     document.getElementById('waNearestPostal').textContent = unit ? (unitRegionText(unit) + ' • CEP ' + unit.postal) : '';
                     document.getElementById('waNearestDist').textContent = '≈ ' + formatDist(n.dist) + ' de você';
                     const nearestRef = document.getElementById('waNearestRef');
@@ -513,7 +516,7 @@ function findNearest() {
 
                     sorted.forEach(entry => {
                         entry.el.classList.remove('nearest');
-                        const dist = entry.el.querySelector('.booking-card-dist');
+                        const dist = entry.el.querySelector('.wa-unit-distance');
                         if (dist) {
                             dist.textContent = '≈ ' + formatDist(entry.dist) + ' de você';
                             dist.style.display = 'block';
