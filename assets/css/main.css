@@ -1706,60 +1706,52 @@
                 .wa-unit-item.nearest .wa-unit-meta,
         .wa-unit-item.nearest .wa-unit-meta--muted,
         .wa-unit-item.nearest .wa-unit-meta--landmark { color: rgba(255,255,255,0.82); }
-        .wa-unit-item.nearest .wa-unit-distance { color: rgba(255,255,255,0.88); }
+         .wa-unit-item.nearest .wa-unit-distance { color: rgba(255,255,255,0.88); }
+        .wa-unit-item.nearest .wa-nearest-micro { display: block; color: rgba(255,255,255,0.95); }
         .wa-unit-item.nearest svg { opacity: 0.9; stroke: var(--white); }
                 .wa-unit-item.nearest:hover .wa-unit-distance { color: rgba(255,255,255,0.9); }
         .wa-unit-item.nearest:hover svg { stroke: var(--white); }
         .wa-nearest-badge {
             display: none;
-            font-size: 0.64rem;
-            font-weight: 700;
-            color: var(--gold-light);
-            text-transform: uppercase;
-            letter-spacing: 0.11em;
-            margin-top: 8px;
+            font-size: 0.64rem; font-weight: 700;
+            color: var(--gold-light); text-transform: uppercase;
+            letter-spacing: 0.12em; margin-top: 8px;
         }
         .wa-nearest-micro {
             display: none;
-            font-size: 0.72rem;
+            font-size: 0.78rem;
             line-height: 1.45;
-            color: rgba(255,255,255,0.78);
-            font-style: italic;
+            font-weight: 600;
             margin-top: 4px;
         }
-        .wa-unit-item.nearest .wa-nearest-badge,
-        .wa-unit-item.nearest .wa-nearest-micro { display: block; }
+        .wa-unit-item.nearest .wa-nearest-badge { display: block; }
         .wa-unit-copy { min-width: 0; }
         .wa-unit-distance {
-            font-size: 0.7rem;
+            font-size: 0.72rem;
             color: var(--text-muted);
             font-weight: 500;
             margin-top: 8px;
         }
         .wa-unit-item:hover .wa-unit-distance { color: rgba(255,255,255,0.72); }
-        .wa-unit-item .wa-unit-name {
-            font-weight: 600;
-            font-size: 0.96rem;
-            line-height: 1.28;
-            letter-spacing: -0.01em;
-        }
-        .wa-unit-meta {
-            font-size: 0.81rem;
+        .wa-unit-item .wa-unit-name { font-weight: 700; font-size: 1.04rem; line-height: 1.2; margin-bottom: 4px; }
+                .wa-unit-meta {
+            font-size: 0.84rem;
             color: var(--text-light);
-            font-weight: 400;
-            line-height: 1.5;
-            margin-top: 6px;
+            font-weight: 500;
+            line-height: 1.4;
+            margin-top: 4px;
         }
         .wa-unit-meta--muted {
-            font-size: 0.71rem;
+            font-size: 0.75rem;
             color: var(--text-muted);
             letter-spacing: 0.01em;
             text-transform: none;
+            font-weight: 400;
         }
         .wa-unit-meta--landmark {
             color: var(--text-light);
             font-size: 0.78rem;
-            line-height: 1.45;
+            font-weight: 500;
         }
                 .wa-unit-item:hover .wa-unit-meta,
         .wa-unit-item:hover .wa-unit-meta--muted,
@@ -1904,16 +1896,16 @@
             box-shadow: 0 8px 28px rgba(155,68,66,0.25);
         }
         .booking-nearest-content { min-width: 0; }
-        .booking-nearest-card .booking-card-name {
-            color: var(--white);
-            font-size: 1.03rem;
-            line-height: 1.22;
-        }
+        .booking-nearest-card .booking-card-name { color: var(--white); font-size: 1.12rem; font-weight: 700; margin-bottom: 8px; }
         .booking-nearest-card .booking-card-eyebrow {
-            display: none;
+            color: rgba(255,255,255,0.84);
+            margin-bottom: 6px;
+            font-size: 0.72rem;
+            letter-spacing: 0.02em;
+            text-transform: none;
         }
-        .booking-card.booking-nearest-card .booking-card-addr,
-        .booking-card.booking-nearest-card .booking-card-postal { color: rgba(255,255,255,0.82); }
+        .booking-card.booking-nearest-card .booking-card-addr { color: rgba(255,255,255,0.92); font-size: 0.9rem; font-weight: 500; line-height: 1.4; }
+        .booking-card.booking-nearest-card .booking-card-postal { color: rgba(255,255,255,0.82); font-size: 0.76rem; }
         .booking-card.booking-nearest-card:hover {
             background: linear-gradient(135deg, var(--terracota-dark), var(--terracota));
             transform: translateY(-3px);
@@ -1926,10 +1918,10 @@
         .booking-card.booking-nearest-card:hover .booking-nearest-dist { color: rgba(255,255,255,0.82); }
         .booking-nearest-card:hover .booking-nearest-cta { color: var(--black); }
         .booking-nearest-dist {
-            font-size: 0.71rem;
+            font-size: 0.74rem;
             color: rgba(255,255,255,0.8);
-            font-weight: 400;
-            margin-top: 4px;
+            font-weight: 500;
+            margin-top: 8px;
         }
         .booking-nearest-cta {
             font-size: 0.82rem;
@@ -1950,11 +1942,11 @@
             color: rgba(255,255,255,0.78);
         }
         .booking-nearest-micro {
-            font-size: 0.74rem;
+            font-size: 0.82rem;
+            color: rgba(255,255,255,0.95);
+            font-weight: 600;
+            margin-top: 8px;
             line-height: 1.45;
-            color: rgba(255,255,255,0.74);
-            font-style: italic;
-            margin-top: 10px;
         }
         .booking-other-label {
             font-size: 0.72rem;
@@ -2040,27 +2032,24 @@
             box-shadow: 0 8px 24px rgba(155,68,66,0.2);
         }
         .booking-card-name {
-            font-weight: 600;
-            font-size: 0.97rem;
-            line-height: 1.28;
+            font-weight: 700;
+            font-size: 1.04rem;
+            line-height: 1.2;
             margin-bottom: 6px;
             color: var(--black);
-            letter-spacing: -0.01em;
         }
-        .booking-card-eyebrow {
-            display: none;
-        }
+        .booking-card-eyebrow { display:none; }
         .booking-card-addr {
-            font-size: 0.8rem;
+            font-size: 0.84rem;
             color: var(--text-light);
-            font-weight: 400;
-            line-height: 1.5;
+            font-weight: 500;
+            line-height: 1.42;
         }
         .booking-card-postal {
-            font-size: 0.71rem;
+            font-size: 0.74rem;
             color: var(--text-muted);
             font-weight: 400;
-            margin-top: 8px;
+            margin-top: 6px;
             letter-spacing: 0.01em;
             text-transform: none;
         }
@@ -2068,13 +2057,14 @@
             display: none;
         }
         .booking-card-ref {
-            font-size: 0.77rem;
+            font-size: 0.78rem;
             color: var(--text-light);
-            margin-top: 9px;
-            line-height: 1.45;
+            margin-top: 8px;
+            line-height: 1.4;
+            font-weight: 500;
         }
         .booking-card-dist {
-            font-size: 0.68rem;
+            font-size: 0.72rem;
             color: var(--text-muted);
             margin-top: 8px;
             font-weight: 500;
