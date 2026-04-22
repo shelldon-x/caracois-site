@@ -2035,6 +2035,19 @@ body.ui-locked {
 .transition-quote strong { font-style: normal; font-weight: 600; }
 .transition-cta { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 36px; }
 
+.assessment-cta,
+.units-cta-wrap,
+.knowledge-cta-wrap,
+.section-cta-center {
+    display: flex;
+    justify-content: center;
+}
+.transition-cta,
+.cta-final-btns,
+.faq-cta-group {
+    align-items: center;
+}
+
 .faq { background: var(--bg-soft); }
 .faq-list { max-width: 800px; margin: 0 auto; }
 .faq-item {
@@ -2312,6 +2325,47 @@ body.ui-locked {
     box-shadow: 0 10px 32px rgba(155,68,66,0.2);
 }
 
+.btn-outline-light {
+    background: transparent;
+    color: var(--white);
+    border: 1.5px solid rgba(255,255,255,0.35);
+}
+.btn-outline-light:hover {
+    background: rgba(255,255,255,0.08);
+    color: var(--white);
+    border-color: rgba(255,255,255,0.55);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 32px rgba(0,0,0,0.12);
+}
+.section-cta-center {
+    text-align: center;
+    margin-top: 48px;
+}
+.mobile-menu-cta {
+    margin-top: 20px;
+    width: 100%;
+    justify-content: center;
+}
+.faq-contact-box {
+    margin-top: 48px;
+    background: rgba(155,68,66,0.08);
+    border-radius: 24px;
+    text-align: center;
+    padding: 28px 20px;
+}
+.faq-cta-group {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.wa-geo-btn svg,
+.booking-geo-btn svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
 /* ╔═══════════════════════════════════════════════════════════════════╗
    ║  7. RESPONSIVE — media queries (mobile, tablet, desktop wide)     ║
    ╚═══════════════════════════════════════════════════════════════════╝ */
@@ -2538,6 +2592,54 @@ body.ui-locked {
     .comparison-handle::before {
         font-size: 0.85rem;
     }
+
+    .transition-cta,
+    .cta-final-btns,
+    .faq-cta-group {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .assessment-cta,
+    .units-cta-wrap,
+    .knowledge-cta-wrap,
+    .section-cta-center {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .transition-cta .btn,
+    .assessment-cta .btn,
+    .cta-final-btns .btn,
+    .faq-cta-group .btn,
+    .units-cta-wrap .btn,
+    .knowledge-cta-wrap .btn,
+    .section-cta-center .btn,
+    .mobile-menu-cta {
+        width: min(100%, 420px);
+        justify-content: center;
+        margin-inline: auto;
+    }
+
+    .knowledge-cta-wrap .btn {
+        display: inline-flex;
+    }
+
+    .faq-contact-box {
+        padding: 24px 18px;
+        border-radius: 22px;
+    }
+
+    .wa-geo-btn,
+    .booking-geo-btn {
+        padding: 14px 16px;
+    }
+
+    .wa-geo-btn span,
+    .booking-geo-btn span {
+        min-width: 0;
+    }
 }
 
 @media (max-width: 480px) {
@@ -2554,6 +2656,18 @@ body.ui-locked {
     .section-desc { font-size: 0.85rem; }
 
     .btn { padding: 13px 24px; font-size: 0.8rem; }
+    .transition-cta .btn,
+    .assessment-cta .btn,
+    .cta-final-btns .btn,
+    .faq-cta-group .btn,
+    .units-cta-wrap .btn,
+    .knowledge-cta-wrap .btn,
+    .section-cta-center .btn,
+    .mobile-menu-cta {
+        width: 100%;
+        max-width: 100%;
+    }
+
 
     .diff-grid { grid-template-columns: 1fr; gap: 10px; }
     .for-who-grid { grid-template-columns: 1fr; }
