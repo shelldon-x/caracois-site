@@ -438,31 +438,15 @@ function findNearest() {
             const list = document.getElementById('waUnitItems');
             const items = list.querySelectorAll('.wa-unit-item');
             let sorted = getNearestUnits(pos.coords.latitude, pos.coords.longitude, items);
-
-            items.forEach(function(item) { 
+            items.forEach(function(item) {
                 item.classList.remove('nearest');
-                const oldBadge = item.querySelector('.wa-nearest-badge');
-                if (oldBadge) oldBadge.remove();
-                const oldMicro = item.querySelector('.wa-nearest-micro');
-                if (oldMicro) oldMicro.remove();
             });
 
             sorted.forEach(function(entry, i) {
                 let d = entry.el.querySelector('.wa-unit-distance');
-                if (d) d.textContent = '\u2248 ' + formatDist(entry.dist) + ' de voc\u00ea';
+                if (d) d.textContent = '≈ ' + formatDist(entry.dist) + ' de você';
                 if (i === 0) {
                     entry.el.classList.add('nearest');
-                    const copy = entry.el.querySelector('.wa-unit-copy');
-                    if (copy) {
-                        const badge = document.createElement('div');
-                        badge.className = 'wa-nearest-badge';
-                        badge.textContent = '✦ Mais próxima';
-                        copy.appendChild(badge);
-                        const micro = document.createElement('div');
-                        micro.className = 'wa-nearest-micro';
-                        micro.textContent = 'Sua transformação começa mais perto do que você imagina ✨';
-                        copy.appendChild(micro);
-                    }
                 }
                 list.appendChild(entry.el);
             });
