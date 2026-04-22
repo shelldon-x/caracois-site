@@ -1,5 +1,5 @@
 /* =========================
-   STATE
+   STATE & CONFIG
 ========================= */
 let lastScrollY = 0;
 let lastFocusedElement = null;
@@ -120,6 +120,9 @@ const STUDIO_UNITS = [
     }
 ];
 
+/* =========================
+   UTILITIES
+========================= */
 function escapeHtml(value) {
     return String(value)
         .replace(/&/g, '&amp;')
@@ -161,16 +164,15 @@ function createBookingUnitMarkup(unit) {
 
 function renderUnitModals() {
     const waContainer = document.getElementById('waUnitItems');
-    if (waContainer && !waContainer.querySelector('.wa-unit-item')) {
+    if (waContainer) {
         waContainer.innerHTML = STUDIO_UNITS.map(createWaUnitMarkup).join('');
     }
 
     const bookingGrid = document.getElementById('bookingGrid');
-    if (bookingGrid && !bookingGrid.querySelector('.booking-card')) {
+    if (bookingGrid) {
         bookingGrid.innerHTML = STUDIO_UNITS.map(createBookingUnitMarkup).join('');
     }
 }
-
 
 /* =========================
    SCROLL LOCK
@@ -184,7 +186,7 @@ function lockScroll() {
 
 function unlockScroll() {
     const anyOpen = document.querySelector(
-        '.wa-modal-overlay.open, .booking-overlay.open, .mobile-menu.open, .mobile-overlay.open'
+        '.wa-modal-overlay.open, .booking-overlay.open, .bee-modal-overlay.open, .product-modal-overlay.open, .mobile-menu.open, .mobile-overlay.open'
     );
     if (anyOpen) return;
 
@@ -262,15 +264,54 @@ function resetGeoButton(btnId, textId, defaultText) {
 /* =========================
    MODAL CORE
 ========================= */
+class ModalManager {
+    constructor(modalId) {
+        this.modal = document.getElementById(modalId);
+        this.id = modalId;
+    }
+
+    open() {
+        if (!this.modal) return;
+        closeAllOverlaysSilently();
+        lastFocusedElement = document.activeElement;
+        this.modal.classList.add('open');
+        this.modal.setAttribute('aria-hidden', 'false');
+        lockScroll();
+        activateFocusTrap(this.modal);
+
+        setTimeout(() => {
+            let first = getFocusableFirst(this.modal);
+            if (first) first.focus();
+        }, 50);
+    }
+
+    close() {
+        if (!this.modal || !this.modal.classList.contains('open')) return;
+        this.modal.classList.remove('open');
+        this.modal.setAttribute('aria-hidden', 'true');
+        clearFocusTrap();
+        unlockScroll();
+
+        if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
+            setTimeout(() => { lastFocusedElement.focus(); }, 30);
+        }
+    }
+
+    closeOnOverlay(e) {
+        if (e.target === this.modal) this.close();
+    }
+}
+
+const waModal = new ModalManager('waModal');
+const bookingModal = new ModalManager('bookingModal');
+const beeModal = new ModalManager('beeModal');
+
 function closeAllOverlaysSilently() {
-    const wa = document.getElementById('waModal');
-    const booking = document.getElementById('bookingModal');
+    [waModal, bookingModal, beeModal].forEach(m => { if (m.modal) { m.modal.classList.remove('open'); m.modal.setAttribute('aria-hidden', 'true'); } });
     const mm = document.getElementById('mm');
     const mobileOverlay = document.getElementById('mobileOverlay');
     let toggle = document.querySelector('.mobile-toggle');
 
-    if (wa) { wa.classList.remove('open'); wa.setAttribute('aria-hidden', 'true'); }
-    if (booking) { booking.classList.remove('open'); booking.setAttribute('aria-hidden', 'true'); }
     if (mm) { mm.classList.remove('open'); mm.setAttribute('aria-hidden', 'true'); }
     if (mobileOverlay) mobileOverlay.classList.remove('open');
     if (toggle) toggle.setAttribute('aria-expanded', 'false');
@@ -280,38 +321,20 @@ function closeAllOverlaysSilently() {
 }
 
 function openModal(id) {
-    closeAllOverlaysSilently();
-    let modal = document.getElementById(id);
-    if (!modal) return;
-
-    lastFocusedElement = document.activeElement;
-    modal.classList.add('open');
-    modal.setAttribute('aria-hidden', 'false');
-    lockScroll();
-    activateFocusTrap(modal);
-
-    setTimeout(function() {
-        let first = getFocusableFirst(modal);
-        if (first) first.focus();
-    }, 50);
+    if (id === 'waModal') waModal.open();
+    else if (id === 'bookingModal') bookingModal.open();
+    else if (id === 'beeModal') beeModal.open();
 }
 
 function closeModal(id) {
-    let modal = document.getElementById(id);
-    if (!modal || !modal.classList.contains('open')) return;
-
-    modal.classList.remove('open');
-    modal.setAttribute('aria-hidden', 'true');
-    clearFocusTrap();
-    unlockScroll();
-
-    if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
-        setTimeout(function() { lastFocusedElement.focus(); }, 30);
-    }
+    if (id === 'waModal') waModal.close();
+    else if (id === 'bookingModal') bookingModal.close();
+    else if (id === 'beeModal') beeModal.close();
 }
 
 function closeModalOnOverlay(e, id) {
-    if (e.target.id === id) closeModal(id);
+    if (id === 'waModal') waModal.closeOnOverlay(e);
+    else if (id === 'bookingModal') bookingModal.closeOnOverlay(e);
 }
 
 /* =========================
@@ -332,13 +355,13 @@ function openMobileMenu() {
     lockScroll();
     activateFocusTrap(menu);
 
-    setTimeout(function() {
+    setTimeout(() => {
         let first = getFocusableFirst(menu);
         if (first) first.focus();
     }, 50);
 }
 
-function closeMobileMenu(restoreFocus) {
+function closeMobileMenu(restoreFocus = true) {
     let menu = document.getElementById('mm');
     let overlay = document.getElementById('mobileOverlay');
     let toggle = document.querySelector('.mobile-toggle');
@@ -351,8 +374,8 @@ function closeMobileMenu(restoreFocus) {
     clearFocusTrap();
     unlockScroll();
 
-    if (restoreFocus !== false && lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
-        setTimeout(function() { lastFocusedElement.focus(); }, 30);
+    if (restoreFocus && lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
+        setTimeout(() => { lastFocusedElement.focus(); }, 30);
     }
 }
 
@@ -381,12 +404,12 @@ function getNearestUnits(userLat, userLng, elements) {
         const lng = parseFloat(el.dataset.lng);
         if (!isNaN(lat) && !isNaN(lng)) arr.push({ el: el, dist: haversine(userLat, userLng, lat, lng) });
     }
-    arr.sort(function(a, b) { return a.dist - b.dist; });
+    arr.sort((a, b) => a.dist - b.dist);
     return arr;
 }
 
 /* =========================
-   SPECIFIC MODALS
+   SPECIFIC MODAL OPENERS
 ========================= */
 function openWaModal() {
     resetGeoButton('waGeoBtn', 'geoBtnText', 'Usar minha localização');
@@ -394,13 +417,13 @@ function openWaModal() {
     const label = document.getElementById('waOtherLabel');
     if (wrap) wrap.style.display = 'none';
     if (label) label.style.display = 'none';
-    ['waNearestName', 'waNearestAddr', 'waNearestPostal', 'waNearestDist', 'waNearestRef'].forEach(function(id) {
+    ['waNearestName', 'waNearestAddr', 'waNearestPostal', 'waNearestDist', 'waNearestRef'].forEach(id => {
         const el = document.getElementById(id);
         if (!el) return;
         el.textContent = '';
         if (id === 'waNearestRef') el.style.display = 'none';
     });
-    document.querySelectorAll('#waUnitItems .wa-unit-item').forEach(function(item) {
+    document.querySelectorAll('#waUnitItems .wa-unit-item').forEach(item => {
         item.classList.remove('nearest');
         const dist = item.querySelector('.wa-unit-distance');
         if (dist) {
@@ -408,7 +431,7 @@ function openWaModal() {
             dist.style.display = 'none';
         }
     });
-    openModal('waModal');
+    waModal.open();
 }
 
 function openBooking() {
@@ -417,17 +440,29 @@ function openBooking() {
     const label = document.getElementById('bookingOtherLabel');
     if (wrap) wrap.style.display = 'none';
     if (label) label.style.display = 'none';
-    ['bookingNearestName', 'bookingNearestEyebrow', 'bookingNearestAddr', 'bookingNearestPostal', 'bookingNearestDist', 'bookingNearestRef'].forEach(function(id) {
+    ['bookingNearestName', 'bookingNearestAddr', 'bookingNearestPostal', 'bookingNearestDist', 'bookingNearestRef'].forEach(id => {
         const el = document.getElementById(id);
         if (!el) return;
         el.textContent = '';
         if (id === 'bookingNearestRef') el.style.display = 'none';
     });
-    document.querySelectorAll('#bookingModal .booking-card-dist').forEach(function(el) {
+    document.querySelectorAll('#bookingModal .booking-card-dist').forEach(el => {
         el.textContent = '';
         el.style.display = 'none';
     });
-    openModal('bookingModal');
+    bookingModal.open();
+}
+
+function openBeeModal() {
+    beeModal.open();
+}
+
+function closeBeeModal() {
+    beeModal.close();
+}
+
+function closeBeeModalOnOverlay(e) {
+    beeModal.closeOnOverlay(e);
 }
 
 /* =========================
@@ -446,57 +481,55 @@ function findNearest() {
     btnText.innerHTML = '<span class="spinner"></span> Localizando...';
 
     try {
-    navigator.geolocation.getCurrentPosition(
-        function(pos) {
-            const items = document.querySelectorAll('#waUnitItems .wa-unit-item');
-            let sorted = getNearestUnits(pos.coords.latitude, pos.coords.longitude, items);
+        navigator.geolocation.getCurrentPosition(
+            function(pos) {
+                const items = document.querySelectorAll('#waUnitItems .wa-unit-item');
+                let sorted = getNearestUnits(pos.coords.latitude, pos.coords.longitude, items);
 
-            if (sorted.length > 0) {
-                let n = sorted[0];
-                let wrap = document.getElementById('waNearestWrap');
-                const card = document.getElementById('waNearestCard');
-                const unit = STUDIO_UNITS.find(function(entry) {
-                    return entry.slug === n.el.getAttribute('data-unit-slug');
-                });
+                if (sorted.length > 0) {
+                    let n = sorted[0];
+                    let wrap = document.getElementById('waNearestWrap');
+                    const card = document.getElementById('waNearestCard');
+                    const unit = STUDIO_UNITS.find(u => u.slug === n.el.getAttribute('data-unit-slug'));
 
-                if (card) card.setAttribute('href', n.el.getAttribute('href'));
-                document.getElementById('waNearestName').textContent = n.el.querySelector('.wa-unit-name').textContent;
-                document.getElementById('waNearestAddr').textContent = n.el.querySelector('.wa-unit-meta').textContent;
-                document.getElementById('waNearestPostal').textContent = unit ? (unitRegionText(unit) + ' • CEP ' + unit.postal) : '';
-                document.getElementById('waNearestDist').textContent = '≈ ' + formatDist(n.dist) + ' de você';
-                const nearestRef = document.getElementById('waNearestRef');
-                if (nearestRef) {
-                    if (unit && unit.landmark) {
-                        nearestRef.textContent = '📍 ' + unit.landmark;
-                        nearestRef.style.display = 'block';
-                    } else {
-                        nearestRef.textContent = '';
-                        nearestRef.style.display = 'none';
+                    if (card) card.setAttribute('href', n.el.getAttribute('href'));
+                    document.getElementById('waNearestName').textContent = n.el.querySelector('.wa-unit-name').textContent;
+                    document.getElementById('waNearestAddr').textContent = n.el.querySelector('.wa-unit-meta').textContent;
+                    document.getElementById('waNearestPostal').textContent = unit ? (unitRegionText(unit) + ' • CEP ' + unit.postal) : '';
+                    document.getElementById('waNearestDist').textContent = '≈ ' + formatDist(n.dist) + ' de você';
+                    const nearestRef = document.getElementById('waNearestRef');
+                    if (nearestRef) {
+                        if (unit && unit.landmark) {
+                            nearestRef.textContent = '📍 ' + unit.landmark;
+                            nearestRef.style.display = 'block';
+                        } else {
+                            nearestRef.textContent = '';
+                            nearestRef.style.display = 'none';
+                        }
                     }
+
+                    if (wrap) wrap.style.display = 'block';
+                    const otherLabel = document.getElementById('waOtherLabel');
+                    if (otherLabel) otherLabel.style.display = 'block';
+                    btnText.textContent = '✓ Encontramos a unidade mais próxima';
+                    btn.disabled = false;
+
+                    sorted.forEach(entry => {
+                        entry.el.classList.remove('nearest');
+                        const dist = entry.el.querySelector('.wa-unit-distance');
+                        if (dist) {
+                            dist.textContent = '≈ ' + formatDist(entry.dist) + ' de você';
+                            dist.style.display = 'block';
+                        }
+                    });
                 }
-
-                if (wrap) wrap.style.display = 'block';
-                const otherLabel = document.getElementById('waOtherLabel');
-                if (otherLabel) otherLabel.style.display = 'block';
-                btnText.textContent = '✓ Encontramos a unidade mais próxima';
+            },
+            function() {
+                btnText.textContent = 'Localização indisponível — escolha manualmente abaixo';
                 btn.disabled = false;
-
-                sorted.forEach(function(entry) {
-                    entry.el.classList.remove('nearest');
-                    const dist = entry.el.querySelector('.wa-unit-distance');
-                    if (dist) {
-                        dist.textContent = '≈ ' + formatDist(entry.dist) + ' de você';
-                        dist.style.display = 'block';
-                    }
-                });
-            }
-        },
-        function() {
-            btnText.textContent = 'Localização indisponível — escolha manualmente abaixo';
-            btn.disabled = false;
-        },
-        { enableHighAccuracy: false, timeout: 6000, maximumAge: 60000 }
-    );
+            },
+            { enableHighAccuracy: false, timeout: 6000, maximumAge: 60000 }
+        );
     } catch(e) {
         btnText.textContent = 'Erro ao localizar';
         btn.disabled = false;
@@ -519,90 +552,62 @@ function findNearestBooking() {
     btnText.innerHTML = '<span class="spinner"></span> Localizando...';
 
     try {
-    navigator.geolocation.getCurrentPosition(
-        function(pos) {
-            const cards = document.querySelectorAll('#bookingModal .booking-grid .booking-card');
-            let sorted = getNearestUnits(pos.coords.latitude, pos.coords.longitude, cards);
+        navigator.geolocation.getCurrentPosition(
+            function(pos) {
+                const cards = document.querySelectorAll('#bookingModal .booking-grid .booking-card');
+                let sorted = getNearestUnits(pos.coords.latitude, pos.coords.longitude, cards);
 
-            if (sorted.length > 0) {
-                let n = sorted[0];
-                let wrap = document.getElementById('bookingNearestWrap');
-                const card = document.getElementById('bookingNearestCard');
-                const unit = STUDIO_UNITS.find(function(entry) {
-                    return entry.slug === n.el.getAttribute('data-unit-slug');
-                });
+                if (sorted.length > 0) {
+                    let n = sorted[0];
+                    let wrap = document.getElementById('bookingNearestWrap');
+                    const card = document.getElementById('bookingNearestCard');
+                    const unit = STUDIO_UNITS.find(u => u.slug === n.el.getAttribute('data-unit-slug'));
 
-                const bookingUrl = n.el.getAttribute('href');
-                card.setAttribute('href', bookingUrl);
-                document.getElementById('bookingNearestName').textContent = n.el.querySelector('.booking-card-name').textContent;
-                document.getElementById('bookingNearestAddr').textContent = n.el.querySelector('.booking-card-addr').textContent;
-                document.getElementById('bookingNearestPostal').textContent = unit ? (unitRegionText(unit) + ' • CEP ' + unit.postal) : '';
-                document.getElementById('bookingNearestDist').textContent = '\u2248 ' + formatDist(n.dist) + ' de voc\u00ea';
-                const nearestRef = document.getElementById('bookingNearestRef');
-                if (nearestRef) {
-                    if (unit && unit.landmark) {
-                        nearestRef.textContent = '📍 ' + unit.landmark;
-                        nearestRef.style.display = 'block';
-                    } else {
-                        nearestRef.textContent = '';
-                        nearestRef.style.display = 'none';
+                    card.setAttribute('href', n.el.getAttribute('href'));
+                    document.getElementById('bookingNearestName').textContent = n.el.querySelector('.booking-card-name').textContent;
+                    document.getElementById('bookingNearestAddr').textContent = n.el.querySelector('.booking-card-addr').textContent;
+                    document.getElementById('bookingNearestPostal').textContent = unit ? (unitRegionText(unit) + ' • CEP ' + unit.postal) : '';
+                    document.getElementById('bookingNearestDist').textContent = '≈ ' + formatDist(n.dist) + ' de você';
+                    const nearestRef = document.getElementById('bookingNearestRef');
+                    if (nearestRef) {
+                        if (unit && unit.landmark) {
+                            nearestRef.textContent = '📍 ' + unit.landmark;
+                            nearestRef.style.display = 'block';
+                        } else {
+                            nearestRef.textContent = '';
+                            nearestRef.style.display = 'none';
+                        }
                     }
+
+                    wrap.style.display = 'block';
+                    document.getElementById('bookingOtherLabel').style.display = 'block';
+                    btnText.textContent = '✓ Encontramos a unidade mais próxima';
+                    btn.disabled = false;
+
+                    sorted.forEach(entry => {
+                        const existing = entry.el.querySelector('.booking-card-dist');
+                        if (existing) {
+                            existing.textContent = '≈ ' + formatDist(entry.dist);
+                            existing.style.display = 'block';
+                        } else {
+                            let d = document.createElement('div');
+                            d.className = 'booking-card-dist';
+                            d.textContent = '≈ ' + formatDist(entry.dist);
+                            entry.el.appendChild(d);
+                        }
+                    });
                 }
-
-                wrap.style.display = 'block';
-                document.getElementById('bookingOtherLabel').style.display = 'block';
-                btnText.textContent = '\u2713 Encontramos a unidade mais pr\u00f3xima';
+            },
+            function() {
+                btnText.textContent = 'Localização indisponível — escolha manualmente abaixo';
                 btn.disabled = false;
-
-                sorted.forEach(function(entry) {
-                    const existing = entry.el.querySelector('.booking-card-dist');
-                    if (existing) {
-                        existing.textContent = '\u2248 ' + formatDist(entry.dist);
-                        existing.style.display = 'block';
-                    } else {
-                        let d = document.createElement('div');
-                        d.className = 'booking-card-dist';
-                        d.textContent = '\u2248 ' + formatDist(entry.dist);
-                        entry.el.appendChild(d);
-                    }
-                });
-            }
-        },
-        function() {
-            btnText.textContent = 'Localização indisponível — escolha manualmente abaixo';
-            btn.disabled = false;
-        },
-        { enableHighAccuracy: false, timeout: 6000, maximumAge: 60000 }
-    );
+            },
+            { enableHighAccuracy: false, timeout: 6000, maximumAge: 60000 }
+        );
     } catch(e) {
         btnText.textContent = 'Erro ao localizar';
         btn.disabled = false;
     }
-}
-
-/* =========================
-   BEE MODAL HUB
-========================= */
-function openBeeModal() {
-    let overlay = document.getElementById('beeModal');
-    if (!overlay) return;
-    overlay.classList.add('open');
-    overlay.setAttribute('aria-hidden', 'false');
-    lockScroll();
-    const closeBtn = overlay.querySelector('.bee-modal-close');
-    if (closeBtn) { setTimeout(function() { closeBtn.focus(); }, 50); }
-}
-
-function closeBeeModal() {
-    let overlay = document.getElementById('beeModal');
-    if (!overlay) return;
-    overlay.classList.remove('open');
-    overlay.setAttribute('aria-hidden', 'true');
-    unlockScroll();
-}
-
-function closeBeeModalOnOverlay(e) {
-    if (e.target === document.getElementById('beeModal')) closeBeeModal();
 }
 
 /* =========================
@@ -613,27 +618,29 @@ document.addEventListener('keydown', function(e) {
 
     const productModalEl = document.getElementById('productModal');
     if (productModalEl && productModalEl.classList.contains('open')) {
-        closeProductModal(); return;
+        if (typeof closeProductModal === 'function') closeProductModal();
+        return;
     }
-    const beeModal = document.getElementById('beeModal');
-    const bookingModal = document.getElementById('bookingModal');
-    const waModal = document.getElementById('waModal');
-    const mobileMenu = document.getElementById('mm');
 
-    if (beeModal && beeModal.classList.contains('open')) {
-        closeBeeModal(); return;
+    if (beeModal.modal && beeModal.modal.classList.contains('open')) {
+        beeModal.close(); return;
     }
-    if (bookingModal && bookingModal.classList.contains('open')) {
-        closeModal('bookingModal'); return;
+    if (bookingModal.modal && bookingModal.modal.classList.contains('open')) {
+        bookingModal.close(); return;
     }
-    if (waModal && waModal.classList.contains('open')) {
-        closeModal('waModal'); return;
+    if (waModal.modal && waModal.modal.classList.contains('open')) {
+        waModal.close(); return;
     }
+
+    const mobileMenu = document.getElementById('mm');
     if (mobileMenu && mobileMenu.classList.contains('open')) {
         closeMobileMenu(true);
     }
 });
 
+/* =========================
+   INIT
+========================= */
 document.addEventListener('DOMContentLoaded', function() {
     renderUnitModals();
 });
@@ -670,15 +677,9 @@ document.querySelectorAll('.reveal').forEach(function(el) { obs.observe(el); });
 document.querySelectorAll('a[href^="#"]').forEach(function(a) {
     a.addEventListener('click', function(e) {
         const href = a.getAttribute('href');
-
-        // Sai imediatamente se não houver href, for '#' puro ou string vazia
         if (!href || href === '#' || href.length <= 1) return;
-
-        // Sai se não existir elemento-alvo na página — evita interceptar links externos
-        // que eventualmente recebam um href dinâmico começando com '#'
         const target = document.querySelector(href);
         if (!target) return;
-
         e.preventDefault();
         target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
@@ -734,10 +735,6 @@ document.querySelectorAll('.before-after-images').forEach(function(container) {
 });
 
 /* =========================
-   LEAD FORM (WA)
-========================= */
-
-/* =========================
    FAQ ACCORDION
 ========================= */
 document.querySelectorAll('.faq-item').forEach(function(item) {
@@ -754,3 +751,16 @@ document.querySelectorAll('.faq-item').forEach(function(item) {
         });
     });
 });
+
+/* Expor funções globalmente para uso nos atributos onclick */
+window.openWaModal = openWaModal;
+window.openBooking = openBooking;
+window.openMobileMenu = openMobileMenu;
+window.closeMobileMenu = closeMobileMenu;
+window.closeModal = closeModal;
+window.closeModalOnOverlay = closeModalOnOverlay;
+window.findNearest = findNearest;
+window.findNearestBooking = findNearestBooking;
+window.openBeeModal = openBeeModal;
+window.closeBeeModal = closeBeeModal;
+window.closeBeeModalOnOverlay = closeBeeModalOnOverlay;
