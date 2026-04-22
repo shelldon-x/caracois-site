@@ -141,8 +141,6 @@ function createWaUnitMarkup(unit) {
                 '<div class="wa-unit-meta">' + escapeHtml(unit.address) + '</div>' +
                 '<div class="wa-unit-meta wa-unit-meta--muted">' + escapeHtml(unitRegionText(unit) + ' • CEP ' + unit.postal) + '</div>' +
                 (unit.landmark ? '<div class="wa-unit-meta wa-unit-meta--landmark">📍 ' + escapeHtml(unit.landmark) + '</div>' : '') +
-                '<div class="wa-nearest-badge">✦ Mais próxima</div>' +
-                '<div class="wa-nearest-micro">Sua transformação começa mais perto do que você imagina ✨</div>' +
                 '<div class="wa-unit-distance"></div>' +
             '</div>' +
             '<svg width="18" height="18" aria-hidden="true"><use href="#i-arrow"></use></svg>' +
@@ -441,12 +439,31 @@ function findNearest() {
             const items = list.querySelectorAll('.wa-unit-item');
             let sorted = getNearestUnits(pos.coords.latitude, pos.coords.longitude, items);
 
-            items.forEach(function(item) { item.classList.remove('nearest'); });
+            items.forEach(function(item) { 
+                item.classList.remove('nearest');
+                const oldBadge = item.querySelector('.wa-nearest-badge');
+                if (oldBadge) oldBadge.remove();
+                const oldMicro = item.querySelector('.wa-nearest-micro');
+                if (oldMicro) oldMicro.remove();
+            });
 
             sorted.forEach(function(entry, i) {
                 let d = entry.el.querySelector('.wa-unit-distance');
                 if (d) d.textContent = '\u2248 ' + formatDist(entry.dist) + ' de voc\u00ea';
-                if (i === 0) entry.el.classList.add('nearest');
+                if (i === 0) {
+                    entry.el.classList.add('nearest');
+                    const copy = entry.el.querySelector('.wa-unit-copy');
+                    if (copy) {
+                        const badge = document.createElement('div');
+                        badge.className = 'wa-nearest-badge';
+                        badge.textContent = '✦ Mais próxima';
+                        copy.appendChild(badge);
+                        const micro = document.createElement('div');
+                        micro.className = 'wa-nearest-micro';
+                        micro.textContent = 'Sua transformação começa mais perto do que você imagina ✨';
+                        copy.appendChild(micro);
+                    }
+                }
                 list.appendChild(entry.el);
             });
 
