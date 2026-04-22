@@ -327,7 +327,7 @@
     <a href="#faq" onclick="closeMobileMenu()">FAQ</a>
     <a href="/franquia" onclick="closeMobileMenu()">Franquia</a>
     <a href="/central-de-conhecimento" onclick="closeMobileMenu()">Central de conhecimento</a>
-    <button type="button" class="btn btn-primary mobile-menu-cta" onclick="closeMobileMenu(false); openBooking()" aria-label="Agendar avaliação">
+    <button type="button" class="btn btn-primary" style="margin-top:20px; width: 100%; justify-content: center;" onclick="closeMobileMenu(false); openBooking()" aria-label="Agendar avaliação">
         <svg width="18" height="18"><use href="#i-cal"/></svg>
         Agendar avaliação
     </button>
@@ -343,7 +343,7 @@
         </div>
         <div class="wa-unit-list" id="waUnitList">
             <button type="button" class="wa-geo-btn" id="waGeoBtn" onclick="findNearest()" aria-label="Usar localização">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 0 0-8 8c0 5.4 7 12 8 12s8-6.6 8-12a8 8 0 0 0-8-8z"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 0 0-8 8c0 5.4 7 12 8 12s8-6.6 8-12a8 8 0 0 0-8-8z"/></svg>
                 <span id="geoBtnText">Usar minha localização</span>
             </button>
             <div class="wa-nearest-wrap" id="waNearestWrap" style="display: none;">
@@ -595,7 +595,7 @@
                     <div class="transition-cta">
                         <button type="button" class="btn btn-primary" onclick="openBooking()" aria-label="Agendar avaliação"><svg width="18" height="18"><use href="#i-cal"/></svg>
                             Agendar minha avaliação gratuita</button>
-                        <button type="button" class="btn btn-outline-terracota transition-secondary-cta" onclick="openWaModal()" aria-label="Falar no WhatsApp">
+                        <button type="button" class="btn btn-outline" style="border-color: var(--terracota); color: var(--terracota);" onclick="openWaModal()" aria-label="Falar no WhatsApp">
                             <svg width="18" height="18"><use href="#i-wa"/></svg>
                             Quero orientação para minha transição
                         </button>
