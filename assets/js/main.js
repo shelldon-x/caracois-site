@@ -137,28 +137,14 @@ function unitEyebrowText(unit) {
     return unit.neighborhood || unitRegionText(unit);
 }
 
-function isEyebrowRedundant(unit) {
-    if (!unit || !unit.neighborhood || !unit.label) return false;
-    return unit.label.toLowerCase().includes(unit.neighborhood.toLowerCase());
-}
-
-function unitSecondaryLine(unit) {
-    return unitRegionText(unit) + ' • CEP ' + unit.postal;
-}
-
-
 function createWaUnitMarkup(unit) {
-    const eyebrow = isEyebrowRedundant(unit) ? '' : '<div class="wa-unit-region">' + escapeHtml(unitEyebrowText(unit)) + '</div>';
-    const landmark = unit.landmark ? '<div class="wa-unit-meta wa-unit-meta--landmark">📍 ' + escapeHtml(unit.landmark) + '</div>' : '';
-
     return (
         '<a href="' + escapeHtml(unit.whatsappUrl) + '" target="_blank" rel="noopener" class="wa-unit-item" data-lat="' + unit.lat + '" data-lng="' + unit.lng + '" data-unit-slug="' + escapeHtml(unit.slug) + '">' +
             '<div class="wa-unit-copy">' +
                 '<div class="wa-unit-name">' + escapeHtml(unit.label) + '</div>' +
-                eyebrow +
                 '<div class="wa-unit-meta">' + escapeHtml(unit.address) + '</div>' +
-                '<div class="wa-unit-meta wa-unit-meta--muted">' + escapeHtml(unitSecondaryLine(unit)) + '</div>' +
-                landmark +
+                '<div class="wa-unit-meta wa-unit-meta--muted">' + escapeHtml(unitRegionText(unit) + ' • CEP ' + unit.postal) + '</div>' +
+                (unit.landmark ? '<div class="wa-unit-meta wa-unit-meta--landmark">📍 ' + escapeHtml(unit.landmark) + '</div>' : '') +
                 '<div class="wa-nearest-badge">✦ Mais próxima</div>' +
                 '<div class="wa-unit-distance"></div>' +
             '</div>' +
@@ -168,16 +154,12 @@ function createWaUnitMarkup(unit) {
 }
 
 function createBookingUnitMarkup(unit) {
-    const eyebrow = isEyebrowRedundant(unit) ? '' : '<div class="booking-card-eyebrow">' + escapeHtml(unitEyebrowText(unit)) + '</div>';
-    const landmark = unit.landmark ? '<div class="booking-card-ref">📍 ' + escapeHtml(unit.landmark) + '</div>' : '';
-
     return (
         '<a href="' + escapeHtml(unit.bookingUrl) + '" target="_blank" rel="noopener noreferrer" class="booking-card" data-lat="' + unit.lat + '" data-lng="' + unit.lng + '" data-unit-slug="' + escapeHtml(unit.slug) + '">' +
             '<div class="booking-card-name">' + escapeHtml(unit.label) + '</div>' +
-            eyebrow +
             '<div class="booking-card-addr">' + escapeHtml(unit.address) + '</div>' +
-            '<div class="booking-card-postal">' + escapeHtml(unitSecondaryLine(unit)) + '</div>' +
-            landmark +
+            '<div class="booking-card-postal">' + escapeHtml(unitRegionText(unit) + ' • CEP ' + unit.postal) + '</div>' +
+            (unit.landmark ? '<div class="booking-card-ref">📍 ' + escapeHtml(unit.landmark) + '</div>' : '') +
         '</a>'
     );
 }
@@ -518,18 +500,9 @@ function findNearestBooking() {
                 const bookingUrl = n.el.getAttribute('href');
                 card.setAttribute('href', bookingUrl);
                 document.getElementById('bookingNearestName').textContent = n.el.querySelector('.booking-card-name').textContent;
-                const nearestEyebrow = document.getElementById('bookingNearestEyebrow');
-                if (nearestEyebrow) {
-                    if (unit && !isEyebrowRedundant(unit)) {
-                        nearestEyebrow.textContent = unitEyebrowText(unit);
-                        nearestEyebrow.style.display = 'block';
-                    } else {
-                        nearestEyebrow.textContent = '';
-                        nearestEyebrow.style.display = 'none';
-                    }
-                }
+                document.getElementById('bookingNearestEyebrow').textContent = unit ? unitEyebrowText(unit) : '';
                 document.getElementById('bookingNearestAddr').textContent = n.el.querySelector('.booking-card-addr').textContent;
-                document.getElementById('bookingNearestPostal').textContent = unit ? unitSecondaryLine(unit) : '';
+                document.getElementById('bookingNearestPostal').textContent = unit ? ('CEP ' + unit.postal + ' • ' + unitRegionText(unit)) : '';
                 document.getElementById('bookingNearestDist').textContent = '\u2248 ' + formatDist(n.dist) + ' de voc\u00ea';
                 const nearestRef = document.getElementById('bookingNearestRef');
                 if (nearestRef) {
