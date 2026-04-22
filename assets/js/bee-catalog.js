@@ -71,7 +71,7 @@ function openProductModal(id, originEl) {
 
     productModalContent.innerHTML =
         '<div class="pm-grid">'
-        + '<div class="pm-image"><img src="' + p.img + '" alt="' + _escapeAttr(p.name) + '"></div>'
+        + '<div class="pm-image"><img src="' + p.img + '" alt="' + _escapeAttr(p.name) + '" loading="eager" decoding="async"></div>'
         + '<div class="pm-content">'
         + '<div class="pm-eyebrow">Ficha completa</div>'
         + '<h2>' + _escapeAttr(p.name) + '</h2>'
@@ -123,6 +123,12 @@ function closeProductModal() {
 
 /* Trap de foco dentro do productModal (Tab e Shift+Tab) */
 if (productModalEl) {
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && productModalEl.classList.contains('open')) {
+            closeProductModal();
+        }
+    });
+
     productModalEl.addEventListener('keydown', function(e) {
         if (e.key !== 'Tab' || !productModalEl.classList.contains('open')) return;
         const focusables = productModalEl.querySelectorAll(
