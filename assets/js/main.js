@@ -133,10 +133,6 @@ function unitRegionText(unit) {
     return unit.city + ' - ' + unit.state;
 }
 
-function unitEyebrowText(unit) {
-    return unit.neighborhood || unitRegionText(unit);
-}
-
 function createWaUnitMarkup(unit) {
     return (
         '<a href="' + escapeHtml(unit.whatsappUrl) + '" target="_blank" rel="noopener" class="wa-unit-item" data-lat="' + unit.lat + '" data-lng="' + unit.lng + '" data-unit-slug="' + escapeHtml(unit.slug) + '">' +
@@ -145,7 +141,6 @@ function createWaUnitMarkup(unit) {
                 '<div class="wa-unit-meta">' + escapeHtml(unit.address) + '</div>' +
                 '<div class="wa-unit-meta wa-unit-meta--muted">' + escapeHtml(unitRegionText(unit) + ' • CEP ' + unit.postal) + '</div>' +
                 (unit.landmark ? '<div class="wa-unit-meta wa-unit-meta--landmark">📍 ' + escapeHtml(unit.landmark) + '</div>' : '') +
-                '<div class="wa-nearest-badge">✦ Mais próxima</div>' +
                 '<div class="wa-unit-distance"></div>' +
             '</div>' +
             '<svg width="18" height="18" aria-hidden="true"><use href="#i-arrow"></use></svg>' +

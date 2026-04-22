@@ -2701,3 +2701,21 @@
 
 
 .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+
+
+/* Polimento final dos modais de unidades */
+.wa-unit-region,
+.booking-card-eyebrow { display: none !important; }
+.wa-nearest-badge { display: none !important; }
+.wa-unit-item .wa-unit-name { font-size: 0.9rem; line-height: 1.22; margin-bottom: 2px; }
+.wa-unit-meta { font-size: 0.8rem; line-height: 1.42; margin-top: 4px; }
+.wa-unit-meta--muted { font-size: 0.72rem; letter-spacing: 0; }
+.wa-unit-meta--landmark { font-size: 0.78rem; margin-top: 7px; }
+.wa-unit-distance { font-size: 0.68rem; margin-top: 7px; }
+.booking-card-name { margin-bottom: 6px; }
+.booking-card-addr { font-size: 0.8rem; line-height: 1.42; }
+.booking-card-postal { font-size: 0.72rem; margin-top: 7px; letter-spacing: 0; }
+.booking-card-ref { font-size: 0.77rem; margin-top: 7px; }
+.booking-nearest-card .booking-card-name { font-size: 1rem; }
+.booking-nearest-card .booking-card-addr { font-size: 0.82rem; }
+.booking-nearest-dist { margin-top: 6px; }
