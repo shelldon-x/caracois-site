@@ -34,7 +34,7 @@ function _escapeAttr(s) {
 function renderBeeProducts(filter) {
     if (!beeProductsGrid) return;
     filter = filter || 'all';
-    const list = BEE_PRODUCTS.filter(function(p) { return filter === 'all' || p.kind === filter; });
+    const list = BEE_PRODUCTS.filter(p => filter === 'all' || p.kind === filter);
     let html = '';
     for (let i = 0; i < list.length; i++) {
         let p = list[i];
@@ -62,11 +62,9 @@ function renderBeeProducts(filter) {
 }
 
 function openProductModal(id, originEl) {
-    let p = null;
-    for (let i = 0; i < BEE_PRODUCTS.length; i++) { if (BEE_PRODUCTS[i].id === id) { p = BEE_PRODUCTS[i]; break; } }
+    let p = BEE_PRODUCTS.find(prod => prod.id === id);
     if (!p || !productModalEl) return;
 
-    // Salva o foco atual para devolver ao fechar
     lastFocusedBeforeProductModal = originEl || document.activeElement;
 
     productModalContent.innerHTML =
@@ -98,9 +96,8 @@ function openProductModal(id, originEl) {
     productModalEl.setAttribute('aria-hidden', 'false');
     if (typeof lockScroll === 'function') lockScroll();
 
-    // Foca no botão fechar pra começar do topo
     const closeBtn = productModalEl.querySelector('.pm-close');
-    if (closeBtn) setTimeout(function() { closeBtn.focus(); }, 50);
+    if (closeBtn) setTimeout(() => closeBtn.focus(), 50);
 }
 
 function closeProductModal() {
@@ -109,19 +106,17 @@ function closeProductModal() {
     productModalEl.setAttribute('aria-hidden', 'true');
     if (typeof unlockScroll === 'function') unlockScroll();
 
-    // Devolve o foco ao elemento de origem
     if (lastFocusedBeforeProductModal && typeof lastFocusedBeforeProductModal.focus === 'function') {
         try { lastFocusedBeforeProductModal.focus(); } catch (err) {}
     }
     lastFocusedBeforeProductModal = null;
 
-    // Limpa o conteúdo após a transição para liberar memória
-    setTimeout(function() {
+    setTimeout(() => {
         if (!productModalEl.classList.contains('open')) productModalContent.innerHTML = '';
     }, 300);
 }
 
-/* Trap de foco dentro do productModal (Tab e Shift+Tab) */
+/* Trap de foco dentro do productModal */
 if (productModalEl) {
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && productModalEl.classList.contains('open')) {
@@ -145,7 +140,7 @@ if (productModalEl) {
     });
 }
 
-/* Delegação de eventos: clique e teclado nos cards */
+/* Delegação de eventos */
 if (beeProductsGrid) {
     beeProductsGrid.addEventListener('click', function(e) {
         const btn = e.target.closest('[data-product-id]');
@@ -164,9 +159,9 @@ if (beeProductsGrid) {
 }
 
 /* Filtros */
-document.querySelectorAll('.bee-filter-btn').forEach(function(btn) {
+document.querySelectorAll('.bee-filter-btn').forEach(btn => {
     btn.addEventListener('click', function() {
-        document.querySelectorAll('.bee-filter-btn').forEach(function(b) { b.classList.remove('active'); });
+        document.querySelectorAll('.bee-filter-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         renderBeeProducts(btn.getAttribute('data-filter'));
     });
@@ -174,3 +169,6 @@ document.querySelectorAll('.bee-filter-btn').forEach(function(btn) {
 
 /* Render inicial */
 renderBeeProducts('all');
+
+/* Expor função globalmente */
+window.closeProductModal = closeProductModal;
