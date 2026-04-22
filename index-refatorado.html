@@ -327,7 +327,7 @@
     <a href="#faq" onclick="closeMobileMenu()">FAQ</a>
     <a href="/franquia" onclick="closeMobileMenu()">Franquia</a>
     <a href="/central-de-conhecimento" onclick="closeMobileMenu()">Central de conhecimento</a>
-    <button type="button" class="btn btn-primary" style="margin-top:20px; width: 100%; justify-content: center;" onclick="closeMobileMenu(false); openBooking()" aria-label="Agendar avaliação">
+    <button type="button" class="btn btn-primary mobile-menu-cta" onclick="closeMobileMenu(false); openBooking()" aria-label="Agendar avaliação">
         <svg width="18" height="18"><use href="#i-cal"/></svg>
         Agendar avaliação
     </button>
@@ -343,21 +343,21 @@
         </div>
         <div class="wa-unit-list" id="waUnitList">
             <button type="button" class="wa-geo-btn" id="waGeoBtn" onclick="findNearest()" aria-label="Usar localização">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 0 0-8 8c0 5.4 7 12 8 12s8-6.6 8-12a8 8 0 0 0-8-8z"/></svg>
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 0 0-8 8c0 5.4 7 12 8 12s8-6.6 8-12a8 8 0 0 0-8-8z"/></svg>
                 <span id="geoBtnText">Usar minha localização</span>
             </button>
             <div class="wa-nearest-wrap" id="waNearestWrap" style="display: none;">
                 <div class="wa-nearest-label">📍 Encontramos a unidade mais próxima de você</div>
-                <a target="_blank" rel="noopener" class="booking-card booking-nearest-card wa-nearest-card" id="waNearestCard">
-                    <div class="booking-nearest-content">
-                        <div class="booking-card-name" id="waNearestName"></div>
-                        <div class="booking-card-addr" id="waNearestAddr"></div>
-                        <div class="booking-card-postal" id="waNearestPostal"></div>
-                        <div class="booking-nearest-dist" id="waNearestDist"></div>
-                        <div class="booking-card-ref booking-card-ref--light" id="waNearestRef" style="display:none"></div>
-                        <div class="booking-nearest-micro wa-nearest-micro">Sua transformação começa mais perto do que você imagina ✨</div>
+                <a target="_blank" rel="noopener" class="wa-unit-item wa-nearest-card" id="waNearestCard">
+                    <div class="wa-unit-copy">
+                        <div class="wa-unit-name" id="waNearestName"></div>
+                        <div class="wa-unit-meta" id="waNearestAddr"></div>
+                        <div class="wa-unit-meta wa-unit-meta--muted" id="waNearestPostal"></div>
+                        <div class="wa-unit-meta wa-unit-meta--landmark" id="waNearestRef" style="display:none"></div>
+                        <div class="wa-unit-distance" id="waNearestDist"></div>
+                        <div class="wa-nearest-micro">Sua transformação começa mais perto do que você imagina ✨</div>
                     </div>
-                    <span class="booking-nearest-cta wa-nearest-cta">Falar agora</span>
+                    <span class="wa-nearest-cta">Falar agora</span>
                 </a>
             </div>
             <div class="wa-other-label" id="waOtherLabel" style="display: none;">Todas as unidades</div>
@@ -595,7 +595,7 @@
                     <div class="transition-cta">
                         <button type="button" class="btn btn-primary" onclick="openBooking()" aria-label="Agendar avaliação"><svg width="18" height="18"><use href="#i-cal"/></svg>
                             Agendar minha avaliação gratuita</button>
-                        <button type="button" class="btn btn-outline" style="border-color: var(--terracota); color: var(--terracota);" onclick="openWaModal()" aria-label="Falar no WhatsApp">
+                        <button type="button" class="btn btn-outline-terracota transition-secondary-cta" onclick="openWaModal()" aria-label="Falar no WhatsApp">
                             <svg width="18" height="18"><use href="#i-wa"/></svg>
                             Quero orientação para minha transição
                         </button>
