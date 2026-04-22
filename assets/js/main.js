@@ -84,7 +84,7 @@ const STUDIO_UNITS = [
         neighborhood: 'Taguatinga Norte',
         address: 'Avenida Comercial Norte, QND 2 Lote 11, Loja 01',
         postal: '72120-020',
-        landmark: 'Atendimento com direcionamento pelo Linktree geral',
+        landmark: '',
         bookingUrl: 'https://linktr.ee/studiocaracois',
         whatsappUrl: 'https://wa.me/5561991446678?text=Olá!%20Gostaria%20de%20agendar%20minha%20avaliação%20gratuita%20em%20Taguatinga.',
         lat: -15.8362,
@@ -137,15 +137,28 @@ function unitEyebrowText(unit) {
     return unit.neighborhood || unitRegionText(unit);
 }
 
+function isEyebrowRedundant(unit) {
+    if (!unit || !unit.neighborhood || !unit.label) return false;
+    return unit.label.toLowerCase().includes(unit.neighborhood.toLowerCase());
+}
+
+function unitSecondaryLine(unit) {
+    return unitRegionText(unit) + ' • CEP ' + unit.postal;
+}
+
+
 function createWaUnitMarkup(unit) {
+    const eyebrow = isEyebrowRedundant(unit) ? '' : '<div class="wa-unit-region">' + escapeHtml(unitEyebrowText(unit)) + '</div>';
+    const landmark = unit.landmark ? '<div class="wa-unit-meta wa-unit-meta--landmark">📍 ' + escapeHtml(unit.landmark) + '</div>' : '';
+
     return (
         '<a href="' + escapeHtml(unit.whatsappUrl) + '" target="_blank" rel="noopener" class="wa-unit-item" data-lat="' + unit.lat + '" data-lng="' + unit.lng + '" data-unit-slug="' + escapeHtml(unit.slug) + '">' +
             '<div class="wa-unit-copy">' +
                 '<div class="wa-unit-name">' + escapeHtml(unit.label) + '</div>' +
-                '<div class="wa-unit-region">' + escapeHtml(unitEyebrowText(unit)) + '</div>' +
+                eyebrow +
                 '<div class="wa-unit-meta">' + escapeHtml(unit.address) + '</div>' +
-                '<div class="wa-unit-meta wa-unit-meta--muted">' + escapeHtml(unitRegionText(unit) + ' • CEP ' + unit.postal) + '</div>' +
-                (unit.landmark ? '<div class="wa-unit-meta wa-unit-meta--landmark">📍 ' + escapeHtml(unit.landmark) + '</div>' : '') +
+                '<div class="wa-unit-meta wa-unit-meta--muted">' + escapeHtml(unitSecondaryLine(unit)) + '</div>' +
+                landmark +
                 '<div class="wa-nearest-badge">✦ Mais próxima</div>' +
                 '<div class="wa-unit-distance"></div>' +
             '</div>' +
@@ -155,14 +168,16 @@ function createWaUnitMarkup(unit) {
 }
 
 function createBookingUnitMarkup(unit) {
+    const eyebrow = isEyebrowRedundant(unit) ? '' : '<div class="booking-card-eyebrow">' + escapeHtml(unitEyebrowText(unit)) + '</div>';
+    const landmark = unit.landmark ? '<div class="booking-card-ref">📍 ' + escapeHtml(unit.landmark) + '</div>' : '';
+
     return (
         '<a href="' + escapeHtml(unit.bookingUrl) + '" target="_blank" rel="noopener noreferrer" class="booking-card" data-lat="' + unit.lat + '" data-lng="' + unit.lng + '" data-unit-slug="' + escapeHtml(unit.slug) + '">' +
             '<div class="booking-card-name">' + escapeHtml(unit.label) + '</div>' +
-            '<div class="booking-card-eyebrow">' + escapeHtml(unitEyebrowText(unit)) + '</div>' +
+            eyebrow +
             '<div class="booking-card-addr">' + escapeHtml(unit.address) + '</div>' +
-            '<div class="booking-card-postal">CEP ' + escapeHtml(unit.postal) + '</div>' +
-            '<div class="booking-card-city">' + escapeHtml(unitRegionText(unit)) + '</div>' +
-            (unit.landmark ? '<div class="booking-card-ref">📍 ' + escapeHtml(unit.landmark) + '</div>' : '') +
+            '<div class="booking-card-postal">' + escapeHtml(unitSecondaryLine(unit)) + '</div>' +
+            landmark +
         '</a>'
     );
 }
@@ -503,9 +518,18 @@ function findNearestBooking() {
                 const bookingUrl = n.el.getAttribute('href');
                 card.setAttribute('href', bookingUrl);
                 document.getElementById('bookingNearestName').textContent = n.el.querySelector('.booking-card-name').textContent;
-                document.getElementById('bookingNearestEyebrow').textContent = unit ? unitEyebrowText(unit) : '';
+                const nearestEyebrow = document.getElementById('bookingNearestEyebrow');
+                if (nearestEyebrow) {
+                    if (unit && !isEyebrowRedundant(unit)) {
+                        nearestEyebrow.textContent = unitEyebrowText(unit);
+                        nearestEyebrow.style.display = 'block';
+                    } else {
+                        nearestEyebrow.textContent = '';
+                        nearestEyebrow.style.display = 'none';
+                    }
+                }
                 document.getElementById('bookingNearestAddr').textContent = n.el.querySelector('.booking-card-addr').textContent;
-                document.getElementById('bookingNearestPostal').textContent = unit ? ('CEP ' + unit.postal + ' • ' + unitRegionText(unit)) : '';
+                document.getElementById('bookingNearestPostal').textContent = unit ? unitSecondaryLine(unit) : '';
                 document.getElementById('bookingNearestDist').textContent = '\u2248 ' + formatDist(n.dist) + ' de voc\u00ea';
                 const nearestRef = document.getElementById('bookingNearestRef');
                 if (nearestRef) {

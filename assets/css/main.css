@@ -352,7 +352,7 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            font-size: 1rem;
+            font-size: 1.04rem;
             flex-shrink: 0;
         }
         .offer-strip-card h3 {
@@ -521,7 +521,7 @@
             color: var(--black);
         }
         .section-desc {
-            font-size: 1rem;
+            font-size: 1.04rem;
             color: var(--text-light);
             line-height: 1.75;
             max-width: 540px;
@@ -830,7 +830,7 @@
         .franchise-mini-list span::before {
             content: '•';
             color: var(--gold-light);
-            font-size: 1rem;
+            font-size: 1.04rem;
             line-height: 1;
         }
 
@@ -1087,7 +1087,7 @@
         }
         .mini-handle::before {
             content: '⇆';
-            font-size: 1rem;
+            font-size: 1.04rem;
             font-weight: 700;
             color: var(--terracota);
             line-height: 1;
@@ -1157,7 +1157,7 @@
         }
         .before-after-info h4 {
             font-family: var(--serif);
-            font-size: 1rem;
+            font-size: 1.04rem;
             font-weight: 500;
             margin-bottom: 8px;
             line-height: 1.25;
@@ -1659,7 +1659,7 @@
         .wa-unit-items { display: flex; flex-direction: column; gap: 8px; }
         .wa-geo-btn {
             display: flex; align-items: center; justify-content: center; gap: 8px;
-            width: 100%; padding: 14px 16px; border-radius: 14px;
+            width: 100%; padding: 16px 18px; border-radius: 14px;
             background: linear-gradient(135deg, var(--gold), var(--gold-light));
             border: none; cursor: pointer;
             font-family: var(--sans); font-size: 0.85rem; font-weight: 600;
@@ -1674,7 +1674,7 @@
         .wa-geo-btn .spinner { display: inline-block; width: 16px; height: 16px; border: 2px solid rgba(0,0,0,0.2); border-top-color: var(--black); border-radius: 50%; animation: spin 0.6s linear infinite; }
         .wa-unit-item {
             display: flex; align-items: center; justify-content: space-between;
-            padding: 14px 16px;
+            padding: 16px 18px;
             border-radius: 14px;
             background: var(--nude-ultra);
             border: 1px solid transparent;
@@ -1727,30 +1727,31 @@
             margin-top: 8px;
         }
         .wa-unit-item:hover .wa-unit-distance { color: rgba(255,255,255,0.72); }
-        .wa-unit-item .wa-unit-name { font-weight: 600; font-size: 0.92rem; line-height: 1.25; }
+        .wa-unit-item .wa-unit-name { font-weight: 600; font-size: 0.96rem; line-height: 1.22; letter-spacing: -0.01em; }
         .wa-unit-item .wa-unit-region {
-            font-size: 0.7rem;
+            font-size: 0.66rem;
             color: var(--terracota);
             font-weight: 600;
-            letter-spacing: 0.04em;
+            letter-spacing: 0.08em;
             text-transform: uppercase;
             margin-top: 4px;
         }
         .wa-unit-meta {
-            font-size: 0.76rem;
+            font-size: 0.79rem;
             color: var(--text-light);
             font-weight: 400;
-            line-height: 1.45;
+            line-height: 1.46;
             margin-top: 6px;
         }
         .wa-unit-meta--muted {
-            font-size: 0.68rem;
+            font-size: 0.67rem;
             color: var(--text-muted);
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            text-transform: none;
         }
         .wa-unit-meta--landmark {
             color: var(--text-muted);
+            font-size: 0.74rem;
         }
         .wa-unit-item:hover .wa-unit-region,
         .wa-unit-item:hover .wa-unit-meta,
@@ -1833,7 +1834,7 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            padding: 14px 16px;
+            padding: 16px 18px;
             background: var(--white);
             border-radius: 14px;
             border: 1px solid rgba(155,68,66,0.06);
@@ -1862,7 +1863,7 @@
 
         .booking-geo-btn {
             display: flex; align-items: center; justify-content: center; gap: 8px;
-            width: 100%; padding: 14px 16px; border-radius: 14px;
+            width: 100%; padding: 16px 18px; border-radius: 14px;
             background: linear-gradient(135deg, var(--gold), var(--gold-light));
             border: none; cursor: pointer;
             font-family: var(--sans); font-size: 0.85rem; font-weight: 600;
@@ -1896,13 +1897,15 @@
             box-shadow: 0 8px 28px rgba(155,68,66,0.25);
         }
         .booking-nearest-content { min-width: 0; }
-        .booking-nearest-card .booking-card-name { color: var(--white); font-size: 1rem; }
+        .booking-nearest-card .booking-card-name { color: var(--white); font-size: 1.04rem; }
         .booking-nearest-card .booking-card-eyebrow {
             color: rgba(255,255,255,0.86);
             margin-bottom: 6px;
+            font-size: 0.7rem;
+            letter-spacing: 0.08em;
         }
         .booking-card.booking-nearest-card .booking-card-addr,
-        .booking-card.booking-nearest-card .booking-card-postal { color: rgba(255,255,255,0.78); }
+        .booking-card.booking-nearest-card .booking-card-postal { color: rgba(255,255,255,0.8); }
         .booking-card.booking-nearest-card:hover {
             background: linear-gradient(135deg, var(--terracota-dark), var(--terracota));
             transform: translateY(-3px);
@@ -1916,7 +1919,7 @@
         .booking-nearest-card:hover .booking-nearest-cta { color: var(--black); }
         .booking-nearest-dist {
             font-size: 0.72rem;
-            color: rgba(255,255,255,0.8);
+            color: rgba(255,255,255,0.82);
             font-weight: 400;
             margin-top: 4px;
         }
@@ -2030,29 +2033,30 @@
         .booking-card-name {
             font-weight: 600;
             font-size: 0.95rem;
-            line-height: 1.25;
-            margin-bottom: 4px;
+            line-height: 1.24;
+            margin-bottom: 6px;
             color: var(--black);
         }
         .booking-card-eyebrow {
-            font-size: 0.72rem;
+            font-size: 0.66rem;
             color: var(--terracota);
             font-weight: 600;
-            letter-spacing: 0.04em;
+            letter-spacing: 0.08em;
             text-transform: uppercase;
             margin-bottom: 8px;
         }
         .booking-card-addr {
-            font-size: 0.78rem;
+            font-size: 0.8rem;
             color: var(--text-light);
             font-weight: 400;
-            line-height: 1.5;
+            line-height: 1.48;
         }
         .booking-card-postal {
-            font-size: 0.7rem;
+            font-size: 0.67rem;
             color: var(--text-muted);
-            font-weight: 400;
+            font-weight: 500;
             margin-top: 8px;
+            letter-spacing: 0.02em;
         }
         .booking-card-city {
             font-size: 0.68rem;
@@ -2062,11 +2066,15 @@
             letter-spacing: 0.04em;
             text-transform: uppercase;
         }
+        .booking-card-city:empty,
+        .booking-card-eyebrow:empty,
+        .wa-unit-region:empty,
+        #bookingNearestEyebrow:empty { display: none; }
         .booking-card-ref {
-            font-size: 0.7rem;
+            font-size: 0.72rem;
             color: var(--text-light);
             margin-top: 8px;
-            line-height: 1.45;
+            line-height: 1.42;
         }
         .booking-card-dist {
             font-size: 0.68rem;
