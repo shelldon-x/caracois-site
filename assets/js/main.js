@@ -390,10 +390,23 @@ function getNearestUnits(userLat, userLng, elements) {
 ========================= */
 function openWaModal() {
     resetGeoButton('waGeoBtn', 'geoBtnText', 'Usar minha localização');
+    const wrap = document.getElementById('waNearestWrap');
+    const label = document.getElementById('waOtherLabel');
+    if (wrap) wrap.style.display = 'none';
+    if (label) label.style.display = 'none';
+    ['waNearestName', 'waNearestAddr', 'waNearestPostal', 'waNearestDist', 'waNearestRef'].forEach(function(id) {
+        const el = document.getElementById(id);
+        if (!el) return;
+        el.textContent = '';
+        if (id === 'waNearestRef') el.style.display = 'none';
+    });
     document.querySelectorAll('#waUnitItems .wa-unit-item').forEach(function(item) {
         item.classList.remove('nearest');
         const dist = item.querySelector('.wa-unit-distance');
-        if (dist) dist.textContent = '';
+        if (dist) {
+            dist.textContent = '';
+            dist.style.display = '';
+        }
     });
     openModal('waModal');
 }
@@ -435,24 +448,48 @@ function findNearest() {
     try {
     navigator.geolocation.getCurrentPosition(
         function(pos) {
-            const list = document.getElementById('waUnitItems');
-            const items = list.querySelectorAll('.wa-unit-item');
+            const items = document.querySelectorAll('#waUnitItems .wa-unit-item');
             let sorted = getNearestUnits(pos.coords.latitude, pos.coords.longitude, items);
-            items.forEach(function(item) {
-                item.classList.remove('nearest');
-            });
 
-            sorted.forEach(function(entry, i) {
-                let d = entry.el.querySelector('.wa-unit-distance');
-                if (d) d.textContent = '≈ ' + formatDist(entry.dist) + ' de você';
-                if (i === 0) {
-                    entry.el.classList.add('nearest');
+            if (sorted.length > 0) {
+                let n = sorted[0];
+                let wrap = document.getElementById('waNearestWrap');
+                const card = document.getElementById('waNearestCard');
+                const unit = STUDIO_UNITS.find(function(entry) {
+                    return entry.slug === n.el.getAttribute('data-unit-slug');
+                });
+
+                if (card) card.setAttribute('href', n.el.getAttribute('href'));
+                document.getElementById('waNearestName').textContent = n.el.querySelector('.wa-unit-name').textContent;
+                document.getElementById('waNearestAddr').textContent = n.el.querySelector('.wa-unit-meta').textContent;
+                document.getElementById('waNearestPostal').textContent = unit ? (unitRegionText(unit) + ' • CEP ' + unit.postal) : '';
+                document.getElementById('waNearestDist').textContent = '≈ ' + formatDist(n.dist) + ' de você';
+                const nearestRef = document.getElementById('waNearestRef');
+                if (nearestRef) {
+                    if (unit && unit.landmark) {
+                        nearestRef.textContent = '📍 ' + unit.landmark;
+                        nearestRef.style.display = 'block';
+                    } else {
+                        nearestRef.textContent = '';
+                        nearestRef.style.display = 'none';
+                    }
                 }
-                list.appendChild(entry.el);
-            });
 
-            btnText.textContent = '\u2713 Unidade mais pr\u00f3xima destacada';
-            btn.disabled = false;
+                if (wrap) wrap.style.display = 'block';
+                const otherLabel = document.getElementById('waOtherLabel');
+                if (otherLabel) otherLabel.style.display = 'block';
+                btnText.textContent = '✓ Encontramos a unidade mais próxima';
+                btn.disabled = false;
+
+                sorted.forEach(function(entry) {
+                    entry.el.classList.remove('nearest');
+                    const dist = entry.el.querySelector('.wa-unit-distance');
+                    if (dist) {
+                        dist.textContent = '≈ ' + formatDist(entry.dist) + ' de você';
+                        dist.style.display = 'block';
+                    }
+                });
+            }
         },
         function() {
             btnText.textContent = 'Localização indisponível — escolha manualmente abaixo';

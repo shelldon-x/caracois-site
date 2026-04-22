@@ -348,6 +348,21 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 0 0-8 8c0 5.4 7 12 8 12s8-6.6 8-12a8 8 0 0 0-8-8z"/></svg>
                 <span id="geoBtnText">Usar minha localização</span>
             </button>
+            <div class="wa-nearest-wrap" id="waNearestWrap" style="display: none;">
+                <div class="wa-nearest-label">📍 Encontramos a unidade mais próxima de você</div>
+                <a target="_blank" rel="noopener" class="wa-unit-item wa-nearest-card" id="waNearestCard">
+                    <div class="wa-unit-copy">
+                        <div class="wa-unit-name" id="waNearestName"></div>
+                        <div class="wa-unit-meta" id="waNearestAddr"></div>
+                        <div class="wa-unit-meta wa-unit-meta--muted" id="waNearestPostal"></div>
+                        <div class="wa-unit-meta wa-unit-meta--landmark" id="waNearestRef" style="display:none"></div>
+                        <div class="wa-unit-distance" id="waNearestDist"></div>
+                        <div class="wa-nearest-micro">Sua transformação começa mais perto do que você imagina ✨</div>
+                    </div>
+                    <span class="wa-nearest-cta">Falar agora</span>
+                </a>
+            </div>
+            <div class="wa-other-label" id="waOtherLabel" style="display: none;">Todas as unidades</div>
             <div class="wa-unit-items" id="waUnitItems">
 <a href="https://wa.me/5511998980874?text=Olá!%20Gostaria%20de%20agendar%20minha%20avaliação%20gratuita%20na%20unidade%20Tatuapé." target="_blank" rel="noopener" class="wa-unit-item" data-lat="-23.5389" data-lng="-46.5766" data-unit-slug="tatuape">
                 <div class="wa-unit-copy">
