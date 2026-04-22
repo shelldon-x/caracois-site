@@ -48,7 +48,6 @@
     <link rel="dns-prefetch" href="//instagram.com">
     <link rel="dns-prefetch" href="//tiktok.com">
     <link rel="dns-prefetch" href="//youtube.com">
-    <!-- OTIMIZAÇÃO: reduzido de 12 para 7 pesos; ~90KB economizados -->
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
 
     <script type="application/ld+json">
@@ -254,9 +253,7 @@
     }
     </script>
 
-        <link rel="stylesheet" href="/assets/css/main.css">
-
-
+    <link rel="stylesheet" href="/assets/css/main.css">
 
     <!-- Microsoft Clarity — analytics de comportamento -->
     <script>
@@ -336,6 +333,7 @@
     </button>
 </div>
 
+<!-- Modal WhatsApp -->
 <div class="wa-modal-overlay" id="waModal" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Escolha sua unidade" onclick="closeModalOnOverlay(event, 'waModal')">
     <div class="wa-modal" style="position:relative">
         <button type="button" class="wa-modal-close" onclick="closeModal('waModal')" aria-label="Fechar">&times;</button>
@@ -363,95 +361,13 @@
                 </a>
             </div>
             <div class="wa-other-label" id="waOtherLabel" style="display: none;">Todas as unidades</div>
-            <div class="wa-unit-items" id="waUnitItems">
-<a href="https://wa.me/5511998980874?text=Olá!%20Gostaria%20de%20agendar%20minha%20avaliação%20gratuita%20na%20unidade%20Tatuapé." target="_blank" rel="noopener" class="wa-unit-item" data-lat="-23.5389" data-lng="-46.5766" data-unit-slug="tatuape">
-                <div class="wa-unit-copy">
-                    <div class="wa-unit-name">São Paulo — Tatuapé</div>
-                    
-                    <div class="wa-unit-meta">Rua Manoel dos Santos 70, Casa</div>
-                    <div class="wa-unit-meta wa-unit-meta--muted">São Paulo - SP • CEP 03318-040</div>
-                    <div class="wa-unit-meta wa-unit-meta--landmark">📍 Próximo ao Metrô Shopping Tatuapé</div>
-                    <div class="wa-unit-distance"></div>
-                </div>
-                <svg width="18" height="18" aria-hidden="true"><use href="#i-arrow"></use></svg>
-            </a>
-<a href="https://wa.me/5512988636566?text=Olá!%20Gostaria%20de%20agendar%20minha%20avaliação%20gratuita%20em%20São%20José%20dos%20Campos." target="_blank" rel="noopener" class="wa-unit-item" data-lat="-23.1896" data-lng="-45.8841" data-unit-slug="sjc">
-                <div class="wa-unit-copy">
-                    <div class="wa-unit-name">São José dos Campos — Vila Adyana</div>
-                    
-                    <div class="wa-unit-meta">Avenida Paulo Becker 310, Boulevard 9 de Julho, Loja 07</div>
-                    <div class="wa-unit-meta wa-unit-meta--muted">São José dos Campos - SP • CEP 12243-610</div>
-                    <div class="wa-unit-meta wa-unit-meta--landmark">📍 Em frente à Padaria 9 de Julho</div>
-                    <div class="wa-unit-distance"></div>
-                </div>
-                <svg width="18" height="18" aria-hidden="true"><use href="#i-arrow"></use></svg>
-            </a>
-<a href="https://wa.me/5561993837705?text=Olá!%20Gostaria%20de%20agendar%20minha%20avaliação%20gratuita%20em%20Águas%20Claras." target="_blank" rel="noopener" class="wa-unit-item" data-lat="-15.8394" data-lng="-48.0266" data-unit-slug="aguas-claras">
-                <div class="wa-unit-copy">
-                    <div class="wa-unit-name">Brasília — Águas Claras</div>
-                    
-                    <div class="wa-unit-meta">Avenida Pau Brasil 10, Le Quartier Águas Claras, Sala 1510</div>
-                    <div class="wa-unit-meta wa-unit-meta--muted">Brasília - DF • CEP 71926-000</div>
-                    <div class="wa-unit-meta wa-unit-meta--landmark">📍 Em frente ao Metrô Estação Águas Claras</div>
-                    <div class="wa-unit-distance"></div>
-                </div>
-                <svg width="18" height="18" aria-hidden="true"><use href="#i-arrow"></use></svg>
-            </a>
-<a href="https://wa.me/5561996942312?text=Olá!%20Gostaria%20de%20agendar%20minha%20avaliação%20gratuita%20na%20Asa%20Sul." target="_blank" rel="noopener" class="wa-unit-item" data-lat="-15.8267" data-lng="-47.9218" data-unit-slug="asa-sul">
-                <div class="wa-unit-copy">
-                    <div class="wa-unit-name">Brasília — Asa Sul</div>
-                    
-                    <div class="wa-unit-meta">CLS 411, Bloco B, Loja 20</div>
-                    <div class="wa-unit-meta wa-unit-meta--muted">Brasília - DF • CEP 70277-520</div>
-                    <div class="wa-unit-distance"></div>
-                </div>
-                <svg width="18" height="18" aria-hidden="true"><use href="#i-arrow"></use></svg>
-            </a>
-<a href="https://wa.me/5561995251477?text=Olá!%20Gostaria%20de%20agendar%20minha%20avaliação%20gratuita%20na%20Asa%20Norte." target="_blank" rel="noopener" class="wa-unit-item" data-lat="-15.7467" data-lng="-47.8826" data-unit-slug="asa-norte">
-                <div class="wa-unit-copy">
-                    <div class="wa-unit-name">Brasília — Asa Norte</div>
-                    
-                    <div class="wa-unit-meta">SCLN 715, Bloco A, Loja 59</div>
-                    <div class="wa-unit-meta wa-unit-meta--muted">Brasília - DF • CEP 70770-511</div>
-                    <div class="wa-unit-distance"></div>
-                </div>
-                <svg width="18" height="18" aria-hidden="true"><use href="#i-arrow"></use></svg>
-            </a>
-<a href="https://wa.me/5561991446678?text=Olá!%20Gostaria%20de%20agendar%20minha%20avaliação%20gratuita%20em%20Taguatinga." target="_blank" rel="noopener" class="wa-unit-item" data-lat="-15.8362" data-lng="-48.0558" data-unit-slug="taguatinga">
-                <div class="wa-unit-copy">
-                    <div class="wa-unit-name">Brasília — Taguatinga Norte</div>
-                    
-                    <div class="wa-unit-meta">Avenida Comercial Norte, QND 2 Lote 11 Loja 01</div>
-                    <div class="wa-unit-meta wa-unit-meta--muted">Brasília - DF • CEP 72120-020</div>
-                    <div class="wa-unit-distance"></div>
-                </div>
-                <svg width="18" height="18" aria-hidden="true"><use href="#i-arrow"></use></svg>
-            </a>
-<a href="https://wa.me/5562993411230?text=Olá!%20Gostaria%20de%20agendar%20minha%20avaliação%20gratuita%20em%20Goiânia." target="_blank" rel="noopener" class="wa-unit-item" data-lat="-16.7139" data-lng="-49.2537" data-unit-slug="goiania">
-                <div class="wa-unit-copy">
-                    <div class="wa-unit-name">Goiânia — Setor Bueno</div>
-                    
-                    <div class="wa-unit-meta">Avenida Mutirão 1932, Casablanca Center, Loja 4, Bloco B</div>
-                    <div class="wa-unit-meta wa-unit-meta--muted">Goiânia - GO • CEP 74215-240</div>
-                    <div class="wa-unit-distance"></div>
-                </div>
-                <svg width="18" height="18" aria-hidden="true"><use href="#i-arrow"></use></svg>
-            </a>
-<a href="https://wa.me/5581973056302?text=Olá!%20Gostaria%20de%20agendar%20minha%20avaliação%20gratuita%20em%20Recife." target="_blank" rel="noopener" class="wa-unit-item" data-lat="-8.1204" data-lng="-34.9013" data-unit-slug="recife">
-                <div class="wa-unit-copy">
-                    <div class="wa-unit-name">Recife — Boa Viagem</div>
-                    
-                    <div class="wa-unit-meta">Avenida Conselheiro Aguiar 1472, Recife Trade Center, Sala 42</div>
-                    <div class="wa-unit-meta wa-unit-meta--muted">Recife - PE • CEP 51111-903</div>
-                    <div class="wa-unit-distance"></div>
-                </div>
-                <svg width="18" height="18" aria-hidden="true"><use href="#i-arrow"></use></svg>
-            </a>
-            </div>
+            <!-- Conteúdo das unidades será injetado via JavaScript -->
+            <div class="wa-unit-items" id="waUnitItems"></div>
         </div>
     </div>
 </div>
 
+<!-- Modal Agendamento Salão99 -->
 <div class="booking-overlay" id="bookingModal" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Escolha sua unidade para agendar" onclick="closeModalOnOverlay(event, 'bookingModal')">
     <div class="booking-modal">
         <button type="button" class="booking-close" onclick="closeModal('bookingModal')" aria-label="Fechar">&times;</button>
@@ -469,7 +385,7 @@
             <a target="_blank" rel="noopener noreferrer" class="booking-card booking-nearest-card" id="bookingNearestCard">
                 <div class="booking-nearest-content">
                     <div class="booking-card-name" id="bookingNearestName"></div>
-                                        <div class="booking-card-addr" id="bookingNearestAddr"></div>
+                    <div class="booking-card-addr" id="bookingNearestAddr"></div>
                     <div class="booking-card-postal" id="bookingNearestPostal"></div>
                     <div class="booking-nearest-dist" id="bookingNearestDist"></div>
                     <div class="booking-card-ref booking-card-ref--light" id="bookingNearestRef"></div>
@@ -481,69 +397,8 @@
 
         <div class="booking-other-label" id="bookingOtherLabel" style="display: none;">Todas as unidades</div>
 
-        <div class="booking-grid" id="bookingGrid">
-<a href="https://www.salao99.com.br/studio-caracois-especialistas-em-cachos-tatuape" target="_blank" rel="noopener noreferrer" class="booking-card" data-lat="-23.5389" data-lng="-46.5766" data-unit-slug="tatuape">
-            <div class="booking-card-name">São Paulo — Tatuapé</div>
-            
-            <div class="booking-card-addr">Rua Manoel dos Santos 70, Casa</div>
-            <div class="booking-card-postal">São Paulo - SP • CEP 03318-040</div>
-            <div class="booking-card-ref">📍 Próximo ao Metrô Shopping Tatuapé</div>
-        </a>
-<a href="https://www.salao99.com.br/studio-caracois-especialistas-em-cachos-sjc" target="_blank" rel="noopener noreferrer" class="booking-card" data-lat="-23.1896" data-lng="-45.8841" data-unit-slug="sjc">
-            <div class="booking-card-name">São José dos Campos — Vila Adyana</div>
-            
-            <div class="booking-card-addr">Avenida Paulo Becker 310, Boulevard 9 de Julho, Loja 07</div>
-            <div class="booking-card-postal">São José dos Campos - SP • CEP 12243-610</div>
-            <div class="booking-card-ref">📍 Em frente à Padaria 9 de Julho</div>
-        </a>
-<a href="https://www.salao99.com.br/studio-caracois-especialistas-em-cachos-aguas-claras" target="_blank" rel="noopener noreferrer" class="booking-card" data-lat="-15.8394" data-lng="-48.0266" data-unit-slug="aguas-claras">
-            <div class="booking-card-name">Brasília — Águas Claras</div>
-            
-            <div class="booking-card-addr">Avenida Pau Brasil 10, Le Quartier Águas Claras, Sala 1510</div>
-            <div class="booking-card-postal">Brasília - DF • CEP 71926-000</div>
-            <div class="booking-card-ref">📍 Em frente ao Metrô Estação Águas Claras</div>
-        </a>
-<a href="https://www.salao99.com.br/studio-caracois-especialistas-em-cachos-asa-sul" target="_blank" rel="noopener noreferrer" class="booking-card" data-lat="-15.8267" data-lng="-47.9218" data-unit-slug="asa-sul">
-            <div class="booking-card-name">Brasília — Asa Sul</div>
-            
-            <div class="booking-card-addr">CLS 411, Bloco B, Loja 20</div>
-            <div class="booking-card-postal">Brasília - DF • CEP 70277-520</div>
-            
-            
-        </a>
-<a href="https://www.salao99.com.br/studio-caracois-especialistas-em-cachos-asa-norte" target="_blank" rel="noopener noreferrer" class="booking-card" data-lat="-15.7467" data-lng="-47.8826" data-unit-slug="asa-norte">
-            <div class="booking-card-name">Brasília — Asa Norte</div>
-            
-            <div class="booking-card-addr">SCLN 715, Bloco A, Loja 59</div>
-            <div class="booking-card-postal">Brasília - DF • CEP 70770-511</div>
-            
-            
-        </a>
-<a href="https://linktr.ee/studiocaracois" target="_blank" rel="noopener noreferrer" class="booking-card" data-lat="-15.8362" data-lng="-48.0558" data-unit-slug="taguatinga">
-            <div class="booking-card-name">Brasília — Taguatinga Norte</div>
-            
-            <div class="booking-card-addr">Avenida Comercial Norte, QND 2 Lote 11 Loja 01</div>
-            <div class="booking-card-postal">Brasília - DF • CEP 72120-020</div>
-            
-            
-        </a>
-<a href="https://www.salao99.com.br/studio-caracois-especialistas-em-cachos-goiania" target="_blank" rel="noopener noreferrer" class="booking-card" data-lat="-16.7139" data-lng="-49.2537" data-unit-slug="goiania">
-            <div class="booking-card-name">Goiânia — Setor Bueno</div>
-            
-            <div class="booking-card-addr">Avenida Mutirão 1932, Casablanca Center, Loja 4, Bloco B</div>
-            <div class="booking-card-postal">Goiânia - GO • CEP 74215-240</div>
-            
-            
-        </a>
-<a href="https://www.salao99.com.br/studio-caracois-especialistas-em-cachos-recife" target="_blank" rel="noopener noreferrer" class="booking-card" data-lat="-8.1204" data-lng="-34.9013" data-unit-slug="recife">
-            <div class="booking-card-name">Recife — Boa Viagem</div>
-            
-            <div class="booking-card-addr">Avenida Conselheiro Aguiar 1472, Recife Trade Center, Sala 42</div>
-            <div class="booking-card-postal">Recife - PE • CEP 51111-903</div>
-            
-            
-        </a>
-        </div>
+        <!-- Conteúdo das unidades será injetado via JavaScript -->
+        <div class="booking-grid" id="bookingGrid"></div>
         <div class="booking-footer">
             <p>Não tem certeza de qual unidade escolher? <a href="#" onclick="event.preventDefault(); closeModal('bookingModal'); openWaModal();">Fale com nossa equipe no WhatsApp</a></p>
         </div>
@@ -786,7 +641,7 @@
                     <p class="section-desc u-mw-full">O Studio Caracóis é uma rede de salões especializada no cuidado de cabelos com curvatura. Não somos um salão generalista. Somos especialistas.</p>
                     <p class="section-desc u-mw-full u-mt-md">Nossa abordagem é consultiva. Cada cliente passa por uma análise detalhada da curvatura, porosidade e necessidades específicas dos fios. A partir daí, construímos um protocolo personalizado — que pode incluir Corte 3D, Acidificação, Caracóis Care ou Finalização Profissional.</p>
                     <p class="section-desc u-mw-full u-mt-md">Trabalhamos exclusivamente com produtos low poo e no poo, livres de sulfatos agressivos, petrolatos e silicones insolúveis. E, acima de tudo, ensinamos você a manter o resultado em casa, com autonomia e confiança.</p>
-                    <div class="about-highlight">“Cabelo bonito é cabelo saudável. Aqui, a gente prova.”</div>
+                    <div class="about-highlight">"Cabelo bonito é cabelo saudável. Aqui, a gente prova."</div>
                     <div class="about-stats">
                         <div class="stat"><div class="stat-number">08</div><div class="stat-label">Unidades no Brasil</div></div>
                         <div class="stat"><div class="stat-number">04</div><div class="stat-label">Estados</div></div>
@@ -820,7 +675,6 @@
                 </div>
             </div>
 
-            
             <div class="gallery-grid">
                 <div class="before-after-card reveal">
                     <div class="before-after-images">
@@ -893,7 +747,13 @@
                 <button class="bee-filter-btn" type="button" data-filter="finalizacao">Finalização</button>
             </div>
 
-            <div class="bee-product-grid reveal" id="beeProductsGrid"></div>
+            <div class="bee-product-grid reveal" id="beeProductsGrid">
+                <!-- Skeleton loader para melhor UX -->
+                <div class="bee-product-card bee-skeleton"><div class="bee-product-img"></div><div class="bee-product-info"><div class="skeleton-line"></div><div class="skeleton-line short"></div><div class="skeleton-line"></div></div></div>
+                <div class="bee-product-card bee-skeleton"><div class="bee-product-img"></div><div class="bee-product-info"><div class="skeleton-line"></div><div class="skeleton-line short"></div><div class="skeleton-line"></div></div></div>
+                <div class="bee-product-card bee-skeleton"><div class="bee-product-img"></div><div class="bee-product-info"><div class="skeleton-line"></div><div class="skeleton-line short"></div><div class="skeleton-line"></div></div></div>
+                <div class="bee-product-card bee-skeleton"><div class="bee-product-img"></div><div class="bee-product-info"><div class="skeleton-line"></div><div class="skeleton-line short"></div><div class="skeleton-line"></div></div></div>
+            </div>
 
             <div class="bee-cta-wrap reveal">
                 <button type="button" class="btn btn-gold" onclick="openBeeModal()" aria-label="Conhecer onde comprar Bee Cosmetics">Conhecer a linha completa</button>
@@ -1148,14 +1008,12 @@
     <div class="bee-modal">
         <button type="button" class="bee-modal-close" onclick="closeBeeModal()" aria-label="Fechar">&times;</button>
         <div class="bee-modal-header">
-            <!-- Badge Bee Cosmetics removido — modal neutro e elegante -->
             <h3>Escolha seu canal de compra</h3>
             <p>Encontre nossos produtos nos principais marketplaces e escolha a opção mais conveniente para você.</p>
         </div>
         <div class="bee-market-list">
             <a href="https://www.amazon.com.br/s?k=bee+cosmetics+cabelo+cacheado" target="_blank" rel="noopener noreferrer" class="bee-market-item">
                 <div class="bee-market-icon">
-                    <!-- /images/icons/amazon.svg — substituir por <img> quando o arquivo existir -->
                     <img src="/images/icons/amazon.svg" alt="Amazon" width="28" height="28"
                          onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
                     <span class="market-fallback">📦</span>
@@ -1168,7 +1026,6 @@
             </a>
             <a href="https://shopee.com.br/search?keyword=bee%20cosmetics%20cabelo%20cacheado" target="_blank" rel="noopener noreferrer" class="bee-market-item">
                 <div class="bee-market-icon">
-                    <!-- /images/icons/shopee.svg — substituir por <img> quando o arquivo existir -->
                     <img src="/images/icons/shopee.svg" alt="Shopee" width="28" height="28"
                          onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
                     <span class="market-fallback">🛍️</span>
@@ -1181,7 +1038,6 @@
             </a>
             <a href="https://lista.mercadolivre.com.br/bee-cosmetics" target="_blank" rel="noopener noreferrer" class="bee-market-item">
                 <div class="bee-market-icon">
-                    <!-- /images/icons/mercadolivre.svg — substituir por <img> quando o arquivo existir -->
                     <img src="/images/icons/mercadolivre.svg" alt="Mercado Livre" width="28" height="28"
                          onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
                     <span class="market-fallback">🏪</span>
@@ -1235,11 +1091,8 @@
     <svg viewBox="0 0 24 24"><use href="#i-wa"/></svg>
 </button>
 
-    <script src="/assets/js/main.js" defer></script>
-
-
-    <script src="/assets/js/bee-catalog.js" defer></script>
-
+<script src="/assets/js/main.js" defer></script>
+<script src="/assets/js/bee-catalog.js" defer></script>
 
 </body>
 </html>
