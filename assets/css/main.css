@@ -1729,14 +1729,21 @@
     margin-top: 0;
 }
 .wa-unit-meta--muted {
-    font-size: 0.74rem;
+    font-size: 0.86rem;
     color: var(--text-muted);
-    letter-spacing: 0.01em;
+    letter-spacing: 0;
     font-weight: 400;
-    margin-top: 5px;
-    line-height: 1.4;
+    margin-top: 4px;
+    line-height: 1.5;
 }
-.wa-unit-items .wa-unit-meta--landmark,
+.wa-unit-meta--landmark {
+    display: block;
+    font-size: 0.86rem;
+    color: var(--text-light);
+    font-weight: 400;
+    line-height: 1.5;
+    margin-top: 4px;
+}
 .wa-unit-items .wa-nearest-badge,
 .wa-unit-items .wa-nearest-micro {
     display: none !important;
@@ -1751,7 +1758,8 @@
 .wa-unit-item:hover .wa-unit-name { color: var(--white); }
 .wa-unit-item:hover .wa-unit-meta { color: rgba(255,255,255,0.88); }
 .wa-unit-item:hover .wa-unit-meta--muted,
-.wa-unit-item:hover .wa-unit-distance { color: rgba(255,255,255,0.72); }
+.wa-unit-item:hover .wa-unit-meta--landmark,
+.wa-unit-item:hover .wa-unit-distance { color: rgba(255,255,255,0.82); }
 .wa-unit-item svg { width: 18px; height: 18px; opacity: 0.3; transition: all 0.3s; flex-shrink: 0; }
 .wa-unit-item:hover svg { opacity: 1; stroke: var(--white); }
 
@@ -1782,11 +1790,11 @@
     line-height: 1.45;
 }
 .wa-nearest-card .wa-unit-meta--muted {
-    color: rgba(255,255,255,0.74);
-    font-size: 0.79rem;
+    color: rgba(255,255,255,0.82);
+    font-size: 0.96rem;
     font-weight: 500;
-    line-height: 1.35;
-    margin-top: 6px;
+    line-height: 1.45;
+    margin-top: 4px;
 }
 .wa-nearest-card .wa-unit-meta--landmark {
     display: block !important;
@@ -1794,7 +1802,7 @@
     font-size: 0.96rem;
     font-weight: 500;
     line-height: 1.45;
-    margin-top: 10px;
+    margin-top: 4px;
 }
 .wa-nearest-card .wa-unit-distance {
     display: block;
@@ -1982,7 +1990,7 @@
             text-transform: none;
         }
         .booking-card.booking-nearest-card .booking-card-addr { color: rgba(255,255,255,0.92); font-size: 0.96rem; font-weight: 500; line-height: 1.45; }
-        .booking-card.booking-nearest-card .booking-card-postal { color: rgba(255,255,255,0.74); font-size: 0.79rem; font-weight: 500; line-height: 1.35; margin-top: 6px; letter-spacing: 0.01em; }
+        .booking-card.booking-nearest-card .booking-card-postal { color: rgba(255,255,255,0.82); font-size: 0.96rem; font-weight: 500; line-height: 1.45; margin-top: 4px; letter-spacing: 0; }
         .booking-card.booking-nearest-card:hover {
             background: linear-gradient(135deg, var(--terracota-dark), var(--terracota));
             transform: translateY(-3px);
@@ -2017,6 +2025,10 @@
         }
         .booking-card-ref--light {
             color: rgba(255,255,255,0.86);
+            font-size: 0.96rem;
+            font-weight: 500;
+            line-height: 1.45;
+            margin-top: 4px;
         }
         .booking-nearest-micro {
             font-size: 0.86rem;
@@ -2124,25 +2136,25 @@
             line-height: 1.5;
         }
         .booking-card-postal {
-            font-size: 0.74rem;
+            font-size: 0.86rem;
             color: var(--text-muted);
             font-weight: 400;
-            line-height: 1.4;
-            margin-top: 5px;
-            letter-spacing: 0.01em;
+            line-height: 1.5;
+            margin-top: 4px;
+            letter-spacing: 0;
             text-transform: none;
         }
         .booking-card-city {
             display: none;
         }
-        .booking-grid .booking-card-ref { display: none !important; }
-        .booking-card-ref {
-            font-size: 0.96rem;
-            color: rgba(34,34,34,0.82);
-            margin-top: 10px;
-            padding-top: 2px;
-            line-height: 1.45;
-            font-weight: 500;
+                .booking-card-ref {
+            display: block;
+            font-size: 0.86rem;
+            color: var(--text-light);
+            margin-top: 4px;
+            padding-top: 0;
+            line-height: 1.5;
+            font-weight: 400;
         }
         .booking-card-dist {
             font-size: 0.72rem;
@@ -2154,8 +2166,8 @@
         .booking-card:hover .booking-card-eyebrow { color: rgba(255,255,255,0.9); }
         .booking-card:hover .booking-card-addr { color: rgba(255,255,255,0.92); }
         .booking-card:hover .booking-card-postal,
-        .booking-card:hover .booking-card-city { color: rgba(255,255,255,0.74); }
-        .booking-card:hover .booking-card-ref { color: rgba(255,255,255,0.86); }
+        .booking-card:hover .booking-card-city,
+        .booking-card:hover .booking-card-ref { color: rgba(255,255,255,0.82); }
         .booking-card:hover .booking-card-dist { color: rgba(255,255,255,0.78); }
         .booking-footer {
             text-align: center;
