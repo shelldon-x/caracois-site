@@ -405,7 +405,7 @@ function openWaModal() {
         const dist = item.querySelector('.wa-unit-distance');
         if (dist) {
             dist.textContent = '';
-            dist.style.display = '';
+            dist.style.display = 'none';
         }
     });
     openModal('waModal');
