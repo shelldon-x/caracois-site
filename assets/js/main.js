@@ -169,12 +169,12 @@ function createBookingUnitMarkup(unit) {
 
 function renderUnitModals() {
     const waContainer = document.getElementById('waUnitItems');
-    if (waContainer) {
+    if (waContainer && !waContainer.querySelector('.wa-unit-item')) {
         waContainer.innerHTML = STUDIO_UNITS.map(createWaUnitMarkup).join('');
     }
 
     const bookingGrid = document.getElementById('bookingGrid');
-    if (bookingGrid) {
+    if (bookingGrid && !bookingGrid.querySelector('.booking-card')) {
         bookingGrid.innerHTML = STUDIO_UNITS.map(createBookingUnitMarkup).join('');
     }
 }
@@ -460,9 +460,8 @@ function findNearest() {
             btn.disabled = false;
         },
         function() {
-            btnText.textContent = 'Escolha manualmente \u2193';
+            btnText.textContent = 'Localização indisponível — escolha manualmente abaixo';
             btn.disabled = false;
-            setTimeout(function() { btnText.textContent = 'Usar minha localiza\u00e7\u00e3o'; }, 3000);
         },
         { enableHighAccuracy: false, timeout: 6000, maximumAge: 60000 }
     );
@@ -539,9 +538,8 @@ function findNearestBooking() {
             }
         },
         function() {
-            btnText.textContent = 'Escolha manualmente \u2193';
+            btnText.textContent = 'Localização indisponível — escolha manualmente abaixo';
             btn.disabled = false;
-            setTimeout(function() { btnText.textContent = 'Encontrar unidade mais pr\u00f3xima'; }, 3000);
         },
         { enableHighAccuracy: false, timeout: 6000, maximumAge: 60000 }
     );
