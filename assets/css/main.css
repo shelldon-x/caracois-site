@@ -1712,36 +1712,54 @@
         .wa-unit-item.nearest:hover svg { stroke: var(--white); }
         .wa-nearest-badge {
             display: none;
-            font-size: 0.6rem; font-weight: 700;
-            color: var(--gold-light); text-transform: uppercase;
-            letter-spacing: 0.12em; margin-top: 4px;
+            font-size: 0.64rem;
+            font-weight: 700;
+            color: var(--gold-light);
+            text-transform: uppercase;
+            letter-spacing: 0.11em;
+            margin-top: 8px;
         }
-        .wa-unit-item.nearest .wa-nearest-badge { display: block; }
+        .wa-nearest-micro {
+            display: none;
+            font-size: 0.72rem;
+            line-height: 1.45;
+            color: rgba(255,255,255,0.78);
+            font-style: italic;
+            margin-top: 4px;
+        }
+        .wa-unit-item.nearest .wa-nearest-badge,
+        .wa-unit-item.nearest .wa-nearest-micro { display: block; }
         .wa-unit-copy { min-width: 0; }
         .wa-unit-distance {
-            font-size: 0.68rem;
+            font-size: 0.7rem;
             color: var(--text-muted);
             font-weight: 500;
             margin-top: 8px;
         }
         .wa-unit-item:hover .wa-unit-distance { color: rgba(255,255,255,0.72); }
-        .wa-unit-item .wa-unit-name { font-weight: 600; font-size: 0.92rem; line-height: 1.25; }
-                .wa-unit-meta {
-            font-size: 0.75rem;
+        .wa-unit-item .wa-unit-name {
+            font-weight: 600;
+            font-size: 0.96rem;
+            line-height: 1.28;
+            letter-spacing: -0.01em;
+        }
+        .wa-unit-meta {
+            font-size: 0.81rem;
             color: var(--text-light);
             font-weight: 400;
-            line-height: 1.45;
+            line-height: 1.5;
             margin-top: 6px;
         }
         .wa-unit-meta--muted {
-            font-size: 0.66rem;
+            font-size: 0.71rem;
             color: var(--text-muted);
-            letter-spacing: 0.02em;
+            letter-spacing: 0.01em;
             text-transform: none;
         }
         .wa-unit-meta--landmark {
             color: var(--text-light);
-            font-size: 0.74rem;
+            font-size: 0.78rem;
+            line-height: 1.45;
         }
                 .wa-unit-item:hover .wa-unit-meta,
         .wa-unit-item:hover .wa-unit-meta--muted,
@@ -1886,16 +1904,16 @@
             box-shadow: 0 8px 28px rgba(155,68,66,0.25);
         }
         .booking-nearest-content { min-width: 0; }
-        .booking-nearest-card .booking-card-name { color: var(--white); font-size: 1rem; }
+        .booking-nearest-card .booking-card-name {
+            color: var(--white);
+            font-size: 1.03rem;
+            line-height: 1.22;
+        }
         .booking-nearest-card .booking-card-eyebrow {
-            color: rgba(255,255,255,0.84);
-            margin-bottom: 6px;
-            font-size: 0.72rem;
-            letter-spacing: 0.02em;
-            text-transform: none;
+            display: none;
         }
         .booking-card.booking-nearest-card .booking-card-addr,
-        .booking-card.booking-nearest-card .booking-card-postal { color: rgba(255,255,255,0.8); }
+        .booking-card.booking-nearest-card .booking-card-postal { color: rgba(255,255,255,0.82); }
         .booking-card.booking-nearest-card:hover {
             background: linear-gradient(135deg, var(--terracota-dark), var(--terracota));
             transform: translateY(-3px);
@@ -1908,7 +1926,7 @@
         .booking-card.booking-nearest-card:hover .booking-nearest-dist { color: rgba(255,255,255,0.82); }
         .booking-nearest-card:hover .booking-nearest-cta { color: var(--black); }
         .booking-nearest-dist {
-            font-size: 0.72rem;
+            font-size: 0.71rem;
             color: rgba(255,255,255,0.8);
             font-weight: 400;
             margin-top: 4px;
@@ -1932,10 +1950,11 @@
             color: rgba(255,255,255,0.78);
         }
         .booking-nearest-micro {
-            font-size: 0.72rem;
-            color: rgba(255,255,255,0.65);
+            font-size: 0.74rem;
+            line-height: 1.45;
+            color: rgba(255,255,255,0.74);
             font-style: italic;
-            margin-top: 8px;
+            margin-top: 10px;
         }
         .booking-other-label {
             font-size: 0.72rem;
@@ -2022,40 +2041,36 @@
         }
         .booking-card-name {
             font-weight: 600;
-            font-size: 0.95rem;
-            line-height: 1.25;
-            margin-bottom: 4px;
+            font-size: 0.97rem;
+            line-height: 1.28;
+            margin-bottom: 6px;
             color: var(--black);
+            letter-spacing: -0.01em;
         }
         .booking-card-eyebrow {
-            font-size: 0.72rem;
-            color: var(--terracota);
-            font-weight: 500;
-            letter-spacing: 0.02em;
-            text-transform: none;
-            margin-bottom: 6px;
+            display: none;
         }
         .booking-card-addr {
-            font-size: 0.78rem;
+            font-size: 0.8rem;
             color: var(--text-light);
             font-weight: 400;
             line-height: 1.5;
         }
         .booking-card-postal {
-            font-size: 0.67rem;
+            font-size: 0.71rem;
             color: var(--text-muted);
             font-weight: 400;
             margin-top: 8px;
-            letter-spacing: 0.02em;
+            letter-spacing: 0.01em;
             text-transform: none;
         }
         .booking-card-city {
             display: none;
         }
         .booking-card-ref {
-            font-size: 0.74rem;
+            font-size: 0.77rem;
             color: var(--text-light);
-            margin-top: 8px;
+            margin-top: 9px;
             line-height: 1.45;
         }
         .booking-card-dist {
@@ -2701,21 +2716,3 @@
 
 
 .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
-
-
-/* Polimento final dos modais de unidades */
-.wa-unit-region,
-.booking-card-eyebrow { display: none !important; }
-.wa-nearest-badge { display: none !important; }
-.wa-unit-item .wa-unit-name { font-size: 0.9rem; line-height: 1.22; margin-bottom: 2px; }
-.wa-unit-meta { font-size: 0.8rem; line-height: 1.42; margin-top: 4px; }
-.wa-unit-meta--muted { font-size: 0.72rem; letter-spacing: 0; }
-.wa-unit-meta--landmark { font-size: 0.78rem; margin-top: 7px; }
-.wa-unit-distance { font-size: 0.68rem; margin-top: 7px; }
-.booking-card-name { margin-bottom: 6px; }
-.booking-card-addr { font-size: 0.8rem; line-height: 1.42; }
-.booking-card-postal { font-size: 0.72rem; margin-top: 7px; letter-spacing: 0; }
-.booking-card-ref { font-size: 0.77rem; margin-top: 7px; }
-.booking-nearest-card .booking-card-name { font-size: 1rem; }
-.booking-nearest-card .booking-card-addr { font-size: 0.82rem; }
-.booking-nearest-dist { margin-top: 6px; }

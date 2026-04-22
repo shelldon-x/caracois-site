@@ -133,6 +133,10 @@ function unitRegionText(unit) {
     return unit.city + ' - ' + unit.state;
 }
 
+function unitEyebrowText(unit) {
+    return '';
+}
+
 function createWaUnitMarkup(unit) {
     return (
         '<a href="' + escapeHtml(unit.whatsappUrl) + '" target="_blank" rel="noopener" class="wa-unit-item" data-lat="' + unit.lat + '" data-lng="' + unit.lng + '" data-unit-slug="' + escapeHtml(unit.slug) + '">' +
@@ -141,6 +145,7 @@ function createWaUnitMarkup(unit) {
                 '<div class="wa-unit-meta">' + escapeHtml(unit.address) + '</div>' +
                 '<div class="wa-unit-meta wa-unit-meta--muted">' + escapeHtml(unitRegionText(unit) + ' • CEP ' + unit.postal) + '</div>' +
                 (unit.landmark ? '<div class="wa-unit-meta wa-unit-meta--landmark">📍 ' + escapeHtml(unit.landmark) + '</div>' : '') +
+                '<div class="wa-nearest-badge">✦ Mais próxima</div>' +
                 '<div class="wa-unit-distance"></div>' +
             '</div>' +
             '<svg width="18" height="18" aria-hidden="true"><use href="#i-arrow"></use></svg>' +
@@ -495,9 +500,9 @@ function findNearestBooking() {
                 const bookingUrl = n.el.getAttribute('href');
                 card.setAttribute('href', bookingUrl);
                 document.getElementById('bookingNearestName').textContent = n.el.querySelector('.booking-card-name').textContent;
-                document.getElementById('bookingNearestEyebrow').textContent = unit ? unitEyebrowText(unit) : '';
+                document.getElementById('bookingNearestEyebrow').textContent = '';
                 document.getElementById('bookingNearestAddr').textContent = n.el.querySelector('.booking-card-addr').textContent;
-                document.getElementById('bookingNearestPostal').textContent = unit ? ('CEP ' + unit.postal + ' • ' + unitRegionText(unit)) : '';
+                document.getElementById('bookingNearestPostal').textContent = unit ? (unitRegionText(unit) + ' • CEP ' + unit.postal) : '';
                 document.getElementById('bookingNearestDist').textContent = '\u2248 ' + formatDist(n.dist) + ' de voc\u00ea';
                 const nearestRef = document.getElementById('bookingNearestRef');
                 if (nearestRef) {
