@@ -255,6 +255,123 @@
 
     <link rel="stylesheet" href="/assets/css/main.css">
 
+
+    <!-- Google tag (GA4) — Studio Caracóis -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-OJ7RBF2BFX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-OJ7RBF2BFX', {
+            send_page_view: true,
+            cookie_flags: 'SameSite=None;Secure'
+        });
+    </script>
+
+    <!-- Meta Pixel Code — Studio Caracóis -->
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '1522260281454126');
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+        src="https://www.facebook.com/tr?id=1522260281454126&ev=PageView&noscript=1"
+        alt="" /></noscript>
+
+    <!-- Tracking unificado — eventos GA4 + Meta Pixel -->
+    <script>
+        window.SC_TRACKING = {
+            ga4MeasurementId: 'G-OJ7RBF2BFX',
+            metaPixelId: '1522260281454126'
+        };
+
+        function scTrack(eventName, params, metaStandardEvent) {
+            var payload = Object.assign({
+                site: 'caracois.com.br',
+                page_path: window.location.pathname,
+                page_location: window.location.href
+            }, params || {});
+
+            if (typeof window.gtag === 'function') {
+                window.gtag('event', eventName, payload);
+            }
+
+            if (typeof window.fbq === 'function') {
+                if (metaStandardEvent) {
+                    window.fbq('track', metaStandardEvent, payload);
+                }
+                window.fbq('trackCustom', eventName, payload);
+            }
+
+            if (typeof window.clarity === 'function') {
+                window.clarity('event', eventName);
+            }
+        }
+
+        function scWrapFunction(functionName, eventName, params, metaStandardEvent) {
+            var tries = 0;
+            var timer = window.setInterval(function() {
+                tries++;
+                if (typeof window[functionName] === 'function' && !window[functionName].__scTracked) {
+                    var original = window[functionName];
+                    var wrapped = function() {
+                        scTrack(eventName, params, metaStandardEvent);
+                        return original.apply(this, arguments);
+                    };
+                    wrapped.__scTracked = true;
+                    window[functionName] = wrapped;
+                    window.clearInterval(timer);
+                }
+                if (tries > 40) window.clearInterval(timer);
+            }, 250);
+        }
+
+        window.addEventListener('load', function() {
+            scWrapFunction('openBooking', 'open_modal_agendamento', { area: 'modal_agendamento' });
+            scWrapFunction('openWaModal', 'open_modal_whatsapp', { area: 'modal_whatsapp' });
+            scWrapFunction('openBeeModal', 'open_modal_bee_marketplace', { area: 'bee_cosmetics' });
+        });
+
+        document.addEventListener('click', function(event) {
+            var el = event.target.closest('a');
+            if (!el) return;
+
+            var href = el.getAttribute('href') || '';
+            var label = (el.innerText || el.getAttribute('aria-label') || '').trim().slice(0, 120);
+            var payload = { link_url: href, link_text: label };
+
+            if (href.indexOf('wa.me/') !== -1 || href.indexOf('api.whatsapp.com') !== -1) {
+                scTrack('click_whatsapp', payload, 'Contact');
+                return;
+            }
+
+            if (href.indexOf('salao99.com.br') !== -1) {
+                scTrack('click_agendamento_unidade', payload, 'Lead');
+                return;
+            }
+
+            if (el.classList.contains('unit-card') || href.indexOf('/unidades/') === 0) {
+                scTrack('click_unidade', payload);
+                return;
+            }
+
+            if (el.classList.contains('bee-market-item') || href.indexOf('amazon.com.br') !== -1 || href.indexOf('shopee.com.br') !== -1 || href.indexOf('mercadolivre.com.br') !== -1) {
+                scTrack('click_marketplace_bee', payload);
+                return;
+            }
+
+            if (href.indexOf('instagram.com') !== -1 || href.indexOf('tiktok.com') !== -1 || href.indexOf('youtube.com') !== -1) {
+                scTrack('click_social', payload);
+            }
+        }, true);
+    </script>
     <!-- Microsoft Clarity — analytics de comportamento -->
     <script>
         (function(c,l,a,r,i,t,y){
