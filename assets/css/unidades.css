@@ -1,7 +1,7 @@
-
 /* =========================================================
    UNIDADES.CSS — camada específica das páginas de unidade
    Base compartilhada: /assets/css/main.css
+   Versão mestre consolidada
 ========================================================= */
 
 /* utilitários locais */
@@ -15,6 +15,8 @@
 .unit-text-on-dark { color: rgba(255,255,255,0.58); }
 .mobile-menu-cta { margin-top: 20px; width: 100%; justify-content: center; }
 .u-text-gold { color: var(--gold); }
+
+/* botões locais */
 .btn-outline-soft-light { border-color: rgba(255,255,255,0.35); }
 .btn-map {
     background: transparent;
@@ -240,6 +242,7 @@
 .address-actions {
     display: flex;
     gap: 12px;
+    flex-wrap: wrap;
 }
 .map-container {
     margin-top: 24px;
@@ -345,14 +348,32 @@
 .exp-card-title { font-family: var(--serif); font-size: 1.08rem; font-weight: 600; margin-bottom: 10px; color: var(--black); }
 .exp-card-text { font-size: 0.82rem; color: var(--text-light); line-height: 1.6; font-weight: 300; }
 
-/* pequenos ajustes de bee específicos da unidade */
+/* versão compacta local da bee, quando a unidade usar esse bloco */
+.bee-compact-inner { max-width: 760px; margin: 0 auto; text-align: center; }
+.bee-compact-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 32px;
+}
+.bee-compact-card {
+    background: var(--white);
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.04);
+    transition: all 0.3s var(--ease);
+    text-align: center;
+}
+.bee-compact-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.06); border-color: var(--terracota); }
+.bee-compact-card h4 { font-family: var(--serif); font-size: 0.9rem; font-weight: 500; padding: 12px 10px 4px; color: var(--black); }
+.bee-compact-card p { font-size: 0.7rem; color: var(--text-muted); padding: 0 10px 14px; font-weight: 300; }
 .bee-cta-wrap { text-align: center; margin-top: 44px; }
 
-/* responsividade da unidade */
 @media (max-width: 1024px) {
     .assessment-grid { grid-template-columns: 1fr; gap: 40px; }
     .diff-grid { grid-template-columns: repeat(2, 1fr); }
     .services-grid { grid-template-columns: 1fr; }
+    .bee-compact-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
 @media (max-width: 768px) {
@@ -364,10 +385,11 @@
     .diff-grid { grid-template-columns: 1fr; }
     .assessment-features { grid-template-columns: 1fr; }
     .address-block { flex-direction: column; text-align: center; }
-    .address-actions { justify-content: center; flex-wrap: wrap; }
-    .exp-grid { grid-template-columns: repeat(2, 1fr); }
+    .address-actions { justify-content: center; }
+    .exp-grid { grid-template-columns: repeat(2, 1fr) !important; }
     .local-proof-grid { grid-template-columns: 1fr; }
     .map-container iframe { height: 220px; }
+    .bee-compact-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 480px) {
