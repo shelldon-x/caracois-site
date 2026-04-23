@@ -3821,3 +3821,40 @@
             .knowledge-card-full { padding: 26px 22px; }
             .intro-highlight { font-size: 1.1rem; padding: 4px 18px; }
         }
+
+
+/* =========================================================
+   SAFETY PATCH — Modais da home em páginas institucionais
+   Mantém overlays invisíveis até receberem .open
+========================================================= */
+.wa-modal-overlay,
+.booking-overlay,
+.bee-modal-overlay {
+    display: none !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
+.wa-modal-overlay.open,
+.booking-overlay.open,
+.bee-modal-overlay.open {
+    display: flex !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+}
+
+/* mantém os modais acima do restante da página */
+.wa-modal-overlay,
+.booking-overlay,
+.bee-modal-overlay {
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 5000 !important;
+}
+
+/* utilitário compartilhado para CTA do menu mobile */
+.mobile-menu-cta {
+    margin-top: 20px;
+    width: 100%;
+    justify-content: center;
+}
