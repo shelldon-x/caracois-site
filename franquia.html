@@ -145,7 +145,26 @@
     </a>
 </div>
 
-<svg width="18" height="18"><use href="#i-arrow"/></svg>
+<div class="wa-modal-overlay" id="waModal" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Escolha sua unidade" onclick="closeModalOnOverlay(event, 'waModal')">
+    <div class="wa-modal" style="position:relative">
+        <button type="button" class="wa-modal-close" onclick="closeModal('waModal')" aria-label="Fechar">&times;</button>
+        <div class="wa-modal-header">
+            <div class="wa-modal-title" role="heading" aria-level="2">Escolha sua unidade</div>
+            <p>Fale diretamente com o Studio mais perto de você</p>
+        </div>
+        <div class="wa-unit-list" id="waUnitList">
+            <button type="button" class="wa-geo-btn" id="waGeoBtn" onclick="findNearest()" aria-label="Usar localização">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 0 0-8 8c0 5.4 7 12 8 12s8-6.6 8-12a8 8 0 0 0-8-8z"/></svg>
+                <span id="geoBtnText">Usar minha localização</span>
+            </button>
+            <a href="https://wa.me/5511998980874?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20minha%20avalia%C3%A7%C3%A3o%20gratuita%20na%20unidade%20Tatuap%C3%A9." target="_blank" rel="noopener" class="wa-unit-item" data-lat="-23.5389" data-lng="-46.5766">
+                <div>
+                    <div class="wa-unit-name">São Paulo — Tatuapé</div>
+                    <div class="wa-unit-region">SP</div>
+                    <div class="wa-nearest-badge">✦ Mais próxima</div>
+                    <div class="wa-unit-distance"></div>
+                </div>
+                <svg width="18" height="18"><use href="#i-arrow"/></svg>
             </a>
             <a href="https://wa.me/5512988636566?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20minha%20avalia%C3%A7%C3%A3o%20gratuita%20em%20S%C3%A3o%20Jos%C3%A9%20dos%20Campos." target="_blank" rel="noopener" class="wa-unit-item" data-lat="-23.1896" data-lng="-45.8841">
                 <div>
@@ -214,39 +233,6 @@
     </div>
 </div>
 
-<!-- Modal WhatsApp -->
-<div class="wa-modal-overlay" id="waModal" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Escolha sua unidade" onclick="closeModalOnOverlay(event, 'waModal')">
-    <div class="wa-modal" style="position:relative">
-        <button type="button" class="wa-modal-close" onclick="closeModal('waModal')" aria-label="Fechar">&times;</button>
-        <div class="wa-modal-header">
-            <div class="wa-modal-title" role="heading" aria-level="2">Escolha sua unidade</div>
-            <p>Fale diretamente com o Studio mais perto de você</p>
-        </div>
-        <div class="wa-unit-list" id="waUnitList">
-            <button type="button" class="wa-geo-btn" id="waGeoBtn" onclick="findNearest()" aria-label="Usar localização">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 0 0-8 8c0 5.4 7 12 8 12s8-6.6 8-12a8 8 0 0 0-8-8z"/></svg>
-                <span id="geoBtnText">Usar minha localização</span>
-            </button>
-            <div class="wa-nearest-wrap" id="waNearestWrap" style="display: none;">
-                <div class="wa-nearest-label">📍 Encontramos a unidade mais próxima de você</div>
-                <a target="_blank" rel="noopener" class="wa-unit-item wa-nearest-card" id="waNearestCard">
-                    <div class="wa-unit-copy">
-                        <div class="wa-unit-name" id="waNearestName"></div>
-                        <div class="wa-unit-meta" id="waNearestAddr"></div>
-                        <div class="wa-unit-meta wa-unit-meta--muted" id="waNearestPostal"></div>
-                        <div class="wa-unit-meta wa-unit-meta--landmark" id="waNearestRef" style="display:none"></div>
-                        <div class="wa-unit-distance" id="waNearestDist"></div>
-                        <div class="wa-nearest-micro">Sua transformação começa mais perto do que você imagina ✨</div>
-                    </div>
-                    <span class="wa-nearest-cta">Falar agora</span>
-                </a>
-            </div>
-            <div class="wa-other-label" id="waOtherLabel" style="display: none;">Todas as unidades</div>
-            <!-- Conteúdo das unidades será injetado via JavaScript -->
-            <div class="wa-unit-items" id="waUnitItems"></div>
-        </div>
-    </div>
-</div>
 <main id="main">
 
     <!-- HERO FRANQUIA -->
@@ -517,7 +503,6 @@
     <svg viewBox="0 0 24 24"><use href="#i-wa"/></svg>
 </button>
 
-    
     <script src="/assets/js/main.js" defer></script>
 </body>
 </html>
