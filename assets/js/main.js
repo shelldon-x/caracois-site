@@ -138,13 +138,13 @@ function unitRegionText(unit) {
 
 function createWaUnitMarkup(unit) {
     return (
-        '<a href="' + escapeHtml(unit.whatsappUrl) + '" target="_blank" rel="noopener" class="wa-unit-item" data-lat="' + unit.lat + '" data-lng="' + unit.lng + '" data-unit-slug="' + escapeHtml(unit.slug) + '">' +
+        '<a href="' + escapeHtml(unit.whatsappUrl) + '" target="_blank" rel="noopener" class="wa-unit-item booking-card booking-card--wa" data-lat="' + unit.lat + '" data-lng="' + unit.lng + '" data-unit-slug="' + escapeHtml(unit.slug) + '">' +
             '<div class="wa-unit-copy">' +
-                '<div class="wa-unit-name">' + escapeHtml(unit.label) + '</div>' +
-                '<div class="wa-unit-meta">' + escapeHtml(unit.address) + '</div>' +
-                '<div class="wa-unit-meta wa-unit-meta--muted">' + escapeHtml(unitRegionText(unit) + ' • CEP ' + unit.postal) + '</div>' +
-                (unit.landmark ? '<div class="wa-unit-meta wa-unit-meta--landmark">📍 ' + escapeHtml(unit.landmark) + '</div>' : '') +
-                '<div class="wa-unit-distance"></div>' +
+                '<div class="wa-unit-name booking-card-name">' + escapeHtml(unit.label) + '</div>' +
+                '<div class="wa-unit-meta booking-card-addr">' + escapeHtml(unit.address) + '</div>' +
+                '<div class="wa-unit-meta wa-unit-meta--muted booking-card-postal">' + escapeHtml(unitRegionText(unit) + ' • CEP ' + unit.postal) + '</div>' +
+                (unit.landmark ? '<div class="wa-unit-meta wa-unit-meta--landmark booking-card-ref">📍 ' + escapeHtml(unit.landmark) + '</div>' : '') +
+                '<div class="wa-unit-distance booking-card-dist"></div>' +
             '</div>' +
             '<svg width="18" height="18" aria-hidden="true"><use href="#i-arrow"></use></svg>' +
         '</a>'
@@ -686,6 +686,55 @@ document.querySelectorAll('a[href^="#"]').forEach(function(a) {
 });
 
 /* =========================
+   MAIN SLIDER (BEFORE/AFTER)
+========================= */
+(function() {
+    const slider = document.getElementById('sliderInput');
+    let afterImg = document.getElementById('afterImg');
+    let handle = document.getElementById('sliderHandle');
+    let divider = document.getElementById('sliderDivider');
+
+    if (slider && afterImg) {
+        function updateMainSlider() {
+            const value = slider.value + '%';
+            afterImg.style.width = value;
+            if (handle) handle.style.left = value;
+            if (divider) divider.style.left = value;
+        }
+        slider.addEventListener('input', updateMainSlider);
+        updateMainSlider();
+    }
+})();
+
+/* =========================
+   MINI SLIDERS (GALLERY)
+========================= */
+document.querySelectorAll('.before-after-images').forEach(function(container) {
+    let afterImg = container.querySelector('.after-img');
+    let handle = container.querySelector('.mini-handle');
+    let divider = container.querySelector('.mini-divider');
+    const range = container.querySelector('.mini-range');
+    if (!afterImg || !handle || !range) return;
+
+    function updateMiniSlider(value) {
+        const pct = Math.max(0, Math.min(100, Number(value)));
+        afterImg.style.clipPath = 'inset(0 ' + (100 - pct) + '% 0 0)';
+        handle.style.left = pct + '%';
+        if (divider) divider.style.left = pct + '%';
+    }
+
+    range.addEventListener('input', function() {
+        updateMiniSlider(this.value);
+    });
+
+    range.addEventListener('change', function() {
+        updateMiniSlider(this.value);
+    });
+
+    updateMiniSlider(range.value || 50);
+});
+
+/* =========================
    FAQ ACCORDION
 ========================= */
 document.querySelectorAll('.faq-item').forEach(function(item) {
@@ -703,7 +752,7 @@ document.querySelectorAll('.faq-item').forEach(function(item) {
     });
 });
 
-/* Expor funções globalmente */
+/* Expor funções globalmente para uso nos atributos onclick */
 window.openWaModal = openWaModal;
 window.openBooking = openBooking;
 window.openMobileMenu = openMobileMenu;

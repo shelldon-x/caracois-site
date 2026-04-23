@@ -96,9 +96,6 @@ function openProductModal(id, originEl) {
     productModalEl.setAttribute('aria-hidden', 'false');
     if (typeof lockScroll === 'function') lockScroll();
 
-    const modalScroller = productModalEl.querySelector('.product-modal');
-    if (modalScroller) modalScroller.scrollTop = 0;
-
     const closeBtn = productModalEl.querySelector('.pm-close');
     if (closeBtn) setTimeout(() => closeBtn.focus(), 50);
 }
@@ -119,7 +116,14 @@ function closeProductModal() {
     }, 300);
 }
 
+/* Trap de foco dentro do productModal */
 if (productModalEl) {
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && productModalEl.classList.contains('open')) {
+            closeProductModal();
+        }
+    });
+
     productModalEl.addEventListener('keydown', function(e) {
         if (e.key !== 'Tab' || !productModalEl.classList.contains('open')) return;
         const focusables = productModalEl.querySelectorAll(
@@ -136,6 +140,7 @@ if (productModalEl) {
     });
 }
 
+/* Delegação de eventos */
 if (beeProductsGrid) {
     beeProductsGrid.addEventListener('click', function(e) {
         const btn = e.target.closest('[data-product-id]');
@@ -153,6 +158,7 @@ if (beeProductsGrid) {
     });
 }
 
+/* Filtros */
 document.querySelectorAll('.bee-filter-btn').forEach(btn => {
     btn.addEventListener('click', function() {
         document.querySelectorAll('.bee-filter-btn').forEach(b => b.classList.remove('active'));
@@ -161,6 +167,8 @@ document.querySelectorAll('.bee-filter-btn').forEach(btn => {
     });
 });
 
+/* Render inicial */
 renderBeeProducts('all');
 
+/* Expor função globalmente */
 window.closeProductModal = closeProductModal;
