@@ -471,146 +471,128 @@ function closeBeeModalOnOverlay(e) {
 /* =========================
    GEO - WA MODAL
 ========================= */
-function findNearest() {
-    let btn = document.getElementById('waGeoBtn');
-    let btnText = document.getElementById('geoBtnText');
+function _applyNearest(config, pos) {
+    const items = document.querySelectorAll(config.itemsSelector);
+    const sorted = getNearestUnits(pos.coords.latitude, pos.coords.longitude, items);
+    if (!sorted.length) return;
+
+    const n = sorted[0];
+    const unit = STUDIO_UNITS.find(u => u.slug === n.el.getAttribute('data-unit-slug'));
+    const wrap = document.getElementById(config.wrapId);
+    const card = document.getElementById(config.cardId);
+
+    if (card) card.setAttribute('href', n.el.getAttribute('href'));
+
+    const setText = (id, text) => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = text;
+    };
+
+    setText(config.nameId, n.el.querySelector(config.nameSelector).textContent);
+    setText(config.addrId, n.el.querySelector(config.addrSelector).textContent);
+    setText(config.postalId, unit ? (unitRegionText(unit) + ' • CEP ' + unit.postal) : '');
+    setText(config.distId, '≈ ' + formatDist(n.dist) + ' de você');
+
+    const nearestRef = document.getElementById(config.refId);
+    if (nearestRef) {
+        if (unit && unit.landmark) {
+            nearestRef.textContent = '📍 ' + unit.landmark;
+            nearestRef.style.display = 'block';
+        } else {
+            nearestRef.textContent = '';
+            nearestRef.style.display = 'none';
+        }
+    }
+
+    if (wrap) wrap.style.display = 'block';
+    const otherLabel = document.getElementById(config.otherLabelId);
+    if (otherLabel) otherLabel.style.display = 'block';
+
+    sorted.forEach(entry => {
+        entry.el.classList.remove('nearest');
+        const existing = entry.el.querySelector(config.distSelector);
+        if (existing) {
+            existing.textContent = '≈ ' + formatDist(entry.dist) + (config.distSuffix || '');
+            existing.style.display = 'block';
+        } else if (config.distFallbackTag) {
+            const d = document.createElement(config.distFallbackTag);
+            d.className = config.distFallbackClass;
+            d.textContent = '≈ ' + formatDist(entry.dist);
+            entry.el.appendChild(d);
+        }
+    });
+}
+
+function _findNearestGeneric(config) {
+    const btn = document.getElementById(config.btnId);
+    const btnText = document.getElementById(config.btnTextId);
 
     if (!navigator.geolocation) {
-        btnText.textContent = 'Localização não disponível neste navegador';
+        if (btnText) btnText.textContent = 'Localização não disponível neste navegador';
         return;
     }
 
-    btn.disabled = true;
-    btnText.innerHTML = '<span class="spinner"></span> Localizando...';
+    if (btn) btn.disabled = true;
+    if (btnText) btnText.innerHTML = '<span class="spinner"></span> Localizando...';
 
     try {
         navigator.geolocation.getCurrentPosition(
             function(pos) {
-                const items = document.querySelectorAll('#waUnitItems .wa-unit-item');
-                let sorted = getNearestUnits(pos.coords.latitude, pos.coords.longitude, items);
-
-                if (sorted.length > 0) {
-                    let n = sorted[0];
-                    let wrap = document.getElementById('waNearestWrap');
-                    const card = document.getElementById('waNearestCard');
-                    const unit = STUDIO_UNITS.find(u => u.slug === n.el.getAttribute('data-unit-slug'));
-
-                    if (card) card.setAttribute('href', n.el.getAttribute('href'));
-                    document.getElementById('waNearestName').textContent = n.el.querySelector('.wa-unit-name').textContent;
-                    document.getElementById('waNearestAddr').textContent = n.el.querySelector('.wa-unit-meta').textContent;
-                    document.getElementById('waNearestPostal').textContent = unit ? (unitRegionText(unit) + ' • CEP ' + unit.postal) : '';
-                    document.getElementById('waNearestDist').textContent = '≈ ' + formatDist(n.dist) + ' de você';
-                    const nearestRef = document.getElementById('waNearestRef');
-                    if (nearestRef) {
-                        if (unit && unit.landmark) {
-                            nearestRef.textContent = '📍 ' + unit.landmark;
-                            nearestRef.style.display = 'block';
-                        } else {
-                            nearestRef.textContent = '';
-                            nearestRef.style.display = 'none';
-                        }
-                    }
-
-                    if (wrap) wrap.style.display = 'block';
-                    const otherLabel = document.getElementById('waOtherLabel');
-                    if (otherLabel) otherLabel.style.display = 'block';
-                    btnText.textContent = '✓ Encontramos a unidade mais próxima';
-                    btn.disabled = false;
-
-                    sorted.forEach(entry => {
-                        entry.el.classList.remove('nearest');
-                        const dist = entry.el.querySelector('.wa-unit-distance');
-                        if (dist) {
-                            dist.textContent = '≈ ' + formatDist(entry.dist) + ' de você';
-                            dist.style.display = 'block';
-                        }
-                    });
-                }
+                _applyNearest(config, pos);
+                if (btnText) btnText.textContent = '✓ Encontramos a unidade mais próxima';
+                if (btn) btn.disabled = false;
             },
             function() {
-                btnText.textContent = 'Localização indisponível — escolha manualmente abaixo';
-                btn.disabled = false;
+                if (btnText) btnText.textContent = 'Localização indisponível — escolha manualmente abaixo';
+                if (btn) btn.disabled = false;
             },
             { enableHighAccuracy: false, timeout: 6000, maximumAge: 60000 }
         );
-    } catch(e) {
-        btnText.textContent = 'Erro ao localizar';
-        btn.disabled = false;
+    } catch (e) {
+        if (btnText) btnText.textContent = 'Erro ao localizar';
+        if (btn) btn.disabled = false;
     }
 }
 
-/* =========================
-   GEO - BOOKING MODAL
-========================= */
+function findNearest() {
+    _findNearestGeneric({
+        btnId: 'waGeoBtn',
+        btnTextId: 'geoBtnText',
+        itemsSelector: '#waUnitItems .wa-unit-item',
+        wrapId: 'waNearestWrap',
+        cardId: 'waNearestCard',
+        nameId: 'waNearestName',
+        addrId: 'waNearestAddr',
+        postalId: 'waNearestPostal',
+        distId: 'waNearestDist',
+        refId: 'waNearestRef',
+        otherLabelId: 'waOtherLabel',
+        nameSelector: '.wa-unit-name',
+        addrSelector: '.wa-unit-meta',
+        distSelector: '.wa-unit-distance',
+        distSuffix: ' de você'
+    });
+}
+
 function findNearestBooking() {
-    let btn = document.getElementById('bookingGeoBtn');
-    let btnText = document.getElementById('bookingGeoBtnText');
-
-    if (!navigator.geolocation) {
-        btnText.textContent = 'Localização não disponível neste navegador';
-        return;
-    }
-
-    btn.disabled = true;
-    btnText.innerHTML = '<span class="spinner"></span> Localizando...';
-
-    try {
-        navigator.geolocation.getCurrentPosition(
-            function(pos) {
-                const cards = document.querySelectorAll('#bookingModal .booking-grid .booking-card');
-                let sorted = getNearestUnits(pos.coords.latitude, pos.coords.longitude, cards);
-
-                if (sorted.length > 0) {
-                    let n = sorted[0];
-                    let wrap = document.getElementById('bookingNearestWrap');
-                    const card = document.getElementById('bookingNearestCard');
-                    const unit = STUDIO_UNITS.find(u => u.slug === n.el.getAttribute('data-unit-slug'));
-
-                    card.setAttribute('href', n.el.getAttribute('href'));
-                    document.getElementById('bookingNearestName').textContent = n.el.querySelector('.booking-card-name').textContent;
-                    document.getElementById('bookingNearestAddr').textContent = n.el.querySelector('.booking-card-addr').textContent;
-                    document.getElementById('bookingNearestPostal').textContent = unit ? (unitRegionText(unit) + ' • CEP ' + unit.postal) : '';
-                    document.getElementById('bookingNearestDist').textContent = '≈ ' + formatDist(n.dist) + ' de você';
-                    const nearestRef = document.getElementById('bookingNearestRef');
-                    if (nearestRef) {
-                        if (unit && unit.landmark) {
-                            nearestRef.textContent = '📍 ' + unit.landmark;
-                            nearestRef.style.display = 'block';
-                        } else {
-                            nearestRef.textContent = '';
-                            nearestRef.style.display = 'none';
-                        }
-                    }
-
-                    wrap.style.display = 'block';
-                    document.getElementById('bookingOtherLabel').style.display = 'block';
-                    btnText.textContent = '✓ Encontramos a unidade mais próxima';
-                    btn.disabled = false;
-
-                    sorted.forEach(entry => {
-                        const existing = entry.el.querySelector('.booking-card-dist');
-                        if (existing) {
-                            existing.textContent = '≈ ' + formatDist(entry.dist);
-                            existing.style.display = 'block';
-                        } else {
-                            let d = document.createElement('div');
-                            d.className = 'booking-card-dist';
-                            d.textContent = '≈ ' + formatDist(entry.dist);
-                            entry.el.appendChild(d);
-                        }
-                    });
-                }
-            },
-            function() {
-                btnText.textContent = 'Localização indisponível — escolha manualmente abaixo';
-                btn.disabled = false;
-            },
-            { enableHighAccuracy: false, timeout: 6000, maximumAge: 60000 }
-        );
-    } catch(e) {
-        btnText.textContent = 'Erro ao localizar';
-        btn.disabled = false;
-    }
+    _findNearestGeneric({
+        btnId: 'bookingGeoBtn',
+        btnTextId: 'bookingGeoBtnText',
+        itemsSelector: '#bookingModal .booking-grid .booking-card',
+        wrapId: 'bookingNearestWrap',
+        cardId: 'bookingNearestCard',
+        nameId: 'bookingNearestName',
+        addrId: 'bookingNearestAddr',
+        postalId: 'bookingNearestPostal',
+        distId: 'bookingNearestDist',
+        refId: 'bookingNearestRef',
+        otherLabelId: 'bookingOtherLabel',
+        nameSelector: '.booking-card-name',
+        addrSelector: '.booking-card-addr',
+        distSelector: '.booking-card-dist',
+        distFallbackTag: 'div',
+        distFallbackClass: 'booking-card-dist'
+    });
 }
 
 /* =========================
@@ -655,12 +637,18 @@ document.addEventListener('DOMContentLoaded', function() {
     const nav = document.getElementById('navbar');
     const logo = document.getElementById('navLogoImg');
 
+    let _scrollTicking = false;
     window.addEventListener('scroll', function() {
-        const s = window.scrollY > 60;
-        nav.classList.toggle('scrolled', s);
-        const nextLogo = s ? '/images/logos/logo-terracota.svg' : '/images/logos/logo-nude.svg';
-        if (logo && !logo.src.endsWith(nextLogo)) logo.src = nextLogo;
-    });
+        if (_scrollTicking) return;
+        _scrollTicking = true;
+        requestAnimationFrame(function() {
+            const s = window.scrollY > 60;
+            nav.classList.toggle('scrolled', s);
+            const nextLogo = s ? '/images/logos/logo-terracota.svg' : '/images/logos/logo-nude.svg';
+            if (logo && !logo.src.endsWith(nextLogo)) logo.src = nextLogo;
+            _scrollTicking = false;
+        });
+    }, { passive: true });
 })();
 
 /* =========================
