@@ -1,189 +1,367 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- ============================================
+       PÁGINAS CORE
+       ============================================ -->
   <url>
     <loc>https://caracois.com.br/</loc>
-    <lastmod>2026-04-17</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://caracois.com.br/images/og/og-home.png</image:loc>
+      <image:title>Studio Caracóis — Especialistas em cabelos cacheados</image:title>
+    </image:image>
   </url>
-  <url>
-    <loc>https://caracois.com.br/central-de-conhecimento</loc>
-    <lastmod>2026-04-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
+
   <url>
     <loc>https://caracois.com.br/franquia</loc>
-    <lastmod>2026-04-17</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://caracois.com.br/images/og/og-franquia.png</image:loc>
+      <image:title>Franquia Studio Caracóis</image:title>
+    </image:image>
   </url>
+
   <url>
-    <loc>https://caracois.com.br/transicao-capilar</loc>
-    <lastmod>2026-04-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://caracois.com.br/central-de-conhecimento</loc>
+    <lastmod>2026-04-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://caracois.com.br/images/og/og-central.png</image:loc>
+      <image:title>Central de Conhecimento — Studio Caracóis</image:title>
+    </image:image>
   </url>
+
   <url>
-    <loc>https://caracois.com.br/cronograma-capilar-cacheado</loc>
-    <lastmod>2026-04-17</lastmod>
+    <loc>https://caracois.com.br/bee-cosmetics</loc>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://caracois.com.br/images/og/og-bee-cosmetics.png</image:loc>
+      <image:title>Bee Cosmetics — Catálogo</image:title>
+    </image:image>
   </url>
+
+  <!-- ============================================
+       UNIDADES (8)
+       ============================================ -->
   <url>
-    <loc>https://caracois.com.br/corte-para-cabelo-cacheado</loc>
-    <lastmod>2026-04-17</lastmod>
+    <loc>https://caracois.com.br/brasilia-aguas-claras</loc>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://caracois.com.br/images/og/og-aguas-claras.png</image:loc>
+      <image:title>Studio Caracóis — Águas Claras, Brasília</image:title>
+    </image:image>
   </url>
+
   <url>
-    <loc>https://caracois.com.br/como-cuidar-de-cabelos-cacheados</loc>
-    <lastmod>2026-04-17</lastmod>
+    <loc>https://caracois.com.br/brasilia-asa-norte</loc>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://caracois.com.br/images/og/og-asa-norte.png</image:loc>
+      <image:title>Studio Caracóis — Asa Norte, Brasília</image:title>
+    </image:image>
   </url>
+
+  <url>
+    <loc>https://caracois.com.br/brasilia-asa-sul</loc>
+    <lastmod>2026-04-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://caracois.com.br/images/og/og-asa-sul.png</image:loc>
+      <image:title>Studio Caracóis — Asa Sul, Brasília</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://caracois.com.br/brasilia-taguatinga</loc>
+    <lastmod>2026-04-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://caracois.com.br/images/og/og-taguatinga.png</image:loc>
+      <image:title>Studio Caracóis — Taguatinga, Brasília</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://caracois.com.br/goiania-setor-bueno</loc>
+    <lastmod>2026-04-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://caracois.com.br/images/og/og-goiania.png</image:loc>
+      <image:title>Studio Caracóis — Setor Bueno, Goiânia</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://caracois.com.br/recife-boa-viagem</loc>
+    <lastmod>2026-04-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://caracois.com.br/images/og/og-recife.png</image:loc>
+      <image:title>Studio Caracóis — Boa Viagem, Recife</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://caracois.com.br/sao-jose-dos-campos</loc>
+    <lastmod>2026-04-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://caracois.com.br/images/og/og-sjc.png</image:loc>
+      <image:title>Studio Caracóis — São José dos Campos</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://caracois.com.br/sao-paulo-tatuape</loc>
+    <lastmod>2026-04-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://caracois.com.br/images/og/og-tatuape.png</image:loc>
+      <image:title>Studio Caracóis — Tatuapé, São Paulo</image:title>
+    </image:image>
+  </url>
+
+  <!-- ============================================
+       CENTRAL DE CONHECIMENTO — 20 ARTIGOS
+       ============================================ -->
   <url>
     <loc>https://caracois.com.br/acidificacao-capilar</loc>
-    <lastmod>2026-04-17</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://caracois.com.br/images/og/og-acidificacao-capilar.png</image:loc>
+      <image:title>Acidificação Capilar — Studio Caracóis</image:title>
+    </image:image>
   </url>
-  <url>
-    <loc>https://caracois.com.br/porosidade-capilar</loc>
-    <lastmod>2026-04-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://caracois.com.br/finalizar-cabelo-cacheado</loc>
-    <lastmod>2026-04-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://caracois.com.br/tipos-de-cacho</loc>
-    <lastmod>2026-04-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://caracois.com.br/frizz-cabelo-cacheado</loc>
-    <lastmod>2026-04-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://caracois.com.br/day-after-cabelo-cacheado</loc>
-    <lastmod>2026-04-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://caracois.com.br/low-poo-no-poo</loc>
-    <lastmod>2026-04-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
+
   <url>
     <loc>https://caracois.com.br/cabelo-cacheado-infantil</loc>
-    <lastmod>2026-04-17</lastmod>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://caracois.com.br/images/og/og-cabelo-cacheado-infantil.png</image:loc>
+      <image:title>Cabelo Cacheado Infantil — Studio Caracóis</image:title>
+    </image:image>
   </url>
-  <url>
-    <loc>https://caracois.com.br/umectacao-capilar</loc>
-    <lastmod>2026-04-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://caracois.com.br/cabelo-cacheado-verao</loc>
-    <lastmod>2026-04-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://caracois.com.br/coloracao-cabelo-cacheado</loc>
-    <lastmod>2026-04-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://caracois.com.br/cabelo-crespo-cuidados</loc>
-    <lastmod>2026-04-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://caracois.com.br/como-escolher-produtos-cacheado</loc>
-    <lastmod>2026-04-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://caracois.com.br/corte-seco-vs-molhado</loc>
-    <lastmod>2026-04-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://caracois.com.br/reconstrucao-capilar</loc>
-    <lastmod>2026-04-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
+
   <url>
     <loc>https://caracois.com.br/cabelo-cacheado-masculino</loc>
-    <lastmod>2026-04-17</lastmod>
+    <lastmod>2026-04-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://caracois.com.br/images/og/og-cabelo-cacheado-masculino.png</image:loc>
+      <image:title>Cabelo Cacheado Masculino — Studio Caracóis</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://caracois.com.br/cabelo-cacheado-verao</loc>
+    <lastmod>2026-04-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://caracois.com.br/images/og/og-cabelo-cacheado-verao.png</image:loc>
+      <image:title>Cabelo Cacheado no Verão — Studio Caracóis</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://caracois.com.br/cabelo-crespo-cuidados</loc>
+    <lastmod>2026-04-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://caracois.com.br/images/og/og-cabelo-crespo-cuidados.png</image:loc>
+      <image:title>Cuidados com Cabelo Crespo — Studio Caracóis</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://caracois.com.br/coloracao-cabelo-cacheado</loc>
+    <lastmod>2026-04-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://caracois.com.br/images/og/og-coloracao-cabelo-cacheado.png</image:loc>
+      <image:title>Coloração em Cabelo Cacheado — Studio Caracóis</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://caracois.com.br/como-cuidar-de-cabelos-cacheados</loc>
+    <lastmod>2026-04-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://caracois.com.br/images/og/og-como-cuidar-de-cabelos-cacheados.png</image:loc>
+      <image:title>Como Cuidar de Cabelos Cacheados — Studio Caracóis</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://caracois.com.br/como-escolher-produtos-cacheado</loc>
+    <lastmod>2026-04-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://caracois.com.br/images/og/og-como-escolher-produtos-cacheado.png</image:loc>
+      <image:title>Como Escolher Produtos para Cachos — Studio Caracóis</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://caracois.com.br/corte-para-cabelo-cacheado</loc>
+    <lastmod>2026-04-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://caracois.com.br/images/og/og-corte-para-cabelo-cacheado.png</image:loc>
+      <image:title>Corte para Cabelo Cacheado — Studio Caracóis</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://caracois.com.br/corte-seco-vs-molhado</loc>
+    <lastmod>2026-04-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://caracois.com.br/images/og/og-corte-seco-vs-molhado.png</image:loc>
+      <image:title>Corte Seco vs Molhado — Studio Caracóis</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://caracois.com.br/cronograma-capilar-cacheado</loc>
+    <lastmod>2026-04-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://caracois.com.br/images/og/og-cronograma-capilar-cacheado.png</image:loc>
+      <image:title>Cronograma Capilar — Studio Caracóis</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://caracois.com.br/day-after-cabelo-cacheado</loc>
+    <lastmod>2026-04-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://caracois.com.br/images/og/og-day-after-cabelo-cacheado.png</image:loc>
+      <image:title>Day After em Cabelo Cacheado — Studio Caracóis</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://caracois.com.br/finalizar-cabelo-cacheado</loc>
+    <lastmod>2026-04-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://caracois.com.br/images/og/og-finalizar-cabelo-cacheado.png</image:loc>
+      <image:title>Como Finalizar Cabelo Cacheado — Studio Caracóis</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://caracois.com.br/frizz-cabelo-cacheado</loc>
+    <lastmod>2026-04-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://caracois.com.br/images/og/og-frizz-cabelo-cacheado.png</image:loc>
+      <image:title>Frizz em Cabelo Cacheado — Studio Caracóis</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://caracois.com.br/low-poo-no-poo</loc>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://caracois.com.br/images/og/og-low-poo-no-poo.png</image:loc>
+      <image:title>Low Poo e No Poo — Studio Caracóis</image:title>
+    </image:image>
   </url>
+
   <url>
-    <loc>https://caracois.com.br/unidades/sao-paulo-tatuape</loc>
-    <lastmod>2026-04-17</lastmod>
+    <loc>https://caracois.com.br/porosidade-capilar</loc>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://caracois.com.br/images/og/og-porosidade-capilar.png</image:loc>
+      <image:title>Porosidade Capilar — Studio Caracóis</image:title>
+    </image:image>
   </url>
+
   <url>
-    <loc>https://caracois.com.br/unidades/sao-jose-dos-campos</loc>
-    <lastmod>2026-04-17</lastmod>
+    <loc>https://caracois.com.br/reconstrucao-capilar</loc>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://caracois.com.br/images/og/og-reconstrucao-capilar.png</image:loc>
+      <image:title>Reconstrução Capilar — Studio Caracóis</image:title>
+    </image:image>
   </url>
+
   <url>
-    <loc>https://caracois.com.br/unidades/brasilia-aguas-claras</loc>
-    <lastmod>2026-04-17</lastmod>
+    <loc>https://caracois.com.br/tipos-de-cacho</loc>
+    <lastmod>2026-04-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://caracois.com.br/images/og/og-tipos-de-cacho.png</image:loc>
+      <image:title>Tipos de Cacho — Studio Caracóis</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://caracois.com.br/transicao-capilar</loc>
+    <lastmod>2026-04-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://caracois.com.br/images/og/og-transicao-capilar.png</image:loc>
+      <image:title>Transição Capilar — Studio Caracóis</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://caracois.com.br/umectacao-capilar</loc>
+    <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://caracois.com.br/images/og/og-umectacao-capilar.png</image:loc>
+      <image:title>Umectação Capilar — Studio Caracóis</image:title>
+    </image:image>
   </url>
-  <url>
-    <loc>https://caracois.com.br/unidades/brasilia-asa-norte</loc>
-    <lastmod>2026-04-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://caracois.com.br/unidades/brasilia-asa-sul</loc>
-    <lastmod>2026-04-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://caracois.com.br/unidades/brasilia-taguatinga</loc>
-    <lastmod>2026-04-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://caracois.com.br/unidades/goiania-setor-bueno</loc>
-    <lastmod>2026-04-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://caracois.com.br/unidades/recife-boa-viagem</loc>
-    <lastmod>2026-04-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
+
 </urlset>

@@ -1,20 +1,126 @@
-User-agent: *
-Allow: /
-Disallow: /admin/
-Disallow: /*.json$
+# =====================================================
+# robots.txt — Studio Caracóis
+# https://caracois.com.br
+# Política: indexação aberta para todos os crawlers,
+# incluindo bots de IA (GPT, Claude, Perplexity, Gemini etc.)
+# =====================================================
 
-# Sitemaps
-Sitemap: https://caracois.com.br/sitemap.xml
-
-# Crawl-delay (opcional, respeita bots educados)
-Crawl-delay: 1
-
-# Bing
-User-agent: bingbot
-Allow: /
-Sitemap: https://caracois.com.br/sitemap.xml
-
-# Google
+# Crawlers tradicionais
 User-agent: Googlebot
 Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Googlebot-News
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+User-agent: TelegramBot
+Allow: /
+
+User-agent: Pinterest
+Allow: /
+
+# Bots de IA generativa (busca, citação e indexação)
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: Diffbot
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: Meta-ExternalFetcher
+Allow: /
+
+User-agent: ImagesiftBot
+Allow: /
+
+User-agent: Mistral-AI-Bot
+Allow: /
+
+User-agent: YouBot
+Allow: /
+
+# Default: liberado para qualquer outro crawler
+User-agent: *
+Allow: /
+
+# Sitemap
 Sitemap: https://caracois.com.br/sitemap.xml
+
+# Host canônico
+Host: https://caracois.com.br

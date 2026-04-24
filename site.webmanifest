@@ -1,23 +1,123 @@
 {
-  "name": "Studio Caracóis",
-  "short_name": "Caracóis",
-  "description": "Salão especialista em cabelos cacheados",
-  "start_url": "/",
+  "name": "Studio Caracóis — Especialistas em cabelos cacheados",
+  "short_name": "Studio Caracóis",
+  "description": "Rede especializada em cabelos com curvatura. 8 unidades em 4 estados, atendimento 100% personalizado para cachos e crespos.",
+  "lang": "pt-BR",
+  "dir": "ltr",
+  "scope": "/",
+  "start_url": "/?utm_source=pwa&utm_medium=launcher",
+  "id": "/",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui", "browser"],
+  "orientation": "portrait-primary",
+  "theme_color": "#9B4442",
+  "background_color": "#141414",
+  "categories": ["beauty", "lifestyle", "shopping"],
   "icons": [
     {
-      "src": "/web-app-manifest-192x192.png",
+      "src": "/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/images/icons/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/web-app-manifest-512x512.png",
+      "src": "/images/icons/icon-192-maskable.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/images/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/images/icons/icon-512-maskable.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
     }
   ],
-  "theme_color": "#9B4442",
-  "background_color": "#EFD9D7",
-  "display": "standalone"
+  "screenshots": [
+    {
+      "src": "/images/og/og-home.png",
+      "sizes": "1200x630",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Studio Caracóis — Página inicial"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Agendar avaliação",
+      "short_name": "Agendar",
+      "description": "Agende sua avaliação gratuita em uma das unidades",
+      "url": "/?utm_source=pwa&utm_medium=shortcut&action=booking",
+      "icons": [
+        {
+          "src": "/images/icons/shortcut-booking.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Falar no WhatsApp",
+      "short_name": "WhatsApp",
+      "description": "Fale direto com o Studio mais próximo",
+      "url": "/?utm_source=pwa&utm_medium=shortcut&action=whatsapp",
+      "icons": [
+        {
+          "src": "/images/icons/shortcut-whatsapp.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Central de Conhecimento",
+      "short_name": "Conteúdos",
+      "description": "Aprenda sobre cuidados com cachos",
+      "url": "/central-de-conhecimento?utm_source=pwa&utm_medium=shortcut",
+      "icons": [
+        {
+          "src": "/images/icons/shortcut-knowledge.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Bee Cosmetics",
+      "short_name": "Bee",
+      "description": "Catálogo da Bee Cosmetics",
+      "url": "/bee-cosmetics?utm_source=pwa&utm_medium=shortcut",
+      "icons": [
+        {
+          "src": "/images/icons/shortcut-bee.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
 }
