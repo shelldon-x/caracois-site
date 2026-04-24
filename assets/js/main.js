@@ -1,3 +1,6 @@
+// Remove 'no-js' class assim que o JS rodar (fallback para .reveal)
+document.documentElement.classList.remove('no-js');
+
 /* =========================
    STATE & CONFIG
 ========================= */
