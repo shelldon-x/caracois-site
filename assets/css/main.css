@@ -2864,3 +2864,10 @@ body.ui-locked {
     background: var(--terracota);
     color: #FFFFFF;
 }
+
+
+/* Fallback defensivo: se JS não executar, garante que .reveal fique visível */
+.no-js .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+}

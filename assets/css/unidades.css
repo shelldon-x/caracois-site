@@ -16,6 +16,12 @@
 .mobile-menu-cta { margin-top: 20px; width: 100%; justify-content: center; }
 .u-text-gold { color: var(--gold); }
 
+
+/* utilitários adicionais (migração de inline styles) */
+.emoji-fallback { display: none; font-size: 1.1rem; line-height: 1; }
+.u-text-white { color: var(--white); }
+.unit-mb-18 { margin-bottom: 18px; }
+
 /* botões locais */
 .btn-outline-soft-light { border-color: rgba(255,255,255,0.35); }
 .btn-map {
