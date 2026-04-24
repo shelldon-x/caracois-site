@@ -1,36 +1,122 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+
   "cleanUrls": true,
   "trailingSlash": false,
-  "redirects": [
+
+  "headers": [
     {
-      "source": "/franquia.html",
-      "destination": "/franquia",
-      "permanent": true
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "Permissions-Policy", "value": "geolocation=(self), camera=(), microphone=(), payment=(), usb=(), midi=(), magnetometer=(), gyroscope=(), accelerometer=()" },
+        { "key": "Strict-Transport-Security", "value": "max-age=63072000; includeSubDomains; preload" },
+        { "key": "X-DNS-Prefetch-Control", "value": "on" }
+      ]
     },
     {
-      "source": "/central-de-conhecimento.html",
-      "destination": "/central-de-conhecimento",
-      "permanent": true
+      "source": "/assets/css/(.*).css",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" },
+        { "key": "Content-Type", "value": "text/css; charset=utf-8" }
+      ]
     },
     {
-      "source": "/como-cuidar-de-cabelos-cacheados.html",
-      "destination": "/como-cuidar-de-cabelos-cacheados",
-      "permanent": true
+      "source": "/assets/js/(.*).js",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" },
+        { "key": "Content-Type", "value": "application/javascript; charset=utf-8" }
+      ]
     },
     {
-      "source": "/corte-para-cabelo-cacheado.html",
-      "destination": "/corte-para-cabelo-cacheado",
-      "permanent": true
+      "source": "/images/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
     },
     {
-      "source": "/cronograma-capilar-cacheado.html",
-      "destination": "/cronograma-capilar-cacheado",
-      "permanent": true
+      "source": "/(.*).(png|jpg|jpeg|webp|avif|svg|ico|gif)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
     },
     {
-      "source": "/transicao-capilar.html",
-      "destination": "/transicao-capilar",
-      "permanent": true
+      "source": "/(.*).(woff|woff2|ttf|otf|eot)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" },
+        { "key": "Access-Control-Allow-Origin", "value": "*" }
+      ]
+    },
+    {
+      "source": "/(.*).html",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate, s-maxage=3600" }
+      ]
+    },
+    {
+      "source": "/sitemap.xml",
+      "headers": [
+        { "key": "Content-Type", "value": "application/xml; charset=utf-8" },
+        { "key": "Cache-Control", "value": "public, max-age=3600, must-revalidate" }
+      ]
+    },
+    {
+      "source": "/robots.txt",
+      "headers": [
+        { "key": "Content-Type", "value": "text/plain; charset=utf-8" },
+        { "key": "Cache-Control", "value": "public, max-age=86400, must-revalidate" }
+      ]
+    },
+    {
+      "source": "/site.webmanifest",
+      "headers": [
+        { "key": "Content-Type", "value": "application/manifest+json; charset=utf-8" },
+        { "key": "Cache-Control", "value": "public, max-age=86400, must-revalidate" }
+      ]
     }
+  ],
+
+  "redirects": [
+    { "source": "/index", "destination": "/", "permanent": true },
+    { "source": "/index.html", "destination": "/", "permanent": true },
+    { "source": "/home", "destination": "/", "permanent": true },
+
+    { "source": "/unidades", "destination": "/#unidades", "permanent": false },
+    { "source": "/contato", "destination": "/#unidades", "permanent": false },
+    { "source": "/conhecimento", "destination": "/central-de-conhecimento", "permanent": true },
+    { "source": "/blog", "destination": "/central-de-conhecimento", "permanent": true },
+    { "source": "/produtos", "destination": "/bee-cosmetics", "permanent": true },
+    { "source": "/bee", "destination": "/bee-cosmetics", "permanent": true },
+
+    { "source": "/asa-sul", "destination": "/brasilia-asa-sul", "permanent": true },
+    { "source": "/asa-norte", "destination": "/brasilia-asa-norte", "permanent": true },
+    { "source": "/aguas-claras", "destination": "/brasilia-aguas-claras", "permanent": true },
+    { "source": "/taguatinga", "destination": "/brasilia-taguatinga", "permanent": true },
+    { "source": "/goiania", "destination": "/goiania-setor-bueno", "permanent": true },
+    { "source": "/recife", "destination": "/recife-boa-viagem", "permanent": true },
+    { "source": "/sjc", "destination": "/sao-jose-dos-campos", "permanent": true },
+    { "source": "/tatuape", "destination": "/sao-paulo-tatuape", "permanent": true },
+
+    { "source": "/transicao", "destination": "/transicao-capilar", "permanent": true },
+    { "source": "/porosidade", "destination": "/porosidade-capilar", "permanent": true },
+    { "source": "/cronograma", "destination": "/cronograma-capilar-cacheado", "permanent": true },
+    { "source": "/umectacao", "destination": "/umectacao-capilar", "permanent": true },
+    { "source": "/reconstrucao", "destination": "/reconstrucao-capilar", "permanent": true },
+    { "source": "/acidificacao", "destination": "/acidificacao-capilar", "permanent": true },
+    { "source": "/coloracao", "destination": "/coloracao-cabelo-cacheado", "permanent": true },
+    { "source": "/frizz", "destination": "/frizz-cabelo-cacheado", "permanent": true },
+    { "source": "/finalizacao", "destination": "/finalizar-cabelo-cacheado", "permanent": true },
+    { "source": "/day-after", "destination": "/day-after-cabelo-cacheado", "permanent": true },
+    { "source": "/lowpoo", "destination": "/low-poo-no-poo", "permanent": true },
+    { "source": "/nopoo", "destination": "/low-poo-no-poo", "permanent": true },
+    { "source": "/cachos", "destination": "/tipos-de-cacho", "permanent": true },
+    { "source": "/crespo", "destination": "/cabelo-crespo-cuidados", "permanent": true }
+  ],
+
+  "rewrites": [
+    { "source": "/wa", "destination": "/" },
+    { "source": "/whatsapp", "destination": "/" }
   ]
 }
