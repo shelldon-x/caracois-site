@@ -1033,6 +1033,10 @@ section { padding: 100px 0; }
     min-width: 0;
     width: 100%;
 }
+
+/* Card extra do antes/depois — só aparece no mobile, substituindo o highlight slider */
+.mobile-only-card { display: none; }
+
 .before-after-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
 
 .before-after-images {
@@ -2590,6 +2594,7 @@ body.ui-locked {
         gap: 18px;
     }
     .comparison-slider { display: none; }
+    .mobile-only-card { display: block; }
 
     .sticky-cta {
         display: inline-flex;
