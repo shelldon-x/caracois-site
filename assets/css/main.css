@@ -2876,3 +2876,372 @@ body.ui-locked {
     opacity: 1 !important;
     transform: none !important;
 }
+
+/* =========================================================
+   24. HARDENING VISUAL + PREMIUM UX — deploy seguro
+   Objetivo: travar modo claro, melhorar contraste, acessibilidade,
+   percepção premium e consistência sem alterar copy ou estrutura.
+========================================================= */
+
+/* ---------- 24.1 Color scheme: bloquear dark mode automático ---------- */
+:root {
+    color-scheme: light;
+}
+
+html {
+    color-scheme: light;
+    background: var(--white);
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+}
+
+body {
+    background: var(--white);
+    color: var(--text);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root,
+    html {
+        color-scheme: light;
+    }
+
+    html,
+    body {
+        background: var(--white) !important;
+        color: var(--text) !important;
+    }
+
+    img,
+    svg,
+    video,
+    picture,
+    canvas {
+        filter: none !important;
+        mix-blend-mode: normal !important;
+    }
+
+    input,
+    textarea,
+    select,
+    button {
+        color-scheme: light;
+    }
+}
+
+/* ---------- 24.2 Contraste refinado em áreas escuras ---------- */
+.hero-sub,
+.page-hero-sub,
+.hero-local .hero-sub,
+.franquia-hero .hero-sub,
+.section-dark .section-desc,
+.footer-desc,
+.footer-col p {
+    color: rgba(255,255,255,0.76);
+}
+
+.hero-badge,
+.page-hero-badge,
+.franquia-hero .hero-badge {
+    color: var(--gold-light);
+    border-color: rgba(196,162,101,0.36);
+    background: rgba(196,162,101,0.16);
+}
+
+.section-dark .section-label,
+.hero-stat-num,
+.market-card-num {
+    text-shadow: 0 1px 18px rgba(196,162,101,0.12);
+}
+
+/* ---------- 24.3 Footer blindado e legível ---------- */
+footer,
+.site-footer {
+    background: var(--black);
+    color: var(--white);
+}
+
+footer a,
+.footer-col a,
+.footer-links a {
+    color: rgba(255,255,255,0.72);
+}
+
+footer a:hover,
+.footer-col a:hover,
+.footer-links a:hover {
+    color: var(--gold);
+}
+
+.footer-col h3,
+.footer-col h4,
+.footer-title {
+    color: var(--white);
+}
+
+.footer-bottom,
+.footer-legal {
+    color: rgba(255,255,255,0.55);
+}
+
+/* ---------- 24.4 Navegação: estabilidade visual e contraste ---------- */
+nav {
+    isolation: isolate;
+}
+
+nav.scrolled {
+    background: rgba(255,255,255,0.975);
+    border-bottom: 1px solid rgba(0,0,0,0.045);
+}
+
+nav.scrolled .nav-links a,
+nav.scrolled .nav-social a {
+    color: var(--text);
+}
+
+.nav-links a,
+.nav-social a,
+.nav-cta-btn {
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* ---------- 24.5 Cards: acabamento premium sem alterar layout ---------- */
+.unit-card,
+.knowledge-card,
+.market-card,
+.bee-product-card,
+.franquia-card,
+.diff-card,
+.service-card,
+.testimonial-card,
+.article-card,
+.article-cta-inline,
+.info-box {
+    backface-visibility: hidden;
+    transform: translateZ(0);
+}
+
+.unit-card:hover,
+.knowledge-card:hover,
+.market-card:hover,
+.bee-product-card:hover,
+.franquia-card:hover,
+.diff-card:hover,
+.service-card:hover,
+.article-card:hover {
+    will-change: transform;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .unit-card:hover,
+    .knowledge-card:hover,
+    .market-card:hover,
+    .bee-product-card:hover,
+    .franquia-card:hover,
+    .diff-card:hover,
+    .service-card:hover,
+    .article-card:hover {
+        filter: saturate(1.02);
+    }
+}
+
+/* ---------- 24.6 Botões: microinteração premium e consistência ---------- */
+.btn,
+.nav-cta-btn,
+.sticky-cta,
+button[class*="btn"],
+a[class*="btn"] {
+    min-height: 44px;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.btn:active,
+.nav-cta-btn:active,
+.sticky-cta:active,
+button[class*="btn"]:active,
+a[class*="btn"]:active {
+    transform: scale(0.985);
+}
+
+.btn-primary,
+.nav-cta-btn {
+    box-shadow: 0 8px 24px rgba(155,68,66,0.22);
+}
+
+.btn-primary:hover,
+.nav-cta-btn:hover {
+    box-shadow: 0 12px 32px rgba(155,68,66,0.30);
+}
+
+/* ---------- 24.7 Acessibilidade: foco visível mais elegante ---------- */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[role="button"]:focus-visible,
+[tabindex]:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 4px;
+    border-radius: 8px;
+}
+
+.nav-cta-btn:focus-visible,
+.btn-primary:focus-visible,
+.sticky-cta:focus-visible {
+    outline-color: var(--gold-light);
+    outline-offset: 5px;
+}
+
+/* ---------- 24.8 Modal e overlays: proteção visual ---------- */
+.modal,
+.modal-overlay,
+.market-modal,
+.whatsapp-modal,
+.units-modal {
+    color-scheme: light;
+}
+
+.modal-content,
+.market-modal-content,
+.whatsapp-modal-content,
+.units-modal-content {
+    background: var(--white);
+    color: var(--text);
+    box-shadow: 0 28px 90px rgba(0,0,0,0.22);
+}
+
+.modal-content p,
+.market-modal-content p,
+.whatsapp-modal-content p,
+.units-modal-content p {
+    color: var(--text-light);
+}
+
+/* ---------- 24.9 Formulários e campos ---------- */
+input,
+textarea,
+select {
+    background: var(--white);
+    color: var(--text);
+    border-color: var(--border);
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: rgba(42,42,42,0.48);
+}
+
+/* ---------- 24.10 Imagens, logos e embeds ---------- */
+img,
+picture,
+video,
+iframe {
+    max-width: 100%;
+}
+
+iframe {
+    color-scheme: light;
+}
+
+.nav-logo img,
+.footer-logo img,
+.logo img,
+.hero-watermark img {
+    filter: none !important;
+}
+
+/* ---------- 24.11 Mobile: refinamento sem quebrar layout ---------- */
+@media (max-width: 768px) {
+    .container {
+        padding-left: max(20px, env(safe-area-inset-left));
+        padding-right: max(20px, env(safe-area-inset-right));
+    }
+
+    .hero,
+    .franquia-hero,
+    .page-hero,
+    .bee-cat-hero,
+    .hero-local {
+        padding-top: 124px;
+    }
+
+    .hero-sub,
+    .page-hero-sub,
+    .hero-local .hero-sub,
+    .franquia-hero .hero-sub {
+        color: rgba(255,255,255,0.80);
+    }
+
+    .nav-links a,
+    .mobile-menu a {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+    }
+
+    .sticky-cta {
+        backdrop-filter: blur(12px);
+    }
+}
+
+@media (max-width: 420px) {
+    .hero-badge,
+    .page-hero-badge,
+    .franquia-hero .hero-badge {
+        font-size: 0.68rem;
+        padding: 8px 14px;
+    }
+
+    .btn,
+    .nav-cta-btn,
+    button[class*="btn"],
+    a[class*="btn"] {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* ---------- 24.12 Movimento reduzido: manter premium sem desconforto ---------- */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto !important;
+    }
+
+    .btn,
+    .nav-cta-btn,
+    .sticky-cta,
+    .unit-card,
+    .knowledge-card,
+    .market-card,
+    .bee-product-card,
+    .franquia-card,
+    .diff-card,
+    .service-card,
+    .article-card {
+        transition-duration: 0.01ms !important;
+        transform: none !important;
+    }
+}
+
+/* ---------- 24.13 Impressão e compartilhamento interno ---------- */
+@media print {
+    nav,
+    .sticky-cta,
+    .whatsapp-float,
+    .modal,
+    .mobile-toggle {
+        display: none !important;
+    }
+
+    body {
+        background: #fff !important;
+        color: #000 !important;
+    }
+
+    a {
+        color: #000 !important;
+        text-decoration: underline;
+    }
+}
