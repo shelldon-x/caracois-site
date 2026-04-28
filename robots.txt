@@ -1,11 +1,15 @@
 # =====================================================
 # robots.txt — Studio Caracóis
 # https://caracois.com.br
-# Política: indexação totalmente aberta (SEM restrições)
+# Política: indexação aberta com sitemap principal
 # =====================================================
 
 User-agent: *
 Allow: /
 
-# Sitemap principal
+# Arquivos importantes para compartilhamento e SEO
+Allow: /images/
+Allow: /images/og/
+Allow: /assets/
+
 Sitemap: https://caracois.com.br/sitemap.xml
