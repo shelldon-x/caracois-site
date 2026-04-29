@@ -297,9 +297,10 @@
     }
 
     const bookingGrid = $('#bookingGrid');
-    if (bookingGrid && !bookingGrid.dataset.rendered) {
+    if (bookingGrid) {
+      // Re-render sempre ao abrir para impedir links antigos em cache/HTML legado.
       bookingGrid.innerHTML = UNITS.map((u) => `
-        <a class="booking-card" href="${esc(u.booking || waLink(u))}" data-cta="agendar_unidade" data-channel="booking" data-unit="${esc(u.id)}" data-unit-slug="${esc(u.slug)}">
+        <a class="booking-card" href="${esc(u.booking || ('/agendar/' + u.slug))}" data-cta="agendar_unidade" data-channel="booking" data-unit="${esc(u.id)}" data-unit-slug="${esc(u.slug)}">
           <div class="booking-card-content">
             <div class="booking-card-name">${esc(u.name)}</div>
             <div class="booking-card-addr">${esc(u.address)}</div>
@@ -421,19 +422,6 @@
     return null;
   }
 
-  function initBookingNavigationFallback() {
-    document.addEventListener('click', (event) => {
-      const link = event.target.closest('a[href^="/agendar/"]');
-      if (!link) return;
-      if (event.defaultPrevented || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button === 1) return;
-      event.preventDefault();
-      const href = link.getAttribute('href');
-      closeModal('bookingModal');
-      setScrollLock(false);
-      setTimeout(() => { window.location.assign(href); }, 80);
-    }, { capture: false });
-  }
-
   function initTracking() {
     appendAttributionToBookingLinks();
     document.addEventListener('click', (event) => {
@@ -477,12 +465,22 @@
     renderUnits();
     appendAttributionToBookingLinks();
     enhanceWhatsAppLinks();
-    initBookingNavigationFallback();
     initNav();
     initReveal();
     initTracking();
     initEscClose();
   });
+
+
+  // Defesa extra: qualquer card/link do modal de agendamento deve sempre seguir /agendar/<slug>.
+  document.addEventListener('click', function(event) {
+    const card = event.target.closest && event.target.closest('#bookingUnitItems a.booking-card[data-unit-slug]');
+    if (!card) return;
+    const slug = card.dataset.unitSlug;
+    if (slug && !card.getAttribute('href').includes('/agendar/')) {
+      card.setAttribute('href', '/agendar/' + slug);
+    }
+  }, true);
 
   window.openModal = openModal;
   window.closeModal = closeModal;
