@@ -662,11 +662,18 @@ body.article-boxed .info-box ul li:last-child { border-bottom: none; }
     .related-card-num { font-size: 1.5rem; }
 }
 
-
-/* ARTICLES STABILITY PATCH — 20260429-stability-patch-10-10 */
-.article-hero,
-.article-content,
-.article-body {
-    opacity: 1;
-    visibility: visible;
+/* HARD FIX ARTICLES — 20260429-hardfix-pages-bee */
+body[data-page-type="article"] .breadcrumb {
+    display: none !important;
 }
+body[data-page-type="article"] .breadcrumb-list {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+body[data-page-type="article"] .reveal {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+}
+

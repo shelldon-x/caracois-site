@@ -3671,3 +3671,112 @@ iframe {
     }
 }
 
+
+/* =========================================================
+   HARD FIX — Artigos + Bee render
+   Build: 20260429-hardfix-pages-bee
+========================================================= */
+
+/* Se a classe no-js ou reveal ficar presa, não deixa conteúdo invisível */
+html.no-js .reveal,
+.reveal,
+.appear,
+.fade-in,
+.animate,
+[data-aos],
+.aos-init,
+.aos-animate {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    animation: none !important;
+}
+
+/* Proteção dos artigos quando o navegador estiver com cache antigo */
+body[data-page-type="article"] nav,
+body[data-page-type="article"] #navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+body[data-page-type="article"] .breadcrumb {
+    display: none !important;
+}
+
+body[data-page-type="article"] .breadcrumb-list {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+body[data-page-type="article"] .article-layout {
+    padding-top: 72px;
+}
+
+body[data-page-type="article"] .article-body {
+    max-width: 100%;
+}
+
+body[data-page-type="article"] .article-body img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Bee: grid nunca pode ficar invisível */
+.bee-cat-products-grid,
+#beeProductsGrid,
+#beeProducts {
+    min-height: 0 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.bee-cat-products-grid--loading::before {
+    content: none !important;
+    display: none !important;
+}
+
+.bee-cat-products-grid .bee-product-card,
+#beeProductsGrid .bee-product-card,
+#beeProducts .bee-product-card {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none;
+}
+
+.bee-products-empty {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: var(--text-muted);
+    padding: 40px 20px;
+    background: var(--nude-ultra);
+    border-radius: 20px;
+}
+
+/* Modal ficha Bee */
+.product-modal-overlay.active,
+.product-modal-overlay.open,
+.product-modal-overlay.is-open,
+#productModal.active,
+#productModal.open,
+#productModal.is-open {
+    display: flex !important;
+}
+
+.product-modal .pm-grid,
+#productModalContent {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Modal geral Bee */
+.bee-modal-overlay.active,
+.bee-modal-overlay.open,
+.bee-modal-overlay.is-open,
+#beeModal.active,
+#beeModal.open,
+#beeModal.is-open {
+    display: flex !important;
+}
+
