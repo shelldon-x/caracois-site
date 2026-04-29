@@ -3248,10 +3248,39 @@ iframe {
 
 
 /* =========================================================
-   PATCH FINAL — Modal Bee Cosmetics / ficha de produto
-   Build: 20260429-home-bee-modal-finalfix
-   Corrige o layout sem transformar #productModalContent em outro modal.
+   PATCH 100% — Bee cards + modal de produto
+   Build: 20260429-bee-final-100
 ========================================================= */
+
+/* Fallback premium quando algum arquivo de produto não existir no deploy */
+.bee-image-placeholder {
+    width: min(220px, 70%);
+    aspect-ratio: 1 / 1;
+    border-radius: 28px;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    background:
+        radial-gradient(circle at 35% 25%, rgba(196,162,101,0.22), transparent 42%),
+        linear-gradient(145deg, rgba(239,217,215,0.70), rgba(255,255,255,0.9));
+    border: 1px solid rgba(155,68,66,0.12);
+    color: var(--terracota);
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    line-height: 1;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.65);
+}
+.bee-image-placeholder span {
+    opacity: 0.9;
+}
+.bee-product-img.bee-image-missing,
+.pm-image.bee-image-missing {
+    background:
+        radial-gradient(circle at 50% 20%, rgba(239,217,215,0.34), transparent 50%),
+        linear-gradient(135deg, #faf7f6, #fff);
+}
+
+/* Modal ficha de produto — caixa principal */
 .product-modal-overlay,
 #productModal {
     position: fixed;
@@ -3265,7 +3294,6 @@ iframe {
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
 }
-
 .product-modal-overlay.open,
 .product-modal-overlay.active,
 .product-modal-overlay.is-open,
@@ -3274,7 +3302,6 @@ iframe {
 #productModal.is-open {
     display: flex;
 }
-
 .product-modal-overlay .product-modal,
 #productModal .product-modal {
     position: relative;
@@ -3288,12 +3315,10 @@ iframe {
     -webkit-overflow-scrolling: touch;
     padding: 0;
 }
-
 #productModalContent {
     display: block;
     width: 100%;
 }
-
 .product-modal .pm-close {
     position: absolute;
     top: 14px;
@@ -3312,7 +3337,6 @@ iframe {
     line-height: 1;
     transition: all 0.3s var(--ease);
 }
-
 .product-modal .pm-close:hover {
     background: var(--terracota);
     color: var(--white);
@@ -3320,10 +3344,9 @@ iframe {
 
 .product-modal .pm-grid {
     display: grid;
-    grid-template-columns: minmax(280px, 46%) 1fr;
+    grid-template-columns: minmax(280px, 44%) 1fr;
     min-height: 500px;
 }
-
 .product-modal .pm-image {
     display: flex;
     align-items: center;
@@ -3333,20 +3356,17 @@ iframe {
     background: linear-gradient(135deg, var(--bg-soft), #fff);
     border-radius: 28px 0 0 28px;
 }
-
 .product-modal .pm-image img {
     width: min(330px, 100%);
     max-height: 390px;
     object-fit: contain;
 }
-
 .product-modal .pm-content {
     padding: clamp(34px, 5vw, 52px) clamp(28px, 4vw, 44px);
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
-
 .product-modal .pm-eyebrow {
     font-size: 0.68rem;
     letter-spacing: 0.14em;
@@ -3355,7 +3375,6 @@ iframe {
     font-weight: 700;
     margin-bottom: 8px;
 }
-
 .product-modal .pm-content h2 {
     font-family: var(--serif);
     font-size: clamp(2rem, 3.6vw, 2.75rem);
@@ -3364,7 +3383,6 @@ iframe {
     color: var(--black);
     margin-bottom: 14px;
 }
-
 .product-modal .pm-desc {
     font-size: 0.96rem;
     color: var(--text-light);
@@ -3372,21 +3390,18 @@ iframe {
     font-weight: 300;
     margin-bottom: 18px;
 }
-
 .product-modal .pm-specs {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 12px;
     margin-bottom: 18px;
 }
-
 .product-modal .pm-spec {
     padding: 12px 14px;
     background: var(--nude-ultra);
     border-radius: 12px;
     border: 1px solid rgba(155,68,66,0.08);
 }
-
 .product-modal .pm-spec span {
     display: block;
     font-size: 0.65rem;
@@ -3396,22 +3411,19 @@ iframe {
     font-weight: 600;
     margin-bottom: 4px;
 }
-
 .product-modal .pm-spec strong {
     font-size: 0.86rem;
     color: var(--black);
     font-weight: 700;
     text-transform: capitalize;
 }
-
 .product-modal .pm-pills {
     margin-bottom: 22px;
 }
-
 .product-modal .pm-section {
     margin-bottom: 16px;
+    padding-top: 2px;
 }
-
 .product-modal .pm-section h3 {
     font-family: var(--serif);
     font-size: 1.22rem;
@@ -3419,61 +3431,74 @@ iframe {
     margin-bottom: 6px;
     font-weight: 600;
 }
-
 .product-modal .pm-section p {
     color: var(--text-muted);
     font-size: 0.88rem;
     line-height: 1.55;
 }
-
 .product-modal .pm-markets {
     display: grid;
     gap: 10px;
 }
 
+/* Marketplace dentro da ficha: mais legível, sem ícone escuro apagado */
 .product-modal .pm-market-link {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    gap: 12px;
-    min-height: 56px;
-    padding: 12px 16px;
+    gap: 14px;
+    min-height: 62px;
+    padding: 12px 18px;
     border-radius: 999px;
     text-decoration: none;
-    background: linear-gradient(135deg, var(--terracota), var(--terracota-dark));
-    color: var(--white);
-    box-shadow: 0 12px 26px rgba(155,68,66,0.18);
-    transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+    background: var(--nude-ultra);
+    color: var(--black);
+    border: 1px solid rgba(155,68,66,0.12);
+    box-shadow: 0 10px 22px rgba(0,0,0,0.04);
+    transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), border-color 0.25s var(--ease), background 0.25s var(--ease);
 }
-
 .product-modal .pm-market-link:hover {
     transform: translateY(-2px);
-    box-shadow: 0 16px 34px rgba(155,68,66,0.24);
+    border-color: rgba(155,68,66,0.28);
+    background: #fff;
+    box-shadow: 0 16px 34px rgba(155,68,66,0.10);
 }
-
-.product-modal .pm-market-link img {
-    width: 24px;
-    height: 24px;
-    object-fit: contain;
-    filter: brightness(0) invert(1);
+.product-modal .pm-market-icon {
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    border-radius: 14px;
+    background: var(--white);
+    border: 1px solid rgba(0,0,0,0.06);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.06);
     flex-shrink: 0;
 }
-
-.product-modal .pm-market-link span {
+.product-modal .pm-market-icon img {
+    width: 26px;
+    height: 26px;
+    object-fit: contain;
+    filter: none !important;
+}
+.product-modal .pm-market-icon--fallback::before {
+    content: "↗";
+    font-size: 1.1rem;
+    color: var(--terracota);
+}
+.product-modal .pm-market-copy {
     display: flex;
     flex-direction: column;
     line-height: 1.15;
 }
-
-.product-modal .pm-market-link strong {
-    font-size: 0.9rem;
-    color: var(--white);
+.product-modal .pm-market-copy strong {
+    color: var(--black);
+    font-size: 0.95rem;
+    font-weight: 700;
 }
-
-.product-modal .pm-market-link small {
-    font-size: 0.72rem;
-    opacity: 0.75;
-    color: var(--white);
+.product-modal .pm-market-copy small {
+    color: var(--text-muted);
+    font-size: 0.76rem;
+    font-weight: 500;
 }
 
 @media (max-width: 760px) {
@@ -3481,34 +3506,32 @@ iframe {
     #productModal {
         padding: 14px;
     }
-
     .product-modal-overlay .product-modal,
     #productModal .product-modal {
         max-height: calc(100dvh - 28px);
         border-radius: 24px;
     }
-
     .product-modal .pm-grid {
         grid-template-columns: 1fr;
         min-height: unset;
     }
-
     .product-modal .pm-image {
         min-height: 280px;
         padding: 28px 24px;
         border-radius: 24px 24px 0 0;
     }
-
     .product-modal .pm-image img {
         max-height: 270px;
     }
-
     .product-modal .pm-content {
         padding: 28px 24px 34px;
     }
-
     .product-modal .pm-specs {
         grid-template-columns: 1fr;
+    }
+    .product-modal .pm-market-link {
+        min-height: 58px;
+        padding: 11px 14px;
     }
 }
 
