@@ -2,7 +2,7 @@
 (function () {
   'use strict';
 
-  const BUILD_VERSION = '20260429-booksy-instant-v1';
+  const BUILD_VERSION = '20260429-unidades-bee-10-10';
 
   document.documentElement.classList.remove('no-js');
   document.documentElement.classList.add('js');

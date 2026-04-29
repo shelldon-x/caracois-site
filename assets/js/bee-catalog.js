@@ -1,12 +1,12 @@
 /* Bee Cosmetics — catálogo frontend rico 100%
-   Build: 20260429-bee-rich-v2
+   Build: 20260429-unidades-bee-10-10
    Dados enriquecidos: volume, pH, ANVISA, código de barras, descrição, modo de usar e composição.
    Sem campo de ativos principais, conforme solicitado.
 */
 (function () {
   'use strict';
 
-  const BUILD_VERSION = '20260429-booksy-instant-v1';
+  const BUILD_VERSION = '20260429-unidades-bee-10-10';
   const PRODUCTS = [
     {
         "id": "born-to-bee",
