@@ -1,12 +1,12 @@
 /* Bee Cosmetics — catálogo frontend rico 100%
-   Build: 20260429-bee-page-render-fix
+   Build: 20260429-stability-patch-10-10
    Dados enriquecidos: volume, pH, ANVISA, código de barras, descrição, modo de usar e composição.
    Sem campo de ativos principais, conforme solicitado.
 */
 (function () {
   'use strict';
 
-  const BUILD_VERSION = '20260429-bee-page-render-fix';
+  const BUILD_VERSION = '20260429-stability-patch-10-10';
   const PRODUCTS = [
     {
         "id": "born-to-bee",
@@ -542,7 +542,6 @@
       requestAnimationFrame(paint);
     }
 
-    // Defesa contra race/cache: se algum CSS/JS da página recolocar loading ou limpar grid, repinta.
     window.setTimeout(() => {
       const grids = ['#beeProductsGrid', '#beeProducts', '.bee-cat-products-grid']
         .map(sel => $(sel))
