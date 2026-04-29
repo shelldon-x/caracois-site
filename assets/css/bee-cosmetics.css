@@ -597,4 +597,57 @@
 }
 
 
-/* Build bee-cosmetics: 20260429-pages-bee-10-10 */
+/* Build bee-cosmetics: 20260429-bee-page-render-fix */
+
+
+/* =========================================================
+   PATCH — Página Bee: renderização estável do catálogo
+   Build: 20260429-bee-page-render-fix
+========================================================= */
+.bee-cat-products-grid {
+    min-height: 0;
+}
+
+.bee-cat-products-grid--loading {
+    min-height: 0;
+}
+
+.bee-cat-products-grid--loading::before {
+    content: none !important;
+    display: none !important;
+}
+
+.bee-cat-products-grid.bee-products-ready {
+    min-height: 0;
+}
+
+.bee-cat-products-grid.bee-products-ready .bee-product-card {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+}
+
+.bee-products-empty {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: var(--text-muted);
+    padding: 40px 20px;
+    background: var(--nude-ultra);
+    border-radius: 20px;
+}
+
+/* Mobile: evita um grande espaço em branco caso alguma imagem atrase */
+@media (max-width: 768px) {
+    .bee-cat-products {
+        padding-top: 64px;
+    }
+
+    .bee-cat-products-grid {
+        gap: 22px;
+    }
+
+    .bee-cat-products-grid .bee-product-img {
+        min-height: 260px;
+    }
+}
+
