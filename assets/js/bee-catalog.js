@@ -1,4 +1,7 @@
-/* Bee Cosmetics — catálogo frontend (CORRIGIDO) */
+/* Bee Cosmetics — catálogo frontend 10/10
+   Mantém o visual da home usando as classes corretas do main.css.
+   Inclui tracking seguro para filtro, produto e marketplace sem depender de bee-tracking.js.
+*/
 (function () {
   'use strict';
 
@@ -26,13 +29,54 @@
   const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
   const esc = (s) => String(s || '').replace(/[&<>'"]/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[ch]));
 
-  // Render usa as classes corretas que o main.css e bee-cosmetics.css esperam:
-  //   .bee-product-img (não bee-product-image)
-  //   .bee-product-info (não bee-product-content)
-  //   <h4> (não <h3>)
-  //   .product-type (não bee-product-category)
-  //   .bee-product-meta-row + .bee-product-pill.bee-product-pill--tag
-  //   .bee-product-actions + .btn-mini
+  function cleanPayload(payload) {
+    const out = {};
+    Object.entries(payload || {}).forEach(([key, value]) => {
+      if (value !== undefined && value !== null && value !== '') out[key] = String(value).slice(0, 160);
+    });
+    return out;
+  }
+
+  function track(eventName, payload) {
+    const data = cleanPayload(Object.assign({
+      site: 'caracois.com.br',
+      channel: 'bee',
+      page_path: window.location.pathname,
+      page_title: document.title || '',
+      build_version: '20260429-home-10-10'
+    }, payload || {}));
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push(Object.assign({ event: eventName }, data));
+
+    try {
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', eventName, Object.assign({ transport_type: 'beacon' }, data));
+      }
+    } catch(e) {}
+
+    try {
+      if (typeof window.fbq === 'function') {
+        window.fbq('trackCustom', eventName, data);
+      }
+    } catch(e) {}
+
+    try {
+      if (typeof window.clarity === 'function') {
+        window.clarity('event', eventName);
+        if (data.product_id) window.clarity('set', 'bee_product_id', data.product_id);
+        if (data.market) window.clarity('set', 'bee_marketplace', data.market);
+      }
+    } catch(e) {}
+
+    try {
+      if (typeof window.scTrack === 'function' && window.scTrack !== track) {
+        window.scTrack(eventName, data);
+      }
+    } catch(e) {}
+  }
+
+  // Usa exatamente as classes que o main.css da home estiliza.
   function card(product) {
     const tagPills = product.tags.map(t =>
       `<span class="bee-product-pill bee-product-pill--tag">${esc(t)}</span>`
@@ -40,10 +84,11 @@
     const phPill = product.ph
       ? `<span class="bee-product-pill bee-product-pill--ph">${esc(product.ph)}</span>`
       : '';
+
     return `
-      <article class="bee-product-card" id="${esc(product.id)}" tabindex="0" data-category="${esc(product.category)}">
+      <article class="bee-product-card" id="${esc(product.id)}" tabindex="0" data-category="${esc(product.category)}" data-product-card="${esc(product.id)}">
         <div class="bee-product-img">
-          <img src="${esc(product.image)}" alt="${esc(product.name)} — ${esc(product.type)}" loading="lazy" onerror="this.style.visibility='hidden';">
+          <img src="${esc(product.image)}" alt="${esc(product.name)} — ${esc(product.type)}" loading="lazy" decoding="async" onerror="this.style.visibility='hidden';">
         </div>
         <div class="bee-product-info">
           <div class="product-type">${esc(product.type)}</div>
@@ -51,51 +96,75 @@
           <p>${esc(product.desc)}</p>
           <div class="bee-product-meta-row">${tagPills}${phPill}</div>
           <div class="bee-product-actions">
-            <button type="button" class="btn-mini" data-product="${esc(product.id)}" aria-label="Ver detalhes de ${esc(product.name)}">Ver detalhes</button>
+            <button type="button" class="btn-mini" data-product="${esc(product.id)}" data-cta="bee_product_details" aria-label="Ver detalhes de ${esc(product.name)}">Ver detalhes</button>
           </div>
         </div>
       </article>`;
   }
 
   function render(filter = 'all') {
-    const grids = ['#beeProductsGrid', '#beeProducts'];
-    grids.forEach((selector) => {
+    ['#beeProductsGrid', '#beeProducts'].forEach((selector) => {
       const grid = $(selector);
       if (!grid) return;
       const list = filter === 'all' ? PRODUCTS : PRODUCTS.filter(p => p.category === filter);
       grid.innerHTML = list.map(card).join('');
+      grid.dataset.beeRendered = 'true';
+      grid.dataset.beeFilter = filter;
     });
   }
 
-  function productById(id) { return PRODUCTS.find(p => p.id === id) || PRODUCTS[0]; }
+  function productById(id) {
+    return PRODUCTS.find(p => p.id === id) || PRODUCTS[0];
+  }
+
+  function setModalLock(locked) {
+    document.documentElement.classList.toggle('modal-open', locked);
+    document.body.classList.toggle('modal-open', locked);
+  }
 
   function openProductModal(id) {
     const p = productById(id);
     const modal = $('#productModal');
-    const content = $('#productModalContent') || $('.product-modal-content', modal) || $('.product-modal-body', modal) || $('.product-modal');
+    const content = $('#productModalContent') || $('.product-modal-content', modal) || $('.product-modal-body', modal) || $('.product-modal', modal);
     if (!modal || !content) return;
+
     const tagPills = p.tags.map(t =>
       `<span class="bee-product-pill bee-product-pill--tag">${esc(t)}</span>`
     ).join('');
     const phPill = p.ph
       ? `<span class="bee-product-pill bee-product-pill--ph">${esc(p.ph)}</span>`
       : '';
+
+    // Mantém compatibilidade com o CSS atual do projeto.
     content.innerHTML = `
       <div class="pm-product">
-        <div class="pm-image"><img src="${esc(p.image)}" alt="${esc(p.name)}" loading="lazy" onerror="this.style.visibility='hidden';"></div>
+        <div class="pm-image">
+          <img src="${esc(p.image)}" alt="${esc(p.name)}" loading="lazy" decoding="async" onerror="this.style.visibility='hidden';">
+        </div>
         <div class="pm-copy">
           <p class="pm-kicker">${esc(p.type)}</p>
           <h2>${esc(p.name)}</h2>
           <p>${esc(p.desc)}</p>
           <div class="bee-product-meta-row">${tagPills}${phPill}</div>
           <div class="pm-actions">
-            ${MARKETPLACES.map(m => `<a class="btn btn-primary" href="${m.href}" target="_blank" rel="noopener" data-market="${m.key}" data-origin="product-modal">Buscar na ${m.name}</a>`).join('')}
+            ${MARKETPLACES.map(m => `
+              <a class="btn btn-primary" href="${esc(m.href)}" target="_blank" rel="noopener noreferrer" data-market="${esc(m.key)}" data-origin="product-modal" data-product="${esc(p.id)}">
+                Buscar na ${esc(m.name)}
+              </a>`).join('')}
           </div>
         </div>
       </div>`;
+
     modal.classList.add('active','is-open','open');
     modal.setAttribute('aria-hidden','false');
-    document.body.classList.add('modal-open');
+    setModalLock(true);
+
+    track('bee_product_modal_open', {
+      cta_type: 'product_details',
+      product_id: p.id,
+      product_name: p.name,
+      product_category: p.category
+    });
   }
 
   function closeProductModal() {
@@ -103,7 +172,7 @@
     if (!modal) return;
     modal.classList.remove('active','is-open','open');
     modal.setAttribute('aria-hidden','true');
-    document.body.classList.remove('modal-open');
+    setModalLock(false);
   }
 
   function openBeeModal() {
@@ -111,7 +180,8 @@
     if (!modal) return;
     modal.classList.add('active','is-open','open');
     modal.setAttribute('aria-hidden','false');
-    document.body.classList.add('modal-open');
+    setModalLock(true);
+    track('bee_marketplace_modal_open', { cta_type: 'marketplace_modal' });
   }
 
   function closeBeeModal() {
@@ -119,26 +189,59 @@
     if (!modal) return;
     modal.classList.remove('active','is-open','open');
     modal.setAttribute('aria-hidden','true');
-    document.body.classList.remove('modal-open');
+    setModalLock(false);
   }
 
   function closeBeeModalOnOverlay(event) {
     if (event && event.currentTarget === event.target) closeBeeModal();
   }
 
-  document.addEventListener('DOMContentLoaded', () => {
-    render('all');
+  function bindEvents() {
     document.addEventListener('click', (event) => {
       const filter = event.target.closest('.bee-filter-btn, .bee-cat-filter-btn');
       if (filter) {
-        $$('.bee-filter-btn, .bee-cat-filter-btn').forEach(btn => { btn.classList.remove('active'); btn.setAttribute('aria-selected','false'); });
+        $$('.bee-filter-btn, .bee-cat-filter-btn').forEach(btn => {
+          btn.classList.remove('active');
+          btn.setAttribute('aria-selected','false');
+        });
         filter.classList.add('active');
         filter.setAttribute('aria-selected','true');
-        render(filter.dataset.filter || 'all');
+        const filterValue = filter.dataset.filter || 'all';
+        render(filterValue);
+        track('bee_filter_click', { cta_type: 'filter', filter: filterValue });
+        return;
       }
-      const productBtn = event.target.closest('[data-product]');
-      if (productBtn) openProductModal(productBtn.dataset.product);
+
+      const productBtn = event.target.closest('[data-product][data-cta="bee_product_details"], .bee-product-card[data-product-card]');
+      if (productBtn) {
+        const id = productBtn.dataset.product || productBtn.dataset.productCard;
+        if (id) openProductModal(id);
+        return;
+      }
+
+      const market = event.target.closest('[data-market]');
+      if (market) {
+        track('bee_marketplace_click', {
+          cta_type: 'marketplace',
+          market: market.dataset.market || '',
+          origin: market.dataset.origin || '',
+          product_id: market.dataset.product || '',
+          link_url: market.href || ''
+        });
+      }
     });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        closeBeeModal();
+        closeProductModal();
+      }
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    render('all');
+    bindEvents();
   });
 
   window.BEE_PRODUCTS = PRODUCTS;
