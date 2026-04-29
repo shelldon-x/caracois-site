@@ -3245,3 +3245,250 @@ iframe {
         text-decoration: underline;
     }
 }
+
+
+/* =========================================================
+   PATCH 10/10 — Modal Bee Cosmetics / ficha de produto
+   Build: 20260429-home-bee-modal-10-10
+   Mantém compatibilidade com o HTML injetado por bee-catalog.js.
+========================================================= */
+.product-modal-overlay,
+#productModal {
+    position: fixed;
+    inset: 0;
+    z-index: 4000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(16px, 3vw, 40px);
+    background: rgba(20,20,20,0.68);
+    backdrop-filter: blur(10px);
+}
+
+.product-modal-overlay.active,
+.product-modal-overlay.is-open,
+.product-modal-overlay.open,
+#productModal.active,
+#productModal.is-open,
+#productModal.open {
+    display: flex;
+}
+
+.product-modal,
+.product-modal-content,
+#productModalContent {
+    position: relative;
+    width: min(1040px, 100%);
+    max-height: min(760px, calc(100dvh - 48px));
+    overflow: auto;
+    border-radius: 28px;
+    background: var(--white);
+    box-shadow: 0 34px 90px rgba(0,0,0,0.28);
+}
+
+.pm-close {
+    position: absolute;
+    top: 18px;
+    right: 22px;
+    z-index: 2;
+    width: 38px;
+    height: 38px;
+    display: grid;
+    place-items: center;
+    border: 0;
+    background: rgba(255,255,255,0.88);
+    color: var(--text);
+    border-radius: 999px;
+    font-size: 1.6rem;
+    line-height: 1;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.pm-grid {
+    display: grid;
+    grid-template-columns: minmax(280px, 46%) 1fr;
+    min-height: 520px;
+}
+
+.pm-image {
+    display: grid;
+    place-items: center;
+    background: linear-gradient(135deg, #f8f5f3, #ffffff);
+    padding: clamp(32px, 5vw, 64px);
+}
+
+.pm-image img {
+    width: min(360px, 100%);
+    max-height: 420px;
+    object-fit: contain;
+}
+
+.pm-content {
+    padding: clamp(32px, 5vw, 60px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.pm-eyebrow,
+.pm-kicker {
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--terracota);
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.pm-content h2,
+.pm-copy h2 {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.05;
+    color: var(--black);
+    margin-bottom: 14px;
+    font-weight: 600;
+}
+
+.pm-desc,
+.pm-content > p,
+.pm-copy > p {
+    font-size: 1rem;
+    color: var(--text-light);
+    line-height: 1.68;
+    margin-bottom: 18px;
+}
+
+.pm-pills,
+.pm-content .bee-product-meta-row {
+    margin-bottom: 22px;
+}
+
+.pm-info {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin: 8px 0 24px;
+}
+
+.pm-info-item {
+    border: 1px solid rgba(155,68,66,0.10);
+    background: var(--nude-ultra);
+    border-radius: 16px;
+    padding: 14px 16px;
+}
+
+.pm-info-item span {
+    display: block;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+}
+
+.pm-info-item strong {
+    font-size: 0.92rem;
+    color: var(--black);
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.pm-section {
+    margin-bottom: 18px;
+}
+
+.pm-section h3 {
+    font-family: var(--serif);
+    font-size: 1.22rem;
+    color: var(--black);
+    margin-bottom: 6px;
+}
+
+.pm-section p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+}
+
+.pm-markets,
+.pm-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+.pm-market-link,
+.pm-actions .btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    min-height: 56px;
+    padding: 12px 16px;
+    border-radius: 999px;
+    text-decoration: none;
+    background: linear-gradient(135deg, var(--terracota), var(--terracota-dark));
+    color: var(--white);
+    font-weight: 700;
+    justify-content: center;
+    box-shadow: 0 12px 26px rgba(155,68,66,0.18);
+    transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+}
+
+.pm-market-link:hover,
+.pm-actions .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 34px rgba(155,68,66,0.24);
+}
+
+.pm-market-link img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+}
+
+.pm-market-link span {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    line-height: 1.15;
+}
+
+.pm-market-link small {
+    font-size: 0.72rem;
+    opacity: 0.75;
+    font-weight: 500;
+}
+
+@media (max-width: 760px) {
+    .product-modal,
+    .product-modal-content,
+    #productModalContent {
+        max-height: calc(100dvh - 28px);
+        border-radius: 24px;
+    }
+
+    .pm-grid {
+        grid-template-columns: 1fr;
+        min-height: unset;
+    }
+
+    .pm-image {
+        padding: 28px 24px;
+    }
+
+    .pm-image img {
+        max-height: 300px;
+    }
+
+    .pm-content {
+        padding: 28px 24px 34px;
+    }
+
+    .pm-info {
+        grid-template-columns: 1fr;
+    }
+}
+
