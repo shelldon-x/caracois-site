@@ -59,22 +59,58 @@
     const modal = $('#productModal');
     const content = $('#productModalContent') || $('.product-modal-content', modal) || $('.product-modal-body', modal) || $('.product-modal');
     if (!modal || !content) return;
+
     content.innerHTML = `
-      <div class="pm-product">
-        <div class="pm-image"><img src="${esc(p.image)}" alt="${esc(p.name)}" loading="lazy"></div>
-        <div class="pm-copy">
-          <p class="pm-kicker">${esc(p.type)}</p>
+      <div class="pm-grid">
+        <div class="pm-image">
+          <img src="${esc(p.image)}" alt="${esc(p.name)} — ${esc(p.type)}" loading="lazy" decoding="async">
+        </div>
+        <div class="pm-content">
+          <div class="pm-eyebrow">${esc(p.type)}</div>
           <h2>${esc(p.name)}</h2>
-          <p>${esc(p.desc)}</p>
-          <div class="bee-product-tags">${p.tags.map(t => `<span>${esc(t)}</span>`).join('')}</div>
-          <div class="pm-actions">
-            ${MARKETPLACES.map(m => `<a class="btn btn-primary" href="${m.href}" target="_blank" rel="noopener" data-market="${m.key}" data-origin="product-modal">Buscar na ${m.name}</a>`).join('')}
+          <p class="pm-desc">${esc(p.desc)}</p>
+
+          <div class="pm-specs">
+            <div class="pm-spec">
+              <span>Categoria</span>
+              <strong>${esc(p.category)}</strong>
+            </div>
+            <div class="pm-spec">
+              <span>Indicação</span>
+              <strong>${p.tags.map(t => esc(t)).join(' · ')}</strong>
+            </div>
+          </div>
+
+          <div class="pm-section">
+            <h3>Por que usar</h3>
+            <p>${esc(p.desc)}</p>
+          </div>
+
+          <div class="pm-markets">
+            ${MARKETPLACES.map(m => `
+              <a class="pm-market-link" href="${m.href}" target="_blank" rel="noopener noreferrer" data-market="${m.key}" data-cta="bee_marketplace_click" data-origin="product-modal">
+                <img src="/images/icons/${m.key}.svg" alt="${esc(m.name)}" width="24" height="24" loading="lazy" onerror="this.style.display='none'">
+                <span>
+                  <strong>${esc(m.name)}</strong>
+                  <small>Buscar produto</small>
+                </span>
+              </a>`).join('')}
           </div>
         </div>
       </div>`;
+
     modal.classList.add('active','is-open','open');
     modal.setAttribute('aria-hidden','false');
+    document.documentElement.classList.add('modal-open');
     document.body.classList.add('modal-open');
+
+    try {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'bee_product_modal_open', product_id: p.id, product_name: p.name, category: p.category });
+      if (typeof gtag === 'function') gtag('event', 'bee_product_modal_open', { product_id: p.id, product_name: p.name, category: p.category });
+      if (typeof fbq === 'function') fbq('trackCustom', 'BeeProductModalOpen', { product_id: p.id, product_name: p.name, category: p.category });
+      if (typeof clarity === 'function') clarity('event', 'bee_product_modal_open');
+    } catch(e) {}
   }
 
   function closeProductModal() {
@@ -83,6 +119,7 @@
     modal.classList.remove('active','is-open','open');
     modal.setAttribute('aria-hidden','true');
     document.body.classList.remove('modal-open');
+    document.documentElement.classList.remove('modal-open');
   }
 
   function openBeeModal() {
@@ -91,6 +128,8 @@
     modal.classList.add('active','is-open','open');
     modal.setAttribute('aria-hidden','false');
     document.body.classList.add('modal-open');
+    document.documentElement.classList.add('modal-open');
+    try { window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: 'bee_modal_open', area: 'marketplace_hub' }); if (typeof gtag === 'function') gtag('event', 'bee_modal_open', { area: 'marketplace_hub' }); if (typeof fbq === 'function') fbq('trackCustom', 'BeeModalOpen', { area: 'marketplace_hub' }); if (typeof clarity === 'function') clarity('event', 'bee_modal_open'); } catch(e) {}
   }
 
   function closeBeeModal() {
@@ -99,6 +138,7 @@
     modal.classList.remove('active','is-open','open');
     modal.setAttribute('aria-hidden','true');
     document.body.classList.remove('modal-open');
+    document.documentElement.classList.remove('modal-open');
   }
 
   function closeBeeModalOnOverlay(event) {
