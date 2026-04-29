@@ -13,22 +13,23 @@
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-0J7RBF2BFX',{send_page_view:true,cookie_flags:'SameSite=None;Secure'});</script>
   <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','1522260281454126');fbq('track','PageView');</script>
   <script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","wb0w1oc0ou");</script>
-  <link rel="stylesheet" href="/assets/css/agendar.css?v=20260429-final-10">
+  <link rel="stylesheet" href="/assets/css/agendar.css?v=20260429-booksy-instant-v1">
 </head>
 <body>
   <main class="card" aria-live="polite">
-    <div class="logo"><img src="/images/logos/logo-agendar.svg" alt="Studio Caracóis"></div>
+    <div class="logo"><img src="/images/logos/logo-agendar.svg" alt="Studio Caracóis" width="58" height="58"></div>
     <div class="eyebrow">Agendamento online</div>
     <h1>Direcionando para Brasília — Asa Sul</h1>
     <p>Você está sendo direcionada para ver os horários disponíveis no nosso sistema de agendamento.</p>
     <div class="loader" aria-hidden="true"></div>
-    <a id="continueLink" class="btn" href="https://caracois-brasilia-asa-sul.booksy.com/a" rel="noopener">Continuar agora</a>
+    <a id="continueLink" class="btn" href="https://booksy.com/pt-br/instant-experiences/widget/412425" rel="noopener">Continuar agora</a>
     <div class="small">Se não abrir automaticamente, toque no botão acima.</div>
   </main>
   <script>
     document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');
     const SC_UNIT={"id": "asa-sul", "slug": "brasilia-asa-sul", "name": "Brasília — Asa Sul", "platform": "booksy"};
-    const SC_DESTINATION="https://caracois-brasilia-asa-sul.booksy.com/a";
+    const SC_DESTINATION="https://booksy.com/pt-br/instant-experiences/widget/412425";
+    const SC_BUILD='20260429-booksy-instant-v1';
     const ATTR_KEYS=['utm_source','utm_medium','utm_campaign','utm_content','utm_term','gclid','gbraid','wbraid','fbclid','msclkid'];
     function readJSON(k,f){try{return JSON.parse(localStorage.getItem(k))||f}catch(e){return f}}function writeJSON(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
     function inferReferrerSource(){try{const r=document.referrer;if(!r)return {source:'direct',medium:'none'};const h=new URL(r).hostname.replace(/^www\./,'');if(h.includes('google.'))return {source:'google',medium:'organic'};if(h.includes('bing.'))return {source:'bing',medium:'organic'};if(h.includes('instagram.'))return {source:'instagram',medium:'social'};if(h.includes('facebook.')||h.includes('fb.'))return {source:'facebook',medium:'social'};if(h.includes('tiktok.'))return {source:'tiktok',medium:'social'};return {source:h,medium:'referral'}}catch(e){return {source:'referral',medium:'referral'}}}
@@ -36,7 +37,7 @@
     const attr=captureAttribution();
     function destinationWithParams(){const dest=new URL(SC_DESTINATION);const qs=new URLSearchParams(location.search);ATTR_KEYS.forEach(k=>{const normalized=k.replace('utm_','');const value=qs.get(k)||attr.last[normalized]||attr.last[k]||'';if(value&&!dest.searchParams.has(k))dest.searchParams.set(k,value);});return dest.toString();}
     const finalUrl=destinationWithParams();document.getElementById('continueLink').href=finalUrl;
-    function payload(){return {site:'caracois.com.br',page_path:location.pathname,page_location:location.href,page_title:document.title,channel:'booking',cta_type:'agendar',cta:'agendar_redirect_auto',unidade:SC_UNIT.id,unit_slug:SC_UNIT.slug,unit_name:SC_UNIT.name,destination_platform:SC_UNIT.platform,destination_host:new URL(finalUrl).hostname.replace(/^www\./,''),destination_url_type:'external',source:attr.last.source||'',medium:attr.last.medium||'',campaign:attr.last.campaign||'',first_source:(attr.first||{}).source||'',first_medium:(attr.first||{}).medium||'',landing_page:(attr.first||{}).landing_page||''};}
+    function payload(){return {site:'caracois.com.br',page_path:location.pathname,page_location:location.href,page_title:document.title,channel:'booking',cta_type:'agendar',cta:'agendar_redirect_auto',unidade:SC_UNIT.id,unit_slug:SC_UNIT.slug,unit_name:SC_UNIT.name,destination_platform:SC_UNIT.platform,destination_host:new URL(finalUrl).hostname.replace(/^www\./,''),destination_url_type:'external',build_version:SC_BUILD,source:attr.last.source||'',medium:attr.last.medium||'',campaign:attr.last.campaign||'',first_source:(attr.first||{}).source||'',first_medium:(attr.first||{}).medium||'',landing_page:(attr.first||{}).landing_page||''};}
     function track(name,p){window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:name,...p});try{if(typeof gtag==='function')gtag('event',name,{...p,event_category:'booking',transport_type:'beacon'})}catch(e){}try{if(typeof fbq==='function')fbq('trackCustom',name,{content_name:p.cta,content_category:'booking',unidade:p.unidade,source:p.source,medium:p.medium,campaign:p.campaign})}catch(e){}try{if(typeof clarity==='function'){clarity('event',name);clarity('set','unidade',p.unidade);clarity('set','booking_platform',p.destination_platform)}}catch(e){}}
     const p=payload();track('booking_intent',p);track('cta_click',p);setTimeout(()=>{track('booking_redirect',p);location.href=finalUrl;},800);
   </script>
