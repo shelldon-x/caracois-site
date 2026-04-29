@@ -528,3 +528,11 @@ textarea.form-control {
 
 
 /* Build pages: 20260429-pages-bee-10-10 */
+
+
+/* PAGES STABILITY PATCH — 20260429-stability-patch-10-10 */
+.page-main,
+.page-content {
+    opacity: 1;
+    visibility: visible;
+}

@@ -3245,3 +3245,429 @@ iframe {
         text-decoration: underline;
     }
 }
+
+
+/* =========================================================
+   PATCH 100% — Bee cards + modal de produto
+   Build: 20260429-bee-final-100
+========================================================= */
+
+/* Fallback premium quando algum arquivo de produto não existir no deploy */
+.bee-image-placeholder {
+    width: min(220px, 70%);
+    aspect-ratio: 1 / 1;
+    border-radius: 28px;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    background:
+        radial-gradient(circle at 35% 25%, rgba(196,162,101,0.22), transparent 42%),
+        linear-gradient(145deg, rgba(239,217,215,0.70), rgba(255,255,255,0.9));
+    border: 1px solid rgba(155,68,66,0.12);
+    color: var(--terracota);
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    line-height: 1;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.65);
+}
+.bee-image-placeholder span {
+    opacity: 0.9;
+}
+.bee-product-img.bee-image-missing,
+.pm-image.bee-image-missing {
+    background:
+        radial-gradient(circle at 50% 20%, rgba(239,217,215,0.34), transparent 50%),
+        linear-gradient(135deg, #faf7f6, #fff);
+}
+
+/* Modal ficha de produto — caixa principal */
+.product-modal-overlay,
+#productModal {
+    position: fixed;
+    inset: 0;
+    z-index: 9998;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: max(16px, env(safe-area-inset-top)) 16px max(16px, env(safe-area-inset-bottom));
+    background: rgba(20,20,20,0.72);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+.product-modal-overlay.open,
+.product-modal-overlay.active,
+.product-modal-overlay.is-open,
+#productModal.open,
+#productModal.active,
+#productModal.is-open {
+    display: flex;
+}
+.product-modal-overlay .product-modal,
+#productModal .product-modal {
+    position: relative;
+    width: min(920px, 100%);
+    max-height: calc(100dvh - 32px);
+    overflow: auto;
+    border-radius: 28px;
+    background: var(--white);
+    box-shadow: 0 28px 80px rgba(0,0,0,0.22);
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    padding: 0;
+}
+#productModalContent {
+    display: block;
+    width: 100%;
+}
+.product-modal .pm-close {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    z-index: 5;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 999px;
+    background: var(--bg-soft);
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.35rem;
+    line-height: 1;
+    transition: all 0.3s var(--ease);
+}
+.product-modal .pm-close:hover {
+    background: var(--terracota);
+    color: var(--white);
+}
+
+.product-modal .pm-grid {
+    display: grid;
+    grid-template-columns: minmax(280px, 44%) 1fr;
+    min-height: 500px;
+}
+.product-modal .pm-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 420px;
+    padding: clamp(34px, 5vw, 58px);
+    background: linear-gradient(135deg, var(--bg-soft), #fff);
+    border-radius: 28px 0 0 28px;
+}
+.product-modal .pm-image img {
+    width: min(330px, 100%);
+    max-height: 390px;
+    object-fit: contain;
+}
+.product-modal .pm-content {
+    padding: clamp(34px, 5vw, 52px) clamp(28px, 4vw, 44px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.product-modal .pm-eyebrow {
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--terracota);
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+.product-modal .pm-content h2 {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 3.6vw, 2.75rem);
+    line-height: 1.05;
+    font-weight: 600;
+    color: var(--black);
+    margin-bottom: 14px;
+}
+.product-modal .pm-desc {
+    font-size: 0.96rem;
+    color: var(--text-light);
+    line-height: 1.7;
+    font-weight: 300;
+    margin-bottom: 18px;
+}
+.product-modal .pm-specs {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-bottom: 18px;
+}
+.product-modal .pm-spec {
+    padding: 12px 14px;
+    background: var(--nude-ultra);
+    border-radius: 12px;
+    border: 1px solid rgba(155,68,66,0.08);
+}
+.product-modal .pm-spec span {
+    display: block;
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+.product-modal .pm-spec strong {
+    font-size: 0.86rem;
+    color: var(--black);
+    font-weight: 700;
+    text-transform: capitalize;
+}
+.product-modal .pm-pills {
+    margin-bottom: 22px;
+}
+.product-modal .pm-section {
+    margin-bottom: 16px;
+    padding-top: 2px;
+}
+.product-modal .pm-section h3 {
+    font-family: var(--serif);
+    font-size: 1.22rem;
+    color: var(--black);
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+.product-modal .pm-section p {
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    line-height: 1.55;
+}
+.product-modal .pm-markets {
+    display: grid;
+    gap: 10px;
+}
+
+/* Marketplace dentro da ficha: mais legível, sem ícone escuro apagado */
+.product-modal .pm-market-link {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 14px;
+    min-height: 62px;
+    padding: 12px 18px;
+    border-radius: 999px;
+    text-decoration: none;
+    background: var(--nude-ultra);
+    color: var(--black);
+    border: 1px solid rgba(155,68,66,0.12);
+    box-shadow: 0 10px 22px rgba(0,0,0,0.04);
+    transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), border-color 0.25s var(--ease), background 0.25s var(--ease);
+}
+.product-modal .pm-market-link:hover {
+    transform: translateY(-2px);
+    border-color: rgba(155,68,66,0.28);
+    background: #fff;
+    box-shadow: 0 16px 34px rgba(155,68,66,0.10);
+}
+.product-modal .pm-market-icon {
+    width: 42px;
+    height: 42px;
+    display: grid;
+    place-items: center;
+    border-radius: 14px;
+    background: var(--white);
+    border: 1px solid rgba(0,0,0,0.06);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.06);
+    flex-shrink: 0;
+}
+.product-modal .pm-market-icon img {
+    width: 26px;
+    height: 26px;
+    object-fit: contain;
+    filter: none !important;
+}
+.product-modal .pm-market-icon--fallback::before {
+    content: "↗";
+    font-size: 1.1rem;
+    color: var(--terracota);
+}
+.product-modal .pm-market-copy {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.15;
+}
+.product-modal .pm-market-copy strong {
+    color: var(--black);
+    font-size: 0.95rem;
+    font-weight: 700;
+}
+.product-modal .pm-market-copy small {
+    color: var(--text-muted);
+    font-size: 0.76rem;
+    font-weight: 500;
+}
+
+@media (max-width: 760px) {
+    .product-modal-overlay,
+    #productModal {
+        padding: 14px;
+    }
+    .product-modal-overlay .product-modal,
+    #productModal .product-modal {
+        max-height: calc(100dvh - 28px);
+        border-radius: 24px;
+    }
+    .product-modal .pm-grid {
+        grid-template-columns: 1fr;
+        min-height: unset;
+    }
+    .product-modal .pm-image {
+        min-height: 280px;
+        padding: 28px 24px;
+        border-radius: 24px 24px 0 0;
+    }
+    .product-modal .pm-image img {
+        max-height: 270px;
+    }
+    .product-modal .pm-content {
+        padding: 28px 24px 34px;
+    }
+    .product-modal .pm-specs {
+        grid-template-columns: 1fr;
+    }
+    .product-modal .pm-market-link {
+        min-height: 58px;
+        padding: 11px 14px;
+    }
+}
+
+
+
+/* PATCH — Ficha técnica Bee enriquecida
+   Build: 20260429-bee-rich-v2
+*/
+.product-modal .pm-section--ingredients p {
+    max-height: 148px;
+    overflow: auto;
+    padding-right: 6px;
+    font-size: 0.82rem;
+    line-height: 1.58;
+}
+.product-modal .pm-section--ingredients p::-webkit-scrollbar {
+    width: 6px;
+}
+.product-modal .pm-section--ingredients p::-webkit-scrollbar-thumb {
+    background: rgba(155,68,66,0.22);
+    border-radius: 999px;
+}
+
+
+/* =========================================================
+   STABILITY PATCH 10/10 — Studio Caracóis
+   Build: 20260429-stability-patch-10-10
+   Objetivo: evitar grids Bee invisíveis, proteger modais e corrigir fallback visual.
+========================================================= */
+
+/* Corrige estados invisíveis/lazy/reveal presos em páginas com JS/cache lento */
+.bee-cat-products-grid,
+#beeProductsGrid,
+#beeProducts {
+    min-height: 0 !important;
+}
+
+.bee-cat-products-grid--loading::before {
+    content: none !important;
+    display: none !important;
+}
+
+.bee-cat-products-grid.bee-products-ready,
+#beeProductsGrid.bee-products-ready,
+#beeProducts.bee-products-ready {
+    min-height: 0 !important;
+}
+
+.bee-cat-products-grid .bee-product-card,
+#beeProductsGrid .bee-product-card,
+#beeProducts .bee-product-card {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.bee-products-empty {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: var(--text-muted);
+    padding: 40px 20px;
+    background: var(--nude-ultra);
+    border-radius: 20px;
+}
+
+/* Garantia para cards da Bee em qualquer página */
+.bee-product-card {
+    contain: layout style;
+}
+
+.bee-product-img img,
+.pm-image img {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Modal de ficha de produto — proteção contra conteúdo invisível */
+.product-modal-overlay.active,
+.product-modal-overlay.open,
+.product-modal-overlay.is-open,
+#productModal.active,
+#productModal.open,
+#productModal.is-open {
+    display: flex !important;
+}
+
+#productModalContent {
+    display: block !important;
+    width: 100% !important;
+}
+
+.product-modal .pm-grid {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Modal geral Bee — mantém o comportamento excelente */
+.bee-modal-overlay.active,
+.bee-modal-overlay.open,
+.bee-modal-overlay.is-open,
+#beeModal.active,
+#beeModal.open,
+#beeModal.is-open {
+    display: flex !important;
+}
+
+/* Páginas de conteúdo/artigos: proteção contra CSS ausente ou atrasado */
+.article-page,
+.article-hero,
+.article-content,
+.article-body,
+.article-main {
+    max-width: 100%;
+}
+
+.article-content img,
+.article-body img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Evita que barra fixa cubra CTAs/conteúdo final em mobile */
+@media (max-width: 768px) {
+    body {
+        padding-bottom: env(safe-area-inset-bottom);
+    }
+
+    .bee-cat-products {
+        padding-top: 64px;
+    }
+
+    .bee-cat-products-grid {
+        gap: 22px;
+    }
+
+    .bee-cat-products-grid .bee-product-img {
+        min-height: 260px;
+    }
+}
+

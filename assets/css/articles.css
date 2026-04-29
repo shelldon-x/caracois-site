@@ -661,3 +661,12 @@ body.article-boxed .info-box ul li:last-child { border-bottom: none; }
     .related-card { padding: 22px 20px; gap: 16px; }
     .related-card-num { font-size: 1.5rem; }
 }
+
+
+/* ARTICLES STABILITY PATCH — 20260429-stability-patch-10-10 */
+.article-hero,
+.article-content,
+.article-body {
+    opacity: 1;
+    visibility: visible;
+}
