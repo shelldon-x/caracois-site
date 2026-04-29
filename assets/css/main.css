@@ -3248,246 +3248,266 @@ iframe {
 
 
 /* =========================================================
-   PATCH 10/10 — Modal Bee Cosmetics / ficha de produto
-   Build: 20260429-home-bee-modal-10-10
-   Mantém compatibilidade com o HTML injetado por bee-catalog.js.
+   PATCH FINAL — Modal Bee Cosmetics / ficha de produto
+   Build: 20260429-home-bee-modal-finalfix
+   Corrige o layout sem transformar #productModalContent em outro modal.
 ========================================================= */
 .product-modal-overlay,
 #productModal {
     position: fixed;
     inset: 0;
-    z-index: 4000;
+    z-index: 9998;
     display: none;
     align-items: center;
     justify-content: center;
-    padding: clamp(16px, 3vw, 40px);
-    background: rgba(20,20,20,0.68);
+    padding: max(16px, env(safe-area-inset-top)) 16px max(16px, env(safe-area-inset-bottom));
+    background: rgba(20,20,20,0.72);
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
+.product-modal-overlay.open,
 .product-modal-overlay.active,
 .product-modal-overlay.is-open,
-.product-modal-overlay.open,
+#productModal.open,
 #productModal.active,
-#productModal.is-open,
-#productModal.open {
+#productModal.is-open {
     display: flex;
 }
 
-.product-modal,
-.product-modal-content,
-#productModalContent {
+.product-modal-overlay .product-modal,
+#productModal .product-modal {
     position: relative;
-    width: min(1040px, 100%);
-    max-height: min(760px, calc(100dvh - 48px));
+    width: min(920px, 100%);
+    max-height: calc(100dvh - 32px);
     overflow: auto;
     border-radius: 28px;
     background: var(--white);
-    box-shadow: 0 34px 90px rgba(0,0,0,0.28);
+    box-shadow: 0 28px 80px rgba(0,0,0,0.22);
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    padding: 0;
 }
 
-.pm-close {
+#productModalContent {
+    display: block;
+    width: 100%;
+}
+
+.product-modal .pm-close {
     position: absolute;
-    top: 18px;
-    right: 22px;
-    z-index: 2;
-    width: 38px;
-    height: 38px;
-    display: grid;
-    place-items: center;
-    border: 0;
-    background: rgba(255,255,255,0.88);
-    color: var(--text);
+    top: 14px;
+    right: 16px;
+    z-index: 5;
+    width: 40px;
+    height: 40px;
+    border: none;
     border-radius: 999px;
-    font-size: 1.6rem;
+    background: var(--bg-soft);
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.35rem;
     line-height: 1;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    transition: all 0.3s var(--ease);
 }
 
-.pm-grid {
+.product-modal .pm-close:hover {
+    background: var(--terracota);
+    color: var(--white);
+}
+
+.product-modal .pm-grid {
     display: grid;
     grid-template-columns: minmax(280px, 46%) 1fr;
-    min-height: 520px;
+    min-height: 500px;
 }
 
-.pm-image {
-    display: grid;
-    place-items: center;
-    background: linear-gradient(135deg, #f8f5f3, #ffffff);
-    padding: clamp(32px, 5vw, 64px);
+.product-modal .pm-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 420px;
+    padding: clamp(34px, 5vw, 58px);
+    background: linear-gradient(135deg, var(--bg-soft), #fff);
+    border-radius: 28px 0 0 28px;
 }
 
-.pm-image img {
-    width: min(360px, 100%);
-    max-height: 420px;
+.product-modal .pm-image img {
+    width: min(330px, 100%);
+    max-height: 390px;
     object-fit: contain;
 }
 
-.pm-content {
-    padding: clamp(32px, 5vw, 60px);
+.product-modal .pm-content {
+    padding: clamp(34px, 5vw, 52px) clamp(28px, 4vw, 44px);
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-.pm-eyebrow,
-.pm-kicker {
-    font-size: 0.72rem;
-    letter-spacing: 0.16em;
+.product-modal .pm-eyebrow {
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--terracota);
     font-weight: 700;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
-.pm-content h2,
-.pm-copy h2 {
+.product-modal .pm-content h2 {
     font-family: var(--serif);
-    font-size: clamp(2rem, 4vw, 3rem);
+    font-size: clamp(2rem, 3.6vw, 2.75rem);
     line-height: 1.05;
+    font-weight: 600;
     color: var(--black);
     margin-bottom: 14px;
-    font-weight: 600;
 }
 
-.pm-desc,
-.pm-content > p,
-.pm-copy > p {
-    font-size: 1rem;
+.product-modal .pm-desc {
+    font-size: 0.96rem;
     color: var(--text-light);
-    line-height: 1.68;
+    line-height: 1.7;
+    font-weight: 300;
     margin-bottom: 18px;
 }
 
-.pm-pills,
-.pm-content .bee-product-meta-row {
-    margin-bottom: 22px;
-}
-
-.pm-info {
+.product-modal .pm-specs {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 12px;
-    margin: 8px 0 24px;
-}
-
-.pm-info-item {
-    border: 1px solid rgba(155,68,66,0.10);
-    background: var(--nude-ultra);
-    border-radius: 16px;
-    padding: 14px 16px;
-}
-
-.pm-info-item span {
-    display: block;
-    font-size: 0.68rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    margin-bottom: 4px;
-}
-
-.pm-info-item strong {
-    font-size: 0.92rem;
-    color: var(--black);
-    font-weight: 600;
-    text-transform: capitalize;
-}
-
-.pm-section {
     margin-bottom: 18px;
 }
 
-.pm-section h3 {
+.product-modal .pm-spec {
+    padding: 12px 14px;
+    background: var(--nude-ultra);
+    border-radius: 12px;
+    border: 1px solid rgba(155,68,66,0.08);
+}
+
+.product-modal .pm-spec span {
+    display: block;
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.product-modal .pm-spec strong {
+    font-size: 0.86rem;
+    color: var(--black);
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+.product-modal .pm-pills {
+    margin-bottom: 22px;
+}
+
+.product-modal .pm-section {
+    margin-bottom: 16px;
+}
+
+.product-modal .pm-section h3 {
     font-family: var(--serif);
     font-size: 1.22rem;
     color: var(--black);
     margin-bottom: 6px;
+    font-weight: 600;
 }
 
-.pm-section p {
-    font-size: 0.9rem;
+.product-modal .pm-section p {
     color: var(--text-muted);
+    font-size: 0.88rem;
     line-height: 1.55;
 }
 
-.pm-markets,
-.pm-actions {
+.product-modal .pm-markets {
     display: grid;
-    grid-template-columns: 1fr;
     gap: 10px;
 }
 
-.pm-market-link,
-.pm-actions .btn {
+.product-modal .pm-market-link {
     display: flex;
     align-items: center;
+    justify-content: flex-start;
     gap: 12px;
-    width: 100%;
     min-height: 56px;
     padding: 12px 16px;
     border-radius: 999px;
     text-decoration: none;
     background: linear-gradient(135deg, var(--terracota), var(--terracota-dark));
     color: var(--white);
-    font-weight: 700;
-    justify-content: center;
     box-shadow: 0 12px 26px rgba(155,68,66,0.18);
     transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
 }
 
-.pm-market-link:hover,
-.pm-actions .btn:hover {
+.product-modal .pm-market-link:hover {
     transform: translateY(-2px);
     box-shadow: 0 16px 34px rgba(155,68,66,0.24);
 }
 
-.pm-market-link img {
+.product-modal .pm-market-link img {
     width: 24px;
     height: 24px;
     object-fit: contain;
     filter: brightness(0) invert(1);
+    flex-shrink: 0;
 }
 
-.pm-market-link span {
+.product-modal .pm-market-link span {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     line-height: 1.15;
 }
 
-.pm-market-link small {
+.product-modal .pm-market-link strong {
+    font-size: 0.9rem;
+    color: var(--white);
+}
+
+.product-modal .pm-market-link small {
     font-size: 0.72rem;
     opacity: 0.75;
-    font-weight: 500;
+    color: var(--white);
 }
 
 @media (max-width: 760px) {
-    .product-modal,
-    .product-modal-content,
-    #productModalContent {
+    .product-modal-overlay,
+    #productModal {
+        padding: 14px;
+    }
+
+    .product-modal-overlay .product-modal,
+    #productModal .product-modal {
         max-height: calc(100dvh - 28px);
         border-radius: 24px;
     }
 
-    .pm-grid {
+    .product-modal .pm-grid {
         grid-template-columns: 1fr;
         min-height: unset;
     }
 
-    .pm-image {
+    .product-modal .pm-image {
+        min-height: 280px;
         padding: 28px 24px;
+        border-radius: 24px 24px 0 0;
     }
 
-    .pm-image img {
-        max-height: 300px;
+    .product-modal .pm-image img {
+        max-height: 270px;
     }
 
-    .pm-content {
+    .product-modal .pm-content {
         padding: 28px 24px 34px;
     }
 
-    .pm-info {
+    .product-modal .pm-specs {
         grid-template-columns: 1fr;
     }
 }
