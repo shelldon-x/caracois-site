@@ -2,8 +2,6 @@
 (function () {
   'use strict';
 
-  const SC_BUILD_VERSION = '20260429-bee-no-regression';
-
   document.documentElement.classList.remove('no-js');
   document.documentElement.classList.add('js');
 
@@ -98,8 +96,7 @@
       first_campaign: first.campaign || '',
       landing_page: first.landing_page || '',
       page_path: window.location.pathname,
-      page_title: document.title || '',
-      build_version: SC_BUILD_VERSION
+      page_title: document.title || ''
     };
   }
 
@@ -477,7 +474,7 @@
 
   // Defesa extra: qualquer card/link do modal de agendamento deve sempre seguir /agendar/<slug>.
   document.addEventListener('click', function(event) {
-    const card = event.target.closest && event.target.closest('#bookingGrid a.booking-card[data-unit-slug], #bookingUnitItems a.booking-card[data-unit-slug]');
+    const card = event.target.closest && event.target.closest('#bookingUnitItems a.booking-card[data-unit-slug]');
     if (!card) return;
     const slug = card.dataset.unitSlug;
     if (slug && !card.getAttribute('href').includes('/agendar/')) {
