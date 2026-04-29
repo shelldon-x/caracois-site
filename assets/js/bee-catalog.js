@@ -5,7 +5,7 @@
 (function () {
   'use strict';
 
-  const BUILD_VERSION = '20260429-home-bee-modal-10-10';
+  const BUILD_VERSION = '20260429-home-bee-modal-finalfix';
 
   const PRODUCTS = [
     { id:'born-to-bee', name:'Born to BEE', type:'Shampoo Sem Sulfato', category:'limpeza', image:'/images/products/born-to-bee.webp', desc:'Limpeza eficaz sem ressecar, com ingredientes naturais hidratantes e condicionantes.', tags:['Low poo','Sem sulfato','Limpeza suave'], ph:'pH 4,5' },
@@ -113,7 +113,6 @@
     const phPill = p.ph ? `<span class="bee-product-pill bee-product-pill--ph">${esc(p.ph)}</span>` : '';
 
     content.innerHTML = `
-      <button type="button" class="pm-close" onclick="closeProductModal()" aria-label="Fechar">&times;</button>
       <div class="pm-grid">
         <div class="pm-image">
           <img src="${esc(p.image)}" alt="${esc(p.name)}" loading="lazy" decoding="async" onerror="this.style.visibility='hidden';">
@@ -122,12 +121,19 @@
           <div class="pm-eyebrow">${esc(p.type)}</div>
           <h2>${esc(p.name)}</h2>
           <p class="pm-desc">${esc(p.desc)}</p>
-          <div class="bee-product-meta-row pm-pills">${tagPills}${phPill}</div>
 
-          <div class="pm-info">
-            <div class="pm-info-item"><span>Categoria</span><strong>${esc(p.category)}</strong></div>
-            <div class="pm-info-item"><span>Rotina</span><strong>${p.tags.includes('No poo') ? 'No poo' : 'Low/No poo'}</strong></div>
+          <div class="pm-specs">
+            <div class="pm-spec">
+              <span>Categoria</span>
+              <strong>${esc(p.category)}</strong>
+            </div>
+            <div class="pm-spec">
+              <span>Rotina</span>
+              <strong>${p.tags.includes('No poo') ? 'No poo' : 'Low/No poo'}</strong>
+            </div>
           </div>
+
+          <div class="bee-product-meta-row pm-pills">${tagPills}${phPill}</div>
 
           <div class="pm-section">
             <h3>Onde comprar</h3>
