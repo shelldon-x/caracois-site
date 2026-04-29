@@ -2,7 +2,7 @@
 (function () {
   'use strict';
 
-  const BUILD_VERSION = '20260429-pages-bee-10-10';
+  const BUILD_VERSION = '20260429-artigos-10-10';
 
   document.documentElement.classList.remove('no-js');
   document.documentElement.classList.add('js');
