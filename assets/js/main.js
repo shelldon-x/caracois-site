@@ -2,7 +2,7 @@
 (function () {
   'use strict';
 
-  const BUILD_VERSION = '20260429-final-10';
+  const SC_BUILD_VERSION = '20260429-bee-no-regression';
 
   document.documentElement.classList.remove('no-js');
   document.documentElement.classList.add('js');
@@ -98,7 +98,8 @@
       first_campaign: first.campaign || '',
       landing_page: first.landing_page || '',
       page_path: window.location.pathname,
-      page_title: document.title || ''
+      page_title: document.title || '',
+      build_version: SC_BUILD_VERSION
     };
   }
 
@@ -141,7 +142,7 @@
   }
 
   function track(name, params) {
-    const payload = cleanPayload({ build_version: BUILD_VERSION, ...getAttributionPayload(), ...(params || {}) });
+    const payload = cleanPayload({ ...getAttributionPayload(), ...(params || {}) });
     try {
       if (typeof window.gtag === 'function') {
         window.gtag('event', name, {
@@ -476,7 +477,7 @@
 
   // Defesa extra: qualquer card/link do modal de agendamento deve sempre seguir /agendar/<slug>.
   document.addEventListener('click', function(event) {
-    const card = event.target.closest && event.target.closest('#bookingUnitItems a.booking-card[data-unit-slug], #bookingGrid a.booking-card[data-unit-slug]');
+    const card = event.target.closest && event.target.closest('#bookingGrid a.booking-card[data-unit-slug], #bookingUnitItems a.booking-card[data-unit-slug]');
     if (!card) return;
     const slug = card.dataset.unitSlug;
     if (slug && !card.getAttribute('href').includes('/agendar/')) {
