@@ -1,9 +1,11 @@
 /* Bee Cosmetics — catálogo frontend 10/10
-   Mantém o visual da home usando as classes corretas do main.css.
-   Inclui tracking seguro para filtro, produto e marketplace sem depender de bee-tracking.js.
+   Compatível com o main.css atual da home e com modal de produto refinado.
+   Não depende de bee-tracking.js.
 */
 (function () {
   'use strict';
+
+  const BUILD_VERSION = '20260429-home-bee-modal-10-10';
 
   const PRODUCTS = [
     { id:'born-to-bee', name:'Born to BEE', type:'Shampoo Sem Sulfato', category:'limpeza', image:'/images/products/born-to-bee.webp', desc:'Limpeza eficaz sem ressecar, com ingredientes naturais hidratantes e condicionantes.', tags:['Low poo','Sem sulfato','Limpeza suave'], ph:'pH 4,5' },
@@ -20,9 +22,9 @@
 
   const marketplaceQuery = encodeURIComponent('bee cosmetics cabelo cacheado');
   const MARKETPLACES = [
-    { name:'Amazon', href:`https://www.amazon.com.br/s?k=${marketplaceQuery}`, key:'amazon' },
-    { name:'Shopee', href:`https://shopee.com.br/search?keyword=${marketplaceQuery}`, key:'shopee' },
-    { name:'Mercado Livre', href:'https://lista.mercadolivre.com.br/bee-cosmetics', key:'mercadolivre' }
+    { name:'Amazon', href:`https://www.amazon.com.br/s?k=${marketplaceQuery}`, key:'amazon', icon:'/images/icons/amazon.svg' },
+    { name:'Shopee', href:`https://shopee.com.br/search?keyword=${marketplaceQuery}`, key:'shopee', icon:'/images/icons/shopee.svg' },
+    { name:'Mercado Livre', href:'https://lista.mercadolivre.com.br/bee-cosmetics', key:'mercadolivre', icon:'/images/icons/mercadolivre.svg' }
   ];
 
   const $ = (sel, ctx = document) => ctx.querySelector(sel);
@@ -43,24 +45,14 @@
       channel: 'bee',
       page_path: window.location.pathname,
       page_title: document.title || '',
-      build_version: '20260429-home-10-10'
+      build_version: BUILD_VERSION
     }, payload || {}));
 
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push(Object.assign({ event: eventName }, data));
 
-    try {
-      if (typeof window.gtag === 'function') {
-        window.gtag('event', eventName, Object.assign({ transport_type: 'beacon' }, data));
-      }
-    } catch(e) {}
-
-    try {
-      if (typeof window.fbq === 'function') {
-        window.fbq('trackCustom', eventName, data);
-      }
-    } catch(e) {}
-
+    try { if (typeof window.gtag === 'function') window.gtag('event', eventName, Object.assign({ transport_type: 'beacon' }, data)); } catch(e) {}
+    try { if (typeof window.fbq === 'function') window.fbq('trackCustom', eventName, data); } catch(e) {}
     try {
       if (typeof window.clarity === 'function') {
         window.clarity('event', eventName);
@@ -68,22 +60,11 @@
         if (data.market) window.clarity('set', 'bee_marketplace', data.market);
       }
     } catch(e) {}
-
-    try {
-      if (typeof window.scTrack === 'function' && window.scTrack !== track) {
-        window.scTrack(eventName, data);
-      }
-    } catch(e) {}
   }
 
-  // Usa exatamente as classes que o main.css da home estiliza.
   function card(product) {
-    const tagPills = product.tags.map(t =>
-      `<span class="bee-product-pill bee-product-pill--tag">${esc(t)}</span>`
-    ).join('');
-    const phPill = product.ph
-      ? `<span class="bee-product-pill bee-product-pill--ph">${esc(product.ph)}</span>`
-      : '';
+    const tagPills = product.tags.map(t => `<span class="bee-product-pill bee-product-pill--tag">${esc(t)}</span>`).join('');
+    const phPill = product.ph ? `<span class="bee-product-pill bee-product-pill--ph">${esc(product.ph)}</span>` : '';
 
     return `
       <article class="bee-product-card" id="${esc(product.id)}" tabindex="0" data-category="${esc(product.category)}" data-product-card="${esc(product.id)}">
@@ -128,28 +109,36 @@
     const content = $('#productModalContent') || $('.product-modal-content', modal) || $('.product-modal-body', modal) || $('.product-modal', modal);
     if (!modal || !content) return;
 
-    const tagPills = p.tags.map(t =>
-      `<span class="bee-product-pill bee-product-pill--tag">${esc(t)}</span>`
-    ).join('');
-    const phPill = p.ph
-      ? `<span class="bee-product-pill bee-product-pill--ph">${esc(p.ph)}</span>`
-      : '';
+    const tagPills = p.tags.map(t => `<span class="bee-product-pill bee-product-pill--tag">${esc(t)}</span>`).join('');
+    const phPill = p.ph ? `<span class="bee-product-pill bee-product-pill--ph">${esc(p.ph)}</span>` : '';
 
-    // Mantém compatibilidade com o CSS atual do projeto.
     content.innerHTML = `
-      <div class="pm-product">
+      <button type="button" class="pm-close" onclick="closeProductModal()" aria-label="Fechar">&times;</button>
+      <div class="pm-grid">
         <div class="pm-image">
           <img src="${esc(p.image)}" alt="${esc(p.name)}" loading="lazy" decoding="async" onerror="this.style.visibility='hidden';">
         </div>
-        <div class="pm-copy">
-          <p class="pm-kicker">${esc(p.type)}</p>
+        <div class="pm-content">
+          <div class="pm-eyebrow">${esc(p.type)}</div>
           <h2>${esc(p.name)}</h2>
-          <p>${esc(p.desc)}</p>
-          <div class="bee-product-meta-row">${tagPills}${phPill}</div>
-          <div class="pm-actions">
+          <p class="pm-desc">${esc(p.desc)}</p>
+          <div class="bee-product-meta-row pm-pills">${tagPills}${phPill}</div>
+
+          <div class="pm-info">
+            <div class="pm-info-item"><span>Categoria</span><strong>${esc(p.category)}</strong></div>
+            <div class="pm-info-item"><span>Rotina</span><strong>${p.tags.includes('No poo') ? 'No poo' : 'Low/No poo'}</strong></div>
+          </div>
+
+          <div class="pm-section">
+            <h3>Onde comprar</h3>
+            <p>Confira a disponibilidade da linha Bee Cosmetics nos marketplaces.</p>
+          </div>
+
+          <div class="pm-markets">
             ${MARKETPLACES.map(m => `
-              <a class="btn btn-primary" href="${esc(m.href)}" target="_blank" rel="noopener noreferrer" data-market="${esc(m.key)}" data-origin="product-modal" data-product="${esc(p.id)}">
-                Buscar na ${esc(m.name)}
+              <a class="pm-market-link" href="${esc(m.href)}" target="_blank" rel="noopener noreferrer" data-market="${esc(m.key)}" data-origin="product-modal" data-product="${esc(p.id)}">
+                <img src="${esc(m.icon)}" alt="" loading="lazy" decoding="async" onerror="this.style.display='none';">
+                <span><strong>${esc(m.name)}</strong><small>Buscar produto</small></span>
               </a>`).join('')}
           </div>
         </div>
