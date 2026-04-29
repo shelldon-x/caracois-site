@@ -47,6 +47,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="dns-prefetch" href="//wa.me">
+    <link rel="dns-prefetch" href="//www.salao99.com.br">
     <link rel="dns-prefetch" href="//instagram.com">
     <link rel="dns-prefetch" href="//tiktok.com">
     <link rel="dns-prefetch" href="//youtube.com">
@@ -255,7 +256,7 @@
     }
     </script>
 
-    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/main.css?v=20260429-final-10">
 
 
     <!-- Google tag (GA4) — Studio Caracóis -->
@@ -287,13 +288,92 @@
         src="https://www.facebook.com/tr?id=1522260281454126&ev=PageView&noscript=1"
         alt="" /></noscript>
 
-    <!-- Tracking profissional centralizado em /assets/js/main.js -->
+    <!-- Tracking unificado — eventos GA4 + Meta Pixel -->
     <script>
         window.SC_TRACKING = {
             ga4MeasurementId: 'G-0J7RBF2BFX',
-            metaPixelId: '1522260281454126',
-            site: 'caracois.com.br'
+            metaPixelId: '1522260281454126'
         };
+
+        function scTrack(eventName, params, metaStandardEvent) {
+            var payload = Object.assign({
+                site: 'caracois.com.br',
+                page_path: window.location.pathname,
+                page_location: window.location.href
+            }, params || {});
+
+            if (typeof window.gtag === 'function') {
+                window.gtag('event', eventName, payload);
+            }
+
+            if (typeof window.fbq === 'function') {
+                if (metaStandardEvent) {
+                    window.fbq('track', metaStandardEvent, payload);
+                }
+                window.fbq('trackCustom', eventName, payload);
+            }
+
+            if (typeof window.clarity === 'function') {
+                window.clarity('event', eventName);
+            }
+        }
+
+        function scWrapFunction(functionName, eventName, params, metaStandardEvent) {
+            var tries = 0;
+            var timer = window.setInterval(function() {
+                tries++;
+                if (typeof window[functionName] === 'function' && !window[functionName].__scTracked) {
+                    var original = window[functionName];
+                    var wrapped = function() {
+                        scTrack(eventName, params, metaStandardEvent);
+                        return original.apply(this, arguments);
+                    };
+                    wrapped.__scTracked = true;
+                    window[functionName] = wrapped;
+                    window.clearInterval(timer);
+                }
+                if (tries > 40) window.clearInterval(timer);
+            }, 250);
+        }
+
+        window.addEventListener('load', function() {
+            scWrapFunction('openBooking', 'open_modal_agendamento', { area: 'modal_agendamento' });
+            scWrapFunction('openWaModal', 'open_modal_whatsapp', { area: 'modal_whatsapp' });
+            scWrapFunction('openBeeModal', 'open_modal_bee_marketplace', { area: 'bee_cosmetics' });
+        });
+
+        document.addEventListener('click', function(event) {
+            var el = event.target.closest('a');
+            if (!el) return;
+
+            var href = el.getAttribute('href') || '';
+            var label = (el.innerText || el.getAttribute('aria-label') || '').trim().slice(0, 120);
+            var payload = { link_url: href, link_text: label };
+
+            if (href.indexOf('wa.me/') !== -1 || href.indexOf('api.whatsapp.com') !== -1) {
+                scTrack('click_whatsapp', payload, 'Contact');
+                return;
+            }
+
+            if (href.indexOf('salao99.com.br') !== -1) {
+                scTrack('click_agendamento_unidade', payload, 'Lead');
+                return;
+            }
+
+            if (el.classList.contains('unit-card') || href.indexOf('/unidades/') === 0) {
+                scTrack('click_unidade', payload);
+                return;
+            }
+
+            if (el.classList.contains('bee-market-item') || href.indexOf('amazon.com.br') !== -1 || href.indexOf('shopee.com.br') !== -1 || href.indexOf('mercadolivre.com.br') !== -1) {
+                scTrack('click_marketplace_bee', payload);
+                return;
+            }
+
+            if (href.indexOf('instagram.com') !== -1 || href.indexOf('tiktok.com') !== -1 || href.indexOf('youtube.com') !== -1) {
+                scTrack('click_social', payload);
+            }
+        }, true);
     </script>
     <!-- Microsoft Clarity — analytics de comportamento -->
     <script>
@@ -407,7 +487,7 @@
     </div>
 </div>
 
-<!-- Modal Agendamento sistema de agendamento online -->
+<!-- Modal Agendamento Salão99 -->
 <div class="booking-overlay" id="bookingModal" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Escolha sua unidade para agendar" onclick="closeModalOnOverlay(event, 'bookingModal')">
     <div class="booking-modal">
         <button type="button" class="booking-close" onclick="closeModal('bookingModal')" aria-label="Fechar">&times;</button>
@@ -954,7 +1034,7 @@
                 </details>
                 <details class="faq-item reveal">
                     <summary class="faq-question" aria-expanded="false">Preciso agendar ou posso ir sem hora?</summary>
-                    <div class="faq-answer">Recomendamos sempre o agendamento prévio para garantir o melhor atendimento. Nossa abordagem é consultiva — cada cliente recebe atenção individualizada. Você pode agendar diretamente pelo nosso site — basta clicar em "Agendar", escolher sua unidade e confirmar no sistema de agendamento online. Também é possível falar com a unidade pelo WhatsApp.</div>
+                    <div class="faq-answer">Recomendamos sempre o agendamento prévio para garantir o melhor atendimento. Nossa abordagem é consultiva — cada cliente recebe atenção individualizada. Você pode agendar diretamente pelo nosso site — basta clicar em "Agendar", escolher sua unidade e confirmar pelo Salão99. Também é possível falar com a unidade pelo WhatsApp.</div>
                 </details>
                 <details class="faq-item reveal">
                     <summary class="faq-question" aria-expanded="false">A avaliação é realmente gratuita?</summary>
@@ -1144,8 +1224,8 @@
     <svg viewBox="0 0 24 24"><use href="#i-wa"/></svg>
 </button>
 
-<script src="/assets/js/main.js?v=20260429-modal-fix-3" defer></script>
-<script src="/assets/js/bee-catalog.js" defer></script>
+<script src="/assets/js/main.js?v=20260429-final-10" defer></script>
+<script src="/assets/js/bee-catalog.js?v=20260429-final-10" defer></script>
 
 </body>
 </html>

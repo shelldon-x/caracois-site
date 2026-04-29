@@ -2,6 +2,8 @@
 (function () {
   'use strict';
 
+  const BUILD_VERSION = '20260429-final-10';
+
   document.documentElement.classList.remove('no-js');
   document.documentElement.classList.add('js');
 
@@ -139,7 +141,7 @@
   }
 
   function track(name, params) {
-    const payload = cleanPayload({ ...getAttributionPayload(), ...(params || {}) });
+    const payload = cleanPayload({ build_version: BUILD_VERSION, ...getAttributionPayload(), ...(params || {}) });
     try {
       if (typeof window.gtag === 'function') {
         window.gtag('event', name, {
@@ -474,7 +476,7 @@
 
   // Defesa extra: qualquer card/link do modal de agendamento deve sempre seguir /agendar/<slug>.
   document.addEventListener('click', function(event) {
-    const card = event.target.closest && event.target.closest('#bookingUnitItems a.booking-card[data-unit-slug]');
+    const card = event.target.closest && event.target.closest('#bookingUnitItems a.booking-card[data-unit-slug], #bookingGrid a.booking-card[data-unit-slug]');
     if (!card) return;
     const slug = card.dataset.unitSlug;
     if (slug && !card.getAttribute('href').includes('/agendar/')) {
