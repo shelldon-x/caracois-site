@@ -2,7 +2,7 @@
 (function () {
   'use strict';
 
-  const BUILD_VERSION = '20260429-home-bee-modal-finalfix';
+  const BUILD_VERSION = '20260429-bee-final-100';
 
   document.documentElement.classList.remove('no-js');
   document.documentElement.classList.add('js');
