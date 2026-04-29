@@ -3535,3 +3535,22 @@ iframe {
     }
 }
 
+
+
+/* PATCH — Ficha técnica Bee enriquecida
+   Build: 20260429-bee-rich-v2
+*/
+.product-modal .pm-section--ingredients p {
+    max-height: 148px;
+    overflow: auto;
+    padding-right: 6px;
+    font-size: 0.82rem;
+    line-height: 1.58;
+}
+.product-modal .pm-section--ingredients p::-webkit-scrollbar {
+    width: 6px;
+}
+.product-modal .pm-section--ingredients p::-webkit-scrollbar-thumb {
+    background: rgba(155,68,66,0.22);
+    border-radius: 999px;
+}
