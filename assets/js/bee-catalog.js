@@ -1,12 +1,12 @@
 /* Bee Cosmetics — catálogo frontend rico 100%
-   Build: 20260429-pages-bee-10-10
+   Build: 20260429-bee-page-render-fix
    Dados enriquecidos: volume, pH, ANVISA, código de barras, descrição, modo de usar e composição.
    Sem campo de ativos principais, conforme solicitado.
 */
 (function () {
   'use strict';
 
-  const BUILD_VERSION = '20260429-pages-bee-10-10';
+  const BUILD_VERSION = '20260429-bee-page-render-fix';
   const PRODUCTS = [
     {
         "id": "born-to-bee",
@@ -355,11 +355,20 @@
   }
 
   function render(filter = 'all') {
-    ['#beeProductsGrid', '#beeProducts'].forEach((selector) => {
+    ['#beeProductsGrid', '#beeProducts', '.bee-cat-products-grid'].forEach((selector) => {
       const grid = $(selector);
       if (!grid) return;
+
       const list = filter === 'all' ? PRODUCTS : PRODUCTS.filter(p => p.category === filter);
-      grid.innerHTML = list.map(card).join('');
+
+      grid.classList.remove('bee-cat-products-grid--loading');
+      grid.classList.add('bee-products-ready');
+      grid.setAttribute('aria-busy', 'false');
+
+      grid.innerHTML = list.length
+        ? list.map(card).join('')
+        : '<p class="bee-products-empty">Nenhum produto encontrado nesta categoria.</p>';
+
       grid.dataset.beeRendered = 'true';
       grid.dataset.beeFilter = filter;
       initImageFallbacks(grid);
@@ -475,6 +484,8 @@
   }
 
   function bindEvents() {
+    if (window.__BEE_CATALOG_EVENTS_BOUND__) return;
+    window.__BEE_CATALOG_EVENTS_BOUND__ = true;
     document.addEventListener('click', (event) => {
       const filter = event.target.closest('.bee-filter-btn, .bee-cat-filter-btn');
       if (filter) {
@@ -517,11 +528,35 @@
     });
   }
 
-  document.addEventListener('DOMContentLoaded', () => {
-    render('all');
+  function bootBeeCatalog() {
     bindEvents();
-    initImageFallbacks();
-  });
+
+    const paint = () => {
+      render('all');
+      initImageFallbacks();
+    };
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => requestAnimationFrame(paint), { once: true });
+    } else {
+      requestAnimationFrame(paint);
+    }
+
+    // Defesa contra race/cache: se algum CSS/JS da página recolocar loading ou limpar grid, repinta.
+    window.setTimeout(() => {
+      const grids = ['#beeProductsGrid', '#beeProducts', '.bee-cat-products-grid']
+        .map(sel => $(sel))
+        .filter(Boolean);
+
+      grids.forEach(grid => {
+        if (!grid.dataset.beeRendered || !grid.querySelector('.bee-product-card')) {
+          render(grid.dataset.beeFilter || 'all');
+        }
+      });
+    }, 350);
+  }
+
+  bootBeeCatalog();
 
   window.BEE_PRODUCTS = PRODUCTS;
   window.openBeeModal = openBeeModal;
