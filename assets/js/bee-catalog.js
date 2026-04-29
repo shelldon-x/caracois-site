@@ -6,7 +6,7 @@
 (function () {
   'use strict';
 
-  const BUILD_VERSION = '20260429-bee-rich-v2';
+  const BUILD_VERSION = '20260429-booksy-instant-v1';
   const PRODUCTS = [
     {
         "id": "born-to-bee",

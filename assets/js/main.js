@@ -2,7 +2,7 @@
 (function () {
   'use strict';
 
-  const BUILD_VERSION = '20260429-bee-rich-v2';
+  const BUILD_VERSION = '20260429-booksy-instant-v1';
 
   document.documentElement.classList.remove('no-js');
   document.documentElement.classList.add('js');
