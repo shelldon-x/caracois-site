@@ -1,18 +1,18 @@
-/* Bee Cosmetics — catálogo frontend */
+/* Bee Cosmetics — catálogo frontend (CORRIGIDO) */
 (function () {
   'use strict';
 
   const PRODUCTS = [
-    { id:'born-to-bee', name:'Born to BEE', type:'Shampoo Sem Sulfato', category:'limpeza', image:'/images/products/born-to-bee.webp', desc:'Limpeza eficaz sem ressecar, com ingredientes naturais hidratantes e condicionantes.', tags:['Low poo','Sem sulfato','Limpeza suave'] },
-    { id:'feel-the-beeat', name:'Feel the BEEat', type:'Co-Wash', category:'limpeza', image:'/images/products/cowash-linha1.webp', desc:'Limpeza, condicionamento e hidratação com aloe vera, manteiga de oliva e queratina.', tags:['No poo','Co-wash','Hidratação'] },
-    { id:'beetween-gardens', name:'BEEtween Gardens', type:'Máscara de Nutrição', category:'tratamento', image:'/images/products/beetween-gardens.webp', desc:'Hidratação e nutrição com D-pantenol, manteiga de abacate e óleo de coco.', tags:['Nutrição','Brilho','Maciez'] },
-    { id:'after-beeach', name:'After BEEach', type:'Máscara de Reconstrução', category:'tratamento', image:'/images/products/after-beeach.webp', desc:'Reparo intensivo com manteiga de oliva e proteína do trigo.', tags:['Reconstrução','Força','Reparo'] },
-    { id:'beeloved-oil', name:'BEEloved Oil', type:'Máscara de Umectação', category:'tratamento', image:'/images/products/beeloved-oil.webp', desc:'Umectação profunda com óleo de coco, linhaça, manteiga de oliva e cera de arroz.', tags:['Umectação','Nutrição intensa','Óleos'] },
-    { id:'bee-yourself', name:'BEE Yourself', type:'Leave-in Super Definição', category:'finalizacao', image:'/images/products/bee-yourself.webp', desc:'Definição com hidratação, brilho, redução de porosidade e acabamento impecável.', tags:['Definição','Brilho','Finalização'] },
-    { id:'bee-proud', name:'BEE Proud', type:'Leave-in Antiencolhimento', category:'finalizacao', image:'/images/products/bee-proud.webp', desc:'Reduz fator encolhimento com manteiga de oliva e óleo de algodão.', tags:['Antiencolhimento','Volume','Finalização'] },
-    { id:'be-my-bee', name:'Be my BEE', type:'Gelatina Capilar', category:'finalizacao', image:'/images/products/be-my-bee.webp', desc:'Definição com fixação e hidratação com aloe vera e extrato de cana-de-açúcar.', tags:['Fixação','Definição','Day after'] },
-    { id:'beelieve-in-acid', name:'BEElieve in Acid', type:'Acidificante', category:'tratamento', image:'/images/products/beelieve-in-acid.webp', desc:'Sela cutículas, equilibra o pH e intensifica o brilho dos fios.', tags:['Acidificação','Porosidade','Brilho'] },
-    { id:'let-it-bee', name:'Let it BEE', type:'Leave-in Leveza Natural', category:'finalizacao', image:'/images/products/let-it-bee.webp', desc:'Proteção térmica, controle de frizz e leveza para todos os tipos de curvatura.', tags:['Leveza','Frizz','Proteção térmica'] }
+    { id:'born-to-bee', name:'Born to BEE', type:'Shampoo Sem Sulfato', category:'limpeza', image:'/images/products/born-to-bee.webp', desc:'Limpeza eficaz sem ressecar, com ingredientes naturais hidratantes e condicionantes.', tags:['Low poo','Sem sulfato','Limpeza suave'], ph:'pH 4,5' },
+    { id:'feel-the-beeat', name:'Feel the BEEat', type:'Co-Wash', category:'limpeza', image:'/images/products/cowash-linha1.webp', desc:'Limpeza, condicionamento e hidratação com aloe vera, manteiga de oliva e queratina.', tags:['No poo','Co-wash','Hidratação'], ph:'pH 4,5' },
+    { id:'beetween-gardens', name:'BEEtween Gardens', type:'Máscara de Nutrição', category:'tratamento', image:'/images/products/beetween-gardens.webp', desc:'Hidratação e nutrição com D-pantenol, manteiga de abacate e óleo de coco.', tags:['Nutrição','Brilho','Maciez'], ph:'pH 4,0' },
+    { id:'after-beeach', name:'After BEEach', type:'Máscara de Reconstrução', category:'tratamento', image:'/images/products/after-beeach.webp', desc:'Reparo intensivo com manteiga de oliva e proteína do trigo.', tags:['Reconstrução','Força','Reparo'], ph:'pH 4,0' },
+    { id:'beeloved-oil', name:'BEEloved Oil', type:'Máscara de Umectação', category:'tratamento', image:'/images/products/beeloved-oil.webp', desc:'Umectação profunda com óleo de coco, linhaça, manteiga de oliva e cera de arroz.', tags:['Umectação','Nutrição intensa','Óleos'], ph:'pH 4,0' },
+    { id:'bee-yourself', name:'BEE Yourself', type:'Leave-in Super Definição', category:'finalizacao', image:'/images/products/bee-yourself.webp', desc:'Definição com hidratação, brilho, redução de porosidade e acabamento impecável.', tags:['Definição','Brilho','Finalização'], ph:'pH 4,0' },
+    { id:'bee-proud', name:'BEE Proud', type:'Leave-in Antiencolhimento', category:'finalizacao', image:'/images/products/bee-proud.webp', desc:'Reduz fator encolhimento com manteiga de oliva e óleo de algodão.', tags:['Antiencolhimento','Volume','Finalização'], ph:'pH 4,0' },
+    { id:'be-my-bee', name:'Be my BEE', type:'Gelatina Capilar', category:'finalizacao', image:'/images/products/be-my-bee.webp', desc:'Definição com fixação e hidratação com aloe vera e extrato de cana-de-açúcar.', tags:['Fixação','Definição','Day after'], ph:'pH 4,0' },
+    { id:'beelieve-in-acid', name:'BEElieve in Acid', type:'Acidificante', category:'tratamento', image:'/images/products/beelieve-in-acid.webp', desc:'Sela cutículas, equilibra o pH e intensifica o brilho dos fios.', tags:['Acidificação','Porosidade','Brilho'], ph:'pH 3,5' },
+    { id:'let-it-bee', name:'Let it BEE', type:'Leave-in Leveza Natural', category:'finalizacao', image:'/images/products/let-it-bee.webp', desc:'Proteção térmica, controle de frizz e leveza para todos os tipos de curvatura.', tags:['Leveza','Frizz','Proteção térmica'], ph:'pH 4,0' }
   ];
 
   const marketplaceQuery = encodeURIComponent('bee cosmetics cabelo cacheado');
@@ -26,18 +26,33 @@
   const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
   const esc = (s) => String(s || '').replace(/[&<>'"]/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[ch]));
 
+  // Render usa as classes corretas que o main.css e bee-cosmetics.css esperam:
+  //   .bee-product-img (não bee-product-image)
+  //   .bee-product-info (não bee-product-content)
+  //   <h4> (não <h3>)
+  //   .product-type (não bee-product-category)
+  //   .bee-product-meta-row + .bee-product-pill.bee-product-pill--tag
+  //   .bee-product-actions + .btn-mini
   function card(product) {
+    const tagPills = product.tags.map(t =>
+      `<span class="bee-product-pill bee-product-pill--tag">${esc(t)}</span>`
+    ).join('');
+    const phPill = product.ph
+      ? `<span class="bee-product-pill bee-product-pill--ph">${esc(product.ph)}</span>`
+      : '';
     return `
-      <article class="bee-product-card bee-cat-product-card" id="${esc(product.id)}" tabindex="0" data-category="${esc(product.category)}">
-        <div class="bee-product-image bee-cat-product-image">
-          <img src="${esc(product.image)}" alt="${esc(product.name)} — ${esc(product.type)}" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('image-fallback');">
+      <article class="bee-product-card" id="${esc(product.id)}" tabindex="0" data-category="${esc(product.category)}">
+        <div class="bee-product-img">
+          <img src="${esc(product.image)}" alt="${esc(product.name)} — ${esc(product.type)}" loading="lazy" onerror="this.style.visibility='hidden';">
         </div>
-        <div class="bee-product-content bee-cat-product-content">
-          <div class="bee-product-category">${esc(product.type)}</div>
-          <h3>${esc(product.name)}</h3>
+        <div class="bee-product-info">
+          <div class="product-type">${esc(product.type)}</div>
+          <h4>${esc(product.name)}</h4>
           <p>${esc(product.desc)}</p>
-          <div class="bee-product-tags">${product.tags.map(t => `<span>${esc(t)}</span>`).join('')}</div>
-          <button type="button" class="btn btn-primary bee-product-more" data-product="${esc(product.id)}">Ver detalhes</button>
+          <div class="bee-product-meta-row">${tagPills}${phPill}</div>
+          <div class="bee-product-actions">
+            <button type="button" class="btn-mini" data-product="${esc(product.id)}" aria-label="Ver detalhes de ${esc(product.name)}">Ver detalhes</button>
+          </div>
         </div>
       </article>`;
   }
@@ -59,58 +74,28 @@
     const modal = $('#productModal');
     const content = $('#productModalContent') || $('.product-modal-content', modal) || $('.product-modal-body', modal) || $('.product-modal');
     if (!modal || !content) return;
-
+    const tagPills = p.tags.map(t =>
+      `<span class="bee-product-pill bee-product-pill--tag">${esc(t)}</span>`
+    ).join('');
+    const phPill = p.ph
+      ? `<span class="bee-product-pill bee-product-pill--ph">${esc(p.ph)}</span>`
+      : '';
     content.innerHTML = `
-      <div class="pm-grid">
-        <div class="pm-image">
-          <img src="${esc(p.image)}" alt="${esc(p.name)} — ${esc(p.type)}" loading="lazy" decoding="async">
-        </div>
-        <div class="pm-content">
-          <div class="pm-eyebrow">${esc(p.type)}</div>
+      <div class="pm-product">
+        <div class="pm-image"><img src="${esc(p.image)}" alt="${esc(p.name)}" loading="lazy" onerror="this.style.visibility='hidden';"></div>
+        <div class="pm-copy">
+          <p class="pm-kicker">${esc(p.type)}</p>
           <h2>${esc(p.name)}</h2>
-          <p class="pm-desc">${esc(p.desc)}</p>
-
-          <div class="pm-specs">
-            <div class="pm-spec">
-              <span>Categoria</span>
-              <strong>${esc(p.category)}</strong>
-            </div>
-            <div class="pm-spec">
-              <span>Indicação</span>
-              <strong>${p.tags.map(t => esc(t)).join(' · ')}</strong>
-            </div>
-          </div>
-
-          <div class="pm-section">
-            <h3>Por que usar</h3>
-            <p>${esc(p.desc)}</p>
-          </div>
-
-          <div class="pm-markets">
-            ${MARKETPLACES.map(m => `
-              <a class="pm-market-link" href="${m.href}" target="_blank" rel="noopener noreferrer" data-market="${m.key}" data-cta="bee_marketplace_click" data-origin="product-modal">
-                <img src="/images/icons/${m.key}.svg" alt="${esc(m.name)}" width="24" height="24" loading="lazy" onerror="this.style.display='none'">
-                <span>
-                  <strong>${esc(m.name)}</strong>
-                  <small>Buscar produto</small>
-                </span>
-              </a>`).join('')}
+          <p>${esc(p.desc)}</p>
+          <div class="bee-product-meta-row">${tagPills}${phPill}</div>
+          <div class="pm-actions">
+            ${MARKETPLACES.map(m => `<a class="btn btn-primary" href="${m.href}" target="_blank" rel="noopener" data-market="${m.key}" data-origin="product-modal">Buscar na ${m.name}</a>`).join('')}
           </div>
         </div>
       </div>`;
-
     modal.classList.add('active','is-open','open');
     modal.setAttribute('aria-hidden','false');
-    document.documentElement.classList.add('modal-open');
     document.body.classList.add('modal-open');
-
-    try {
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({ event: 'bee_product_modal_open', product_id: p.id, product_name: p.name, category: p.category });
-      if (typeof gtag === 'function') gtag('event', 'bee_product_modal_open', { product_id: p.id, product_name: p.name, category: p.category });
-      if (typeof fbq === 'function') fbq('trackCustom', 'BeeProductModalOpen', { product_id: p.id, product_name: p.name, category: p.category });
-      if (typeof clarity === 'function') clarity('event', 'bee_product_modal_open');
-    } catch(e) {}
   }
 
   function closeProductModal() {
@@ -119,7 +104,6 @@
     modal.classList.remove('active','is-open','open');
     modal.setAttribute('aria-hidden','true');
     document.body.classList.remove('modal-open');
-    document.documentElement.classList.remove('modal-open');
   }
 
   function openBeeModal() {
@@ -128,8 +112,6 @@
     modal.classList.add('active','is-open','open');
     modal.setAttribute('aria-hidden','false');
     document.body.classList.add('modal-open');
-    document.documentElement.classList.add('modal-open');
-    try { window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: 'bee_modal_open', area: 'marketplace_hub' }); if (typeof gtag === 'function') gtag('event', 'bee_modal_open', { area: 'marketplace_hub' }); if (typeof fbq === 'function') fbq('trackCustom', 'BeeModalOpen', { area: 'marketplace_hub' }); if (typeof clarity === 'function') clarity('event', 'bee_modal_open'); } catch(e) {}
   }
 
   function closeBeeModal() {
@@ -138,7 +120,6 @@
     modal.classList.remove('active','is-open','open');
     modal.setAttribute('aria-hidden','true');
     document.body.classList.remove('modal-open');
-    document.documentElement.classList.remove('modal-open');
   }
 
   function closeBeeModalOnOverlay(event) {
