@@ -465,39 +465,42 @@
 
 
 
-  function hideAccidentalBeeSeoLinks() {
-    const bee = document.getElementById('bee');
-    if (!bee) return;
+  function removeAccidentalBeeSeoLinks() {
+    const productSlugs = [
+      '/bee-cosmetics/born-to-bee',
+      '/bee-cosmetics/feel-the-beeat',
+      '/bee-cosmetics/beetween-gardens',
+      '/bee-cosmetics/after-beeach',
+      '/bee-cosmetics/beeloved-oil',
+      '/bee-cosmetics/bee-yourself',
+      '/bee-cosmetics/let-it-bee',
+      '/bee-cosmetics/bee-proud',
+      '/bee-cosmetics/be-my-bee',
+      '/bee-cosmetics/beelieve-in-acid'
+    ];
 
-    const links = Array.from(bee.querySelectorAll('a[href^="/bee-cosmetics/"]'))
-      .filter((link) => !link.closest('.bee-product-card, .bee-product-grid, .bee-modal, .bee-market-list, .footer, footer'));
-
-    if (links.length < 4) return;
-
-    const groups = new Map();
-    links.forEach((link) => {
-      let node = link.parentElement;
-      while (node && node !== bee) {
-        const count = node.querySelectorAll('a[href^="/bee-cosmetics/"]').length;
-        if (count >= 4) {
-          groups.set(node, count);
-          break;
-        }
-        node = node.parentElement;
+    const candidates = Array.from(document.querySelectorAll('p, div, nav, aside, section'));
+    candidates.forEach((el) => {
+      if (!el || el.id === 'beeProductsGrid' || el.closest('.bee-product-grid') || el.closest('.bee-modal-overlay')) return;
+      const links = Array.from(el.querySelectorAll('a[href^="/bee-cosmetics/"]'));
+      if (links.length < 3) return;
+      const hrefs = links.map((a) => a.getAttribute('href') || '');
+      const matches = hrefs.filter((href) => productSlugs.some((slug) => href.startsWith(slug))).length;
+      const text = (el.textContent || '').toLowerCase();
+      const looksLikeAccidentalBlock = matches >= 3 || (text.includes('conheça também') && text.includes('páginas individuais'));
+      if (looksLikeAccidentalBlock) {
+        el.setAttribute('aria-hidden', 'true');
+        el.style.setProperty('display', 'none', 'important');
+        el.style.setProperty('visibility', 'hidden', 'important');
+        el.style.setProperty('height', '0', 'important');
+        el.style.setProperty('overflow', 'hidden', 'important');
+        el.classList.add('bee-seo-products-hidden');
       }
-    });
-
-    groups.forEach((count, node) => {
-      const text = (node.textContent || '').toLowerCase();
-      const looksLikeSeoDump = count >= 6 || text.includes('páginas individuais') || text.includes('paginas individuais') || text.includes('conheça também') || text.includes('conheca tambem');
-      if (!looksLikeSeoDump) return;
-      node.classList.add('bee-hidden-seo-links');
-      node.setAttribute('aria-hidden', 'true');
-      node.style.display = 'none';
     });
   }
 
   document.addEventListener('DOMContentLoaded', () => {
+    removeAccidentalBeeSeoLinks();
     renderUnits();
     appendAttributionToBookingLinks();
     enhanceWhatsAppLinks();
@@ -505,8 +508,8 @@
     initReveal();
     initTracking();
     initEscClose();
-    hideAccidentalBeeSeoLinks();
-    setTimeout(hideAccidentalBeeSeoLinks, 250);
+    setTimeout(removeAccidentalBeeSeoLinks, 250);
+    setTimeout(removeAccidentalBeeSeoLinks, 1000);
   });
 
 
