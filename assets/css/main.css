@@ -3781,28 +3781,41 @@ body[data-page-type="article"] .article-body img {
 }
 
 
+
 /* =========================================================
-   HOTFIX — Bee SEO links visíveis na Home
-   Mantém as páginas de produto indexáveis via sitemap/links oficiais,
-   mas impede que blocos técnicos de links apareçam sobre a seção Bee.
+   HOTFIX DEFINITIVO — Links SEO Bee não devem aparecer na Home
+   Build: 20260502-bee-links-definitivo
 ========================================================= */
-#bee .seo-product-links,
-#bee .bee-seo-links,
-#bee .bee-product-seo-links,
-#bee .bee-hidden-seo-links,
-#bee .bee-seo-products-hidden,
-#bee [data-seo-product-links="true"] {
+.seo-product-links,
+.bee-seo-products-hidden,
+[data-seo-product-links="true"],
+[data-bee-seo-links="true"],
+.bee-product-seo-links,
+.bee-hidden-seo-links {
     display: none !important;
     visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    max-height: 0 !important;
+    overflow: hidden !important;
     pointer-events: none !important;
+    position: absolute !important;
+    left: -99999px !important;
+    top: auto !important;
 }
 
 @supports selector(:has(*)) {
-    #bee :where(p, div, nav, aside):has(a[href^="/bee-cosmetics/born-to-bee"]):has(a[href^="/bee-cosmetics/feel-the-beeat"]),
-    #bee :where(p, div, nav, aside):has(a[href^="/bee-cosmetics/beetween-gardens"]):has(a[href^="/bee-cosmetics/after-beeach"]),
-    #bee :where(p, div, nav, aside):has(a[href^="/bee-cosmetics/beelieve-in-acid"]):has(a[href^="/bee-cosmetics/be-my-bee"]) {
+    body :where(p, div, nav, aside, section):has(a[href^="/bee-cosmetics/born-to-bee"]):has(a[href^="/bee-cosmetics/feel-the-beeat"]),
+    body :where(p, div, nav, aside, section):has(a[href^="/bee-cosmetics/beetween-gardens"]):has(a[href^="/bee-cosmetics/after-beeach"]),
+    body :where(p, div, nav, aside, section):has(a[href^="/bee-cosmetics/beelieve-in-acid"]):has(a[href^="/bee-cosmetics/be-my-bee"]) {
         display: none !important;
         visibility: hidden !important;
+        opacity: 0 !important;
+        height: 0 !important;
+        max-height: 0 !important;
+        overflow: hidden !important;
         pointer-events: none !important;
+        position: absolute !important;
+        left: -99999px !important;
     }
 }
