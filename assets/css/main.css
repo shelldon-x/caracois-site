@@ -3782,11 +3782,131 @@ body[data-page-type="article"] .article-body img {
 
 
 
-/* AUDITORIA FINAL 2026-05-02 — proteções visuais e compatibilidade */
-.u-text-gold { color: var(--gold-light) !important; }
-.whatsapp-float svg,
-.whatsapp-float svg * { fill: #fff !important; stroke: none !important; }
-.seo-product-links { display: none !important; visibility: hidden !important; height: 0 !important; overflow: hidden !important; }
-@media (max-width: 640px){
-  .whatsapp-float { bottom: max(24px, env(safe-area-inset-bottom)); right: 24px; }
+/* =========================================================
+   AUDITORIA VISUAL/FUNCIONAL FINAL — 20260502-auditoria-visual-final
+   Escopo: Central, artigos, unidades, produtos Bee, Caracóis Care, menus, WhatsApp e modais.
+========================================================= */
+:root { color-scheme: light; }
+html, body { overflow-x: hidden; }
+
+/* WhatsApp flutuante: usa apenas SVG real, sem pseudo/duplicidade. */
+.whatsapp-float {
+  width: 64px !important;
+  height: 64px !important;
+  border-radius: 50% !important;
+  background: #25D366 !important;
+  color: #06150c !important;
+  font-size: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border: 0 !important;
+  box-shadow: 0 16px 44px rgba(37,211,102,.38), 0 0 0 10px rgba(37,211,102,.08) !important;
+  z-index: 1002 !important;
+}
+.whatsapp-float::before, .whatsapp-float::after { content: none !important; display: none !important; }
+.whatsapp-float svg {
+  display: block !important;
+  width: 33px !important;
+  height: 33px !important;
+  fill: #06150c !important;
+  stroke: none !important;
+  color: #06150c !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+.whatsapp-float svg * { fill: currentColor !important; }
+.whatsapp-float img, .whatsapp-float span:not(.sr-only) { display:none !important; }
+@media (max-width: 768px) {
+  .whatsapp-float { right: 22px !important; bottom: calc(74px + env(safe-area-inset-bottom)) !important; width:60px !important; height:60px !important; }
+}
+
+/* Menu hambúrguer universal: evita botão de fechar em formato de barra e mantém drawer premium. */
+.mobile-menu {
+  right: -110% !important;
+  left: auto !important;
+  width: min(86vw, 380px) !important;
+  max-width: 380px !important;
+  background: #fff !important;
+  padding: 88px 28px 44px !important;
+  box-shadow: -18px 0 60px rgba(0,0,0,.18) !important;
+}
+.mobile-menu.open, .mobile-menu.active, .mobile-menu.is-open { right: 0 !important; }
+.mobile-overlay.open, .mobile-overlay.active, .mobile-overlay.is-open { opacity:1 !important; visibility:visible !important; }
+.mobile-close {
+  position:absolute !important;
+  top: 22px !important;
+  right: 24px !important;
+  width: 46px !important;
+  height: 46px !important;
+  min-width: 46px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 50% !important;
+  background: #F5F1EF !important;
+  color: var(--text) !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  font-size: 1.55rem !important;
+  line-height:1 !important;
+  box-shadow: none !important;
+}
+.mobile-menu a { color: var(--text) !important; text-decoration:none !important; }
+.mobile-menu .btn, .mobile-menu .btn-primary, .mobile-menu button.btn-primary { color:#fff !important; }
+
+/* Central de Conhecimento: corrige hierarquia tipográfica em mobile. */
+.intro-inner > p {
+  max-width: 720px;
+  margin: 0 auto 22px;
+  font-size: 1.02rem;
+  line-height: 1.75;
+  color: var(--text-light);
+  font-weight: 400;
+}
+.intro-highlight {
+  max-width: 760px;
+  margin: 26px auto;
+  font-size: clamp(1.55rem, 3vw, 2.35rem) !important;
+  line-height: 1.22 !important;
+}
+@media (max-width: 640px) {
+  .intro-section { padding: 64px 0 !important; }
+  .intro-inner .section-title { font-size: clamp(1.8rem, 8vw, 2.35rem) !important; line-height: 1.18 !important; }
+  .intro-inner > p { font-size: .98rem !important; line-height: 1.68 !important; text-align:center; }
+  .intro-highlight { font-size: clamp(1.45rem, 8vw, 2.15rem) !important; line-height:1.18 !important; }
+  .featured-pill-row { gap: 10px 8px !important; }
+  .featured-pill { font-size: .8rem !important; padding: 9px 14px !important; }
+}
+
+/* Artigos/conteúdos: garante container, hero e legibilidade. */
+body[data-page-type="article"] .page-hero, .page-hero { overflow: hidden; }
+.article-layout, .article-body, .article-grid { max-width: 100%; }
+.article-body p { font-size: clamp(.98rem, 2.6vw, 1.06rem); line-height: 1.78; }
+@media (max-width: 640px) {
+  .article-layout { padding-top: 48px !important; }
+  .article-body h2 { font-size: clamp(1.65rem, 8vw, 2.25rem) !important; }
+}
+
+/* Unidades: mapa estável, botões e seção sem colapso. */
+.location .address-block { align-items: stretch !important; }
+.map-container { width: 100% !important; min-height: 420px !important; border-radius: 28px !important; overflow: hidden !important; position: relative !important; }
+.map-container iframe { display: block !important; width: 100% !important; height: 100% !important; min-height: 420px !important; border: 0 !important; }
+.address-actions .btn, .btn-map, .btn-wa-local { min-height: 56px !important; }
+.btn-wa-local { background:#25D366 !important; color:#07120b !important; border:0 !important; }
+@media (max-width: 640px) {
+  .map-container, .map-container iframe { min-height: 330px !important; }
+  .location { padding-bottom: 82px !important; }
+}
+
+/* Produtos Bee / Caracóis Care: modais, menu e CTA visual. */
+.bee-product-page .mobile-menu, body[data-page-type="bee-product"] .mobile-menu, body[data-brand="caracois-care"] .mobile-menu { z-index: 9999 !important; }
+.bee-cat-product-links, .seo-product-links, [data-seo-product-links] { display:none !important; visibility:hidden !important; pointer-events:none !important; }
+.care-cat-products-grid, #careProductsGrid, .bee-cat-products-grid, #beeProductsGrid { opacity:1 !important; visibility:visible !important; }
+.care-modal-overlay.active, .care-modal-overlay.open, .care-modal-overlay.is-open { display:flex !important; }
+
+/* CTA fixo não deve cobrir conteúdo e o WhatsApp fica acima dele. */
+@media (max-width: 768px) {
+  .sticky-cta { z-index: 996 !important; }
+  body { padding-bottom: calc(76px + env(safe-area-inset-bottom)); }
 }
