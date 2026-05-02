@@ -3,19 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-
   <title>Página não encontrada | Studio Caracóis</title>
-  <meta name="description" content="Essa página saiu do caminho, mas seus cachos não precisam sair. Encontre a unidade mais próxima, fale pelo WhatsApp ou agende sua avaliação gratuita no Studio Caracóis.">
+  <meta name="description" content="A página que você tentou acessar não foi encontrada. Continue navegando pelo Studio Caracóis, veja nossas unidades ou agende sua avaliação gratuita.">
   <meta name="robots" content="noindex, follow">
   <meta name="theme-color" content="#9B4442">
   <meta name="color-scheme" content="light">
   <link rel="canonical" href="https://caracois.com.br/404">
 
   <meta property="og:title" content="Página não encontrada | Studio Caracóis">
-  <meta property="og:description" content="Continue navegando pelo Studio Caracóis e encontre o melhor cuidado para seus cachos.">
+  <meta property="og:description" content="Essa página saiu do caminho, mas seus cachos não precisam sair. Continue pelo Studio Caracóis.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://caracois.com.br/404">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="Studio Caracóis">
   <meta property="og:image" content="https://caracois.com.br/images/og/og-home.png">
+  <meta property="og:image:secure_url" content="https://caracois.com.br/images/og/og-home.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
 
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -26,7 +30,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="/assets/css/main.css?v=20260429-infra-10-10">
 
   <script type="application/ld+json">
@@ -49,13 +52,12 @@
       min-height: 100vh;
       display: flex;
       align-items: center;
-      background: linear-gradient(170deg, var(--black) 0%, #221514 40%, var(--terracota-dark) 100%);
+      background: linear-gradient(170deg, var(--black) 0%, #221514 42%, var(--terracota-dark) 100%);
       color: var(--white);
-      padding: 112px 0 76px;
+      padding: 120px 0 72px;
       position: relative;
       overflow: hidden;
     }
-
     .error-page::before {
       content: '';
       position: absolute;
@@ -65,310 +67,101 @@
         radial-gradient(ellipse 520px 420px at 8% 88%, rgba(196,162,101,0.12), transparent 62%);
       pointer-events: none;
     }
-
     .error-watermark {
       position: absolute;
-      right: -70px;
+      right: -80px;
       bottom: -90px;
-      width: min(620px, 82vw);
+      width: min(620px, 78vw);
       opacity: .075;
       pointer-events: none;
     }
-
     .error-content {
       position: relative;
       z-index: 2;
-      max-width: 780px;
+      max-width: 760px;
       margin: 0 auto;
       text-align: center;
     }
-
     .error-logo {
       width: 210px;
-      margin: 0 auto 32px;
+      margin: 0 auto 36px;
     }
-
     .error-code {
       font-family: var(--serif);
-      font-size: clamp(4rem, 10vw, 7.4rem);
-      line-height: .9;
+      font-size: clamp(4rem, 12vw, 8rem);
+      line-height: .86;
       color: var(--gold);
-      margin-bottom: 16px;
+      margin-bottom: 18px;
       letter-spacing: -.04em;
     }
-
     .error-content h1 {
       font-family: var(--serif);
-      font-size: clamp(2.05rem, 5vw, 3.8rem);
+      font-size: clamp(2.1rem, 5vw, 4rem);
       font-weight: 400;
       line-height: 1.08;
       color: var(--white);
-      margin-bottom: 18px;
+      margin-bottom: 20px;
     }
-
-    .error-content h1 em {
-      color: var(--nude);
-      font-style: italic;
-    }
-
+    .error-content h1 em { color: var(--nude); font-style: italic; }
     .error-content p {
       color: rgba(255,255,255,.78);
       font-size: 1.04rem;
       line-height: 1.75;
-      max-width: 640px;
-      margin: 0 auto 30px;
+      max-width: 620px;
+      margin: 0 auto 34px;
     }
-
     .error-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 14px;
       justify-content: center;
-      margin-bottom: 18px;
+      margin-bottom: 34px;
     }
-
-    .error-smart {
-      margin: 18px auto 30px;
-      display: flex;
-      justify-content: center;
-    }
-
-    .error-smart button {
-      border: 1px solid rgba(196,162,101,.5);
-      background: rgba(255,255,255,.06);
-      color: var(--gold-light);
-      border-radius: 100px;
-      padding: 12px 22px;
-      font-family: var(--sans);
-      font-size: .88rem;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all .3s var(--ease);
-    }
-
-    .error-smart button:hover {
-      background: rgba(196,162,101,.14);
-      border-color: var(--gold);
-      color: var(--white);
-    }
-
-    .btn-outline-white {
-      border: 1px solid rgba(255,255,255,0.54);
+    .error-actions .btn-outline-white {
       color: #fff;
-      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,.62);
+      background: rgba(255,255,255,.08);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.08);
     }
-
-    .btn-outline-white:hover {
-      background: rgba(255,255,255,0.14);
+    .error-actions .btn-outline-white:hover,
+    .error-actions .btn-outline-white:focus-visible {
+      color: #fff;
       border-color: #fff;
-      color: #fff;
+      background: rgba(255,255,255,.16);
     }
-
-    .error-secondary {
-      margin-top: 8px;
-    }
-
-    .error-secondary a {
-      color: var(--gold-light);
-      text-decoration: none;
-      font-size: .92rem;
-      border-bottom: 1px solid rgba(196,162,101,.45);
-    }
-
-    .error-secondary a:hover {
-      color: var(--white);
-      border-color: var(--white);
-    }
-
     .error-links {
-      margin-top: 30px;
-      font-size: .86rem;
       display: flex;
-      justify-content: center;
-      gap: 22px;
       flex-wrap: wrap;
-    }
-
-    .error-links a {
-      color: rgba(255,255,255,.76);
-      border-bottom: 1px solid rgba(196,162,101,.45);
-      text-decoration: none;
-    }
-
-    .error-links a:hover {
-      color: var(--gold);
-    }
-
-    .modal-close-premium {
-      position: absolute;
-      top: 18px;
-      right: 18px;
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      border: 1px solid rgba(155,68,66,.14);
-      background: rgba(255,255,255,.92);
-      color: var(--terracota);
-      font-size: 1.4rem;
-      line-height: 1;
-      display: inline-flex;
-      align-items: center;
+      gap: 12px 22px;
       justify-content: center;
-      z-index: 5;
-      box-shadow: 0 10px 28px rgba(0,0,0,.08);
+      font-size: .86rem;
     }
-
-    .modal-premium-intro {
-      text-align: center;
-      margin-bottom: 24px;
-    }
-
-    .modal-premium-intro h2 {
-      font-family: var(--serif);
-      font-size: clamp(1.9rem, 4vw, 2.6rem);
-      color: var(--black);
-      font-weight: 500;
-      margin-bottom: 10px;
-    }
-
-    .modal-premium-intro p {
-      color: var(--text-light);
-      line-height: 1.65;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    .nearest-wrap {
-      display: none;
-      margin: 18px 0 24px;
-    }
-
-    .nearest-card {
-      display: block;
-      padding: 18px;
-      border-radius: 18px;
-      background: linear-gradient(135deg, rgba(196,162,101,.16), rgba(155,68,66,.08));
-      border: 1px solid rgba(196,162,101,.36);
+    .error-links a {
+      color: rgba(255,255,255,.72);
       text-decoration: none;
-      color: var(--text);
+      border-bottom: 1px solid rgba(196,162,101,.45);
     }
-
-    .nearest-label {
-      font-size: .72rem;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--terracota);
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
-
-    .nearest-name {
-      font-family: var(--serif);
-      font-size: 1.35rem;
-      color: var(--black);
-      margin-bottom: 5px;
-    }
-
-    .nearest-meta {
-      color: var(--text-light);
-      font-size: .9rem;
-      line-height: 1.5;
-    }
-
-    @media (max-width: 640px) {
-      .error-page {
-        padding: 84px 0 64px;
-      }
-
-      .error-logo {
-        width: 190px;
-        margin-bottom: 28px;
-      }
-
-      .error-actions {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .error-actions .btn {
-        width: 100%;
-      }
-
-      .error-links {
-        gap: 16px;
-      }
-    }
+    .error-links a:hover { color: var(--gold); }
   </style>
 </head>
-
 <body>
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
   <main id="conteudo" class="error-page">
-    <div class="error-watermark" aria-hidden="true">
-      <img src="/images/logos/hero-watermark.svg" alt="">
-    </div>
-
+    <div class="error-watermark" aria-hidden="true"><img src="/images/logos/hero-watermark.svg" alt=""></div>
     <div class="container">
       <div class="error-content">
         <a href="/" aria-label="Voltar para a página inicial">
           <img class="error-logo" src="/images/logos/logo-nude.svg" alt="Studio Caracóis">
         </a>
-
         <div class="error-code">404</div>
-
-        <h1>
-          Essa página saiu do caminho,<br>
-          <em>mas seus cachos não precisam sair.</em>
-        </h1>
-
-        <p>
-          O endereço pode ter mudado ou não existir mais. Encontre a unidade ideal, fale pelo WhatsApp ou agende sua avaliação gratuita.
-        </p>
-
+        <h1>Essa página saiu do caminho, <em>mas seus cachos não precisam sair.</em></h1>
+        <p>O endereço pode ter mudado ou não existir mais. Você pode voltar para o início, conhecer nossas unidades ou agendar uma avaliação gratuita.</p>
         <div class="error-actions">
-          <a class="btn btn-primary"
-             href="/"
-             data-cta="voltar_inicio_404"
-             data-origin="404">
-            Voltar para o início
-          </a>
-
-          <a class="btn btn-gold"
-             href="#"
-             onclick="openBooking(); return false;"
-             data-cta="agendar_404"
-             data-channel="booking"
-             data-origin="404">
-            Agendar avaliação gratuita
-          </a>
-
-          <a class="btn btn-outline-white"
-             href="#"
-             onclick="openWaModal(); return false;"
-             data-cta="whatsapp_404"
-             data-channel="whatsapp"
-             data-origin="404">
-            Falar pelo WhatsApp
-          </a>
+          <a class="btn btn-primary" href="/" data-cta="voltar_inicio_404" data-origin="404">Voltar para o início</a>
+          <a class="btn btn-gold" href="/#unidades" data-cta="agendar_404" data-channel="booking" data-origin="404">Agendar avaliação gratuita</a>
+          <a class="btn btn-outline-white" href="/#unidades" data-cta="ver_unidades_404" data-origin="404">Ver unidades</a>
         </div>
-
-        <div class="error-smart">
-          <button type="button"
-                  onclick="openBooking(); setTimeout(findNearestBooking, 180);"
-                  data-cta="encontrar_unidade_proxima_404"
-                  data-channel="booking"
-                  data-origin="404">
-            Encontrar unidade mais próxima
-          </button>
-        </div>
-
-        <div class="error-secondary">
-          <a href="/#unidades" data-cta="ver_unidades_404" data-origin="404">
-            Ver todas as unidades
-          </a>
-        </div>
-
         <div class="error-links" aria-label="Links úteis">
           <a href="/central-de-conhecimento">Central de conhecimento</a>
           <a href="/bee-cosmetics">Bee Cosmetics</a>
@@ -377,80 +170,6 @@
       </div>
     </div>
   </main>
-
-  <!-- Modal de Agendamento -->
-  <div id="bookingModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true" onclick="closeModalOnOverlay(event, 'bookingModal')">
-    <div class="modal-content">
-      <button class="modal-close-premium" type="button" onclick="closeModal('bookingModal')" aria-label="Fechar">×</button>
-
-      <div class="modal-premium-intro">
-        <h2>Agende sua avaliação gratuita</h2>
-        <p>Escolha uma unidade do Studio Caracóis ou permita localizar a unidade mais próxima de você.</p>
-      </div>
-
-      <div class="error-smart">
-        <button id="bookingGeoBtn"
-                type="button"
-                onclick="findNearestBooking()"
-                data-cta="modal_encontrar_unidade_proxima"
-                data-channel="booking">
-          Usar minha localização
-        </button>
-      </div>
-
-      <div id="bookingNearestWrap" class="nearest-wrap">
-        <a id="bookingNearestCard" class="nearest-card" href="#">
-          <div class="nearest-label">Unidade mais próxima</div>
-          <div id="bookingNearestName" class="nearest-name"></div>
-          <div id="bookingNearestAddr" class="nearest-meta"></div>
-          <div id="bookingNearestPostal" class="nearest-meta"></div>
-          <div id="bookingNearestRef" class="nearest-meta"></div>
-          <div id="bookingNearestDist" class="nearest-meta"></div>
-        </a>
-      </div>
-
-      <p id="bookingOtherLabel" style="display:none; text-align:center; margin: 0 0 18px; color: var(--text-muted); font-size:.9rem;">
-        Ou escolha outra unidade:
-      </p>
-
-      <div id="bookingGrid" class="booking-grid"></div>
-    </div>
-  </div>
-
-  <!-- Modal de WhatsApp -->
-  <div id="waModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true" onclick="closeModalOnOverlay(event, 'waModal')">
-    <div class="modal-content">
-      <button class="modal-close-premium" type="button" onclick="closeModal('waModal')" aria-label="Fechar">×</button>
-
-      <div class="modal-premium-intro">
-        <h2>Fale com uma unidade</h2>
-        <p>Escolha a unidade mais próxima para falar pelo WhatsApp com a equipe do Studio Caracóis.</p>
-      </div>
-
-      <div class="error-smart">
-        <button id="waGeoBtn"
-                type="button"
-                onclick="findNearest()"
-                data-cta="modal_whatsapp_unidade_proxima"
-                data-channel="whatsapp">
-          Encontrar unidade mais próxima
-        </button>
-      </div>
-
-      <div id="waNearestWrap" class="nearest-wrap">
-        <a id="waNearestCard" class="nearest-card" href="#" target="_blank" rel="noopener noreferrer">
-          <div class="nearest-label">Unidade mais próxima</div>
-          <div id="waNearestName" class="nearest-name"></div>
-          <div id="waNearestAddr" class="nearest-meta"></div>
-          <div id="waNearestPostal" class="nearest-meta"></div>
-          <div id="waNearestRef" class="nearest-meta"></div>
-          <div id="waNearestDist" class="nearest-meta"></div>
-        </a>
-      </div>
-
-      <div id="waUnitItems" class="wa-unit-items"></div>
-    </div>
-  </div>
 
   <script src="/assets/js/main.js?v=20260429-infra-10-10" defer></script>
 </body>
