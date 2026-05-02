@@ -3780,3 +3780,29 @@ body[data-page-type="article"] .article-body img {
     display: flex !important;
 }
 
+
+/* =========================================================
+   HOTFIX — Bee SEO links visíveis na Home
+   Mantém as páginas de produto indexáveis via sitemap/links oficiais,
+   mas impede que blocos técnicos de links apareçam sobre a seção Bee.
+========================================================= */
+#bee .seo-product-links,
+#bee .bee-seo-links,
+#bee .bee-product-seo-links,
+#bee .bee-hidden-seo-links,
+#bee .bee-seo-products-hidden,
+#bee [data-seo-product-links="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
+
+@supports selector(:has(*)) {
+    #bee :where(p, div, nav, aside):has(a[href^="/bee-cosmetics/born-to-bee"]):has(a[href^="/bee-cosmetics/feel-the-beeat"]),
+    #bee :where(p, div, nav, aside):has(a[href^="/bee-cosmetics/beetween-gardens"]):has(a[href^="/bee-cosmetics/after-beeach"]),
+    #bee :where(p, div, nav, aside):has(a[href^="/bee-cosmetics/beelieve-in-acid"]):has(a[href^="/bee-cosmetics/be-my-bee"]) {
+        display: none !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+    }
+}
