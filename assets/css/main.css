@@ -3783,39 +3783,29 @@ body[data-page-type="article"] .article-body img {
 
 
 /* =========================================================
-   HOTFIX DEFINITIVO — Links SEO Bee não devem aparecer na Home
-   Build: 20260502-bee-links-definitivo
+   HOTFIX 20260501-bee-links-realfix
+   Oculta bloco acidental de links individuais Bee na Home.
+   Mantém intacto o CTA principal /bee-cosmetics.
 ========================================================= */
 .seo-product-links,
-.bee-seo-products-hidden,
-[data-seo-product-links="true"],
-[data-bee-seo-links="true"],
+.bee-seo-product-links,
+.bee-hidden-seo-links,
 .bee-product-seo-links,
-.bee-hidden-seo-links {
-    display: none !important;
-    visibility: hidden !important;
-    opacity: 0 !important;
-    height: 0 !important;
-    max-height: 0 !important;
-    overflow: hidden !important;
-    pointer-events: none !important;
-    position: absolute !important;
-    left: -99999px !important;
-    top: auto !important;
+[data-seo-product-links],
+[data-bee-seo-links] {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  max-height: 0 !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
-@supports selector(:has(*)) {
-    body :where(p, div, nav, aside, section):has(a[href^="/bee-cosmetics/born-to-bee"]):has(a[href^="/bee-cosmetics/feel-the-beeat"]),
-    body :where(p, div, nav, aside, section):has(a[href^="/bee-cosmetics/beetween-gardens"]):has(a[href^="/bee-cosmetics/after-beeach"]),
-    body :where(p, div, nav, aside, section):has(a[href^="/bee-cosmetics/beelieve-in-acid"]):has(a[href^="/bee-cosmetics/be-my-bee"]) {
-        display: none !important;
-        visibility: hidden !important;
-        opacity: 0 !important;
-        height: 0 !important;
-        max-height: 0 !important;
-        overflow: hidden !important;
-        pointer-events: none !important;
-        position: absolute !important;
-        left: -99999px !important;
-    }
+/* Defesa visual: se um bloco de links individuais for inserido no topo da seção Bee, ele não aparece. */
+section.bee .bee-intro + p:has(a[href^="/bee-cosmetics/"]),
+section.bee .bee-intro + div:has(a[href^="/bee-cosmetics/"]),
+.bee .container > p:has(a[href^="/bee-cosmetics/"]),
+.bee .container > div:has(a[href^="/bee-cosmetics/"]) {
+  display: none !important;
 }
