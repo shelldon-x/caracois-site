@@ -334,63 +334,6 @@
     return UNITS.map((u) => ({ ...u, distance: distanceKm(p, u) })).sort((a,b) => a.distance - b.distance)[0];
   }
 
-
-  function normalizeNearestMarkup(prefix) {
-    const wrap = $(`#${prefix}NearestWrap`);
-    const card = $(`#${prefix}NearestCard`);
-    if (!wrap || !card) return;
-    if (prefix === 'wa') {
-      wrap.classList.add('wa-nearest-wrap');
-      card.classList.add('wa-unit-item', 'wa-nearest-card');
-      if (!wrap.querySelector('.wa-nearest-label')) {
-        const label = document.createElement('div');
-        label.className = 'wa-nearest-label';
-        label.textContent = '📍 Encontramos a unidade mais próxima de você';
-        wrap.insertBefore(label, card);
-      }
-      const copy = card.querySelector('.wa-unit-copy') || card;
-      if (!copy.querySelector('.wa-nearest-micro')) {
-        const micro = document.createElement('div');
-        micro.className = 'wa-nearest-micro';
-        micro.textContent = 'Sua transformação começa mais perto do que você imagina ✨';
-        copy.appendChild(micro);
-      }
-      if (!card.querySelector('.wa-nearest-cta')) {
-        const cta = document.createElement('span');
-        cta.className = 'wa-nearest-cta';
-        cta.textContent = 'Falar agora';
-        card.appendChild(cta);
-      }
-    } else if (prefix === 'booking') {
-      wrap.classList.add('booking-nearest-wrap');
-      card.classList.add('booking-card', 'booking-nearest-card');
-      if (!wrap.querySelector('.booking-nearest-label')) {
-        const label = document.createElement('div');
-        label.className = 'booking-nearest-label';
-        label.textContent = '📍 Encontramos a unidade mais próxima de você';
-        wrap.insertBefore(label, card);
-      }
-      const content = card.querySelector('.booking-nearest-content') || card.querySelector('.booking-card-content') || card;
-      content.classList.add('booking-nearest-content');
-      const dist = $('#bookingNearestDist');
-      if (dist) dist.classList.add('booking-nearest-dist');
-      const ref = $('#bookingNearestRef');
-      if (ref) ref.classList.add('booking-card-ref--light');
-      if (!content.querySelector('.booking-nearest-micro')) {
-        const micro = document.createElement('div');
-        micro.className = 'booking-nearest-micro';
-        micro.textContent = 'Sua transformação começa mais perto do que você imagina ✨';
-        content.appendChild(micro);
-      }
-      if (!card.querySelector('.booking-nearest-cta')) {
-        const cta = document.createElement('span');
-        cta.className = 'booking-nearest-cta';
-        cta.textContent = 'Agendar agora';
-        card.appendChild(cta);
-      }
-    }
-  }
-
   function fillNearest(prefix, unit, href) {
     const wrap = $(`#${prefix}NearestWrap`);
     const card = $(`#${prefix}NearestCard`);
@@ -399,7 +342,6 @@
     const postal = $(`#${prefix}NearestPostal`);
     const ref = $(`#${prefix}NearestRef`);
     const dist = $(`#${prefix}NearestDist`);
-    normalizeNearestMarkup(prefix);
     if (wrap) wrap.style.display = '';
     if (card) {
       card.href = href;
@@ -423,8 +365,6 @@
     navigator.geolocation.getCurrentPosition((pos) => {
       const unit = nearestUnit(pos);
       fillNearest('wa', unit, waLink(unit));
-      const label = $('#waOtherLabel');
-      if (label) label.style.display = '';
       if (btn) btn.disabled = false;
       track('nearest_unit_found', { channel: 'whatsapp', unidade: unit.id, unit_slug: unit.slug, distance_km: unit.distance.toFixed(1) });
     }, () => {
