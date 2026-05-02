@@ -8,11 +8,19 @@
   "start_url": "/?utm_source=pwa&utm_medium=launcher",
   "id": "/",
   "display": "standalone",
-  "display_override": ["standalone", "minimal-ui", "browser"],
+  "display_override": [
+    "standalone",
+    "minimal-ui",
+    "browser"
+  ],
   "orientation": "portrait-primary",
   "theme_color": "#9B4442",
   "background_color": "#141414",
-  "categories": ["beauty", "lifestyle", "shopping"],
+  "categories": [
+    "beauty",
+    "lifestyle",
+    "shopping"
+  ],
   "icons": [
     {
       "src": "/favicon-16x16.png",

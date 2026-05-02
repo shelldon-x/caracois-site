@@ -7,7 +7,7 @@
 User-agent: *
 Allow: /
 
-# Arquivos importantes para compartilhamento e SEO
+# Arquivos importantes para SEO, compartilhamento e performance
 Allow: /images/
 Allow: /images/og/
 Allow: /assets/
