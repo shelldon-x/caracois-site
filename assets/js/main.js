@@ -463,6 +463,40 @@
     });
   }
 
+
+
+  function hideAccidentalBeeSeoLinks() {
+    const bee = document.getElementById('bee');
+    if (!bee) return;
+
+    const links = Array.from(bee.querySelectorAll('a[href^="/bee-cosmetics/"]'))
+      .filter((link) => !link.closest('.bee-product-card, .bee-product-grid, .bee-modal, .bee-market-list, .footer, footer'));
+
+    if (links.length < 4) return;
+
+    const groups = new Map();
+    links.forEach((link) => {
+      let node = link.parentElement;
+      while (node && node !== bee) {
+        const count = node.querySelectorAll('a[href^="/bee-cosmetics/"]').length;
+        if (count >= 4) {
+          groups.set(node, count);
+          break;
+        }
+        node = node.parentElement;
+      }
+    });
+
+    groups.forEach((count, node) => {
+      const text = (node.textContent || '').toLowerCase();
+      const looksLikeSeoDump = count >= 6 || text.includes('páginas individuais') || text.includes('paginas individuais') || text.includes('conheça também') || text.includes('conheca tambem');
+      if (!looksLikeSeoDump) return;
+      node.classList.add('bee-hidden-seo-links');
+      node.setAttribute('aria-hidden', 'true');
+      node.style.display = 'none';
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
     renderUnits();
     appendAttributionToBookingLinks();
@@ -471,6 +505,8 @@
     initReveal();
     initTracking();
     initEscClose();
+    hideAccidentalBeeSeoLinks();
+    setTimeout(hideAccidentalBeeSeoLinks, 250);
   });
 
 
