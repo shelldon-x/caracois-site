@@ -463,44 +463,7 @@
     });
   }
 
-
-
-  function removeAccidentalBeeSeoLinks() {
-    const productSlugs = [
-      '/bee-cosmetics/born-to-bee',
-      '/bee-cosmetics/feel-the-beeat',
-      '/bee-cosmetics/beetween-gardens',
-      '/bee-cosmetics/after-beeach',
-      '/bee-cosmetics/beeloved-oil',
-      '/bee-cosmetics/bee-yourself',
-      '/bee-cosmetics/let-it-bee',
-      '/bee-cosmetics/bee-proud',
-      '/bee-cosmetics/be-my-bee',
-      '/bee-cosmetics/beelieve-in-acid'
-    ];
-
-    const candidates = Array.from(document.querySelectorAll('p, div, nav, aside, section'));
-    candidates.forEach((el) => {
-      if (!el || el.id === 'beeProductsGrid' || el.closest('.bee-product-grid') || el.closest('.bee-modal-overlay')) return;
-      const links = Array.from(el.querySelectorAll('a[href^="/bee-cosmetics/"]'));
-      if (links.length < 3) return;
-      const hrefs = links.map((a) => a.getAttribute('href') || '');
-      const matches = hrefs.filter((href) => productSlugs.some((slug) => href.startsWith(slug))).length;
-      const text = (el.textContent || '').toLowerCase();
-      const looksLikeAccidentalBlock = matches >= 3 || (text.includes('conheça também') && text.includes('páginas individuais'));
-      if (looksLikeAccidentalBlock) {
-        el.setAttribute('aria-hidden', 'true');
-        el.style.setProperty('display', 'none', 'important');
-        el.style.setProperty('visibility', 'hidden', 'important');
-        el.style.setProperty('height', '0', 'important');
-        el.style.setProperty('overflow', 'hidden', 'important');
-        el.classList.add('bee-seo-products-hidden');
-      }
-    });
-  }
-
   document.addEventListener('DOMContentLoaded', () => {
-    removeAccidentalBeeSeoLinks();
     renderUnits();
     appendAttributionToBookingLinks();
     enhanceWhatsAppLinks();
@@ -508,8 +471,6 @@
     initReveal();
     initTracking();
     initEscClose();
-    setTimeout(removeAccidentalBeeSeoLinks, 250);
-    setTimeout(removeAccidentalBeeSeoLinks, 1000);
   });
 
 
@@ -534,4 +495,42 @@
   window.findNearestBooking = findNearestBooking;
   window.scTrack = track;
   window.STUDIO_CARACOIS_UNITS = UNITS;
+})();
+
+
+/* HOTFIX 20260501-bee-links-realfix: remove bloco acidental de links individuais da Bee na Home. */
+(function () {
+  'use strict';
+  function removeAccidentalBeeSeoLinks() {
+    try {
+      if (window.location.pathname !== '/' && window.location.pathname !== '/index.html') return;
+      var anchors = Array.prototype.slice.call(document.querySelectorAll('a[href^="/bee-cosmetics/"]'));
+      if (!anchors.length) return;
+      var candidates = new Set();
+      anchors.forEach(function (a) {
+        var node = a.parentElement;
+        for (var i = 0; node && i < 4; i++, node = node.parentElement) {
+          if (!node || node === document.body || node.tagName === 'MAIN' || node.tagName === 'SECTION') break;
+          var count = node.querySelectorAll('a[href^="/bee-cosmetics/"]').length;
+          var text = (node.textContent || '').toLowerCase();
+          if (count >= 4 || text.indexOf('páginas individuais dos produtos') !== -1 || text.indexOf('paginas individuais dos produtos') !== -1) {
+            candidates.add(node);
+            break;
+          }
+        }
+      });
+      candidates.forEach(function (node) {
+        node.setAttribute('hidden', '');
+        node.setAttribute('aria-hidden', 'true');
+        node.style.display = 'none';
+        node.remove();
+      });
+    } catch (e) {}
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', removeAccidentalBeeSeoLinks);
+  } else {
+    removeAccidentalBeeSeoLinks();
+  }
+  window.addEventListener('load', removeAccidentalBeeSeoLinks);
 })();
