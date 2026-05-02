@@ -132,4 +132,13 @@
     <priority>0.80</priority>
     <image:image><image:loc>https://caracois.com.br/images/products/beelieve-in-acid.webp</image:loc></image:image>
   </url>
+
+  <!-- Serviços Studio Caracóis -->
+  <url><loc>https://caracois.com.br/corte-cabelo-cacheado</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.88</priority><image:image><image:loc>https://caracois.com.br/images/og/og-home.png</image:loc></image:image></url>
+  <url><loc>https://caracois.com.br/finalizacao-cabelo-cacheado</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.88</priority><image:image><image:loc>https://caracois.com.br/images/og/og-home.png</image:loc></image:image></url>
+  <url><loc>https://caracois.com.br/tratamento-cabelo-cacheado</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.88</priority><image:image><image:loc>https://caracois.com.br/images/og/og-home.png</image:loc></image:image></url>
+  <url><loc>https://caracois.com.br/transicao-capilar</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.88</priority><image:image><image:loc>https://caracois.com.br/images/og/og-home.png</image:loc></image:image></url>
+  <url><loc>https://caracois.com.br/coloracao-cabelo-cacheado</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.88</priority><image:image><image:loc>https://caracois.com.br/images/og/og-home.png</image:loc></image:image></url>
+  <url><loc>https://caracois.com.br/acidificacao-capilar</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.88</priority><image:image><image:loc>https://caracois.com.br/images/og/og-home.png</image:loc></image:image></url>
+
 </urlset>
