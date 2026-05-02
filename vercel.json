@@ -16,6 +16,10 @@
         {
           "key": "Permissions-Policy",
           "value": "geolocation=(self), microphone=(), camera=()"
+        },
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=31536000; includeSubDomains; preload"
         }
       ]
     },
@@ -75,6 +79,209 @@
           "value": "public, max-age=3600"
         }
       ]
+    },
+    {
+      "source": "/site.webmanifest",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/manifest+json; charset=utf-8"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
+        }
+      ]
+    },
+    {
+      "source": "/404.html",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, follow"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
+        }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/bee-cosmetics/acidificante",
+      "destination": "/bee-cosmetics/beelieve-in-acid",
+      "permanent": true
+    },
+    {
+      "source": "/bee-cosmetics/believe-in-acid",
+      "destination": "/bee-cosmetics/beelieve-in-acid",
+      "permanent": true
+    },
+    {
+      "source": "/bee-cosmetics/acido",
+      "destination": "/bee-cosmetics/beelieve-in-acid",
+      "permanent": true
+    },
+    {
+      "source": "/asa-sul",
+      "destination": "/unidades/brasilia-asa-sul",
+      "permanent": true
+    },
+    {
+      "source": "/brasilia-asa-sul",
+      "destination": "/unidades/brasilia-asa-sul",
+      "permanent": true
+    },
+    {
+      "source": "/cachos-asa-sul",
+      "destination": "/unidades/brasilia-asa-sul",
+      "permanent": true
+    },
+    {
+      "source": "/salao-cachos-asa-sul",
+      "destination": "/unidades/brasilia-asa-sul",
+      "permanent": true
+    },
+    {
+      "source": "/asa-norte",
+      "destination": "/unidades/brasilia-asa-norte",
+      "permanent": true
+    },
+    {
+      "source": "/brasilia-asa-norte",
+      "destination": "/unidades/brasilia-asa-norte",
+      "permanent": true
+    },
+    {
+      "source": "/cachos-asa-norte",
+      "destination": "/unidades/brasilia-asa-norte",
+      "permanent": true
+    },
+    {
+      "source": "/salao-cachos-asa-norte",
+      "destination": "/unidades/brasilia-asa-norte",
+      "permanent": true
+    },
+    {
+      "source": "/aguas-claras",
+      "destination": "/unidades/brasilia-aguas-claras",
+      "permanent": true
+    },
+    {
+      "source": "/brasilia-aguas-claras",
+      "destination": "/unidades/brasilia-aguas-claras",
+      "permanent": true
+    },
+    {
+      "source": "/cachos-aguas-claras",
+      "destination": "/unidades/brasilia-aguas-claras",
+      "permanent": true
+    },
+    {
+      "source": "/salao-cachos-aguas-claras",
+      "destination": "/unidades/brasilia-aguas-claras",
+      "permanent": true
+    },
+    {
+      "source": "/taguatinga",
+      "destination": "/unidades/brasilia-taguatinga",
+      "permanent": true
+    },
+    {
+      "source": "/brasilia-taguatinga",
+      "destination": "/unidades/brasilia-taguatinga",
+      "permanent": true
+    },
+    {
+      "source": "/cachos-taguatinga",
+      "destination": "/unidades/brasilia-taguatinga",
+      "permanent": true
+    },
+    {
+      "source": "/salao-cachos-taguatinga",
+      "destination": "/unidades/brasilia-taguatinga",
+      "permanent": true
+    },
+    {
+      "source": "/tatuape",
+      "destination": "/unidades/sao-paulo-tatuape",
+      "permanent": true
+    },
+    {
+      "source": "/sao-paulo-tatuape",
+      "destination": "/unidades/sao-paulo-tatuape",
+      "permanent": true
+    },
+    {
+      "source": "/cachos-tatuape",
+      "destination": "/unidades/sao-paulo-tatuape",
+      "permanent": true
+    },
+    {
+      "source": "/salao-cachos-tatuape",
+      "destination": "/unidades/sao-paulo-tatuape",
+      "permanent": true
+    },
+    {
+      "source": "/sao-jose-dos-campos",
+      "destination": "/unidades/sao-jose-dos-campos",
+      "permanent": true
+    },
+    {
+      "source": "/sjc",
+      "destination": "/unidades/sao-jose-dos-campos",
+      "permanent": true
+    },
+    {
+      "source": "/cachos-sjc",
+      "destination": "/unidades/sao-jose-dos-campos",
+      "permanent": true
+    },
+    {
+      "source": "/salao-cachos-sjc",
+      "destination": "/unidades/sao-jose-dos-campos",
+      "permanent": true
+    },
+    {
+      "source": "/goiania",
+      "destination": "/unidades/goiania-setor-bueno",
+      "permanent": true
+    },
+    {
+      "source": "/goiania-setor-bueno",
+      "destination": "/unidades/goiania-setor-bueno",
+      "permanent": true
+    },
+    {
+      "source": "/cachos-goiania",
+      "destination": "/unidades/goiania-setor-bueno",
+      "permanent": true
+    },
+    {
+      "source": "/salao-cachos-goiania",
+      "destination": "/unidades/goiania-setor-bueno",
+      "permanent": true
+    },
+    {
+      "source": "/recife",
+      "destination": "/unidades/recife-boa-viagem",
+      "permanent": true
+    },
+    {
+      "source": "/recife-boa-viagem",
+      "destination": "/unidades/recife-boa-viagem",
+      "permanent": true
+    },
+    {
+      "source": "/cachos-recife",
+      "destination": "/unidades/recife-boa-viagem",
+      "permanent": true
+    },
+    {
+      "source": "/salao-cachos-recife",
+      "destination": "/unidades/recife-boa-viagem",
+      "permanent": true
     }
   ],
   "rewrites": [
