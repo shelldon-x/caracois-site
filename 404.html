@@ -30,7 +30,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/main.css?v=20260502-auditoria-visual-final">
+  <link rel="stylesheet" href="/assets/css/main.css?v=20260502-home-central-phase1-10-10>
 
   <script type="application/ld+json">
   {
@@ -117,6 +117,18 @@
       justify-content: center;
       margin-bottom: 34px;
     }
+    .error-actions .btn-outline-white {
+      color: #fff;
+      border: 1px solid rgba(255,255,255,.62);
+      background: rgba(255,255,255,.08);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.08);
+    }
+    .error-actions .btn-outline-white:hover,
+    .error-actions .btn-outline-white:focus-visible {
+      color: #fff;
+      border-color: #fff;
+      background: rgba(255,255,255,.16);
+    }
     .error-links {
       display: flex;
       flex-wrap: wrap;
@@ -146,9 +158,9 @@
         <h1>Essa página saiu do caminho, <em>mas seus cachos não precisam sair.</em></h1>
         <p>O endereço pode ter mudado ou não existir mais. Você pode voltar para o início, conhecer nossas unidades ou agendar uma avaliação gratuita.</p>
         <div class="error-actions">
-          <a class="btn btn-primary" href="/">Voltar para o início</a>
-          <a class="btn btn-gold" href="/#unidades" data-cta="agendar" data-source="404">Agendar avaliação gratuita</a>
-          <a class="btn btn-outline-white" href="/#unidades">Ver unidades</a>
+          <a class="btn btn-primary" href="/" data-cta="voltar_inicio_404" data-origin="404">Voltar para o início</a>
+          <a class="btn btn-gold" href="/#unidades" data-cta="agendar_404" data-channel="booking" data-origin="404">Agendar avaliação gratuita</a>
+          <a class="btn btn-outline-white" href="/#unidades" data-cta="ver_unidades_404" data-origin="404">Ver unidades</a>
         </div>
         <div class="error-links" aria-label="Links úteis">
           <a href="/central-de-conhecimento">Central de conhecimento</a>
@@ -159,6 +171,6 @@
     </div>
   </main>
 
-  <script src="/assets/js/main.js?v=20260502-auditoria-visual-final" defer></script>
+  <script src="/assets/js/main.js?v=20260502-home-central-phase1-10-10 defer></script>
 </body>
 </html>
