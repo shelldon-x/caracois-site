@@ -112,17 +112,5 @@
       "source": "/sitemap",
       "destination": "/sitemap.xml"
     }
-  ],
-  "redirects": [
-    {
-      "source": "/bee-cosmetics/acidificante",
-      "destination": "/bee-cosmetics/beelieve-in-acid",
-      "permanent": true
-    },
-    {
-      "source": "/bee-cosmetics/believe-in-acid",
-      "destination": "/bee-cosmetics/beelieve-in-acid",
-      "permanent": true
-    }
   ]
 }
