@@ -51,8 +51,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="/assets/css/main.css?v=20260502-audit-v2">
-  <link rel="stylesheet" href="/assets/css/bee-cosmetics.css?v=20260502-audit-v2">
+  <link rel="stylesheet" href="/assets/css/main.css?v=20260503-bee-excelencia-ref">
+  <link rel="stylesheet" href="/assets/css/bee-cosmetics.css?v=20260503-bee-excelencia-ref">
 
   <!-- Preload imagem hero -->
   <link rel="preload" as="image" href="/images/products/beeloved-oil.webp">
@@ -449,7 +449,7 @@
           </div>
         </div>
         <div class="bee-prod-visual reveal rd2">
-          <img src="/images/products/beeloved-oil.webp" alt="BEEloved Oil — Máscara de Umectação" loading="eager" fetchpriority="high" decoding="async" width="380" height="380" onerror="this.src='/images/products/bee-loved-oil.webp';this.onerror=null">
+          <img src="/images/products/beeloved-oil.webp" alt="BEEloved Oil — Máscara de Umectação" loading="eager" fetchpriority="high" decoding="async" width="380" height="380" data-fallbacks=\'["/images/products/bee-loved-oil.webp", "/images/products/beeloved.webp", "/images/products/mascara-umectacao.webp"]\' onerror="this.onerror=null;if(this.dataset.i1!='1'){this.dataset.i1='1';this.src='/images/products/bee-loved-oil.webp';return;}if(this.dataset.i2!='1'){this.dataset.i2='1';this.src='/images/products/beeloved.webp';return;}if(this.dataset.i3!='1'){this.dataset.i3='1';this.src='/images/products/mascara-umectacao.webp';return;}this.style.display='none';var w=this.closest('.bee-prod-visual,.pm-image,.bee-product-img');if(w){w.classList.add('bee-image-missing');if(!w.querySelector('.bee-image-placeholder')){var ph=document.createElement('div');ph.className='bee-image-placeholder';ph.innerHTML='<span>Bee<br>Cosmetics</span>';w.appendChild(ph);}}">
         </div>
       </div>
     </div>
@@ -619,8 +619,8 @@
   <svg width="28" height="28"><use href="#i-wa"/></svg>
 </a>
 
-<script src="/assets/js/main.js?v=20260502-audit-v2" defer></script>
-<script src="/assets/js/bee-catalog.js?v=20260502-audit-v2" defer></script>
+<script src="/assets/js/main.js?v=20260503-bee-excelencia-ref" defer></script>
+<script src="/assets/js/bee-catalog.js?v=20260503-bee-excelencia-ref" defer></script>
 <script>window.addEventListener('load',function(){if(window.scTrack)window.scTrack('bee_product_page_view',{channel:'bee',cta_type:'product_page',product_id:'beeloved-oil',product_name:'BEEloved Oil',product_category:'Tratamento',product_price:'125,00',product_volume:'300 g / 10.58 oz',product_ph:'pH 4,0'});});</script>
 </body>
 </html>

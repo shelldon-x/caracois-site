@@ -1,12 +1,12 @@
 /* Bee Cosmetics — catálogo frontend rico 100%
-   Build: 20260502-audit-v2
+   Build: 20260503-bee-polish
    Dados enriquecidos: volume, pH, ANVISA, código de barras, descrição, modo de usar e composição.
    Sem campo de ativos principais, conforme solicitado.
 */
 (function () {
   'use strict';
 
-  const BUILD_VERSION = '20260502-audit-v2';
+  const BUILD_VERSION = '20260503-bee-polish';
   const PRODUCTS = [
     {
         "id": "born-to-bee",
@@ -331,7 +331,8 @@
   }
 
   function categoryLabel(category) {
-    return category === 'limpeza' ? 'Limpeza' : category === 'tratamento' ? 'Tratamento' : category === 'finalizacao' ? 'Finalização' : 'Bee Cosmetics';
+    const map = { limpeza: 'Limpeza', tratamento: 'Tratamento', finalizacao: 'Finalização' };
+    return map[category] || category || 'Produto';
   }
 
   function pills(product) {
@@ -415,8 +416,8 @@
           <img ${imageAttrs(p)} alt="${esc(p.name)}" loading="lazy" decoding="async">
         </div>
         <div class="pm-content">
-          <div class="pm-eyebrow">${esc(categoryLabel(p.category))}</div>
-          <div class="pm-subeyebrow">${esc(p.type)}</div>
+          <div class="pm-category-tag">${esc(categoryLabel(p.category))}</div>
+          <div class="pm-eyebrow">${esc(p.type)}</div>
           <h2>${esc(p.name)}</h2>
           <p class="pm-desc">${esc(p.desc)}</p>
 
