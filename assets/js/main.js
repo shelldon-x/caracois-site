@@ -2,7 +2,7 @@
 (function () {
   'use strict';
 
-  const BUILD_VERSION = '20260504-central-articles-clean-final';
+  const BUILD_VERSION = '20260504-bee-products-global-final';
 
   document.documentElement.classList.remove('no-js');
   document.documentElement.classList.add('js');

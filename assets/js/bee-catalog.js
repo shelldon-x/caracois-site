@@ -6,7 +6,7 @@
 (function () {
   'use strict';
 
-  const BUILD_VERSION = '20260503-tracking-pro-v1';
+  const BUILD_VERSION = '20260504-bee-products-global-final';
   const PRODUCTS = [
     {
         "id": "born-to-bee",
@@ -253,12 +253,29 @@
     }
 ];
 
-  const marketplaceQuery = encodeURIComponent('bee cosmetics cabelo cacheado');
   const MARKETPLACES = [
-    { name:'Amazon', href:`https://www.amazon.com.br/s?k=${marketplaceQuery}`, key:'amazon', icon:'/images/icons/amazon.svg' },
-    { name:'Shopee', href:`https://shopee.com.br/search?keyword=${marketplaceQuery}`, key:'shopee', icon:'/images/icons/shopee.svg' },
-    { name:'Mercado Livre', href:'https://lista.mercadolivre.com.br/bee-cosmetics', key:'mercadolivre', icon:'/images/icons/mercadolivre.svg' }
+    { name:'Amazon', key:'amazon', icon:'/images/icons/amazon.svg' },
+    { name:'Shopee', key:'shopee', icon:'/images/icons/shopee.svg' },
+    { name:'Mercado Livre', key:'mercadolivre', icon:'/images/icons/mercadolivre.svg' }
   ];
+
+  function marketplaceSearchQuery(product) {
+    const parts = [
+      'Bee Cosmetics',
+      product && product.name,
+      product && product.type,
+      'cabelo cacheado'
+    ].filter(Boolean);
+    return parts.join(' ').replace(/\s+/g, ' ').trim();
+  }
+
+  function marketplaceHref(market, product) {
+    const query = encodeURIComponent(marketplaceSearchQuery(product || {}));
+    if (market.key === 'amazon') return `https://www.amazon.com.br/s?k=${query}`;
+    if (market.key === 'shopee') return `https://shopee.com.br/search?keyword=${query}`;
+    if (market.key === 'mercadolivre') return `https://lista.mercadolivre.com.br/${query}`;
+    return '#';
+  }
 
   const $ = (sel, ctx = document) => ctx.querySelector(sel);
   const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
@@ -485,9 +502,9 @@
 
           <div class="pm-markets">
             ${MARKETPLACES.map(m => `
-              <a class="pm-market-link pm-market-link--${esc(m.key)}" href="${esc(m.href)}" target="_blank" rel="noopener noreferrer" data-market="${esc(m.key)}" data-origin="product-modal" data-product="${esc(p.id)}">
+              <a class="pm-market-link pm-market-link--${esc(m.key)}" href="${esc(marketplaceHref(m, p))}" target="_blank" rel="noopener noreferrer" data-market="${esc(m.key)}" data-origin="product-modal" data-product="${esc(p.id)}">
                 <span class="pm-market-icon"><img src="${esc(m.icon)}" alt="" loading="lazy" decoding="async" onerror="this.style.display='none'; this.parentElement.classList.add('pm-market-icon--fallback');"></span>
-                <span class="pm-market-copy"><strong>${esc(m.name)}</strong><small>Buscar produto</small></span>
+                <span class="pm-market-copy"><strong>${esc(m.name)}</strong><small>Buscar ${esc(p.name)}</small></span>
               </a>`).join('')}
           </div>
         </div>
@@ -627,6 +644,8 @@
   bootBeeCatalog();
 
   window.BEE_PRODUCTS = PRODUCTS;
+  window.BEEMarketplaceHref = marketplaceHref;
+  window.BEEMarketplaceSearchQuery = marketplaceSearchQuery;
   window.openBeeModal = openBeeModal;
   window.closeBeeModal = closeBeeModal;
   window.closeBeeModalOnOverlay = closeBeeModalOnOverlay;

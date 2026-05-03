@@ -11,30 +11,30 @@
 (function () {
   'use strict';
 
-  const BUILD_VERSION = '20260503-bee-dynamic-system-v2-final';
+  const BUILD_VERSION = '20260504-bee-products-global-final';
   const MAX_BOOT_TRIES = 60;
   const BOOT_DELAY = 50;
 
   const MARKETPLACES = [
-    {
-      key: 'amazon',
-      name: 'Amazon',
-      label: 'Ver catálogo na Amazon',
-      href: 'https://www.amazon.com.br/s?k=bee+cosmetics+cabelo+cacheado'
-    },
-    {
-      key: 'shopee',
-      name: 'Shopee',
-      label: 'Ver catálogo na Shopee',
-      href: 'https://shopee.com.br/search?keyword=bee%20cosmetics%20cabelo%20cacheado'
-    },
-    {
-      key: 'mercadolivre',
-      name: 'Mercado Livre',
-      label: 'Ver catálogo no Mercado Livre',
-      href: 'https://lista.mercadolivre.com.br/bee-cosmetics'
-    }
+    { key: 'amazon', name: 'Amazon', label: 'Buscar este produto na Amazon' },
+    { key: 'shopee', name: 'Shopee', label: 'Buscar este produto na Shopee' },
+    { key: 'mercadolivre', name: 'Mercado Livre', label: 'Buscar este produto no Mercado Livre' }
   ];
+
+  function marketplaceSearchQuery(product) {
+    if (window.BEEMarketplaceSearchQuery && product) return window.BEEMarketplaceSearchQuery(product);
+    return ['Bee Cosmetics', product && product.name, product && product.type, 'cabelo cacheado']
+      .filter(Boolean).join(' ').replace(/\s+/g, ' ').trim();
+  }
+
+  function marketplaceHref(market, product) {
+    if (window.BEEMarketplaceHref && product) return window.BEEMarketplaceHref(market, product);
+    const query = encodeURIComponent(marketplaceSearchQuery(product || {}));
+    if (market.key === 'amazon') return `https://www.amazon.com.br/s?k=${query}`;
+    if (market.key === 'shopee') return `https://shopee.com.br/search?keyword=${query}`;
+    if (market.key === 'mercadolivre') return `https://lista.mercadolivre.com.br/${query}`;
+    return '#';
+  }
 
   const CATEGORY_LABELS = {
     limpeza: 'Limpeza',
@@ -211,7 +211,7 @@
     return MARKETPLACES.map((market) => `
       <a
         class="${compact ? 'bee-product-market-chip' : 'bee-cat-buy-card bee-product-market-card'}"
-        href="${esc(market.href)}"
+        href="${esc(marketplaceHref(market, product))}"
         target="_blank"
         rel="noopener noreferrer"
         data-market="${esc(market.key)}"
@@ -509,7 +509,7 @@
     }
 
     // Fallback seguro: se o modal global não existir por algum motivo, abre a Amazon.
-    window.open(MARKETPLACES[0].href, '_blank', 'noopener,noreferrer');
+    window.open(marketplaceHref(MARKETPLACES[0], product), '_blank', 'noopener,noreferrer');
   }
 
   function bindEvents(product) {
