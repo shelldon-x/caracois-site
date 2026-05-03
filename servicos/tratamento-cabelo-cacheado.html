@@ -8,7 +8,7 @@
 <link rel="dns-prefetch" href="https://connect.facebook.net">
 <link rel="dns-prefetch" href="https://www.clarity.ms">
 <title>Tratamento para cabelo cacheado | Studio Caracóis</title>
-<meta name="description" content="Tratamento consultivo para cabelos cacheados, ondulados e crespos com foco em hidratação, nutrição, reconstrução, umectação e equilíbrio da fibra capilar conf">
+<meta name="description" content="Tratamento consultivo para cabelos cacheados, ondulados e crespos com foco em hidratação, nutrição, reconstrução, umectação e saúde da fibra capilar.">
 <meta name="keywords" content="tratamento cabelo cacheado, cabelo cacheado ressecado, hidratação para cachos, cronograma capilar cacheado">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://caracois.com.br/tratamento-cabelo-cacheado">
@@ -17,23 +17,28 @@
 <meta name="author" content="Studio Caracóis">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Tratamento para cabelo cacheado | Studio Caracóis">
-<meta property="og:description" content="Tratamento consultivo para cabelos cacheados, ondulados e crespos com foco em hidratação, nutrição, reconstrução, umectação e equilíbrio da fibra capilar conf">
+<meta property="og:description" content="Tratamento consultivo para cabelos cacheados, ondulados e crespos com foco em hidratação, nutrição, reconstrução, umectação e saúde da fibra capilar.">
 <meta property="og:url" content="https://caracois.com.br/tratamento-cabelo-cacheado">
 <meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="Studio Caracóis">
 <meta property="og:image" content="https://caracois.com.br/images/og/og-home.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Tratamento para cabelo cacheado no Studio Caracóis">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Tratamento para cabelo cacheado | Studio Caracóis">
-<meta name="twitter:description" content="Tratamento consultivo para cabelos cacheados, ondulados e crespos com foco em hidratação, nutrição, reconstrução, umectação e equilíbrio da fibra capilar conf">
+<meta name="twitter:description" content="Tratamento consultivo para cabelos cacheados, ondulados e crespos com foco em hidratação, nutrição, reconstrução, umectação e saúde da fibra capilar.">
 <meta name="twitter:image" content="https://caracois.com.br/images/og/og-home.png">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
+<link rel="preload" as="image" href="/images/logos/logo-nude.svg">
+<link rel="preload" as="image" href="/images/logos/logo-terracota.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/css/main.css?v=20260503-bee-ref-home-modal-final">
+<link rel="stylesheet" href="/assets/css/main.css?v=20260503-service-pages-10">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-0J7RBF2BFX"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-0J7RBF2BFX',{send_page_view:true,cookie_flags:'SameSite=None;Secure'});</script>
 <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','1522260281454126');fbq('track','PageView');</script>
@@ -57,16 +62,16 @@
 <a href="#conteudo" class="skip-link">Pular para o conteúdo</a>
 <nav aria-label="Navegação principal">
     <div class="container">
-        <a href="/" class="nav-logo" aria-label="Studio Caracóis"><img src="/images/logos/logo-nude.svg" alt="Studio Caracóis" width="220" height="42"></a>
+        <a href="/" class="nav-logo" aria-label="Studio Caracóis"><img class="logo-dynamic" id="navLogoImg" src="/images/logos/logo-nude.svg" data-logo-light="/images/logos/logo-nude.svg" data-logo-dark="/images/logos/logo-terracota.svg" alt="Studio Caracóis" width="220" height="42" decoding="async" fetchpriority="high"></a>
         <div class="nav-right">
             <div class="nav-links"><a href="/">Início</a><a href="/#servicos">Serviços</a><a href="/bee-cosmetics">Bee Cosmetics</a><a href="/#unidades">Unidades</a><a href="/central-de-conhecimento">Central</a></div>
-            <button type="button" class="nav-cta-btn" onclick="openBooking()">Agendar</button>
+            <button type="button" class="nav-cta-btn" onclick="openBooking()" data-cta="nav_booking" data-channel="booking">Agendar</button>
         </div>
         <button type="button" class="mobile-toggle" onclick="openMobileMenu()" aria-label="Abrir menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
 </nav>
 <div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
-<div class="mobile-menu" id="mm" role="dialog" aria-label="Menu mobile" aria-modal="true" aria-hidden="true"><button type="button" class="mobile-menu-close" onclick="closeMobileMenu()" aria-label="Fechar">×</button><a href="/">Início</a><a href="/#servicos">Serviços</a><a href="/bee-cosmetics">Bee Cosmetics</a><a href="/#unidades">Unidades</a><a href="/central-de-conhecimento">Central de conhecimento</a><button type="button" class="btn btn-primary" onclick="closeMobileMenu(false);openBooking()">Agendar avaliação</button></div>
+<div class="mobile-menu" id="mm" role="dialog" aria-label="Menu mobile" aria-modal="true" aria-hidden="true"><button type="button" class="mobile-menu-close mobile-close" onclick="closeMobileMenu()" aria-label="Fechar">×</button><a href="/">Início</a><a href="/#servicos">Serviços</a><a href="/bee-cosmetics">Bee Cosmetics</a><a href="/#unidades">Unidades</a><a href="/central-de-conhecimento">Central de conhecimento</a><button type="button" class="btn btn-primary" onclick="closeMobileMenu(false);openBooking()">Agendar avaliação</button></div>
 <main id="conteudo">
 <section class="service-hero">
   <div class="service-watermark" aria-hidden="true"><img src="/images/logos/hero-watermark.svg" alt=""></div>
@@ -277,7 +282,7 @@
     </svg>
 </button>
 
-<script src="/assets/js/main.js?v=20260503-bee-ref-home-modal-final" defer></script>
+<script src="/assets/js/main.js?v=20260503-service-pages-10" defer></script>
 <script>window.addEventListener('load',function(){if(window.scTrack)window.scTrack('service_page_view',{channel:'service',service_slug:'tratamento-cabelo-cacheado',service_name:'Tratamento para cabelo cacheado'});});</script>
 </body>
 </html>
