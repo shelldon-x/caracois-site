@@ -52,7 +52,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="/assets/css/main.css?v=20260502-audit-v2">
-  <link rel="stylesheet" href="/assets/css/bee-cosmetics.css?v=20260503-bee-polish">
+  <link rel="stylesheet" href="/assets/css/bee-cosmetics.css?v=20260502-audit-v2">
 
   <!-- Preload imagem hero -->
   <link rel="preload" as="image" href="/images/products/born-to-bee.webp">
@@ -312,17 +312,19 @@
       .bee-prod-card { padding: 26px; }
       .bee-prod-inci-card { padding: 28px 22px; }
     }
-  </style>
-
-  <style id="bee-product-polish-final">
-    .bee-prod-visual{min-height:440px!important;padding:42px!important;border-radius:32px!important;}
-    .bee-prod-visual img{width:auto!important;max-width:78%!important;max-height:390px!important;object-fit:contain!important;}
-    .bee-prod-kicker{width:fit-content;background:linear-gradient(135deg,rgba(155,68,66,.95),rgba(124,51,49,.95))!important;color:#fff!important;border:1px solid rgba(255,255,255,.16)!important;box-shadow:0 8px 22px rgba(155,68,66,.22)!important;}
-    .bee-related-cat{display:inline-flex!important;width:fit-content;padding:5px 10px;border-radius:999px;background:rgba(155,68,66,.1);color:var(--terracota)!important;border:1px solid rgba(155,68,66,.18);}
-    .whatsapp-float svg{width:28px!important;height:28px!important;display:block!important;fill:currentColor!important;}
-    @media (min-width:981px){.bee-prod-hero-grid{grid-template-columns:minmax(0,1.02fr) minmax(420px,.88fr)!important;}}
-    @media (max-width:768px){.bee-prod-visual{min-height:320px!important;padding:28px!important}.bee-prod-visual img{max-height:280px!important;}}
-  </style>
+  
+    /* Bee Product Page — global definitive visual fix */
+    .bee-prod-hero{background:linear-gradient(160deg,var(--nude-ultra),var(--nude-light)) !important; padding:150px 0 86px !important; min-height:760px !important;}
+    .bee-prod-hero-grid{display:grid !important; grid-template-columns:minmax(0,1fr) minmax(420px,.92fr) !important; gap:72px !important; align-items:center !important;}
+    .bee-prod-category{display:inline-flex !important; padding:10px 20px !important; border-radius:999px !important; background:var(--terracota) !important; color:#fff !important; box-shadow:0 10px 24px rgba(155,68,66,.18) !important; letter-spacing:.1em !important; text-transform:uppercase !important; font-weight:700 !important; font-size:.72rem !important;}
+    .bee-prod-visual{min-height:500px !important; background:#fff !important; border:1px solid rgba(155,68,66,.08) !important; border-radius:32px !important; box-shadow:0 24px 70px rgba(155,68,66,.12) !important;}
+    .bee-prod-visual img{max-height:390px !important; max-width:82% !important; object-fit:contain !important; display:block !important;}
+    .bee-prod-title{font-size:clamp(3rem,5.4vw,5.2rem) !important;}
+    .bee-prod-actions .btn{min-width:220px !important;}
+    .bee-prod-breadcrumb{position:relative !important; z-index:2 !important; margin-bottom:42px !important;}
+    @media(max-width:920px){.bee-prod-hero{padding:120px 0 70px !important; min-height:0 !important}.bee-prod-hero-grid{grid-template-columns:1fr !important; gap:38px !important}.bee-prod-visual{min-height:330px !important}.bee-prod-visual img{max-height:280px !important}.bee-prod-actions .btn{width:100% !important}}
+    
+</style>
 </head>
 <body data-page-type="bee-product" data-product="born-to-bee" data-product-category="limpeza">
 <a href="#conteudo" class="skip-link">Pular para o conteúdo principal</a>
@@ -447,7 +449,7 @@
           </div>
         </div>
         <div class="bee-prod-visual reveal rd2">
-          <img src="/images/products/born-to-bee.webp" alt="Born to BEE — Shampoo Sem Sulfato" loading="eager" fetchpriority="high" decoding="async" width="380" height="380">
+          <img src="/images/products/born-to-bee.webp" alt="Born to BEE — Shampoo Sem Sulfato" loading="eager" fetchpriority="high" decoding="async" width="380" height="380" onerror="this.src='/images/products/born-to-bee.png';this.onerror=null">
         </div>
       </div>
     </div>
@@ -603,7 +605,7 @@
             </div>
             <div class="footer-col"><h4>Navegação</h4><a href="/#experiencia">Sua experiência</a><a href="/#servicos">Serviços</a><a href="/#transicao">Transição Capilar</a><a href="/#resultados">Resultados</a><a href="/#unidades">Unidades</a>
                 <a href="/bee-cosmetics">Bee Cosmetics</a><a href="/#faq">FAQ</a><a href="/franquia">Seja um franqueado</a></div>
-            <div class="footer-col"><h4>Bee Cosmetics</h4><a href="/bee-cosmetics">Catálogo Bee Cosmetics</a><a href="/bee-cosmetics/born-to-bee">Shampoo Sem Sulfato</a><a href="/bee-cosmetics/feel-the-beeat">Co-wash</a><a href="/bee-cosmetics/beetween-gardens">Máscaras Capilares</a><a href="/bee-cosmetics/bee-yourself">Leave-ins</a><a href="/bee-cosmetics/be-my-bee">Gelatina Capilar</a><a href="/bee-cosmetics/beelieve-in-acid">Acidificante Capilar</a></div>
+            <div class="footer-col"><h4>Bee Cosmetics</h4><a href="/bee-cosmetics">Catálogo Bee Cosmetics</a><a href="/bee-cosmetics/born-to-bee">Shampoo Sem Sulfato</a><a href="/bee-cosmetics/feel-the-beeat">Co-wash</a><a href="/bee-cosmetics/beetween-gardens">Máscara de Nutrição</a><a href="/bee-cosmetics/bee-yourself">Leave-in Super Definição</a><a href="/bee-cosmetics/be-my-bee">Gelatina Capilar</a><a href="/bee-cosmetics/beelieve-in-acid">Acidificante Capilar</a></div>
             <div class="footer-col"><h4>Conhecimento</h4><a href="/central-de-conhecimento">Central de conhecimento</a><a href="/transicao-capilar">Transição capilar</a><a href="/como-cuidar-de-cabelos-cacheados">Como cuidar dos cachos</a><a href="/corte-para-cabelo-cacheado">Corte para cacheado</a><a href="/cronograma-capilar-cacheado">Cronograma capilar</a></div>
         </div>
         <div class="footer-bottom">
@@ -614,11 +616,11 @@
 </footer>
 
 <a href="#" class="whatsapp-float" onclick="event.preventDefault(); openWaModal();" aria-label="Falar no WhatsApp" data-cta="bee_prod_float_wa" data-product="born-to-bee">
-  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.121.553 4.108 1.519 5.838L0 24l6.335-1.652A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.75c-1.97 0-3.837-.528-5.445-1.5l-.39-.234-3.757.98.998-3.648-.256-.407A9.72 9.72 0 012.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75z"/></svg>
+  <svg width="28" height="28"><use href="#i-wa"/></svg>
 </a>
 
-<script src="/assets/js/main.js?v=20260503-bee-polish" defer></script>
-<script src="/assets/js/bee-catalog.js?v=20260503-bee-polish" defer></script>
+<script src="/assets/js/main.js?v=20260502-audit-v2" defer></script>
+<script src="/assets/js/bee-catalog.js?v=20260502-audit-v2" defer></script>
 <script>window.addEventListener('load',function(){if(window.scTrack)window.scTrack('bee_product_page_view',{channel:'bee',cta_type:'product_page',product_id:'born-to-bee',product_name:'Born to BEE',product_category:'Limpeza',product_price:'89,00',product_volume:'300 ml / 10.14 fl.oz',product_ph:'pH 4,5'});});</script>
 </body>
 </html>
