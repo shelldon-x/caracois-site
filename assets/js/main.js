@@ -2,7 +2,7 @@
 (function () {
   'use strict';
 
-  const BUILD_VERSION = '20260502-audit-v2';
+  const BUILD_VERSION = '20260503-tracking-pro-v1';
 
   document.documentElement.classList.remove('no-js');
   document.documentElement.classList.add('js');
@@ -43,18 +43,51 @@
     try { localStorage.setItem(key, JSON.stringify(value)); } catch (e) {}
   }
 
+  function normalizeHost(host) {
+    return String(host || '').toLowerCase().replace(/^www\./, '');
+  }
+
+  function isInternalHost(host) {
+    const h = normalizeHost(host);
+    return h === 'caracois.com.br' || h.endsWith('.caracois.com.br') || h === window.location.hostname.replace(/^www\./, '');
+  }
+
+  function classifySourceFromHost(host) {
+    const h = normalizeHost(host);
+    if (!h) return null;
+
+    // IA / LLMs — nomenclatura objetiva para aparecer no WhatsApp e nos relatórios.
+    if (h.includes('chatgpt.com') || h.includes('chat.openai.com') || h.includes('openai.com')) return { source: 'chatgpt', medium: 'ai' };
+    if (h.includes('copilot.microsoft.com') || h.includes('copilot.cloud.microsoft') || h.includes('m365.cloud.microsoft')) return { source: 'copilot', medium: 'ai' };
+    if (h.includes('gemini.google.com') || h.includes('bard.google.com')) return { source: 'gemini', medium: 'ai' };
+    if (h.includes('deepseek.com')) return { source: 'deepseek', medium: 'ai' };
+    if (h.includes('claude.ai') || h.includes('anthropic.com')) return { source: 'claude', medium: 'ai' };
+    if (h.includes('perplexity.ai')) return { source: 'perplexity', medium: 'ai' };
+    if (h.includes('poe.com')) return { source: 'poe', medium: 'ai' };
+    if (h.includes('grok.com') || h.includes('x.ai')) return { source: 'grok', medium: 'ai' };
+    if (h.includes('meta.ai')) return { source: 'meta-ai', medium: 'ai' };
+
+    // Busca e redes.
+    if (h.includes('google.')) return { source: 'google', medium: 'organic' };
+    if (h.includes('bing.')) return { source: 'bing', medium: 'organic' };
+    if (h.includes('yahoo.')) return { source: 'yahoo', medium: 'organic' };
+    if (h.includes('duckduckgo.')) return { source: 'duckduckgo', medium: 'organic' };
+    if (h.includes('instagram.')) return { source: 'instagram', medium: 'social' };
+    if (h.includes('facebook.') || h.includes('fb.')) return { source: 'facebook', medium: 'social' };
+    if (h.includes('tiktok.')) return { source: 'tiktok', medium: 'social' };
+    if (h.includes('youtube.')) return { source: 'youtube', medium: 'social' };
+    if (h.includes('linkedin.')) return { source: 'linkedin', medium: 'social' };
+    if (h.includes('whatsapp.')) return { source: 'whatsapp', medium: 'referral' };
+    if (isInternalHost(h)) return { source: 'internal', medium: 'navigation' };
+    return { source: h, medium: 'referral' };
+  }
+
   function inferReferrerSource() {
     const ref = document.referrer || '';
     if (!ref) return { source: 'direct', medium: 'none' };
     try {
-      const host = new URL(ref).hostname.replace(/^www\./, '');
-      if (host.includes('google.')) return { source: 'google', medium: 'organic' };
-      if (host.includes('bing.')) return { source: 'bing', medium: 'organic' };
-      if (host.includes('instagram.')) return { source: 'instagram', medium: 'social' };
-      if (host.includes('facebook.') || host.includes('fb.')) return { source: 'facebook', medium: 'social' };
-      if (host.includes('tiktok.')) return { source: 'tiktok', medium: 'social' };
-      if (host.includes('whatsapp.')) return { source: 'whatsapp', medium: 'referral' };
-      return { source: host, medium: 'referral' };
+      const host = new URL(ref).hostname;
+      return classifySourceFromHost(host) || { source: 'referral', medium: 'referral' };
     } catch (e) {
       return { source: 'referral', medium: 'referral' };
     }
@@ -64,22 +97,40 @@
     const urlAttrs = getParamsFromUrl();
     const ref = inferReferrerSource();
     const now = new Date().toISOString();
-    const current = {
-      source: urlAttrs.utm_source || ref.source,
-      medium: urlAttrs.utm_medium || ref.medium,
+    const priorLast = storageGet('sc_last_touch', null);
+    const hasUtm = Object.keys(urlAttrs).some((k) => k.indexOf('utm_') === 0 && urlAttrs[k]);
+    const hasPaidClick = !!(urlAttrs.gclid || urlAttrs.gbraid || urlAttrs.wbraid || urlAttrs.fbclid || urlAttrs.msclkid);
+
+    let source = urlAttrs.utm_source || ref.source;
+    let medium = urlAttrs.utm_medium || ref.medium;
+
+    if (urlAttrs.gclid || urlAttrs.gbraid || urlAttrs.wbraid) { source = urlAttrs.utm_source || 'google'; medium = urlAttrs.utm_medium || 'cpc'; }
+    if (urlAttrs.msclkid) { source = urlAttrs.utm_source || 'bing'; medium = urlAttrs.utm_medium || 'cpc'; }
+    if (urlAttrs.fbclid && !hasUtm) { source = ref.source === 'instagram' ? 'instagram' : 'facebook'; medium = 'paid_social'; }
+
+    const detected = {
+      source,
+      medium,
       campaign: urlAttrs.utm_campaign || '',
       content: urlAttrs.utm_content || '',
       term: urlAttrs.utm_term || '',
       gclid: urlAttrs.gclid || '',
+      gbraid: urlAttrs.gbraid || '',
+      wbraid: urlAttrs.wbraid || '',
       fbclid: urlAttrs.fbclid || '',
       msclkid: urlAttrs.msclkid || '',
       landing_page: window.location.pathname,
       captured_at: now
     };
+
+    // Não deixa navegação interna nem refresh direto apagar a origem boa da sessão.
+    const shouldKeepPrior = priorLast && !hasUtm && !hasPaidClick && (ref.source === 'internal' || ref.source === 'direct');
+    const current = shouldKeepPrior ? { ...priorLast, page_path: window.location.pathname, refreshed_at: now } : detected;
+
     const first = storageGet('sc_first_touch', null);
-    if (!first) storageSet('sc_first_touch', current);
+    if (!first) storageSet('sc_first_touch', detected);
     storageSet('sc_last_touch', current);
-    return { first: first || current, last: current };
+    return { first: first || detected, last: current };
   }
 
   const ATTRIBUTION = initAttribution();
@@ -98,7 +149,9 @@
       first_campaign: first.campaign || '',
       landing_page: first.landing_page || '',
       page_path: window.location.pathname,
-      page_title: document.title || ''
+      page_title: document.title || '',
+      referrer_host: (() => { try { return document.referrer ? new URL(document.referrer).hostname.replace(/^www\./, '') : ''; } catch(e) { return ''; } })(),
+      source_medium: `${last.source || ''}/${last.medium || ''}`.replace(/\/$/, '')
     };
   }
 
@@ -245,14 +298,22 @@
 
   function getHumanOrigin() {
     const a = getAttributionPayload();
-    if (a.source && a.medium && a.source !== 'direct') return `${a.source}/${a.medium}`;
-    if (a.source) return a.source;
-    return 'site';
+    const source = (a.source || 'direct').toLowerCase();
+    const medium = (a.medium || 'none').toLowerCase();
+    if (source === 'internal') {
+      const first = storageGet('sc_first_touch', {}) || {};
+      return `${first.source || 'direct'}/${first.medium || 'none'}`;
+    }
+    return `${source}/${medium}`;
+  }
+
+  function getTrackingLabel() {
+    return getHumanOrigin();
   }
 
   function waMessage(unit) {
     const origin = getHumanOrigin();
-    return `Olá! Vim pelo site do Studio Caracóis (origem: ${origin}) — ${unit.name} e quero atendimento/agendamento.`;
+    return `Olá! Vim pelo site do Studio Caracóis (${origin}) — ${unit.name}. Quero atendimento/agendamento.`;
   }
 
   function waLink(unit) {
@@ -394,25 +455,22 @@
     const nav = $('nav');
     if (!nav) return;
 
-    const logo = $('#navLogoImg', nav) || $('.nav-logo img', nav);
-    const nudeLogo = '/images/logos/logo-nude.svg';
-    const terracotaLogo = '/images/logos/logo-terracota.svg';
-
-    function setLogo(scrolled) {
-      if (!logo) return;
-      const desired = scrolled ? terracotaLogo : nudeLogo;
-      const current = (logo.getAttribute('src') || '').split('?')[0];
-      if (current !== desired) logo.setAttribute('src', desired);
-    }
-
+    const logos = $$('.logo-dynamic, #navLogoImg, .nav-logo img');
     const update = () => {
-      const scrolled = window.scrollY > 24;
-      nav.classList.toggle('scrolled', scrolled);
-      setLogo(scrolled);
+      const isScrolled = window.scrollY > 24;
+      nav.classList.toggle('scrolled', isScrolled);
+
+      logos.forEach((logo) => {
+        const lightLogo = logo.dataset.logoLight || '/images/logos/logo-nude.svg';
+        const darkLogo = logo.dataset.logoDark || '/images/logos/logo-terracota.svg';
+        const nextLogo = isScrolled ? darkLogo : lightLogo;
+        if (logo.getAttribute('src') !== nextLogo) logo.setAttribute('src', nextLogo);
+      });
     };
 
     update();
     window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('load', update, { once: true });
   }
 
   function initReveal() {
@@ -443,6 +501,7 @@
 
   function initTracking() {
     appendAttributionToBookingLinks();
+    track('sc_page_view', { channel: 'page', cta_type: 'view' });
     document.addEventListener('click', (event) => {
       const link = event.target.closest('a, button');
       if (!link) return;
@@ -524,6 +583,16 @@
   window.openMobileMenu = openMobileMenu;
   window.closeMobileMenu = closeMobileMenu;
   window.openWaModal = openWaModal;
+
+  window.SCTracking = {
+    track,
+    getAttributionPayload,
+    getHumanOrigin,
+    getTrackingLabel,
+    waMessage,
+    waLink,
+    enhanceWhatsAppLinks
+  };
   window.openBooking = openBooking;
   window.findNearest = findNearest;
   window.findNearestBooking = findNearestBooking;

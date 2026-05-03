@@ -6,7 +6,7 @@
 (function () {
   'use strict';
 
-  const BUILD_VERSION = '20260503-bee-modal-unico-global';
+  const BUILD_VERSION = '20260503-tracking-pro-v1';
   const PRODUCTS = [
     {
         "id": "born-to-bee",
@@ -308,13 +308,21 @@
   }
 
   function track(eventName, payload) {
+    const baseAttribution = (window.SCTracking && typeof window.SCTracking.getAttributionPayload === 'function')
+      ? window.SCTracking.getAttributionPayload()
+      : {};
     const data = cleanPayload(Object.assign({
       site: 'caracois.com.br',
       channel: 'bee',
       page_path: window.location.pathname,
       page_title: document.title || '',
       build_version: BUILD_VERSION
-    }, payload || {}));
+    }, baseAttribution, payload || {}));
+
+    if (window.SCTracking && typeof window.SCTracking.track === 'function') {
+      window.SCTracking.track(eventName, data);
+      return;
+    }
 
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push(Object.assign({ event: eventName }, data));
@@ -326,6 +334,8 @@
         window.clarity('event', eventName);
         if (data.product_id) window.clarity('set', 'bee_product_id', data.product_id);
         if (data.market) window.clarity('set', 'bee_marketplace', data.market);
+        if (data.source) window.clarity('set', 'source', data.source);
+        if (data.medium) window.clarity('set', 'medium', data.medium);
       }
     } catch(e) {}
   }
