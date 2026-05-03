@@ -3894,3 +3894,60 @@ body[data-page-type="bee-product"] .mobile-toggle span,
 body[data-page-type="bee-product"] nav.scrolled .mobile-toggle span {
     background: var(--black) !important;
 }
+
+
+/* =========================================================
+   FIX GLOBAL — Modal de agendamento: card da unidade mais próxima
+   Build: 20260503-booking-nearest-cta-fix
+   Objetivo: impedir sobreposição do botão "Agendar agora" no mobile
+   Escopo: somente card destacado do modal de agendamento
+========================================================= */
+
+.booking-card.booking-nearest-card {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 14px;
+}
+
+.booking-nearest-content {
+    width: 100%;
+    min-width: 0;
+    flex: 0 1 auto;
+}
+
+.booking-nearest-card .booking-card-name,
+.booking-nearest-card .booking-card-addr,
+.booking-nearest-card .booking-card-postal,
+.booking-nearest-card .booking-card-ref--light,
+.booking-nearest-dist,
+.booking-nearest-micro {
+    max-width: 100%;
+}
+
+.booking-nearest-cta {
+    position: static;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-start;
+    margin-top: 2px;
+    min-height: 44px;
+    line-height: 1.2;
+    z-index: 1;
+}
+
+@media (max-width: 560px) {
+    .booking-card.booking-nearest-card {
+        padding: 26px 22px;
+        gap: 16px;
+    }
+
+    .booking-nearest-cta {
+        width: 100%;
+        align-self: stretch;
+        padding: 13px 18px;
+        text-align: center;
+    }
+}
