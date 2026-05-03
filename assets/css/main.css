@@ -3897,299 +3897,361 @@ body[data-page-type="bee-product"] nav.scrolled .mobile-toggle span {
 
 
 /* =========================================================
-   PATCH FINAL — 20260503-modal-global-final
-   Modal Bee global + logo alternável + bloqueio de scroll seguro
+   BEE MODAL ÚNICO GLOBAL — fonte oficial para Home, Unidades e /bee-cosmetics
+   Build: 20260503-bee-modal-unico-global
+   Diretriz: nenhum CSS específico da página deve redesenhar #productModal.
 ========================================================= */
 html.modal-open,
-body.modal-open { overflow: hidden !important; touch-action: none; }
-
-/* Logo alternável: JS troca src. CSS garante leitura do header em ambos estados. */
-nav .nav-logo img { transition: width .3s var(--ease), opacity .2s var(--ease); }
-nav.scrolled .nav-logo img { width: 180px; }
-
-/* Modal marketplace Bee — global */
-.bee-modal-overlay {
-    position: fixed !important;
-    inset: 0 !important;
-    z-index: 9998 !important;
-    display: none !important;
-    align-items: center !important;
-    justify-content: center !important;
-    padding: 24px !important;
-    background: rgba(20,20,20,.62) !important;
-    backdrop-filter: blur(10px) !important;
+body.modal-open {
+    overflow: hidden !important;
+    touch-action: none;
 }
-.bee-modal-overlay.active,
-.bee-modal-overlay.is-open,
-.bee-modal-overlay.open { display: flex !important; }
-.bee-modal {
-    width: min(560px, 94vw) !important;
-    max-height: 88vh !important;
-    overflow-y: auto !important;
-    background: var(--white) !important;
-    color: var(--text) !important;
-    border-radius: 30px !important;
-    padding: 34px !important;
-    position: relative !important;
-    box-shadow: 0 30px 100px rgba(0,0,0,.28) !important;
-}
-.bee-modal-close,
-.pm-close {
-    width: 42px !important;
-    height: 42px !important;
-    border-radius: 999px !important;
-    border: 1px solid rgba(155,68,66,.14) !important;
-    background: rgba(255,255,255,.94) !important;
-    color: var(--terracota) !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    font-size: 1.45rem !important;
-    line-height: 1 !important;
-    box-shadow: 0 10px 24px rgba(0,0,0,.08) !important;
-}
-.bee-modal-close { position: absolute !important; top: 18px !important; right: 18px !important; }
-.bee-modal-head { padding-right: 38px; margin-bottom: 22px; }
-.bee-modal-kicker { display:inline-flex; color: var(--terracota); font-size:.72rem; letter-spacing:.16em; text-transform:uppercase; font-weight:700; margin-bottom:10px; }
-.bee-modal-head h2 { font-family: var(--serif); font-size: clamp(2rem, 5vw, 2.7rem); line-height:1.05; color: var(--black); margin-bottom:10px; }
-.bee-modal-head p { color: var(--text-light); line-height:1.65; font-size:.96rem; }
-.bee-market-list { display:grid; gap:12px; }
-.bee-market-item { display:flex; align-items:center; gap:14px; padding:16px; border-radius:20px; background: var(--nude-ultra); border:1px solid rgba(155,68,66,.08); color: var(--text); text-decoration:none; transition: transform .25s var(--ease), border-color .25s var(--ease), box-shadow .25s var(--ease); }
-.bee-market-item:hover { transform: translateY(-2px); border-color: rgba(155,68,66,.24); box-shadow: 0 14px 34px rgba(155,68,66,.10); }
-.bee-market-icon { width:48px; height:48px; border-radius:16px; background:var(--white); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
-.bee-market-icon img { width:28px; height:28px; object-fit:contain; }
-.bee-market-text { display:flex; flex-direction:column; gap:2px; min-width:0; }
-.bee-market-text strong { color: var(--black); font-size:.96rem; }
-.bee-market-text span { color: var(--text-muted); font-size:.82rem; }
-.bee-market-arrow { margin-left:auto; color: var(--terracota); font-size:1.2rem; }
-.bee-modal-footer { margin-top:18px; text-align:center; }
-.bee-modal-footer a { color: var(--terracota); text-decoration:none; font-size:.86rem; font-weight:600; }
-
-/* Modal de produto Bee — padrão único global */
 .product-modal-overlay,
 #productModal.product-modal-overlay {
     position: fixed !important;
     inset: 0 !important;
-    z-index: 9999 !important;
+    z-index: 10000 !important;
     display: none !important;
     align-items: center !important;
     justify-content: center !important;
-    padding: clamp(14px, 3vw, 32px) !important;
-    background: rgba(20,20,20,.66) !important;
+    padding: max(18px, env(safe-area-inset-top)) 18px max(18px, env(safe-area-inset-bottom)) !important;
+    background: rgba(20,20,20,.72) !important;
     backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
 }
+.product-modal-overlay.open,
 .product-modal-overlay.active,
 .product-modal-overlay.is-open,
-.product-modal-overlay.open,
+#productModal.open,
 #productModal.active,
-#productModal.is-open,
-#productModal.open { display: flex !important; }
+#productModal.is-open {
+    display: flex !important;
+}
 .product-modal-overlay .product-modal,
 #productModal .product-modal {
-    width: min(1160px, 96vw) !important;
-    max-height: min(88vh, 820px) !important;
-    overflow: hidden !important;
-    background: var(--white) !important;
-    color: var(--text) !important;
-    border-radius: 32px !important;
-    box-shadow: 0 34px 120px rgba(0,0,0,.30) !important;
     position: relative !important;
+    width: min(920px, 100%) !important;
+    max-height: calc(100dvh - 36px) !important;
+    overflow: hidden !important;
+    border-radius: 30px !important;
+    background: var(--white) !important;
+    box-shadow: 0 28px 90px rgba(0,0,0,.26) !important;
+    animation: beeModalIn .28s cubic-bezier(.22,1,.36,1) both !important;
+    overscroll-behavior: contain !important;
+    -webkit-overflow-scrolling: touch !important;
+}
+#productModalContent {
+    display: block !important;
+    width: 100% !important;
 }
 .product-modal .pm-close,
 #productModal .pm-close {
     position: absolute !important;
-    top: 18px !important;
-    right: 18px !important;
+    top: 16px !important;
+    right: 16px !important;
     z-index: 30 !important;
-    margin: 0 !important;
-    float: none !important;
-}
-#productModalContent .pm-grid,
-.product-modal .pm-grid {
-    display: grid !important;
-    grid-template-columns: minmax(320px, .92fr) minmax(420px, 1.08fr) !important;
-    height: min(82vh, 760px) !important;
-    min-height: 560px !important;
-    align-items: stretch !important;
-}
-#productModalContent .pm-image,
-.product-modal .pm-image {
-    height: 100% !important;
-    min-height: 0 !important;
-    border-radius: 32px 0 0 32px !important;
-    background: radial-gradient(circle at 35% 20%, rgba(255,255,255,.72), transparent 54%), linear-gradient(165deg, var(--nude-ultra), var(--nude-light)) !important;
+    width: 44px !important;
+    height: 44px !important;
+    border: 0 !important;
+    border-radius: 999px !important;
+    background: rgba(255,255,255,.94) !important;
+    color: var(--terracota) !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    padding: clamp(30px, 4vw, 58px) !important;
-    overflow: hidden !important;
+    font-size: 1.55rem !important;
+    line-height: 1 !important;
+    box-shadow: 0 10px 28px rgba(0,0,0,.10) !important;
+    margin: 0 !important;
+    float: none !important;
+    cursor: pointer !important;
 }
-#productModalContent .pm-image img,
-.product-modal .pm-image img {
+.product-modal .pm-close:hover,
+#productModal .pm-close:hover {
+    background: var(--terracota) !important;
+    color: var(--white) !important;
+}
+.product-modal .pm-grid,
+#productModalContent .pm-grid {
+    display: grid !important;
+    grid-template-columns: minmax(280px, 42%) minmax(0, 58%) !important;
+    height: min(82dvh, 760px) !important;
+    min-height: 540px !important;
+    align-items: stretch !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+.product-modal .pm-image,
+#productModalContent .pm-image {
+    min-height: 0 !important;
+    height: 100% !important;
+    border-radius: 30px 0 0 30px !important;
+    background:
+        radial-gradient(circle at 50% 18%, rgba(255,255,255,.78), transparent 45%),
+        linear-gradient(165deg, var(--nude-ultra), var(--nude-light)) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: clamp(30px, 5vw, 54px) !important;
+    overflow: hidden !important;
+    position: relative !important;
+}
+.product-modal .pm-image::after,
+#productModalContent .pm-image::after {
+    content: none !important;
+}
+.product-modal .pm-image img,
+#productModalContent .pm-image img {
+    display: block !important;
     width: auto !important;
     height: auto !important;
-    max-width: 88% !important;
-    max-height: min(500px, 72vh) !important;
+    max-width: 82% !important;
+    max-height: min(430px, 70dvh) !important;
     object-fit: contain !important;
-    object-position: center !important;
-    display: block !important;
+    object-position: center center !important;
     margin: auto !important;
-    filter: drop-shadow(0 18px 32px rgba(0,0,0,.13)) !important;
+    filter: drop-shadow(0 18px 30px rgba(0,0,0,.12)) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
 }
-#productModalContent .pm-content,
-.product-modal .pm-content {
+.product-modal .pm-content,
+#productModalContent .pm-content {
     height: 100% !important;
     min-height: 0 !important;
+    max-height: 100% !important;
     overflow-y: auto !important;
-    overscroll-behavior: contain !important;
-    padding: clamp(34px, 4vw, 56px) clamp(26px, 4vw, 50px) 42px !important;
-    scrollbar-width: thin;
+    padding: clamp(38px, 5vw, 54px) clamp(30px, 4vw, 46px) 42px !important;
+    display: block !important;
+    color: var(--text) !important;
+    background: var(--white) !important;
 }
-.product-modal .pm-category-tag { margin-bottom: 10px !important; }
-.product-modal .pm-eyebrow { color: var(--gold) !important; font-size: .74rem !important; letter-spacing: .14em !important; text-transform: uppercase !important; font-weight:700 !important; margin-bottom: 8px !important; }
-.product-modal h2 { font-family: var(--serif) !important; color: var(--black) !important; font-size: clamp(2rem, 4vw, 3rem) !important; line-height:1.04 !important; margin-bottom: 14px !important; }
-.product-modal .pm-desc { color: var(--text-light) !important; line-height:1.7 !important; font-size: .98rem !important; margin-bottom: 20px !important; }
-.product-modal .pm-specs { display:grid !important; grid-template-columns: repeat(2, minmax(0,1fr)) !important; gap:10px !important; margin: 20px 0 !important; }
-.product-modal .pm-spec { padding: 12px 14px !important; border-radius: 16px !important; background: var(--nude-ultra) !important; border: 1px solid rgba(155,68,66,.08) !important; }
-.product-modal .pm-spec span { display:block; color: var(--text-muted); font-size:.68rem; letter-spacing:.08em; text-transform:uppercase; margin-bottom:4px; }
-.product-modal .pm-spec strong { color: var(--black); font-size:.86rem; overflow-wrap:anywhere; }
-.product-modal .pm-section { margin-top: 22px !important; }
-.product-modal .pm-section h3 { font-family: var(--serif); color: var(--black); font-size:1.35rem; margin-bottom:8px; }
-.product-modal .pm-section p { color: var(--text-light); line-height:1.68; font-size:.92rem; overflow-wrap:anywhere; }
-.product-modal .pm-section--ingredients p { font-size:.82rem; color: var(--text-muted); }
-.product-modal .pm-markets { display:grid !important; grid-template-columns: repeat(3, minmax(0,1fr)) !important; gap:10px !important; margin-top: 14px !important; }
-.product-modal .pm-market-link { display:flex !important; align-items:center !important; gap:10px !important; padding:12px !important; border-radius:16px !important; background: var(--nude-ultra) !important; border:1px solid rgba(155,68,66,.08) !important; text-decoration:none !important; color: var(--text) !important; min-width:0 !important; }
-.product-modal .pm-market-icon { width:34px; height:34px; border-radius:12px; background: var(--white); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
-.product-modal .pm-market-icon img { width:22px; height:22px; object-fit:contain; }
-.product-modal .pm-market-copy { min-width:0; display:flex; flex-direction:column; }
-.product-modal .pm-market-copy strong { color: var(--black); font-size:.84rem; }
-.product-modal .pm-market-copy small { color: var(--text-muted); font-size:.72rem; }
-
-@media (max-width: 860px) {
-    .product-modal-overlay,
-    #productModal.product-modal-overlay { align-items: flex-end !important; padding: 10px !important; }
-    .product-modal-overlay .product-modal,
-    #productModal .product-modal { width:100% !important; max-height: 92vh !important; overflow-y:auto !important; border-radius: 28px 28px 0 0 !important; }
-    #productModalContent .pm-grid,
-    .product-modal .pm-grid { grid-template-columns: 1fr !important; height:auto !important; min-height:0 !important; }
-    #productModalContent .pm-image,
-    .product-modal .pm-image { height:auto !important; min-height: 280px !important; max-height: 36vh !important; border-radius:28px 28px 0 0 !important; padding: 26px !important; }
-    #productModalContent .pm-image img,
-    .product-modal .pm-image img { max-height: 30vh !important; max-width: 78% !important; }
-    #productModalContent .pm-content,
-    .product-modal .pm-content { height:auto !important; overflow:visible !important; padding: 28px 22px 34px !important; }
-    .product-modal .pm-specs,
-    .product-modal .pm-markets { grid-template-columns: 1fr !important; }
-    .bee-modal { width:100% !important; max-height: 88vh !important; border-radius: 28px !important; padding: 28px 22px !important; }
-}
-
-
-/* =========================================================
-   PATCH DEFINITIVO — Bee produto + modal global v3
-   Corrige corte de imagens altas, duplicidades visuais e mobile
-========================================================= */
-.product-modal-overlay .product-modal,
-#productModal .product-modal {
-  overflow: hidden !important;
-}
-#productModalContent .pm-grid,
-.product-modal .pm-grid {
-  grid-template-columns: minmax(300px,.86fr) minmax(440px,1.14fr) !important;
-}
-#productModalContent .pm-image,
-.product-modal .pm-image {
-  overflow: hidden !important;
-  isolation: isolate !important;
-}
-#productModalContent .pm-image img,
-.product-modal .pm-image img {
-  object-fit: contain !important;
-  object-position: center center !important;
-  width: auto !important;
-  height: auto !important;
-  max-width: 82% !important;
-  max-height: min(470px, 66vh) !important;
-}
-.product-modal .pm-image--tall img,
-#productModalContent .pm-image--tall img {
-  max-width: 62% !important;
-  max-height: min(500px, 68vh) !important;
-}
-.product-modal .pm-section + .pm-section {
-  margin-top: 28px !important;
-}
-.product-modal .pm-section--ingredients p {
-  max-height: none !important;
-  overflow: visible !important;
-}
-@media (max-width: 860px) {
-  .product-modal-overlay,
-  #productModal.product-modal-overlay {
+.product-modal .pm-category-tag,
+#productModalContent .pm-category-tag {
+    display: inline-flex !important;
+    width: fit-content !important;
     align-items: center !important;
-    padding: 14px !important;
-  }
-  .product-modal-overlay .product-modal,
-  #productModal .product-modal {
-    border-radius: 26px !important;
-    max-height: 92dvh !important;
-    overflow: hidden !important;
-  }
-  #productModalContent .pm-grid,
-  .product-modal .pm-grid {
+    justify-content: center !important;
+    padding: 7px 14px !important;
+    border-radius: 999px !important;
+    background: linear-gradient(135deg, var(--terracota), var(--terracota-dark)) !important;
+    color: var(--white) !important;
+    font-size: .68rem !important;
+    font-weight: 700 !important;
+    letter-spacing: .1em !important;
+    text-transform: uppercase !important;
+    margin: 0 0 10px !important;
+    box-shadow: 0 8px 20px rgba(155,68,66,.18) !important;
+}
+.product-modal .pm-eyebrow,
+#productModalContent .pm-eyebrow {
+    font-size: .72rem !important;
+    letter-spacing: .14em !important;
+    text-transform: uppercase !important;
+    color: var(--gold) !important;
+    font-weight: 700 !important;
+    margin-bottom: 8px !important;
+}
+.product-modal .pm-content h2,
+#productModalContent .pm-content h2 {
+    font-family: var(--serif) !important;
+    font-size: clamp(2rem, 4vw, 2.85rem) !important;
+    line-height: 1.04 !important;
+    font-weight: 600 !important;
+    color: var(--black) !important;
+    margin: 0 0 14px !important;
+}
+.product-modal .pm-desc,
+#productModalContent .pm-desc {
+    color: var(--text-light) !important;
+    font-size: .96rem !important;
+    line-height: 1.72 !important;
+    font-weight: 300 !important;
+    margin: 0 0 18px !important;
+}
+.product-modal .pm-specs,
+#productModalContent .pm-specs {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 12px !important;
+    margin: 0 0 18px !important;
+}
+.product-modal .pm-spec,
+#productModalContent .pm-spec {
+    padding: 12px 14px !important;
+    border-radius: 14px !important;
+    background: var(--nude-ultra) !important;
+    border: 1px solid rgba(155,68,66,.08) !important;
+}
+.product-modal .pm-spec span,
+#productModalContent .pm-spec span {
+    display: block !important;
+    font-size: .65rem !important;
+    letter-spacing: .1em !important;
+    text-transform: uppercase !important;
+    color: var(--text-muted) !important;
+    font-weight: 700 !important;
+    margin-bottom: 5px !important;
+}
+.product-modal .pm-spec strong,
+#productModalContent .pm-spec strong {
+    font-size: .86rem !important;
+    color: var(--black) !important;
+    font-weight: 700 !important;
+    text-transform: none !important;
+    line-height: 1.35 !important;
+}
+.product-modal .pm-pills,
+#productModalContent .pm-pills {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    margin-bottom: 20px !important;
+}
+.product-modal .pm-section,
+#productModalContent .pm-section {
+    margin: 0 0 18px !important;
+    padding: 0 !important;
+}
+.product-modal .pm-section h3,
+#productModalContent .pm-section h3 {
+    font-family: var(--serif) !important;
+    font-size: 1.25rem !important;
+    color: var(--black) !important;
+    margin: 0 0 7px !important;
+    font-weight: 600 !important;
+}
+.product-modal .pm-section p,
+#productModalContent .pm-section p {
+    color: var(--text-muted) !important;
+    font-size: .88rem !important;
+    line-height: 1.58 !important;
+    margin: 0 !important;
+}
+.product-modal .pm-section--ingredients p,
+#productModalContent .pm-section--ingredients p {
+    max-height: 148px !important;
+    overflow: auto !important;
+    padding-right: 6px !important;
+    font-size: .82rem !important;
+}
+.product-modal .pm-markets,
+#productModalContent .pm-markets {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+    margin-top: 20px !important;
+    padding-top: 18px !important;
+    border-top: 1px solid var(--border) !important;
+}
+.product-modal .pm-market-link,
+#productModalContent .pm-market-link {
+    display: flex !important;
+    align-items: center !important;
+    gap: 14px !important;
+    min-height: 60px !important;
+    padding: 12px 16px !important;
+    border-radius: 18px !important;
+    text-decoration: none !important;
+    background: var(--nude-ultra) !important;
+    color: var(--black) !important;
+    border: 1px solid rgba(155,68,66,.12) !important;
+    box-shadow: 0 10px 22px rgba(0,0,0,.035) !important;
+}
+.product-modal .pm-market-icon,
+#productModalContent .pm-market-icon {
+    width: 40px !important;
+    height: 40px !important;
+    display: grid !important;
+    place-items: center !important;
+    border-radius: 14px !important;
+    background: var(--white) !important;
+    border: 1px solid rgba(0,0,0,.06) !important;
+    flex: 0 0 40px !important;
+}
+.product-modal .pm-market-icon img,
+#productModalContent .pm-market-icon img {
+    width: 24px !important;
+    height: 24px !important;
+    object-fit: contain !important;
+    filter: none !important;
+}
+.product-modal .pm-market-copy,
+#productModalContent .pm-market-copy {
     display: flex !important;
     flex-direction: column !important;
-    height: 92dvh !important;
-    min-height: 0 !important;
-  }
-  #productModalContent .pm-image,
-  .product-modal .pm-image {
-    flex: 0 0 auto !important;
-    min-height: 0 !important;
-    height: 238px !important;
-    max-height: 238px !important;
-    border-radius: 26px 26px 0 0 !important;
-    padding: 26px 48px 20px !important;
-  }
-  #productModalContent .pm-image img,
-  .product-modal .pm-image img {
-    max-height: 192px !important;
-    max-width: 72% !important;
-  }
-  .product-modal .pm-image--tall img,
-  #productModalContent .pm-image--tall img {
-    max-height: 202px !important;
-    max-width: 46% !important;
-  }
-  #productModalContent .pm-content,
-  .product-modal .pm-content {
-    flex: 1 1 auto !important;
-    min-height: 0 !important;
-    overflow-y: auto !important;
-    -webkit-overflow-scrolling: touch !important;
-    overscroll-behavior: contain !important;
-    padding: 26px 22px 34px !important;
-  }
-  .product-modal .pm-close,
-  #productModal .pm-close {
-    top: 14px !important;
-    right: 14px !important;
-  }
+    line-height: 1.15 !important;
 }
-@media (max-width: 520px) {
-  #productModalContent .pm-image,
-  .product-modal .pm-image {
-    height: 218px !important;
-    max-height: 218px !important;
-    padding: 24px 42px 18px !important;
-  }
-  #productModalContent .pm-image img,
-  .product-modal .pm-image img {
-    max-height: 176px !important;
-    max-width: 74% !important;
-  }
-  .product-modal .pm-image--tall img,
-  #productModalContent .pm-image--tall img {
-    max-height: 184px !important;
-    max-width: 44% !important;
-  }
+.product-modal .pm-market-copy strong,
+#productModalContent .pm-market-copy strong {
+    color: var(--black) !important;
+    font-size: .94rem !important;
+    font-weight: 700 !important;
+}
+.product-modal .pm-market-copy small,
+#productModalContent .pm-market-copy small {
+    color: var(--text-muted) !important;
+    font-size: .74rem !important;
+    font-weight: 500 !important;
+}
+@media (max-width: 760px) {
+    .product-modal-overlay,
+    #productModal.product-modal-overlay {
+        align-items: center !important;
+        justify-content: center !important;
+        padding: max(18px, env(safe-area-inset-top)) 18px max(18px, env(safe-area-inset-bottom)) !important;
+    }
+    .product-modal-overlay .product-modal,
+    #productModal .product-modal {
+        width: 100% !important;
+        max-height: calc(100dvh - 36px) !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        border-radius: 30px !important;
+    }
+    .product-modal .pm-grid,
+    #productModalContent .pm-grid {
+        grid-template-columns: 1fr !important;
+        height: auto !important;
+        min-height: 0 !important;
+        display: grid !important;
+    }
+    .product-modal .pm-image,
+    #productModalContent .pm-image {
+        height: auto !important;
+        min-height: clamp(230px, 36dvh, 310px) !important;
+        border-radius: 30px 30px 0 0 !important;
+        padding: 28px !important;
+    }
+    .product-modal .pm-image img,
+    #productModalContent .pm-image img {
+        max-height: clamp(190px, 30dvh, 265px) !important;
+        max-width: 78% !important;
+    }
+    .product-modal .pm-content,
+    #productModalContent .pm-content {
+        height: auto !important;
+        max-height: none !important;
+        overflow: visible !important;
+        padding: 30px 24px 34px !important;
+    }
+    .product-modal .pm-specs,
+    #productModalContent .pm-specs {
+        grid-template-columns: 1fr !important;
+    }
+}
+@media (max-width: 420px) {
+    .product-modal-overlay,
+    #productModal.product-modal-overlay {
+        padding: 12px !important;
+    }
+    .product-modal .pm-image,
+    #productModalContent .pm-image {
+        min-height: 240px !important;
+        padding: 24px !important;
+    }
+    .product-modal .pm-image img,
+    #productModalContent .pm-image img {
+        max-height: 220px !important;
+        max-width: 80% !important;
+    }
 }
