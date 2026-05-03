@@ -1,12 +1,12 @@
 /* Bee Cosmetics — catálogo frontend rico 100%
-   Build: 20260502-audit-v2
+   Build: 20260503-bee-polish
    Dados enriquecidos: volume, pH, ANVISA, código de barras, descrição, modo de usar e composição.
    Sem campo de ativos principais, conforme solicitado.
 */
 (function () {
   'use strict';
 
-  const BUILD_VERSION = '20260502-audit-v2';
+  const BUILD_VERSION = '20260503-bee-polish';
   const PRODUCTS = [
     {
         "id": "born-to-bee",
@@ -330,6 +330,11 @@
     } catch(e) {}
   }
 
+  function categoryLabel(category) {
+    const map = { limpeza: 'Limpeza', tratamento: 'Tratamento', finalizacao: 'Finalização' };
+    return map[category] || category || 'Produto';
+  }
+
   function pills(product) {
     const tagPills = (product.tags || []).map(t => `<span class="bee-product-pill bee-product-pill--tag">${esc(t)}</span>`).join('');
     const phPill = product.ph ? `<span class="bee-product-pill bee-product-pill--ph">${esc(product.ph)}</span>` : '';
@@ -340,6 +345,7 @@
     return `
       <article class="bee-product-card" id="${esc(product.id)}" tabindex="0" data-category="${esc(product.category)}" data-product-card="${esc(product.id)}">
         <div class="bee-product-img">
+          <span class="bee-product-tag-float">${esc(categoryLabel(product.category))}</span>
           <img ${imageAttrs(product)} alt="${esc(product.name)} — ${esc(product.type)}" loading="lazy" decoding="async">
         </div>
         <div class="bee-product-info">
@@ -410,6 +416,7 @@
           <img ${imageAttrs(p)} alt="${esc(p.name)}" loading="lazy" decoding="async">
         </div>
         <div class="pm-content">
+          <div class="pm-category-tag">${esc(categoryLabel(p.category))}</div>
           <div class="pm-eyebrow">${esc(p.type)}</div>
           <h2>${esc(p.name)}</h2>
           <p class="pm-desc">${esc(p.desc)}</p>
