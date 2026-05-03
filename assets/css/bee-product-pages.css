@@ -499,9 +499,89 @@
 }
 
 
-/* BEE PRODUCTS GLOBAL FINAL — 20260504-bee-products-global-final */
-.bee-product-page .nav-logo .logo-dynamic { width: 220px; height: auto; }
-.bee-product-page nav.scrolled .nav-logo .logo-dynamic { width: 180px; }
-.bee-product-page .pm-market-copy small,
-.bee-product-page .bee-cat-buy-label { text-wrap: balance; }
-.bee-product-page .bee-product-market-chip { text-decoration: none !important; }
+/* =========================================================
+   BEE PRODUCT PAGES — hard fix final 20260504
+   Corrige navegação interna/marketplaces que apareciam como links azuis
+   e reforça escopo mobile sem interferir no modal global Bee.
+========================================================= */
+.bee-product-page .bee-product-market-row,
+.bee-product-page .bee-product-section-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin: 18px 0 0;
+}
+.bee-product-page .bee-product-market-row a,
+.bee-product-page .bee-product-market-chip,
+.bee-product-page .bee-product-section-nav a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  font-family: var(--sans);
+  font-size: .78rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: .04em;
+  text-decoration: none !important;
+  transition: all .28s var(--ease);
+}
+.bee-product-page .bee-product-market-row a,
+.bee-product-page .bee-product-market-chip {
+  color: var(--black) !important;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  border: 1px solid rgba(196,162,101,.35);
+  box-shadow: 0 10px 26px rgba(196,162,101,.20);
+}
+.bee-product-page .bee-product-market-row a:hover,
+.bee-product-page .bee-product-market-chip:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 34px rgba(196,162,101,.28);
+}
+.bee-product-page .bee-product-section-nav a {
+  color: rgba(255,255,255,.88) !important;
+  background: rgba(255,255,255,.075);
+  border: 1px solid rgba(255,255,255,.16);
+  backdrop-filter: blur(8px);
+}
+.bee-product-page .bee-product-section-nav a:hover {
+  color: var(--white) !important;
+  border-color: rgba(255,255,255,.35);
+  background: rgba(255,255,255,.12);
+}
+.bee-product-page .bee-product-buy-section,
+.bee-product-page .bee-product-next-step,
+.bee-product-page .bee-product-guide,
+.bee-product-page .bee-product-related {
+  scroll-margin-top: 96px;
+}
+.bee-product-page .bee-cat-buy-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+.bee-product-page .bee-product-market-card {
+  text-decoration: none !important;
+}
+.bee-product-page .bee-product-market-card .bee-cat-buy-label {
+  color: var(--text-light);
+}
+@media (max-width: 768px) {
+  .bee-product-page .bee-product-section-nav,
+  .bee-product-page .bee-product-market-row {
+    gap: 8px;
+  }
+  .bee-product-page .bee-product-market-row a,
+  .bee-product-page .bee-product-market-chip,
+  .bee-product-page .bee-product-section-nav a {
+    min-height: 38px;
+    padding: 9px 12px;
+    font-size: .72rem;
+  }
+  .bee-product-page .bee-cat-buy-grid {
+    grid-template-columns: 1fr;
+  }
+}
