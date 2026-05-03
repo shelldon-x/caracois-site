@@ -4082,3 +4082,114 @@ nav.scrolled .nav-logo img { width: 180px; }
     .product-modal .pm-markets { grid-template-columns: 1fr !important; }
     .bee-modal { width:100% !important; max-height: 88vh !important; border-radius: 28px !important; padding: 28px 22px !important; }
 }
+
+
+/* =========================================================
+   PATCH DEFINITIVO — Bee produto + modal global v3
+   Corrige corte de imagens altas, duplicidades visuais e mobile
+========================================================= */
+.product-modal-overlay .product-modal,
+#productModal .product-modal {
+  overflow: hidden !important;
+}
+#productModalContent .pm-grid,
+.product-modal .pm-grid {
+  grid-template-columns: minmax(300px,.86fr) minmax(440px,1.14fr) !important;
+}
+#productModalContent .pm-image,
+.product-modal .pm-image {
+  overflow: hidden !important;
+  isolation: isolate !important;
+}
+#productModalContent .pm-image img,
+.product-modal .pm-image img {
+  object-fit: contain !important;
+  object-position: center center !important;
+  width: auto !important;
+  height: auto !important;
+  max-width: 82% !important;
+  max-height: min(470px, 66vh) !important;
+}
+.product-modal .pm-image--tall img,
+#productModalContent .pm-image--tall img {
+  max-width: 62% !important;
+  max-height: min(500px, 68vh) !important;
+}
+.product-modal .pm-section + .pm-section {
+  margin-top: 28px !important;
+}
+.product-modal .pm-section--ingredients p {
+  max-height: none !important;
+  overflow: visible !important;
+}
+@media (max-width: 860px) {
+  .product-modal-overlay,
+  #productModal.product-modal-overlay {
+    align-items: center !important;
+    padding: 14px !important;
+  }
+  .product-modal-overlay .product-modal,
+  #productModal .product-modal {
+    border-radius: 26px !important;
+    max-height: 92dvh !important;
+    overflow: hidden !important;
+  }
+  #productModalContent .pm-grid,
+  .product-modal .pm-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    height: 92dvh !important;
+    min-height: 0 !important;
+  }
+  #productModalContent .pm-image,
+  .product-modal .pm-image {
+    flex: 0 0 auto !important;
+    min-height: 0 !important;
+    height: 238px !important;
+    max-height: 238px !important;
+    border-radius: 26px 26px 0 0 !important;
+    padding: 26px 48px 20px !important;
+  }
+  #productModalContent .pm-image img,
+  .product-modal .pm-image img {
+    max-height: 192px !important;
+    max-width: 72% !important;
+  }
+  .product-modal .pm-image--tall img,
+  #productModalContent .pm-image--tall img {
+    max-height: 202px !important;
+    max-width: 46% !important;
+  }
+  #productModalContent .pm-content,
+  .product-modal .pm-content {
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    overscroll-behavior: contain !important;
+    padding: 26px 22px 34px !important;
+  }
+  .product-modal .pm-close,
+  #productModal .pm-close {
+    top: 14px !important;
+    right: 14px !important;
+  }
+}
+@media (max-width: 520px) {
+  #productModalContent .pm-image,
+  .product-modal .pm-image {
+    height: 218px !important;
+    max-height: 218px !important;
+    padding: 24px 42px 18px !important;
+  }
+  #productModalContent .pm-image img,
+  .product-modal .pm-image img {
+    max-height: 176px !important;
+    max-width: 74% !important;
+  }
+  .product-modal .pm-image--tall img,
+  #productModalContent .pm-image--tall img {
+    max-height: 184px !important;
+    max-width: 44% !important;
+  }
+}
