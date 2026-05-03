@@ -348,17 +348,15 @@
     setHtml('#beeProductMarkets', marketplaceCards(product, true));
     setHtml('#beeProductRelated', renderProductRelated(product));
 
-    // Insere blocos inferiores premium caso a página dinâmica ainda não tenha esses componentes.
+    // Renderiza blocos inferiores premium de forma idempotente.
+    // Remove versões antigas/duplicadas que causavam texto cru, links azuis e repetição visual.
+    $$('.bee-product-dynamic-extra, #guia-de-uso.bee-product-guide, #onde-comprar.bee-product-buy-section, #avaliacao-gratuita.bee-product-next-step').forEach((el) => el.remove());
     const main = $('#main');
-    if (main && !$('#guia-de-uso')) {
-      const related = $('#relacionados');
-      const insertion = document.createElement('div');
-      insertion.innerHTML = renderGuideSection() + renderBuySection(product) + renderNextStepSection(product);
-      if (related) {
-        related.insertAdjacentElement('afterend', insertion);
-      } else {
-        main.insertAdjacentElement('beforeend', insertion);
-      }
+    if (main) {
+      const wrapper = document.createElement('div');
+      wrapper.className = 'bee-product-dynamic-extra';
+      wrapper.innerHTML = renderGuideSection() + renderBuySection(product) + renderNextStepSection(product);
+      main.insertAdjacentElement('beforeend', wrapper);
     }
 
     const buyBarTitle = $('#beeBuyBarTitle');
@@ -447,6 +445,27 @@
         border-radius:18px;
         padding:30px 24px;
       }
+
+
+
+      /* Rescue/compat para impedir links azuis e layout cru nos blocos dinâmicos */
+      .bee-product-page .bee-product-dynamic-extra { background:#fff; color:var(--text,#2A2A2A); }
+      .bee-product-page .bee-product-guide,
+      .bee-product-page .bee-product-buy-section { background:#fff !important; color:var(--text,#2A2A2A) !important; padding:88px 0 !important; }
+      .bee-product-page .bee-product-guide { background:linear-gradient(135deg,var(--nude-ultra,#FBF6F5),#fff) !important; }
+      .bee-product-page .bee-product-next-step { background:linear-gradient(165deg,#120d0c 0%,#211514 42%,#7C3331 100%) !important; color:#fff !important; padding:86px 0 calc(94px + env(safe-area-inset-bottom)) !important; }
+      .bee-product-page .bee-product-next-step .section-title,
+      .bee-product-page .bee-product-next-step .bee-cat-cta-sub { color:#fff !important; }
+      .bee-product-page .bee-product-next-step .section-label { color:var(--gold-light,#D4B97A) !important; }
+      .bee-product-page .bee-cat-guide-intro,
+      .bee-product-page .bee-cat-buy-inner,
+      .bee-product-page .bee-cat-cta-inner { max-width:900px; margin:0 auto; text-align:center; }
+      .bee-product-page .bee-cat-guide-steps { margin-top:42px; }
+      .bee-product-page .bee-cat-guide-step { background:#fff; border:1px solid rgba(155,68,66,.08); box-shadow:0 18px 46px rgba(0,0,0,.045); text-align:left; }
+      .bee-product-page .bee-cat-guide-num { color:var(--terracota,#9B4442); font-weight:700; letter-spacing:.10em; margin-bottom:12px; }
+      .bee-product-page .bee-cat-guide-step h3 { font-family:var(--serif); color:var(--black,#141414); font-size:1.45rem; margin-bottom:8px; }
+      .bee-product-page .bee-cat-guide-step p { color:var(--text-light,#444); line-height:1.65; }
+      .bee-product-page .bee-product-buy-section a { color:inherit !important; text-decoration:none !important; }
 
       @media (max-width: 900px) {
         .bee-product-page .bee-cat-buy-grid,

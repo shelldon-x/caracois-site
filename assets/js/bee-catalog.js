@@ -431,6 +431,11 @@
       </div>`;
   }
 
+  function isTallProduct(p) {
+    const text = String((p && (p.id + ' ' + p.type + ' ' + p.name)) || '').toLowerCase();
+    return /shampoo|leave|co-wash|cowash|born-to-bee|bee-yourself|let-it-bee|bee-proud|feel-the-beeat|beelieve/.test(text);
+  }
+
   function openProductModal(id) {
     const p = productById(id);
     const modal = $('#productModal');
@@ -439,7 +444,7 @@
 
     content.innerHTML = `
       <div class="pm-grid" role="document">
-        <div class="pm-image">
+        <div class="pm-image ${isTallProduct(p) ? 'pm-image--tall' : ''}">
           <img ${imageAttrs(p)} alt="${esc(p.name)}" loading="lazy" decoding="async">
         </div>
         <div class="pm-content">
@@ -476,6 +481,8 @@
       </div>`;
 
     initImageFallbacks(content);
+    const scrollArea = content.querySelector('.pm-content');
+    if (scrollArea) scrollArea.scrollTop = 0;
     modal.classList.add('active','is-open','open');
     modal.setAttribute('aria-hidden','false');
     setModalLock(true);
