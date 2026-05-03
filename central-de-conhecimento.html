@@ -214,9 +214,8 @@
       ]
 }
     </script>
-    <link rel="stylesheet" href="/assets/css/main.css?v=20260503-bee-ref-home-modal-final">
-<link rel="stylesheet" href="/assets/css/bee-cosmetics.css?v=20260503-bee-ref-home-modal-final">
-    <link rel="stylesheet" href="/assets/css/pages.css?v=20260502-audit-v2">
+    <link rel="stylesheet" href="/assets/css/main.css?v=20260503-pages-global-10-final">
+    <link rel="stylesheet" href="/assets/css/pages.css?v=20260503-pages-global-10-final">
 
     <!-- Google tag (GA4) — Studio Caracóis -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-0J7RBF2BFX"></script>
@@ -275,7 +274,7 @@
 <nav id="navbar" role="navigation" aria-label="Navegação principal">
     <div class="container">
         <a href="/" class="nav-logo" aria-label="Studio Caracóis - Página inicial">
-            <img src="/images/logos/logo-nude.svg" alt="Logo Studio Caracóis - Especialistas em cabelos cacheados" id="navLogoImg" width="180" height="34" decoding="async" fetchpriority="high">
+            <img class="logo-dynamic" src="/images/logos/logo-nude.svg" data-logo-light="/images/logos/logo-nude.svg" data-logo-dark="/images/logos/logo-terracota.svg" alt="Logo Studio Caracóis - Especialistas em cabelos cacheados" id="navLogoImg" width="180" height="34" decoding="async" fetchpriority="high">
         </a>
         <div class="nav-right">
             <div class="nav-links">
@@ -290,7 +289,7 @@
                 <a href="https://tiktok.com/@studiocaracois" target="_blank" rel="noopener" aria-label="TikTok"><svg width="24" height="24"><use href="#i-tt"/></svg></a>
                 <a href="https://youtube.com/@studiocaracois" target="_blank" rel="noopener" aria-label="YouTube"><svg width="24" height="24"><use href="#i-yt"/></svg></a>
             </div>
-            <button type="button" class="nav-cta-btn" onclick="openBooking()" aria-label="Agendar avaliação">Agendar avaliação</button>
+            <button type="button" class="nav-cta-btn" onclick="openBooking()" data-cta="agendar_nav" data-channel="booking" aria-label="Agendar avaliação">Agendar avaliação</button>
         </div>
         <button type="button" class="mobile-toggle" onclick="openMobileMenu()" aria-label="Abrir menu" aria-expanded="false" aria-controls="mm">
             <span></span><span></span><span></span>
@@ -601,7 +600,7 @@
                         <svg width="18" height="18" aria-hidden="true"><use href="#i-cal"/></svg>
                         Agendar avaliação gratuita
                     </button>
-                    <button type="button" class="btn btn-outline" onclick="openWaModal()" aria-label="Falar no WhatsApp" style="border-color:rgba(255,255,255,0.5);color:var(--white)">
+                    <button type="button" class="btn btn-outline" onclick="openWaModal()" data-cta="whatsapp_hero" data-channel="whatsapp" aria-label="Falar no WhatsApp" style="border-color:rgba(255,255,255,0.5);color:var(--white)">
                         <svg width="18" height="18" aria-hidden="true"><use href="#i-wa"/></svg>
                         Falar no WhatsApp
                     </button>
@@ -649,6 +648,6 @@
     <script src="/assets/js/bee-catalog.js?v=20260503-bee-ref-home-modal-final" defer></script>
 
 
-    <script src="/assets/js/main.js?v=20260503-bee-ref-home-modal-final" defer></script>
+    <script src="/assets/js/main.js?v=20260503-pages-global-10-final" defer></script>
 </body>
 </html>

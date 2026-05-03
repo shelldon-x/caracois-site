@@ -27,10 +27,13 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
 
+    <link rel="preload" as="image" href="/images/logos/logo-nude.svg">
+    <link rel="preload" as="image" href="/images/logos/logo-terracota.svg">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/main.css?v=20260503-bee-ref-home-modal-final">
+  <link rel="stylesheet" href="/assets/css/main.css?v=20260503-pages-global-10-final">
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-0J7RBF2BFX"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-0J7RBF2BFX',{send_page_view:true,cookie_flags:'SameSite=None;Secure',page_title:'404 — Página não encontrada'});gtag('event','page_not_found',{page_path:location.pathname,page_referrer:document.referrer||'(direct)',event_category:'errors',transport_type:'beacon'});window.dataLayer.push({event:'page_not_found',page_path:location.pathname,page_referrer:document.referrer||'(direct)'});</script>
@@ -157,7 +160,7 @@
     <div class="container">
       <div class="error-content">
         <a href="/" aria-label="Voltar para a página inicial">
-          <img class="error-logo" src="/images/logos/logo-nude.svg" alt="Studio Caracóis">
+          <img class="error-logo logo-dynamic" src="/images/logos/logo-nude.svg" data-logo-light="/images/logos/logo-nude.svg" data-logo-dark="/images/logos/logo-terracota.svg" alt="Studio Caracóis">
         </a>
         <div class="error-code">404</div>
         <h1>Essa página saiu do caminho, <em>mas seus cachos não precisam sair.</em></h1>
@@ -176,6 +179,6 @@
     </div>
   </main>
 
-  <script src="/assets/js/main.js?v=20260503-bee-ref-home-modal-final" defer></script>
+  <script src="/assets/js/main.js?v=20260503-pages-global-10-final" defer></script>
 </body>
 </html>
