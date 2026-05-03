@@ -22,13 +22,6 @@
     <image:image><image:loc>https://caracois.com.br/images/og/og-bee-cosmetics.png</image:loc></image:image>
   </url>
   <url>
-    <loc>https://caracois.com.br/caracois-care</loc>
-    <lastmod>2026-05-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <image:image><image:loc>https://caracois.com.br/images/og/og-caracois-care.png</image:loc></image:image>
-  </url>
-  <url>
     <loc>https://caracois.com.br/franquia</loc>
     <lastmod>2026-05-02</lastmod>
     <changefreq>monthly</changefreq>
@@ -45,15 +38,7 @@
   <url><loc>https://caracois.com.br/unidades/brasilia-taguatinga</loc><lastmod>2026-05-02</lastmod><changefreq>weekly</changefreq><priority>0.88</priority></url>
   <url><loc>https://caracois.com.br/unidades/goiania-setor-bueno</loc><lastmod>2026-05-02</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://caracois.com.br/unidades/recife-boa-viagem</loc><lastmod>2026-05-02</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-
-  <!-- Caracóis Care — produtos conceito -->
-  <url><loc>https://caracois.com.br/caracois-care/shampoo-sem-sulfato</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.78</priority></url>
-  <url><loc>https://caracois.com.br/caracois-care/co-wash</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.78</priority></url>
-  <url><loc>https://caracois.com.br/caracois-care/mascara-3-em-1</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.78</priority></url>
-  <url><loc>https://caracois.com.br/caracois-care/leave-in-multiuso</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.78</priority></url>
-  <url><loc>https://caracois.com.br/caracois-care/gelatina-capilar</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.78</priority></url>
-
-  <!-- Bee Cosmetics — produtos -->
+<!-- Bee Cosmetics — produtos -->
   <url><loc>https://caracois.com.br/bee-cosmetics/born-to-bee</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://caracois.com.br/bee-cosmetics/feel-the-beeat</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://caracois.com.br/bee-cosmetics/beetween-gardens</loc><lastmod>2026-05-02</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
