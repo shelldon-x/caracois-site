@@ -1,11 +1,11 @@
 
 /* Caracóis Care — catálogo conceito premium
-   Build: 20260502-home-central-phase1-10-10
+   Build: 20260502-care-premium-v1
    Estrutura inspirada no catálogo Bee, com escopo próprio para não conflitar.
 */
 (function(){
   'use strict';
-  const BUILD_VERSION = '20260502-home-central-phase1-10-10';
+  const BUILD_VERSION = '20260502-care-premium-v1';
   const CARE_PRODUCTS = [
     {
       id:'shampoo-sem-sulfato', initials:'S', name:'Shampoo Sem Sulfato', type:'Limpeza inteligente', category:'limpeza',
