@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/bee-cosmetics/:slug",
+      "destination": "/bee-cosmetics/:slug.html"
+    }
+  ]
+}
