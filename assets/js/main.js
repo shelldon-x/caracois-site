@@ -2,7 +2,7 @@
 (function () {
   'use strict';
 
-  const BUILD_VERSION = '20260503-service-pages-10';
+  const BUILD_VERSION = '20260504-central-articles-clean-final';
 
   document.documentElement.classList.remove('no-js');
   document.documentElement.classList.add('js');
@@ -47,20 +47,31 @@
     const ref = document.referrer || '';
     if (!ref) return { source: 'direct', medium: 'none' };
     try {
-      const host = new URL(ref).hostname.replace(/^www\./, '');
-      if (host.includes('chatgpt.com') || host.includes('chat.openai.com') || host.includes('openai.com')) return { source: 'chatgpt', medium: 'ai' };
-      if (host.includes('copilot.microsoft.com') || host.includes('bing.com/chat')) return { source: 'copilot', medium: 'ai' };
-      if (host.includes('gemini.google.com') || host.includes('bard.google.com')) return { source: 'gemini', medium: 'ai' };
-      if (host.includes('deepseek.com')) return { source: 'deepseek', medium: 'ai' };
-      if (host.includes('claude.ai') || host.includes('anthropic.com')) return { source: 'claude', medium: 'ai' };
-      if (host.includes('perplexity.ai')) return { source: 'perplexity', medium: 'ai' };
+      const host = new URL(ref).hostname.replace(/^www\./, '').toLowerCase();
+
+      const aiSources = [
+        ['chatgpt', ['chatgpt.com', 'chat.openai.com', 'openai.com']],
+        ['copilot', ['copilot.microsoft.com', 'bing.com/chat']],
+        ['gemini', ['gemini.google.com', 'bard.google.com']],
+        ['deepseek', ['deepseek.com', 'chat.deepseek.com']],
+        ['claude', ['claude.ai', 'anthropic.com']],
+        ['perplexity', ['perplexity.ai']],
+        ['grok', ['grok.com', 'x.ai']],
+        ['meta_ai', ['meta.ai']]
+      ];
+      for (const [source, domains] of aiSources) {
+        if (domains.some((domain) => host.includes(domain))) return { source, medium: 'ai' };
+      }
+
       if (host.includes('google.')) return { source: 'google', medium: 'organic' };
       if (host.includes('bing.')) return { source: 'bing', medium: 'organic' };
       if (host.includes('instagram.')) return { source: 'instagram', medium: 'social' };
       if (host.includes('facebook.') || host.includes('fb.')) return { source: 'facebook', medium: 'social' };
-      if (host.includes('youtube.') || host.includes('youtu.be')) return { source: 'youtube', medium: 'video' };
       if (host.includes('tiktok.')) return { source: 'tiktok', medium: 'social' };
+      if (host.includes('youtube.') || host.includes('youtu.be')) return { source: 'youtube', medium: 'video' };
       if (host.includes('pinterest.')) return { source: 'pinterest', medium: 'social' };
+      if (host.includes('x.com') || host.includes('twitter.')) return { source: 'x', medium: 'social' };
+      if (host.includes('linkedin.')) return { source: 'linkedin', medium: 'social' };
       if (host.includes('whatsapp.')) return { source: 'whatsapp', medium: 'referral' };
       return { source: host, medium: 'referral' };
     } catch (e) {
@@ -398,27 +409,22 @@
     }, { enableHighAccuracy: false, timeout: 8000, maximumAge: 600000 });
   }
 
-  function updateDynamicLogos(isScrolled) {
-    const logos = $$('.logo-dynamic, #navLogoImg');
-    logos.forEach((logo) => {
-      const light = logo.dataset.logoLight || '/images/logos/logo-nude.svg';
-      const dark = logo.dataset.logoDark || '/images/logos/logo-terracota.svg';
-      const nextSrc = isScrolled ? dark : light;
-      if (logo.getAttribute('src') !== nextSrc) logo.setAttribute('src', nextSrc);
+  function updateDynamicLogos() {
+    const isScrolled = window.scrollY > 24;
+    $$('.logo-dynamic, #navLogoImg').forEach((logo) => {
+      const light = logo.getAttribute('data-logo-light') || '/images/logos/logo-nude.svg';
+      const dark = logo.getAttribute('data-logo-dark') || '/images/logos/logo-terracota.svg';
+      const next = isScrolled ? dark : light;
+      if (logo.getAttribute('src') !== next) logo.setAttribute('src', next);
     });
   }
 
   function initNav() {
     const nav = $('nav');
     if (!nav) return;
-    const update = () => {
-      const isScrolled = window.scrollY > 24;
-      nav.classList.toggle('scrolled', isScrolled);
-      updateDynamicLogos(isScrolled);
-    };
+    const update = () => { nav.classList.toggle('scrolled', window.scrollY > 24); updateDynamicLogos(); };
     update();
     window.addEventListener('scroll', update, { passive: true });
-    window.addEventListener('load', update, { once: true });
   }
 
   function initReveal() {
@@ -511,6 +517,9 @@
     initReveal();
     initTracking();
     initEscClose();
+    if (document.body && document.body.dataset.pageType === 'article') {
+      track('article_view', { channel: 'content', article_slug: document.body.dataset.articleSlug || window.location.pathname.replace(/^\//, '') });
+    }
   });
 
 
