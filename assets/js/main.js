@@ -463,8 +463,25 @@
     });
   }
 
+
+
+  function normalizeGeoModalUI() {
+    const pinSvg = '<svg class="geo-pin-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 21s7-5.15 7-11a7 7 0 1 0-14 0c0 5.85 7 11 7 11Z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="10" r="2.5" fill="currentColor"/></svg>';
+    $$('.wa-nearest-label, .booking-nearest-label').forEach((el) => {
+      el.textContent = 'Encontramos a unidade mais próxima de você';
+    });
+    $$('.wa-geo-btn, .booking-geo-btn').forEach((btn) => {
+      const span = btn.querySelector('span');
+      if (span) {
+        const text = span.textContent.trim() || btn.textContent.replace('📍','').trim();
+        btn.innerHTML = pinSvg + '<span>' + esc(text) + '</span>';
+      }
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
     renderUnits();
+    normalizeGeoModalUI();
     appendAttributionToBookingLinks();
     enhanceWhatsAppLinks();
     initNav();

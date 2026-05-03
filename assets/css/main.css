@@ -3780,3 +3780,117 @@ body[data-page-type="article"] .article-body img {
     display: flex !important;
 }
 
+
+
+/* =========================================================
+   PATCH 20260503-bee-ref-home-modal-final
+   Ajustes globais dos modais de unidade/WhatsApp: referência visual da Home.
+   Remove inconsistência de emoji, reforça contraste e layout responsivo.
+========================================================= */
+.wa-geo-btn,
+.booking-geo-btn {
+    color: var(--black) !important;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light)) !important;
+    border-radius: 18px !important;
+    box-shadow: 0 10px 26px rgba(196,162,101,0.18) !important;
+}
+.wa-geo-btn .geo-pin-icon,
+.booking-geo-btn .geo-pin-icon {
+    width: 20px !important;
+    height: 20px !important;
+    display: inline-flex !important;
+    flex: 0 0 20px !important;
+    color: var(--black) !important;
+}
+.wa-nearest-label,
+.booking-nearest-label {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    color: var(--gold) !important;
+    font-weight: 700 !important;
+    letter-spacing: .12em !important;
+    text-transform: uppercase !important;
+    line-height: 1.35 !important;
+    text-shadow: none !important;
+}
+.wa-nearest-label::before,
+.booking-nearest-label::before {
+    content: '' !important;
+    width: 10px !important;
+    height: 10px !important;
+    border-radius: 50% 50% 50% 0 !important;
+    transform: rotate(-45deg) !important;
+    background: var(--terracota) !important;
+    box-shadow: 0 0 0 3px rgba(155,68,66,.12) !important;
+    flex: 0 0 10px !important;
+}
+.wa-nearest-card,
+.booking-card.booking-nearest-card {
+    background: linear-gradient(135deg, var(--terracota), var(--terracota-mid)) !important;
+    color: var(--white) !important;
+    border: 0 !important;
+    box-shadow: 0 18px 42px rgba(155,68,66,.22) !important;
+}
+.wa-nearest-card .wa-unit-name,
+.wa-nearest-card .wa-unit-meta,
+.wa-nearest-card .wa-unit-meta--muted,
+.wa-nearest-card .wa-unit-meta--landmark,
+.wa-nearest-card .wa-unit-distance,
+.wa-nearest-micro,
+.booking-nearest-card .booking-card-name,
+.booking-nearest-card .booking-card-addr,
+.booking-nearest-card .booking-card-postal,
+.booking-nearest-card .booking-card-ref,
+.booking-nearest-card .booking-card-distance,
+.booking-nearest-dist,
+.booking-nearest-micro {
+    color: rgba(255,255,255,.96) !important;
+}
+.wa-nearest-card .wa-unit-name,
+.booking-nearest-card .booking-card-name {
+    color: var(--white) !important;
+    font-weight: 800 !important;
+}
+.wa-nearest-cta,
+.booking-nearest-cta {
+    background: rgba(255,255,255,.22) !important;
+    color: var(--white) !important;
+    border: 0 !important;
+    text-shadow: none !important;
+}
+@media (min-width: 760px) {
+    .booking-modal { max-width: 760px !important; }
+    .booking-card.booking-nearest-card { padding: 28px 30px !important; }
+}
+@media (max-width: 640px) {
+    .wa-nearest-label,
+    .booking-nearest-label { font-size: .68rem !important; letter-spacing: .08em !important; }
+    .wa-nearest-card,
+    .booking-card.booking-nearest-card { display: block !important; padding: 24px !important; }
+    .wa-nearest-cta,
+    .booking-nearest-cta { margin-top: 16px !important; width: 100% !important; min-height: 44px !important; }
+}
+
+/* Página interna de produto Bee: cabeçalho sempre legível em fundo claro. */
+body[data-page-type="bee-product"] nav,
+body[data-page-type="bee-product"] nav.scrolled {
+    background: rgba(255,255,255,.96) !important;
+    backdrop-filter: blur(24px) !important;
+    box-shadow: 0 1px 32px rgba(0,0,0,.05) !important;
+    padding: 12px 0 !important;
+}
+body[data-page-type="bee-product"] nav .nav-links a,
+body[data-page-type="bee-product"] nav.scrolled .nav-links a,
+body[data-page-type="bee-product"] nav .nav-social a,
+body[data-page-type="bee-product"] nav.scrolled .nav-social a {
+    color: var(--text) !important;
+}
+body[data-page-type="bee-product"] nav .nav-logo img,
+body[data-page-type="bee-product"] nav.scrolled .nav-logo img {
+    width: 180px !important;
+}
+body[data-page-type="bee-product"] .mobile-toggle span,
+body[data-page-type="bee-product"] nav.scrolled .mobile-toggle span {
+    background: var(--black) !important;
+}

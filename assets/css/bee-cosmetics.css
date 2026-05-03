@@ -942,3 +942,118 @@
     #productModalContent .pm-content,
     .product-modal .pm-content { padding: 30px 24px 34px !important; }
 }
+
+
+/* =========================================================
+   PATCH 20260503-bee-ref-home-modal-final
+   Modal Bee: referência oficial /bee-cosmetics, com imagem proporcional
+   e coluna de conteúdo rolando sem deslocar a imagem.
+========================================================= */
+.product-modal-overlay,
+#productModal.product-modal-overlay {
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 30px !important;
+}
+.product-modal-overlay .product-modal,
+#productModal .product-modal {
+    width: min(1120px, 94vw) !important;
+    max-height: min(88vh, 820px) !important;
+    overflow: hidden !important;
+    border-radius: 32px !important;
+    background: var(--white) !important;
+}
+#productModalContent .pm-grid,
+.product-modal .pm-grid {
+    display: grid !important;
+    grid-template-columns: minmax(360px,.9fr) minmax(440px,1.1fr) !important;
+    height: min(82vh, 760px) !important;
+    min-height: 560px !important;
+    align-items: stretch !important;
+}
+#productModalContent .pm-image,
+.product-modal .pm-image {
+    min-height: 0 !important;
+    height: 100% !important;
+    border-radius: 32px 0 0 32px !important;
+    background: linear-gradient(165deg, var(--nude-ultra), var(--nude-light)) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: clamp(28px,4vw,54px) !important;
+    overflow: hidden !important;
+}
+#productModalContent .pm-image img,
+.product-modal .pm-image img {
+    width: auto !important;
+    height: auto !important;
+    max-width: 82% !important;
+    max-height: min(430px, 70vh) !important;
+    object-fit: contain !important;
+    display: block !important;
+    margin: auto !important;
+    filter: drop-shadow(0 18px 30px rgba(0,0,0,.12)) !important;
+}
+#productModalContent .pm-content,
+.product-modal .pm-content {
+    min-height: 0 !important;
+    height: 100% !important;
+    max-height: 100% !important;
+    overflow-y: auto !important;
+    padding: 54px 48px 44px !important;
+}
+.product-modal .pm-close,
+#productModal .pm-close {
+    position: absolute !important;
+    top: 20px !important;
+    right: 20px !important;
+    z-index: 20 !important;
+    margin: 0 !important;
+    float: none !important;
+}
+.bee-cat-products-grid .bee-product-img {
+    min-height: 0 !important;
+    aspect-ratio: 1 / 1 !important;
+    padding: 28px !important;
+}
+.bee-cat-products-grid .bee-product-img img {
+    width: auto !important;
+    height: auto !important;
+    max-width: 78% !important;
+    max-height: 78% !important;
+    object-fit: contain !important;
+    margin: auto !important;
+}
+@media (max-width: 860px) {
+    .product-modal-overlay,
+    #productModal.product-modal-overlay { padding: 14px !important; align-items: flex-end !important; }
+    .product-modal-overlay .product-modal,
+    #productModal .product-modal {
+        width: 100% !important;
+        max-height: 92vh !important;
+        overflow-y: auto !important;
+        border-radius: 28px 28px 0 0 !important;
+    }
+    #productModalContent .pm-grid,
+    .product-modal .pm-grid {
+        grid-template-columns: 1fr !important;
+        height: auto !important;
+        min-height: 0 !important;
+    }
+    #productModalContent .pm-image,
+    .product-modal .pm-image {
+        height: auto !important;
+        min-height: 300px !important;
+        border-radius: 28px 28px 0 0 !important;
+        padding: 30px !important;
+    }
+    #productModalContent .pm-image img,
+    .product-modal .pm-image img { max-height: 260px !important; }
+    #productModalContent .pm-content,
+    .product-modal .pm-content {
+        height: auto !important;
+        max-height: none !important;
+        overflow: visible !important;
+        padding: 30px 24px 34px !important;
+    }
+}
