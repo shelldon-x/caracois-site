@@ -33,7 +33,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/css/main.css?v=20260502-final-ui">
+<link rel="stylesheet" href="/assets/css/main.css?v=20260502-audit-v1">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-0J7RBF2BFX"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-0J7RBF2BFX',{send_page_view:true,cookie_flags:'SameSite=None;Secure'});</script>
 <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','1522260281454126');fbq('track','PageView');</script>
@@ -59,14 +59,14 @@
     <div class="container">
         <a href="/" class="nav-logo" aria-label="Studio Caracóis"><img src="/images/logos/logo-nude.svg" alt="Studio Caracóis" width="220" height="42"></a>
         <div class="nav-right">
-            <div class="nav-links"><a href="/">Início</a><a href="/#servicos">Serviços</a><a href="/bee-cosmetics">Bee Cosmetics</a><a href="/#unidades">Unidades</a><a href="/central-de-conhecimento">Central</a></div>
+            <div class="nav-links"><a href="/">Início</a><a href="/#servicos">Serviços</a><a href="/caracois-care">Caracóis Care</a><a href="/bee-cosmetics">Bee Cosmetics</a><a href="/#unidades">Unidades</a><a href="/central-de-conhecimento">Central</a></div>
             <button type="button" class="nav-cta-btn" onclick="openBooking()">Agendar</button>
         </div>
         <button type="button" class="mobile-toggle" onclick="openMobileMenu()" aria-label="Abrir menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
 </nav>
 <div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
-<div class="mobile-menu" id="mm" role="dialog" aria-label="Menu mobile" aria-modal="true" aria-hidden="true"><button type="button" class="mobile-close" onclick="closeMobileMenu()" aria-label="Fechar">×</button><a href="/">Início</a><a href="/#servicos">Serviços</a><a href="/bee-cosmetics">Bee Cosmetics</a><a href="/#unidades">Unidades</a><a href="/central-de-conhecimento">Central de conhecimento</a><button type="button" class="btn btn-primary" onclick="closeMobileMenu(false);openBooking()">Agendar avaliação</button></div>
+<div class="mobile-menu" id="mm" role="dialog" aria-label="Menu mobile" aria-modal="true" aria-hidden="true"><button type="button" class="mobile-menu-close" onclick="closeMobileMenu()" aria-label="Fechar">×</button><a href="/">Início</a><a href="/#servicos">Serviços</a><a href="/caracois-care" onclick="closeMobileMenu()">Caracóis Care</a><a href="/bee-cosmetics">Bee Cosmetics</a><a href="/#unidades">Unidades</a><a href="/central-de-conhecimento">Central de conhecimento</a><button type="button" class="btn btn-primary" onclick="closeMobileMenu(false);openBooking()">Agendar avaliação</button></div>
 <main id="conteudo">
 <section class="service-hero">
   <div class="service-watermark" aria-hidden="true"><img src="/images/logos/hero-watermark.svg" alt=""></div>
@@ -129,7 +129,7 @@
 </section>
 <section class="service-section white">
   <div class="container">
-    <div class="service-intro reveal"><h2>Veja também outros cuidados para cachos</h2><p>As páginas de serviço se conectam para fortalecer SEO, navegação e conversão.</p><div class="related-links"><a href="/corte-cabelo-cacheado">Corte para cabelo cacheado</a><a href="/finalizacao-cabelo-cacheado">Finalização para cabelo cacheado</a><a href="/tratamento-cabelo-cacheado">Tratamento para cabelo cacheado</a><a href="/transicao-capilar">Transição capilar</a><a href="/coloracao-cabelo-cacheado">Coloração para cabelo cacheado</a></div></div>
+    <div class="service-intro reveal"><h2>Veja também outros cuidados para cachos</h2><p>As páginas de serviço se conectam para fortalecer SEO, navegação e conversão.</p><div class="related-links"><a href="/servicos/corte-cabelo-cacheado">Corte para cabelo cacheado</a><a href="/servicos/finalizacao-cabelo-cacheado">Finalização para cabelo cacheado</a><a href="/servicos/tratamento-cabelo-cacheado">Tratamento para cabelo cacheado</a><a href="/transicao-capilar">Transição capilar</a><a href="/coloracao-cabelo-cacheado">Coloração para cabelo cacheado</a></div></div>
   </div>
 </section>
 
@@ -161,7 +161,7 @@
         <span class="sc-authority-cta">Ver unidades</span>
       </a>
     </div>
-    <p class="sc-authority-note">Também pode combinar com <a href="/tratamento-cabelo-cacheado">Tratamento completo para recuperar a fibra</a>.</p>
+    <p class="sc-authority-note">Também pode combinar com <a href="/servicos/tratamento-cabelo-cacheado">Tratamento completo para recuperar a fibra</a>.</p>
   </div>
 </section>
 <!-- SC_AUTHORITY_END -->
@@ -245,7 +245,31 @@
 
 
 
-<footer><div class="container"><div class="footer-top"><div><div class="footer-logo"><img src="/images/logos/logo-nude.svg" alt="Studio Caracóis" width="140" height="26" loading="lazy" decoding="async"></div><p class="footer-desc">Especialistas em cabelos cacheados. Técnica, tratamento e produto para transformar o cabelo de verdade.</p></div><div class="footer-col"><h4>Navegação</h4><a href="/">Início</a><a href="/bee-cosmetics">Bee Cosmetics</a><a href="/#unidades">Unidades</a><a href="/franquia">Seja um franqueado</a></div><div class="footer-col"><h4>Conhecimento</h4><a href="/central-de-conhecimento">Central de conhecimento</a><a href="/transicao-capilar">Transição capilar</a><a href="/cronograma-capilar-cacheado">Cronograma capilar</a></div></div><div class="footer-bottom"><span>&copy; 2026 Studio Caracóis. Todos os direitos reservados.</span><span>Cabelo bonito é cabelo saudável.</span></div></div></footer>
+<footer>
+    <div class="container">
+        <div class="footer-top">
+            <div>
+                <div class="footer-logo">
+                    <img src="/images/logos/logo-nude.svg" alt="Studio Caracóis" width="140" height="26" loading="lazy" decoding="async">
+                </div>
+                <p class="footer-desc">Especialistas em cabelos cacheados. Técnica, tratamento e produto para transformar o cabelo de verdade.</p>
+                <div class="footer-social-links">
+                    <a data-source="servico" data-social="instagram" data-cta="social" href="https://instagram.com/studiocaracois" target="_blank" rel="noopener" aria-label="Instagram"><svg width="24" height="24"><use href="#i-ig"/></svg></a>
+                    <a data-source="servico" data-social="tiktok" data-cta="social" href="https://tiktok.com/@studiocaracois" target="_blank" rel="noopener" aria-label="TikTok"><svg width="24" height="24"><use href="#i-tt"/></svg></a>
+                    <a data-source="servico" data-social="youtube" data-cta="social" href="https://youtube.com/@studiocaracois" target="_blank" rel="noopener" aria-label="YouTube"><svg width="24" height="24"><use href="#i-yt"/></svg></a>
+                </div>
+            </div>
+            <div class="footer-col"><h4>Navegação</h4><a href="/#experiencia">Sua experiência</a><a href="/#servicos">Serviços</a><a href="/#transicao">Transição Capilar</a><a href="/#resultados">Resultados</a><a href="/#unidades">Unidades</a>
+                <a href="/bee-cosmetics">Bee Cosmetics</a><a href="/#faq">FAQ</a><a href="/franquia">Seja um franqueado</a></div>
+            <div class="footer-col"><h4>Caracóis Care</h4><a href="/caracois-care">Linha conceito</a><a href="/caracois-care/shampoo-sem-sulfato">Shampoo Sem Sulfato</a><a href="/caracois-care/co-wash">Co-wash</a><a href="/caracois-care/mascara-3-em-1">Máscara 3 em 1</a><a href="/caracois-care/leave-in-multiuso">Leave-in Multiuso</a><a href="/caracois-care/gelatina-capilar">Gelatina Capilar</a></div>
+            <div class="footer-col"><h4>Conhecimento</h4><a href="/central-de-conhecimento">Central de conhecimento</a><a href="/transicao-capilar">Transição capilar</a><a href="/como-cuidar-de-cabelos-cacheados">Como cuidar dos cachos</a><a href="/corte-para-cabelo-cacheado">Corte para cacheado</a><a href="/cronograma-capilar-cacheado">Cronograma capilar</a></div>
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; 2026 Studio Caracóis. Todos os direitos reservados.</span>
+            <span>Cabelo bonito é cabelo saudável.</span>
+        </div>
+    </div>
+</footer>
 <button type="button" class="whatsapp-float" onclick="openWaModal()" aria-label="WhatsApp" data-cta="whatsapp_float" data-channel="whatsapp">
     <svg width="30" height="30" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="currentColor">
       <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
@@ -253,7 +277,7 @@
     </svg>
 </button>
 
-<script src="/assets/js/main.js?v=20260502-final-ui" defer></script>
+<script src="/assets/js/main.js?v=20260502-audit-v1" defer></script>
 <script>window.addEventListener('load',function(){if(window.scTrack)window.scTrack('service_page_view',{channel:'service',service_slug:'acidificacao-capilar',service_name:'Acidificação capilar'});});</script>
 </body>
 </html>

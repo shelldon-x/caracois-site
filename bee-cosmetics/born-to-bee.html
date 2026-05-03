@@ -40,8 +40,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/css/main.css?v=20260502-final-ui">
-    <link rel="stylesheet" href="/assets/css/bee-cosmetics.css?v=20260502-final-ui">
+    <link rel="stylesheet" href="/assets/css/main.css?v=20260502-audit-v1">
+    <link rel="stylesheet" href="/assets/css/bee-cosmetics.css?v=20260502-audit-v1">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-0J7RBF2BFX"></script>
     <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-0J7RBF2BFX',{send_page_view:true,cookie_flags:'SameSite=None;Secure'});</script>
     <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','1522260281454126');fbq('track','PageView');</script>
@@ -55,14 +55,14 @@
     <div class="container">
         <a href="/" class="nav-logo" aria-label="Studio Caracóis"><img src="/images/logos/logo-nude.svg" alt="Studio Caracóis" width="220" height="42"></a>
         <div class="nav-right">
-            <div class="nav-links"><a href="/">Início</a><a href="/bee-cosmetics">Bee Cosmetics</a><a href="/#unidades">Unidades</a><a href="/central-de-conhecimento">Central</a></div>
+            <div class="nav-links"><a href="/">Início</a><a href="/caracois-care">Caracóis Care</a><a href="/bee-cosmetics">Bee Cosmetics</a><a href="/#unidades">Unidades</a><a href="/central-de-conhecimento">Central</a></div>
             <button type="button" class="nav-cta-btn" onclick="openBooking()">Agendar</button>
         </div>
         <button type="button" class="mobile-toggle" onclick="openMobileMenu()" aria-label="Abrir menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
 </nav>
 <div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
-<div class="mobile-menu" id="mm" role="dialog" aria-label="Menu mobile" aria-modal="true" aria-hidden="true"><button type="button" class="mobile-close" onclick="closeMobileMenu()" aria-label="Fechar">×</button><a href="/">Início</a><a href="/bee-cosmetics">Bee Cosmetics</a><a href="/#unidades">Unidades</a><a href="/central-de-conhecimento">Central de conhecimento</a><button type="button" class="btn btn-primary" onclick="closeMobileMenu(false);openBooking()">Agendar avaliação</button></div>
+<div class="mobile-menu" id="mm" role="dialog" aria-label="Menu mobile" aria-modal="true" aria-hidden="true"><button type="button" class="mobile-menu-close" onclick="closeMobileMenu()" aria-label="Fechar">×</button><a href="/">Início</a><a href="/caracois-care" onclick="closeMobileMenu()">Caracóis Care</a><a href="/bee-cosmetics">Bee Cosmetics</a><a href="/#unidades">Unidades</a><a href="/central-de-conhecimento">Central de conhecimento</a><button type="button" class="btn btn-primary" onclick="closeMobileMenu(false);openBooking()">Agendar avaliação</button></div>
 <main id="conteudo">
 <section class="bee-product-seo-hero">
   <div class="bee-cat-hero-bg"></div>
@@ -116,80 +116,8 @@
   </div>
 </section>
 </main>
-<!-- Modal WhatsApp -->
-<div class="wa-modal-overlay" id="waModal" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Escolha sua unidade" onclick="closeModalOnOverlay(event, 'waModal')">
-    <div class="wa-modal" style="position:relative">
-        <button type="button" class="wa-modal-close" onclick="closeModal('waModal')" aria-label="Fechar">&times;</button>
-        <div class="wa-modal-header">
-            <div class="wa-modal-title" role="heading" aria-level="2">Escolha sua unidade</div>
-            <p>Fale diretamente com o Studio mais perto de você</p>
-        </div>
-        <div class="wa-unit-list" id="waUnitList">
-            <button type="button" class="wa-geo-btn" id="waGeoBtn" onclick="findNearest()" aria-label="Usar localização">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 0 0-8 8c0 5.4 7 12 8 12s8-6.6 8-12a8 8 0 0 0-8-8z"/></svg>
-                <span id="geoBtnText">Usar minha localização</span>
-            </button>
-            <div class="wa-nearest-wrap" id="waNearestWrap" style="display: none;">
-                <div class="wa-nearest-label">📍 Encontramos a unidade mais próxima de você</div>
-                <a target="_blank" rel="noopener" class="wa-unit-item wa-nearest-card" id="waNearestCard">
-                    <div class="wa-unit-copy">
-                        <div class="wa-unit-name" id="waNearestName"></div>
-                        <div class="wa-unit-meta" id="waNearestAddr"></div>
-                        <div class="wa-unit-meta wa-unit-meta--muted" id="waNearestPostal"></div>
-                        <div class="wa-unit-meta wa-unit-meta--landmark" id="waNearestRef" style="display:none"></div>
-                        <div class="wa-unit-distance" id="waNearestDist"></div>
-                        <div class="wa-nearest-micro">Sua transformação começa mais perto do que você imagina ✨</div>
-                    </div>
-                    <span class="wa-nearest-cta">Falar agora</span>
-                </a>
-            </div>
-            <div class="wa-other-label" id="waOtherLabel" style="display: none;">Todas as unidades</div>
-            <!-- Conteúdo das unidades será injetado via JavaScript -->
-            <div class="wa-unit-items" id="waUnitItems"></div>
-        </div>
-    </div>
-</div>
-
-
-<!-- Modal Agendamento online -->
-<div class="booking-overlay" id="bookingModal" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Escolha sua unidade para agendar" onclick="closeModalOnOverlay(event, 'bookingModal')">
-    <div class="booking-modal">
-        <button type="button" class="booking-close" onclick="closeModal('bookingModal')" aria-label="Fechar">&times;</button>
-        <div class="booking-header">
-            <div class="booking-modal-title" role="heading" aria-level="2">Escolha a unidade mais próxima de você</div>
-            <p>Atendimento especializado em cabelos cacheados com avaliação personalizada</p>
-        </div>
-        <button type="button" class="booking-geo-btn" id="bookingGeoBtn" onclick="findNearestBooking()" aria-label="Usar localização">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 0 0-8 8c0 5.4 7 12 8 12s8-6.6 8-12a8 8 0 0 0-8-8z"/></svg>
-            <span id="bookingGeoBtnText">Encontrar unidade mais próxima</span>
-        </button>
-
-        <div class="booking-nearest-wrap" id="bookingNearestWrap" style="display: none;">
-            <div class="booking-nearest-label">📍 Encontramos a unidade mais próxima de você</div>
-            <a target="_blank" rel="noopener noreferrer" class="booking-card booking-nearest-card" id="bookingNearestCard">
-                <div class="booking-nearest-content">
-                    <div class="booking-card-name" id="bookingNearestName"></div>
-                    <div class="booking-card-addr" id="bookingNearestAddr"></div>
-                    <div class="booking-card-postal" id="bookingNearestPostal"></div>
-                    <div class="booking-nearest-dist" id="bookingNearestDist"></div>
-                    <div class="booking-card-ref booking-card-ref--light" id="bookingNearestRef"></div>
-                    <div class="booking-nearest-micro">Sua transformação começa mais perto do que você imagina ✨</div>
-                </div>
-                <span class="booking-nearest-cta">Agendar agora</span>
-            </a>
-        </div>
-
-        <div class="booking-other-label" id="bookingOtherLabel" style="display: none;">Todas as unidades</div>
-
-        <!-- Conteúdo das unidades será injetado via JavaScript -->
-        <div class="booking-grid" id="bookingGrid"></div>
-        <div class="booking-footer">
-            <p>Não tem certeza de qual unidade escolher? <a href="#" onclick="event.preventDefault(); closeModal('bookingModal'); openWaModal();">Fale com nossa equipe no WhatsApp</a></p>
-        </div>
-    </div>
-</div>
-
-
+<div class="wa-modal-overlay" id="waModal" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Escolha sua unidade" onclick="closeModalOnOverlay(event, 'waModal')"><div class="wa-modal"><button type="button" class="wa-modal-close" onclick="closeModal('waModal')" aria-label="Fechar">&times;</button><div class="wa-modal-header"><h3>Escolha sua unidade</h3><p>Fale pelo WhatsApp com a unidade mais conveniente para você.</p></div><button type="button" class="wa-geo-btn" id="waGeoBtn" onclick="findNearest()">Encontrar unidade mais próxima</button><div id="waNearestWrap" class="nearest-wrap" style="display:none"><a id="waNearestCard" class="wa-unit-item" href="#" target="_blank" rel="noopener noreferrer"><div class="wa-unit-copy"><div id="waNearestName" class="wa-unit-name"></div><div id="waNearestAddr" class="wa-unit-meta"></div><div id="waNearestPostal" class="wa-unit-meta wa-unit-meta--muted"></div><div id="waNearestRef" class="wa-unit-meta wa-unit-meta--landmark"></div><div id="waNearestDist" class="wa-unit-meta wa-unit-meta--distance"></div></div></a></div><div id="waUnitItems" class="wa-unit-list"></div></div></div>
+<div class="booking-overlay" id="bookingModal" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Escolha sua unidade para agendar" onclick="closeModalOnOverlay(event, 'bookingModal')"><div class="booking-modal"><button type="button" class="booking-close" onclick="closeModal('bookingModal')" aria-label="Fechar">&times;</button><div class="booking-header"><h3>Agendar avaliação</h3><p>Escolha a unidade do Studio Caracóis.</p></div><button type="button" class="booking-geo-btn" id="bookingGeoBtn" onclick="findNearestBooking()">Encontrar unidade mais próxima</button><div id="bookingNearestWrap" class="nearest-wrap" style="display:none"><a id="bookingNearestCard" class="booking-card" href="#"><div class="booking-card-content"><div id="bookingNearestName" class="booking-card-name"></div><div id="bookingNearestAddr" class="booking-card-addr"></div><div id="bookingNearestPostal" class="booking-card-postal"></div><div id="bookingNearestRef" class="booking-card-ref"></div><div id="bookingNearestDist" class="booking-card-ref"></div></div></a></div><p id="bookingOtherLabel" class="booking-other-label" style="display:none">Ou escolha outra unidade:</p><div id="bookingGrid" class="booking-grid"></div><div class="booking-help"><p>Não tem certeza de qual unidade escolher? <a href="#" onclick="event.preventDefault(); closeModal('bookingModal'); openWaModal();">Fale com nossa equipe no WhatsApp</a></p></div></div></div>
 <div class="bee-modal-overlay" id="beeModal" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Escolha onde comprar Bee Cosmetics" onclick="closeBeeModalOnOverlay(event)"><div class="bee-modal"><button type="button" class="bee-modal-close" onclick="closeBeeModal()" aria-label="Fechar">&times;</button><div class="bee-modal-header"><h3>Escolha seu canal de compra</h3><p>Confira a disponibilidade de Born to BEE nos marketplaces.</p></div><div class="bee-market-list">
             <a href="https://www.amazon.com.br/s?k=Bee+Cosmetics+Born+to+BEE+Shampoo+Sem+Sulfato+cabelo+cacheado" target="_blank" rel="noopener noreferrer" class="bee-market-item" data-market="amazon" data-origin="bee-product-page" data-product="born-to-bee">
                 <div class="bee-market-icon"><img src="/images/icons/amazon.svg" alt="Amazon" width="28" height="28" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="market-fallback">📦</span></div>
@@ -204,12 +132,34 @@
                 <div class="bee-market-text"><strong>Mercado Livre</strong><span>Buscar Born to BEE</span></div><span class="bee-market-arrow">→</span>
             </a></div><div class="bee-modal-footer"><a href="https://instagram.com/beecosmetics.store" target="_blank" rel="noopener">Conheça o perfil oficial @beecosmetics.store ↗</a></div></div></div>
 <div class="product-modal-overlay" id="productModal" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Ficha do produto" onclick="if(event.target===this)closeProductModal()"><div class="product-modal"><button type="button" class="pm-close" onclick="closeProductModal()" aria-label="Fechar">&times;</button><div id="productModalContent"></div></div></div>
-<footer><div class="container"><div class="footer-top"><div><div class="footer-logo"><img src="/images/logos/logo-nude.svg" alt="Studio Caracóis" width="140" height="26" loading="lazy" decoding="async"></div><p class="footer-desc">Especialistas em cabelos cacheados. Técnica, tratamento e produto para transformar o cabelo de verdade.</p></div><div class="footer-col"><h4>Navegação</h4><a href="/">Início</a><a href="/bee-cosmetics">Bee Cosmetics</a><a href="/#unidades">Unidades</a><a href="/franquia">Seja um franqueado</a></div><div class="footer-col"><h4>Conhecimento</h4><a href="/central-de-conhecimento">Central de conhecimento</a><a href="/transicao-capilar">Transição capilar</a><a href="/cronograma-capilar-cacheado">Cronograma capilar</a></div></div><div class="footer-bottom"><span>&copy; 2026 Studio Caracóis. Todos os direitos reservados.</span><span>Cabelo bonito é cabelo saudável.</span></div></div></footer>
-<button type="button" class="whatsapp-float" onclick="openWaModal()" aria-label="WhatsApp">
-    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.52 3.48A11.86 11.86 0 0 0 12.06 0C5.48 0 .12 5.34.12 11.92c0 2.1.55 4.15 1.6 5.96L0 24l6.28-1.65a11.9 11.9 0 0 0 5.78 1.47h.01c6.58 0 11.94-5.35 11.94-11.93 0-3.19-1.24-6.18-3.49-8.41ZM12.07 21.8h-.01a9.9 9.9 0 0 1-5.05-1.38l-.36-.21-3.73.98.99-3.63-.24-.37a9.86 9.86 0 0 1-1.51-5.27c0-5.46 4.45-9.9 9.92-9.9a9.85 9.85 0 0 1 7.01 2.9 9.85 9.85 0 0 1 2.9 7.01c0 5.46-4.45 9.9-9.92 9.9Zm5.44-7.42c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.4-1.47-.89-.79-1.49-1.76-1.66-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.08-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.42.25-.7.25-1.29.17-1.42-.07-.12-.27-.2-.57-.35Z"/></svg>
-</button>
-<script src="/assets/js/main.js?v=20260502-final-ui" defer></script>
-<script src="/assets/js/bee-catalog.js?v=20260502-final-ui" defer></script>
+<footer>
+    <div class="container">
+        <div class="footer-top">
+            <div>
+                <div class="footer-logo">
+                    <img src="/images/logos/logo-nude.svg" alt="Studio Caracóis" width="140" height="26" loading="lazy" decoding="async">
+                </div>
+                <p class="footer-desc">Especialistas em cabelos cacheados. Técnica, tratamento e produto para transformar o cabelo de verdade.</p>
+                <div class="footer-social-links">
+                    <a data-source="bee-produto" data-social="instagram" data-cta="social" href="https://instagram.com/studiocaracois" target="_blank" rel="noopener" aria-label="Instagram"><svg width="24" height="24"><use href="#i-ig"/></svg></a>
+                    <a data-source="bee-produto" data-social="tiktok" data-cta="social" href="https://tiktok.com/@studiocaracois" target="_blank" rel="noopener" aria-label="TikTok"><svg width="24" height="24"><use href="#i-tt"/></svg></a>
+                    <a data-source="bee-produto" data-social="youtube" data-cta="social" href="https://youtube.com/@studiocaracois" target="_blank" rel="noopener" aria-label="YouTube"><svg width="24" height="24"><use href="#i-yt"/></svg></a>
+                </div>
+            </div>
+            <div class="footer-col"><h4>Navegação</h4><a href="/#experiencia">Sua experiência</a><a href="/#servicos">Serviços</a><a href="/#transicao">Transição Capilar</a><a href="/#resultados">Resultados</a><a href="/#unidades">Unidades</a>
+                <a href="/bee-cosmetics">Bee Cosmetics</a><a href="/#faq">FAQ</a><a href="/franquia">Seja um franqueado</a></div>
+            <div class="footer-col"><h4>Caracóis Care</h4><a href="/caracois-care">Linha conceito</a><a href="/caracois-care/shampoo-sem-sulfato">Shampoo Sem Sulfato</a><a href="/caracois-care/co-wash">Co-wash</a><a href="/caracois-care/mascara-3-em-1">Máscara 3 em 1</a><a href="/caracois-care/leave-in-multiuso">Leave-in Multiuso</a><a href="/caracois-care/gelatina-capilar">Gelatina Capilar</a></div>
+            <div class="footer-col"><h4>Conhecimento</h4><a href="/central-de-conhecimento">Central de conhecimento</a><a href="/transicao-capilar">Transição capilar</a><a href="/como-cuidar-de-cabelos-cacheados">Como cuidar dos cachos</a><a href="/corte-para-cabelo-cacheado">Corte para cacheado</a><a href="/cronograma-capilar-cacheado">Cronograma capilar</a></div>
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; 2026 Studio Caracóis. Todos os direitos reservados.</span>
+            <span>Cabelo bonito é cabelo saudável.</span>
+        </div>
+    </div>
+</footer>
+<button type="button" class="whatsapp-float" onclick="openWaModal()" aria-label="WhatsApp">☎</button>
+<script src="/assets/js/main.js?v=20260502-audit-v1" defer></script>
+<script src="/assets/js/bee-catalog.js?v=20260502-audit-v1" defer></script>
 <script>window.addEventListener('load',function(){if(window.scTrack)window.scTrack('bee_product_page_view',{channel:'bee',cta_type:'seo_product_page',product_id:'born-to-bee',product_name:'Born to BEE',product_category:'limpeza'});});</script>
 </body>
 </html>
