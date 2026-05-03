@@ -6,7 +6,7 @@
 (function () {
   'use strict';
 
-  const BUILD_VERSION = '20260503-bee-polish';
+  const BUILD_VERSION = '20260503-modal-unify-logo-fix';
   const PRODUCTS = [
     {
         "id": "born-to-bee",
@@ -386,8 +386,13 @@
   }
 
   function setModalLock(locked) {
-    document.documentElement.classList.toggle('modal-open', locked);
-    document.body.classList.toggle('modal-open', locked);
+    // Usa o lock global do main.js (com contagem e iOS-safe), com fallback simples
+    if (typeof window.scSetScrollLock === 'function') {
+      window.scSetScrollLock(locked);
+    } else {
+      document.documentElement.classList.toggle('modal-open', locked);
+      document.body.classList.toggle('modal-open', locked);
+    }
   }
 
   function detailItem(label, value) {
@@ -409,6 +414,8 @@
     const modal = $('#productModal');
     const content = $('#productModalContent') || $('.product-modal-content', modal) || $('.product-modal-body', modal) || $('.product-modal', modal);
     if (!modal || !content) return;
+    // Idempotência: se já está aberto com mesmo produto, ignora.
+    if (modal.classList.contains('open') && modal.dataset.openProduct === p.id) return;
 
     content.innerHTML = `
       <div class="pm-grid">
@@ -451,7 +458,14 @@
     initImageFallbacks(content);
     modal.classList.add('active','is-open','open');
     modal.setAttribute('aria-hidden','false');
+    modal.dataset.openProduct = p.id;
     setModalLock(true);
+
+    // Foco no botão de fechar para acessibilidade
+    setTimeout(() => {
+      const closeBtn = modal.querySelector('.pm-close');
+      if (closeBtn) closeBtn.focus({ preventScroll: true });
+    }, 50);
 
     track('bee_product_modal_open', {
       cta_type: 'product_details',
@@ -464,23 +478,31 @@
   function closeProductModal() {
     const modal = $('#productModal');
     if (!modal) return;
+    if (!modal.classList.contains('open')) return;
     modal.classList.remove('active','is-open','open');
     modal.setAttribute('aria-hidden','true');
+    delete modal.dataset.openProduct;
     setModalLock(false);
   }
 
   function openBeeModal() {
     const modal = $('#beeModal');
     if (!modal) return;
+    if (modal.classList.contains('open')) return;
     modal.classList.add('active','is-open','open');
     modal.setAttribute('aria-hidden','false');
     setModalLock(true);
+    setTimeout(() => {
+      const closeBtn = modal.querySelector('.bee-modal-close');
+      if (closeBtn) closeBtn.focus({ preventScroll: true });
+    }, 50);
     track('bee_marketplace_modal_open', { cta_type: 'marketplace_modal' });
   }
 
   function closeBeeModal() {
     const modal = $('#beeModal');
     if (!modal) return;
+    if (!modal.classList.contains('open')) return;
     modal.classList.remove('active','is-open','open');
     modal.setAttribute('aria-hidden','true');
     setModalLock(false);

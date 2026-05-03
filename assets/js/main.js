@@ -2,7 +2,7 @@
 (function () {
   'use strict';
 
-  const BUILD_VERSION = '20260502-audit-v2';
+  const BUILD_VERSION = '20260503-modal-unify-logo-fix';
 
   document.documentElement.classList.remove('no-js');
   document.documentElement.classList.add('js');
@@ -194,14 +194,39 @@
     });
   }
 
+  // ── Scroll lock global (iOS-safe). Preserva posição do scroll. ──
+  let __scrollY = 0;
+  let __lockCount = 0;
   function setScrollLock(locked) {
-    document.documentElement.classList.toggle('modal-open', locked);
-    document.body.classList.toggle('modal-open', locked);
+    if (locked) {
+      __lockCount += 1;
+      if (__lockCount > 1) return; // já está travado
+      __scrollY = window.scrollY || window.pageYOffset || 0;
+      document.documentElement.classList.add('modal-open');
+      document.body.classList.add('modal-open');
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${__scrollY}px`;
+      document.body.style.left = '0';
+      document.body.style.right = '0';
+      document.body.style.width = '100%';
+    } else {
+      __lockCount = Math.max(0, __lockCount - 1);
+      if (__lockCount > 0) return; // ainda há outro modal aberto
+      document.documentElement.classList.remove('modal-open');
+      document.body.classList.remove('modal-open');
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.left = '';
+      document.body.style.right = '';
+      document.body.style.width = '';
+      window.scrollTo(0, __scrollY);
+    }
   }
 
   function openModal(id) {
     const modal = document.getElementById(id);
     if (!modal) return;
+    if (modal.classList.contains('active') || modal.classList.contains('is-open') || modal.classList.contains('open')) return;
     modal.classList.add('active', 'is-open', 'open');
     modal.setAttribute('aria-hidden', 'false');
     setScrollLock(true);
@@ -213,9 +238,10 @@
   function closeModal(id) {
     const modal = document.getElementById(id);
     if (!modal) return;
+    if (!modal.classList.contains('active') && !modal.classList.contains('is-open') && !modal.classList.contains('open')) return;
     modal.classList.remove('active', 'is-open', 'open');
     modal.setAttribute('aria-hidden', 'true');
-    if (!document.querySelector('.active[role="dialog"], .is-open[role="dialog"], .open[role="dialog"]')) setScrollLock(false);
+    setScrollLock(false);
   }
 
   function closeModalOnOverlay(event, id) {
@@ -226,7 +252,10 @@
     const menu = $('#mm');
     const overlay = $('#mobileOverlay');
     const toggle = $('.mobile-toggle');
-    if (menu) { menu.classList.add('active', 'is-open', 'open'); menu.setAttribute('aria-hidden', 'false'); }
+    if (!menu) return;
+    if (menu.classList.contains('active') || menu.classList.contains('is-open') || menu.classList.contains('open')) return;
+    menu.classList.add('active', 'is-open', 'open');
+    menu.setAttribute('aria-hidden', 'false');
     if (overlay) overlay.classList.add('active', 'is-open', 'open');
     if (toggle) toggle.setAttribute('aria-expanded', 'true');
     setScrollLock(true);
@@ -237,7 +266,10 @@
     const menu = $('#mm');
     const overlay = $('#mobileOverlay');
     const toggle = $('.mobile-toggle');
-    if (menu) { menu.classList.remove('active', 'is-open', 'open'); menu.setAttribute('aria-hidden', 'true'); }
+    if (!menu) return;
+    if (!menu.classList.contains('active') && !menu.classList.contains('is-open') && !menu.classList.contains('open')) return;
+    menu.classList.remove('active', 'is-open', 'open');
+    menu.setAttribute('aria-hidden', 'true');
     if (overlay) overlay.classList.remove('active', 'is-open', 'open');
     if (toggle) toggle.setAttribute('aria-expanded', 'false');
     if (unlock) setScrollLock(false);
@@ -393,9 +425,29 @@
   function initNav() {
     const nav = $('nav');
     if (!nav) return;
-    const update = () => nav.classList.toggle('scrolled', window.scrollY > 24);
+    const logo = nav.querySelector('#navLogoImg, .nav-logo img');
+    // Permite override por página via data-attribute. Default: usa sempre logo terracota
+    // quando o body tiver data-nav-bg="light" (ex.: page bee-product), ou alternar conforme scroll.
+    const forceLight = document.body.getAttribute('data-nav-bg') === 'light';
+    const NUDE = '/images/logos/logo-nude.svg';
+    const TERRA = '/images/logos/logo-terracota.svg';
+    const setLogo = (src) => {
+      if (!logo || !src) return;
+      // Evita re-set desnecessário (browser já dá rebound)
+      const current = (logo.getAttribute('src') || '').split('?')[0];
+      if (current === src) return;
+      logo.setAttribute('src', src);
+    };
+    const update = () => {
+      const scrolled = window.scrollY > 24 || forceLight;
+      nav.classList.toggle('scrolled', scrolled);
+      // Logo: terracota quando o nav está em fundo claro; nude quando hero escuro.
+      setLogo(scrolled ? TERRA : NUDE);
+    };
     update();
     window.addEventListener('scroll', update, { passive: true });
+    // Em mudanças de visibilidade (back/forward cache), revalida.
+    window.addEventListener('pageshow', update);
   }
 
   function initReveal() {
@@ -511,5 +563,6 @@
   window.findNearest = findNearest;
   window.findNearestBooking = findNearestBooking;
   window.scTrack = track;
+  window.scSetScrollLock = setScrollLock;
   window.STUDIO_CARACOIS_UNITS = UNITS;
 })();
