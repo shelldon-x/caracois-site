@@ -1057,3 +1057,190 @@
         padding: 30px 24px 34px !important;
     }
 }
+
+
+/* =========================================================
+   FINAL GLOBAL PRODUCT MODAL — referência oficial /bee-cosmetics
+   Alterar aqui reflete em todo lugar que usa #productModal + bee-catalog.js
+========================================================= */
+#productModal.product-modal-overlay,
+.product-modal-overlay#productModal {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 9999 !important;
+  display: none !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 30px !important;
+  background: rgba(0,0,0,.62) !important;
+  backdrop-filter: blur(8px) !important;
+}
+#productModal.product-modal-overlay.active,
+#productModal.product-modal-overlay.open,
+#productModal.product-modal-overlay.is-open {
+  display: flex !important;
+}
+#productModal .product-modal {
+  width: min(1120px, 94vw) !important;
+  max-height: min(88vh, 820px) !important;
+  overflow: hidden !important;
+  border-radius: 32px !important;
+  background: var(--white) !important;
+  box-shadow: 0 32px 110px rgba(0,0,0,.28) !important;
+  position: relative !important;
+}
+#productModalContent .pm-grid {
+  display: grid !important;
+  grid-template-columns: minmax(360px,.9fr) minmax(440px,1.1fr) !important;
+  height: min(82vh, 760px) !important;
+  min-height: 560px !important;
+  align-items: stretch !important;
+}
+#productModalContent .pm-image {
+  min-height: 0 !important;
+  height: 100% !important;
+  border-radius: 32px 0 0 32px !important;
+  background: linear-gradient(165deg, var(--nude-ultra), var(--nude-light)) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: clamp(28px,4vw,54px) !important;
+  overflow: hidden !important;
+  position: relative !important;
+}
+#productModalContent .pm-image::after {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background: radial-gradient(circle at 30% 24%, rgba(255,255,255,.62), transparent 62%) !important;
+  pointer-events: none !important;
+}
+#productModalContent .pm-image img {
+  width: auto !important;
+  height: auto !important;
+  max-width: 82% !important;
+  max-height: min(430px, 70vh) !important;
+  object-fit: contain !important;
+  display: block !important;
+  margin: auto !important;
+  filter: drop-shadow(0 18px 30px rgba(0,0,0,.12)) !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+#productModalContent .pm-content {
+  min-height: 0 !important;
+  height: 100% !important;
+  max-height: 100% !important;
+  overflow-y: auto !important;
+  padding: 54px 48px 44px !important;
+}
+#productModalContent .pm-category-tag {
+  display: inline-flex !important;
+  width: fit-content !important;
+  padding: 7px 14px !important;
+  border-radius: 999px !important;
+  background: linear-gradient(135deg, var(--terracota), var(--terracota-dark)) !important;
+  color: var(--white) !important;
+  font-size: .68rem !important;
+  font-weight: 700 !important;
+  letter-spacing: .1em !important;
+  text-transform: uppercase !important;
+  margin-bottom: 10px !important;
+  box-shadow: 0 8px 20px rgba(155,68,66,.18) !important;
+}
+#productModal .pm-close {
+  position: absolute !important;
+  top: 20px !important;
+  right: 20px !important;
+  z-index: 20 !important;
+  margin: 0 !important;
+  float: none !important;
+}
+#productModalContent .pm-specs {
+  display: grid !important;
+  grid-template-columns: repeat(2,minmax(0,1fr)) !important;
+  gap: 14px !important;
+  margin: 24px 0 18px !important;
+}
+#productModalContent .pm-spec {
+  background: var(--nude-ultra) !important;
+  border: 1px solid rgba(155,68,66,.08) !important;
+  border-radius: 16px !important;
+  padding: 16px !important;
+}
+#productModalContent .pm-spec span {
+  display: block !important;
+  color: var(--terracota) !important;
+  font-size: .64rem !important;
+  letter-spacing: .13em !important;
+  text-transform: uppercase !important;
+  font-weight: 700 !important;
+  margin-bottom: 6px !important;
+}
+#productModalContent .pm-spec strong {
+  color: var(--black) !important;
+}
+#productModalContent .pm-pills .bee-product-pill,
+#productModalContent .bee-product-meta-row span {
+  display: inline-flex !important;
+  width: fit-content !important;
+  align-items: center !important;
+  border-radius: 999px !important;
+  padding: 6px 12px !important;
+  background: rgba(155,68,66,.08) !important;
+  color: var(--terracota) !important;
+  font-size: .68rem !important;
+  font-weight: 700 !important;
+  letter-spacing: .04em !important;
+  text-transform: uppercase !important;
+  margin: 0 6px 8px 0 !important;
+}
+#productModalContent .pm-section {
+  margin-top: 28px !important;
+}
+#productModalContent .pm-section h3 {
+  font-family: var(--serif) !important;
+  color: var(--black) !important;
+  font-size: 1.55rem !important;
+  font-weight: 500 !important;
+  margin-bottom: 10px !important;
+}
+#productModalContent .pm-section p {
+  color: var(--text-light) !important;
+  line-height: 1.65 !important;
+}
+@media (max-width: 860px) {
+  #productModal.product-modal-overlay {
+    padding: 14px !important;
+    align-items: flex-end !important;
+  }
+  #productModal .product-modal {
+    width: 100% !important;
+    max-height: 92vh !important;
+    overflow-y: auto !important;
+    border-radius: 28px 28px 0 0 !important;
+  }
+  #productModalContent .pm-grid {
+    grid-template-columns: 1fr !important;
+    height: auto !important;
+    min-height: 0 !important;
+  }
+  #productModalContent .pm-image {
+    height: auto !important;
+    min-height: 300px !important;
+    border-radius: 28px 28px 0 0 !important;
+    padding: 30px !important;
+  }
+  #productModalContent .pm-image img {
+    max-height: 260px !important;
+  }
+  #productModalContent .pm-content {
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    padding: 30px 24px 34px !important;
+  }
+  #productModalContent .pm-specs {
+    grid-template-columns: 1fr !important;
+  }
+}
