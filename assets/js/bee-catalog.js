@@ -6,7 +6,7 @@
 (function () {
   'use strict';
 
-  const BUILD_VERSION = '20260504-bee-products-global-final';
+  const BUILD_VERSION = '20260504-bee-product-search-final';
   const PRODUCTS = [
     {
         "id": "born-to-bee",
@@ -253,29 +253,42 @@
     }
 ];
 
+  function beeProductSearchQuery(product) {
+    const p = product || {};
+    const categoryTerms = {
+      'Shampoo Sem Sulfato': 'shampoo sem sulfato cabelo cacheado',
+      'Co-Wash': 'co-wash no poo cabelo cacheado',
+      'Máscara de Nutrição': 'máscara de nutrição para cabelo cacheado',
+      'Máscara de Reconstrução': 'máscara de reconstrução para cabelo cacheado',
+      'Máscara de Umectação': 'máscara de umectação para cachos',
+      'Leave-in Super Definição': 'leave-in super definição cachos',
+      'Leave-in Leveza Natural': 'leave-in leve para cabelo cacheado',
+      'Leave-in Antiencolhimento': 'leave-in antiencolhimento cachos',
+      'Gelatina Capilar': 'gelatina capilar para definição dos cachos',
+      'Elixir Acidificante': 'acidificante capilar para cachos'
+    };
+    return [
+      'Bee Cosmetics',
+      p.name || '',
+      categoryTerms[p.type] || p.type || '',
+      'Studio Caracóis'
+    ].filter(Boolean).join(' ').replace(/\s+/g, ' ').trim();
+  }
+
+  function buildBeeMarketplaceUrl(market, product) {
+    const query = encodeURIComponent(beeProductSearchQuery(product || {}));
+    const key = typeof market === 'string' ? market : (market && market.key) || '';
+    if (key === 'amazon') return `https://www.amazon.com.br/s?k=${query}`;
+    if (key === 'shopee') return `https://shopee.com.br/search?keyword=${query}`;
+    if (key === 'mercadolivre') return `https://lista.mercadolivre.com.br/${query}`;
+    return `https://www.google.com/search?q=${query}`;
+  }
+
   const MARKETPLACES = [
     { name:'Amazon', key:'amazon', icon:'/images/icons/amazon.svg' },
     { name:'Shopee', key:'shopee', icon:'/images/icons/shopee.svg' },
     { name:'Mercado Livre', key:'mercadolivre', icon:'/images/icons/mercadolivre.svg' }
   ];
-
-  function marketplaceSearchQuery(product) {
-    const parts = [
-      'Bee Cosmetics',
-      product && product.name,
-      product && product.type,
-      'cabelo cacheado'
-    ].filter(Boolean);
-    return parts.join(' ').replace(/\s+/g, ' ').trim();
-  }
-
-  function marketplaceHref(market, product) {
-    const query = encodeURIComponent(marketplaceSearchQuery(product || {}));
-    if (market.key === 'amazon') return `https://www.amazon.com.br/s?k=${query}`;
-    if (market.key === 'shopee') return `https://shopee.com.br/search?keyword=${query}`;
-    if (market.key === 'mercadolivre') return `https://lista.mercadolivre.com.br/${query}`;
-    return '#';
-  }
 
   const $ = (sel, ctx = document) => ctx.querySelector(sel);
   const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
@@ -502,9 +515,9 @@
 
           <div class="pm-markets">
             ${MARKETPLACES.map(m => `
-              <a class="pm-market-link pm-market-link--${esc(m.key)}" href="${esc(marketplaceHref(m, p))}" target="_blank" rel="noopener noreferrer" data-market="${esc(m.key)}" data-origin="product-modal" data-product="${esc(p.id)}">
+              <a class="pm-market-link pm-market-link--${esc(m.key)}" href="${esc(buildBeeMarketplaceUrl(m, p))}" target="_blank" rel="noopener noreferrer" data-market="${esc(m.key)}" data-origin="product-modal" data-product="${esc(p.id)}" data-product-name="${esc(p.name)}">
                 <span class="pm-market-icon"><img src="${esc(m.icon)}" alt="" loading="lazy" decoding="async" onerror="this.style.display='none'; this.parentElement.classList.add('pm-market-icon--fallback');"></span>
-                <span class="pm-market-copy"><strong>${esc(m.name)}</strong><small>Buscar ${esc(p.name)}</small></span>
+                <span class="pm-market-copy"><strong>${esc(m.name)}</strong><small>${esc(p.name)} nos marketplaces</small></span>
               </a>`).join('')}
           </div>
         </div>
@@ -644,8 +657,8 @@
   bootBeeCatalog();
 
   window.BEE_PRODUCTS = PRODUCTS;
-  window.BEEMarketplaceHref = marketplaceHref;
-  window.BEEMarketplaceSearchQuery = marketplaceSearchQuery;
+  window.beeProductSearchQuery = beeProductSearchQuery;
+  window.buildBeeMarketplaceUrl = buildBeeMarketplaceUrl;
   window.openBeeModal = openBeeModal;
   window.closeBeeModal = closeBeeModal;
   window.closeBeeModalOnOverlay = closeBeeModalOnOverlay;

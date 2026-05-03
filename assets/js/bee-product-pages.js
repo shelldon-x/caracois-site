@@ -11,30 +11,15 @@
 (function () {
   'use strict';
 
-  const BUILD_VERSION = '20260504-bee-products-global-final';
+  const BUILD_VERSION = '20260504-bee-product-pages-final';
   const MAX_BOOT_TRIES = 60;
   const BOOT_DELAY = 50;
 
   const MARKETPLACES = [
-    { key: 'amazon', name: 'Amazon', label: 'Buscar este produto na Amazon' },
-    { key: 'shopee', name: 'Shopee', label: 'Buscar este produto na Shopee' },
-    { key: 'mercadolivre', name: 'Mercado Livre', label: 'Buscar este produto no Mercado Livre' }
+    { key: 'amazon', name: 'Amazon', label: 'Buscar na Amazon' },
+    { key: 'shopee', name: 'Shopee', label: 'Buscar na Shopee' },
+    { key: 'mercadolivre', name: 'Mercado Livre', label: 'Buscar no Mercado Livre' }
   ];
-
-  function marketplaceSearchQuery(product) {
-    if (window.BEEMarketplaceSearchQuery && product) return window.BEEMarketplaceSearchQuery(product);
-    return ['Bee Cosmetics', product && product.name, product && product.type, 'cabelo cacheado']
-      .filter(Boolean).join(' ').replace(/\s+/g, ' ').trim();
-  }
-
-  function marketplaceHref(market, product) {
-    if (window.BEEMarketplaceHref && product) return window.BEEMarketplaceHref(market, product);
-    const query = encodeURIComponent(marketplaceSearchQuery(product || {}));
-    if (market.key === 'amazon') return `https://www.amazon.com.br/s?k=${query}`;
-    if (market.key === 'shopee') return `https://shopee.com.br/search?keyword=${query}`;
-    if (market.key === 'mercadolivre') return `https://lista.mercadolivre.com.br/${query}`;
-    return '#';
-  }
 
   const CATEGORY_LABELS = {
     limpeza: 'Limpeza',
@@ -207,16 +192,45 @@
     if (el && value !== undefined && value !== null) el.setAttribute(attr, value);
   }
 
+
+  function beeProductSearchQuery(product) {
+    if (typeof window.beeProductSearchQuery === 'function') return window.beeProductSearchQuery(product);
+    const p = product || {};
+    const categoryTerms = {
+      'Shampoo Sem Sulfato': 'shampoo sem sulfato cabelo cacheado',
+      'Co-Wash': 'co-wash no poo cabelo cacheado',
+      'Máscara de Nutrição': 'máscara de nutrição para cabelo cacheado',
+      'Máscara de Reconstrução': 'máscara de reconstrução para cabelo cacheado',
+      'Máscara de Umectação': 'máscara de umectação para cachos',
+      'Leave-in Super Definição': 'leave-in super definição cachos',
+      'Leave-in Leveza Natural': 'leave-in leve para cabelo cacheado',
+      'Leave-in Antiencolhimento': 'leave-in antiencolhimento cachos',
+      'Gelatina Capilar': 'gelatina capilar para definição dos cachos',
+      'Elixir Acidificante': 'acidificante capilar para cachos'
+    };
+    return ['Bee Cosmetics', p.name || '', categoryTerms[p.type] || p.type || '', 'Studio Caracóis'].filter(Boolean).join(' ').replace(/\s+/g, ' ').trim();
+  }
+
+  function buildBeeMarketplaceUrl(market, product) {
+    if (typeof window.buildBeeMarketplaceUrl === 'function') return window.buildBeeMarketplaceUrl(market, product);
+    const query = encodeURIComponent(beeProductSearchQuery(product || {}));
+    const key = typeof market === 'string' ? market : (market && market.key) || '';
+    if (key === 'amazon') return `https://www.amazon.com.br/s?k=${query}`;
+    if (key === 'shopee') return `https://shopee.com.br/search?keyword=${query}`;
+    if (key === 'mercadolivre') return `https://lista.mercadolivre.com.br/${query}`;
+    return `https://www.google.com/search?q=${query}`;
+  }
+
   function marketplaceCards(product, compact = false) {
     return MARKETPLACES.map((market) => `
       <a
         class="${compact ? 'bee-product-market-chip' : 'bee-cat-buy-card bee-product-market-card'}"
-        href="${esc(marketplaceHref(market, product))}"
+        href="${esc(buildBeeMarketplaceUrl(market, product))}"
         target="_blank"
         rel="noopener noreferrer"
         data-market="${esc(market.key)}"
         data-origin="${compact ? 'product-hero' : 'product-buy-section'}"
-        data-product="${esc(product.id)}"
+        data-product="${esc(product.id)}" data-product-name="${esc(product.name)}" data-search-query="${esc(beeProductSearchQuery(product))}"
       >
         ${compact ? `${esc(market.name)} ↗` : `
           <div class="bee-cat-buy-logo">${esc(market.name)}</div>
@@ -275,8 +289,8 @@
             <h2 class="section-title">Quer saber quais produtos são ideais para os seus cachos?</h2>
             <p class="bee-cat-cta-sub">Na avaliação gratuita, analisamos curvatura, porosidade e rotina para indicar o protocolo e os produtos certos.</p>
             <div class="bee-cat-cta-btns">
-              <button type="button" class="btn btn-white" onclick="openBooking()" data-cta="agendar_avaliacao_produto_bee" data-product="${esc(product.id)}">Agendar avaliação gratuita</button>
-              <button type="button" class="btn btn-outline-white" onclick="openWaModal()" data-cta="whatsapp_produto_bee" data-product="${esc(product.id)}">Falar no WhatsApp</button>
+              <button type="button" class="btn btn-white" onclick="openBooking()" data-cta="agendar_avaliacao_produto_bee" data-product="${esc(product.id)}" data-product-name="${esc(product.name)}" data-search-query="${esc(beeProductSearchQuery(product))}">Agendar avaliação gratuita</button>
+              <button type="button" class="btn btn-outline-white" onclick="openWaModal()" data-cta="whatsapp_produto_bee" data-product="${esc(product.id)}" data-product-name="${esc(product.name)}" data-search-query="${esc(beeProductSearchQuery(product))}">Falar no WhatsApp</button>
             </div>
           </div>
         </div>
@@ -503,13 +517,14 @@
       origin: origin || 'unknown'
     });
 
-    if (typeof window.openBeeModal === 'function') {
-      window.openBeeModal();
+    const target = document.getElementById('onde-comprar');
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       return;
     }
 
-    // Fallback seguro: se o modal global não existir por algum motivo, abre a Amazon.
-    window.open(marketplaceHref(MARKETPLACES[0], product), '_blank', 'noopener,noreferrer');
+    const url = buildBeeMarketplaceUrl(MARKETPLACES[0], product);
+    window.open(url, '_blank', 'noopener,noreferrer');
   }
 
   function bindEvents(product) {
