@@ -6,7 +6,7 @@
 (function () {
   'use strict';
 
-  const BUILD_VERSION = '20260503-bee-polish';
+  const BUILD_VERSION = '20260503-bee-modal-unico-global';
   const PRODUCTS = [
     {
         "id": "born-to-bee",
@@ -390,33 +390,6 @@
     document.body.classList.toggle('modal-open', locked);
   }
 
-  function ensureBeeModals() {
-    if (!$('#beeModal')) {
-      document.body.insertAdjacentHTML('beforeend', `
-        <div class="bee-modal-overlay" id="beeModal" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Escolha onde comprar Bee Cosmetics">
-          <div class="bee-modal" role="document">
-            <button type="button" class="bee-modal-close" aria-label="Fechar">&times;</button>
-            <div class="bee-modal-head"><span class="bee-modal-kicker">Bee Cosmetics</span><h2>Onde comprar</h2><p>Escolha o marketplace de sua preferência para buscar a linha Bee Cosmetics.</p></div>
-            <div class="bee-market-list">
-              <a href="https://www.amazon.com.br/s?k=bee%20cosmetics%20cabelo%20cacheado" target="_blank" rel="noopener noreferrer" class="bee-market-item" data-market="amazon" data-origin="global-modal"><div class="bee-market-icon"><img src="/images/icons/amazon.svg" alt="Amazon" width="28" height="28"></div><div class="bee-market-text"><strong>Amazon</strong><span>Buscar Bee Cosmetics</span></div><span class="bee-market-arrow">→</span></a>
-              <a href="https://shopee.com.br/search?keyword=bee%20cosmetics%20cabelo%20cacheado" target="_blank" rel="noopener noreferrer" class="bee-market-item" data-market="shopee" data-origin="global-modal"><div class="bee-market-icon"><img src="/images/icons/shopee.svg" alt="Shopee" width="28" height="28"></div><div class="bee-market-text"><strong>Shopee</strong><span>Buscar Bee Cosmetics</span></div><span class="bee-market-arrow">→</span></a>
-              <a href="https://lista.mercadolivre.com.br/bee-cosmetics" target="_blank" rel="noopener noreferrer" class="bee-market-item" data-market="mercadolivre" data-origin="global-modal"><div class="bee-market-icon"><img src="/images/icons/mercadolivre.svg" alt="Mercado Livre" width="28" height="28"></div><div class="bee-market-text"><strong>Mercado Livre</strong><span>Buscar Bee Cosmetics</span></div><span class="bee-market-arrow">→</span></a>
-            </div>
-            <div class="bee-modal-footer"><a href="https://instagram.com/beecosmetics.store" target="_blank" rel="noopener">Conheça o perfil oficial @beecosmetics.store ↗</a></div>
-          </div>
-        </div>`);
-    }
-    if (!$('#productModal')) {
-      document.body.insertAdjacentHTML('beforeend', `
-        <div class="product-modal-overlay" id="productModal" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Ficha do produto">
-          <div class="product-modal" role="document">
-            <button type="button" class="pm-close" aria-label="Fechar">&times;</button>
-            <div id="productModalContent"></div>
-          </div>
-        </div>`);
-    }
-  }
-
   function detailItem(label, value) {
     if (!value) return '';
     return `<div class="pm-spec"><span>${esc(label)}</span><strong>${esc(value)}</strong></div>`;
@@ -431,20 +404,50 @@
       </div>`;
   }
 
-  function isTallProduct(p) {
-    const text = String((p && (p.id + ' ' + p.type + ' ' + p.name)) || '').toLowerCase();
-    return /shampoo|leave|co-wash|cowash|born-to-bee|bee-yourself|let-it-bee|bee-proud|feel-the-beeat|beelieve/.test(text);
+  function ensureProductModal() {
+    // Garante 1 único modal de ficha Bee no DOM, independentemente da página.
+    let modals = $$('#productModal');
+    if (modals.length > 1) {
+      modals.slice(1).forEach(m => m.remove());
+    }
+    let modal = $('#productModal');
+    if (!modal) {
+      modal = document.createElement('div');
+      modal.className = 'product-modal-overlay';
+      modal.id = 'productModal';
+      modal.setAttribute('role', 'dialog');
+      modal.setAttribute('aria-modal', 'true');
+      modal.setAttribute('aria-hidden', 'true');
+      modal.setAttribute('aria-label', 'Ficha do produto');
+      modal.innerHTML = '<div class="product-modal"><button type="button" class="pm-close" aria-label="Fechar">&times;</button><div id="productModalContent"></div></div>';
+      document.body.appendChild(modal);
+    }
+    const shell = modal.querySelector('.product-modal') || modal;
+    if (!modal.querySelector('.pm-close')) {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'pm-close';
+      btn.setAttribute('aria-label', 'Fechar');
+      btn.innerHTML = '&times;';
+      shell.insertBefore(btn, shell.firstChild);
+    }
+    if (!modal.querySelector('#productModalContent')) {
+      const content = document.createElement('div');
+      content.id = 'productModalContent';
+      shell.appendChild(content);
+    }
+    return modal;
   }
 
   function openProductModal(id) {
     const p = productById(id);
-    const modal = $('#productModal');
-    const content = $('#productModalContent') || $('.product-modal-content', modal) || $('.product-modal-body', modal) || $('.product-modal', modal);
+    const modal = ensureProductModal();
+    const content = $('#productModalContent', modal);
     if (!modal || !content) return;
 
     content.innerHTML = `
-      <div class="pm-grid" role="document">
-        <div class="pm-image ${isTallProduct(p) ? 'pm-image--tall' : ''}">
+      <div class="pm-grid">
+        <div class="pm-image">
           <img ${imageAttrs(p)} alt="${esc(p.name)}" loading="lazy" decoding="async">
         </div>
         <div class="pm-content">
@@ -481,13 +484,13 @@
       </div>`;
 
     initImageFallbacks(content);
-    const scrollArea = content.querySelector('.pm-content');
-    if (scrollArea) scrollArea.scrollTop = 0;
+    const box = modal.querySelector('.product-modal');
+    if (box) box.scrollTop = 0;
+    const pmContent = modal.querySelector('.pm-content');
+    if (pmContent) pmContent.scrollTop = 0;
     modal.classList.add('active','is-open','open');
     modal.setAttribute('aria-hidden','false');
     setModalLock(true);
-    const closeBtn = modal.querySelector('.pm-close');
-    if (closeBtn) setTimeout(() => closeBtn.focus({ preventScroll: true }), 30);
 
     track('bee_product_modal_open', {
       cta_type: 'product_details',
@@ -530,16 +533,6 @@
     if (window.__BEE_CATALOG_EVENTS_BOUND__) return;
     window.__BEE_CATALOG_EVENTS_BOUND__ = true;
     document.addEventListener('click', (event) => {
-
-      const closeBee = event.target.closest('.bee-modal-close');
-      if (closeBee) { closeBeeModal(); return; }
-
-      const closeProduct = event.target.closest('.pm-close');
-      if (closeProduct) { closeProductModal(); return; }
-
-      if (event.target && event.target.id === 'beeModal') { closeBeeModal(); return; }
-      if (event.target && event.target.id === 'productModal') { closeProductModal(); return; }
-
       const filter = event.target.closest('.bee-filter-btn, .bee-cat-filter-btn');
       if (filter) {
         $$('.bee-filter-btn, .bee-cat-filter-btn').forEach(btn => {
@@ -558,6 +551,18 @@
       if (productBtn) {
         const id = productBtn.dataset.product || productBtn.dataset.productCard;
         if (id) openProductModal(id);
+        return;
+      }
+
+      const closePm = event.target.closest('#productModal .pm-close');
+      if (closePm) {
+        closeProductModal();
+        return;
+      }
+
+      const overlay = event.target.closest('#productModal.product-modal-overlay');
+      if (overlay && event.target === overlay) {
+        closeProductModal();
         return;
       }
 
@@ -582,7 +587,6 @@
   }
 
   function bootBeeCatalog() {
-    ensureBeeModals();
     bindEvents();
 
     const paint = () => {
@@ -617,5 +621,6 @@
   window.closeBeeModal = closeBeeModal;
   window.closeBeeModalOnOverlay = closeBeeModalOnOverlay;
   window.openProductModal = openProductModal;
+  window.openBeeProductModal = openProductModal;
   window.closeProductModal = closeProductModal;
 })();
