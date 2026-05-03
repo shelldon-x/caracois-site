@@ -3915,3 +3915,78 @@ button.whatsapp-float svg {
   height: 0 !important;
   overflow: hidden !important;
 }
+
+
+/* =========================================================
+   PHASE 1 STABILITY PATCH — Home + Central + Catálogos
+   Build: 20260502-home-central-phase1-10-10
+========================================================= */
+html.no-js .reveal,
+.reveal.visible,
+.bee-products-ready .reveal,
+.care-products-ready .reveal {
+    opacity: 1;
+    visibility: visible;
+}
+
+.bee-cat-products-grid,
+#beeProductsGrid,
+#beeProducts,
+.care-cat-products-grid,
+#careProductsGrid {
+    min-height: 0 !important;
+    visibility: visible !important;
+}
+
+.bee-cat-products-grid--loading::before,
+.care-cat-products-grid--loading::before {
+    content: none !important;
+    display: none !important;
+}
+
+.bee-cat-products-grid .bee-product-card,
+#beeProductsGrid .bee-product-card,
+#beeProducts .bee-product-card,
+.care-cat-products-grid .care-product-card,
+#careProductsGrid .care-product-card {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.product-modal-overlay.active,
+.product-modal-overlay.open,
+.product-modal-overlay.is-open,
+#productModal.active,
+#productModal.open,
+#productModal.is-open,
+.care-product-modal-overlay.active,
+.care-product-modal-overlay.open,
+.care-product-modal-overlay.is-open,
+#careProductModal.active,
+#careProductModal.open,
+#careProductModal.is-open {
+    display: flex !important;
+}
+
+#productModalContent,
+#careProductModalContent {
+    display: block !important;
+    width: 100% !important;
+}
+
+.bee-modal-overlay.active,
+.bee-modal-overlay.open,
+.bee-modal-overlay.is-open,
+#beeModal.active,
+#beeModal.open,
+#beeModal.is-open {
+    display: flex !important;
+}
+
+@media (max-width: 768px) {
+    .bee-cat-products,
+    .care-cat-products {
+        padding-top: 64px;
+    }
+}
+

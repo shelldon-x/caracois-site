@@ -2,7 +2,7 @@
 (function () {
   'use strict';
 
-  const BUILD_VERSION = '20260429-hardfix-pages-bee';
+  const BUILD_VERSION = '20260502-home-central-phase1-10-10';
 
   document.documentElement.classList.remove('no-js');
   document.documentElement.classList.add('js');

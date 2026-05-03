@@ -65,3 +65,11 @@
   .intro-section .section-title { font-size: 2.15rem !important; }
   .intro-section .section-desc { font-size: .98rem !important; line-height: 1.7 !important; }
 }
+
+/* PHASE 1 PAGES PATCH — 20260502-home-central-phase1-10-10 */
+.page-hero .reveal,
+.knowledge-grid .reveal,
+.knowledge-card {
+    visibility: visible;
+}
+

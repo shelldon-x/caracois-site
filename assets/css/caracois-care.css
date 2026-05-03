@@ -23,3 +23,16 @@
 .care-cat-products-grid .care-product-card,
 .care-cat-routine-card { overflow: hidden !important; }
 .care-product-page-hero { padding-top: 140px !important; }
+
+/* PHASE 1 CARE PATCH — 20260502-home-central-phase1-10-10 */
+.care-cat-products-grid,
+#careProductsGrid {
+    opacity: 1 !important;
+    visibility: visible !important;
+    min-height: 0 !important;
+}
+.care-cat-products-grid--loading::before {
+    content: none !important;
+    display: none !important;
+}
+

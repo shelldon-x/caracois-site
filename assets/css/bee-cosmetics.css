@@ -704,3 +704,15 @@
   .bee-product-seo-grid { grid-template-columns: 1fr !important; }
   .bee-product-seo-card { max-width: 520px !important; }
 }
+
+/* PHASE 1 BEE PATCH — 20260502-home-central-phase1-10-10 */
+.bee-cat-products-grid,
+#beeProductsGrid {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+.bee-cat-products-grid--loading::before {
+    content: none !important;
+    display: none !important;
+}
+
