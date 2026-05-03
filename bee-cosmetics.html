@@ -942,8 +942,8 @@
     </script>
 
     <!-- Estilos -->
-    <link rel="stylesheet" href="/assets/css/main.css?v=20260503-bee-ref-home-modal-final">
-    <link rel="stylesheet" href="/assets/css/bee-cosmetics.css?v=20260503-bee-ref-home-modal-final">
+    <link rel="stylesheet" href="/assets/css/main.css?v=20260503-modal-unify-logo-fix">
+    <link rel="stylesheet" href="/assets/css/bee-cosmetics.css?v=20260503-modal-unify-logo-fix">
 </head>
 <body>
 
@@ -1277,6 +1277,7 @@
 
 </main>
 
+<!-- Bee Modal Hub -->
 <div class="bee-modal-overlay" id="beeModal" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Escolha onde comprar Bee Cosmetics" onclick="closeBeeModalOnOverlay(event)">
     <div class="bee-modal">
         <button type="button" class="bee-modal-close" onclick="closeBeeModal()" aria-label="Fechar">&times;</button>
@@ -1285,7 +1286,7 @@
             <p>Encontre nossos produtos nos principais marketplaces e escolha a opção mais conveniente para você.</p>
         </div>
         <div class="bee-market-list">
-            <a href="https://www.amazon.com.br/s?k=bee+cosmetics+cabelo+cacheado" target="_blank" rel="noopener noreferrer" class="bee-market-item">
+            <a href="https://www.amazon.com.br/s?k=bee+cosmetics+cabelo+cacheado" target="_blank" rel="noopener noreferrer" class="bee-market-item" data-market="amazon" data-origin="bee-modal">
                 <div class="bee-market-icon">
                     <img src="/images/icons/amazon.svg" alt="Amazon" width="28" height="28"
                          onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
@@ -1297,7 +1298,7 @@
                 </div>
                 <span class="bee-market-arrow">→</span>
             </a>
-            <a href="https://shopee.com.br/search?keyword=bee%20cosmetics%20cabelo%20cacheado" target="_blank" rel="noopener noreferrer" class="bee-market-item">
+            <a href="https://shopee.com.br/search?keyword=bee%20cosmetics%20cabelo%20cacheado" target="_blank" rel="noopener noreferrer" class="bee-market-item" data-market="shopee" data-origin="bee-modal">
                 <div class="bee-market-icon">
                     <img src="/images/icons/shopee.svg" alt="Shopee" width="28" height="28"
                          onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
@@ -1309,7 +1310,7 @@
                 </div>
                 <span class="bee-market-arrow">→</span>
             </a>
-            <a href="https://lista.mercadolivre.com.br/bee-cosmetics" target="_blank" rel="noopener noreferrer" class="bee-market-item">
+            <a href="https://lista.mercadolivre.com.br/bee-cosmetics" target="_blank" rel="noopener noreferrer" class="bee-market-item" data-market="mercadolivre" data-origin="bee-modal">
                 <div class="bee-market-icon">
                     <img src="/images/icons/mercadolivre.svg" alt="Mercado Livre" width="28" height="28"
                          onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
@@ -1326,6 +1327,7 @@
             <a href="https://instagram.com/beecosmetics.store" target="_blank" rel="noopener">Conheça o perfil oficial @beecosmetics.store ↗</a>
         </div>
     </div>
+</div>
 </div>
 
 <div class="product-modal-overlay" id="productModal" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Ficha do produto" onclick="if(event.target===this)closeProductModal()">
@@ -1365,7 +1367,7 @@
     <svg viewBox="0 0 24 24"><use href="#i-wa"/></svg>
 </button>
 
-<script src="/assets/js/main.js?v=20260503-bee-ref-home-modal-final" defer></script>
-<script src="/assets/js/bee-catalog.js?v=20260503-bee-ref-home-modal-final" defer></script>
+<script src="/assets/js/main.js?v=20260503-modal-unify-logo-fix" defer></script>
+<script src="/assets/js/bee-catalog.js?v=20260503-modal-unify-logo-fix" defer></script>
 </body>
 </html>
