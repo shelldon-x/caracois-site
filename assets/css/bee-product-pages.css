@@ -1,58 +1,24 @@
 
 /* =========================================================
-   BEE PRODUCT PAGES — visual premium final
-   Escopo: .bee-product-page e .care-product-page
+   BEE PRODUCT PAGES — visual premium inspirado no padrão Caracóis Care
+   Escopo seguro: .bee-product-page
 ========================================================= */
 
-.bee-product-page,
-.care-product-page {
+.bee-product-page {
   background: #160f0e;
   color: var(--white);
 }
 
-.bee-product-page .nav-logo,
-.care-product-page .nav-logo {
-  display: inline-flex;
-  align-items: center;
-  min-width: 180px;
-}
-
-.bee-product-page .nav-logo img,
-.care-product-page .nav-logo img {
-  width: 180px;
-  height: auto;
-  display: block;
-}
-
-.nav-logo-fallback,
-.footer-logo-fallback {
-  display: none;
-  font-family: var(--serif);
-  color: var(--nude);
-  font-size: 1.3rem;
-  letter-spacing: .02em;
-}
-
-.bee-product-page .nav-logo img:not([src]),
-.care-product-page .nav-logo img:not([src]) { display: none; }
-
-.bee-product-page .nav-logo img[alt]:after,
-.care-product-page .nav-logo img[alt]:after { display: none; }
-
-.bee-product-page nav:not(.scrolled),
-.care-product-page nav:not(.scrolled) {
+.bee-product-page nav:not(.scrolled) {
   background: transparent;
 }
 
 .bee-product-page nav:not(.scrolled) .nav-links a,
-.bee-product-page nav:not(.scrolled) .nav-social a,
-.care-product-page nav:not(.scrolled) .nav-links a,
-.care-product-page nav:not(.scrolled) .nav-social a {
+.bee-product-page nav:not(.scrolled) .nav-social a {
   color: rgba(255,255,255,.86);
 }
 
-.bee-product-page nav:not(.scrolled) .mobile-toggle span,
-.care-product-page nav:not(.scrolled) .mobile-toggle span {
+.bee-product-page nav:not(.scrolled) .mobile-toggle span {
   background: var(--white);
 }
 
@@ -97,12 +63,16 @@
   font-size: .74rem;
   letter-spacing: .10em;
   text-transform: uppercase;
-  color: rgba(255,255,255,.55);
+  color: rgba(255,255,255,.52);
 }
 
 .bee-product-breadcrumb a {
   color: var(--gold-light);
   text-decoration: none;
+}
+
+.bee-product-breadcrumb a:hover {
+  color: var(--white);
 }
 
 .bee-product-badge {
@@ -197,6 +167,11 @@
   color: var(--white);
 }
 
+.bee-product-ctas .btn-outline:hover {
+  border-color: rgba(255,255,255,.72);
+  background: rgba(255,255,255,.08);
+}
+
 .bee-product-visual {
   min-height: 540px;
   border-radius: 34px;
@@ -235,10 +210,6 @@
   pointer-events: none;
 }
 
-.care-product-page .bee-product-visual::after {
-  content: "Caracóis Care";
-}
-
 .bee-product-image-frame {
   position: relative;
   z-index: 2;
@@ -264,15 +235,14 @@
 .bee-product-image-frame.is-placeholder {
   background: linear-gradient(155deg, #FAF1EF, #EFD9D7);
   border: 1px solid rgba(155,68,66,.14);
-  min-height: 430px;
 }
 
-.bee-placeholder-name {
+.bee-product-image-frame.is-placeholder .bee-placeholder-name {
   font-family: var(--serif);
   color: var(--terracota);
   text-align: center;
-  font-size: clamp(1.7rem, 3vw, 2.6rem);
-  line-height: 1.08;
+  font-size: 2rem;
+  line-height: 1.1;
 }
 
 .bee-product-meta-strip {
@@ -333,6 +303,10 @@
   border-radius: 30px;
   padding: 38px;
   box-shadow: 0 24px 60px rgba(0,0,0,.045);
+}
+
+.bee-product-editorial .section-label {
+  margin-bottom: 16px;
 }
 
 .bee-product-editorial h2,
@@ -429,13 +403,11 @@
   line-height: 1.45;
 }
 
-/* fallback robusto para logo quebrada */
-.nav-logo img[src="/images/logos/logo-nude.svg"] + .nav-logo-fallback,
-.footer-brand img[src="/images/logos/logo-nude.svg"] + .footer-logo-fallback {
-  display: none;
-}
-.nav-logo img[src="/images/logos/logo-nude.svg"]:not([complete]) + .nav-logo-fallback {
-  display: inline-block;
+/* Botão flutuante: garante um único ícone legível nas páginas Bee */
+.bee-product-page .whatsapp-float svg,
+.bee-product-page .whatsapp-float img {
+  width: 30px;
+  height: 30px;
 }
 
 @media (max-width: 1060px) {
@@ -495,10 +467,6 @@
     padding: 24px;
   }
 
-  .bee-product-image-frame.is-placeholder {
-    min-height: 320px;
-  }
-
   .bee-product-meta-grid,
   .bee-product-related-grid {
     grid-template-columns: 1fr;
@@ -513,4 +481,63 @@
   .bee-product-info-block {
     padding: 28px;
   }
+}
+
+@media (max-width: 520px) {
+  .bee-product-pills {
+    gap: 8px;
+  }
+
+  .bee-product-pill {
+    font-size: .76rem;
+    padding: 9px 13px;
+  }
+
+  .bee-product-breadcrumb {
+    font-size: .66rem;
+  }
+}
+
+
+/* =========================================================
+   BEE PRODUCT DYNAMIC SYSTEM — upgrades de renderização,
+   CTA fixo, estados JS e compatibilidade com modal global
+========================================================= */
+.bee-product-page .nav-logo img { transition: opacity .22s var(--ease), width .3s var(--ease); }
+.bee-product-page .js-render-pending { opacity: .001; transform: translateY(8px); }
+.bee-product-page .js-render-ready { opacity: 1; transform: translateY(0); transition: opacity .45s var(--ease), transform .45s var(--ease); }
+.bee-product-page .bee-product-copy,
+.bee-product-page .bee-product-visual,
+.bee-product-page .bee-product-meta-strip,
+.bee-product-page .bee-product-content,
+.bee-product-page .bee-product-related { content-visibility: auto; }
+.bee-product-page .bee-product-hero { contain: paint; }
+.bee-product-actions-note { margin-top: 14px; color: rgba(255,255,255,.55); font-size: .78rem; line-height: 1.5; }
+.bee-product-market-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+.bee-product-market-chip {
+  display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; border-radius: 999px;
+  background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.16); color: rgba(255,255,255,.92);
+  text-decoration: none; font-size: .8rem; font-weight: 600; transition: all .28s var(--ease);
+}
+.bee-product-market-chip:hover { transform: translateY(-2px); background: rgba(255,255,255,.13); border-color: rgba(196,162,101,.38); color: var(--white); }
+.bee-buy-bar {
+  position: fixed; left: 16px; right: 16px; bottom: 16px; bottom: max(16px, env(safe-area-inset-bottom)); z-index: 996;
+  display: none; align-items: center; justify-content: space-between; gap: 12px; max-width: 760px; margin: 0 auto;
+  padding: 12px 14px 12px 18px; border-radius: 22px; background: rgba(20,20,20,.88); color: var(--white);
+  border: 1px solid rgba(255,255,255,.16); box-shadow: 0 18px 48px rgba(0,0,0,.26); backdrop-filter: blur(18px);
+}
+.bee-buy-bar.is-visible { display: flex; animation: fadeUp .42s var(--ease-out) both; }
+.bee-buy-bar strong { display: block; font-family: var(--serif); font-size: 1.05rem; line-height: 1.05; }
+.bee-buy-bar span { display: block; color: rgba(255,255,255,.62); font-size: .72rem; margin-top: 2px; }
+.bee-buy-bar .btn { padding: 12px 18px; font-size: .78rem; white-space: nowrap; }
+.bee-product-section-nav { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+.bee-product-section-nav a { color: var(--terracota); text-decoration: none; border: 1px solid rgba(155,68,66,.22); padding: 9px 13px; border-radius: 999px; font-size: .78rem; font-weight: 600; }
+.bee-product-section-nav a:hover { background: rgba(155,68,66,.06); border-color: var(--terracota); }
+.bee-product-related-card img { width: 76px; height: 76px; object-fit: contain; margin-bottom: 12px; filter: drop-shadow(0 8px 18px rgba(0,0,0,.08)); }
+@media (max-width: 720px) {
+  .bee-product-market-row { display: none; }
+  .bee-buy-bar { left: 10px; right: 10px; bottom: 10px; border-radius: 18px; }
+  .bee-buy-bar strong { font-size: .95rem; }
+  .bee-buy-bar .btn { padding: 11px 14px; }
+  .bee-product-page { padding-bottom: 74px; }
 }
