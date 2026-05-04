@@ -1970,6 +1970,9 @@ footer { background: var(--black); color: rgba(255,255,255,0.58); padding: 72px 
     line-height: 1.5;
 }
 .booking-nearest-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     font-size: 0.82rem;
     font-weight: 700;
     color: var(--white);
@@ -1978,6 +1981,7 @@ footer { background: var(--black); color: rgba(255,255,255,0.58); padding: 72px 
     background: rgba(255,255,255,0.2);
     padding: 8px 18px;
     border-radius: 100px;
+    min-width: 118px;
     transition: all 0.3s;
 }
 .booking-nearest-card:hover .booking-nearest-cta {
@@ -3863,13 +3867,18 @@ body[data-page-type="article"] .article-body img {
     .booking-modal { max-width: 760px !important; }
     .booking-card.booking-nearest-card { padding: 28px 30px !important; }
 }
-@media (max-width: 640px) {
+@media (max-width: 768px) {
     .wa-nearest-label,
     .booking-nearest-label { font-size: .68rem !important; letter-spacing: .08em !important; }
     .wa-nearest-card,
     .booking-card.booking-nearest-card { display: block !important; padding: 24px !important; }
     .wa-nearest-cta,
-    .booking-nearest-cta { margin-top: 16px !important; width: 100% !important; min-height: 44px !important; }
+    .booking-nearest-cta {
+        display: flex !important;
+        margin-top: 16px !important;
+        width: 100% !important;
+        min-height: 44px !important;
+    }
 }
 
 /* Página interna de produto Bee: cabeçalho sempre legível em fundo claro. */
@@ -3895,48 +3904,55 @@ body[data-page-type="bee-product"] nav.scrolled .mobile-toggle span {
     background: var(--black) !important;
 }
 
-/* =========================================================
-   FIX GLOBAL — footer global
-   Build: 20260505-footer-global-final
-========================================================= */
-
-.footer-slogan {
-    margin-top: 12px;
-    color: var(--nude);
-    font-family: var(--serif);
-    font-size: 1.08rem;
-    line-height: 1.35;
-    font-style: italic;
-    font-weight: 500;
-    letter-spacing: 0.01em;
+/* ============================================================
+   FIX: Modal de Agendamento — botão "Agendar agora" no card
+   da unidade mais próxima.
+   Mantém paridade visual com o modal de WhatsApp (.wa-nearest-cta).
+   Bloco posicionado no final para garantir vitória na cascata.
+   ============================================================ */
+.booking-overlay .booking-nearest-card {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    padding: 24px !important;
 }
-
-.footer-logo a {
-    display: inline-flex;
-    align-items: center;
-    text-decoration: none;
+.booking-overlay .booking-nearest-card .booking-nearest-content {
+    width: 100% !important;
+    min-width: 0 !important;
 }
-
-footer[data-global-footer="ready"] .footer-top {
-    grid-template-columns: 1.45fr 1fr 1fr 1fr;
+.booking-overlay .booking-nearest-card .booking-nearest-cta {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    min-height: 44px !important;
+    margin-top: 16px !important;
+    padding: 12px 20px !important;
+    border-radius: 100px !important;
+    background: rgba(255,255,255,0.22) !important;
+    color: var(--white) !important;
+    font-size: 0.86rem !important;
+    font-weight: 700 !important;
+    white-space: nowrap !important;
+    transition: background 0.3s var(--ease), color 0.3s var(--ease) !important;
 }
-
-@media (max-width: 900px) {
-    footer[data-global-footer="ready"] .footer-top {
-        grid-template-columns: 1fr 1fr;
+.booking-overlay .booking-nearest-card:hover .booking-nearest-cta {
+    background: var(--white) !important;
+    color: var(--terracota) !important;
+}
+@media (min-width: 769px) {
+    .booking-overlay .booking-nearest-card {
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        gap: 18px !important;
+        padding: 28px 30px !important;
+    }
+    .booking-overlay .booking-nearest-card .booking-nearest-cta {
+        width: auto !important;
+        min-width: 140px !important;
+        margin-top: 0 !important;
+        flex-shrink: 0 !important;
     }
 }
-
-@media (max-width: 640px) {
-    footer[data-global-footer="ready"] .footer-top {
-        grid-template-columns: 1fr;
-        gap: 34px;
-    }
-
-    .footer-slogan {
-        font-size: 1rem;
-    }
-}
-
-/* ========== FIM FIX GLOBAL FOOTER ========== */
-
