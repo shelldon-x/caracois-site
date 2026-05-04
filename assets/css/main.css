@@ -3867,13 +3867,18 @@ body[data-page-type="article"] .article-body img {
     .booking-modal { max-width: 760px !important; }
     .booking-card.booking-nearest-card { padding: 28px 30px !important; }
 }
-@media (max-width: 640px) {
+@media (max-width: 768px) {
     .wa-nearest-label,
     .booking-nearest-label { font-size: .68rem !important; letter-spacing: .08em !important; }
     .wa-nearest-card,
     .booking-card.booking-nearest-card { display: block !important; padding: 24px !important; }
     .wa-nearest-cta,
-    .booking-nearest-cta { margin-top: 16px !important; width: 100% !important; min-height: 44px !important; }
+    .booking-nearest-cta {
+        display: flex !important;
+        margin-top: 16px !important;
+        width: 100% !important;
+        min-height: 44px !important;
+    }
 }
 
 /* Página interna de produto Bee: cabeçalho sempre legível em fundo claro. */
