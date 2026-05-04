@@ -356,7 +356,7 @@
 
 .bee-product-related-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(4, minmax(0,1fr));
   gap: 18px;
   margin-top: 34px;
 }
@@ -588,14 +588,42 @@
 
 
 /* =========================================================
-   BEE PRODUCT PAGES — polish final v11 (20260504)
-   Completa estilos do specs-panel e details-grid (estavam sem CSS),
-   reforça hierarquia editorial, micro-interações, foco visível.
+   BEE PRODUCT PAGES — fix v12 (20260504)
+   Corrige bugs estruturais que existiam no CSS original:
+   1. CRÍTICO: o main.css tem regra global "nav { position: fixed; top: 0;
+      width: 100%; z-index: 1000 }" para o nav principal do site, mas como
+      o seletor não está qualificado, ele afeta TODOS os <nav> da página.
+      Os HTMLs de produto têm dois <nav> internos (.bee-product-breadcrumb
+      e .bee-product-section-nav) que herdam fixed e ficam flutuando no
+      topo, sobrepostos ao nav principal — exatamente o que aparece como
+      pill "MODO DE USAR / COMPOSIÇÃO / RELACIONADOS" sobre o logo nas
+      screenshots reportadas. Aqui resetamos esses navs internos.
+   2. .bee-product-details-grid sem regra de grid (HTML usa essa classe,
+      mas o CSS antigo só tinha regras para .bee-product-content-grid).
+   3. .bee-product-specs-panel e .bee-product-spec sem CSS — herdavam
+      genérico e ficavam sem hierarquia.
+   4. .bee-product-section-nav (dentro do editorial, fundo claro) tinha
+      cores de texto branco com fundo translúcido — invisível no fundo
+      claro. Estilo agora coerente com o fundo claro.
+   Tudo escopado em .bee-product-page para não vazar.
 ========================================================= */
 
-/* Strip de specs (Volume / pH / ANVISA / Código de barras) — bloco que estava
-   sem estilo dedicado, herdando do CSS genérico. Agora vira uma faixa premium
-   alinhada à estética luxury editorial. */
+/* 1. CRÍTICO: reset de position fixed para navs INTERNOS das páginas Bee.
+   Vence sobre a regra "nav { position: fixed }" do main.css por
+   especificidade de classe + ancestral. */
+.bee-product-page nav.bee-product-breadcrumb,
+.bee-product-page nav.bee-product-section-nav {
+  position: static;
+  top: auto;
+  width: auto;
+  z-index: auto;
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+/* 2. Section "bee-product-details" e seu grid principal */
 .bee-product-page .bee-product-details {
   background: var(--white);
   color: var(--text);
@@ -604,222 +632,155 @@
 
 .bee-product-page .bee-product-details-grid {
   display: grid;
-  grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr);
-  gap: 54px;
+  grid-template-columns: 1fr;
+  gap: 28px;
   align-items: start;
 }
 
+@media (min-width: 980px) {
+  .bee-product-page .bee-product-details-grid {
+    grid-template-columns: minmax(260px, 320px) minmax(0, 1fr) minmax(280px, 380px);
+    gap: 40px;
+  }
+}
+
+/* Em mobile garante que o painel de specs aparece primeiro */
+.bee-product-page .bee-product-specs-panel { order: 1; }
+.bee-product-page .bee-product-editorial   { order: 2; }
+.bee-product-page .bee-product-info-stack  { order: 3; }
+@media (min-width: 980px) {
+  .bee-product-page .bee-product-specs-panel,
+  .bee-product-page .bee-product-editorial,
+  .bee-product-page .bee-product-info-stack { order: initial; }
+}
+
+/* 2. Painel de specs (Volume / pH / ANVISA / Código de barras) */
 .bee-product-page .bee-product-specs-panel {
-  grid-column: 1 / -1;
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 18px;
-  margin-bottom: 56px;
-  padding: 28px;
-  background: linear-gradient(135deg, var(--nude-ultra), #fff);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  padding: 22px;
+  background: linear-gradient(155deg, var(--nude-ultra), #fff);
   border: 1px solid rgba(155, 68, 66, .08);
-  border-radius: 26px;
-  box-shadow: 0 18px 46px rgba(0, 0, 0, .045);
+  border-radius: 22px;
+  box-shadow: 0 14px 36px rgba(0, 0, 0, .04);
+}
+
+@media (min-width: 980px) {
+  .bee-product-page .bee-product-specs-panel {
+    grid-template-columns: 1fr;
+    position: sticky;
+    top: 112px;
+  }
 }
 
 .bee-product-page .bee-product-spec {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  padding: 16px 18px;
-  border-radius: 16px;
+  gap: 4px;
+  padding: 14px 16px;
   background: var(--white);
   border: 1px solid rgba(155, 68, 66, .06);
-  text-align: left;
-  transition: transform .32s var(--ease), box-shadow .32s var(--ease), border-color .32s var(--ease);
-}
-
-.bee-product-page .bee-product-spec:hover {
-  transform: translateY(-2px);
-  border-color: var(--gold);
-  box-shadow: 0 12px 28px rgba(196, 162, 101, .12);
+  border-radius: 14px;
 }
 
 .bee-product-page .bee-product-spec span {
   color: var(--terracota);
-  font-size: .66rem;
+  font-family: var(--sans);
+  font-size: .64rem;
   letter-spacing: .14em;
   text-transform: uppercase;
   font-weight: 700;
-  font-family: var(--sans);
 }
 
 .bee-product-page .bee-product-spec strong {
   color: var(--black);
   font-family: var(--serif);
-  font-size: 1.18rem;
   font-weight: 500;
+  font-size: 1.05rem;
   line-height: 1.25;
-  letter-spacing: -.005em;
+  word-break: break-word;
 }
 
-/* Section labels editoriais (eyebrow) — reforço quando aparece dentro do
-   contexto produto, garantindo coerência com o restante do site */
-.bee-product-page .bee-product-editorial .section-label,
-.bee-product-page .bee-product-related .section-label {
-  display: inline-block;
-  color: var(--terracota);
-  font-size: .72rem;
-  font-weight: 700;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  font-family: var(--sans);
+/* 3. Editorial: NÃO sticky em mobile (o sticky do CSS antigo só desligava
+   via .bee-product-content-grid, que não existe no HTML). */
+.bee-product-page .bee-product-editorial {
+  position: static;
 }
 
-.bee-product-page .bee-product-related .section-intro {
-  text-align: center;
-  margin-bottom: 18px;
-  max-width: 720px;
-  margin-left: auto;
-  margin-right: auto;
+@media (min-width: 980px) {
+  .bee-product-page .bee-product-editorial {
+    position: sticky;
+    top: 112px;
+  }
 }
 
-.bee-product-page .bee-product-related .section-title {
-  font-family: var(--serif);
-  font-weight: 400;
-  color: var(--black);
-  font-size: clamp(2.1rem, 4vw, 3rem);
-  line-height: 1.1;
-  margin: 12px 0 14px;
-  letter-spacing: -.015em;
-}
-
-.bee-product-page .bee-product-related .section-desc {
-  color: var(--text-light);
-  font-size: 1rem;
-  line-height: 1.72;
-}
-
-/* Cards de produto relacionado: refino (imagem, espaçamento, micro-interação) */
-.bee-product-page .bee-product-related-card {
+/* 4. Section nav DENTRO do editorial: cores claras no fundo branco/nude.
+   Override deve vir DEPOIS do bloco antigo (linhas 544-554) — está aqui no
+   final, então ganha por especificidade. */
+.bee-product-page .bee-product-editorial .bee-product-section-nav {
   display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 20px 22px 24px;
-  position: relative;
-  overflow: hidden;
-}
-
-.bee-product-page .bee-product-related-card img {
-  align-self: center;
-  width: 100%;
-  max-width: 180px;
-  aspect-ratio: 1 / 1;
-  object-fit: contain;
-  margin-bottom: 4px;
-  filter: drop-shadow(0 10px 22px rgba(0, 0, 0, .08));
-  transition: transform .42s var(--ease-out);
-}
-
-.bee-product-page .bee-product-related-card:hover img {
-  transform: translateY(-4px) scale(1.04);
-}
-
-/* Foco visível reforçado em todos cards e CTAs Bee */
-.bee-product-page .bee-product-related-card:focus-visible,
-.bee-product-page .bee-product-spec:focus-visible,
-.bee-product-page .bee-product-pill:focus-visible {
-  outline: 2px solid var(--gold);
-  outline-offset: 4px;
-  border-radius: 16px;
-}
-
-/* Pills do hero: melhora micro-interação e alinhamento do checkmark */
-.bee-product-page .bee-product-pill {
-  transition: background .26s var(--ease), border-color .26s var(--ease), transform .26s var(--ease);
-}
-
-.bee-product-page .bee-product-pill:hover {
-  background: rgba(196, 162, 101, .14);
-  border-color: rgba(196, 162, 101, .42);
-  transform: translateY(-1px);
-}
-
-/* Editorial section: melhor leitura do parágrafo + ornamento serif */
-.bee-product-page .bee-product-editorial::before {
-  content: "";
-  display: block;
-  width: 40px;
-  height: 2px;
-  background: var(--gold);
-  margin-bottom: 22px;
-  opacity: .8;
-}
-
-/* Section nav (modo de usar / composição / relacionados) — refino visual */
-.bee-product-page .bee-product-section-nav {
-  background: transparent;
-  border: 1px solid rgba(155, 68, 66, .12);
-  background: rgba(155, 68, 66, .04);
-  padding: 6px;
-  border-radius: 999px;
-  margin-top: 24px;
-  display: inline-flex;
-  width: auto;
   flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 22px;
+  padding: 0;
+  background: transparent;
+  border: 0;
 }
 
 .bee-product-page .bee-product-editorial .bee-product-section-nav a {
-  color: var(--text) !important;
-  background: transparent;
-  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 36px;
   padding: 8px 14px;
+  border-radius: 999px;
   font-family: var(--sans);
-  font-size: .76rem;
-  font-weight: 600;
-  letter-spacing: .06em;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .08em;
   text-transform: uppercase;
+  color: var(--terracota) !important;
+  background: rgba(155, 68, 66, .06);
+  border: 1px solid rgba(155, 68, 66, .14);
+  backdrop-filter: none;
+  text-decoration: none !important;
+  transition: all .26s var(--ease);
 }
 
 .bee-product-page .bee-product-editorial .bee-product-section-nav a:hover {
-  color: var(--terracota) !important;
-  background: rgba(155, 68, 66, .06);
+  color: var(--white) !important;
+  background: var(--terracota);
+  border-color: var(--terracota);
 }
 
-/* Specs panel responsivo */
-@media (max-width: 1060px) {
-  .bee-product-page .bee-product-specs-panel {
-    grid-template-columns: repeat(2, 1fr);
-  }
+/* 5. Info-stack: blocos de Modo de usar / Composição com leitura confortável */
+.bee-product-page .bee-product-info-stack {
+  display: grid;
+  gap: 18px;
 }
 
-@media (max-width: 520px) {
-  .bee-product-page .bee-product-specs-panel {
-    grid-template-columns: 1fr;
-    padding: 20px;
-    gap: 12px;
-  }
+/* 6. Tipografia de detalhes em mobile — evita quebras agressivas em colunas
+   estreitas (era o caso onde "Modo de usar" virava 1-2 palavras por linha). */
+.bee-product-page .bee-product-editorial p,
+.bee-product-page .bee-product-info-block p {
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  word-break: normal;
+  overflow-wrap: anywhere;
+}
 
-  .bee-product-page .bee-product-spec strong {
-    font-size: 1.08rem;
-  }
-
+@media (max-width: 720px) {
   .bee-product-page .bee-product-details {
     padding: 60px 0 80px;
   }
+  .bee-product-page .bee-product-specs-panel {
+    grid-template-columns: 1fr;
+    padding: 18px;
+  }
 }
 
-/* Acessibilidade: garante contraste mínimo das imagens de produto em
-   placeholder caso o webp não exista */
-.bee-product-page .bee-image-missing {
-  background: linear-gradient(155deg, var(--nude), var(--nude-ultra));
-}
-
-.bee-product-page .bee-image-placeholder {
-  font-family: var(--serif);
-  font-style: italic;
-  color: var(--terracota);
-  font-size: 1.4rem;
-  line-height: 1.2;
-  text-align: center;
-}
-
-/* Print: mantém legível ao imprimir ficha técnica do produto */
+/* 7. Print: ficha técnica limpa */
 @media print {
   .bee-product-page nav,
   .bee-product-page .whatsapp-float,
@@ -841,7 +802,9 @@
   }
   .bee-product-page .bee-product-title,
   .bee-product-page .bee-product-type,
-  .bee-product-page .bee-product-desc {
+  .bee-product-page .bee-product-desc,
+  .bee-product-page .bee-product-spec strong {
     color: #000 !important;
   }
 }
+
