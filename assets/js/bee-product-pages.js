@@ -11,7 +11,7 @@
 (function () {
   'use strict';
 
-  const BUILD_VERSION = '20260504-bee-product-pages-final';
+  const BUILD_VERSION = '20260504-bee-product-final-11';
   const MAX_BOOT_TRIES = 60;
   const BOOT_DELAY = 50;
 
@@ -99,7 +99,7 @@
     const all = getProducts().filter(Boolean);
     const sameCategory = all.filter((item) => item.id !== product.id && item.category === product.category);
     const others = all.filter((item) => item.id !== product.id && item.category !== product.category);
-    return sameCategory.concat(others).slice(0, 4);
+    return sameCategory.concat(others).slice(0, 3);
   }
 
   function cleanPayload(payload) {
@@ -315,7 +315,10 @@
     const url = `https://caracois.com.br/bee-cosmetics/${product.id}`;
     const image = product.image ? `https://caracois.com.br${product.image}` : 'https://caracois.com.br/images/og/og-bee-cosmetics.png';
 
-    document.title = document.title && !document.title.includes('Produto Bee') ? document.title : title;
+    // Sempre atualiza o title para refletir o produto atual (a verificação
+    // anterior bloqueava todas as atualizações porque os HTMLs já vinham com
+    // titles ricos sem "Produto Bee", e o JS nunca alterava o title).
+    if (title) document.title = title;
 
     const metaMap = [
       ['meta[name="description"]', 'content', description],
@@ -587,10 +590,15 @@
 
   function reportNotFound(slug) {
     document.body.classList.remove('js-render-pending');
-    document.body.classList.add('js-render-ready');
+    document.body.classList.add('js-render-ready', 'bee-product-not-found');
     setText('#beeProductName', 'Produto não encontrado');
     setText('#beeProductType', 'Bee Cosmetics');
     setText('#beeProductDesc', 'Não encontramos esse produto no catálogo dinâmico. Volte para a página Bee Cosmetics e escolha um item da linha.');
+    // Substitui CTAs por um link de retorno ao catálogo, evitando botões mortos
+    const ctas = $('.bee-product-ctas');
+    if (ctas) {
+      ctas.innerHTML = '<a href="/bee-cosmetics" class="btn btn-gold">Ver catálogo Bee Cosmetics</a>';
+    }
     track('bee_product_not_found', { slug });
   }
 
