@@ -2,7 +2,7 @@
 (function () {
   'use strict';
 
-  const BUILD_VERSION = '20260504-central-articles-clean-final';
+  const BUILD_VERSION = '20260505-footer-global-final';
 
   document.documentElement.classList.remove('no-js');
   document.documentElement.classList.add('js');
@@ -47,31 +47,12 @@
     const ref = document.referrer || '';
     if (!ref) return { source: 'direct', medium: 'none' };
     try {
-      const host = new URL(ref).hostname.replace(/^www\./, '').toLowerCase();
-
-      const aiSources = [
-        ['chatgpt', ['chatgpt.com', 'chat.openai.com', 'openai.com']],
-        ['copilot', ['copilot.microsoft.com', 'bing.com/chat']],
-        ['gemini', ['gemini.google.com', 'bard.google.com']],
-        ['deepseek', ['deepseek.com', 'chat.deepseek.com']],
-        ['claude', ['claude.ai', 'anthropic.com']],
-        ['perplexity', ['perplexity.ai']],
-        ['grok', ['grok.com', 'x.ai']],
-        ['meta_ai', ['meta.ai']]
-      ];
-      for (const [source, domains] of aiSources) {
-        if (domains.some((domain) => host.includes(domain))) return { source, medium: 'ai' };
-      }
-
+      const host = new URL(ref).hostname.replace(/^www\./, '');
       if (host.includes('google.')) return { source: 'google', medium: 'organic' };
       if (host.includes('bing.')) return { source: 'bing', medium: 'organic' };
       if (host.includes('instagram.')) return { source: 'instagram', medium: 'social' };
       if (host.includes('facebook.') || host.includes('fb.')) return { source: 'facebook', medium: 'social' };
       if (host.includes('tiktok.')) return { source: 'tiktok', medium: 'social' };
-      if (host.includes('youtube.') || host.includes('youtu.be')) return { source: 'youtube', medium: 'video' };
-      if (host.includes('pinterest.')) return { source: 'pinterest', medium: 'social' };
-      if (host.includes('x.com') || host.includes('twitter.')) return { source: 'x', medium: 'social' };
-      if (host.includes('linkedin.')) return { source: 'linkedin', medium: 'social' };
       if (host.includes('whatsapp.')) return { source: 'whatsapp', medium: 'referral' };
       return { source: host, medium: 'referral' };
     } catch (e) {
@@ -409,20 +390,10 @@
     }, { enableHighAccuracy: false, timeout: 8000, maximumAge: 600000 });
   }
 
-  function updateDynamicLogos() {
-    const isScrolled = window.scrollY > 24;
-    $$('.logo-dynamic, #navLogoImg').forEach((logo) => {
-      const light = logo.getAttribute('data-logo-light') || '/images/logos/logo-nude.svg';
-      const dark = logo.getAttribute('data-logo-dark') || '/images/logos/logo-terracota.svg';
-      const next = isScrolled ? dark : light;
-      if (logo.getAttribute('src') !== next) logo.setAttribute('src', next);
-    });
-  }
-
   function initNav() {
     const nav = $('nav');
     if (!nav) return;
-    const update = () => { nav.classList.toggle('scrolled', window.scrollY > 24); updateDynamicLogos(); };
+    const update = () => nav.classList.toggle('scrolled', window.scrollY > 24);
     update();
     window.addEventListener('scroll', update, { passive: true });
   }
@@ -517,9 +488,6 @@
     initReveal();
     initTracking();
     initEscClose();
-    if (document.body && document.body.dataset.pageType === 'article') {
-      track('article_view', { channel: 'content', article_slug: document.body.dataset.articleSlug || window.location.pathname.replace(/^\//, '') });
-    }
   });
 
 
@@ -544,4 +512,74 @@
   window.findNearestBooking = findNearestBooking;
   window.scTrack = track;
   window.STUDIO_CARACOIS_UNITS = UNITS;
+  function initGlobalFooter() {
+    const footer = document.querySelector('footer');
+    if (!footer || footer.dataset.globalFooter === 'ready') return;
+
+    const source = (window.location.pathname || '/')
+      .replace(/^\/|\/$/g, '')
+      .replace(/[^\w-]+/g, '-') || 'home';
+
+    footer.dataset.globalFooter = 'ready';
+    footer.innerHTML = `
+      <div class="container">
+        <div class="footer-top">
+          <div>
+            <div class="footer-logo">
+              <a href="/" aria-label="Studio Caracóis — início">
+                <img src="/images/logos/logo-nude.svg" alt="Studio Caracóis" width="220" height="42" loading="lazy" decoding="async">
+              </a>
+            </div>
+            <p class="footer-desc">Especialistas em cabelos cacheados. Técnica, tratamento e produto para transformar o cabelo de verdade.</p>
+            <p class="footer-slogan">Cabelo bonito é cabelo saudável.</p>
+            <div class="footer-social-links">
+              <a data-source="${esc(source)}" data-social="instagram" data-cta="social" href="https://instagram.com/studiocaracois" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg width="24" height="24" aria-hidden="true"><use href="#i-ig"/></svg></a>
+              <a data-source="${esc(source)}" data-social="tiktok" data-cta="social" href="https://tiktok.com/@studiocaracois" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><svg width="24" height="24" aria-hidden="true"><use href="#i-tt"/></svg></a>
+              <a data-source="${esc(source)}" data-social="youtube" data-cta="social" href="https://youtube.com/@studiocaracois" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><svg width="24" height="24" aria-hidden="true"><use href="#i-yt"/></svg></a>
+            </div>
+          </div>
+
+          <div class="footer-col">
+            <h4>Navegação</h4>
+            <a href="/#experiencia">Sua experiência</a>
+            <a href="/#servicos">Serviços</a>
+            <a href="/#transicao">Transição Capilar</a>
+            <a href="/#resultados">Resultados</a>
+            <a href="/#unidades">Unidades</a>
+            <a href="/bee-cosmetics">Bee Cosmetics</a>
+            <a href="/central-de-conhecimento">Central de Conhecimento</a>
+            <a href="/franquia">Seja um franqueado</a>
+          </div>
+
+          <div class="footer-col">
+            <h4>Bee Cosmetics</h4>
+            <a href="/bee-cosmetics">Catálogo Bee Cosmetics</a>
+            <a href="/bee-cosmetics/born-to-bee">Shampoo Sem Sulfato</a>
+            <a href="/bee-cosmetics/feel-the-beeat">Co-wash</a>
+            <a href="/bee-cosmetics/beetween-gardens">Máscara de Nutrição</a>
+            <a href="/bee-cosmetics/bee-yourself">Leave-in Super Definição</a>
+            <a href="/bee-cosmetics/be-my-bee">Gelatina Capilar</a>
+            <a href="/bee-cosmetics/beelieve-in-acid">Acidificante Capilar</a>
+          </div>
+
+          <div class="footer-col">
+            <h4>Conhecimento</h4>
+            <a href="/central-de-conhecimento">Central de conhecimento</a>
+            <a href="/transicao-capilar">Transição capilar</a>
+            <a href="/como-cuidar-de-cabelos-cacheados">Como cuidar dos cachos</a>
+            <a href="/corte-para-cabelo-cacheado">Corte para cacheado</a>
+            <a href="/cronograma-capilar-cacheado">Cronograma capilar</a>
+            <a href="/low-poo-no-poo">Low poo e no poo</a>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <span>&copy; 2026 Studio Caracóis. Todos os direitos reservados.</span>
+          <span>Cabelo bonito é cabelo saudável.</span>
+        </div>
+      </div>`;
+  }
+
+
+  initGlobalFooter();
 })();
