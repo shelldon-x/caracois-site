@@ -1970,6 +1970,9 @@ footer { background: var(--black); color: rgba(255,255,255,0.58); padding: 72px 
     line-height: 1.5;
 }
 .booking-nearest-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     font-size: 0.82rem;
     font-weight: 700;
     color: var(--white);
@@ -1978,6 +1981,7 @@ footer { background: var(--black); color: rgba(255,255,255,0.58); padding: 72px 
     background: rgba(255,255,255,0.2);
     padding: 8px 18px;
     border-radius: 100px;
+    min-width: 118px;
     transition: all 0.3s;
 }
 .booking-nearest-card:hover .booking-nearest-cta {
@@ -3894,76 +3898,3 @@ body[data-page-type="bee-product"] .mobile-toggle span,
 body[data-page-type="bee-product"] nav.scrolled .mobile-toggle span {
     background: var(--black) !important;
 }
-
-
-/* =========================================================
-   FIX DEFINITIVO REAL — Modal de agendamento: CTA sem sobreposição
-   Build: 20260503-booking-modal-wrap-fix
-   Escopo: apenas o card de unidade mais próxima do modal de agendamento.
-   Não altera WhatsApp, Bee, links, tracking ou demais cards.
-========================================================= */
-
-#bookingModal #bookingNearestCard.booking-card.booking-nearest-card {
-    display: flex !important;
-    flex-wrap: wrap !important;
-    flex-direction: row !important;
-    align-items: flex-start !important;
-    justify-content: flex-start !important;
-    gap: 0 !important;
-    height: auto !important;
-    min-height: 0 !important;
-    overflow: visible !important;
-}
-
-#bookingModal #bookingNearestCard .booking-nearest-content {
-    flex: 1 1 100% !important;
-    width: 100% !important;
-    min-width: 0 !important;
-    max-width: 100% !important;
-}
-
-#bookingModal #bookingNearestCard .booking-card-name,
-#bookingModal #bookingNearestCard .booking-card-addr,
-#bookingModal #bookingNearestCard .booking-card-postal,
-#bookingModal #bookingNearestCard .booking-card-ref,
-#bookingModal #bookingNearestCard .booking-nearest-dist,
-#bookingModal #bookingNearestCard .booking-nearest-micro {
-    display: block !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    overflow-wrap: anywhere !important;
-    word-break: normal !important;
-}
-
-#bookingModal #bookingNearestCard .booking-nearest-cta {
-    flex: 1 1 100% !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    align-self: stretch !important;
-    position: relative !important;
-    inset: auto !important;
-    float: none !important;
-    clear: both !important;
-    margin: 18px 0 0 0 !important;
-    min-height: 48px !important;
-    line-height: 1.2 !important;
-    white-space: normal !important;
-    text-align: center !important;
-    z-index: 2 !important;
-}
-
-@media (max-width: 640px) {
-    #bookingModal #bookingNearestCard.booking-card.booking-nearest-card {
-        padding: 26px 22px !important;
-    }
-
-    #bookingModal #bookingNearestCard .booking-nearest-cta {
-        padding: 13px 18px !important;
-    }
-}
-
-/* ========== FIM FIX BOOKING MODAL WRAP ========== */
-
