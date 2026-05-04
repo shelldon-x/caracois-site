@@ -11,7 +11,7 @@
 (function () {
   'use strict';
 
-  const BUILD_VERSION = '20260504-bee-product-fix-v12';
+  const BUILD_VERSION = '20260504-bee-product-fix-v13';
   const MAX_BOOT_TRIES = 60;
   const BOOT_DELAY = 50;
 
