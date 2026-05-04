@@ -1,14 +1,17 @@
 /* Bee Cosmetics — catálogo frontend rico 100%
-   Build: 20260504-bee-marketplace-product-search-final
+   Build: 20260504-bee-premium-clean-final
    Dados enriquecidos: volume, pH, ANVISA, código de barras, descrição, modo de usar e composição.
    Sem campo de ativos principais, conforme solicitado.
 */
 (function () {
   'use strict';
 
-  const BUILD_VERSION = '20260504-bee-marketplace-product-search-final';
-  const BEE_IMAGE_VERSION = '20260504-bee-images-v1';
+  const BUILD_VERSION = '20260504-bee-premium-clean-final';
+  const BEE_IMAGE_VERSION = '20260504-bee-premium-clean-final';
+  const BEE_ICON_VERSION = '20260504-bee-premium-clean-final';
   const beeImage = (slug) => `/images/products/${slug}.webp?v=${BEE_IMAGE_VERSION}`;
+  const beeIcon = (slug) => `/images/icons/${slug}.svg?v=${BEE_ICON_VERSION}`;
+
   const PRODUCTS = [
     {
         "id": "born-to-bee",
@@ -214,9 +217,9 @@
 
   const genericMarketplaceQuery = encodeURIComponent('Bee Cosmetics cabelo cacheado cachos');
   const MARKETPLACES = [
-    { name:'Amazon', href:`https://www.amazon.com.br/s?k=${genericMarketplaceQuery}`, key:'amazon', icon:'/images/icons/amazon.svg' },
-    { name:'Shopee', href:`https://shopee.com.br/search?keyword=${genericMarketplaceQuery}`, key:'shopee', icon:'/images/icons/shopee.svg' },
-    { name:'Mercado Livre', href:`https://lista.mercadolivre.com.br/${genericMarketplaceQuery}`, key:'mercadolivre', icon:'/images/icons/mercadolivre.svg' }
+    { name:'Amazon', href:`https://www.amazon.com.br/s?k=${genericMarketplaceQuery}`, key:'amazon', icon:beeIcon('amazon') },
+    { name:'Shopee', href:`https://shopee.com.br/search?keyword=${genericMarketplaceQuery}`, key:'shopee', icon:beeIcon('shopee') },
+    { name:'Mercado Livre', href:`https://lista.mercadolivre.com.br/${genericMarketplaceQuery}`, key:'mercadolivre', icon:beeIcon('mercadolivre') }
   ];
 
   function buildMarketplaceQuery(product) {
@@ -236,30 +239,29 @@
     return market.href || '#';
   }
 
+  function marketIconAttrs(market) {
+    return `src="${esc(market.icon)}"`;
+  }
+
   const $ = (sel, ctx = document) => ctx.querySelector(sel);
   const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
   const esc = (s) => String(s || '').replace(/[&<>'"]/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[ch]));
 
   function imageAttrs(product) {
-    const src = product.image || '';
-    const fallbacks = product.fallbacks || [];
-    return `src="${esc(src)}"${fallbacks.length ? ` data-fallbacks='${esc(JSON.stringify(fallbacks))}'` : ''}`;
+    return `src="${esc(product.image || '')}"`;
   }
 
   function installImageFallback(img) {
     if (!img || img.dataset.fallbackReady === '1') return;
     img.dataset.fallbackReady = '1';
     img.addEventListener('error', function () {
-      let fallbacks = [];
-      try { fallbacks = JSON.parse(this.dataset.fallbacks || '[]'); } catch(e) {}
-      const next = fallbacks.shift();
-      if (next) {
-        this.dataset.fallbacks = JSON.stringify(fallbacks);
-        this.src = next;
+      const wrap = this.closest('.bee-product-img, .pm-image, .pm-market-icon');
+      this.style.display = 'none';
+      if (wrap && wrap.classList.contains('pm-market-icon')) {
+        wrap.classList.add('pm-market-icon--fallback');
+        wrap.textContent = this.alt || 'Loja';
         return;
       }
-      const wrap = this.closest('.bee-product-img, .pm-image');
-      this.style.display = 'none';
       if (wrap) {
         wrap.classList.add('bee-image-missing');
         if (!wrap.querySelector('.bee-image-placeholder')) {
@@ -435,7 +437,7 @@
     content.innerHTML = `
       <div class="pm-grid">
         <div class="pm-image">
-          <img ${imageAttrs(p)} alt="${esc(p.name)}" loading="eager" decoding="async" fetchpriority="high">
+          <img ${imageAttrs(p)} alt="${esc(p.name)}" loading="lazy" decoding="async">
         </div>
         <div class="pm-content">
           <div class="pm-category-tag">${esc(categoryLabel(p.category))}</div>
@@ -463,7 +465,7 @@
           <div class="pm-markets">
             ${MARKETPLACES.map(m => `
               <a class="pm-market-link pm-market-link--${esc(m.key)}" href="${esc(buildMarketplaceUrl(m, p))}" target="_blank" rel="noopener noreferrer" data-market="${esc(m.key)}" data-origin="product-modal" data-product="${esc(p.id)}" data-search-query="${esc(decodeURIComponent(buildMarketplaceQuery(p)))}">
-                <span class="pm-market-icon"><img src="${esc(m.icon)}" alt="" loading="lazy" decoding="async" onerror="this.style.display='none'; this.parentElement.classList.add('pm-market-icon--fallback');"></span>
+                <span class="pm-market-icon"><img ${marketIconAttrs(m)} alt="${esc(m.name)}" loading="lazy" decoding="async"></span>
                 <span class="pm-market-copy"><strong>${esc(m.name)}</strong><small>Buscar produto</small></span>
               </a>`).join('')}
           </div>
