@@ -11,7 +11,7 @@
 (function () {
   'use strict';
 
-  const BUILD_VERSION = '20260504-bee-product-final-11';
+  const BUILD_VERSION = '20260504-bee-product-fix-v12';
   const MAX_BOOT_TRIES = 60;
   const BOOT_DELAY = 50;
 
@@ -99,7 +99,7 @@
     const all = getProducts().filter(Boolean);
     const sameCategory = all.filter((item) => item.id !== product.id && item.category === product.category);
     const others = all.filter((item) => item.id !== product.id && item.category !== product.category);
-    return sameCategory.concat(others).slice(0, 3);
+    return sameCategory.concat(others).slice(0, 4);
   }
 
   function cleanPayload(payload) {
@@ -315,9 +315,11 @@
     const url = `https://caracois.com.br/bee-cosmetics/${product.id}`;
     const image = product.image ? `https://caracois.com.br${product.image}` : 'https://caracois.com.br/images/og/og-bee-cosmetics.png';
 
-    // Sempre atualiza o title para refletir o produto atual (a verificação
-    // anterior bloqueava todas as atualizações porque os HTMLs já vinham com
-    // titles ricos sem "Produto Bee", e o JS nunca alterava o title).
+    // Sempre atualiza o title para refletir o produto atual.
+    // (A versão anterior tinha a condicional invertida e o title nunca era
+    // atualizado pelo JS — funcionava só porque os HTMLs já vinham com
+    // titles ricos estáticos. Mantém o comportamento defensivo: se chegar
+    // sem document.title, usa o título gerado.)
     if (title) document.title = title;
 
     const metaMap = [
