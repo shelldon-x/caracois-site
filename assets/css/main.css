@@ -3894,3 +3894,58 @@ body[data-page-type="bee-product"] .mobile-toggle span,
 body[data-page-type="bee-product"] nav.scrolled .mobile-toggle span {
     background: var(--black) !important;
 }
+
+/* =========================================================
+   FIX GLOBAL — sticky CTA + rodapé
+   Build: 20260505-central-modal-link-footer-final
+   Escopo: remove faixa escura residual do botão fixo, protege
+   o rodapé contra sobreposição e preserva safe-area no mobile.
+========================================================= */
+
+:root {
+    --sticky-cta-mobile-height: 82px;
+}
+
+@media (max-width: 768px) {
+    body {
+        padding-bottom: calc(var(--sticky-cta-mobile-height) + env(safe-area-inset-bottom));
+    }
+
+    footer {
+        padding-bottom: calc(118px + env(safe-area-inset-bottom)) !important;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        line-height: 1.5;
+        padding-bottom: 8px;
+    }
+
+    .sticky-cta {
+        bottom: 0;
+        z-index: 1002;
+        display: inline-flex;
+        min-height: 64px;
+        padding-top: 16px;
+        padding-bottom: calc(16px + env(safe-area-inset-bottom));
+        background: linear-gradient(135deg, var(--terracota), var(--terracota-dark));
+        box-shadow: 0 -10px 28px rgba(20,20,20,0.16);
+        border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .whatsapp-float {
+        bottom: calc(76px + env(safe-area-inset-bottom));
+        z-index: 1003;
+    }
+}
+
+@media (min-width: 769px) {
+    body {
+        padding-bottom: 0;
+    }
+}
+
+/* ========== FIM FIX GLOBAL STICKY CTA + RODAPÉ ========== */
+
