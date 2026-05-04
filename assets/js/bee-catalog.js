@@ -7,17 +7,15 @@
   'use strict';
 
   const BUILD_VERSION = '20260504-bee-marketplace-product-search-final';
+  const BEE_IMAGE_VERSION = '20260504-bee-images-v1';
+  const beeImage = (slug) => `/images/products/${slug}.webp?v=${BEE_IMAGE_VERSION}`;
   const PRODUCTS = [
     {
         "id": "born-to-bee",
         "name": "Born to BEE",
         "type": "Shampoo Sem Sulfato",
         "category": "limpeza",
-        "image": "/images/products/born-to-bee.webp",
-        "fallbacks": [
-            "/images/products/born-to-bee.png",
-            "/images/products/shampoo-born-to-bee.webp"
-        ],
+        "image": beeImage("born-to-bee"),
         "desc": "Tenha uma limpeza eficaz sem ressecar ou agredir os fios. O Shampoo Sem Sulfato Born to BEE, com limpante natural, deixa o cabelo limpo e hidratado, perfeito para rotinas de limpeza suave.",
         "shortDesc": "Limpeza eficaz sem ressecar, com ingredientes hidratantes e condicionantes.",
         "tags": [
@@ -37,12 +35,7 @@
         "name": "Feel the BEEat",
         "type": "Co-Wash",
         "category": "limpeza",
-        "image": "/images/products/feel-the-beeat.webp",
-        "fallbacks": [
-            "/images/products/feel-the-beeat.webp",
-            "/images/products/cowash.webp",
-            "/images/products/co-wash.webp"
-        ],
+        "image": beeImage("feel-the-beeat"),
         "desc": "Um produto completo que limpa, condiciona, hidrata e repara os fios. Ideal para quem segue uma rotina sem shampoos tradicionais com sulfatos.",
         "shortDesc": "Limpeza, condicionamento e hidratação com aloe vera, manteiga de oliva e queratina.",
         "tags": [
@@ -62,11 +55,7 @@
         "name": "BEEtween Gardens",
         "type": "Máscara de Nutrição",
         "category": "tratamento",
-        "image": "/images/products/beetween-gardens.webp",
-        "fallbacks": [
-            "/images/products/between-gardens.webp",
-            "/images/products/mascara-nutricao.webp"
-        ],
+        "image": beeImage("beetween-gardens"),
         "desc": "Hidratação e nutrição em um único produto. Proporciona umectação, emoliência e maciez, ajudando a evitar o frizz.",
         "shortDesc": "Hidratação e nutrição com D-pantenol, manteiga de abacate e óleo de coco.",
         "tags": [
@@ -86,12 +75,7 @@
         "name": "After BEEach",
         "type": "Máscara de Reconstrução",
         "category": "tratamento",
-        "image": "/images/products/after-beeach.webp",
-        "fallbacks": [
-            "/images/products/after-beach.webp",
-            "/images/products/after-beeatch.webp",
-            "/images/products/mascara-reconstrucao.webp"
-        ],
+        "image": beeImage("after-beeach"),
         "desc": "Proteção e reparo intensivo para cabelos danificados por coloração, tratamentos químicos ou exposição ao sol e ao mar.",
         "shortDesc": "Reparo intensivo com manteiga de oliva e proteína do trigo.",
         "tags": [
@@ -111,12 +95,7 @@
         "name": "BEEloved Oil",
         "type": "Máscara de Umectação",
         "category": "tratamento",
-        "image": "/images/products/beeloved-oil.webp",
-        "fallbacks": [
-            "/images/products/bee-loved-oil.webp",
-            "/images/products/beeloved.webp",
-            "/images/products/mascara-umectacao.webp"
-        ],
+        "image": beeImage("beeloved-oil"),
         "desc": "Combinação de óleos e manteigas que envolve os fios com uma camada leve de nutrição, trazendo maciez, fortalecimento e hidratação.",
         "shortDesc": "Umectação profunda com óleo de coco, linhaça, manteiga de oliva e cera de arroz.",
         "tags": [
@@ -136,11 +115,7 @@
         "name": "BEE Yourself",
         "type": "Leave-in Super Definição",
         "category": "finalizacao",
-        "image": "/images/products/bee-yourself.webp",
-        "fallbacks": [
-            "/images/products/leavein-bee-yourself.webp",
-            "/images/products/leave-in-bee-yourself.webp"
-        ],
+        "image": beeImage("bee-yourself"),
         "desc": "A definição dos sonhos com textura hidratante, brilho, condicionamento, melhora da retenção de água e redução de porosidade.",
         "shortDesc": "Definição com hidratação, brilho, redução de porosidade e acabamento impecável.",
         "tags": [
@@ -160,11 +135,7 @@
         "name": "Let it BEE",
         "type": "Leave-in Leveza Natural",
         "category": "finalizacao",
-        "image": "/images/products/let-it-bee.webp",
-        "fallbacks": [
-            "/images/products/leavein-let-it-bee.webp",
-            "/images/products/leave-in-let-it-bee.webp"
-        ],
+        "image": beeImage("let-it-bee"),
         "desc": "Day after garantido com brilho e fixação suave para uma definição leve, natural e bonita.",
         "shortDesc": "Proteção térmica, controle de frizz e leveza para todos os tipos de curvatura.",
         "tags": [
@@ -184,11 +155,7 @@
         "name": "BEE Proud",
         "type": "Leave-in Antiencolhimento",
         "category": "finalizacao",
-        "image": "/images/products/bee-proud.webp",
-        "fallbacks": [
-            "/images/products/leavein-bee-proud.webp",
-            "/images/products/leave-in-bee-proud.webp"
-        ],
+        "image": beeImage("bee-proud"),
         "desc": "Previne o fator encolhimento e ajuda a manter os fios saudáveis, bonitos e com menos frizz.",
         "shortDesc": "Reduz fator encolhimento com manteiga de oliva e óleo de algodão.",
         "tags": [
@@ -208,11 +175,7 @@
         "name": "Be my BEE",
         "type": "Gelatina Capilar",
         "category": "finalizacao",
-        "image": "/images/products/be-my-bee.webp",
-        "fallbacks": [
-            "/images/products/gelatina-be-my-bee.webp",
-            "/images/products/gelatina.webp"
-        ],
+        "image": beeImage("be-my-bee"),
         "desc": "Definição com estilo e fixação. Hidrata, ajuda a reter umidade e deixa os fios macios e brilhosos.",
         "shortDesc": "Definição com fixação e hidratação com aloe vera e extrato de cana-de-açúcar.",
         "tags": [
@@ -232,11 +195,7 @@
         "name": "BEElieve in Acid",
         "type": "Elixir Acidificante",
         "category": "tratamento",
-        "image": "/images/products/beelieve-in-acid.webp",
-        "fallbacks": [
-            "/images/products/believe-in-acid.webp",
-            "/images/products/acidificante.webp"
-        ],
+        "image": beeImage("beelieve-in-acid"),
         "desc": "Equilibra o pH dos fios, sela as cutículas, proporciona brilho intenso e prepara o cabelo para tratamentos profundos.",
         "shortDesc": "Sela cutículas, equilibra o pH e intensifica o brilho dos fios.",
         "tags": [
@@ -271,19 +230,9 @@
   function buildMarketplaceUrl(market, product) {
     const query = buildMarketplaceQuery(product);
     if (!market || !market.key) return '#';
-
-    if (market.key === 'amazon') {
-      return `https://www.amazon.com.br/s?k=${query}`;
-    }
-
-    if (market.key === 'shopee') {
-      return `https://shopee.com.br/search?keyword=${query}`;
-    }
-
-    if (market.key === 'mercadolivre') {
-      return `https://lista.mercadolivre.com.br/${query}`;
-    }
-
+    if (market.key === 'amazon') return `https://www.amazon.com.br/s?k=${query}`;
+    if (market.key === 'shopee') return `https://shopee.com.br/search?keyword=${query}`;
+    if (market.key === 'mercadolivre') return `https://lista.mercadolivre.com.br/${query}`;
     return market.href || '#';
   }
 
@@ -292,8 +241,9 @@
   const esc = (s) => String(s || '').replace(/[&<>'"]/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[ch]));
 
   function imageAttrs(product) {
-    const list = [product.image].concat(product.fallbacks || []);
-    return `src="${esc(list[0])}" data-fallbacks='${esc(JSON.stringify(list.slice(1)))}'`;
+    const src = product.image || '';
+    const fallbacks = product.fallbacks || [];
+    return `src="${esc(src)}"${fallbacks.length ? ` data-fallbacks='${esc(JSON.stringify(fallbacks))}'` : ''}`;
   }
 
   function installImageFallback(img) {
@@ -335,13 +285,21 @@
   }
 
   function track(eventName, payload) {
+    const baseAttribution = (window.SCTracking && typeof window.SCTracking.getAttributionPayload === 'function')
+      ? window.SCTracking.getAttributionPayload()
+      : {};
     const data = cleanPayload(Object.assign({
       site: 'caracois.com.br',
       channel: 'bee',
       page_path: window.location.pathname,
       page_title: document.title || '',
       build_version: BUILD_VERSION
-    }, payload || {}));
+    }, baseAttribution, payload || {}));
+
+    if (window.SCTracking && typeof window.SCTracking.track === 'function') {
+      window.SCTracking.track(eventName, data);
+      return;
+    }
 
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push(Object.assign({ event: eventName }, data));
@@ -353,6 +311,8 @@
         window.clarity('event', eventName);
         if (data.product_id) window.clarity('set', 'bee_product_id', data.product_id);
         if (data.market) window.clarity('set', 'bee_marketplace', data.market);
+        if (data.source) window.clarity('set', 'source', data.source);
+        if (data.medium) window.clarity('set', 'medium', data.medium);
       }
     } catch(e) {}
   }
@@ -431,16 +391,51 @@
       </div>`;
   }
 
+  function ensureProductModal() {
+    // Garante 1 único modal de ficha Bee no DOM, independentemente da página.
+    let modals = $$('#productModal');
+    if (modals.length > 1) {
+      modals.slice(1).forEach(m => m.remove());
+    }
+    let modal = $('#productModal');
+    if (!modal) {
+      modal = document.createElement('div');
+      modal.className = 'product-modal-overlay';
+      modal.id = 'productModal';
+      modal.setAttribute('role', 'dialog');
+      modal.setAttribute('aria-modal', 'true');
+      modal.setAttribute('aria-hidden', 'true');
+      modal.setAttribute('aria-label', 'Ficha do produto');
+      modal.innerHTML = '<div class="product-modal"><button type="button" class="pm-close" aria-label="Fechar">&times;</button><div id="productModalContent"></div></div>';
+      document.body.appendChild(modal);
+    }
+    const shell = modal.querySelector('.product-modal') || modal;
+    if (!modal.querySelector('.pm-close')) {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'pm-close';
+      btn.setAttribute('aria-label', 'Fechar');
+      btn.innerHTML = '&times;';
+      shell.insertBefore(btn, shell.firstChild);
+    }
+    if (!modal.querySelector('#productModalContent')) {
+      const content = document.createElement('div');
+      content.id = 'productModalContent';
+      shell.appendChild(content);
+    }
+    return modal;
+  }
+
   function openProductModal(id) {
     const p = productById(id);
-    const modal = $('#productModal');
-    const content = $('#productModalContent') || $('.product-modal-content', modal) || $('.product-modal-body', modal) || $('.product-modal', modal);
+    const modal = ensureProductModal();
+    const content = $('#productModalContent', modal);
     if (!modal || !content) return;
 
     content.innerHTML = `
       <div class="pm-grid">
         <div class="pm-image">
-          <img ${imageAttrs(p)} alt="${esc(p.name)}" loading="lazy" decoding="async">
+          <img ${imageAttrs(p)} alt="${esc(p.name)}" loading="eager" decoding="async" fetchpriority="high">
         </div>
         <div class="pm-content">
           <div class="pm-category-tag">${esc(categoryLabel(p.category))}</div>
@@ -476,6 +471,10 @@
       </div>`;
 
     initImageFallbacks(content);
+    const box = modal.querySelector('.product-modal');
+    if (box) box.scrollTop = 0;
+    const pmContent = modal.querySelector('.pm-content');
+    if (pmContent) pmContent.scrollTop = 0;
     modal.classList.add('active','is-open','open');
     modal.setAttribute('aria-hidden','false');
     setModalLock(true);
@@ -542,6 +541,18 @@
         return;
       }
 
+      const closePm = event.target.closest('#productModal .pm-close');
+      if (closePm) {
+        closeProductModal();
+        return;
+      }
+
+      const overlay = event.target.closest('#productModal.product-modal-overlay');
+      if (overlay && event.target === overlay) {
+        closeProductModal();
+        return;
+      }
+
       const market = event.target.closest('[data-market]');
       if (market) {
         track('bee_marketplace_click', {
@@ -598,5 +609,6 @@
   window.closeBeeModal = closeBeeModal;
   window.closeBeeModalOnOverlay = closeBeeModalOnOverlay;
   window.openProductModal = openProductModal;
+  window.openBeeProductModal = openProductModal;
   window.closeProductModal = closeProductModal;
 })();
