@@ -3897,57 +3897,79 @@ body[data-page-type="bee-product"] nav.scrolled .mobile-toggle span {
 
 
 /* =========================================================
-   FIX GLOBAL — Modal de agendamento: card da unidade mais próxima
-   Build: 20260503-booking-nearest-cta-fix
-   Objetivo: impedir sobreposição do botão "Agendar agora" no mobile
-   Escopo: somente card destacado do modal de agendamento
+   FIX DEFINITIVO — Modal de agendamento: botão do card mais próximo
+   Build: 20260503-booking-nearest-definitive-fix
+   Escopo cirúrgico: somente #bookingNearestCard no modal de agendamento.
+   Motivo: o card é um <a> flex com conteúdo + <span> CTA; em telas estreitas,
+   o botão pode entrar na mesma linha do texto. Aqui forçamos fluxo vertical.
 ========================================================= */
 
-.booking-card.booking-nearest-card {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: flex-start;
-    gap: 14px;
+#bookingNearestCard.booking-card.booking-nearest-card {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    gap: 0 !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
 }
 
-.booking-nearest-content {
-    width: 100%;
-    min-width: 0;
-    flex: 0 1 auto;
+#bookingNearestCard .booking-nearest-content {
+    display: block !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    flex: 0 0 auto !important;
 }
 
-.booking-nearest-card .booking-card-name,
-.booking-nearest-card .booking-card-addr,
-.booking-nearest-card .booking-card-postal,
-.booking-nearest-card .booking-card-ref--light,
-.booking-nearest-dist,
-.booking-nearest-micro {
-    max-width: 100%;
+#bookingNearestCard .booking-card-name,
+#bookingNearestCard .booking-card-addr,
+#bookingNearestCard .booking-card-postal,
+#bookingNearestCard .booking-nearest-dist,
+#bookingNearestCard .booking-card-ref,
+#bookingNearestCard .booking-nearest-micro {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-wrap: anywhere !important;
+    word-break: normal !important;
 }
 
-.booking-nearest-cta {
-    position: static;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    align-self: flex-start;
-    margin-top: 2px;
-    min-height: 44px;
-    line-height: 1.2;
-    z-index: 1;
+#bookingNearestCard .booking-nearest-cta {
+    position: relative !important;
+    inset: auto !important;
+    float: none !important;
+    clear: both !important;
+    flex: 0 0 auto !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    align-self: flex-start !important;
+    width: auto !important;
+    max-width: 100% !important;
+    margin-top: 18px !important;
+    line-height: 1.2 !important;
+    white-space: normal !important;
+    text-align: center !important;
+    z-index: 2 !important;
 }
 
-@media (max-width: 560px) {
-    .booking-card.booking-nearest-card {
-        padding: 26px 22px;
-        gap: 16px;
+@media (max-width: 640px) {
+    #bookingNearestCard.booking-card.booking-nearest-card {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: stretch !important;
+        padding: 26px 22px !important;
     }
 
-    .booking-nearest-cta {
-        width: 100%;
-        align-self: stretch;
-        padding: 13px 18px;
-        text-align: center;
+    #bookingNearestCard .booking-nearest-cta {
+        width: 100% !important;
+        align-self: stretch !important;
+        min-height: 48px !important;
+        margin-top: 18px !important;
+        padding: 13px 18px !important;
     }
 }
+/* ========== FIM FIX DEFINITIVO BOOKING NEAREST ========== */
+
