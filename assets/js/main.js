@@ -2,7 +2,7 @@
 (function () {
   'use strict';
 
-  const BUILD_VERSION = '20260503-booking-modal-final-review';
+  const BUILD_VERSION = '20260504-central-articles-clean-final';
 
   document.documentElement.classList.remove('no-js');
   document.documentElement.classList.add('js');
@@ -377,47 +377,6 @@
     appendAttributionToBookingLinks();
   }
 
-
-
-  function enforceBookingNearestLayout() {
-    const card = $('#bookingNearestCard');
-    if (!card) return;
-    const content = $('#bookingNearestCard .booking-nearest-content');
-    const cta = $('#bookingNearestCard .booking-nearest-cta');
-
-    // Defesa final contra sobreposição: força o CTA para uma linha própria.
-    card.classList.add('booking-nearest-card--stacked');
-    card.style.display = 'block';
-    card.style.position = 'relative';
-    card.style.overflow = 'visible';
-    card.style.height = 'auto';
-    card.style.minHeight = '0';
-
-    if (content) {
-      content.style.display = 'block';
-      content.style.width = '100%';
-      content.style.maxWidth = '100%';
-      content.style.minWidth = '0';
-    }
-
-    if (cta) {
-      cta.style.position = 'static';
-      cta.style.inset = 'auto';
-      cta.style.float = 'none';
-      cta.style.clear = 'both';
-      cta.style.display = 'flex';
-      cta.style.alignItems = 'center';
-      cta.style.justifyContent = 'center';
-      cta.style.width = '100%';
-      cta.style.maxWidth = '100%';
-      cta.style.marginTop = '16px';
-      cta.style.whiteSpace = 'normal';
-      cta.style.textAlign = 'center';
-      cta.style.lineHeight = '1.2';
-      cta.style.zIndex = '2';
-    }
-  }
-
   function findNearest() {
     if (!navigator.geolocation) return;
     const btn = $('#waGeoBtn');
@@ -441,7 +400,6 @@
     navigator.geolocation.getCurrentPosition((pos) => {
       const unit = nearestUnit(pos);
       fillNearest('booking', unit, unit.booking || waLink(unit));
-      enforceBookingNearestLayout();
       if (label) label.style.display = '';
       if (btn) btn.disabled = false;
       track('nearest_unit_found', { channel: 'booking', unidade: unit.id, unit_slug: unit.slug, distance_km: unit.distance.toFixed(1) });
@@ -553,7 +511,6 @@
   document.addEventListener('DOMContentLoaded', () => {
     renderUnits();
     normalizeGeoModalUI();
-    enforceBookingNearestLayout();
     appendAttributionToBookingLinks();
     enhanceWhatsAppLinks();
     initNav();
