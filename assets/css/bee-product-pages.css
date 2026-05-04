@@ -808,3 +808,74 @@
   }
 }
 
+/* =========================================================
+   BEE PRODUCT PAGES — fix v13 (20260504)
+   Corrige a seção "Próximo passo":
+   - .btn-outline-white não existe no main.css (só .btn-outline para
+     fundo escuro). O JS pede essa classe, então o segundo botão virava
+     um .btn genérico claro com texto preto, parecendo idêntico ao
+     primeiro e com baixíssimo contraste contra o fundo escuro da seção.
+   - .bee-cat-cta-btns não tinha CSS de gap, então os botões empilhavam
+     colados em mobile.
+========================================================= */
+
+.bee-product-page .bee-cat-cta-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 32px;
+}
+
+.bee-product-page .bee-cat-cta-btns .btn {
+  min-height: 52px;
+  padding: 16px 30px;
+}
+
+/* Cria a variante .btn-outline-white para fundo escuro, escopada nas
+   páginas Bee (não vaza para o resto do site). Texto branco, borda
+   branca translúcida, fundo transparente — estética coerente com a
+   seção escura "Próximo Passo". */
+.bee-product-page .btn-outline-white {
+  background: transparent;
+  color: var(--white);
+  border: 1.5px solid rgba(255, 255, 255, .42);
+  font-weight: 500;
+  backdrop-filter: blur(8px);
+}
+
+.bee-product-page .btn-outline-white:hover {
+  background: rgba(255, 255, 255, .08);
+  border-color: var(--white);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+/* Reforço de contraste no .btn-white quando aparece sobre o gradiente
+   escuro da seção "Próximo Passo" — borda sutil dourada e peso firme. */
+.bee-product-page .bee-product-next-step .btn-white {
+  background: var(--white);
+  color: var(--terracota);
+  font-weight: 600;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .18);
+}
+
+.bee-product-page .bee-product-next-step .btn-white:hover {
+  background: var(--white);
+  color: var(--terracota-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, .26);
+}
+
+@media (max-width: 720px) {
+  .bee-product-page .bee-cat-cta-btns {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .bee-product-page .bee-cat-cta-btns .btn {
+    width: 100%;
+    max-width: 360px;
+  }
+}
+
