@@ -1,0 +1,1026 @@
+
+/* =========================================================
+   CARACÓIS CARE — PRODUCT PAGES — visual premium escopado em .care-product-page
+   Escopo seguro: .care-product-page
+========================================================= */
+
+.care-product-page {
+  background: #160f0e;
+  color: var(--white);
+}
+
+.care-product-page nav:not(.scrolled) {
+  background: transparent;
+}
+
+.care-product-page nav:not(.scrolled) .nav-links a,
+.care-product-page nav:not(.scrolled) .nav-social a {
+  color: rgba(255,255,255,.86);
+}
+
+.care-product-page nav:not(.scrolled) .mobile-toggle span {
+  background: var(--white);
+}
+
+.care-product-hero {
+  min-height: 100vh;
+  padding: 156px 0 86px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 760px 560px at 82% 20%, rgba(196,162,101,.16), transparent 65%),
+    radial-gradient(ellipse 680px 540px at 13% 86%, rgba(155,68,66,.42), transparent 68%),
+    linear-gradient(165deg, #120d0c 0%, #211514 42%, #7C3331 100%);
+}
+
+.care-product-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.025), transparent 28%),
+    radial-gradient(circle at 72% 45%, rgba(255,255,255,.05), transparent 36%);
+  pointer-events: none;
+}
+
+.care-product-shell {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: minmax(0, .98fr) minmax(420px, .9fr);
+  gap: 72px;
+  align-items: center;
+}
+
+.care-product-breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  align-items: center;
+  margin-bottom: 28px;
+  font-size: .74rem;
+  letter-spacing: .10em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.52);
+}
+
+.care-product-breadcrumb a {
+  color: var(--gold-light);
+  text-decoration: none;
+}
+
+.care-product-breadcrumb a:hover {
+  color: var(--white);
+}
+
+.care-product-badge {
+  display: inline-flex;
+  gap: 9px;
+  align-items: center;
+  padding: 9px 20px;
+  border-radius: 999px;
+  background: rgba(196,162,101,.13);
+  border: 1px solid rgba(196,162,101,.28);
+  color: var(--gold-light);
+  font-size: .73rem;
+  font-weight: 700;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  margin-bottom: 26px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.08);
+}
+
+.care-product-badge::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: var(--gold);
+  box-shadow: 0 0 14px rgba(196,162,101,.75);
+}
+
+.care-product-title {
+  font-family: var(--serif);
+  color: var(--white);
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-weight: 400;
+  line-height: .98;
+  letter-spacing: -.035em;
+  margin-bottom: 16px;
+  text-wrap: balance;
+}
+
+.care-product-type {
+  font-family: var(--serif);
+  color: var(--gold-light);
+  font-size: clamp(1.28rem, 2.4vw, 1.82rem);
+  font-style: italic;
+  line-height: 1.15;
+  margin-bottom: 26px;
+}
+
+.care-product-desc {
+  color: rgba(255,255,255,.82);
+  max-width: 690px;
+  font-size: 1.05rem;
+  line-height: 1.82;
+  margin-bottom: 30px;
+}
+
+.care-product-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 34px;
+}
+
+.care-product-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  color: rgba(255,255,255,.92);
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.17);
+  font-size: .82rem;
+  font-weight: 600;
+  backdrop-filter: blur(8px);
+}
+
+.care-product-pill::before {
+  content: "✓";
+  color: var(--gold-light);
+}
+
+.care-product-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: center;
+}
+
+.care-product-ctas .btn-outline {
+  border-color: rgba(255,255,255,.28);
+  color: var(--white);
+}
+
+.care-product-ctas .btn-outline:hover {
+  border-color: rgba(255,255,255,.72);
+  background: rgba(255,255,255,.08);
+}
+
+.care-product-visual {
+  min-height: 540px;
+  border-radius: 34px;
+  border: 1px solid rgba(255,255,255,.14);
+  background:
+    radial-gradient(circle at 42% 18%, rgba(255,255,255,.18), transparent 34%),
+    linear-gradient(145deg, rgba(255,255,255,.14), rgba(255,255,255,.035));
+  box-shadow: 0 34px 100px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 44px;
+  position: relative;
+  overflow: hidden;
+}
+
+.care-product-visual::before {
+  content: "";
+  position: absolute;
+  inset: 10%;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(239,217,215,.38), transparent 64%);
+  filter: blur(16px);
+  opacity: .85;
+}
+
+.care-product-visual::after {
+  content: "Care";
+  position: absolute;
+  right: 34px;
+  bottom: 26px;
+  font-family: var(--serif);
+  font-style: italic;
+  color: rgba(255,255,255,.22);
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  pointer-events: none;
+}
+
+.care-product-image-frame {
+  position: relative;
+  z-index: 2;
+  width: min(440px, 86%);
+  aspect-ratio: 1 / 1;
+  border-radius: 28px;
+  background: rgba(255,255,255,.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 34px;
+  box-shadow: 0 24px 70px rgba(0,0,0,.22);
+  overflow: hidden;
+}
+
+.care-product-image-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 14px 26px rgba(0,0,0,.14));
+}
+
+.care-product-image-frame.is-placeholder {
+  background: linear-gradient(155deg, #FAF1EF, #EFD9D7);
+  border: 1px solid rgba(155,68,66,.14);
+}
+
+.care-product-image-frame.is-placeholder .care-placeholder-name {
+  font-family: var(--serif);
+  color: var(--terracota);
+  text-align: center;
+  font-size: 2rem;
+  line-height: 1.1;
+}
+
+.care-product-meta-strip {
+  background: var(--white);
+  color: var(--text);
+  padding: 34px 0;
+  border-bottom: 1px solid rgba(155,68,66,.08);
+}
+
+.care-product-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.care-product-meta-card {
+  background: var(--nude-ultra);
+  border: 1px solid rgba(155,68,66,.08);
+  border-radius: 18px;
+  padding: 20px;
+  text-align: center;
+}
+
+.care-product-meta-card span {
+  display: block;
+  color: var(--terracota);
+  font-size: .66rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.care-product-meta-card strong {
+  color: var(--black);
+  font-size: .98rem;
+  line-height: 1.3;
+}
+
+.care-product-content {
+  background: var(--white);
+  color: var(--text);
+  padding: 100px 0;
+}
+
+.care-product-content-grid {
+  display: grid;
+  grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr);
+  gap: 54px;
+  align-items: start;
+}
+
+.care-product-editorial {
+  position: sticky;
+  top: 112px;
+  background: linear-gradient(145deg, var(--nude-ultra), #fff);
+  border: 1px solid rgba(155,68,66,.08);
+  border-radius: 30px;
+  padding: 38px;
+  box-shadow: 0 24px 60px rgba(0,0,0,.045);
+}
+
+.care-product-editorial .section-label {
+  margin-bottom: 16px;
+}
+
+.care-product-editorial h2,
+.care-product-info-block h2 {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 3.8vw, 3.05rem);
+  font-weight: 400;
+  color: var(--black);
+  line-height: 1.15;
+  margin-bottom: 18px;
+}
+
+.care-product-editorial p,
+.care-product-info-block p {
+  color: var(--text-light);
+  line-height: 1.78;
+  font-size: 1rem;
+}
+
+.care-product-info-stack {
+  display: grid;
+  gap: 22px;
+}
+
+.care-product-info-block {
+  background: var(--nude-ultra);
+  border: 1px solid rgba(155,68,66,.08);
+  border-radius: 26px;
+  padding: 34px;
+}
+
+.care-product-info-block h2 {
+  font-size: clamp(1.75rem, 3.2vw, 2.45rem);
+  margin-bottom: 14px;
+}
+
+.care-product-info-block .ingredients {
+  font-size: .92rem;
+  line-height: 1.72;
+}
+
+.care-product-related {
+  padding: 100px 0;
+  background: linear-gradient(135deg, var(--nude-ultra), var(--nude-light));
+  color: var(--text);
+}
+
+.care-product-related-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0,1fr));
+  gap: 18px;
+  margin-top: 34px;
+}
+
+.care-product-related-card {
+  display: block;
+  text-decoration: none;
+  background: var(--white);
+  color: var(--text);
+  border: 1px solid rgba(155,68,66,.08);
+  border-radius: 22px;
+  padding: 24px;
+  transition: all .32s var(--ease);
+  min-height: 168px;
+}
+
+.care-product-related-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--terracota);
+  box-shadow: 0 18px 42px rgba(155,68,66,.1);
+}
+
+.care-product-related-card span {
+  display: block;
+  color: var(--gold);
+  font-size: .68rem;
+  text-transform: uppercase;
+  letter-spacing: .13em;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.care-product-related-card strong {
+  display: block;
+  color: var(--black);
+  font-family: var(--serif);
+  font-size: 1.45rem;
+  line-height: 1.1;
+  margin-bottom: 9px;
+}
+
+.care-product-related-card small {
+  color: var(--text-light);
+  line-height: 1.45;
+}
+
+/* Botão flutuante: garante um único ícone legível nas páginas Bee */
+.care-product-page .whatsapp-float svg,
+.care-product-page .whatsapp-float img {
+  width: 30px;
+  height: 30px;
+}
+
+@media (max-width: 1060px) {
+  .care-product-shell {
+    grid-template-columns: 1fr;
+    gap: 46px;
+  }
+
+  .care-product-visual {
+    min-height: 430px;
+  }
+
+  .care-product-meta-grid,
+  .care-product-related-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .care-product-content-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .care-product-editorial {
+    position: static;
+  }
+}
+
+@media (max-width: 720px) {
+  .care-product-hero {
+    padding: 122px 0 70px;
+    min-height: auto;
+  }
+
+  .care-product-title {
+    font-size: clamp(2.75rem, 14vw, 4.2rem);
+  }
+
+  .care-product-type {
+    font-size: 1.35rem;
+  }
+
+  .care-product-desc {
+    font-size: .98rem;
+  }
+
+  .care-product-ctas .btn {
+    width: 100%;
+  }
+
+  .care-product-visual {
+    min-height: 360px;
+    border-radius: 28px;
+    padding: 24px;
+  }
+
+  .care-product-image-frame {
+    width: min(340px, 94%);
+    padding: 24px;
+  }
+
+  .care-product-meta-grid,
+  .care-product-related-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .care-product-content,
+  .care-product-related {
+    padding: 72px 0;
+  }
+
+  .care-product-editorial,
+  .care-product-info-block {
+    padding: 28px;
+  }
+}
+
+@media (max-width: 520px) {
+  .care-product-pills {
+    gap: 8px;
+  }
+
+  .care-product-pill {
+    font-size: .76rem;
+    padding: 9px 13px;
+  }
+
+  .care-product-breadcrumb {
+    font-size: .66rem;
+  }
+}
+
+
+/* =========================================================
+   BEE PRODUCT PAGES — hard fix final 20260504
+   Corrige navegação interna/marketplaces que apareciam como links azuis
+   e reforça escopo mobile sem interferir no modal global Bee.
+========================================================= */
+.care-product-page .care-product-market-row,
+.care-product-page .care-product-section-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin: 18px 0 0;
+}
+.care-product-page .care-product-market-row a,
+.care-product-page .care-product-market-chip,
+.care-product-page .care-product-section-nav a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  font-family: var(--sans);
+  font-size: .78rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: .04em;
+  text-decoration: none !important;
+  transition: all .28s var(--ease);
+}
+.care-product-page .care-product-market-row a,
+.care-product-page .care-product-market-chip {
+  color: var(--black) !important;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  border: 1px solid rgba(196,162,101,.35);
+  box-shadow: 0 10px 26px rgba(196,162,101,.20);
+}
+.care-product-page .care-product-market-row a:hover,
+.care-product-page .care-product-market-chip:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 34px rgba(196,162,101,.28);
+}
+.care-product-page .care-product-section-nav a {
+  color: rgba(255,255,255,.88) !important;
+  background: rgba(255,255,255,.075);
+  border: 1px solid rgba(255,255,255,.16);
+  backdrop-filter: blur(8px);
+}
+.care-product-page .care-product-section-nav a:hover {
+  color: var(--white) !important;
+  border-color: rgba(255,255,255,.35);
+  background: rgba(255,255,255,.12);
+}
+.care-product-page .care-product-buy-section,
+.care-product-page .care-product-next-step,
+.care-product-page .care-product-guide,
+.care-product-page .care-product-related {
+  scroll-margin-top: 96px;
+}
+.care-product-page .care-cat-buy-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+.care-product-page .care-product-market-card {
+  text-decoration: none !important;
+}
+.care-product-page .care-product-market-card .care-cat-buy-label {
+  color: var(--text-light);
+}
+@media (max-width: 768px) {
+  .care-product-page .care-product-section-nav,
+  .care-product-page .care-product-market-row {
+    gap: 8px;
+  }
+  .care-product-page .care-product-market-row a,
+  .care-product-page .care-product-market-chip,
+  .care-product-page .care-product-section-nav a {
+    min-height: 38px;
+    padding: 9px 12px;
+    font-size: .72rem;
+  }
+  .care-product-page .care-cat-buy-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* =========================================================
+   BEE PRODUCT PAGES — fix v12 (20260504)
+   Corrige bugs estruturais que existiam no CSS original:
+   1. CRÍTICO: o main.css tem regra global "nav { position: fixed; top: 0;
+      width: 100%; z-index: 1000 }" para o nav principal do site, mas como
+      o seletor não está qualificado, ele afeta TODOS os <nav> da página.
+      Os HTMLs de produto têm dois <nav> internos (.care-product-breadcrumb
+      e .care-product-section-nav) que herdam fixed e ficam flutuando no
+      topo, sobrepostos ao nav principal — exatamente o que aparece como
+      pill "MODO DE USAR / COMPOSIÇÃO / RELACIONADOS" sobre o logo nas
+      screenshots reportadas. Aqui resetamos esses navs internos.
+   2. .care-product-details-grid sem regra de grid (HTML usa essa classe,
+      mas o CSS antigo só tinha regras para .care-product-content-grid).
+   3. .care-product-specs-panel e .care-product-spec sem CSS — herdavam
+      genérico e ficavam sem hierarquia.
+   4. .care-product-section-nav (dentro do editorial, fundo claro) tinha
+      cores de texto branco com fundo translúcido — invisível no fundo
+      claro. Estilo agora coerente com o fundo claro.
+   Tudo escopado em .care-product-page para não vazar.
+========================================================= */
+
+/* 1. CRÍTICO: reset de position fixed para navs INTERNOS das páginas Bee.
+   Vence sobre a regra "nav { position: fixed }" do main.css por
+   especificidade de classe + ancestral. */
+.care-product-page nav.care-product-breadcrumb,
+.care-product-page nav.care-product-section-nav {
+  position: static;
+  top: auto;
+  width: auto;
+  z-index: auto;
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+/* 2. Section "care-product-details" e seu grid principal */
+.care-product-page .care-product-details {
+  background: var(--white);
+  color: var(--text);
+  padding: 80px 0 100px;
+}
+
+.care-product-page .care-product-details-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+@media (min-width: 980px) {
+  .care-product-page .care-product-details-grid {
+    grid-template-columns: minmax(260px, 320px) minmax(0, 1fr) minmax(280px, 380px);
+    gap: 40px;
+  }
+}
+
+/* Em mobile garante que o painel de specs aparece primeiro */
+.care-product-page .care-product-specs-panel { order: 1; }
+.care-product-page .care-product-editorial   { order: 2; }
+.care-product-page .care-product-info-stack  { order: 3; }
+@media (min-width: 980px) {
+  .care-product-page .care-product-specs-panel,
+  .care-product-page .care-product-editorial,
+  .care-product-page .care-product-info-stack { order: initial; }
+}
+
+/* 2. Painel de specs (Volume / pH / ANVISA / Código de barras) */
+.care-product-page .care-product-specs-panel {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  padding: 22px;
+  background: linear-gradient(155deg, var(--nude-ultra), #fff);
+  border: 1px solid rgba(155, 68, 66, .08);
+  border-radius: 22px;
+  box-shadow: 0 14px 36px rgba(0, 0, 0, .04);
+}
+
+@media (min-width: 980px) {
+  .care-product-page .care-product-specs-panel {
+    grid-template-columns: 1fr;
+    position: sticky;
+    top: 112px;
+  }
+}
+
+.care-product-page .care-product-spec {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 14px 16px;
+  background: var(--white);
+  border: 1px solid rgba(155, 68, 66, .06);
+  border-radius: 14px;
+}
+
+.care-product-page .care-product-spec span {
+  color: var(--terracota);
+  font-family: var(--sans);
+  font-size: .64rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.care-product-page .care-product-spec strong {
+  color: var(--black);
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 1.05rem;
+  line-height: 1.25;
+  word-break: break-word;
+}
+
+/* 3. Editorial: NÃO sticky em mobile (o sticky do CSS antigo só desligava
+   via .care-product-content-grid, que não existe no HTML). */
+.care-product-page .care-product-editorial {
+  position: static;
+}
+
+@media (min-width: 980px) {
+  .care-product-page .care-product-editorial {
+    position: sticky;
+    top: 112px;
+  }
+}
+
+/* 4. Section nav DENTRO do editorial: cores claras no fundo branco/nude.
+   Override deve vir DEPOIS do bloco antigo (linhas 544-554) — está aqui no
+   final, então ganha por especificidade. */
+.care-product-page .care-product-editorial .care-product-section-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 22px;
+  padding: 0;
+  background: transparent;
+  border: 0;
+}
+
+.care-product-page .care-product-editorial .care-product-section-nav a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 36px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-family: var(--sans);
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--terracota) !important;
+  background: rgba(155, 68, 66, .06);
+  border: 1px solid rgba(155, 68, 66, .14);
+  backdrop-filter: none;
+  text-decoration: none !important;
+  transition: all .26s var(--ease);
+}
+
+.care-product-page .care-product-editorial .care-product-section-nav a:hover {
+  color: var(--white) !important;
+  background: var(--terracota);
+  border-color: var(--terracota);
+}
+
+/* 5. Info-stack: blocos de Modo de usar / Composição com leitura confortável */
+.care-product-page .care-product-info-stack {
+  display: grid;
+  gap: 18px;
+}
+
+/* 6. Tipografia de detalhes em mobile — evita quebras agressivas em colunas
+   estreitas (era o caso onde "Modo de usar" virava 1-2 palavras por linha). */
+.care-product-page .care-product-editorial p,
+.care-product-page .care-product-info-block p {
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  word-break: normal;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 720px) {
+  .care-product-page .care-product-details {
+    padding: 60px 0 80px;
+  }
+  .care-product-page .care-product-specs-panel {
+    grid-template-columns: 1fr;
+    padding: 18px;
+  }
+}
+
+/* 7. Print: ficha técnica limpa */
+@media print {
+  .care-product-page nav,
+  .care-product-page .whatsapp-float,
+  .care-product-page .care-product-ctas,
+  .care-product-page .care-product-section-nav,
+  .care-product-page .care-product-buy-section,
+  .care-product-page .care-product-next-step,
+  .care-product-page .care-product-related,
+  .care-product-page footer {
+    display: none !important;
+  }
+  .care-product-page,
+  .care-product-hero,
+  .care-product-details {
+    background: #fff !important;
+    color: #000 !important;
+    min-height: auto !important;
+    padding: 16pt 0 !important;
+  }
+  .care-product-page .care-product-title,
+  .care-product-page .care-product-type,
+  .care-product-page .care-product-desc,
+  .care-product-page .care-product-spec strong {
+    color: #000 !important;
+  }
+}
+
+/* =========================================================
+   BEE PRODUCT PAGES — fix v13 (20260504)
+   Corrige a seção "Próximo passo":
+   - .btn-outline-white não existe no main.css (só .btn-outline para
+     fundo escuro). O JS pede essa classe, então o segundo botão virava
+     um .btn genérico claro com texto preto, parecendo idêntico ao
+     primeiro e com baixíssimo contraste contra o fundo escuro da seção.
+   - .care-cat-cta-btns não tinha CSS de gap, então os botões empilhavam
+     colados em mobile.
+========================================================= */
+
+.care-product-page .care-cat-cta-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 32px;
+}
+
+.care-product-page .care-cat-cta-btns .btn {
+  min-height: 52px;
+  padding: 16px 30px;
+}
+
+/* Cria a variante .btn-outline-white para fundo escuro, escopada nas
+   páginas Bee (não vaza para o resto do site). Texto branco, borda
+   branca translúcida, fundo transparente — estética coerente com a
+   seção escura "Próximo Passo". */
+.care-product-page .btn-outline-white {
+  background: transparent;
+  color: var(--white);
+  border: 1.5px solid rgba(255, 255, 255, .42);
+  font-weight: 500;
+  backdrop-filter: blur(8px);
+}
+
+.care-product-page .btn-outline-white:hover {
+  background: rgba(255, 255, 255, .08);
+  border-color: var(--white);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+/* Reforço de contraste no .btn-white quando aparece sobre o gradiente
+   escuro da seção "Próximo Passo" — borda sutil dourada e peso firme. */
+.care-product-page .care-product-next-step .btn-white {
+  background: var(--white);
+  color: var(--terracota);
+  font-weight: 600;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .18);
+}
+
+.care-product-page .care-product-next-step .btn-white:hover {
+  background: var(--white);
+  color: var(--terracota-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, .26);
+}
+
+@media (max-width: 720px) {
+  .care-product-page .care-cat-cta-btns {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .care-product-page .care-cat-cta-btns .btn {
+    width: 100%;
+    max-width: 360px;
+  }
+}
+
+
+/* =========================================================
+   MODAL DE MARKETPLACES — escopado nas páginas individuais
+   Espelha o estilo .bee-modal-* do main.css, mas como
+   .care-modal-* não está em nenhum CSS compartilhado, fica
+   aqui no caracois-care-product-pages.css para garantir que
+   o modal do botão "Comprar nos marketplaces" funcione.
+========================================================= */
+
+.care-modal-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,.62);
+  backdrop-filter: blur(8px);
+  z-index: 2000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.care-modal-overlay.active { display: flex; }
+
+.care-modal {
+  background: var(--white, #fff);
+  border-radius: 26px;
+  max-width: 540px;
+  width: 100%;
+  padding: 42px 38px 36px;
+  position: relative;
+  box-shadow: 0 30px 90px rgba(0,0,0,.26);
+  animation: care-modal-pop .35s cubic-bezier(.22,.61,.36,1);
+}
+@keyframes care-modal-pop {
+  from { opacity: 0; transform: translateY(20px) scale(.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.care-modal-close {
+  position: absolute;
+  top: 16px; right: 16px;
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(155,68,66,.14);
+  background: rgba(255,255,255,.92);
+  color: var(--terracota, #9B4442);
+  font-size: 1.4rem;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all .26s ease;
+}
+.care-modal-close:hover {
+  background: var(--terracota, #9B4442);
+  color: var(--white, #fff);
+  border-color: var(--terracota, #9B4442);
+}
+
+.care-modal-header {
+  margin-bottom: 24px;
+  text-align: center;
+}
+.care-modal-header h3 {
+  font-family: var(--serif, 'Cormorant Garamond', serif);
+  font-size: 1.55rem;
+  color: var(--black, #141414);
+  font-weight: 500;
+  margin: 0 0 8px;
+  line-height: 1.2;
+}
+.care-modal-header p {
+  font-size: .92rem;
+  color: var(--text-light, #444);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.care-modal-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.care-modal-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 22px 12px;
+  background: var(--white, #fff);
+  border: 1px solid rgba(155,68,66,.12);
+  border-radius: 18px;
+  text-decoration: none;
+  color: var(--black, #141414);
+  transition: all .3s ease;
+  min-height: 108px;
+  text-align: center;
+}
+.care-modal-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--terracota, #9B4442);
+  box-shadow: 0 14px 32px rgba(155,68,66,.14);
+}
+.care-modal-card strong {
+  font-family: var(--serif, 'Cormorant Garamond', serif);
+  font-size: 1.05rem;
+  color: var(--terracota, #9B4442);
+  font-weight: 600;
+  line-height: 1.2;
+}
+.care-modal-card span {
+  font-size: .74rem;
+  color: var(--text-muted, #777);
+  line-height: 1.3;
+}
+
+.care-modal-footer {
+  text-align: center;
+  padding-top: 18px;
+  border-top: 1px solid var(--border, rgba(0,0,0,.08));
+}
+.care-modal-footer .btn { margin-top: 6px; }
+
+@media (max-width: 520px) {
+  .care-modal {
+    padding: 32px 22px 28px;
+    border-radius: 22px;
+  }
+  .care-modal-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .care-modal-card {
+    flex-direction: row;
+    justify-content: flex-start;
+    text-align: left;
+    padding: 16px 18px;
+    min-height: auto;
+    gap: 14px;
+  }
+  .care-modal-card strong { font-size: 1rem; }
+  .care-modal-header h3 { font-size: 1.35rem; }
+}
