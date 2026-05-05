@@ -73,6 +73,26 @@
     <button type="button" class="btn btn-primary mobile-menu-cta" onclick="closeMobileMenu(false); openBooking()">Agendar avaliação</button>
   </div>
 
+  <div class="wa-modal-overlay" id="waModal" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Escolha sua unidade" onclick="closeModalOnOverlay(event, 'waModal')">
+  <div class="wa-modal" style="position:relative">
+    <button type="button" class="wa-modal-close" onclick="closeModal('waModal')" aria-label="Fechar">&times;</button>
+    <div class="wa-modal-header"><div class="wa-modal-title" role="heading" aria-level="2">Escolha sua unidade</div><p>Fale diretamente com o Studio mais perto de você</p></div>
+    <div class="wa-unit-list" id="waUnitList">
+      <button type="button" class="wa-geo-btn" id="waGeoBtn" onclick="findNearest()"><span id="geoBtnText">Usar minha localização</span></button>
+      <div class="wa-nearest-wrap" id="waNearestWrap" style="display:none"><div class="wa-nearest-label">Encontramos a unidade mais próxima de você</div><a target="_blank" rel="noopener" class="wa-unit-item wa-nearest-card" id="waNearestCard"><div class="wa-unit-copy"><div class="wa-unit-name" id="waNearestName"></div><div class="wa-unit-meta" id="waNearestAddr"></div><div class="wa-unit-meta wa-unit-meta--muted" id="waNearestPostal"></div><div class="wa-unit-meta wa-unit-meta--landmark" id="waNearestRef"></div><div class="wa-unit-distance" id="waNearestDist"></div></div><span class="wa-nearest-cta">Falar agora</span></a></div>
+      <div class="wa-other-label" id="waOtherLabel" style="display:none">Todas as unidades</div><div class="wa-unit-items" id="waUnitItems"></div>
+    </div>
+  </div>
+<div class="booking-overlay" id="bookingModal" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Escolha sua unidade para agendar" onclick="closeModalOnOverlay(event, 'bookingModal')">
+  <div class="booking-modal">
+    <button type="button" class="booking-close" onclick="closeModal('bookingModal')" aria-label="Fechar">&times;</button>
+    <div class="booking-header"><div class="booking-modal-title" role="heading" aria-level="2">Escolha a unidade mais próxima de você</div><p>Atendimento especializado em cabelos cacheados com avaliação personalizada</p></div>
+    <button type="button" class="booking-geo-btn" id="bookingGeoBtn" onclick="findNearestBooking()"><span id="bookingGeoBtnText">Encontrar unidade mais próxima</span></button>
+    <div class="booking-nearest-wrap" id="bookingNearestWrap" style="display:none"><div class="booking-nearest-label">Encontramos a unidade mais próxima de você</div><a target="_blank" rel="noopener noreferrer" class="booking-card booking-nearest-card" id="bookingNearestCard"><div class="booking-nearest-content"><div class="booking-card-name" id="bookingNearestName"></div><div class="booking-card-addr" id="bookingNearestAddr"></div><div class="booking-card-postal" id="bookingNearestPostal"></div><div class="booking-nearest-dist" id="bookingNearestDist"></div><div class="booking-card-ref booking-card-ref--light" id="bookingNearestRef"></div></div><span class="booking-nearest-cta">Agendar agora</span></a></div>
+    <div class="booking-other-label" id="bookingOtherLabel" style="display:none">Todas as unidades</div><div class="booking-grid" id="bookingGrid"></div>
+    <div class="booking-footer"><p>Não tem certeza? <a href="#" onclick="event.preventDefault(); closeModal('bookingModal'); openWaModal();">Fale com nossa equipe no WhatsApp</a></p></div>
+  </div>
+</div>
   <!-- Modal global Caracóis Care -->
   <div class="care-modal-overlay" id="careModal" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Escolha onde comprar Caracóis Care" onclick="closeCareModalOnOverlay(event)">
     <div class="care-modal">
