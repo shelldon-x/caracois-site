@@ -149,62 +149,50 @@ body[data-page-type="article"] .reveal { opacity: 1; visibility: visible; transf
   .related-card-num { font-size: 1.5rem; }
 }
 
-
 /* =========================================================
-   ARTICLE MOBILE REFINEMENT — Studio Caracóis
-   Build: 20260505-articles-safearea-final
+   Articles polish + regression fix
+   Build: 20260505-article-header-cta-final
 ========================================================= */
-body[data-page-type="article"] {
-  color-scheme: light;
+body[data-page-type="article"] .page-hero-content {
+  max-width: 820px;
+}
+
+body[data-page-type="article"] .article-body {
+  overflow-wrap: anywhere;
+}
+
+body[data-page-type="article"] .article-body p,
+body[data-page-type="article"] .article-body li {
+  text-wrap: pretty;
+}
+
+body[data-page-type="article"] .cta-strip {
+  margin-bottom: 0;
 }
 
 @media (max-width: 768px) {
-  body[data-page-type="article"] .page-hero {
-    padding-top: 112px;
-    padding-bottom: 58px;
-  }
-
-  body[data-page-type="article"] .article-layout {
-    padding-top: 54px;
-    padding-bottom: calc(96px + env(safe-area-inset-bottom));
-  }
-
-  body[data-page-type="article"] .article-body {
-    overflow-wrap: anywhere;
-  }
-
-  body[data-page-type="article"] .article-body p,
-  body[data-page-type="article"] .article-body li {
-    font-size: 0.98rem;
-    line-height: 1.82;
-  }
-
-  body[data-page-type="article"] .article-body h2 {
-    margin-top: 42px;
-    line-height: 1.18;
-  }
-
-  body[data-page-type="article"] .article-highlight,
-  body[data-page-type="article"] .info-box,
-  body[data-page-type="article"] .article-cta-inline {
-    max-width: 100%;
-  }
-
-  body[data-page-type="article"] .related-articles {
-    padding-bottom: calc(96px + env(safe-area-inset-bottom));
-  }
-}
-
-@media (max-width: 480px) {
   body[data-page-type="article"] .page-hero h1 {
-    font-size: clamp(2rem, 11vw, 2.75rem);
+    font-size: clamp(2.05rem, 9vw, 3rem);
+    line-height: 1.05;
   }
 
   body[data-page-type="article"] .page-hero-sub {
-    font-size: 0.98rem;
+    font-size: .98rem;
+    line-height: 1.65;
   }
 
-  body[data-page-type="article"] .article-layout {
-    padding-top: 46px;
+  body[data-page-type="article"] .article-body h2 {
+    margin-top: 40px;
+  }
+
+  body[data-page-type="article"] .article-body p {
+    font-size: .98rem;
+    line-height: 1.78;
+  }
+
+  body[data-page-type="article"] .article-cta-inline,
+  body[data-page-type="article"] .info-box,
+  body[data-page-type="article"] .sidebar-cta-box {
+    border-radius: 18px;
   }
 }
