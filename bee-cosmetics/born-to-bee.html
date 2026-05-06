@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-0J7RBF2BFX"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-0J7RBF2BFX',{send_page_view:true,cookie_flags:'SameSite=None;Secure'});</script>
   <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','1522260281454126');fbq('track','PageView');</script><noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1522260281454126&ev=PageView&noscript=1" alt=""></noscript>
-  <link rel="stylesheet" href="/assets/css/main.css?v=20260505-products-tracking-definitive-v1"><link rel="stylesheet" href="/assets/css/bee-product-pages.css?v=20260505-products-tracking-definitive-v1">
+  <link rel="stylesheet" href="P260506-products-tracking-safearea-final"><link rel="stylesheet" href="P260506-products-tracking-safearea-final">
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Product", "name": "Born to BEE", "brand": {"@type": "Brand", "name": "Bee Cosmetics"}, "category": "Shampoo Sem Sulfato", "description": "Tenha uma limpeza eficaz sem ressecar ou agredir os fios. O Shampoo Sem Sulfato Born to BEE, com limpante natural, deixa o cabelo limpo e hidratado, perfeito para rotinas de limpeza suave.", "image": "https://caracois.com.br/images/products/born-to-bee.webp", "url": "https://caracois.com.br/bee-cosmetics/born-to-bee", "offers": {"@type": "Offer", "priceCurrency": "BRL", "price": "89.00", "availability": "https://schema.org/InStock"}, "gtin13": "7899085798567"}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Início", "item": "https://caracois.com.br"}, {"@type": "ListItem", "position": 2, "name": "Bee Cosmetics", "item": "https://caracois.com.br/bee-cosmetics"}, {"@type": "ListItem", "position": 3, "name": "Born to BEE"}]}</script>
 
   <link rel="dns-prefetch" href="https://s.pinimg.com">
@@ -148,224 +148,164 @@
 </footer>
 <button type="button" class="whatsapp-float" onclick="openWaModal()" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><use href="#i-wa"/></svg></button>
 <button aria-label="Agendar avaliação" class="sticky-cta" onclick="openBooking()" type="button"><svg fill="none" height="18" stroke="white" stroke-width="2" viewBox="0 0 24 24" width="18"><rect height="18" rx="2" width="18" x="3" y="4"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>Agendar agora</button>
-  <script src="/assets/js/main.js?v=20260505-products-tracking-definitive-v1" defer></script><script src="/assets/js/bee-catalog.js?v=20260505-products-tracking-definitive-v1" defer></script><script src="/assets/js/bee-product-pages.js?v=20260505-products-tracking-definitive-v1" defer></script>
-
-<script id="sc-product-tracking-plus">
-(function () {
+  <script src="P260506-products-tracking-safearea-final" defer></script><script src="P260506-products-tracking-safearea-final" defer></script><script src="P260506-products-tracking-safearea-final" defer></script>
+<script>
+(function(){
   'use strict';
-  var BUILD_VERSION = '20260505-products-tracking-definitive-v1';
-  var pageStart = Date.now();
-  var conversionIntent = false;
+  if (window.SCProductTrackingInstalled) return;
+  window.SCProductTrackingInstalled = true;
+  window.SC_PRODUCT_TRACKING_BUILD = '20260506-products-tracking-safearea-final';
+  var start = Date.now();
 
-  function readStorage(key) {
-    try { return JSON.parse(localStorage.getItem(key) || 'null') || {}; } catch (e) { return {}; }
+  function safeParse(value){
+    try { return value ? JSON.parse(value) : null; } catch(e){ return value || ''; }
   }
-
-  function getParams() {
+  function getAttribution(){
     var params = new URLSearchParams(window.location.search || '');
-    var keys = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','gclid','gbraid','wbraid','fbclid','msclkid'];
-    var out = {};
-    keys.forEach(function (key) { if (params.get(key)) out[key] = params.get(key); });
-    return out;
-  }
-
-  function clean(obj) {
-    var out = {};
-    Object.keys(obj || {}).forEach(function (key) {
-      var value = obj[key];
-      if (value === undefined || value === null || value === '') return;
-      if (typeof value === 'object') { out[key] = value; return; }
-      out[key] = String(value).slice(0, 500);
+    var attrs = {};
+    ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','gclid','fbclid','msclkid'].forEach(function(k){
+      if (params.get(k)) attrs[k] = params.get(k);
     });
-    return out;
+    attrs.first_touch = safeParse(localStorage.getItem('sc_first_touch')) || '';
+    attrs.last_touch = safeParse(localStorage.getItem('sc_last_touch')) || '';
+    attrs.referrer = document.referrer || '(direct)';
+    attrs.page_path = location.pathname;
+    attrs.page_url = location.href;
+    return attrs;
   }
-
-  function getProductFromSchema() {
-    var scripts = Array.prototype.slice.call(document.querySelectorAll('script[type="application/ld+json"]'));
-    for (var i = 0; i < scripts.length; i++) {
-      try {
-        var data = JSON.parse(scripts[i].textContent || '{}');
-        if (data && data['@type'] === 'Product') return data;
-      } catch (e) {}
-    }
-    return {};
+  function getProductData(extra){
+    var body = document.body || {};
+    var pageType = body.dataset ? (body.dataset.pageType || '') : '';
+    var id = body.dataset ? (body.dataset.productId || body.dataset.productSlug || '') : '';
+    var slug = body.dataset ? (body.dataset.productSlug || id || '') : '';
+    var brand = pageType.indexOf('care') > -1 ? 'caracois_care' : (pageType.indexOf('bee') > -1 ? 'bee_cosmetics' : 'studio_caracois');
+    var name = (document.querySelector('#beeProductName,#careProductName,.care-cat-hero-title') || {}).textContent || document.title || slug;
+    var category = (document.querySelector('#beeProductCategory,#careProductCategory') || {}).textContent || '';
+    var payload = Object.assign({
+      product_id: id,
+      product_slug: slug,
+      product_name: String(name).replace(/\s+/g,' ').trim(),
+      product_category: String(category).replace(/\s+/g,' ').trim(),
+      brand: brand,
+      page_type: pageType || 'product',
+      build_version: window.SC_PRODUCT_TRACKING_BUILD,
+      time_on_page_ms: Date.now() - start
+    }, getAttribution(), extra || {});
+    return payload;
   }
-
-  function getProductPayload(extra) {
-    var schema = getProductFromSchema();
-    var body = document.body || { dataset: {} };
-    var first = readStorage('sc_first_touch');
-    var last = readStorage('sc_last_touch');
-    var urlParams = getParams();
-    var brand = (schema.brand && schema.brand.name) || (body.dataset.pageType === 'care_product' ? 'Caracóis Care' : 'Bee Cosmetics');
-    var price = schema.offers && schema.offers.price ? schema.offers.price : '';
-
-    return clean(Object.assign({
-      build_version: BUILD_VERSION,
-      page_type: body.dataset.pageType || '',
-      product_id: body.dataset.productId || '',
-      product_slug: body.dataset.productSlug || '',
-      product_name: schema.name || document.title || '',
-      product_brand: brand,
-      product_category: schema.category || '',
-      product_price: price,
-      currency: (schema.offers && schema.offers.priceCurrency) || 'BRL',
-      page_path: window.location.pathname,
-      page_url: window.location.href,
-      page_title: document.title || '',
-      referrer: document.referrer || '',
-      source: last.source || urlParams.utm_source || '',
-      medium: last.medium || urlParams.utm_medium || '',
-      campaign: last.campaign || urlParams.utm_campaign || '',
-      content: last.content || urlParams.utm_content || '',
-      term: last.term || urlParams.utm_term || '',
-      first_source: first.source || '',
-      first_medium: first.medium || '',
-      first_campaign: first.campaign || '',
-      first_landing_page: first.landing_page || '',
-      time_since_page_load_ms: String(Date.now() - pageStart)
-    }, urlParams, extra || {}));
-  }
-
-  function sendToTools(eventName, payload, options) {
-    options = options || {};
-    var data = getProductPayload(payload);
-
-    try {
-      if (typeof window.scTrack === 'function') window.scTrack(eventName, data);
-    } catch (e) {}
-
+  function scDispatch(eventName, payload, opts){
+    payload = payload || getProductData();
+    opts = opts || {};
     try {
       window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push(Object.assign({ event: eventName }, data));
-    } catch (e) {}
-
+      window.dataLayer.push(Object.assign({ event: eventName }, payload));
+    } catch(e) {}
     try {
-      if (typeof window.gtag === 'function') window.gtag('event', eventName, data);
-    } catch (e) {}
-
-    try {
-      if (typeof window.fbq === 'function') {
-        if (options.metaStandard === 'ViewContent') {
-          window.fbq('track', 'ViewContent', {
-            content_name: data.product_name,
-            content_category: data.product_category,
-            content_ids: [data.product_slug || data.product_id],
-            content_type: 'product',
-            value: data.product_price || undefined,
-            currency: data.currency || 'BRL'
-          }, { eventID: eventName + '_' + (data.product_slug || data.product_id || 'produto') + '_' + Date.now() });
-        } else {
-          window.fbq('trackCustom', eventName, data);
-        }
+      if (typeof gtag === 'function') {
+        gtag('event', eventName, Object.assign({ transport_type: opts.beacon ? 'beacon' : undefined }, payload));
       }
-    } catch (e) {}
-
+    } catch(e) {}
     try {
-      if (typeof window.clarity === 'function') {
-        window.clarity('event', eventName);
-        ['page_type','product_brand','product_slug','product_category','source','medium','campaign'].forEach(function (key) {
-          if (data[key]) window.clarity('set', key, data[key]);
-        });
+      if (typeof clarity === 'function') {
+        clarity('event', eventName);
+        if (payload.product_slug) clarity('set', 'product_slug', payload.product_slug);
+        if (payload.brand) clarity('set', 'product_brand', payload.brand);
+        if (payload.marketplace) clarity('set', 'marketplace', payload.marketplace);
       }
-    } catch (e) {}
-
-    try {
-      if (typeof window.pintrk === 'function') {
-        if (options.pinterestEvent) window.pintrk('track', options.pinterestEvent, data);
-        else window.pintrk('track', 'custom', Object.assign({ event_id: eventName }, data));
-      }
-    } catch (e) {}
+    } catch(e) {}
   }
+  window.scProductTrack = scDispatch;
 
-  function detectMarketplace(link) {
-    var href = (link && link.href || '').toLowerCase();
-    var declared = link && link.dataset ? (link.dataset.market || '') : '';
-    if (declared) return declared;
-    if (href.indexOf('amazon.') > -1) return 'amazon';
-    if (href.indexOf('shopee.') > -1) return 'shopee';
-    if (href.indexOf('mercadolivre.') > -1 || href.indexOf('lista.mercadolivre.') > -1) return 'mercado_livre';
-    return '';
+  function metaViewContent(payload){
+    try {
+      if (typeof fbq === 'function' && payload.product_slug) {
+        fbq('track', 'ViewContent', {
+          content_name: payload.product_name,
+          content_ids: [payload.product_slug],
+          content_type: 'product',
+          content_category: payload.brand,
+          page_type: payload.page_type
+        });
+      }
+    } catch(e) {}
   }
-
-  document.addEventListener('DOMContentLoaded', function () {
-    setTimeout(function () {
-      sendToTools('product_view_enriched', {
-        event_category: 'produto',
-        event_label: document.body.dataset.productSlug || document.body.dataset.productId || '',
-        engagement_type: 'page_view'
-      }, { metaStandard: 'ViewContent', pinterestEvent: 'pagevisit' });
-    }, 450);
-
-    document.addEventListener('click', function (event) {
-      var target = event.target;
-      if (!target || !target.closest) return;
-
-      var buyButton = target.closest('[data-bee-buy], [data-care-buy]');
-      if (buyButton) {
-        conversionIntent = true;
-        sendToTools('product_marketplace_modal_open', {
-          event_category: 'produto',
-          event_label: document.body.dataset.productSlug || '',
-          origin: buyButton.dataset.origin || 'product-page',
-          cta: 'comprar_marketplaces'
+  function pinterestPageVisit(payload){
+    try {
+      if (typeof pintrk === 'function') {
+        pintrk('track', 'pagevisit', {
+          line_items: payload.product_slug ? [{ product_id: payload.product_slug, product_name: payload.product_name, product_category: payload.brand }] : []
         });
       }
-
-      var marketLink = target.closest('a[data-market], a[href*="amazon."], a[href*="shopee."], a[href*="mercadolivre."], a[href*="lista.mercadolivre."]');
-      if (marketLink) {
-        conversionIntent = true;
-        sendToTools('product_marketplace_outbound_click', {
-          event_category: 'produto',
-          event_label: document.body.dataset.productSlug || '',
-          marketplace: detectMarketplace(marketLink),
-          link_url: marketLink.href || '',
-          origin: marketLink.dataset.origin || 'marketplace-link',
-          cta: 'marketplace_outbound'
-        }, { pinterestEvent: 'lead' });
-      }
-
-      var bookingCta = target.closest('.sticky-cta, [onclick*="openBooking"], [data-cta*="agendar"], [data-cta*="booking"]');
-      if (bookingCta) {
-        conversionIntent = true;
-        sendToTools('product_booking_intent', {
-          event_category: 'produto',
-          event_label: document.body.dataset.productSlug || '',
-          cta: bookingCta.dataset.cta || 'agendar',
-          origin: bookingCta.dataset.origin || bookingCta.dataset.source || 'product-page'
-        }, { pinterestEvent: 'lead' });
-      }
-
-      var whatsappCta = target.closest('.whatsapp-float, [onclick*="openWaModal"], a[href*="wa.me"], [data-cta*="whatsapp"]');
-      if (whatsappCta) {
-        conversionIntent = true;
-        sendToTools('product_whatsapp_intent', {
-          event_category: 'produto',
-          event_label: document.body.dataset.productSlug || '',
-          cta: whatsappCta.dataset.cta || 'whatsapp',
-          origin: whatsappCta.dataset.origin || whatsappCta.dataset.source || 'product-page'
-        }, { pinterestEvent: 'lead' });
-      }
-
-      var related = target.closest('[data-product-related]');
-      if (related) {
-        sendToTools('product_related_click_enriched', {
-          event_category: 'produto',
-          event_label: document.body.dataset.productSlug || '',
-          related_product_id: related.dataset.productRelated || ''
-        });
+    } catch(e) {}
+  }
+  function getMarketplaceFromEl(el){
+    if (!el) return '';
+    var market = (el.dataset && (el.dataset.market || el.dataset.marketplace)) || '';
+    var href = (el.getAttribute && el.getAttribute('href')) || '';
+    if (!market && /amazon/i.test(href)) market = 'amazon';
+    if (!market && /shopee/i.test(href)) market = 'shopee';
+    if (!market && /(mercadolivre|mercado-livre|lista\.mercadolivre)/i.test(href)) market = 'mercado_livre';
+    return market;
+  }
+  function setupClicks(){
+    document.addEventListener('click', function(e){
+      var target = e.target && e.target.closest ? e.target.closest('a,button,[role="button"]') : null;
+      if (!target) return;
+      var market = getMarketplaceFromEl(target);
+      var href = target.getAttribute('href') || '';
+      var cta = (target.dataset && (target.dataset.cta || target.dataset.origin || target.dataset.currentProduct)) || '';
+      var text = (target.textContent || '').replace(/\s+/g,' ').trim().slice(0,80);
+      var payload = getProductData({
+        cta: cta || text || 'click',
+        cta_text: text,
+        href: href,
+        marketplace: market,
+        outbound: /^https?:\/\//i.test(href) && href.indexOf(location.host) === -1
+      });
+      if (market) {
+        scDispatch('product_marketplace_click', payload, { beacon:true });
+        try { if (typeof fbq === 'function') fbq('track', 'Lead', {content_name: payload.product_name, content_category: payload.brand, marketplace: market}); } catch(e) {}
+        try { if (typeof pintrk === 'function') pintrk('track', 'lead', {lead_type:'marketplace_click'}); } catch(e) {}
+      } else if (target.matches('[data-bee-buy],[data-care-buy]')) {
+        scDispatch('product_buy_modal_open_intent', payload);
+      } else if (/openBooking\(/.test(target.getAttribute('onclick') || '') || /agendar/i.test(text)) {
+        scDispatch('product_booking_intent', payload);
+        try { if (typeof pintrk === 'function') pintrk('track', 'lead', {lead_type:'booking_intent'}); } catch(e) {}
+      } else if (/openWaModal\(/.test(target.getAttribute('onclick') || '') || /whats/i.test(text)) {
+        scDispatch('product_whatsapp_intent', payload);
+      } else {
+        scDispatch('product_cta_click', payload);
       }
     }, true);
-
-    window.addEventListener('pagehide', function () {
-      if (!conversionIntent && Date.now() - pageStart > 3000) {
-        sendToTools('product_page_exit_without_intent', {
-          event_category: 'produto',
-          event_label: document.body.dataset.productSlug || '',
-          time_on_page_ms: String(Date.now() - pageStart)
-        });
+  }
+  function wrapModalFunction(name, eventName){
+    var tries = 0;
+    var timer = setInterval(function(){
+      tries += 1;
+      if (typeof window[name] === 'function' && !window[name].__scWrapped) {
+        var original = window[name];
+        window[name] = function(){
+          scDispatch(eventName, getProductData({modal: name}));
+          return original.apply(this, arguments);
+        };
+        window[name].__scWrapped = true;
+        clearInterval(timer);
       }
-    }, { once: true });
+      if (tries > 40) clearInterval(timer);
+    }, 100);
+  }
+  document.addEventListener('DOMContentLoaded', function(){
+    var payload = getProductData();
+    scDispatch(payload.page_type === 'care_category' || document.body.classList.contains('care-cat-page') ? 'care_category_view' : 'product_view', payload);
+    metaViewContent(payload);
+    pinterestPageVisit(payload);
+    setupClicks();
+    ['openBooking','openWaModal','openBeeModal','openCareModal'].forEach(function(fn){
+      wrapModalFunction(fn, 'modal_open_' + fn.replace(/^open/,'').toLowerCase());
+    });
+  });
+  window.addEventListener('pagehide', function(){
+    scDispatch('product_page_exit', getProductData({exit: true}), {beacon:true});
   });
 })();
 </script>
