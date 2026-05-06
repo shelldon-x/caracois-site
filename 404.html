@@ -33,11 +33,31 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/main.css?v=20260504-404-modal-fix-final">
+  <link rel="stylesheet" href="/assets/css/main.css?v=20260505-404-tracking-plus-final">
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-0J7RBF2BFX"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-0J7RBF2BFX',{send_page_view:true,cookie_flags:'SameSite=None;Secure',page_title:'404 — Página não encontrada'});gtag('event','page_not_found',{page_path:location.pathname,page_referrer:document.referrer||'(direct)',event_category:'errors',transport_type:'beacon'});window.dataLayer.push({event:'page_not_found',page_path:location.pathname,page_referrer:document.referrer||'(direct)'});</script>
-  <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','1522260281454126');fbq('track','PageView');fbq('trackCustom','PageNotFound',{page_path:location.pathname});</script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0J7RBF2BFX', {
+      send_page_view: true,
+      cookie_flags: 'SameSite=None;Secure',
+      page_title: '404 — Página não encontrada',
+      page_path: location.pathname
+    });
+  </script>
+  <script>
+    !function(f,b,e,v,n,t,s){
+      if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;
+      s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)
+    }(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init','1522260281454126');
+    fbq('track','PageView');
+  </script>
 
   <script type="application/ld+json">
   {
@@ -149,109 +169,6 @@
       border-bottom: 1px solid rgba(196,162,101,.45);
     }
     .error-links a:hover { color: var(--gold); }
-
-    /* 404 — correção mobile sem mexer no CSS global */
-    html, body {
-      min-height: 100%;
-      background: #221514;
-    }
-    body.error-404-page {
-      padding-bottom: 0 !important;
-      background: #221514;
-      min-height: 100svh;
-    }
-    body.error-404-page::after {
-      display: none !important;
-      content: none !important;
-      height: 0 !important;
-      background: transparent !important;
-    }
-    body.error-404-page .sticky-cta,
-    body.error-404-page .whatsapp-float {
-      display: none !important;
-    }
-    body.error-404-page.modal-open {
-      overflow: hidden;
-    }
-    .error-page {
-      min-height: 100svh;
-      min-height: 100dvh;
-    }
-    .error-actions .btn {
-      min-width: 220px;
-    }
-    .error-actions button.btn {
-      appearance: none;
-      -webkit-appearance: none;
-    }
-    .error-actions .btn-outline-white {
-      color: #fff !important;
-      border: 1px solid rgba(255,255,255,.62) !important;
-      background: rgba(255,255,255,.08) !important;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.08);
-    }
-    @media (max-width: 768px) {
-      .error-page {
-        min-height: 100svh;
-        min-height: 100dvh;
-        align-items: center;
-        padding: max(52px, env(safe-area-inset-top)) 0 max(38px, env(safe-area-inset-bottom));
-      }
-      .error-logo {
-        width: min(208px, 58vw);
-        margin-bottom: 30px;
-      }
-      .error-code {
-        font-size: clamp(4rem, 19vw, 5.7rem);
-        margin-bottom: 16px;
-      }
-      .error-content h1 {
-        font-size: clamp(2rem, 8.2vw, 2.85rem);
-        line-height: 1.08;
-        margin-bottom: 22px;
-      }
-      .error-content p {
-        font-size: clamp(.94rem, 4vw, 1.05rem);
-        line-height: 1.72;
-        margin-bottom: 30px;
-      }
-      .error-actions {
-        flex-direction: column;
-        width: 100%;
-        max-width: 640px;
-        margin-left: auto;
-        margin-right: auto;
-        margin-bottom: 28px;
-      }
-      .error-actions .btn {
-        width: 100%;
-        min-height: 56px;
-        justify-content: center;
-      }
-      .error-links {
-        gap: 12px 20px;
-        padding-bottom: 0;
-      }
-    }
-    @media (max-width: 420px) {
-      .error-page {
-        padding-top: max(44px, env(safe-area-inset-top));
-        padding-bottom: max(32px, env(safe-area-inset-bottom));
-      }
-      .error-logo {
-        margin-bottom: 28px;
-      }
-      .error-content h1 {
-        font-size: clamp(2.03rem, 8.7vw, 2.45rem);
-      }
-      .error-content p {
-        max-width: 34ch;
-      }
-      .error-links {
-        font-size: .82rem;
-      }
-    }
-
   </style>
 
   <link rel="dns-prefetch" href="https://s.pinimg.com">
@@ -278,8 +195,245 @@
   pintrk('page');
 </script>
 <!-- end Pinterest Tag -->
+
+<!-- Tracking avançado 404 — Studio Caracóis -->
+<script>
+  (function () {
+    'use strict';
+
+    var BUILD = '20260505-404-tracking-plus-final';
+    var START = Date.now();
+    var ATTR_KEYS = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','gclid','gbraid','wbraid','fbclid','msclkid'];
+
+    function safeJson(key) {
+      try { return JSON.parse(localStorage.getItem(key) || 'null') || {}; } catch (e) { return {}; }
+    }
+
+    function hostFrom(url) {
+      try { return new URL(url).hostname.replace(/^www\./, '').toLowerCase(); } catch (e) { return ''; }
+    }
+
+    function getQueryParams() {
+      var qs = new URLSearchParams(window.location.search);
+      var out = {};
+      ATTR_KEYS.forEach(function (key) {
+        var value = qs.get(key);
+        if (value) out[key] = value.slice(0, 160);
+      });
+      return out;
+    }
+
+    function inferSource() {
+      var params = getQueryParams();
+      if (params.utm_source) return { source: params.utm_source, medium: params.utm_medium || 'campaign' };
+
+      var ref = document.referrer || '';
+      var host = hostFrom(ref);
+      if (!host) return { source: 'direct', medium: 'none' };
+
+      var aiSources = [
+        ['chatgpt', ['chatgpt.com','chat.openai.com','openai.com']],
+        ['copilot', ['copilot.microsoft.com','bing.com/chat']],
+        ['gemini', ['gemini.google.com','bard.google.com']],
+        ['claude', ['claude.ai','anthropic.com']],
+        ['perplexity', ['perplexity.ai']],
+        ['grok', ['grok.com','x.ai']]
+      ];
+
+      for (var i = 0; i < aiSources.length; i++) {
+        for (var j = 0; j < aiSources[i][1].length; j++) {
+          if (host.indexOf(aiSources[i][1][j]) !== -1) return { source: aiSources[i][0], medium: 'ai' };
+        }
+      }
+
+      if (host.indexOf('google.') !== -1) return { source: 'google', medium: 'organic' };
+      if (host.indexOf('bing.') !== -1) return { source: 'bing', medium: 'organic' };
+      if (host.indexOf('instagram.') !== -1) return { source: 'instagram', medium: 'social' };
+      if (host.indexOf('facebook.') !== -1 || host.indexOf('fb.') !== -1) return { source: 'facebook', medium: 'social' };
+      if (host.indexOf('tiktok.') !== -1) return { source: 'tiktok', medium: 'social' };
+      if (host.indexOf('pinterest.') !== -1) return { source: 'pinterest', medium: 'social' };
+      if (host.indexOf('whatsapp.') !== -1) return { source: 'whatsapp', medium: 'referral' };
+
+      return { source: host, medium: 'referral' };
+    }
+
+    function basePayload(extra) {
+      var first = safeJson('sc_first_touch');
+      var last = safeJson('sc_last_touch');
+      var inferred = inferSource();
+      var params = getQueryParams();
+
+      return Object.assign({
+        site: 'caracois.com.br',
+        page_type: '404',
+        page_title: document.title,
+        page_path: window.location.pathname,
+        page_location: window.location.href,
+        broken_path: window.location.pathname,
+        broken_url: window.location.href,
+        referrer: document.referrer || '',
+        referrer_host: hostFrom(document.referrer || ''),
+        source: params.utm_source || last.source || inferred.source || '',
+        medium: params.utm_medium || last.medium || inferred.medium || '',
+        campaign: params.utm_campaign || last.campaign || '',
+        content: params.utm_content || last.content || '',
+        term: params.utm_term || last.term || '',
+        first_source: first.source || '',
+        first_medium: first.medium || '',
+        first_campaign: first.campaign || '',
+        first_landing_page: first.landing_page || '',
+        last_source: last.source || '',
+        last_medium: last.medium || '',
+        last_campaign: last.campaign || '',
+        viewport_width: String(window.innerWidth || ''),
+        viewport_height: String(window.innerHeight || ''),
+        time_since_load_ms: String(Date.now() - START),
+        build_version: BUILD
+      }, extra || {});
+    }
+
+    function cleanPayload(payload) {
+      var out = {};
+      Object.keys(payload || {}).forEach(function (key) {
+        var value = payload[key];
+        if (value !== undefined && value !== null && value !== '') {
+          out[key] = String(value).slice(0, 220);
+        }
+      });
+      return out;
+    }
+
+    function eventId(name) {
+      return ['sc', name, Date.now(), Math.random().toString(36).slice(2, 8)].join('_');
+    }
+
+    function track(name, extra) {
+      var payload = cleanPayload(basePayload(extra));
+      var id = eventId(name);
+      payload.event_id = id;
+
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push(Object.assign({ event: name }, payload));
+
+      try {
+        if (typeof window.gtag === 'function') {
+          window.gtag('event', name, Object.assign({
+            event_category: '404',
+            event_label: payload.cta || payload.link_text || payload.broken_path || 'not_found',
+            transport_type: 'beacon'
+          }, payload));
+        }
+      } catch (e) {}
+
+      try {
+        if (typeof window.fbq === 'function') {
+          window.fbq('trackCustom', name, {
+            content_name: payload.cta || name,
+            content_category: '404',
+            broken_path: payload.broken_path || '',
+            source: payload.source || '',
+            medium: payload.medium || '',
+            campaign: payload.campaign || ''
+          }, { eventID: id });
+        }
+      } catch (e) {}
+
+      try {
+        if (typeof window.clarity === 'function') {
+          window.clarity('event', name);
+          ['broken_path','source','medium','campaign','cta','channel'].forEach(function (key) {
+            if (payload[key]) window.clarity('set', key, payload[key]);
+          });
+        }
+      } catch (e) {}
+
+      try {
+        if (typeof window.pintrk === 'function' && (name === '404_booking_intent' || name === '404_whatsapp_intent')) {
+          window.pintrk('track', 'lead', {
+            lead_type: payload.channel || '404_cta',
+            event_id: id
+          });
+        }
+      } catch (e) {}
+
+      return payload;
+    }
+
+    window.SC404Track = track;
+    if (!window.scTrack) {
+      window.scTrack = function (name, data) {
+        return track(name, data || {});
+      };
+    }
+
+    track('page_not_found', { channel: 'error', cta: '404_view' });
+
+    document.addEventListener('click', function (event) {
+      var link = event.target.closest('a, button');
+      if (!link) return;
+
+      var cta = link.getAttribute('data-cta') || '';
+      var origin = link.getAttribute('data-origin') || '';
+      var href = link.getAttribute('href') || '';
+      var text = (link.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 80);
+
+      if (origin === '404' || cta || link.closest('.error-links')) {
+        var channel = link.getAttribute('data-channel') || (href.indexOf('wa.me') !== -1 ? 'whatsapp' : href.indexOf('/agendar') !== -1 ? 'booking' : 'navigation');
+        var eventName = channel === 'booking' ? '404_booking_intent' : channel === 'whatsapp' ? '404_whatsapp_intent' : '404_cta_click';
+
+        track(eventName, {
+          channel: channel,
+          cta: cta || text || '404_link',
+          link_text: text,
+          destination_url: href,
+          origin: origin || '404'
+        });
+      }
+
+      if (link.id === 'waGeoBtn' || link.id === 'bookingGeoBtn') {
+        track('404_geo_intent', {
+          channel: link.id === 'waGeoBtn' ? 'whatsapp' : 'booking',
+          cta: link.id
+        });
+      }
+
+      if (link.closest('#waModal') && link.tagName === 'A') {
+        track('404_modal_whatsapp_unit_click', {
+          channel: 'whatsapp',
+          cta: 'wa_modal_unit',
+          destination_url: href,
+          link_text: text
+        });
+      }
+
+      if (link.closest('#bookingModal') && link.tagName === 'A') {
+        track('404_modal_booking_unit_click', {
+          channel: 'booking',
+          cta: 'booking_modal_unit',
+          destination_url: href,
+          link_text: text
+        });
+      }
+    }, true);
+
+    window.addEventListener('load', function () {
+      ['openBooking', 'openWaModal', 'closeModal'].forEach(function (fnName) {
+        var original = window[fnName];
+        if (typeof original !== 'function' || original.__sc404Wrapped) return;
+        window[fnName] = function () {
+          if (fnName === 'openBooking') track('404_modal_open', { channel: 'booking', cta: 'open_booking_modal' });
+          if (fnName === 'openWaModal') track('404_modal_open', { channel: 'whatsapp', cta: 'open_whatsapp_modal' });
+          if (fnName === 'closeModal') track('404_modal_close', { channel: 'modal', cta: arguments[0] || 'close_modal' });
+          return original.apply(this, arguments);
+        };
+        window[fnName].__sc404Wrapped = true;
+      });
+    });
+  })();
+</script>
+
 </head>
-<body class="error-404-page" data-page-type="404">
+<body>
 <!-- Pinterest Tag noscript — Studio Caracóis -->
 <noscript>
   <img height="1" width="1" style="display:none;" alt="" src="https://ct.pinterest.com/v3/?event=init&tid=2613592271512&noscript=1" />
@@ -299,8 +453,8 @@
         <p>O endereço pode ter mudado ou não existir mais. Você pode voltar para o início, conhecer nossas unidades ou agendar uma avaliação gratuita.</p>
         <div class="error-actions">
           <a class="btn btn-primary" href="/" data-cta="voltar_inicio_404" data-origin="404">Voltar para o início</a>
-          <a class="btn btn-gold" href="/agendar" data-cta="agendar_404" data-channel="booking" data-origin="404" onclick="event.preventDefault(); if(window.scTrack){window.scTrack('booking_click',{channel:'booking',cta:'agendar_404',origin:'404'});} openBooking();">Agendar avaliação gratuita</a>
-          <a class="btn btn-outline-white" href="https://wa.me/5511998980874" data-cta="whatsapp_404" data-channel="whatsapp" data-origin="404" onclick="event.preventDefault(); if(window.scTrack){window.scTrack('whatsapp_click',{channel:'whatsapp',cta:'whatsapp_404',origin:'404'});} openWaModal();">Falar pelo WhatsApp</a>
+          <a class="btn btn-gold" href="/#unidades" data-cta="agendar_404" data-channel="booking" data-origin="404">Agendar avaliação gratuita</a>
+          <a class="btn btn-outline-white" href="/#unidades" data-cta="ver_unidades_404" data-origin="404">Ver unidades</a>
         </div>
         <div class="error-links" aria-label="Links úteis">
           <a href="/central-de-conhecimento">Central de conhecimento</a>
@@ -311,75 +465,6 @@
     </div>
   </main>
 
-
-  <!-- Modal WhatsApp -->
-  <div aria-hidden="true" aria-label="Escolha sua unidade" aria-modal="true" class="wa-modal-overlay" id="waModal" onclick="closeModalOnOverlay(event, 'waModal')" role="dialog">
-  <div class="wa-modal" style="position:relative">
-  <button aria-label="Fechar" class="wa-modal-close" onclick="closeModal('waModal')" type="button">×</button>
-  <div class="wa-modal-header">
-  <div aria-level="2" class="wa-modal-title" role="heading">Escolha sua unidade</div>
-  <p>Fale diretamente com o Studio mais perto de você</p>
-  </div>
-  <div class="wa-unit-list" id="waUnitList">
-  <button aria-label="Usar localização" class="wa-geo-btn" id="waGeoBtn" onclick="findNearest()" type="button">
-  <svg aria-hidden="true" fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="18"><circle cx="12" cy="10" r="3"></circle><path d="M12 2a8 8 0 0 0-8 8c0 5.4 7 12 8 12s8-6.6 8-12a8 8 0 0 0-8-8z"></path></svg>
-  <span id="geoBtnText">Usar minha localização</span>
-  </button>
-  <div class="wa-nearest-wrap" id="waNearestWrap" style="display: none;">
-  <div class="wa-nearest-label">📍 Encontramos a unidade mais próxima de você</div>
-  <a class="wa-unit-item wa-nearest-card" id="waNearestCard" rel="noopener" target="_blank">
-  <div class="wa-unit-copy">
-  <div class="wa-unit-name" id="waNearestName"></div>
-  <div class="wa-unit-meta" id="waNearestAddr"></div>
-  <div class="wa-unit-meta wa-unit-meta--muted" id="waNearestPostal"></div>
-  <div class="wa-unit-meta wa-unit-meta--landmark" id="waNearestRef" style="display:none"></div>
-  <div class="wa-unit-distance" id="waNearestDist"></div>
-  <div class="wa-nearest-micro">Sua transformação começa mais perto do que você imagina ✨</div>
-  </div>
-  <span class="wa-nearest-cta">Falar agora</span>
-  </a>
-  </div>
-  <div class="wa-other-label" id="waOtherLabel" style="display: none;">Todas as unidades</div>
-  <!-- Conteúdo das unidades será injetado via JavaScript -->
-  <div class="wa-unit-items" id="waUnitItems"></div>
-  </div>
-  </div>
-  </div>
-  <!-- Modal Agendamento online -->
-  <div aria-hidden="true" aria-label="Escolha sua unidade para agendar" aria-modal="true" class="booking-overlay" id="bookingModal" onclick="closeModalOnOverlay(event, 'bookingModal')" role="dialog">
-  <div class="booking-modal">
-  <button aria-label="Fechar" class="booking-close" onclick="closeModal('bookingModal')" type="button">×</button>
-  <div class="booking-header">
-  <div aria-level="2" class="booking-modal-title" role="heading">Escolha a unidade mais próxima de você</div>
-  <p>Atendimento especializado em cabelos cacheados com avaliação personalizada</p>
-  </div>
-  <button aria-label="Usar localização" class="booking-geo-btn" id="bookingGeoBtn" onclick="findNearestBooking()" type="button">
-  <svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16"><circle cx="12" cy="10" r="3"></circle><path d="M12 2a8 8 0 0 0-8 8c0 5.4 7 12 8 12s8-6.6 8-12a8 8 0 0 0-8-8z"></path></svg>
-  <span id="bookingGeoBtnText">Encontrar unidade mais próxima</span>
-  </button>
-  <div class="booking-nearest-wrap" id="bookingNearestWrap" style="display: none;">
-  <div class="booking-nearest-label">📍 Encontramos a unidade mais próxima de você</div>
-  <a class="booking-card booking-nearest-card" id="bookingNearestCard" rel="noopener noreferrer" target="_blank">
-  <div class="booking-nearest-content">
-  <div class="booking-card-name" id="bookingNearestName"></div>
-  <div class="booking-card-addr" id="bookingNearestAddr"></div>
-  <div class="booking-card-postal" id="bookingNearestPostal"></div>
-  <div class="booking-nearest-dist" id="bookingNearestDist"></div>
-  <div class="booking-card-ref booking-card-ref--light" id="bookingNearestRef"></div>
-  <div class="booking-nearest-micro">Sua transformação começa mais perto do que você imagina ✨</div>
-  </div>
-  <span class="booking-nearest-cta">Agendar agora</span>
-  </a>
-  </div>
-  <div class="booking-other-label" id="bookingOtherLabel" style="display: none;">Todas as unidades</div>
-  <!-- Conteúdo das unidades será injetado via JavaScript -->
-  <div class="booking-grid" id="bookingGrid"></div>
-  <div class="booking-footer">
-  <p>Não tem certeza de qual unidade escolher? <a href="#" onclick="event.preventDefault(); closeModal('bookingModal'); openWaModal();">Fale com nossa equipe no WhatsApp</a></p>
-  </div>
-  </div>
-  </div>
-
-  <script src="/assets/js/main.js?v=20260504-404-modal-fix-final" defer></script>
+  <script src="/assets/js/main.js?v=20260505-404-tracking-plus-final" defer></script>
 </body>
 </html>
