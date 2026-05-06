@@ -2,7 +2,7 @@
 (function () {
   'use strict';
 
-  const BUILD_VERSION = '20260504-central-articles-clean-final';
+  const BUILD_VERSION = '20260506-tracking-seo-rodada1';
 
   document.documentElement.classList.remove('no-js');
   document.documentElement.classList.add('js');
@@ -48,6 +48,10 @@
     if (!ref) return { source: 'direct', medium: 'none' };
     try {
       const host = new URL(ref).hostname.replace(/^www\./, '').toLowerCase();
+      const currentHost = window.location.hostname.replace(/^www\./, '').toLowerCase();
+      if (host === currentHost || host.endsWith('.' + currentHost)) {
+        return { source: 'internal', medium: 'navigation', internal: true };
+      }
 
       const aiSources = [
         ['chatgpt', ['chatgpt.com', 'chat.openai.com', 'openai.com']],
@@ -81,18 +85,31 @@
 
   function initAttribution() {
     const urlAttrs = getParamsFromUrl();
+    const hasUrlAttrs = Object.keys(urlAttrs).length > 0;
     const ref = inferReferrerSource();
     const now = new Date().toISOString();
-    const current = {
+    const previousLast = storageGet('sc_last_touch', null);
+    const shouldPreserveLastTouch = ref.internal && !hasUrlAttrs && previousLast;
+    const current = shouldPreserveLastTouch ? {
+      ...previousLast,
+      previous_page: previousLast.page_path || previousLast.landing_page || '',
+      page_path: window.location.pathname,
+      page_title: document.title || '',
+      internal_navigation_at: now
+    } : {
       source: urlAttrs.utm_source || ref.source,
       medium: urlAttrs.utm_medium || ref.medium,
       campaign: urlAttrs.utm_campaign || '',
       content: urlAttrs.utm_content || '',
       term: urlAttrs.utm_term || '',
       gclid: urlAttrs.gclid || '',
+      gbraid: urlAttrs.gbraid || '',
+      wbraid: urlAttrs.wbraid || '',
       fbclid: urlAttrs.fbclid || '',
       msclkid: urlAttrs.msclkid || '',
       landing_page: window.location.pathname,
+      page_path: window.location.pathname,
+      page_title: document.title || '',
       captured_at: now
     };
     const first = storageGet('sc_first_touch', null);
@@ -198,7 +215,7 @@
     const current = getParamsFromUrl();
     const last = storageGet('sc_last_touch', ATTRIBUTION.last) || {};
     const paramsToForward = new URLSearchParams();
-    ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','gclid','gbraid','wbraid','msclkid'].forEach((key) => {
+    ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','gclid','gbraid','wbraid','fbclid','msclkid'].forEach((key) => {
       const normalized = key.replace('utm_', '');
       const value = current[key] || last[normalized] || last[key] || '';
       if (value) paramsToForward.set(key, value);
