@@ -405,3 +405,35 @@
 
 
 /* Build unidades: 20260429-unidades-bee-10-10 */
+
+/* =========================================================
+   Unidade pages — mobile safe-area refinement
+   Build: 20260505-mobile-safearea-fix-final
+========================================================= */
+@media (max-width: 768px) {
+    .hero-local {
+        min-height: auto;
+        padding-top: 124px;
+        padding-bottom: 72px;
+    }
+
+    .hero-local .hero-ctas {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        max-width: 520px;
+    }
+
+    .hero-local .hero-ctas .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .hero-local .hero-watermark {
+        right: -130px;
+        bottom: 18px;
+        width: min(380px, 78vw);
+        height: min(380px, 78vw);
+        opacity: 0.035;
+    }
+}
