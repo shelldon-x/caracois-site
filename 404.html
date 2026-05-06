@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="/assets/css/main.css?v=20260504-404-modal-fix-final">
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-0J7RBF2BFX"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-0J7RBF2BFX',{send_page_view:true,cookie_flags:'SameSite=None;Secure',page_title:'404 — Página não encontrada'});gtag('event','page_not_found',{page_path:location.pathname,page_referrer:document.referrer||'(direct)',event_category:'errors',transport_type:'beacon'});window.dataLayer.push({event:'page_not_found',page_path:location.pathname,page_referrer:document.referrer||'(direct)'});</script>
-  <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','1522260281454126');fbq('track','PageView');fbq('trackCustom','PageNotFound',{page_path:location.pathname});</script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-0J7RBF2BFX',{send_page_view:true,cookie_flags:'SameSite=None;Secure',page_title:'404 — Página não encontrada'});</script>
+  <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','1522260281454126');fbq('track','PageView');</script>
 
   <script type="application/ld+json">
   {
@@ -278,6 +278,151 @@
   pintrk('page');
 </script>
 <!-- end Pinterest Tag -->
+
+<!-- 404 Tracking Profissional — Studio Caracóis -->
+<script>
+(function(){
+  'use strict';
+  var startedAt = Date.now();
+  var pageId = '404_' + startedAt + '_' + Math.random().toString(36).slice(2, 9);
+
+  function safeJSON(value){
+    try { return value ? JSON.parse(value) : null; } catch(e) { return value || null; }
+  }
+  function storage(key){
+    try { return localStorage.getItem(key) || ''; } catch(e) { return ''; }
+  }
+  function params(){
+    var out = {};
+    try {
+      var qs = new URLSearchParams(location.search);
+      ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','gclid','fbclid','msclkid','ttclid','pin_click_id'].forEach(function(k){
+        var v = qs.get(k);
+        if (v) out[k] = v;
+      });
+    } catch(e) {}
+    return out;
+  }
+  function deviceType(){
+    var w = window.innerWidth || document.documentElement.clientWidth || 0;
+    if (w <= 767) return 'mobile';
+    if (w <= 1024) return 'tablet';
+    return 'desktop';
+  }
+  function context(extra){
+    var base = {
+      event_category: '404',
+      page_type: '404',
+      page_id: pageId,
+      requested_url: location.href,
+      requested_path: location.pathname,
+      requested_query: location.search || '',
+      page_referrer: document.referrer || '(direct)',
+      referrer_host: (function(){ try { return document.referrer ? new URL(document.referrer).hostname : '(direct)'; } catch(e) { return '(invalid)'; } })(),
+      canonical_url: 'https://caracois.com.br/404',
+      device_type: deviceType(),
+      viewport: (window.innerWidth || 0) + 'x' + (window.innerHeight || 0),
+      language: navigator.language || '',
+      first_touch: storage('sc_first_touch'),
+      last_touch: storage('sc_last_touch'),
+      first_touch_json: safeJSON(storage('sc_first_touch')),
+      last_touch_json: safeJSON(storage('sc_last_touch')),
+      build_version: '20260506-404-tracking-only-intact'
+    };
+    var u = params();
+    for (var k in u) base[k] = u[k];
+    if (extra) for (var e in extra) base[e] = extra[e];
+    return base;
+  }
+  function eventId(name){ return name + '_' + pageId + '_' + Date.now(); }
+  function send(name, extra){
+    var payload = context(extra || {});
+    payload.event_label = payload.event_label || payload.cta || payload.link_text || payload.modal || payload.requested_path;
+    payload.time_on_page_ms = Date.now() - startedAt;
+    var eid = eventId(name);
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push(Object.assign({ event: name, event_id: eid }, payload));
+
+    try { if (typeof gtag === 'function') gtag('event', name, Object.assign({ transport_type: 'beacon', event_id: eid }, payload)); } catch(e) {}
+    try { if (typeof fbq === 'function') fbq('trackCustom', name, Object.assign({ eventID: eid }, payload)); } catch(e) {}
+    try {
+      if (typeof clarity === 'function') {
+        clarity('event', name);
+        clarity('set', 'page_type', '404');
+        clarity('set', 'requested_path', payload.requested_path);
+        if (payload.page_referrer) clarity('set', 'page_referrer', payload.page_referrer);
+      }
+    } catch(e) {}
+    try { if (typeof pintrk === 'function') pintrk('track', 'custom', Object.assign({ event_name: name }, payload)); } catch(e) {}
+  }
+
+  window.SC404Track = send;
+
+  // Evento principal: página não encontrada.
+  send('page_not_found', { action_type: 'view' });
+
+  // Cliques nos CTAs e links úteis da própria 404.
+  document.addEventListener('click', function(ev){
+    var el = ev.target && ev.target.closest ? ev.target.closest('a,button') : null;
+    if (!el) return;
+    var text = (el.innerText || el.getAttribute('aria-label') || '').trim().replace(/\s+/g, ' ').slice(0, 120);
+    var href = el.getAttribute('href') || '';
+    var cta = el.getAttribute('data-cta') || '';
+    var channel = el.getAttribute('data-channel') || '';
+    var origin = el.getAttribute('data-origin') || '404';
+
+    if (cta || origin === '404') {
+      send('404_cta_click', { cta: cta || text, channel: channel || 'navigation', link_text: text, link_url: href, origin: origin });
+      if (channel === 'booking' || cta.indexOf('agendar') >= 0) send('booking_intent', { cta: cta || text, origin: '404', link_url: href });
+      if (channel === 'whatsapp' || cta.indexOf('whatsapp') >= 0) send('whatsapp_intent', { cta: cta || text, origin: '404', link_url: href });
+      return;
+    }
+
+    if (el.closest && el.closest('.error-links')) {
+      send('404_useful_link_click', { link_text: text, link_url: href, origin: '404' });
+      return;
+    }
+
+    if (el.id === 'waGeoBtn' || el.id === 'bookingGeoBtn') {
+      send('404_geo_click', { modal: el.id === 'waGeoBtn' ? 'whatsapp' : 'booking', link_text: text });
+      return;
+    }
+
+    if (el.closest && el.closest('#waModal')) {
+      send('404_whatsapp_modal_click', { link_text: text, link_url: href, modal: 'whatsapp' });
+    }
+    if (el.closest && el.closest('#bookingModal')) {
+      send('404_booking_modal_click', { link_text: text, link_url: href, modal: 'booking' });
+    }
+  }, true);
+
+  // Observa abertura/fechamento dos modais sem alterar os modais.
+  function observeModal(id, name){
+    var node = document.getElementById(id);
+    if (!node || !window.MutationObserver) return;
+    var last = node.getAttribute('aria-hidden');
+    new MutationObserver(function(){
+      var now = node.getAttribute('aria-hidden');
+      if (now === last) return;
+      last = now;
+      send(now === 'false' ? '404_modal_open' : '404_modal_close', { modal: name });
+    }).observe(node, { attributes: true, attributeFilter: ['aria-hidden','class','style'] });
+  }
+
+  document.addEventListener('DOMContentLoaded', function(){
+    observeModal('waModal', 'whatsapp');
+    observeModal('bookingModal', 'booking');
+  });
+
+  // Saída da página: útil para saber se a 404 recuperou ou perdeu o usuário.
+  window.addEventListener('pagehide', function(){
+    send('404_page_exit', { action_type: 'pagehide', time_on_page_ms: Date.now() - startedAt });
+  });
+})();
+</script>
+<!-- end 404 Tracking Profissional -->
+
 </head>
 <body class="error-404-page" data-page-type="404">
 <!-- Pinterest Tag noscript — Studio Caracóis -->
