@@ -3957,139 +3957,87 @@ body[data-page-type="bee-product"] nav.scrolled .mobile-toggle span {
     }
 }
 
-/* ╔═══════════════════════════════════════════════════════════════════╗
-   ║  25. MOBILE SAFE AREA FIX — sticky CTA, footer, modais e Android ║
-   ║  Build: 20260505-mobile-safearea-fix-final                       ║
-   ╚═══════════════════════════════════════════════════════════════════╝ */
 
-/* Blindagem global contra artefatos horizontais em navegadores mobile */
+/* =========================================================
+   SAFE AREA + MOBILE STICKY CTA FIX — ARTIGOS / GLOBAL
+   Build: 20260505-articles-safearea-final
+   Objetivo: evitar faixa preta/recorte no mobile, preservar CTA fixo,
+   WhatsApp flutuante, footer e modais sem regressão.
+========================================================= */
 html,
 body {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 body {
-    min-height: 100vh;
-    min-height: 100dvh;
+  min-height: 100dvh;
 }
 
 main {
-    overflow-x: clip;
+  overflow-x: clip;
 }
 
-/* Scroll lock real para modais: evita “pulo”, faixa escura e scroll fantasma no Android/iOS */
-html.modal-open,
-body.modal-open {
-    overflow: hidden !important;
-    overscroll-behavior: contain;
-    touch-action: none;
+@supports (height: 100svh) {
+  body { min-height: 100svh; }
 }
 
-body.modal-open {
-    position: relative;
+@supports not (overflow: clip) {
+  main,
+  section,
+  header,
+  footer { overflow-x: hidden; }
 }
 
 @media (max-width: 768px) {
-    :root {
-        --sc-sticky-cta-height: 76px;
-        --sc-sticky-cta-gap: 18px;
-    }
+  body {
+    padding-bottom: calc(86px + env(safe-area-inset-bottom));
+    overscroll-behavior-x: none;
+  }
 
-    body {
-        min-height: 100dvh;
-        background: var(--white);
-    }
+  body[data-page-type="article"] {
+    padding-bottom: calc(92px + env(safe-area-inset-bottom));
+    background: var(--white);
+  }
 
-    /* O CTA passa a cobrir corretamente a borda inferior sem deixar faixa preta aparente. */
-    .sticky-cta {
-        display: inline-flex;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        min-height: var(--sc-sticky-cta-height);
-        padding: 16px max(20px, env(safe-area-inset-left)) max(16px, env(safe-area-inset-bottom)) max(20px, env(safe-area-inset-right));
-        background: linear-gradient(135deg, var(--terracota), var(--terracota-dark));
-        color: var(--white);
-        border-radius: 0;
-        box-shadow: 0 -10px 34px rgba(20,20,20,0.18);
-        backdrop-filter: none;
-        -webkit-backdrop-filter: none;
-        transform: translateZ(0);
-        will-change: transform;
-    }
+  .sticky-cta {
+    display: inline-flex;
+    min-height: 66px;
+    padding-top: 16px;
+    padding-bottom: max(16px, env(safe-area-inset-bottom));
+    bottom: 0;
+    z-index: 997;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
 
-    /* Reserva espaço visual no final para o CTA não cobrir o rodapé/conteúdo. */
-    footer {
-        padding-bottom: calc(112px + env(safe-area-inset-bottom));
-    }
+  .whatsapp-float {
+    bottom: calc(88px + env(safe-area-inset-bottom));
+    z-index: 998;
+    transform: translateZ(0);
+  }
 
-    .footer-bottom {
-        gap: 10px;
-    }
+  footer,
+  .site-footer {
+    padding-bottom: calc(120px + env(safe-area-inset-bottom)) !important;
+  }
 
-    /* WhatsApp flutua acima do CTA fixo no mobile. */
-    .whatsapp-float {
-        right: max(18px, env(safe-area-inset-right));
-        bottom: calc(var(--sc-sticky-cta-height) + var(--sc-sticky-cta-gap) + env(safe-area-inset-bottom));
-        width: 54px;
-        height: 54px;
-        z-index: 998;
-        transform: translateZ(0);
-    }
-
-    .whatsapp-float:hover {
-        transform: translateZ(0) scale(1.05);
-    }
-
-    /* Reduz custo de renderização em celulares sem descaracterizar o visual premium. */
-    nav.scrolled {
-        backdrop-filter: blur(14px);
-        -webkit-backdrop-filter: blur(14px);
-    }
-
-    .hero-watermark {
-        width: min(420px, 82vw);
-        height: min(420px, 82vw);
-        right: -120px;
-        bottom: 24px;
-        opacity: 0.045;
-    }
-
-    .hero,
-    .franquia-hero,
-    .page-hero,
-    .bee-cat-hero,
-    .care-cat-hero,
-    .hero-local,
-    .bee-product-hero,
-    .care-product-hero {
-        overflow-x: clip;
-        transform: translateZ(0);
-    }
-
-    .modal,
-    .modal-overlay,
-    .market-modal,
-    .whatsapp-modal,
-    .units-modal {
-        overscroll-behavior: contain;
-    }
+  .modal,
+  .booking-modal,
+  .wa-modal,
+  .bee-modal {
+    padding-bottom: max(16px, env(safe-area-inset-bottom));
+  }
 }
 
-@media (max-width: 420px) {
-    :root {
-        --sc-sticky-cta-height: 74px;
-    }
+@media (max-width: 480px) {
+  .sticky-cta {
+    min-height: 64px;
+    font-size: 0.86rem;
+  }
 
-    .sticky-cta {
-        font-size: 0.86rem;
-        line-height: 1.2;
-    }
-
-    .whatsapp-float {
-        width: 52px;
-        height: 52px;
-    }
+  .whatsapp-float {
+    bottom: calc(84px + env(safe-area-inset-bottom));
+  }
 }
