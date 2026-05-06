@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-0J7RBF2BFX"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-0J7RBF2BFX',{send_page_view:true,cookie_flags:'SameSite=None;Secure'});</script>
   <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','1522260281454126');fbq('track','PageView');</script><noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1522260281454126&ev=PageView&noscript=1" alt=""></noscript>
-  <link rel="stylesheet" href="P260506-products-tracking-safearea-final"><link rel="stylesheet" href="P260506-products-tracking-safearea-final">
+  <link rel="stylesheet" href="/assets/css/main.css?v=20260506-products-visual-ok-tracking-final"><link rel="stylesheet" href="/assets/css/bee-product-pages.css?v=20260506-products-visual-ok-tracking-final">
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Product", "name": "BEE Proud", "brand": {"@type": "Brand", "name": "Bee Cosmetics"}, "category": "Leave-in Antiencolhimento", "description": "Previne o fator encolhimento e ajuda a manter os fios saudáveis, bonitos e com menos frizz.", "image": "https://caracois.com.br/images/products/bee-proud.webp", "url": "https://caracois.com.br/bee-cosmetics/bee-proud", "offers": {"@type": "Offer", "priceCurrency": "BRL", "price": "99.00", "availability": "https://schema.org/InStock"}, "gtin13": "7899085798642"}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Início", "item": "https://caracois.com.br"}, {"@type": "ListItem", "position": 2, "name": "Bee Cosmetics", "item": "https://caracois.com.br/bee-cosmetics"}, {"@type": "ListItem", "position": 3, "name": "BEE Proud"}]}</script>
 
   <link rel="dns-prefetch" href="https://s.pinimg.com">
@@ -148,166 +148,66 @@
 </footer>
 <button type="button" class="whatsapp-float" onclick="openWaModal()" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><use href="#i-wa"/></svg></button>
 <button aria-label="Agendar avaliação" class="sticky-cta" onclick="openBooking()" type="button"><svg fill="none" height="18" stroke="white" stroke-width="2" viewBox="0 0 24 24" width="18"><rect height="18" rx="2" width="18" x="3" y="4"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>Agendar agora</button>
-  <script src="P260506-products-tracking-safearea-final" defer></script><script src="P260506-products-tracking-safearea-final" defer></script><script src="P260506-products-tracking-safearea-final" defer></script>
 <script>
 (function(){
-  'use strict';
-  if (window.SCProductTrackingInstalled) return;
-  window.SCProductTrackingInstalled = true;
-  window.SC_PRODUCT_TRACKING_BUILD = '20260506-products-tracking-safearea-final';
-  var start = Date.now();
-
-  function safeParse(value){
-    try { return value ? JSON.parse(value) : null; } catch(e){ return value || ''; }
+  var BUILD = '20260506-products-visual-ok-tracking-final';
+  var startedAt = Date.now();
+  function readLS(key){ try { return localStorage.getItem(key) || ''; } catch(e) { return ''; } }
+  function utms(){
+    var p = new URLSearchParams(location.search);
+    var out = {};
+    ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','gclid','fbclid','msclkid'].forEach(function(k){ if(p.get(k)) out[k]=p.get(k); });
+    return out;
   }
-  function getAttribution(){
-    var params = new URLSearchParams(window.location.search || '');
-    var attrs = {};
-    ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','gclid','fbclid','msclkid'].forEach(function(k){
-      if (params.get(k)) attrs[k] = params.get(k);
-    });
-    attrs.first_touch = safeParse(localStorage.getItem('sc_first_touch')) || '';
-    attrs.last_touch = safeParse(localStorage.getItem('sc_last_touch')) || '';
-    attrs.referrer = document.referrer || '(direct)';
-    attrs.page_path = location.pathname;
-    attrs.page_url = location.href;
-    return attrs;
-  }
-  function getProductData(extra){
-    var body = document.body || {};
-    var pageType = body.dataset ? (body.dataset.pageType || '') : '';
-    var id = body.dataset ? (body.dataset.productId || body.dataset.productSlug || '') : '';
-    var slug = body.dataset ? (body.dataset.productSlug || id || '') : '';
-    var brand = pageType.indexOf('care') > -1 ? 'caracois_care' : (pageType.indexOf('bee') > -1 ? 'bee_cosmetics' : 'studio_caracois');
-    var name = (document.querySelector('#beeProductName,#careProductName,.care-cat-hero-title') || {}).textContent || document.title || slug;
-    var category = (document.querySelector('#beeProductCategory,#careProductCategory') || {}).textContent || '';
+  function basePayload(extra){
+    var body = document.body || {dataset:{}};
+    var pageType = body.dataset.pageType || '';
+    var productId = body.dataset.productId || body.dataset.productSlug || '';
+    var titleEl = document.querySelector('h1, #beeProductName, .care-product-title, .care-cat-hero-title');
     var payload = Object.assign({
-      product_id: id,
-      product_slug: slug,
-      product_name: String(name).replace(/\s+/g,' ').trim(),
-      product_category: String(category).replace(/\s+/g,' ').trim(),
-      brand: brand,
-      page_type: pageType || 'product',
-      build_version: window.SC_PRODUCT_TRACKING_BUILD,
-      time_on_page_ms: Date.now() - start
-    }, getAttribution(), extra || {});
+      page_type: pageType,
+      product_id: productId,
+      product_slug: body.dataset.productSlug || productId,
+      product_name: titleEl ? titleEl.textContent.trim().replace(/\s+/g,' ') : document.title,
+      page_path: location.pathname,
+      page_url: location.href,
+      page_referrer: document.referrer || '(direct)',
+      build_version: BUILD,
+      first_touch: readLS('sc_first_touch'),
+      last_touch: readLS('sc_last_touch'),
+      elapsed_ms: Date.now() - startedAt
+    }, utms(), extra || {});
     return payload;
   }
-  function scDispatch(eventName, payload, opts){
-    payload = payload || getProductData();
-    opts = opts || {};
-    try {
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push(Object.assign({ event: eventName }, payload));
-    } catch(e) {}
-    try {
-      if (typeof gtag === 'function') {
-        gtag('event', eventName, Object.assign({ transport_type: opts.beacon ? 'beacon' : undefined }, payload));
-      }
-    } catch(e) {}
-    try {
-      if (typeof clarity === 'function') {
-        clarity('event', eventName);
-        if (payload.product_slug) clarity('set', 'product_slug', payload.product_slug);
-        if (payload.brand) clarity('set', 'product_brand', payload.brand);
-        if (payload.marketplace) clarity('set', 'marketplace', payload.marketplace);
-      }
-    } catch(e) {}
+  function send(eventName, extra){
+    var payload = basePayload(extra);
+    try { window.dataLayer = window.dataLayer || []; window.dataLayer.push(Object.assign({event:eventName}, payload)); } catch(e){}
+    try { if(typeof gtag==='function') gtag('event', eventName, payload); } catch(e){}
+    try { if(typeof fbq==='function') fbq('trackCustom', eventName, payload); } catch(e){}
+    try { if(typeof clarity==='function') { clarity('event', eventName); if(payload.product_id) clarity('set','product_id',payload.product_id); if(payload.page_type) clarity('set','page_type',payload.page_type); } } catch(e){}
+    try { if(typeof pintrk==='function') pintrk('track','pagevisit', payload); } catch(e){}
   }
-  window.scProductTrack = scDispatch;
-
-  function metaViewContent(payload){
-    try {
-      if (typeof fbq === 'function' && payload.product_slug) {
-        fbq('track', 'ViewContent', {
-          content_name: payload.product_name,
-          content_ids: [payload.product_slug],
-          content_type: 'product',
-          content_category: payload.brand,
-          page_type: payload.page_type
-        });
-      }
-    } catch(e) {}
-  }
-  function pinterestPageVisit(payload){
-    try {
-      if (typeof pintrk === 'function') {
-        pintrk('track', 'pagevisit', {
-          line_items: payload.product_slug ? [{ product_id: payload.product_slug, product_name: payload.product_name, product_category: payload.brand }] : []
-        });
-      }
-    } catch(e) {}
-  }
-  function getMarketplaceFromEl(el){
-    if (!el) return '';
-    var market = (el.dataset && (el.dataset.market || el.dataset.marketplace)) || '';
-    var href = (el.getAttribute && el.getAttribute('href')) || '';
-    if (!market && /amazon/i.test(href)) market = 'amazon';
-    if (!market && /shopee/i.test(href)) market = 'shopee';
-    if (!market && /(mercadolivre|mercado-livre|lista\.mercadolivre)/i.test(href)) market = 'mercado_livre';
-    return market;
-  }
-  function setupClicks(){
-    document.addEventListener('click', function(e){
-      var target = e.target && e.target.closest ? e.target.closest('a,button,[role="button"]') : null;
-      if (!target) return;
-      var market = getMarketplaceFromEl(target);
-      var href = target.getAttribute('href') || '';
-      var cta = (target.dataset && (target.dataset.cta || target.dataset.origin || target.dataset.currentProduct)) || '';
-      var text = (target.textContent || '').replace(/\s+/g,' ').trim().slice(0,80);
-      var payload = getProductData({
-        cta: cta || text || 'click',
-        cta_text: text,
-        href: href,
-        marketplace: market,
-        outbound: /^https?:\/\//i.test(href) && href.indexOf(location.host) === -1
-      });
-      if (market) {
-        scDispatch('product_marketplace_click', payload, { beacon:true });
-        try { if (typeof fbq === 'function') fbq('track', 'Lead', {content_name: payload.product_name, content_category: payload.brand, marketplace: market}); } catch(e) {}
-        try { if (typeof pintrk === 'function') pintrk('track', 'lead', {lead_type:'marketplace_click'}); } catch(e) {}
-      } else if (target.matches('[data-bee-buy],[data-care-buy]')) {
-        scDispatch('product_buy_modal_open_intent', payload);
-      } else if (/openBooking\(/.test(target.getAttribute('onclick') || '') || /agendar/i.test(text)) {
-        scDispatch('product_booking_intent', payload);
-        try { if (typeof pintrk === 'function') pintrk('track', 'lead', {lead_type:'booking_intent'}); } catch(e) {}
-      } else if (/openWaModal\(/.test(target.getAttribute('onclick') || '') || /whats/i.test(text)) {
-        scDispatch('product_whatsapp_intent', payload);
-      } else {
-        scDispatch('product_cta_click', payload);
-      }
-    }, true);
-  }
-  function wrapModalFunction(name, eventName){
-    var tries = 0;
-    var timer = setInterval(function(){
-      tries += 1;
-      if (typeof window[name] === 'function' && !window[name].__scWrapped) {
-        var original = window[name];
-        window[name] = function(){
-          scDispatch(eventName, getProductData({modal: name}));
-          return original.apply(this, arguments);
-        };
-        window[name].__scWrapped = true;
-        clearInterval(timer);
-      }
-      if (tries > 40) clearInterval(timer);
-    }, 100);
-  }
+  window.SCProductTrack = send;
   document.addEventListener('DOMContentLoaded', function(){
-    var payload = getProductData();
-    scDispatch(payload.page_type === 'care_category' || document.body.classList.contains('care-cat-page') ? 'care_category_view' : 'product_view', payload);
-    metaViewContent(payload);
-    pinterestPageVisit(payload);
-    setupClicks();
-    ['openBooking','openWaModal','openBeeModal','openCareModal'].forEach(function(fn){
-      wrapModalFunction(fn, 'modal_open_' + fn.replace(/^open/,'').toLowerCase());
-    });
-  });
-  window.addEventListener('pagehide', function(){
-    scDispatch('product_page_exit', getProductData({exit: true}), {beacon:true});
+    var type = document.body && document.body.dataset ? document.body.dataset.pageType : '';
+    if(type === 'bee_product' || type === 'care_product') send('product_view', {brand: type === 'bee_product' ? 'bee_cosmetics' : 'caracois_care'});
+    if(document.body && document.body.classList.contains('care-cat-page')) send('product_collection_view', {brand:'caracois_care'});
+    document.addEventListener('click', function(e){
+      var buy = e.target.closest('[data-bee-buy], [data-care-buy]');
+      if(buy) send('product_buy_intent', {origin: buy.getAttribute('data-origin') || '', brand: buy.hasAttribute('data-bee-buy') ? 'bee_cosmetics' : 'caracois_care'});
+      var market = e.target.closest('[data-market], .bee-modal-card, .care-modal-card');
+      if(market) send('marketplace_click', {marketplace: market.getAttribute('data-market') || market.dataset.market || '', destination_url: market.href || '', origin: market.getAttribute('data-origin') || ''});
+      var booking = e.target.closest('[onclick*="openBooking"], .sticky-cta, .nav-cta-btn');
+      if(booking) send('booking_intent', {origin: booking.getAttribute('data-cta') || booking.getAttribute('data-origin') || 'product_page'});
+      var wa = e.target.closest('[onclick*="openWaModal"], .whatsapp-float');
+      if(wa) send('whatsapp_intent', {origin: wa.getAttribute('data-cta') || wa.getAttribute('data-origin') || 'product_page'});
+      var productLink = e.target.closest('a[href*="/bee-cosmetics/"], a[href*="/caracois-care/"]');
+      if(productLink) send('product_internal_click', {destination_url: productLink.href, anchor_text: productLink.textContent.trim().slice(0,80)});
+    }, true);
   });
 })();
 </script>
+
+  <script src="/assets/js/main.js?v=20260506-products-visual-ok-tracking-final" defer></script><script src="/assets/js/bee-catalog.js?v=20260506-products-visual-ok-tracking-final" defer></script><script src="/assets/js/bee-product-pages.js?v=20260506-products-visual-ok-tracking-final" defer></script>
 </body>
 </html>
