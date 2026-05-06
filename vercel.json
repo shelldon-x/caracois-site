@@ -15,7 +15,7 @@
         },
         {
           "key": "Permissions-Policy",
-          "value": "geolocation=(self), microphone=(), camera=()"
+          "value": "geolocation=(self), microphone=(), camera=(), payment=()"
         },
         {
           "key": "Strict-Transport-Security",
@@ -32,7 +32,20 @@
         },
         {
           "key": "Cache-Control",
-          "value": "no-store, max-age=0"
+          "value": "no-store, max-age=0, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/agendar",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "no-store, max-age=0, must-revalidate"
         }
       ]
     },
@@ -51,6 +64,15 @@
         {
           "key": "Cache-Control",
           "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/favicon.ico",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=604800"
         }
       ]
     },
@@ -107,10 +129,306 @@
       ]
     }
   ],
+  "redirects": [
+    {
+      "source": "/asa-sul",
+      "destination": "/unidades/brasilia-asa-sul",
+      "permanent": true
+    },
+    {
+      "source": "/asasul",
+      "destination": "/unidades/brasilia-asa-sul",
+      "permanent": true
+    },
+    {
+      "source": "/asa-norte",
+      "destination": "/unidades/brasilia-asa-norte",
+      "permanent": true
+    },
+    {
+      "source": "/asanorte",
+      "destination": "/unidades/brasilia-asa-norte",
+      "permanent": true
+    },
+    {
+      "source": "/aguas-claras",
+      "destination": "/unidades/brasilia-aguas-claras",
+      "permanent": true
+    },
+    {
+      "source": "/aguasclaras",
+      "destination": "/unidades/brasilia-aguas-claras",
+      "permanent": true
+    },
+    {
+      "source": "/taguatinga",
+      "destination": "/unidades/brasilia-taguatinga",
+      "permanent": true
+    },
+    {
+      "source": "/tatuape",
+      "destination": "/unidades/sao-paulo-tatuape",
+      "permanent": true
+    },
+    {
+      "source": "/sjc",
+      "destination": "/unidades/sao-jose-dos-campos",
+      "permanent": true
+    },
+    {
+      "source": "/sao-jose",
+      "destination": "/unidades/sao-jose-dos-campos",
+      "permanent": true
+    },
+    {
+      "source": "/sao-jose-dos-campos",
+      "destination": "/unidades/sao-jose-dos-campos",
+      "permanent": true
+    },
+    {
+      "source": "/goiania",
+      "destination": "/unidades/goiania-setor-bueno",
+      "permanent": true
+    },
+    {
+      "source": "/recife",
+      "destination": "/unidades/recife-boa-viagem",
+      "permanent": true
+    },
+    {
+      "source": "/unidade/asa-sul",
+      "destination": "/unidades/brasilia-asa-sul",
+      "permanent": true
+    },
+    {
+      "source": "/unidade/asa-norte",
+      "destination": "/unidades/brasilia-asa-norte",
+      "permanent": true
+    },
+    {
+      "source": "/unidade/aguas-claras",
+      "destination": "/unidades/brasilia-aguas-claras",
+      "permanent": true
+    },
+    {
+      "source": "/unidade/taguatinga",
+      "destination": "/unidades/brasilia-taguatinga",
+      "permanent": true
+    },
+    {
+      "source": "/unidade/tatuape",
+      "destination": "/unidades/sao-paulo-tatuape",
+      "permanent": true
+    },
+    {
+      "source": "/unidade/sjc",
+      "destination": "/unidades/sao-jose-dos-campos",
+      "permanent": true
+    },
+    {
+      "source": "/unidade/goiania",
+      "destination": "/unidades/goiania-setor-bueno",
+      "permanent": true
+    },
+    {
+      "source": "/unidade/recife",
+      "destination": "/unidades/recife-boa-viagem",
+      "permanent": true
+    },
+    {
+      "source": "/agende",
+      "destination": "/agendar",
+      "permanent": true
+    },
+    {
+      "source": "/agendamento",
+      "destination": "/agendar",
+      "permanent": true
+    },
+    {
+      "source": "/agenda",
+      "destination": "/agendar",
+      "permanent": true
+    },
+    {
+      "source": "/marcar",
+      "destination": "/agendar",
+      "permanent": true
+    },
+    {
+      "source": "/agendar/asa-sul",
+      "destination": "/agendar/brasilia-asa-sul",
+      "permanent": true
+    },
+    {
+      "source": "/agendar/asa-norte",
+      "destination": "/agendar/brasilia-asa-norte",
+      "permanent": true
+    },
+    {
+      "source": "/agendar/aguas-claras",
+      "destination": "/agendar/brasilia-aguas-claras",
+      "permanent": true
+    },
+    {
+      "source": "/agendar/taguatinga",
+      "destination": "/agendar/brasilia-taguatinga",
+      "permanent": true
+    },
+    {
+      "source": "/agendar/tatuape",
+      "destination": "/agendar/sao-paulo-tatuape",
+      "permanent": true
+    },
+    {
+      "source": "/agendar/sjc",
+      "destination": "/agendar/sao-jose-dos-campos",
+      "permanent": true
+    },
+    {
+      "source": "/agendar/goiania-setor-bueno",
+      "destination": "/agendar/goiania",
+      "permanent": true
+    },
+    {
+      "source": "/agendar/recife-boa-viagem",
+      "destination": "/agendar/recife",
+      "permanent": true
+    },
+    {
+      "source": "/central",
+      "destination": "/central-de-conhecimento",
+      "permanent": true
+    },
+    {
+      "source": "/conteudos",
+      "destination": "/central-de-conhecimento",
+      "permanent": true
+    },
+    {
+      "source": "/blog",
+      "destination": "/central-de-conhecimento",
+      "permanent": true
+    },
+    {
+      "source": "/bee",
+      "destination": "/bee-cosmetics",
+      "permanent": true
+    },
+    {
+      "source": "/bee-cosmeticos",
+      "destination": "/bee-cosmetics",
+      "permanent": true
+    },
+    {
+      "source": "/care",
+      "destination": "/caracois-care",
+      "permanent": true
+    },
+    {
+      "source": "/caracois-care-produtos",
+      "destination": "/caracois-care",
+      "permanent": true
+    },
+    {
+      "source": "/whatsapp",
+      "destination": "/?action=whatsapp&utm_source=shortcut&utm_medium=redirect",
+      "permanent": true
+    },
+    {
+      "source": "/wpp",
+      "destination": "/?action=whatsapp&utm_source=shortcut&utm_medium=redirect",
+      "permanent": true
+    },
+    {
+      "source": "/servicos/corte-3d",
+      "destination": "/servicos/corte-cabelo-cacheado",
+      "permanent": true
+    },
+    {
+      "source": "/corte-3d",
+      "destination": "/servicos/corte-cabelo-cacheado",
+      "permanent": true
+    },
+    {
+      "source": "/corte3d",
+      "destination": "/servicos/corte-cabelo-cacheado",
+      "permanent": true
+    },
+    {
+      "source": "/caracois-care-servico",
+      "destination": "/servicos/tratamento-cabelo-cacheado",
+      "permanent": true
+    },
+    {
+      "source": "/servicos/caracois-care",
+      "destination": "/servicos/tratamento-cabelo-cacheado",
+      "permanent": true
+    },
+    {
+      "source": "/finalizacao",
+      "destination": "/servicos/finalizacao-cabelo-cacheado",
+      "permanent": true
+    },
+    {
+      "source": "/servicos/finalizacao",
+      "destination": "/servicos/finalizacao-cabelo-cacheado",
+      "permanent": true
+    },
+    {
+      "source": "/coloracao",
+      "destination": "/servicos/coloracao-cabelo-cacheado",
+      "permanent": true
+    },
+    {
+      "source": "/servicos/coloracao",
+      "destination": "/servicos/coloracao-cabelo-cacheado",
+      "permanent": true
+    },
+    {
+      "source": "/acidificacao",
+      "destination": "/servicos/acidificacao-capilar",
+      "permanent": true
+    },
+    {
+      "source": "/servicos/acidificacao",
+      "destination": "/servicos/acidificacao-capilar",
+      "permanent": true
+    },
+    {
+      "source": "/transicao",
+      "destination": "/servicos/transicao-capilar",
+      "permanent": true
+    },
+    {
+      "source": "/servicos/transicao",
+      "destination": "/servicos/transicao-capilar",
+      "permanent": true
+    },
+    {
+      "source": "/corte-cabelo-cacheado",
+      "destination": "/servicos/corte-cabelo-cacheado",
+      "permanent": true
+    },
+    {
+      "source": "/finalizacao-cabelo-cacheado",
+      "destination": "/servicos/finalizacao-cabelo-cacheado",
+      "permanent": true
+    },
+    {
+      "source": "/tratamento-cabelo-cacheado",
+      "destination": "/servicos/tratamento-cabelo-cacheado",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/sitemap",
       "destination": "/sitemap.xml"
+    },
+    {
+      "source": "/manifest.webmanifest",
+      "destination": "/site.webmanifest"
     }
   ]
 }

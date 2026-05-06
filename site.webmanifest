@@ -1,7 +1,7 @@
 {
   "name": "Studio Caracóis — Especialistas em cabelos cacheados",
   "short_name": "Studio Caracóis",
-  "description": "Rede especializada em cabelos com curvatura. 8 unidades em 4 estados, atendimento 100% personalizado para cachos e crespos.",
+  "description": "Rede de salões especialistas em cabelos com curvatura. Corte 3D, Caracóis Care, acidificação, finalização, coloração e avaliação gratuita.",
   "lang": "pt-BR",
   "dir": "ltr",
   "scope": "/",
@@ -15,52 +15,37 @@
   ],
   "orientation": "portrait-primary",
   "theme_color": "#9B4442",
-  "background_color": "#141414",
+  "background_color": "#221514",
   "categories": [
     "beauty",
     "lifestyle",
-    "shopping"
+    "shopping",
+    "health"
   ],
   "icons": [
     {
-      "src": "/favicon-16x16.png",
-      "sizes": "16x16",
-      "type": "image/png"
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
     },
     {
-      "src": "/favicon-32x32.png",
+      "src": "/favicon-32.png",
       "sizes": "32x32",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
       "src": "/apple-touch-icon.png",
       "sizes": "180x180",
       "type": "image/png",
       "purpose": "any"
-    },
-    {
-      "src": "/images/icons/icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "/images/icons/icon-192-maskable.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "maskable"
-    },
-    {
-      "src": "/images/icons/icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "/images/icons/icon-512-maskable.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "maskable"
     }
   ],
   "screenshots": [
@@ -77,37 +62,24 @@
       "name": "Agendar avaliação",
       "short_name": "Agendar",
       "description": "Agende sua avaliação gratuita em uma das unidades",
-      "url": "/?utm_source=pwa&utm_medium=shortcut&action=booking",
+      "url": "/agendar?utm_source=pwa&utm_medium=shortcut&shortcut=agendar",
       "icons": [
         {
-          "src": "/images/icons/shortcut-booking.png",
-          "sizes": "96x96",
+          "src": "/favicon-192.png",
+          "sizes": "192x192",
           "type": "image/png"
         }
       ]
     },
     {
-      "name": "Falar no WhatsApp",
-      "short_name": "WhatsApp",
-      "description": "Fale direto com o Studio mais próximo",
-      "url": "/?utm_source=pwa&utm_medium=shortcut&action=whatsapp",
+      "name": "Unidade Asa Sul",
+      "short_name": "Asa Sul",
+      "description": "Ver a unidade Studio Caracóis Asa Sul",
+      "url": "/asa-sul?utm_source=pwa&utm_medium=shortcut",
       "icons": [
         {
-          "src": "/images/icons/shortcut-whatsapp.png",
-          "sizes": "96x96",
-          "type": "image/png"
-        }
-      ]
-    },
-    {
-      "name": "Central de Conhecimento",
-      "short_name": "Conteúdos",
-      "description": "Aprenda sobre cuidados com cachos",
-      "url": "/central-de-conhecimento?utm_source=pwa&utm_medium=shortcut",
-      "icons": [
-        {
-          "src": "/images/icons/shortcut-knowledge.png",
-          "sizes": "96x96",
+          "src": "/favicon-192.png",
+          "sizes": "192x192",
           "type": "image/png"
         }
       ]
@@ -115,12 +87,12 @@
     {
       "name": "Bee Cosmetics",
       "short_name": "Bee",
-      "description": "Catálogo da Bee Cosmetics",
-      "url": "/bee-cosmetics?utm_source=pwa&utm_medium=shortcut",
+      "description": "Conheça os produtos Bee Cosmetics",
+      "url": "/bee?utm_source=pwa&utm_medium=shortcut",
       "icons": [
         {
-          "src": "/images/icons/shortcut-bee.png",
-          "sizes": "96x96",
+          "src": "/favicon-192.png",
+          "sizes": "192x192",
           "type": "image/png"
         }
       ]
@@ -128,12 +100,25 @@
     {
       "name": "Caracóis Care",
       "short_name": "Care",
-      "description": "Linha conceito Caracóis Care — Curly Hair Expert",
-      "url": "/caracois-care?utm_source=pwa&utm_medium=shortcut",
+      "description": "Conheça a linha Caracóis Care",
+      "url": "/care?utm_source=pwa&utm_medium=shortcut",
       "icons": [
         {
-          "src": "/images/icons/shortcut-care.png",
-          "sizes": "96x96",
+          "src": "/favicon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Central de conhecimento",
+      "short_name": "Central",
+      "description": "Conteúdos sobre cabelos cacheados, ondulados e crespos",
+      "url": "/central?utm_source=pwa&utm_medium=shortcut",
+      "icons": [
+        {
+          "src": "/favicon-192.png",
+          "sizes": "192x192",
           "type": "image/png"
         }
       ]

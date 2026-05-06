@@ -1,15 +1,62 @@
 # =====================================================
 # robots.txt — Studio Caracóis
 # https://caracois.com.br
-# Política: indexação aberta com sitemap principal
+# Política: indexação aberta para buscadores e crawlers de IA
 # =====================================================
 
 User-agent: *
 Allow: /
 
-# Arquivos importantes para SEO, compartilhamento e performance
+# Buscadores e crawlers de IA explicitamente liberados
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+# Assets importantes para SEO, IA, preview social e performance
+Allow: /assets/
 Allow: /images/
 Allow: /images/og/
-Allow: /assets/
+Allow: /images/logos/
+Allow: /images/products/
+Allow: /favicon.ico
+Allow: /site.webmanifest
 
 Sitemap: https://caracois.com.br/sitemap.xml
