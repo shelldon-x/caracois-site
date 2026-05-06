@@ -33,7 +33,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/main.css?v=20260505-mobile-safearea-fix-final">
+  <link rel="stylesheet" href="/assets/css/main.css?v=20260504-404-modal-fix-final">
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-0J7RBF2BFX"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-0J7RBF2BFX',{send_page_view:true,cookie_flags:'SameSite=None;Secure',page_title:'404 — Página não encontrada'});gtag('event','page_not_found',{page_path:location.pathname,page_referrer:document.referrer||'(direct)',event_category:'errors',transport_type:'beacon'});window.dataLayer.push({event:'page_not_found',page_path:location.pathname,page_referrer:document.referrer||'(direct)'});</script>
@@ -149,6 +149,109 @@
       border-bottom: 1px solid rgba(196,162,101,.45);
     }
     .error-links a:hover { color: var(--gold); }
+
+    /* 404 — correção mobile sem mexer no CSS global */
+    html, body {
+      min-height: 100%;
+      background: #221514;
+    }
+    body.error-404-page {
+      padding-bottom: 0 !important;
+      background: #221514;
+      min-height: 100svh;
+    }
+    body.error-404-page::after {
+      display: none !important;
+      content: none !important;
+      height: 0 !important;
+      background: transparent !important;
+    }
+    body.error-404-page .sticky-cta,
+    body.error-404-page .whatsapp-float {
+      display: none !important;
+    }
+    body.error-404-page.modal-open {
+      overflow: hidden;
+    }
+    .error-page {
+      min-height: 100svh;
+      min-height: 100dvh;
+    }
+    .error-actions .btn {
+      min-width: 220px;
+    }
+    .error-actions button.btn {
+      appearance: none;
+      -webkit-appearance: none;
+    }
+    .error-actions .btn-outline-white {
+      color: #fff !important;
+      border: 1px solid rgba(255,255,255,.62) !important;
+      background: rgba(255,255,255,.08) !important;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.08);
+    }
+    @media (max-width: 768px) {
+      .error-page {
+        min-height: 100svh;
+        min-height: 100dvh;
+        align-items: center;
+        padding: max(52px, env(safe-area-inset-top)) 0 max(38px, env(safe-area-inset-bottom));
+      }
+      .error-logo {
+        width: min(208px, 58vw);
+        margin-bottom: 30px;
+      }
+      .error-code {
+        font-size: clamp(4rem, 19vw, 5.7rem);
+        margin-bottom: 16px;
+      }
+      .error-content h1 {
+        font-size: clamp(2rem, 8.2vw, 2.85rem);
+        line-height: 1.08;
+        margin-bottom: 22px;
+      }
+      .error-content p {
+        font-size: clamp(.94rem, 4vw, 1.05rem);
+        line-height: 1.72;
+        margin-bottom: 30px;
+      }
+      .error-actions {
+        flex-direction: column;
+        width: 100%;
+        max-width: 640px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 28px;
+      }
+      .error-actions .btn {
+        width: 100%;
+        min-height: 56px;
+        justify-content: center;
+      }
+      .error-links {
+        gap: 12px 20px;
+        padding-bottom: 0;
+      }
+    }
+    @media (max-width: 420px) {
+      .error-page {
+        padding-top: max(44px, env(safe-area-inset-top));
+        padding-bottom: max(32px, env(safe-area-inset-bottom));
+      }
+      .error-logo {
+        margin-bottom: 28px;
+      }
+      .error-content h1 {
+        font-size: clamp(2.03rem, 8.7vw, 2.45rem);
+      }
+      .error-content p {
+        max-width: 34ch;
+      }
+      .error-links {
+        font-size: .82rem;
+      }
+    }
+
   </style>
 
   <link rel="dns-prefetch" href="https://s.pinimg.com">
@@ -176,7 +279,7 @@
 </script>
 <!-- end Pinterest Tag -->
 </head>
-<body>
+<body class="error-404-page" data-page-type="404">
 <!-- Pinterest Tag noscript — Studio Caracóis -->
 <noscript>
   <img height="1" width="1" style="display:none;" alt="" src="https://ct.pinterest.com/v3/?event=init&tid=2613592271512&noscript=1" />
@@ -196,8 +299,8 @@
         <p>O endereço pode ter mudado ou não existir mais. Você pode voltar para o início, conhecer nossas unidades ou agendar uma avaliação gratuita.</p>
         <div class="error-actions">
           <a class="btn btn-primary" href="/" data-cta="voltar_inicio_404" data-origin="404">Voltar para o início</a>
-          <a class="btn btn-gold" href="/#unidades" data-cta="agendar_404" data-channel="booking" data-origin="404">Agendar avaliação gratuita</a>
-          <a class="btn btn-outline-white" href="/#unidades" data-cta="ver_unidades_404" data-origin="404">Ver unidades</a>
+          <a class="btn btn-gold" href="/agendar" data-cta="agendar_404" data-channel="booking" data-origin="404" onclick="event.preventDefault(); if(window.scTrack){window.scTrack('booking_click',{channel:'booking',cta:'agendar_404',origin:'404'});} openBooking();">Agendar avaliação gratuita</a>
+          <a class="btn btn-outline-white" href="https://wa.me/5511998980874" data-cta="whatsapp_404" data-channel="whatsapp" data-origin="404" onclick="event.preventDefault(); if(window.scTrack){window.scTrack('whatsapp_click',{channel:'whatsapp',cta:'whatsapp_404',origin:'404'});} openWaModal();">Falar pelo WhatsApp</a>
         </div>
         <div class="error-links" aria-label="Links úteis">
           <a href="/central-de-conhecimento">Central de conhecimento</a>
@@ -208,6 +311,75 @@
     </div>
   </main>
 
-  <script src="/assets/js/main.js?v=20260503-pages-global-10-final" defer></script>
+
+  <!-- Modal WhatsApp -->
+  <div aria-hidden="true" aria-label="Escolha sua unidade" aria-modal="true" class="wa-modal-overlay" id="waModal" onclick="closeModalOnOverlay(event, 'waModal')" role="dialog">
+  <div class="wa-modal" style="position:relative">
+  <button aria-label="Fechar" class="wa-modal-close" onclick="closeModal('waModal')" type="button">×</button>
+  <div class="wa-modal-header">
+  <div aria-level="2" class="wa-modal-title" role="heading">Escolha sua unidade</div>
+  <p>Fale diretamente com o Studio mais perto de você</p>
+  </div>
+  <div class="wa-unit-list" id="waUnitList">
+  <button aria-label="Usar localização" class="wa-geo-btn" id="waGeoBtn" onclick="findNearest()" type="button">
+  <svg aria-hidden="true" fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="18"><circle cx="12" cy="10" r="3"></circle><path d="M12 2a8 8 0 0 0-8 8c0 5.4 7 12 8 12s8-6.6 8-12a8 8 0 0 0-8-8z"></path></svg>
+  <span id="geoBtnText">Usar minha localização</span>
+  </button>
+  <div class="wa-nearest-wrap" id="waNearestWrap" style="display: none;">
+  <div class="wa-nearest-label">📍 Encontramos a unidade mais próxima de você</div>
+  <a class="wa-unit-item wa-nearest-card" id="waNearestCard" rel="noopener" target="_blank">
+  <div class="wa-unit-copy">
+  <div class="wa-unit-name" id="waNearestName"></div>
+  <div class="wa-unit-meta" id="waNearestAddr"></div>
+  <div class="wa-unit-meta wa-unit-meta--muted" id="waNearestPostal"></div>
+  <div class="wa-unit-meta wa-unit-meta--landmark" id="waNearestRef" style="display:none"></div>
+  <div class="wa-unit-distance" id="waNearestDist"></div>
+  <div class="wa-nearest-micro">Sua transformação começa mais perto do que você imagina ✨</div>
+  </div>
+  <span class="wa-nearest-cta">Falar agora</span>
+  </a>
+  </div>
+  <div class="wa-other-label" id="waOtherLabel" style="display: none;">Todas as unidades</div>
+  <!-- Conteúdo das unidades será injetado via JavaScript -->
+  <div class="wa-unit-items" id="waUnitItems"></div>
+  </div>
+  </div>
+  </div>
+  <!-- Modal Agendamento online -->
+  <div aria-hidden="true" aria-label="Escolha sua unidade para agendar" aria-modal="true" class="booking-overlay" id="bookingModal" onclick="closeModalOnOverlay(event, 'bookingModal')" role="dialog">
+  <div class="booking-modal">
+  <button aria-label="Fechar" class="booking-close" onclick="closeModal('bookingModal')" type="button">×</button>
+  <div class="booking-header">
+  <div aria-level="2" class="booking-modal-title" role="heading">Escolha a unidade mais próxima de você</div>
+  <p>Atendimento especializado em cabelos cacheados com avaliação personalizada</p>
+  </div>
+  <button aria-label="Usar localização" class="booking-geo-btn" id="bookingGeoBtn" onclick="findNearestBooking()" type="button">
+  <svg fill="none" height="16" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="16"><circle cx="12" cy="10" r="3"></circle><path d="M12 2a8 8 0 0 0-8 8c0 5.4 7 12 8 12s8-6.6 8-12a8 8 0 0 0-8-8z"></path></svg>
+  <span id="bookingGeoBtnText">Encontrar unidade mais próxima</span>
+  </button>
+  <div class="booking-nearest-wrap" id="bookingNearestWrap" style="display: none;">
+  <div class="booking-nearest-label">📍 Encontramos a unidade mais próxima de você</div>
+  <a class="booking-card booking-nearest-card" id="bookingNearestCard" rel="noopener noreferrer" target="_blank">
+  <div class="booking-nearest-content">
+  <div class="booking-card-name" id="bookingNearestName"></div>
+  <div class="booking-card-addr" id="bookingNearestAddr"></div>
+  <div class="booking-card-postal" id="bookingNearestPostal"></div>
+  <div class="booking-nearest-dist" id="bookingNearestDist"></div>
+  <div class="booking-card-ref booking-card-ref--light" id="bookingNearestRef"></div>
+  <div class="booking-nearest-micro">Sua transformação começa mais perto do que você imagina ✨</div>
+  </div>
+  <span class="booking-nearest-cta">Agendar agora</span>
+  </a>
+  </div>
+  <div class="booking-other-label" id="bookingOtherLabel" style="display: none;">Todas as unidades</div>
+  <!-- Conteúdo das unidades será injetado via JavaScript -->
+  <div class="booking-grid" id="bookingGrid"></div>
+  <div class="booking-footer">
+  <p>Não tem certeza de qual unidade escolher? <a href="#" onclick="event.preventDefault(); closeModal('bookingModal'); openWaModal();">Fale com nossa equipe no WhatsApp</a></p>
+  </div>
+  </div>
+  </div>
+
+  <script src="/assets/js/main.js?v=20260504-404-modal-fix-final" defer></script>
 </body>
 </html>
