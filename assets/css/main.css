@@ -3956,3 +3956,53 @@ body[data-page-type="bee-product"] nav.scrolled .mobile-toggle span {
         flex-shrink: 0 !important;
     }
 }
+
+
+/* === SC PRODUCTS FINAL SAFEAREA PATCH 20260506 === */
+@media (max-width: 768px) {
+  body.bee-product-page,
+  body.care-product-page,
+  body.care-cat-page {
+    padding-bottom: calc(88px + env(safe-area-inset-bottom)) !important;
+    overflow-x: hidden !important;
+    background: var(--white) !important;
+  }
+  body.bee-product-page::after,
+  body.care-product-page::after,
+  body.care-cat-page::after {
+    display: none !important;
+    content: none !important;
+    height: 0 !important;
+    background: transparent !important;
+  }
+  body.bee-product-page .sticky-cta,
+  body.care-product-page .sticky-cta,
+  body.care-cat-page .sticky-cta {
+    display: flex !important;
+    bottom: 0 !important;
+    min-height: 66px !important;
+    padding-top: 16px !important;
+    padding-bottom: max(16px, env(safe-area-inset-bottom)) !important;
+    z-index: 997 !important;
+    background: var(--terracota) !important;
+    box-shadow: 0 -10px 32px rgba(0,0,0,.18) !important;
+  }
+  body.bee-product-page .whatsapp-float,
+  body.care-product-page .whatsapp-float,
+  body.care-cat-page .whatsapp-float {
+    display: flex !important;
+    bottom: calc(92px + env(safe-area-inset-bottom)) !important;
+    right: max(18px, env(safe-area-inset-right)) !important;
+    z-index: 998 !important;
+  }
+  body.bee-product-page footer,
+  body.care-product-page footer,
+  body.care-cat-page footer {
+    padding-bottom: calc(124px + env(safe-area-inset-bottom)) !important;
+  }
+}
+@media (min-width: 769px) {
+  body.bee-product-page .sticky-cta,
+  body.care-product-page .sticky-cta,
+  body.care-cat-page .sticky-cta { display: none !important; }
+}

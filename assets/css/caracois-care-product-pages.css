@@ -1024,3 +1024,15 @@
   .care-modal-card strong { font-size: 1rem; }
   .care-modal-header h3 { font-size: 1.35rem; }
 }
+
+
+/* === SC FINAL NO BLACK SAFEAREA 20260506-products-tracking-safearea-final === */
+@media (max-width: 768px) {
+  body.care-product-page {
+    padding-bottom: calc(88px + env(safe-area-inset-bottom)) !important;
+    overflow-x: hidden !important;
+  }
+  body.care-product-page::after { display: none !important; content: none !important; }
+  body.care-product-page .sticky-cta { display: flex !important; bottom: 0 !important; }
+  body.care-product-page .whatsapp-float { bottom: calc(92px + env(safe-area-inset-bottom)) !important; }
+}
