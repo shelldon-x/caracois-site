@@ -2,7 +2,7 @@
 (function () {
   'use strict';
 
-  const BUILD_VERSION = '20260507-before-after-slider-fix';
+  const BUILD_VERSION = '20260507-before-after-slider-fix-v2';
 
   document.documentElement.classList.remove('no-js');
   document.documentElement.classList.add('js');
@@ -433,75 +433,86 @@
   }
 
   function initBeforeAfterSliders() {
-    const bindSlider = (root, options) => {
+    const sliders = [
+      ...$$('.comparison-container'),
+      ...$$('.before-after-images')
+    ];
+
+    sliders.forEach((root) => {
       if (!root || root.dataset.sliderReady === 'true') return;
-      const input = root.querySelector(options.inputSelector);
-      const after = root.querySelector(options.afterSelector);
-      const divider = root.querySelector(options.dividerSelector);
-      const handle = root.querySelector(options.handleSelector);
-      if (!input || !after || !divider || !handle) return;
+
+      const input = root.querySelector('.comparison-slider-input, .mini-range');
+      const reveal = root.querySelector('.comparison-img-after, .after-img');
+      const divider = root.querySelector('.comparison-divider, .mini-divider');
+      const handle = root.querySelector('.comparison-handle, .mini-handle');
+      if (!reveal || !divider || !handle) return;
 
       root.dataset.sliderReady = 'true';
+      let dragging = false;
 
       const apply = (rawValue) => {
         const value = clamp(Number(rawValue || 50), 0, 100);
         const pct = value + '%';
-        input.value = String(value);
         root.style.setProperty('--ba-pos', pct);
-        after.style.width = '100%';
-        after.style.clipPath = 'inset(0 ' + (100 - value) + '% 0 0)';
+        reveal.style.width = '100%';
+        reveal.style.clipPath = 'inset(0 ' + (100 - value) + '% 0 0)';
+        reveal.style.webkitClipPath = 'inset(0 ' + (100 - value) + '% 0 0)';
         divider.style.left = pct;
         handle.style.left = pct;
+        if (input) input.value = String(value);
       };
 
-      const valueFromPointer = (event) => {
+      const pointerToValue = (event) => {
         const rect = root.getBoundingClientRect();
-        const clientX = event.touches && event.touches[0] ? event.touches[0].clientX : event.clientX;
-        return clamp(((clientX - rect.left) / rect.width) * 100, 0, 100);
+        const point = event.touches && event.touches.length ? event.touches[0] : event;
+        const x = point.clientX || 0;
+        return clamp(((x - rect.left) / rect.width) * 100, 0, 100);
       };
 
-      const startDrag = (event) => {
-        if (event.pointerType === 'mouse' && event.button !== 0) return;
-        root.setPointerCapture?.(event.pointerId);
-        apply(valueFromPointer(event));
+      const begin = (event) => {
+        if (event.type === 'pointerdown' && event.pointerType === 'mouse' && event.button !== 0) return;
+        dragging = true;
+        root.classList.add('is-dragging');
+        apply(pointerToValue(event));
+        try { root.setPointerCapture && event.pointerId != null && root.setPointerCapture(event.pointerId); } catch (e) {}
+        if (event.cancelable) event.preventDefault();
       };
 
-      const moveDrag = (event) => {
-        if (!root.hasPointerCapture?.(event.pointerId)) return;
-        apply(valueFromPointer(event));
+      const move = (event) => {
+        if (!dragging) return;
+        apply(pointerToValue(event));
+        if (event.cancelable) event.preventDefault();
       };
 
-      input.addEventListener('input', () => apply(input.value), { passive: true });
-      root.addEventListener('pointerdown', startDrag);
-      root.addEventListener('pointermove', moveDrag);
-      root.addEventListener('pointerup', (event) => root.releasePointerCapture?.(event.pointerId));
-      root.addEventListener('pointercancel', (event) => root.releasePointerCapture?.(event.pointerId));
-      root.addEventListener('keydown', (event) => {
-        if (!['ArrowLeft','ArrowRight','Home','End'].includes(event.key)) return;
-        const step = event.key === 'ArrowLeft' ? -5 : event.key === 'ArrowRight' ? 5 : event.key === 'Home' ? -100 : 100;
-        apply(clamp(Number(input.value || 50) + step, 0, 100));
-      });
+      const endDrag = (event) => {
+        dragging = false;
+        root.classList.remove('is-dragging');
+        try { root.releasePointerCapture && event && event.pointerId != null && root.releasePointerCapture(event.pointerId); } catch (e) {}
+      };
 
-      apply(input.value || 50);
-    };
+      root.addEventListener('pointerdown', begin, { passive: false });
+      window.addEventListener('pointermove', move, { passive: false });
+      window.addEventListener('pointerup', endDrag, { passive: true });
+      window.addEventListener('pointercancel', endDrag, { passive: true });
 
-    bindSlider(document.getElementById('comparisonContainer'), {
-      inputSelector: '.comparison-slider-input',
-      afterSelector: '.comparison-img-after',
-      dividerSelector: '.comparison-divider',
-      handleSelector: '.comparison-handle'
-    });
+      root.addEventListener('touchstart', begin, { passive: false });
+      window.addEventListener('touchmove', move, { passive: false });
+      window.addEventListener('touchend', endDrag, { passive: true });
+      window.addEventListener('touchcancel', endDrag, { passive: true });
 
-    $$('.before-after-images').forEach((root) => {
-      bindSlider(root, {
-        inputSelector: '.mini-range',
-        afterSelector: '.after-img',
-        dividerSelector: '.mini-divider',
-        handleSelector: '.mini-handle'
-      });
+      if (input) {
+        input.addEventListener('input', () => apply(input.value), { passive: true });
+        input.addEventListener('change', () => apply(input.value), { passive: true });
+        input.addEventListener('keydown', (event) => {
+          if (!['ArrowLeft','ArrowRight','Home','End'].includes(event.key)) return;
+          const step = event.key === 'ArrowLeft' ? -5 : event.key === 'ArrowRight' ? 5 : event.key === 'Home' ? -100 : 100;
+          apply(clamp(Number(input.value || 50) + step, 0, 100));
+        });
+      }
+
+      apply(input ? input.value : 50);
     });
   }
-
 
   function initReveal() {
     const items = $$('.reveal');
