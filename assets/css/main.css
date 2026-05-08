@@ -931,7 +931,10 @@ section { padding: 100px 0; }
     aspect-ratio: 4/3;
     overflow: hidden;
     touch-action: pan-y;
+    isolation: isolate;
 }
+.comparison-container.is-dragging,
+.before-after-images.is-dragging { touch-action: none; }
 .comparison-img {
     pointer-events: none;
     position: absolute;
@@ -1061,6 +1064,7 @@ section { padding: 100px 0; }
 .before-after-images .after-img {
     position: absolute;
     inset: 0;
+    pointer-events: none;
 }
 .before-after-images .before-img img,
 .before-after-images .after-img img {
