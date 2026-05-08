@@ -2,7 +2,7 @@
 (function () {
   'use strict';
 
-  const BUILD_VERSION = '20260506-tracking-seo-rodada1';
+  const BUILD_VERSION = '20260507-before-after-slider-fix';
 
   document.documentElement.classList.remove('no-js');
   document.documentElement.classList.add('js');
@@ -48,10 +48,6 @@
     if (!ref) return { source: 'direct', medium: 'none' };
     try {
       const host = new URL(ref).hostname.replace(/^www\./, '').toLowerCase();
-      const currentHost = window.location.hostname.replace(/^www\./, '').toLowerCase();
-      if (host === currentHost || host.endsWith('.' + currentHost)) {
-        return { source: 'internal', medium: 'navigation', internal: true };
-      }
 
       const aiSources = [
         ['chatgpt', ['chatgpt.com', 'chat.openai.com', 'openai.com']],
@@ -85,31 +81,18 @@
 
   function initAttribution() {
     const urlAttrs = getParamsFromUrl();
-    const hasUrlAttrs = Object.keys(urlAttrs).length > 0;
     const ref = inferReferrerSource();
     const now = new Date().toISOString();
-    const previousLast = storageGet('sc_last_touch', null);
-    const shouldPreserveLastTouch = ref.internal && !hasUrlAttrs && previousLast;
-    const current = shouldPreserveLastTouch ? {
-      ...previousLast,
-      previous_page: previousLast.page_path || previousLast.landing_page || '',
-      page_path: window.location.pathname,
-      page_title: document.title || '',
-      internal_navigation_at: now
-    } : {
+    const current = {
       source: urlAttrs.utm_source || ref.source,
       medium: urlAttrs.utm_medium || ref.medium,
       campaign: urlAttrs.utm_campaign || '',
       content: urlAttrs.utm_content || '',
       term: urlAttrs.utm_term || '',
       gclid: urlAttrs.gclid || '',
-      gbraid: urlAttrs.gbraid || '',
-      wbraid: urlAttrs.wbraid || '',
       fbclid: urlAttrs.fbclid || '',
       msclkid: urlAttrs.msclkid || '',
       landing_page: window.location.pathname,
-      page_path: window.location.pathname,
-      page_title: document.title || '',
       captured_at: now
     };
     const first = storageGet('sc_first_touch', null);
@@ -215,7 +198,7 @@
     const current = getParamsFromUrl();
     const last = storageGet('sc_last_touch', ATTRIBUTION.last) || {};
     const paramsToForward = new URLSearchParams();
-    ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','gclid','gbraid','wbraid','fbclid','msclkid'].forEach((key) => {
+    ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','gclid','gbraid','wbraid','msclkid'].forEach((key) => {
       const normalized = key.replace('utm_', '');
       const value = current[key] || last[normalized] || last[key] || '';
       if (value) paramsToForward.set(key, value);
@@ -444,6 +427,82 @@
     window.addEventListener('scroll', update, { passive: true });
   }
 
+
+  function clamp(value, min, max) {
+    return Math.min(max, Math.max(min, value));
+  }
+
+  function initBeforeAfterSliders() {
+    const bindSlider = (root, options) => {
+      if (!root || root.dataset.sliderReady === 'true') return;
+      const input = root.querySelector(options.inputSelector);
+      const after = root.querySelector(options.afterSelector);
+      const divider = root.querySelector(options.dividerSelector);
+      const handle = root.querySelector(options.handleSelector);
+      if (!input || !after || !divider || !handle) return;
+
+      root.dataset.sliderReady = 'true';
+
+      const apply = (rawValue) => {
+        const value = clamp(Number(rawValue || 50), 0, 100);
+        const pct = value + '%';
+        input.value = String(value);
+        root.style.setProperty('--ba-pos', pct);
+        after.style.width = '100%';
+        after.style.clipPath = 'inset(0 ' + (100 - value) + '% 0 0)';
+        divider.style.left = pct;
+        handle.style.left = pct;
+      };
+
+      const valueFromPointer = (event) => {
+        const rect = root.getBoundingClientRect();
+        const clientX = event.touches && event.touches[0] ? event.touches[0].clientX : event.clientX;
+        return clamp(((clientX - rect.left) / rect.width) * 100, 0, 100);
+      };
+
+      const startDrag = (event) => {
+        if (event.pointerType === 'mouse' && event.button !== 0) return;
+        root.setPointerCapture?.(event.pointerId);
+        apply(valueFromPointer(event));
+      };
+
+      const moveDrag = (event) => {
+        if (!root.hasPointerCapture?.(event.pointerId)) return;
+        apply(valueFromPointer(event));
+      };
+
+      input.addEventListener('input', () => apply(input.value), { passive: true });
+      root.addEventListener('pointerdown', startDrag);
+      root.addEventListener('pointermove', moveDrag);
+      root.addEventListener('pointerup', (event) => root.releasePointerCapture?.(event.pointerId));
+      root.addEventListener('pointercancel', (event) => root.releasePointerCapture?.(event.pointerId));
+      root.addEventListener('keydown', (event) => {
+        if (!['ArrowLeft','ArrowRight','Home','End'].includes(event.key)) return;
+        const step = event.key === 'ArrowLeft' ? -5 : event.key === 'ArrowRight' ? 5 : event.key === 'Home' ? -100 : 100;
+        apply(clamp(Number(input.value || 50) + step, 0, 100));
+      });
+
+      apply(input.value || 50);
+    };
+
+    bindSlider(document.getElementById('comparisonContainer'), {
+      inputSelector: '.comparison-slider-input',
+      afterSelector: '.comparison-img-after',
+      dividerSelector: '.comparison-divider',
+      handleSelector: '.comparison-handle'
+    });
+
+    $$('.before-after-images').forEach((root) => {
+      bindSlider(root, {
+        inputSelector: '.mini-range',
+        afterSelector: '.after-img',
+        dividerSelector: '.mini-divider',
+        handleSelector: '.mini-handle'
+      });
+    });
+  }
+
+
   function initReveal() {
     const items = $$('.reveal');
     if (!items.length) return;
@@ -532,6 +591,7 @@
     enhanceWhatsAppLinks();
     initNav();
     initReveal();
+    initBeforeAfterSliders();
     initTracking();
     initEscClose();
     if (document.body && document.body.dataset.pageType === 'article') {
