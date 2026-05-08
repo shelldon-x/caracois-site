@@ -2,7 +2,7 @@
 (function () {
   'use strict';
 
-  const BUILD_VERSION = '20260507-before-after-slider-fix-v2';
+  const BUILD_VERSION = '20260507-before-after-slider-10-10-final';
 
   document.documentElement.classList.remove('no-js');
   document.documentElement.classList.add('js');
@@ -433,10 +433,18 @@
   }
 
   function initBeforeAfterSliders() {
-    const sliders = [
+    const candidates = [
+      ...$$('.comparison-slider'),
       ...$$('.comparison-container'),
       ...$$('.before-after-images')
     ];
+
+    const sliders = Array.from(new Set(candidates.map((candidate) => {
+      if (!candidate) return null;
+      return candidate.matches('.comparison-slider')
+        ? candidate.querySelector('.comparison-container') || candidate
+        : candidate;
+    }).filter(Boolean)));
 
     sliders.forEach((root) => {
       if (!root || root.dataset.sliderReady === 'true') return;
@@ -449,45 +457,54 @@
 
       root.dataset.sliderReady = 'true';
       let dragging = false;
+      let activePointerId = null;
 
       const apply = (rawValue) => {
         const value = clamp(Number(rawValue || 50), 0, 100);
         const pct = value + '%';
         root.style.setProperty('--ba-pos', pct);
         reveal.style.width = '100%';
+        reveal.style.maxWidth = 'none';
         reveal.style.clipPath = 'inset(0 ' + (100 - value) + '% 0 0)';
         reveal.style.webkitClipPath = 'inset(0 ' + (100 - value) + '% 0 0)';
         divider.style.left = pct;
         handle.style.left = pct;
-        if (input) input.value = String(value);
+        if (input) {
+          input.value = String(value);
+          input.setAttribute('aria-valuenow', String(Math.round(value)));
+        }
       };
 
       const pointerToValue = (event) => {
         const rect = root.getBoundingClientRect();
         const point = event.touches && event.touches.length ? event.touches[0] : event;
         const x = point.clientX || 0;
-        return clamp(((x - rect.left) / rect.width) * 100, 0, 100);
+        return rect.width ? clamp(((x - rect.left) / rect.width) * 100, 0, 100) : 50;
       };
 
       const begin = (event) => {
         if (event.type === 'pointerdown' && event.pointerType === 'mouse' && event.button !== 0) return;
         dragging = true;
+        activePointerId = event.pointerId != null ? event.pointerId : null;
         root.classList.add('is-dragging');
         apply(pointerToValue(event));
-        try { root.setPointerCapture && event.pointerId != null && root.setPointerCapture(event.pointerId); } catch (e) {}
+        try { root.setPointerCapture && activePointerId != null && root.setPointerCapture(activePointerId); } catch (e) {}
         if (event.cancelable) event.preventDefault();
       };
 
       const move = (event) => {
         if (!dragging) return;
+        if (activePointerId != null && event.pointerId != null && event.pointerId !== activePointerId) return;
         apply(pointerToValue(event));
         if (event.cancelable) event.preventDefault();
       };
 
       const endDrag = (event) => {
+        if (!dragging) return;
         dragging = false;
         root.classList.remove('is-dragging');
-        try { root.releasePointerCapture && event && event.pointerId != null && root.releasePointerCapture(event.pointerId); } catch (e) {}
+        try { root.releasePointerCapture && activePointerId != null && root.releasePointerCapture(activePointerId); } catch (e) {}
+        activePointerId = null;
       };
 
       root.addEventListener('pointerdown', begin, { passive: false });
@@ -495,6 +512,7 @@
       window.addEventListener('pointerup', endDrag, { passive: true });
       window.addEventListener('pointercancel', endDrag, { passive: true });
 
+      // Fallback para navegadores WebView antigos do Android/iOS.
       root.addEventListener('touchstart', begin, { passive: false });
       window.addEventListener('touchmove', move, { passive: false });
       window.addEventListener('touchend', endDrag, { passive: true });
@@ -505,8 +523,9 @@
         input.addEventListener('change', () => apply(input.value), { passive: true });
         input.addEventListener('keydown', (event) => {
           if (!['ArrowLeft','ArrowRight','Home','End'].includes(event.key)) return;
-          const step = event.key === 'ArrowLeft' ? -5 : event.key === 'ArrowRight' ? 5 : event.key === 'Home' ? -100 : 100;
-          apply(clamp(Number(input.value || 50) + step, 0, 100));
+          const value = Number(input.value || 50);
+          const next = event.key === 'ArrowLeft' ? value - 5 : event.key === 'ArrowRight' ? value + 5 : event.key === 'Home' ? 0 : 100;
+          apply(next);
         });
       }
 
