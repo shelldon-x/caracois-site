@@ -938,11 +938,12 @@ section { padding: 100px 0; }
     object-fit: cover;
 }
 .comparison-img-after {
-    width: auto;
+    width: 100%;
     height: 100%;
     max-width: none;
-    right: 0;
-    left: auto;
+    right: auto;
+    left: 0;
+    clip-path: inset(0 calc(100% - var(--ba-pos, 50%)) 0 0);
 }
 .comparison-slider-input {
     position: absolute;
@@ -1015,8 +1016,8 @@ section { padding: 100px 0; }
     font-weight: 500;
     color: var(--white);
 }
-.label-before { left: 20px; }
-.label-after { right: 20px; }
+.label-after { left: 20px; }
+.label-before { right: 20px; }
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1066,7 +1067,7 @@ section { padding: 100px 0; }
 }
 .before-after-images .after-img {
     z-index: 2;
-    clip-path: inset(0 50% 0 0);
+    clip-path: inset(0 calc(100% - var(--ba-pos, 50%)) 0 0);
 }
 .mini-range {
     position: absolute;
@@ -1133,8 +1134,6 @@ section { padding: 100px 0; }
     transform: none !important;
 }
 
-.before-after-card:hover .before-img img,
-.before-after-card:hover .after-img img { transform: scale(1.05); }
 .before-after-info {
     padding: 22px 20px 24px;
     text-align: center;
