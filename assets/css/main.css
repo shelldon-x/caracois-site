@@ -2453,18 +2453,11 @@ body.ui-locked {
 }
 
 @media (max-width: 768px) {
-    /* Reserva espaço para o sticky-cta + safe-area do iOS */
+    /* Reserva espaço para o sticky-cta. O próprio sticky-cta tem
+       padding-bottom: max(16px, env(safe-area-inset-bottom)) que cobre o
+       safe-area do iOS — não precisamos de faixa adicional atrás dele. */
     body { padding-bottom: calc(62px + env(safe-area-inset-bottom, 0px)); }
-    body::after {
-        content: '';
-        position: fixed;
-        left: 0; right: 0; bottom: 0;
-        height: calc(62px + env(safe-area-inset-bottom, 0px));
-        background: var(--black);
-        z-index: 996;
-        pointer-events: none;
-    }
-    /* Garante que o footer não fique sobreposto pelo sticky-cta + body::after */
+    /* Garante que o footer não fique sobreposto pelo sticky-cta */
     footer { padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px)); }
     section { padding: 72px 0; }
     .container { padding: 0 20px; }

@@ -4,10 +4,6 @@
    Escopo seguro: .bee-product-page
 ========================================================= */
 
-/* Onde comprar é acessado via CTA do hero (abre modal). Seção inline injetada
-   via JS fica oculta para evitar redundância e duplicação visual. */
-.bee-product-page #onde-comprar.bee-product-buy-section { display: none !important; }
-
 .bee-product-page {
   background: #160f0e;
   color: var(--white);

@@ -24,15 +24,11 @@
 .care-modal-header{margin-bottom:24px;text-align:center}
 .care-modal-header h3{font-family:var(--serif);font-size:1.55rem;color:var(--black);font-weight:500;margin-bottom:8px;line-height:1.2}
 .care-modal-header p{font-size:.92rem;color:var(--text-light);line-height:1.6;margin:0}
-.care-modal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:22px}
-.care-modal-card{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:22px 12px;background:var(--white);border:1px solid rgba(155,68,66,.12);border-radius:18px;text-decoration:none;color:var(--black);transition:all .3s var(--ease);min-height:108px;text-align:center}
-.care-modal-card:hover{transform:translateY(-3px);border-color:var(--terracota);box-shadow:0 14px 32px rgba(155,68,66,.14)}
-.care-modal-card strong{font-family:var(--serif);font-size:1.05rem;color:var(--terracota);font-weight:600;line-height:1.2}
-.care-modal-card span{font-size:.74rem;color:var(--text-muted);line-height:1.3}
+.care-modal-grid{margin-bottom:22px}
 .care-modal-footer{text-align:center;padding-top:18px;border-top:1px solid var(--border)}
 .care-modal-footer .btn{margin-top:6px}
 .care-cat-products-grid--loading::before{content:'Carregando linha Caracóis Care…';display:block;padding:40px;color:var(--text-muted);text-align:center;font-style:italic;grid-column:1/-1}
-@media(max-width:520px){.care-modal{padding:32px 22px 28px;border-radius:22px}.care-modal-grid{grid-template-columns:1fr;gap:10px}.care-modal-card{flex-direction:row;justify-content:flex-start;text-align:left;padding:16px 18px;min-height:auto;gap:14px}.care-modal-card strong{font-size:1rem}.care-modal-header h3{font-size:1.35rem}}
+@media(max-width:520px){.care-modal{padding:32px 22px 28px;border-radius:22px}.care-modal-header h3{font-size:1.35rem}}
 
 /* Card de produto do catálogo: ajuste para .care-product-link envolver tudo */
 .care-product-link{display:flex;flex-direction:column;flex:1;color:inherit;text-decoration:none}
