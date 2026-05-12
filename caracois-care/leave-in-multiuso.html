@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-0J7RBF2BFX"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-0J7RBF2BFX',{send_page_view:true,cookie_flags:'SameSite=None;Secure'});</script>
   <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','1522260281454126');fbq('track','PageView');</script><noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1522260281454126&ev=PageView&noscript=1" alt=""></noscript>
-  <link rel="stylesheet" href="/assets/css/main.css?v=20260514"><link rel="stylesheet" href="/assets/css/caracois-care-product-pages.css?v=20260514">
+  <link rel="stylesheet" href="/assets/css/main.css?v=20260515"><link rel="stylesheet" href="/assets/css/caracois-care-product-pages.css?v=20260515">
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Product", "name": "Leave-in Multiuso", "brand": {"@type": "Brand", "name": "Caracóis Care"}, "category": "Finalização Versátil", "description": "Finalizador multifuncional para definição, controle de frizz, proteção térmica e toque leve. Pensado para funcionar em diferentes curvaturas e técnicas de finalização — da fitagem ao acabamento mais natural — entregando maciez, brilho e durabilidade aos cachos sem rigidez.", "image": "https://caracois.com.br/images/products/leave-in-multiuso.webp", "url": "https://caracois.com.br/caracois-care/leave-in-multiuso", "offers": {"@type": "Offer", "priceCurrency": "BRL", "price": "99.00", "availability": "https://schema.org/InStock"}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Início", "item": "https://caracois.com.br"}, {"@type": "ListItem", "position": 2, "name": "Caracóis Care", "item": "https://caracois.com.br/caracois-care"}, {"@type": "ListItem", "position": 3, "name": "Leave-in Multiuso"}]}</script>
 
   <link rel="dns-prefetch" href="https://s.pinimg.com">
@@ -97,14 +97,11 @@
 <div class="care-modal-overlay" id="careModal" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Escolha onde comprar Caracóis Care" onclick="closeCareModalOnOverlay(event)">
   <div class="care-modal">
     <button type="button" class="care-modal-close" onclick="closeCareModal()" aria-label="Fechar">&times;</button>
-    <div class="care-modal-header"><h3>Comprar Caracóis Care</h3><p>Escolha o marketplace de sua preferência.</p></div>
-    <div class="care-modal-grid">
-      <a class="care-modal-card" href="https://www.amazon.com.br/s?k=Carac%C3%B3is+Care+cabelo+cacheado" target="_blank" rel="noopener noreferrer" data-market="amazon" data-origin="care-global-modal"><strong>Amazon</strong><span>Buscar catálogo</span></a>
-      <a class="care-modal-card" href="https://shopee.com.br/search?keyword=Carac%C3%B3is%20Care%20cabelo%20cacheado" target="_blank" rel="noopener noreferrer" data-market="shopee" data-origin="care-global-modal"><strong>Shopee</strong><span>Buscar catálogo</span></a>
-      <a class="care-modal-card" href="https://lista.mercadolivre.com.br/Caracois-Care-cabelo-cacheado" target="_blank" rel="noopener noreferrer" data-market="mercadolivre" data-origin="care-global-modal"><strong>Mercado Livre</strong><span>Buscar catálogo</span></a>
-    </div>
+    <div class="care-modal-header"><h3 id="careModalTitle">Comprar Caracóis Care</h3><p id="careModalSub">Escolha o marketplace de sua preferência.</p></div>
+    <div class="care-modal-grid bee-market-list" id="careModalGrid"></div>
     <div class="care-modal-footer"><button type="button" class="btn btn-primary" onclick="closeCareModal(); openBooking();">Agendar avaliação</button></div>
   </div>
+</div>
 </div>
   <main id="main">
     <section class="care-product-hero" aria-labelledby="careProductName">
@@ -208,6 +205,6 @@
 })();
 </script>
 
-  <script src="/assets/js/main.js?v=20260514" defer></script><script src="/assets/js/caracois-care-catalog.js?v=20260514" defer></script><script src="/assets/js/caracois-care-product-pages.js?v=20260514" defer></script>
+  <script src="/assets/js/main.js?v=20260515" defer></script><script src="/assets/js/caracois-care-catalog.js?v=20260515" defer></script><script src="/assets/js/caracois-care-product-pages.js?v=20260515" defer></script>
 </body>
 </html>
