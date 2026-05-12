@@ -2453,16 +2453,19 @@ body.ui-locked {
 }
 
 @media (max-width: 768px) {
-    body { padding-bottom: 62px; }
+    /* Reserva espaço para o sticky-cta + safe-area do iOS */
+    body { padding-bottom: calc(62px + env(safe-area-inset-bottom, 0px)); }
     body::after {
         content: '';
         position: fixed;
         left: 0; right: 0; bottom: 0;
-        height: 62px;
+        height: calc(62px + env(safe-area-inset-bottom, 0px));
         background: var(--black);
         z-index: 996;
         pointer-events: none;
     }
+    /* Garante que o footer não fique sobreposto pelo sticky-cta + body::after */
+    footer { padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px)); }
     section { padding: 72px 0; }
     .container { padding: 0 20px; }
     .nav-logo img { width: 200px; }

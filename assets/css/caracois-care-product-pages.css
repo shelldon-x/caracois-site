@@ -4,6 +4,10 @@
    Escopo seguro: .care-product-page
 ========================================================= */
 
+/* Onde comprar é acessado via CTA do hero (abre modal). Seção inline injetada
+   via JS fica oculta para evitar redundância e duplicação visual. */
+.care-product-page #onde-comprar.care-product-buy-section { display: none !important; }
+
 .care-product-page {
   background: #160f0e;
   color: var(--white);
