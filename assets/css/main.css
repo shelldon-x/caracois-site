@@ -581,10 +581,10 @@ section { padding: 100px 0; }
 }
 .method-step:hover { transform: translateY(-8px); box-shadow: 0 24px 64px rgba(0,0,0,0.05); }
 .step-number {
-    font-family: var(--sans);
-    font-size: 3rem;
-    font-weight: 700;
-    letter-spacing: -0.04em;
+    font-family: var(--serif);
+    font-size: 3.4rem;
+    font-weight: 500;
+    letter-spacing: -0.02em;
     line-height: 1;
     font-variant-numeric: tabular-nums lining-nums;
     color: var(--terracota-light);
@@ -607,7 +607,7 @@ section { padding: 100px 0; }
 
 .services { background: var(--black); color: var(--white); }
 .services .section-label { color: var(--gold); }
-.services .section-desc { color: rgba(255,255,255,0.42); }
+.services .section-desc { color: rgba(255,255,255,0.62); }
 .services-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 24px; margin-top: 64px; }
 .service-card {
     background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.025));
@@ -650,11 +650,11 @@ section { padding: 100px 0; }
     margin-bottom: 12px;
 }
 .service-card p {
-    font-size: 0.88rem;
-    color: rgba(255,255,255,0.42);
+    font-size: 0.92rem;
+    color: rgba(255,255,255,0.72);
     line-height: 1.7;
     margin-bottom: 20px;
-    font-weight: 300;
+    font-weight: 400;
 }
 .service-tag {
     display: inline-block;
@@ -768,10 +768,10 @@ section { padding: 100px 0; }
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-family: var(--sans);
-    font-size: 1.85rem;
-    font-weight: 700;
-    letter-spacing: -0.04em;
+    font-family: var(--serif);
+    font-size: 2.1rem;
+    font-weight: 500;
+    letter-spacing: -0.02em;
     line-height: 1;
     font-variant-numeric: tabular-nums lining-nums;
     flex-shrink: 0;
@@ -878,10 +878,10 @@ section { padding: 100px 0; }
     flex-wrap: wrap;
 }
 .stat-number {
-    font-family: var(--sans);
-    font-size: 2.8rem;
-    font-weight: 700;
-    letter-spacing: -0.04em;
+    font-family: var(--serif);
+    font-size: 3.2rem;
+    font-weight: 500;
+    letter-spacing: -0.02em;
     line-height: 1;
     font-variant-numeric: tabular-nums lining-nums;
     color: var(--terracota);
@@ -1417,7 +1417,7 @@ section { padding: 100px 0; }
 
 .units { background: var(--black); color: var(--white); }
 .units .section-label { color: var(--gold); }
-.units .section-desc { color: rgba(255,255,255,0.38); }
+.units .section-desc { color: rgba(255,255,255,0.62); }
 .units-grid {
     display: grid;
     grid-template-columns: repeat(4,1fr);
@@ -1460,8 +1460,8 @@ section { padding: 100px 0; }
     color: var(--white);
 }
 .unit-card .unit-sub {
-    font-size: 0.75rem;
-    color: rgba(255,255,255,0.4);
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.65);
     margin-bottom: 20px;
 }
 .unit-link-text {
@@ -1548,7 +1548,7 @@ footer { background: var(--black); color: rgba(255,255,255,0.58); padding: 72px 
     width: 34px; height: 34px; border-radius: 50%;
     background: rgba(255,255,255,0.05);
     display: flex; align-items: center; justify-content: center;
-    color: rgba(255,255,255,0.45);
+    color: rgba(255,255,255,0.68);
     text-decoration: none;
     overflow: visible;
 }
@@ -1565,10 +1565,10 @@ footer { background: var(--black); color: rgba(255,255,255,0.58); padding: 72px 
 .footer-col a {
     display: block;
     font-size: 0.82rem;
-    color: rgba(255,255,255,0.58);
+    color: rgba(255,255,255,0.70);
     text-decoration: none;
     margin-bottom: 10px;
-    font-weight: 300;
+    font-weight: 400;
 }
 .footer-col a:hover { color: var(--gold); }
 .footer-bottom {
@@ -2352,10 +2352,10 @@ body.ui-locked {
 .knowledge-card-num {
     position: relative;
     z-index: 1;
-    font-family: var(--sans);
-    font-size: 2.15rem;
-    font-weight: 700;
-    letter-spacing: -0.04em;
+    font-family: var(--serif);
+    font-size: 2.45rem;
+    font-weight: 500;
+    letter-spacing: -0.02em;
     line-height: 1;
     font-variant-numeric: tabular-nums lining-nums;
     color: var(--terracota);
@@ -2498,7 +2498,7 @@ body.ui-locked {
     }
 
     .hero-ctas .btn { width: 100%; justify-content: center; }
-    .hero-badge { font-size: 0.62rem; padding: 7px 14px; margin-bottom: 24px; }
+    .hero-badge { font-size: 0.68rem; padding: 7px 14px; margin-bottom: 24px; }
     .hero-proof { gap: 8px; }
     .hero-proof-pill {
         width: 100%;

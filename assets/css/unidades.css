@@ -350,7 +350,7 @@
 
 .exp-grid { grid-template-columns: repeat(4, 1fr); }
 .exp-card { text-align: center; }
-.exp-card-number { font-size: 2.2rem; margin-bottom: 14px; display: block; }
+.exp-card-number { font-family: var(--serif); font-size: 2.5rem; font-weight: 500; letter-spacing: -0.02em; line-height: 1; font-variant-numeric: tabular-nums lining-nums; margin-bottom: 14px; display: block; color: var(--terracota); }
 .exp-card-title { font-family: var(--serif); font-size: 1.08rem; font-weight: 600; margin-bottom: 10px; color: var(--black); }
 .exp-card-text { font-size: 0.82rem; color: var(--text-light); line-height: 1.6; font-weight: 300; }
 

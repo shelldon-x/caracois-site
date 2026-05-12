@@ -436,10 +436,11 @@ textarea.form-control {
 
 .kc-num {
             font-family: var(--serif);
-            font-size: 1.8rem; font-weight: 600;
+            font-size: 2rem; font-weight: 500;
+            letter-spacing: -0.02em;
             color: var(--terracota); line-height: 1;
-            margin-bottom: 14px; opacity: 0.65;
-            font-variant-numeric: tabular-nums;
+            margin-bottom: 14px; opacity: 0.78;
+            font-variant-numeric: tabular-nums lining-nums;
             position: relative; z-index: 1;
         }
 
