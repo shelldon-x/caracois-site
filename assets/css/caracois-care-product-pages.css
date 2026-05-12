@@ -4,6 +4,10 @@
    Escopo seguro: .care-product-page
 ========================================================= */
 
+/* Linha redundante de marketplaces no hero do produto removida —
+   o CTA "Comprar nos marketplaces" abre o modal #careModal com a versão rica. */
+.care-product-page #careProductMarkets:empty { display: none; }
+
 .care-product-page {
   background: #160f0e;
   color: var(--white);

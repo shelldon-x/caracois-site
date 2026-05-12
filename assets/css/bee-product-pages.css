@@ -4,6 +4,10 @@
    Escopo seguro: .bee-product-page
 ========================================================= */
 
+/* Linha redundante de marketplaces no hero do produto removida —
+   o CTA "Comprar nos marketplaces" abre o modal #beeModal com a versão rica. */
+.bee-product-page #beeProductMarkets:empty { display: none; }
+
 .bee-product-page {
   background: #160f0e;
   color: var(--white);

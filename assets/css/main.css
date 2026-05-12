@@ -1597,6 +1597,8 @@ footer { background: var(--black); color: rgba(255,255,255,0.58); padding: 72px 
     animation: float 3s ease-in-out infinite;
     cursor: pointer;
     border: none;
+    color: var(--white);
+    text-decoration: none;
 }
 .whatsapp-float:hover {
     transform: scale(1.1);
