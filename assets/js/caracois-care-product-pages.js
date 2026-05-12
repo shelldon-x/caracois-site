@@ -301,7 +301,7 @@
     setText('#careProductEditorialText', product.shortDesc || product.desc || '');
     setText('#careProductHowToUse', product.howToUse || '');
     setText('#careProductIngredients', product.ingredients || '');
-    setHtml('#careProductMarkets', marketplaceCards(product, true));
+    setHtml('#careProductMarkets', '');
     setHtml('#careProductRelated', renderProductRelated(product));
 
     // Renderiza blocos inferiores premium de forma idempotente

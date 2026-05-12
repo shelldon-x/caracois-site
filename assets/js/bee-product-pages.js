@@ -364,7 +364,7 @@
     setText('#beeProductEditorialText', product.shortDesc || product.desc || '');
     setText('#beeProductHowToUse', product.howToUse || '');
     setText('#beeProductIngredients', product.ingredients || '');
-    setHtml('#beeProductMarkets', marketplaceCards(product, true));
+    setHtml('#beeProductMarkets', '');
     setHtml('#beeProductRelated', renderProductRelated(product));
 
     // Renderiza blocos inferiores premium de forma idempotente.
