@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-0J7RBF2BFX"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-0J7RBF2BFX',{send_page_view:true,cookie_flags:'SameSite=None;Secure'});</script>
   <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','1522260281454126');fbq('track','PageView');</script><noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1522260281454126&ev=PageView&noscript=1" alt=""></noscript>
-  <link rel="stylesheet" href="/assets/css/main.css?v=20260515"><link rel="stylesheet" href="/assets/css/bee-product-pages.css?v=20260515">
+  <link rel="stylesheet" href="/assets/css/main.css?v=20260516"><link rel="stylesheet" href="/assets/css/bee-product-pages.css?v=20260516">
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Product", "name": "BEEtween Gardens", "brand": {"@type": "Brand", "name": "Bee Cosmetics"}, "category": "Máscara de Nutrição", "description": "Hidratação e nutrição em um único produto. Proporciona umectação, emoliência e maciez, ajudando a evitar o frizz.", "image": "https://caracois.com.br/images/products/beetween-gardens.webp", "url": "https://caracois.com.br/bee-cosmetics/beetween-gardens", "offers": {"@type": "Offer", "priceCurrency": "BRL", "price": "125.00", "availability": "https://schema.org/InStock"}, "gtin13": "7899085798598"}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Início", "item": "https://caracois.com.br"}, {"@type": "ListItem", "position": 2, "name": "Bee Cosmetics", "item": "https://caracois.com.br/bee-cosmetics"}, {"@type": "ListItem", "position": 3, "name": "BEEtween Gardens"}]}</script>
 
   <link rel="dns-prefetch" href="https://s.pinimg.com">
@@ -94,17 +94,53 @@
     <div class="booking-footer"><p>Não tem certeza? <a href="#" onclick="event.preventDefault(); closeModal('bookingModal'); openWaModal();">Fale com nossa equipe no WhatsApp</a></p></div>
   </div>
 </div>
-<div class="bee-modal-overlay" id="beeModal" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Escolha onde comprar Bee Cosmetics" onclick="closeBeeModalOnOverlay(event)">
-  <div class="bee-modal">
-    <button type="button" class="bee-modal-close" onclick="closeBeeModal()" aria-label="Fechar">&times;</button>
-    <div class="bee-modal-header"><h3>Comprar Bee Cosmetics</h3><p>Escolha o marketplace de sua preferência.</p></div>
-    <div class="bee-modal-grid">
-      <a class="bee-modal-card" href="https://www.amazon.com.br/s?k=Bee+Cosmetics+cabelo+cacheado" target="_blank" rel="noopener noreferrer" data-market="amazon" data-origin="bee-global-modal"><strong>Amazon</strong><span>Buscar catálogo</span></a>
-      <a class="bee-modal-card" href="https://shopee.com.br/search?keyword=Bee%20Cosmetics%20cabelo%20cacheado" target="_blank" rel="noopener noreferrer" data-market="shopee" data-origin="bee-global-modal"><strong>Shopee</strong><span>Buscar catálogo</span></a>
-      <a class="bee-modal-card" href="https://lista.mercadolivre.com.br/Bee-Cosmetics-cabelo-cacheado" target="_blank" rel="noopener noreferrer" data-market="mercadolivre" data-origin="bee-global-modal"><strong>Mercado Livre</strong><span>Buscar catálogo</span></a>
-    </div>
-    <div class="bee-modal-footer"><button type="button" class="btn btn-primary" onclick="closeBeeModal(); openBooking();">Agendar avaliação</button></div>
-  </div>
+<div aria-hidden="true" aria-label="Escolha onde comprar Bee Cosmetics" aria-modal="true" class="bee-modal-overlay" id="beeModal" onclick="closeBeeModalOnOverlay(event)" role="dialog">
+<div class="bee-modal">
+<button aria-label="Fechar" class="bee-modal-close" onclick="closeBeeModal()" type="button">×</button>
+<div class="bee-modal-header">
+<h3>Escolha seu canal de compra</h3>
+<p>Encontre nossos produtos nos principais marketplaces e escolha a opção mais conveniente para você.</p>
+</div>
+<div class="bee-market-list">
+<a class="bee-market-item" href="https://www.amazon.com.br/s?k=bee+cosmetics+cabelo+cacheado" rel="noopener noreferrer" target="_blank">
+<div class="bee-market-icon">
+<img alt="Amazon" height="28" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" src="/images/icons/amazon.svg" width="28"/>
+<span class="market-fallback">📦</span>
+</div>
+<div class="bee-market-text">
+<strong>Amazon</strong>
+<span>Entrega rápida e experiência familiar</span>
+</div>
+<span class="bee-market-arrow">→</span>
+</a>
+<a class="bee-market-item" href="https://shopee.com.br/search?keyword=bee%20cosmetics%20cabelo%20cacheado" rel="noopener noreferrer" target="_blank">
+<div class="bee-market-icon">
+<img alt="Shopee" height="28" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" src="/images/icons/shopee.svg" width="28"/>
+<span class="market-fallback">🛍️</span>
+</div>
+<div class="bee-market-text">
+<strong>Shopee</strong>
+<span>Ofertas, cupons e navegação prática</span>
+</div>
+<span class="bee-market-arrow">→</span>
+</a>
+<a class="bee-market-item" href="https://lista.mercadolivre.com.br/bee-cosmetics" rel="noopener noreferrer" target="_blank">
+<div class="bee-market-icon">
+<img alt="Mercado Livre" height="28" onerror="this.style.display='none';this.nextElementSibling.style.display='block'" src="/images/icons/mercadolivre.svg" width="28"/>
+<span class="market-fallback">🏪</span>
+</div>
+<div class="bee-market-text">
+<strong>Mercado Livre</strong>
+<span>Compra segura em um canal confiável</span>
+</div>
+<span class="bee-market-arrow">→</span>
+</a>
+</div>
+<div class="bee-modal-footer">
+<a href="https://instagram.com/beecosmetics.store" rel="noopener" target="_blank">Conheça o perfil oficial @beecosmetics.store ↗</a>
+</div>
+</div>
+</div>
 </div>
   <main id="main">
     <section class="bee-product-hero" aria-labelledby="beeProductName">
@@ -208,6 +244,6 @@
 })();
 </script>
 
-  <script src="/assets/js/main.js?v=20260515" defer></script><script src="/assets/js/bee-catalog.js?v=20260515" defer></script><script src="/assets/js/bee-product-pages.js?v=20260515" defer></script>
+  <script src="/assets/js/main.js?v=20260516" defer></script><script src="/assets/js/bee-catalog.js?v=20260516" defer></script><script src="/assets/js/bee-product-pages.js?v=20260516" defer></script>
 </body>
 </html>
