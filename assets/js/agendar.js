@@ -5,7 +5,7 @@
 (function () {
   'use strict';
 
-  var BUILD = window.SC_AGENDAR_BUILD || '20260506-agendar-attribution-preserve';
+  var BUILD = window.SC_AGENDAR_BUILD || '20260503-agendar-central-js-logo-final';
   var SC_UNIT = window.SC_AGENDAR_UNIT || {};
   var SC_DESTINATION = window.SC_AGENDAR_DESTINATION || '';
   var ATTR_KEYS = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','gclid','gbraid','wbraid','fbclid','msclkid'];
@@ -29,10 +29,6 @@
     var ref = document.referrer || '';
     if (!ref) return { source: 'direct', medium: 'none' };
     var host = normalizeHost(ref);
-    var currentHost = (location.hostname || '').replace(/^www\./, '').toLowerCase();
-    if (host && currentHost && (host === currentHost || host.slice(-(currentHost.length + 1)) === '.' + currentHost)) {
-      return { source: 'internal', medium: 'navigation', internal: true };
-    }
     var aiSources = [
       ['chatgpt', ['chatgpt.com','chat.openai.com','openai.com']],
       ['copilot', ['copilot.microsoft.com','bing.com/chat']],
@@ -68,14 +64,7 @@
     var ref = inferReferrerSource();
     var now = new Date().toISOString();
     var first = readJSON('sc_first_touch', null);
-    var previousLast = readJSON('sc_last_touch', null);
-    var hasUrlAttrs = ATTR_KEYS.some(function (key) { return qs.get(key); });
-    var current = (ref.internal && !hasUrlAttrs && previousLast) ? Object.assign({}, previousLast, {
-      previous_page: previousLast.page_path || previousLast.landing_page || '',
-      page_path: location.pathname,
-      page_title: document.title || '',
-      internal_navigation_at: now
-    }) : {
+    var current = {
       source: qs.get('utm_source') || ref.source,
       medium: qs.get('utm_medium') || ref.medium,
       campaign: qs.get('utm_campaign') || '',
@@ -87,8 +76,6 @@
       fbclid: qs.get('fbclid') || '',
       msclkid: qs.get('msclkid') || '',
       landing_page: (first && first.landing_page) || location.pathname,
-      page_path: location.pathname,
-      page_title: document.title || '',
       captured_at: now
     };
     if (!first) writeJSON('sc_first_touch', current);

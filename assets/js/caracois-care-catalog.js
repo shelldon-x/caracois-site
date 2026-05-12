@@ -1,13 +1,14 @@
 /* Caracóis Care — catálogo frontend rico 100%
-   Build: 20260504-care-premium-clean-final
+   Build: 20260512
    Dados enriquecidos: volume, pH, ANVISA, código de barras, descrição, modo de usar e composição.
    Espelha o bee-catalog.js para manter coerência arquitetural.
+   Queries de marketplace no padrão "Caracóis Care {Nome} para Cabelos Cacheados".
 */
 (function () {
   'use strict';
 
-  const BUILD_VERSION = '20260504-care-premium-clean-final';
-  const CARE_IMAGE_VERSION = '20260504-care-premium-clean-final';
+  const BUILD_VERSION = '20260512';
+  const CARE_IMAGE_VERSION = '20260512';
   const careImage = (slug) => `/images/products/${slug}.webp?v=${CARE_IMAGE_VERSION}`;
 
   const PRODUCTS = [
@@ -118,14 +119,9 @@
 
   function careProductSearchQuery(product) {
     const p = product || {};
-    const categoryTerms = {
-      'Limpeza Inteligente': 'shampoo sem sulfato cabelo cacheado',
-      'Limpeza Condicionante': 'co-wash no poo cabelo cacheado',
-      'Hidratação • Nutrição • Reconstrução': 'máscara hidratação nutrição reconstrução cachos',
-      'Finalização Versátil': 'leave-in multiuso cachos cabelo cacheado',
-      'Fixação e Definição': 'gelatina capilar definição cachos'
-    };
-    return ['Caracóis Care', p.name || '', categoryTerms[p.type] || p.type || '', 'Studio Caracóis']
+    // Padrão amigável: "Caracóis Care {Nome} para Cabelos Cacheados"
+    // Fallback (sem produto): "Caracóis Care para Cabelos Cacheados"
+    return ['Caracóis Care', p.name || '', 'para Cabelos Cacheados']
       .filter(Boolean).join(' ').replace(/\s+/g, ' ').trim();
   }
 
@@ -214,11 +210,10 @@
       if (titleEl) titleEl.textContent = 'Comprar Caracóis Care';
       if (subEl) subEl.textContent = 'Escolha o marketplace de sua preferência.';
       if (grid) {
-        grid.innerHTML = [
-          { key: 'amazon', name: 'Amazon', url: 'https://www.amazon.com.br/s?k=Carac%C3%B3is+Care+cabelo+cacheado' },
-          { key: 'shopee', name: 'Shopee', url: 'https://shopee.com.br/search?keyword=Carac%C3%B3is%20Care%20cabelo%20cacheado' },
-          { key: 'mercadolivre', name: 'Mercado Livre', url: 'https://lista.mercadolivre.com.br/Caracois-Care-cabelo-cacheado' }
-        ].map(m => `<a class="care-modal-card" href="${m.url}" target="_blank" rel="noopener noreferrer" data-market="${m.key}" data-origin="care-global-modal"><strong>${m.name}</strong><span>Buscar catálogo</span></a>`).join('');
+        grid.innerHTML = ['amazon', 'shopee', 'mercadolivre'].map(key => {
+          const names = { amazon: 'Amazon', shopee: 'Shopee', mercadolivre: 'Mercado Livre' };
+          return `<a class="care-modal-card" href="${esc(buildCareMarketplaceUrl(key, null))}" target="_blank" rel="noopener noreferrer" data-market="${key}" data-origin="care-global-modal"><strong>${names[key]}</strong><span>Buscar catálogo</span></a>`;
+        }).join('');
       }
       track('care_buy_modal_open', { product_id: 'all' });
     }
