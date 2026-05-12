@@ -188,6 +188,32 @@
     return PRODUCTS.find(p => p.id === slug) || null;
   }
 
+  const MARKETPLACE_META = {
+    amazon: { name: 'Amazon', desc: 'Entrega rápida e experiência familiar', fallback: '📦', icon: '/images/icons/amazon.svg' },
+    shopee: { name: 'Shopee', desc: 'Ofertas, cupons e navegação prática', fallback: '🛍️', icon: '/images/icons/shopee.svg' },
+    mercadolivre: { name: 'Mercado Livre', desc: 'Compra segura em um canal confiável', fallback: '🏪', icon: '/images/icons/mercadolivre.svg' }
+  };
+
+  function renderCareMarketItems(product) {
+    return ['amazon', 'shopee', 'mercadolivre'].map(key => {
+      const m = MARKETPLACE_META[key];
+      const url = buildCareMarketplaceUrl(key, product);
+      const descText = product ? `Buscar ${esc(product.name)}` : m.desc;
+      const productAttr = product ? ` data-product="${esc(product.id)}"` : '';
+      return `<a class="bee-market-item" href="${esc(url)}" target="_blank" rel="noopener noreferrer" data-market="${key}" data-origin="care-global-modal"${productAttr}>
+        <div class="bee-market-icon">
+          <img alt="${esc(m.name)}" height="28" width="28" src="${m.icon}" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"/>
+          <span class="market-fallback">${m.fallback}</span>
+        </div>
+        <div class="bee-market-text">
+          <strong>${esc(m.name)}</strong>
+          <span>${descText}</span>
+        </div>
+        <span class="bee-market-arrow">→</span>
+      </a>`;
+    }).join('');
+  }
+
   function openCareModal(button) {
     const overlay = $('#careModal');
     if (!overlay) return;
@@ -199,22 +225,12 @@
     if (product) {
       if (titleEl) titleEl.textContent = `Comprar ${product.name}`;
       if (subEl) subEl.textContent = 'Escolha o marketplace de sua preferência.';
-      if (grid) {
-        grid.innerHTML = ['amazon', 'shopee', 'mercadolivre'].map(key => {
-          const names = { amazon: 'Amazon', shopee: 'Shopee', mercadolivre: 'Mercado Livre' };
-          return `<a class="care-modal-card" href="${esc(buildCareMarketplaceUrl(key, product))}" target="_blank" rel="noopener noreferrer" data-market="${key}" data-origin="care-global-modal" data-product="${esc(product.id)}"><strong>${names[key]}</strong><span>Buscar ${esc(product.name)}</span></a>`;
-        }).join('');
-      }
+      if (grid) grid.innerHTML = renderCareMarketItems(product);
       track('care_buy_modal_open', { product_id: product.id, product_name: product.name });
     } else {
       if (titleEl) titleEl.textContent = 'Comprar Caracóis Care';
       if (subEl) subEl.textContent = 'Escolha o marketplace de sua preferência.';
-      if (grid) {
-        grid.innerHTML = ['amazon', 'shopee', 'mercadolivre'].map(key => {
-          const names = { amazon: 'Amazon', shopee: 'Shopee', mercadolivre: 'Mercado Livre' };
-          return `<a class="care-modal-card" href="${esc(buildCareMarketplaceUrl(key, null))}" target="_blank" rel="noopener noreferrer" data-market="${key}" data-origin="care-global-modal"><strong>${names[key]}</strong><span>Buscar catálogo</span></a>`;
-        }).join('');
-      }
+      if (grid) grid.innerHTML = renderCareMarketItems(null);
       track('care_buy_modal_open', { product_id: 'all' });
     }
 

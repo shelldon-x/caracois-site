@@ -310,7 +310,7 @@
     if (main) {
       const wrapper = document.createElement('div');
       wrapper.className = 'care-product-dynamic-extra';
-      wrapper.innerHTML = renderGuideSection() + renderBuySection(product) + renderNextStepSection(product);
+      wrapper.innerHTML = renderGuideSection() + renderNextStepSection(product);
       main.insertAdjacentElement('beforeend', wrapper);
     }
 
@@ -450,6 +450,13 @@
       product_category: product.category,
       origin: origin || 'unknown'
     });
+
+    if (typeof window.openCareModal === 'function') {
+      const trigger = (event && event.target && event.target.closest('[data-care-buy]')) || null;
+      window.openCareModal(trigger);
+      return;
+    }
+
     const target = document.getElementById('onde-comprar');
     if (target) {
       target.scrollIntoView({ behavior: 'smooth', block: 'start' });

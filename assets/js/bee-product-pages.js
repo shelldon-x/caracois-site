@@ -374,7 +374,7 @@
     if (main) {
       const wrapper = document.createElement('div');
       wrapper.className = 'bee-product-dynamic-extra';
-      wrapper.innerHTML = renderGuideSection() + renderBuySection(product) + renderNextStepSection(product);
+      wrapper.innerHTML = renderGuideSection() + renderNextStepSection(product);
       main.insertAdjacentElement('beforeend', wrapper);
     }
 
@@ -521,6 +521,11 @@
       product_category: product.category,
       origin: origin || 'unknown'
     });
+
+    if (typeof window.openBeeModal === 'function') {
+      window.openBeeModal();
+      return;
+    }
 
     const target = document.getElementById('onde-comprar');
     if (target) {
