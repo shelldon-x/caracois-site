@@ -75,3 +75,81 @@
     -webkit-transform: translateZ(0);
   }
 }
+
+/* ==========  ONDE COMPRAR  (espelho de .bee-cat-buy)  ========== */
+.care-cat-buy {
+    padding: 100px 0;
+    background: var(--nude-ultra);
+}
+.care-cat-buy-inner {
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+}
+.care-cat-buy-inner .section-desc {
+    margin: 14px auto 40px;
+    color: var(--text-muted);
+    max-width: 540px;
+}
+.care-cat-buy-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 44px;
+}
+.care-cat-buy-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 40px 28px;
+    background: var(--white);
+    border-radius: 20px;
+    border: 1px solid rgba(0,0,0,0.04);
+    text-decoration: none;
+    color: var(--black);
+    transition: all 0.4s var(--ease);
+    position: relative;
+    overflow: hidden;
+}
+.care-cat-buy-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(196,162,101,0.08), transparent);
+    opacity: 0;
+    transition: opacity 0.35s;
+}
+.care-cat-buy-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--gold);
+    box-shadow: 0 20px 40px rgba(196,162,101,0.18);
+}
+.care-cat-buy-card:hover::before { opacity: 1; }
+.care-cat-buy-logo {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--terracota);
+    letter-spacing: 0.02em;
+    z-index: 1;
+}
+.care-cat-buy-label {
+    font-size: 0.82rem;
+    color: var(--text-light);
+    z-index: 1;
+}
+.care-cat-buy-arrow {
+    font-size: 1.1rem;
+    color: var(--gold);
+    transition: transform 0.3s;
+    z-index: 1;
+}
+.care-cat-buy-card:hover .care-cat-buy-arrow {
+    transform: translateX(5px);
+}
+@media (max-width: 768px) {
+    .care-cat-buy { padding: 70px 0; }
+    .care-cat-buy-grid { grid-template-columns: 1fr; }
+}
