@@ -7,7 +7,7 @@
   'use strict';
 
   const BUILD_VERSION = '20260504-bee-premium-clean-final';
-  const BEE_IMAGE_VERSION = '20260504-bee-premium-clean-final';
+  const BEE_IMAGE_VERSION = '20260908';
   const BEE_ICON_VERSION = '20260504-bee-premium-clean-final';
   const beeImage = (slug) => `/images/products/${slug}.webp?v=${BEE_IMAGE_VERSION}`;
   const beeIcon = (slug) => `/images/icons/${slug}.svg?v=${BEE_ICON_VERSION}`;
